@@ -3,3 +3,143 @@
 This section presents the concepts, definitions, and theorems from the field of graph theory that are needed in the
 development of the two algorithms.  This material is primarily taken from the textbooks used \cite{chartrand} and
 class notes compiled by the author during his undergraduate and graduate graph theory classes at SJSU.
+
+\subsection{Simple Graphs}
+
+The problem of part consolidation is best served by a class of graphs called \emph{simple graphs}:
+
+\begin{definition}[Simple Graph]
+  A \emph{simple graph} is a mathematical object represented by a tuple \(G=(V,E,\ldots)\) consisting of a
+  non-empty and finite set of \emph{vertices} (also called \emph{nodes}) \(V(G)\), a finite and possibly empty set
+  of edges \(E(G)\), and zero of more relations.  Each edge is represented by a two-element subset of \(V(G)\)
+  called the \emph{endpoints} of the edge:
+  \[E(G)\subseteq\ps_2\left(V(G)\right)\]
+  Each relation has \(V(G)\) or \(E(G)\) as its domain and is used to associated vertices or edges with
+  problem-specific attributes.
+\end{definition}
+
+Thus, a part consolidation problem can be represented by a graph whose vertices are the \(FRs\) and whose edges
+discourage combining their endpoint \(FRs\) into a single part: in the case of the first algorithm, each edge is
+given a numerical score (weight) indicating the magnitude of the desire to not combine the endpoint \(FRs\) into a
+single part, and in the case of the second algorithm, each edge indicates that the endpoint \(FRs\) should never be
+combined into a single part.
+
+For the remainder of this work, the use of the term ``graph'' implies a ``simple graph.''
+
+Graphs are often portrayed visually using filled or labeled circles for the vertices and lines for the edges such
+that each edge line is drawn between its two endpoint vertices.  An example is shown in Figure \ref{fig:exgraph}.
+
+\begin{figure}[h]
+  \label{fig:exgraph}
+  \begin{minipage}{3in}
+    \vspace{0in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \vspace{0in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1.75cm,every node/.style={unlabeled node}]
+        \node (E) at (0,0) {};
+        \node (A) [above left=of E] {};
+        \node (B) [above right=of E] {};
+        \node (C) [below right=of E] {};
+        \node (D) [below left=of E] {};
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+  \begin{gather*}
+    V=V(G)=\set{a,b,c,d,e} \\
+    E=E(G)=\set[\big]{\set{a,b},\set{a,d},\set{a,e},\set{b,e}}
+  \end{gather*}
+  \caption{An Example Graph (labeled and unlabeled)}
+\end{figure}
+
+The choice of two-element subsets of \(V(G)\) for the edges has certain ramifications that are indeed characteristics
+that differentiate a simple graph from other classes of graphs:
+\begin{enumerate}
+\item Every two vertices of a graph are the endpoints of at most one edge; there are no so-called
+  \emph{multiple} edges between two vertices.
+\item The two endpoint vertices of an edge are always distinct; there are no so-called \emph{loop} edges on a
+  single vertex.
+\item The two endpoint vertices are unordered, suggesting that an edge provides a bidirectional connection between
+  its endpoints.
+\end{enumerate}
+
+\begin{samepage}
+  When referring to the edges in a graph, the following common notation will be used:
+
+  \begin{notation}[Edge]
+    The edge \(\set{u,v}\) is represented by the simple juxtaposition \(uv\) or \(vu\).
+  \end{notation}
+\end{samepage}
+
+Note that there is no requirement that every vertex in a graph be an endpoint to some edge:
+
+\begin{definition}[Isolated Vertex]
+  Let \(G\) be a graph and let \(u\in V(G)\).  To say that \(u\) is an \emph{isolated} vertex means that it is not
+  an endpoint for any edge in \(E(G)\):
+  \[\forall\,vw\in E(G),u\ne v\ \text{and}\ u\ne w\]
+\end{definition}
+
+In the example graph of Figure \ref{fig:exgraph}, notice that vertex \(c\) is an isolated vertex.
+
+\subsection{Order and Size}
+
+Two of the most important characteristics of a graph are the number of vertices in the graph, called the \emph{order}
+of the graph, and the number of edges in the graph, called the \emph{size} of the graph:
+
+\begin{definition}[Order]
+  Let \(G\) be a graph.  The \emph{order} of \(G\), denoted by \(n(G)\), is the number of vertices in \(G\):
+  \[n=n(G)=\abs{V(G)}\]
+\end{definition}
+
+\begin{definition}[Size]
+  Let \(G\) be a graph.  The \emph{size} of \(G\), denoted by \(m(G)\), is the number of edges in \(G\):
+  \[m=m(G)=\abs{E(G)}\]
+\end{definition}
+
+In the example graph of Figure \ref{fig:exgraph}, notice that \(n=5\) and \(m=4\).
+
+Since every two vertices can have at most one edge between them, the number of edges has an upper bound:
+
+\begin{theorem}
+  Let \(G\) be a graph of order \(n\) and size \(m\):
+  \[m\le\frac{n(n-1)}{2}\]
+\end{theorem}
+
+\begin{proof}
+  Since each pair of distinct vertices in \(V(G)\) can have zero or one edges joining them, the maximum number of
+  possible edges is \(\binom{n}{2}\), and so:
+  \[m\le\binom{n}{2}=\frac{n!}{2!(n-2)!}=\frac{n(n-1)}{2}\]
+\end{proof}
+
+Some choices of graph order and size lead to certain degenerate cases that serve as important termination cases for
+the two algorithms:
+
+\begin{definition}[Degenerate Cases]
+  \begin{itemize}[left=0pt]
+  \item[]
+  \item The \emph{null} graph is the non-graph with no vertices \((n=m=0)\).
+  \item The \emph{trivial} graph is the graph with exactly one vertex and no edges \((n=1,m=0)\).  Otherwise, the
+    graph is \emph{non-trivial}.
+    \item An \emph{empty} graph is a graph with possibly some isolated vertices but with no edges \((m=0)\).
+  \end{itemize}
+\end{definition}
+
+Hence, both the null and trivial graphs are empty.
