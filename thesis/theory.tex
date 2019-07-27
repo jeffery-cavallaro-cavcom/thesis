@@ -18,16 +18,28 @@ The problem of part consolidation is best served by a class of graphs called \em
   problem-specific attributes.
 \end{definition}
 
+For the remainder of this work, the use of the term ``graph'' implies a ``simple graph.''
+
+The choice of two-element subsets of \(V(G)\) for the edges has certain ramifications that are indeed characteristics
+that differentiate a simple graph from other classes of graphs:
+\begin{enumerate}
+\item Every two vertices of a graph are the endpoints of at most one edge; there are no so-called
+  \emph{multiple} edges between two vertices.
+\item The two endpoint vertices of an edge are always distinct; there are no so-called \emph{loop} edges on a
+  single vertex.
+\item The two endpoint vertices are unordered, suggesting that an edge provides a bidirectional connection between
+  its endpoint vertices.
+\end{enumerate}
+
 Thus, a part consolidation problem can be represented by a graph whose vertices are the \(FRs\) and whose edges
 discourage combining their endpoint \(FRs\) into a single part: in the case of the first algorithm, each edge is
 given a numerical score (weight) indicating the magnitude of the desire to not combine the endpoint \(FRs\) into a
 single part, and in the case of the second algorithm, each edge indicates that the endpoint \(FRs\) should never be
 combined into a single part.
 
-For the remainder of this work, the use of the term ``graph'' implies a ``simple graph.''
-
-Graphs are often portrayed visually using filled or labeled circles for the vertices and lines for the edges such
-that each edge line is drawn between its two endpoint vertices.  An example is shown in Figure \ref{fig:exgraph}.
+Graphs are often portrayed visually using labeled or filled circles for the vertices and lines for the edges such
+that each edge line is drawn between its two endpoint vertices.  An example graph is shown in Figure
+\ref{fig:exgraph}.
 
 \begin{figure}[h]
   \label{fig:exgraph}
@@ -70,17 +82,6 @@ that each edge line is drawn between its two endpoint vertices.  An example is s
   \caption{An Example Graph (labeled and unlabeled)}
 \end{figure}
 
-The choice of two-element subsets of \(V(G)\) for the edges has certain ramifications that are indeed characteristics
-that differentiate a simple graph from other classes of graphs:
-\begin{enumerate}
-\item Every two vertices of a graph are the endpoints of at most one edge; there are no so-called
-  \emph{multiple} edges between two vertices.
-\item The two endpoint vertices of an edge are always distinct; there are no so-called \emph{loop} edges on a
-  single vertex.
-\item The two endpoint vertices are unordered, suggesting that an edge provides a bidirectional connection between
-  its endpoints.
-\end{enumerate}
-
 \begin{samepage}
   When referring to the edges in a graph, the following common notation will be used:
 
@@ -98,6 +99,35 @@ Note that there is no requirement that every vertex in a graph be an endpoint to
 \end{definition}
 
 In the example graph of Figure \ref{fig:exgraph}, notice that vertex \(c\) is an isolated vertex.
+
+When two vertices are the endpoints of the same edge the vertices are said to be \emph{adjacent}:
+
+\begin{definition}[Adjacent Vertices]
+  Let \(G\) be a graph and let \(u,v\in V(G)\).  To say that \(u\) and \(v\) are \emph{adjacent} vertices, also
+  called \emph{neighbors}, means that they are the endpoints of some edge \(e\in E(G)\):
+  \[\exists\,e\in E(G),e=uv\]
+  The edge \(e\) is said to \emph{join} its two endpoint vertices \(u\) and \(v\).  Furthermore, the edge \(e\) is
+  said to be \emph{incident} to its endpoint vertices \(u\) and \(v\).
+\end{definition}
+
+In the example graph of Figure \ref{fig:exgraph}, notice that vertex \(a\) is adjacent to vertices \(b\), \(e\),
+and \(d\); and vertex \(b\) is adjacent to vertex \(e\).
+
+We can also speak of adjacent edges, which are edges that share an endpoint:
+
+\begin{definition}[Adjacent Edges]
+  Let \(G\) be a graph and left \(e,f\in E(G)\).  To say that \(e\) and \(f\) are \emph{adjacent} edges means that
+  they share some endpoint \(v\in E(G)\):
+  \[\exists\,v\in V(G),e\cap f=\set{v}\]
+  or similarly:
+  \[\abs{e\cap f}=1\]
+\end{definition}
+
+Note that two edges in a simple graph can only share one endpoint; otherwise, the two edges would be multiple edges,
+which are not allowed in simple graphs.
+
+In the example graph of Figure \ref{fig:exgraph}, notice that \(ab\) is adjacent to \(ad\), \(ae\), and \(be\); and
+\(ae\) is adjacent to \(be\).
 
 \subsection{Order and Size}
 
@@ -143,3 +173,29 @@ the two algorithms:
 \end{definition}
 
 Hence, both the null and trivial graphs are empty.
+
+\subsection{Labeled Graphs}
+
+One of the possible relations in a graph tuple is a function that assigns each vertex an identifying label:
+
+\begin{definition}[Labeled Graph]
+  To say that a graph \(G\) is \emph{labeled} means that its vertices are considered to be distinct and are
+  assigned identifying names (labels) by adding a bijective labeling function to the graph tuple:
+  \[\ell:V(G)\to L\]
+  where \(L\) is a set of labels (names).  Otherwise, the vertices are considered to be identical (only the
+  structure of the graph matters) and the graph is \emph{unlabeled}.
+\end{definition}
+
+The vertices in a labeled graph are typically draw as open circles containing the corresponding labels, whereas the
+vertices in an unlabeled graph are typically drawn as filled circles.  This is demonstrated in the example graph of
+Figure \ref{fig:exgraph}: the graph on the left is labeled and the graph on the right is unlabeled.
+
+Since the labeling function \(\ell\) is bijective, a vertex \(v\in V(G)\) with label ``a'' can be identified by
+\(v\) or \(\ell^{-1}(a)\).  In practice, the presence of a labeling function is assumed for a labeled graph and so
+a vertex is freely identified by its label.  This is important to note when a proof includes a phrase such as,
+``let \(v\in V(G)\ldots\)'' since \(v\) may be a reference to any vertex in \(V(G)\) or may call out a specific
+vertex by its label; the intention is usually clear from the context.
+
+Thus, the part consolidation graphs that act as the inputs to the two algorithms are labeled graphs, where the labels
+represent the various functional requirements:
+\[FR_1,FR_2,FR_3,\ldots,FR_n\]
