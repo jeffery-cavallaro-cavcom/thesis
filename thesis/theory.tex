@@ -31,7 +31,7 @@ that differentiate a simple graph from other classes of graphs:
   its endpoint vertices.
 \end{enumerate}
 
-Thus, a part consolidation problem can be represented by a graph whose vertices are the \(FRs\) and whose edges
+A part consolidation problem can be represented by a graph whose vertices are the \(FRs\) and whose edges
 discourage combining their endpoint \(FRs\) into a single part: in the case of the first algorithm, each edge is
 given a numerical score (weight) indicating the magnitude of the desire to not combine the endpoint \(FRs\) into a
 single part, and in the case of the second algorithm, each edge indicates that the endpoint \(FRs\) should never be
@@ -100,7 +100,8 @@ Note that there is no requirement that every vertex in a graph be an endpoint to
 
 In the example graph of Figure \ref{fig:exgraph}, notice that vertex \(c\) is an isolated vertex.
 
-When two vertices are the endpoints of the same edge the vertices are said to be \emph{adjacent}:
+When two vertices are the endpoints of the same edge the vertices are said to be \emph{adjacent} or are called
+\emph{neighbors}:
 
 \begin{definition}[Adjacent Vertices]
   Let \(G\) be a graph and let \(u,v\in V(G)\).  To say that \(u\) and \(v\) are \emph{adjacent} vertices, also
@@ -174,9 +175,23 @@ the two algorithms:
 
 Hence, both the null and trivial graphs are empty.
 
-\subsection{Labeled Graphs}
+\subsection{Graph Tuple Relations}
 
-One of the possible relations in a graph tuple is a function that assigns each vertex an identifying label:
+Various problems in graph theory require that vertices and edges be assigned values of particular attributes.  This
+is accomplished by adding relations to the graph tuple that map the vertices and/or edges to their attribute values.
+Note that there are no particular limitations on the nature of such a relation --- everything from a basic relation
+to a bijective function is possible, depending on the problem.
+
+In practice, when a problem requires a particular attribute, the presence of some corresponding relation \(\sR\) is
+assumed and we say something like, ``vertex \(v\) has attribute \(a\),'' instead of the more formal, ``vertex \(v\)
+has attribute \(\sR(v)\).''
+
+The following sections describe the three relations used by the algorithms.
+
+\subsubsection{Labels}
+
+One of the possible relations in a graph tuple is a bijective function that assigns each vertex an identifying label.
+When such a function is present, the graph is said to be a \emph{labeled} graph:
 
 \begin{definition}[Labeled Graph]
   To say that a graph \(G\) is \emph{labeled} means that its vertices are considered to be distinct and are
@@ -196,6 +211,210 @@ a vertex is freely identified by its label.  This is important to note when a pr
 ``let \(v\in V(G)\ldots\)'' since \(v\) may be a reference to any vertex in \(V(G)\) or may call out a specific
 vertex by its label; the intention is usually clear from the context.
 
-Thus, the part consolidation graphs that act as the inputs to the two algorithms are labeled graphs, where the labels
+The part consolidation graphs that act as the inputs to the two algorithms are labeled graphs, where the labels
 represent the various functional requirements:
 \[FR_1,FR_2,FR_3,\ldots,FR_n\]
+
+\subsubsection{Edge Weight}
+
+Certain graph theory problems require that each edge be assigned a \emph{weight}.  An edge weight suggests a
+certain cost associated with the use of the edge, usually interpreted as traversing the edge from one endpoint to
+the other.  This requires the addition of a surjective weight function to the graph tuple:
+\[w:E(G)\to W\]
+where \(W\) is a set of edge weights, usually integers or rational numbers.  A special edge weight of \(\infty\) is
+used to indicate that an edge should never be used/traversed.  Non-adjacent vertices can be assumed to actually be
+connected by edges with either zero or infinite weight, depending on the problem.  An example graph with edge weights
+is shown in Figure \ref{fig:exweight}.
+
+\begin{figure}[h]
+  \label{fig:exweight}
+  \begin{minipage}[t]{3in}
+    \begin{center}
+      \vspace{0in}
+      \begin{tikzpicture}
+        \begin{scope}[node distance=2cm,every node/.style={labeled node}]
+          \node (E) at (0,0) {\(e\)};
+          \node (A) [above left=of E] {\(a\)};
+          \node (B) [above right=of E] {\(b\)};
+          \node (C) [below right=of E] {\(c\)};
+          \node (D) [below left=of E] {\(d\)};
+        \end{scope}
+        \draw (A) edge node [auto] {\(1\)} (B);
+        \draw (B) edge node [auto] {\(\infty\)} (E);
+        \draw (E) edge node [auto] {\(5\)} (A);
+        \draw (A) edge node [auto,swap] {\(8\)} (D);
+        \draw (E) edge node [auto] {\(0\)} (C);
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \begin{gather*}
+      w(ab)=1 \\
+      w(ae)=5 \\
+      w(ad)=8 \\
+      w(be)=\infty \\
+      w(ce)=0
+    \end{gather*}
+  \end{minipage}
+  \caption{A Graph with Edge Weights}
+\end{figure}
+
+The first algorithm uses edge weights to represent the cost or penalty for consolidating an edge's two \(FR\)
+endpoints into the same part.  It is assumed that non-adjacent parts cannot be consolidated, and thus are
+considered to be joined by edges with infinite weight.
+
+\subsubsection{Vertex Color}
+
+Other graph theory problems require that the graph's vertex set be distributed into some number of sets based on
+some problem-specific criteria.  Usually, this distribution is a true partition (no empty sets), but this is not
+required depending on the problem.  One popular method of performing this distribution is by adding a
+\emph{coloring} function to the graph tuple:
+\[c:V(G)\to C\]
+where \(C\) is a set of \emph{colors}; vertices with the same color are assigned to the same set in the
+distribution.  Although the elements of \(C\) are usually actual colors (red, green, blue, etc.), a graph coloring
+problem is free to select any value type for the color attribute.  Note that there is no assumption that \(c\) is
+surjective, so the codomain \(C\) may contain unused colors, which corresponds to empty sets in the distribution.
+
+The most popular coloring scheme for a graph requires that adjacent nodes be assigned different colors:
+
+\begin{definition}[Proper Coloring]
+  A coloring \(c\) on a graph \(G\) is called \emph{proper} when no two adjacent nodes are assigned the same color:
+  \[\forall\,u,v\in V(G),uv\in E(G)\implies c(u)\ne c(v)\]
+  A proper coloring \(c\) with \(\abs{C}=k\) is called a \emph{\coloring{k}} of \(G\) and \(G\) is said to be
+  \emph{\colorable{k}}, meaning the actual coloring (range of \(c\)) uses \emph{at most} \(k\) colors.
+\end{definition}
+
+An example of a \coloring{4} is shown in Figure \ref{fig:exproper}.
+
+\begin{figure}[h]
+  \label{fig:exproper}
+  \begin{minipage}[t]{3in}
+    \begin{center}
+      \vspace{0in}
+      \begin{tikzpicture}
+        \colorlet{c1}{green!50!white}
+        \colorlet{c2}{blue!50!white}
+        \colorlet{c3}{red!50!white}
+        \colorlet{c4}{orange!50!white}
+        \begin{scope}[node distance=2cm,every node/.style={labeled node}]
+          \node (E) [fill=c3] at (0,0) {\(e\)};
+          \node (A) [above left=of E,fill=c1] {\(a\)};
+          \node (B) [above right=of E,fill=c2] {\(b\)};
+          \node (C) [below right=of E,fill=c1] {\(c\)};
+          \node (D) [below left=of E,fill=c4] {\(d\)};
+        \end{scope}
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+        \draw (E) edge (C);
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \begin{gather*}
+      c(a)=green \\
+      c(b)=blue \\
+      c(c)=green \\
+      c(d)=orange \\
+      c(e)=red
+    \end{gather*}
+  \end{minipage}
+  \caption{A Graph with a \coloring{4}}
+\end{figure}
+
+Since there is no requirement that a coloring \(c\) be surjective, the codomain \(C\) may contain unused colors.
+For example, the codomain of the coloring shown in Figure \ref{fig:exproper} might be:
+\[C=\set{green,blue,red,orange}\]
+and hence \(c\) is surjective and \(G\) is \colorable{4}.  But we can always add an unused color to \(C\):
+\[C=\set{green,blue,red,orange,brown}\]
+Now, \(c\) is no longer surjective, and according to the definition: \(G\) is \colorable{5} --- the coloring \(c\)
+uses at most 5 colors (actually only 4), which is the cardinality of the codomain.
+
+Thus, we can make the following statement:
+
+\begin{proposition}
+  \label{prop:coloring}
+  Let \(G\) be a graph:
+  \begin{quote}
+    \(G\) is \colorable{k} \(\implies G\) is \colorable{(k+1)}
+  \end{quote}
+\end{proposition}
+
+By inductive application of Proposition \ref{prop:coloring}, one can arrive at the following conclusion:
+
+\begin{proposition}
+  \label{prop:coloring2}
+  Let \(G\) be a graph:
+  \begin{quote}
+    \(G\) is \colorable{k} \(\implies G\) is \colorable{(k+r)} for some \(r\in\N\).
+  \end{quote}
+\end{proposition}
+
+\subsubsection{Chromatic Coloring}
+
+Since \(k\in\N\), by the well-ordering principle, there exists some minimum \(k\) such that a graph \(G\) is
+\colorable{k}:
+
+\begin{definition}[Chromatic Coloring]
+  The minimum \(k\) such that a graph \(G\) is \colorable{k} is called the \emph{chromatic number} of \(G\), denoted
+  by \(\X(G)\).  A \coloring{k} for a graph \(G\) where \(k=\X(G)\) is called a \emph{\chromatic{k}} coloring.
+\end{definition}
+
+Returning to the example \coloring{4} of Figure \ref{fig:exproper}, note that vertex \(d\) can be colored blue and
+then orange can be excluded from the codomain, resulting in a \coloring{3}.  This is shown in Figure
+\ref{fig:exchromatic}.  Since there is no way to use less than 3 colors to obtain a proper coloring of the graph,
+the coloring is \chromatic{3}.  Note that when a coloring is chromatic, there are no unused colors (empty sets) and
+hence the distribution is a true partition.
+
+\begin{figure}[h]
+  \label{fig:exchromatic}
+  \begin{minipage}[t]{3in}
+    \begin{center}
+      \vspace{0in}
+      \begin{tikzpicture}
+        \colorlet{c1}{green!50!white}
+        \colorlet{c2}{blue!50!white}
+        \colorlet{c3}{red!50!white}
+        \begin{scope}[node distance=2cm,every node/.style={labeled node}]
+          \node (E) [fill=c3] at (0,0) {\(e\)};
+          \node (A) [above left=of E,fill=c1] {\(a\)};
+          \node (B) [above right=of E,fill=c2] {\(b\)};
+          \node (C) [below right=of E,fill=c1] {\(c\)};
+          \node (D) [below left=of E,fill=c2] {\(d\)};
+        \end{scope}
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+        \draw (E) edge (C);
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \begin{gather*}
+      c(a)=green \\
+      c(b)=blue \\
+      c(c)=green \\
+      c(d)=blue \\
+      c(e)=red
+    \end{gather*}
+  \end{minipage}
+  \caption{A Graph with a Chromatic \coloring{3}}
+\end{figure}
+
+\subsubsection{Independent Sets}
+
+The primary purpose of a \(k\)-coloring of a graph \(G\) is to distribute the vertices of \(G\) into \(k\)
+so-called \emph{independent} (some possibly empty) sets:
+
+\begin{definition}[Independent Set]
+  Let \(G\) be a graph and let \(S\subseteq V(G)\).  To say that \(S\) is an \emph{independent} set means that all of
+  the vertices in \(S\) are non-adjacent in \(G\):
+  \[\forall\,u,v\in S,uv\notin E(G)\]
+\end{definition}
+
+Since a \chromatic{k} coloring of a graph \(G\) is surjective, there are no unused colors (empty sets) and so the
+coloring partitions the vertices of \(G\) into exactly \(k\) independent sets.  The goal of the second algorithm is
+to find a chromatic coloring of an \(FR\) graph so that the resulting independent sets indicate how to consolidate
+the \(FRs\) into a minimum number of parts: one part per independent set.
