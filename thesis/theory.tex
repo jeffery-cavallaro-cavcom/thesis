@@ -182,9 +182,9 @@ is accomplished by adding relations to the graph tuple that map the vertices and
 Note that there are no particular limitations on the nature of such a relation --- everything from a basic relation
 to a bijective function is possible, depending on the problem.
 
-In practice, when a problem requires a particular attribute, the presence of some corresponding relation \(\sR\) is
-assumed and we say something like, ``vertex \(v\) has attribute \(a\),'' instead of the more formal, ``vertex \(v\)
-has attribute \(\sR(v)\).''
+In practice, when a graph theory problem requires a particular vertex or edge attribute, the presence of some
+corresponding relation \(\sR\) is assumed and we say something like, ``vertex \(v\) has attribute \(a\),'' instead
+of the more formal, ``vertex \(v\) has attribute \(\sR(v)\).''
 
 The following sections describe the three relations used by the algorithms.
 
@@ -211,8 +211,8 @@ a vertex is freely identified by its label.  This is important to note when a pr
 ``let \(v\in V(G)\ldots\)'' since \(v\) may be a reference to any vertex in \(V(G)\) or may call out a specific
 vertex by its label; the intention is usually clear from the context.
 
-The part consolidation graphs that act as the inputs to the two algorithms are labeled graphs, where the labels
-represent the various functional requirements:
+The \(FR\) graphs that act as the inputs to the two algorithms are labeled graphs, where the labels represent the
+various functional requirements:
 \[FR_1,FR_2,FR_3,\ldots,FR_n\]
 
 \subsubsection{Edge Weight}
@@ -222,9 +222,9 @@ certain cost associated with the use of the edge, usually interpreted as travers
 the other.  This requires the addition of a surjective weight function to the graph tuple:
 \[w:E(G)\to W\]
 where \(W\) is a set of edge weights, usually integers or rational numbers.  A special edge weight of \(\infty\) is
-used to indicate that an edge should never be used/traversed.  Non-adjacent vertices can be assumed to actually be
-connected by edges with either zero or infinite weight, depending on the problem.  An example graph with edge weights
-is shown in Figure \ref{fig:exweight}.
+used to indicate that an edge should never be used/traversed.  Non-adjacent vertices can be viewed as being
+connected by edges with either zero or infinite weight, depending on the problem.  In a drawn graph, edges are
+typically labeled with their weights, as shown in the example graph of Figure \ref{fig:exweight}.
 
 \begin{figure}[h]
   \label{fig:exweight}
@@ -405,8 +405,8 @@ hence the distribution is a true partition.
 
 \subsubsection{Independent Sets}
 
-The primary purpose of a \(k\)-coloring of a graph \(G\) is to distribute the vertices of \(G\) into \(k\)
-so-called \emph{independent} (some possibly empty) sets:
+The primary purpose of a \coloring{k} of a graph \(G\) is to distribute the vertices of \(G\) into \(k\) so-called
+\emph{independent} (some possibly empty) sets:
 
 \begin{definition}[Independent Set]
   Let \(G\) be a graph and let \(S\subseteq V(G)\).  To say that \(S\) is an \emph{independent} set means that all of
