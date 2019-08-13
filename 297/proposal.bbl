@@ -1,0 +1,44 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{agnarsson}
+G.~Agnarsson and R.~Greenlaw, \emph{Graph theory: Modeling, applications, and
+  algorithms}, Prentice Hall, Upper Saddle River, NJ, 2007.
+
+\bibitem{sogol}
+S.~Behdad, P.K. Gopalakrishnan, S.~Jahanbekam, and H.~Kain, \emph{Graph
+  partitioning technique to identify physically integrated design concepts},
+  Proceedings of the ASME 2018 International Design Engineering Technical
+  Conferences \& Computers and Information in Engineering Conference (2018),
+  no.~DETC2018-85646, 1--13.
+
+\bibitem{beigel}
+R.~Beigel and D.~Eppstein, \emph{3-coloring in time \(\mathcal{O}(1.3289^n)\)},
+  Journal of Algorithms \textbf{54} (2005), 168--204.
+
+\bibitem{chartrand}
+D.~Chartrand and P.~Zhang, \emph{A first course in graph theory}, Dover
+  Publications, Inc., Mineola, NY, 2012.
+
+\bibitem{read}
+R.C. Reed (ed.), \emph{Graph theory and computing}, Academic Press, New York
+  and London, 1972.
+
+\bibitem{smyth}
+C.~Smyth, \emph{Functional design for 3d printing}, third revised ed., 2017.
+
+\bibitem{suh}
+N.P. Suh, \emph{Axiomatic design theory for systems}, Research in Engineering
+  Design \textbf{10} (1998), no.~4, 189--209.
+
+\bibitem{west}
+D.B. West, \emph{Introduction to graph theory}, \(2^{nd}\) ed., Prentice Hall,
+  Upper Saddle River, NJ, 2001.
+
+\end{thebibliography}
