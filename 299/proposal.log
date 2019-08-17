@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  13 AUG 2019 12:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  15 AUG 2019 12:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -438,25 +438,25 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 19.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 12.0pt on input line 20.
+ [3{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 43.
- [3{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./p
-roposal.bbl)
-<candidacy.jpg, id=19, 614.7768pt x 1011.78pt>
+(Font)              scaled to size 12.0pt on input line 72.
+ (./proposal.bbl [4])
+<candidacy.jpg, id=23, 614.7768pt x 1011.78pt>
 File: candidacy.jpg Graphic file (type jpg)
 <use candidacy.jpg>
-Package pdftex.def Info: candidacy.jpg  used on input line 66.
+Package pdftex.def Info: candidacy.jpg  used on input line 93.
 (pdftex.def)             Requested size: 553.29399pt x 910.5936pt.
 
-Overfull \hbox (13.2694pt too wide) in paragraph at lines 65--67
+Overfull \hbox (13.2694pt too wide) in paragraph at lines 92--94
 []|  [] 
  []
 
-[4]
+[5]
 Overfull \vbox (260.16359pt too high) has occurred while \output is active []
 
 
-[5 <./candidacy.jpg>] (./proposal.aux) ) 
+[6 <./candidacy.jpg>] (./proposal.aux) ) 
 Here is how much of TeX's memory you used:
  4113 strings out of 492609
  64997 string characters out of 6129048
@@ -464,7 +464,7 @@ Here is how much of TeX's memory you used:
  7971 multiletter control sequences out of 15000+600000
  18941 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,6n,37p,816b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,6n,37p,816b,209s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fon
 ts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/local/texlive/2019/texmf-dist/font
 s/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/local/texlive/2019/texmf-dist/fonts
@@ -476,10 +476,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on proposal.pdf (5 pages, 2014720 bytes).
+Output written on proposal.pdf (6 pages, 2017110 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 56 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
