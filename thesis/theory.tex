@@ -418,3 +418,195 @@ Since a \chromatic{k} coloring of a graph \(G\) is surjective, there are no unus
 coloring partitions the vertices of \(G\) into exactly \(k\) independent sets.  The goal of the second algorithm is
 to find a chromatic coloring of an \(FR\) graph so that the resulting independent sets indicate how to consolidate
 the \(FRs\) into a minimum number of parts: one part per independent set.
+
+\subsection{Subgraphs}
+
+The basic strategy of the algorithms is to arrive at a solution by mutating an input graph into simpler graphs
+(less vertices and/or edges) such that a solution is more easily determined.  The algorithms make use of three
+particular mutators: vertex deletion, edge addition, and vertex contraction.  Before describing these mutators, it
+will be helpful to describe what is meant by a graph equality and a \emph{subgraph} of a graph.
+
+\subsubsection{Graph Equality}
+
+Graph equality follows from equality of the vertex and edge sets:
+
+\begin{definition}[Graph Equality]
+  Let \(G\) and \(H\) be graphs.  To say that \(G\) equals \(H\), denoted \(G=H\), means that \(V(G)=V(H)\) and
+  \(E(G)=E(H)\).
+\end{definition}
+
+Note that this definition of equality ignores any additional relations that may be added to the graph tuples since
+those relations tend to be added by specific problems and do not reflect the actual parts of the graphs.
+
+\subsubsection{Subgraphs}
+
+Since graph equality follows from vertex and edge set equality, there should also be a concept of a \emph{subgraph}
+resulting from the subsets of those sets:
+
+\begin{definition}[Subgraph]
+  Let \(G\) and \(H\) be two graphs:
+  \begin{itemize}
+  \item To say that \(H\) is a \emph{subgraph} of \(G\), denoted \(H\subseteq G\), means that \(V(H)\subseteq V(G)\)
+    and \(E(H)\subseteq E(G)\).
+  \item To say that \(H\) is a \emph{proper subgraph} of \(G\), denoted \(H\subset G\), means that \(H\subseteq G\)
+    but \(H\ne G\): \(V(H)\subset V(G)\) or \(E(H)\subset E(G)\).
+  \item To say that \(H\) is a \emph{spanning subgraph} of \(G\) means that \(H\) is a subgraph of \(G\) such that
+    \(V(H)=V(G)\) and \(E(H)\subseteq E(G)\).
+  \end{itemize}
+\end{definition}
+
+Thus, given a graph \(G\) and a subgraph \(H\), there should be a sequence of zero or more vertex and/or edge
+removals to obtain \(H\) from \(G\).  Likewise, there should be a sequence of zero or more vertex and/or edge
+additions to obtain \(G\) from \(H\).  If \(H\) is a proper subgraph of \(G\) then \(H\) and \(G\) differ by at
+least one removed vertex or one removed edge.  If \(H\) is a spanning subgraph of \(G\) then \(H\) contains all of
+the vertices in \(G\) but may differ by removed edges only.  Per the definition, a graph is always a subgraph of
+itself \((G\subseteq G)\) and the null graph is a subgraph of every graph.
+
+The concept of subgraphs is demonstrated by graphs \(G\), \(H\), and \(F\) in Figure \ref{fig:subgraphs}.  \(H\) is
+a proper subgraph of \(G\) by removing vertices \(c\) and \(d\) and edges \(ad\) and \(be\).  \(F\) is a proper
+spanning subgraph of \(G\) because \(F\) contains all of the vertices in \(G\) but is missing edges \(ab\) and
+\(be\).
+
+\begin{figure}[h]
+  \label{fig:subgraphs}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E,color=white] {};
+        \node (D) [below left=of E,color=white] {};
+        \draw (A) edge (B);
+        \draw (E) edge (A);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(H\subset G\) (proper)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(F\subset G\) (spanning)
+    \end{center}
+  \end{minipage}
+  \caption{Subgraph Examples}
+\end{figure}
+
+\subsubsection{Induced Subgraphs}
+
+An \emph{induced} subgraph is a special type of subgraph:
+
+\begin{definition}[Induced Subgraph]
+  Let \(G\) be a graph and let \(S\) be a non-empty subset of \(V(G)\).  The subgraph of \(G\) \emph{induced} by
+  \(S\), denoted \(G[S]\), is a subgraph \(H\) such that:
+  \begin{itemize}
+  \item \(V(H)=S\)
+  \item \(u,v\in V(H)\) and \(uv\in E(G)\implies uv\in E(H)\)
+  \end{itemize}
+  Such a subgraph \(H\) is called an \emph{induced subgraph} of \(G\).
+\end{definition}
+
+Note that when a vertex is removed to make an induced subgraph then all of that vertex's incident edges are also
+removed.  However, for every pair of vertices included in an induced subgraph, if the vertices are the endpoints of
+a particular edge then that edge must also be included in the subgraph.  In the examples of Figure
+\ref{fig:subgraphs}, \(H\) is not an induced subgraph of \(G\) because it is missing edge \(be\).  Likewise, a
+proper spanning subgraph like \(F\) can never be induced due to missing edges.  In fact, the only induced spanning
+subgraph of a graph is the graph itself.  Figure \ref{fig:induced} adds edge \(be\) so that \(H\) is now an induced
+subgraph of \(G\).
+
+\begin{figure}[h]
+  \label{fig:induced}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E,color=white] {};
+        \node (D) [below left=of E,color=white] {};
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(H=G[\set{a,b,e}]\)
+    \end{center}
+  \end{minipage}
+  \caption{Induced Subgraph Example}
+\end{figure}
+
+\subsection{Mutators}
+
+The following sections describe the mutators used by the algorithms.
+
+\subsubsection{Vertex Removal}
+
+Let \(G\) be a graph and let \(S\subseteq V(G)\).  The induced subgraph obtained by removing all of the vertices in
+\(S\) is denoted by:
+\[G-S=G[V(G)-S]\]
+If \(S\ne\emptyset\) then \(G-S\) is a proper subgraph of \(G\).  If \(S=V(G)\) then the result is the null graph.
+
+When \(\abs{S}=1\) then an alternate syntax can be used.  Assume \(v\in V(G)\):
+\[G-v=G-\set{v}\]
+
+\subsubsection{Edge Addition}
+
+Let \(G\) be a graph and let \(u,v\in V(G)\) such that \(uv\notin E(G)\).  The graph \(G+uv\) is the graph with the
+same vertices as \(G\) and with edge set \(E(G)\cup\set{uv}\).  Note that \(G\) is a proper spanning subgraph of
+\(G+e\).
+
+\subsubsection{Vertex Contraction}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  8 AUG 2019 13:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  22 AUG 2019 22:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -938,14 +938,14 @@ LaTeX Font Info:    Font shape `TS1/LinuxBiolinumT-TLF/m/n' will be
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8]) [9] (./thesis.bbl) [10
+[8] [9] [10] [11]) [12] (./thesis.bbl) [13
 
 ] (./thesis.aux (./theory.aux)) ) 
 Here is how much of TeX's memory you used:
- 16960 strings out of 492609
- 328257 string characters out of 6129048
- 375283 words of memory out of 5000000
- 20492 multiletter control sequences out of 15000+600000
+ 16964 strings out of 492609
+ 328318 string characters out of 6129048
+ 376309 words of memory out of 5000000
+ 20496 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,15n,78p,839b,927s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -966,10 +966,10 @@ type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
 e1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/public/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (10 pages, 256381 bytes).
+Output written on thesis.pdf (13 pages, 265735 bytes).
 PDF statistics:
- 97 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 107 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
