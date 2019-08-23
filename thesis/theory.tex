@@ -275,10 +275,10 @@ distribution.  Although the elements of \(C\) are usually actual colors (red, gr
 problem is free to select any value type for the color attribute.  Note that there is no assumption that \(c\) is
 surjective, so the codomain \(C\) may contain unused colors, which corresponds to empty sets in the distribution.
 
-The most popular coloring scheme for a graph requires that adjacent nodes be assigned different colors:
+The most popular coloring scheme for a graph requires that adjacent vertices be assigned different colors:
 
 \begin{definition}[Proper Coloring]
-  A coloring \(c\) on a graph \(G\) is called \emph{proper} when no two adjacent nodes are assigned the same color:
+  A coloring \(c\) on a graph \(G\) is called \emph{proper} when no two adjacent vertices are assigned the same color:
   \[\forall\,u,v\in V(G),uv\in E(G)\implies c(u)\ne c(v)\]
   A proper coloring \(c\) with \(\abs{C}=k\) is called a \emph{\coloring{k}} of \(G\) and \(G\) is said to be
   \emph{\colorable{k}}, meaning the actual coloring (range of \(c\)) uses \emph{at most} \(k\) colors.
@@ -591,14 +591,57 @@ subgraph of \(G\).
 
 \subsection{Mutators}
 
-The following sections describe the mutators used by the algorithms.
+The following sections describe the graph mutators used by the algorithms.
 
 \subsubsection{Vertex Removal}
 
 Let \(G\) be a graph and let \(S\subseteq V(G)\).  The induced subgraph obtained by removing all of the vertices in
-\(S\) is denoted by:
+\(S\) (and their incident edges) is denoted by:
 \[G-S=G[V(G)-S]\]
 If \(S\ne\emptyset\) then \(G-S\) is a proper subgraph of \(G\).  If \(S=V(G)\) then the result is the null graph.
+
+Figure \ref{fig:vremove} shows an example of vertex removal: vertices \(c\) and \(e\) are removed, along with their
+incident edges \(ae\) and \(be\).
+
+\begin{figure}[h]
+  \label{fig:vremove}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E,white] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G-\set{c,e}\)
+    \end{center}
+  \end{minipage}
+  \caption{Vertex Removal Example}
+\end{figure}
 
 When \(\abs{S}=1\) then an alternate syntax can be used.  Assume \(v\in V(G)\):
 \[G-v=G-\set{v}\]
@@ -609,4 +652,79 @@ Let \(G\) be a graph and let \(u,v\in V(G)\) such that \(uv\notin E(G)\).  The g
 same vertices as \(G\) and with edge set \(E(G)\cup\set{uv}\).  Note that \(G\) is a proper spanning subgraph of
 \(G+e\).
 
+Figure \ref{fig:eadd} shows an example of edge addition: edge \(cd\) is added.
+
+\begin{figure}[h]
+  \label{fig:eadd}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw (B) edge (E);
+        \draw (E) edge (A);
+        \draw (A) edge (D);
+        \draw (C) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G+cd\)
+    \end{center}
+  \end{minipage}
+  \caption{Edge Addition Example}
+\end{figure}
+
+When edge weights are involved, the default edge weight for an added edge is problem-specific.  In the case of the
+first algorithm, added edges are assigned a weight of \(\infty\).
+
 \subsubsection{Vertex Contraction}
+
+Vertex contraction is a bit different because it does not involve subgraphs.  Select \(u,v\in V(G)\) and identify
+the two vertices as one (merge them).  Any edge between the two vertices is discarded.  Any other edges that were
+incident to the two vertices become incident to the new single vertex.  Note that this may require supression of
+multiple edges to preserve the nature of a simple graph.
+
+\begin{figure}[h]
+  \label{fig:contract}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{1in}{90}{}
+        \draw (1) edge (5);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+    \end{center}
+  \end{minipage}
+  \caption{Vertex Contraction Example}
+\end{figure}

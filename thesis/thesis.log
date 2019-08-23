@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  22 AUG 2019 22:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  23 AUG 2019 10:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -284,7 +284,7 @@ Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count92
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/06/20 v3.9 Customized lists
+Package: enumitem 2019/02/04 v3.8 Customized lists
 \labelindent=\skip43
 \enit@outerparindent=\dimen112
 \enit@toks=\toks18
@@ -938,17 +938,37 @@ LaTeX Font Info:    Font shape `TS1/LinuxBiolinumT-TLF/m/n' will be
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8] [9] [10] [11]) [12] (./thesis.bbl) [13
+[8] [9] [10]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11]
+Missing character: There is no ( in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [12] [13] (./thesis.bbl) [14
 
 ] (./thesis.aux (./theory.aux)) ) 
 Here is how much of TeX's memory you used:
- 16964 strings out of 492609
- 328318 string characters out of 6129048
- 376309 words of memory out of 5000000
- 20496 multiletter control sequences out of 15000+600000
+ 17073 strings out of 492609
+ 330288 string characters out of 6129049
+ 378829 words of memory out of 5000000
+ 20605 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,15n,78p,839b,927s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,83p,839b,927s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/
 dvips/libertine/lbtn_afusau.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/d
 vips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dv
@@ -966,10 +986,10 @@ type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
 e1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/public/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (13 pages, 265735 bytes).
+Output written on thesis.pdf (14 pages, 268604 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+ 110 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
