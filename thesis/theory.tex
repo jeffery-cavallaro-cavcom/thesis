@@ -703,10 +703,15 @@ first algorithm, added edges are assigned a weight of \(\infty\).
 
 \subsubsection{Vertex Contraction}
 
-Vertex contraction is a bit different because it does not involve subgraphs.  Select \(u,v\in V(G)\) and identify
-the two vertices as one (merge them).  Any edge between the two vertices is discarded.  Any other edges that were
-incident to the two vertices become incident to the new single vertex.  Note that this may require supression of
-multiple edges to preserve the nature of a simple graph.
+Vertex contraction is a bit different because it does not involve subgraphs.  Let \(G\) be a graph and let
+\(u,v\in V(G)\).  The graph \(G\cdot uv\) is constructed by identifying \(u\) and \(v\) as one vertex (merge them).
+Any edge between the two vertices is discarded.  Any other edges that were incident to the two vertices become
+incident to the new single vertex.  Note that this may require supression of multiple edges to preserve the nature
+of a simple graph.
+
+Figure \ref{fig:contract} shows an example of vertex contraction: vertices \(a\) and \(b\) are contracted into a
+single vertex.  Since edges \(ae\) and \(be\) would result in multiple edges between \(a\) and \(e\), one of the
+edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single vertex.
 
 \begin{figure}[h]
   \label{fig:contract}
@@ -715,6 +720,9 @@ multiple edges to preserve the nature of a simple graph.
       \begin{tikzpicture}[every node/.style={labeled node}]
         \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{1in}{90}{}
         \draw (1) edge (5);
+        \draw (2) edge (3) edge (4) edge (5);
+        \draw (3) edge (4);
+        \draw (4) edge (5);
       \end{tikzpicture}
 
       \bigskip
@@ -723,8 +731,27 @@ multiple edges to preserve the nature of a simple graph.
     \end{center}
   \end{minipage}
   \begin{minipage}{3in}
-    \begin{center}
+    \begin{center} 
+      \begin{tikzpicture}
+        \begin{scope}[every node/.style={coordinate}]
+          \cycleNnodes{5}{(0,0)}{1in}{90}{}
+        \end{scope}
+        \begin{scope}[every node/.style={labeled node}]
+          \node (AB) at (1) {\(ab\)};
+          \node (C) at (3) {\(c\)};
+          \node (D) at (4) {\(d\)};
+          \node (E) at (5) {\(e\)};
+        \end{scope}
+        \draw (AB) edge (C) edge (D) edge (E);
+        \draw (C) edge (D);
+        \draw (D) edge (E);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\cdot ab\)
     \end{center}
   \end{minipage}
   \caption{Vertex Contraction Example}
 \end{figure}
+
