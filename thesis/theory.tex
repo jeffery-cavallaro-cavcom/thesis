@@ -424,15 +424,15 @@ the \(FRs\) into a minimum number of parts: one part per independent set.
 The basic strategy of the algorithms is to arrive at a solution by mutating an input graph into simpler graphs
 (less vertices and/or edges) such that a solution is more easily determined.  The algorithms make use of three
 particular mutators: vertex deletion, edge addition, and vertex contraction.  Before describing these mutators, it
-will be helpful to describe what is meant by a graph equality and a \emph{subgraph} of a graph.
+will be helpful to describe what is meant by graph equality and a \emph{subgraph} of a graph.
 
 \subsubsection{Graph Equality}
 
 Graph equality follows from equality of the vertex and edge sets:
 
 \begin{definition}[Graph Equality]
-  Let \(G\) and \(H\) be graphs.  To say that \(G\) equals \(H\), denoted \(G=H\), means that \(V(G)=V(H)\) and
-  \(E(G)=E(H)\).
+  Let \(G\) and \(H\) be graphs.  To say that \(G\) is equal to \(H\), denoted \(G=H\), means that \(V(G)=V(H)\)
+  and \(E(G)=E(H)\).
 \end{definition}
 
 Note that this definition of equality ignores any additional relations that may be added to the graph tuples since
@@ -643,8 +643,11 @@ incident edges \(ae\) and \(be\).
   \caption{Vertex Removal Example}
 \end{figure}
 
-When \(\abs{S}=1\) then an alternate syntax can be used.  Assume \(v\in V(G)\):
+If \(\abs{S}=1\) then an alternate syntax can be used.  Assume \(v\in V(G)\):
 \[G-v=G-\set{v}\]
+
+The second algorithm uses vertex removal to simply a \colorable{k} graph into a simpler subgraph that is still
+\colorable{k}.
 
 \subsubsection{Edge Addition}
 
@@ -687,7 +690,7 @@ Figure \ref{fig:eadd} shows an example of edge addition: edge \(cd\) is added.
         \draw (B) edge (E);
         \draw (E) edge (A);
         \draw (A) edge (D);
-        \draw (C) edge (D);
+        \draw [green] (C) edge (D);
       \end{tikzpicture}
 
       \bigskip
@@ -698,19 +701,74 @@ Figure \ref{fig:eadd} shows an example of edge addition: edge \(cd\) is added.
   \caption{Edge Addition Example}
 \end{figure}
 
-When edge weights are involved, the default edge weight for an added edge is problem-specific.  In the case of the
-first algorithm, added edges are assigned a weight of \(\infty\).
+The second algorithm uses edge addition to prevent two non-adjacent \(FRs\) from being consolidated into the same
+part.
+
+A slight variation on edge addition is replacing an existing edge with a new edge having a different edge weight.
+Since a simple graph can have at most one edge between two endpoints, the original edge is discarded.  The first
+algorithm uses this operation to change the weight of an edge to \(\infty\) in order to prevent two adjacent
+\(FRs\) from being combined into the same part.  This operation will use the alternation syntax \(G\star uv\).
+An example is show in Figure \ref{fig:infweight}.
+
+\begin{figure}[h]
+  \label{fig:infweight}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{scope}[node distance=2cm,every node/.style={labeled node}]
+          \node (E) at (0,0) {\(e\)};
+          \node (A) [above left=of E] {\(a\)};
+          \node (B) [above right=of E] {\(b\)};
+          \node (C) [below right=of E] {\(c\)};
+          \node (D) [below left=of E] {\(d\)};
+        \end{scope}
+        \draw (A) edge node [auto] {\(1\)} (B);
+        \draw (B) edge node [auto] {\(\infty\)} (E);
+        \draw (E) edge node [auto] {\(5\)} (A);
+        \draw (A) edge node [auto,swap] {\(8\)} (D);
+        \draw (E) edge node [auto] {\(0\)} (C);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{scope}[node distance=2cm,every node/.style={labeled node}]
+          \node (E) at (0,0) {\(e\)};
+          \node (A) [above left=of E] {\(a\)};
+          \node (B) [above right=of E] {\(b\)};
+          \node (C) [below right=of E] {\(c\)};
+          \node (D) [below left=of E] {\(d\)};
+        \end{scope}
+        \draw (A) edge node [auto] {\(1\)} (B);
+        \draw (B) edge node [auto] {\(\infty\)} (E);
+        \draw (E) edge node [auto] {\(5\)} (A);
+        \draw [green] (A) edge node [auto,swap,green] {\(\infty\)} (D);
+        \draw (E) edge node [auto] {\(0\)} (C);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\star ad\)
+    \end{center}
+  \end{minipage}
+  \caption{Changing an Edge Weight}
+\end{figure}
 
 \subsubsection{Vertex Contraction}
 
-Vertex contraction is a bit different because it does not involve subgraphs.  Let \(G\) be a graph and let
-\(u,v\in V(G)\).  The graph \(G\cdot uv\) is constructed by identifying \(u\) and \(v\) as one vertex (merge them).
-Any edge between the two vertices is discarded.  Any other edges that were incident to the two vertices become
-incident to the new single vertex.  Note that this may require supression of multiple edges to preserve the nature
-of a simple graph.
+Vertex contraction is a bit different because it does not involve subgraphs.  Let \(G\) be a graph and let \(u,v\in
+V(G)\).  The graph \(G\cdot uv\) is constructed by identifying \(u\) and \(v\) as one vertex (merging them).  Any
+edge between the two vertices is discarded.  Any other edges that were incident to the two vertices become incident
+to the new single vertex.  Note that this may require supression of multiple edges to preserve the nature of a
+simple graph.
 
 Figure \ref{fig:contract} shows an example of vertex contraction: vertices \(a\) and \(b\) are contracted into a
-single vertex.  Since edges \(ae\) and \(be\) would result in multiple edges between \(a\) and \(e\), one of the
+single vertex.  Since edges \(ae\) and \(be\) would result in multiple edges between \(a\) and \(e\), so one of the
 edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single vertex.
 
 \begin{figure}[h]
@@ -723,6 +781,7 @@ edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single 
         \draw (2) edge (3) edge (4) edge (5);
         \draw (3) edge (4);
         \draw (4) edge (5);
+        \draw [dashed,red,->] (2) edge (1);
       \end{tikzpicture}
 
       \bigskip
@@ -755,3 +814,8 @@ edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single 
   \caption{Vertex Contraction Example}
 \end{figure}
 
+For the operation \(G\cdot uv\), if \(uv\in E(G)\) then the operation is also referred to as \emph{edge
+  contraction}.  The first algorithm uses edge contraction to consolidate two adjacent \(FRs\) into the same part,
+where the contracted edge weight is interpreted as a penalty for doing so.  Alternatively, if \(uv\notin E(G)\)
+then the operation is also referred to as \emph{vertex identification}.  The second algorithm uses vertex
+identification to consolidate two non-adjacent \(FRs\) into the same part.

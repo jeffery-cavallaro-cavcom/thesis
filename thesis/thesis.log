@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  24 AUG 2019 09:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  27 AUG 2019 14:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -946,17 +946,17 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [12] [13] (./thesis.bbl) [14
+[12]) [13] (./thesis.bbl) [14
 
 ] (./thesis.aux (./theory.aux)) ) 
 Here is how much of TeX's memory you used:
- 17089 strings out of 492609
- 330544 string characters out of 6129048
- 381548 words of memory out of 5000000
- 20621 multiletter control sequences out of 15000+600000
+ 17107 strings out of 492609
+ 330940 string characters out of 6129048
+ 384784 words of memory out of 5000000
+ 20639 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,15n,83p,839b,927s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,83p,839b,969s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/
 dvips/libertine/lbtn_afusau.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/d
 vips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dv
@@ -974,7 +974,7 @@ type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
 e1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/public/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (14 pages, 269213 bytes).
+Output written on thesis.pdf (14 pages, 272325 bytes).
 PDF statistics:
  110 PDF objects out of 1000 (max. 8388607)
  80 compressed objects within 1 object stream
