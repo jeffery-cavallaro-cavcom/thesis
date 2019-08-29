@@ -421,10 +421,10 @@ the \(FRs\) into a minimum number of parts: one part per independent set.
 
 \subsection{Subgraphs}
 
-The basic strategy of the algorithms is to arrive at a solution by mutating an input graph into simpler graphs
-(less vertices and/or edges) such that a solution is more easily determined.  The algorithms make use of three
-particular mutators: vertex deletion, edge addition, and vertex contraction.  Before describing these mutators, it
-will be helpful to describe what is meant by graph equality and a \emph{subgraph} of a graph.
+The basic strategy of the algorithms is to arrive at a solution by mutating an input graph into simpler graphs such
+that a solution is more easily determined.  The algorithms make use of four particular mutators: vertex deletion,
+edge deletion, edge addition, and vertex contraction.  Before describing these mutators, it will be helpful to
+describe what is meant by graph equality and a \emph{subgraph} of a graph.
 
 \subsubsection{Graph Equality}
 
@@ -608,14 +608,14 @@ incident edges \(ae\) and \(be\).
   \begin{minipage}{3in}
     \begin{center}
       \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
+        \node [red] (E) at (0,0) {\(e\)};
         \node (A) [above left=of E] {\(a\)};
         \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
+        \node [red] (C) [below right=of E] {\(c\)};
         \node (D) [below left=of E] {\(d\)};
         \draw (A) edge (B);
-        \draw (B) edge (E);
-        \draw (E) edge (A);
+        \draw [red] (B) edge (E);
+        \draw [red] (E) edge (A);
         \draw (A) edge (D);
       \end{tikzpicture}
 
@@ -649,11 +649,67 @@ If \(\abs{S}=1\) then an alternate syntax can be used.  Assume \(v\in V(G)\):
 The second algorithm uses vertex removal to simply a \colorable{k} graph into a simpler subgraph that is still
 \colorable{k}.
 
+\subsubsection{Edge Removal}
+
+Let \(G\) be a graph and let \(X\subseteq E(G)\).  The spanning subgraph obtained by removing all of the edges
+in \(X\) is denoted by:
+\[G-X=H\left(V(G),E(G)-X\right)\]
+Thus, only edges are remove --- no vertices are removed.  If \(X\ne\emptyset\) then \(G-X\) is a proper subgraph of
+\(G\).  If \(X=E(G)\) then the result is an empty graph (no edges).
+
+Figure \ref{fig:eremove} shows an example of edge removal: edges \(ae\) and \(be\) are removed.
+
+\begin{figure}[h]
+  \label{fig:eremove}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw [red] (B) edge (E);
+        \draw [red] (E) edge (A);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G-\set{ae,be}\)
+    \end{center}
+  \end{minipage}
+  \caption{Edge Removal Example}
+\end{figure}
+
+If \(\abs{X}=1\) then an alternate syntax can be used.  Assume \(e\in E(G)\):
+\[G-e=G-\set{e}\]
+
+The first algorithm uses edge removal to prevent two adjacent \(FRs\) from being consolidated into the same part.
+
 \subsubsection{Edge Addition}
 
 Let \(G\) be a graph and let \(u,v\in V(G)\) such that \(uv\notin E(G)\).  The graph \(G+uv\) is the graph with the
 same vertices as \(G\) and with edge set \(E(G)\cup\set{uv}\).  Note that \(G\) is a proper spanning subgraph of
-\(G+e\).
+\(G+uv\).
 
 Figure \ref{fig:eadd} shows an example of edge addition: edge \(cd\) is added.
 
@@ -703,61 +759,6 @@ Figure \ref{fig:eadd} shows an example of edge addition: edge \(cd\) is added.
 
 The second algorithm uses edge addition to prevent two non-adjacent \(FRs\) from being consolidated into the same
 part.
-
-A slight variation on edge addition is replacing an existing edge with a new edge having a different edge weight.
-Since a simple graph can have at most one edge between two endpoints, the original edge is discarded.  The first
-algorithm uses this operation to change the weight of an edge to \(\infty\) in order to prevent two adjacent
-\(FRs\) from being combined into the same part.  This operation will use the alternation syntax \(G\star uv\).
-An example is show in Figure \ref{fig:infweight}.
-
-\begin{figure}[h]
-  \label{fig:infweight}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}
-        \begin{scope}[node distance=2cm,every node/.style={labeled node}]
-          \node (E) at (0,0) {\(e\)};
-          \node (A) [above left=of E] {\(a\)};
-          \node (B) [above right=of E] {\(b\)};
-          \node (C) [below right=of E] {\(c\)};
-          \node (D) [below left=of E] {\(d\)};
-        \end{scope}
-        \draw (A) edge node [auto] {\(1\)} (B);
-        \draw (B) edge node [auto] {\(\infty\)} (E);
-        \draw (E) edge node [auto] {\(5\)} (A);
-        \draw (A) edge node [auto,swap] {\(8\)} (D);
-        \draw (E) edge node [auto] {\(0\)} (C);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}
-        \begin{scope}[node distance=2cm,every node/.style={labeled node}]
-          \node (E) at (0,0) {\(e\)};
-          \node (A) [above left=of E] {\(a\)};
-          \node (B) [above right=of E] {\(b\)};
-          \node (C) [below right=of E] {\(c\)};
-          \node (D) [below left=of E] {\(d\)};
-        \end{scope}
-        \draw (A) edge node [auto] {\(1\)} (B);
-        \draw (B) edge node [auto] {\(\infty\)} (E);
-        \draw (E) edge node [auto] {\(5\)} (A);
-        \draw [green] (A) edge node [auto,swap,green] {\(\infty\)} (D);
-        \draw (E) edge node [auto] {\(0\)} (C);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\star ad\)
-    \end{center}
-  \end{minipage}
-  \caption{Changing an Edge Weight}
-\end{figure}
 
 \subsubsection{Vertex Contraction}
 
