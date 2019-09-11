@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  29 AUG 2019 04:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  10 SEP 2019 17:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -918,14 +918,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [2
 
-]
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 98.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 98.
- [3] [4]
+] [3] [4]
 LaTeX Font Info:    Try loading font information for TS1+LinuxBiolinumT-TLF on 
-input line 167.
+input line 165.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/TS1LinuxBiolinumT-TLF.f
 d
@@ -933,30 +928,35 @@ File: TS1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/L
 inuxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 167.
- [5] [6] [7]
+(Font)              scaled to size 12.0pt on input line 165.
+ [5]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8] [9] [10]
+[6]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11] [12]
+[7] [8] [9]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [13] [14] (./thesis.bbl) [15
+[10] [11] [12]
+LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 754.
+LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 754.
+ [13]) [14] (./thesis.bbl) [15
 
 ] (./thesis.aux (./theory.aux)) ) 
 Here is how much of TeX's memory you used:
- 17107 strings out of 492609
- 330938 string characters out of 6129048
- 377361 words of memory out of 5000000
- 20639 multiletter control sequences out of 15000+600000
+ 17184 strings out of 492609
+ 332011 string characters out of 6129048
+ 383704 words of memory out of 5000000
+ 20716 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,15n,83p,839b,942s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,83p,839b,1003s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/
 dvips/libertine/lbtn_afusau.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/d
 vips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dv
@@ -972,12 +972,13 @@ onts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
-e1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts
-/type1/public/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (15 pages, 272814 bytes).
+e1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/f
+onts/type1/public/rsfs/rsfs10.pfb>
+Output written on thesis.pdf (15 pages, 285977 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
+ 117 PDF objects out of 1000 (max. 8388607)
+ 85 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

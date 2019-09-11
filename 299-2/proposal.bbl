@@ -1,0 +1,53 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{agnarsson}
+G.~Agnarsson and R.~Greenlaw, \emph{Graph theory: Modeling, applications, and
+  algorithms}, Prentice Hall, Upper Saddle River, NJ, 2007.
+
+\bibitem{cavallaro}
+S.~Behdad, P.K. Gopalakrishnan, S.~Jahanbekam, and J.~Cavallaro, \emph{A graph
+  coloring technique for identifying the minimum number of parts for physical
+  integration in product design}, Proceedings of the ASME 2019 International
+  Design Engineering Technical Conferences \& Computers and Information in
+  Engineering Conference (2019), no.~DETC2018-98251.
+
+\bibitem{chartrand}
+D.~Chartrand and P.~Zhang, \emph{A first course in graph theory}, Dover
+  Publications, Inc., Mineola, NY, 2012.
+
+\bibitem{godsil}
+C.~Godsil and G.~Royle, \emph{Algebraic graph theory}, Springer, New York,
+  2001.
+
+\bibitem{mcdiarmid}
+C.~McDiarmid, \emph{Determining the chromatic number of a graph}, Siam Journal
+  on Scientific Computing \textbf{8} (1979), no.~1.
+
+\bibitem{nica}
+B.~Nica, \emph{A brief introduction to spectral graph theory}, European
+  Mathematical Society, Zurich, 2018.
+
+\bibitem{read}
+R.C. Reed (ed.), \emph{Graph theory and computing}, Academic Press, New York
+  and London, 1972.
+
+\bibitem{suh}
+N.P. Suh, \emph{The principles of design}, Oxford University Press, New York,
+  1990.
+
+\bibitem{suh2}
+\bysame, \emph{Axiomatic design theory for systems}, Research in Engineering
+  Design \textbf{10} (1998), no.~4, 189--209.
+
+\bibitem{west}
+D.B. West, \emph{Introduction to graph theory}, \(2^{nd}\) ed., Prentice Hall,
+  Upper Saddle River, NJ, 2001.
+
+\end{thebibliography}

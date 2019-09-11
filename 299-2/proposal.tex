@@ -1,0 +1,103 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{libertine}
+\usepackage{parskip}
+\pagestyle{empty}
+\newcommand{\X}{\chi}
+\begin{document}
+
+\title{Determining a Graph's Chromatic Number for Part Consolidation in Axiomatic Design}
+\author{Jeffery Cavallaro}
+\date{03 September 2019}
+\maketitle
+\section*{Abstract}
+Mechanical engineering design practices are increasingly moving towards a framework called \emph{axiomatic design}
+that starts with a set of independent \emph{functional requirements} (FRs) for a manufactured product.  A key tenet
+of axiomatic design is to decrease the \emph{information content} of a design in order to increase the chance of
+manufacturing success.  One important way to decrease information content is to fulfill multiple functional
+requirements by a single part.
+
+But what is the best way to allocate FRs to parts?  One possible answer is to represent the problem by a graph,
+where the vertices are the FRs and the edges represent the need to separate their endpoint FRs into separate parts.
+The answer then becomes the solution to a vertex coloring problem.  This research will investigate a new algorithm
+that determines the chromatic number for such a graph, thus determining the minimum possible number of parts in a
+design.  During the design phase, determining the minimum number of parts is much more important than determining
+the actual allocation of FRs to parts because the former is a key attribute used to compare competing designs.
+Once the design is finalized, traditional coloring algorithms can then be used to obtain an actual chromatic
+coloring.
+
+This algorithm was initially developed as part of an NSF grant in collaboration with two mechanical engineering
+researchers at NYU Buffalo.  A subsequent paper describing the algorithm was presented at the Internation Design
+Engineering Technical Conference (IDETC) in August 2019.
+
+The primary goals of this research project are to present the proposed algorithm with formal theoretical support, as
+was done in the previously-mentioned paper, and then perform theoretical and empirical runtime complexity comparisons
+to a standard Zykov-like exhaustive NP-complete algorithm for vertex partitioning.  Since previous work has relied on
+manual execution of the algorithm under study, an additional goal is to develop software solutions that can extend the
+ability to try and compare various examples.  The availability of a good software tool will provide the ability to run
+the algorithm on sets of random graphs in order to empirically demonstrate the theoretical results.
+
+\section*{297 Summary}
+
+This work began as a Math-297 project.  The goals of that project were to:
+
+\begin{enumerate}
+\item Learn the basics of axiomatic design.
+\item Understand the steps of the proposed algorithm and make corrections where necessary.
+\item Formalize the theoretical support for the steps of the algorithm.
+\item Provide some initial software support to execute the algorithm on example graphs.
+\item Collaborate with the research team on a paper to be presented at IDETC 2019.
+\end{enumerate}
+
+The normal approach for an exhaustive chromatic coloring algorithm is to adopt a recursive technique.  For a graph
+\(G\):
+\[\X(G)=\min\left\{\X(G\cdot uv),\X(G+uv)\right\}\]
+where \(u,v\in V(G)\) and \(uv\notin E(G)\).  The first recursive call uses vertex contraction to indicate that two
+non-adjacent vertices are assigned the same color.  The second recursive call uses edge addition to indicate that
+two previously non-adjacent vertices are assigned different colors.  Thus, the leaves of the resulting Zykov tree
+are complete graphs whose orders enumerate all of the possible proper colorings of \(G\).  Picking a leaf with the
+smallest order represents a chromatic coloring.  Note that this Turing Machine-type approach results in
+NP-complete running time.
+
+The proposed algorithm takes a somewhat different approach.  Instead of relying solely on recursive calls, it loops
+for increasing values of candidate \(k\)-colorability.  Focusing on a candidate \(k\) value allows various subgraph
+simplification, branch success, and branch failure checks to be applied before having to resort to the same
+recursive calls.  The first success condition encountered indicates a minimum \(k\).  In fact, running the
+algorithm on the examples provided by the ME collaborators resulted in solutions with at most one recursive call.
+
+The software developed to run the algorithm and display the stepwise results and final solutions in \LaTeX\ TikZ
+format provided paper-ready results in seconds.
+
+The paper was successfully completed and presented at IDETC 2019, where it was awarded a best paper award.
+
+\section*{Timeline}
+
+The thesis will be organized into the following sections:
+
+\begin{tabular}{|l|c|}
+  \hline
+  \textbf{Topic/Section} & \textbf{weeks} \\
+  \hline
+  Axiomatic design & 1 \\
+  Graph theory basics & 2 \\
+  Chromatic number theorems & 2 \\
+  Zykov trees and runtime complexity & 1 \\
+  Proposed algorithm and runtime complexity & 1 \\
+  Possible shortcuts for starting \(k\) (cliques, Hoffman) & 2 \\
+  \hline
+\end{tabular}
+
+The topic of spectral graph theory may be of some use (especially in the case of Hoffman), but its impact is not
+clear to the author or his advisor at this time.  Reading in spectral graph theory will occur in parallel to the
+above efforts and will be incorporated where appropriate.
+
+\section*{Reading List}
+
+\begingroup
+\renewcommand{\section}[2]{}%
+\nocite{*}
+\bibliographystyle{amsplain} 
+\bibliography{ref}
+\endgroup
+
+\end{document}

@@ -31,11 +31,8 @@ that differentiate a simple graph from other classes of graphs:
   its endpoint vertices.
 \end{enumerate}
 
-A part consolidation problem can be represented by a graph whose vertices are the \(FRs\) and whose edges
-discourage combining their endpoint \(FRs\) into a single part: in the case of the first algorithm, each edge is
-given a numerical score (weight) indicating the magnitude of the desire to not combine the endpoint \(FRs\) into a
-single part, and in the case of the second algorithm, each edge indicates that the endpoint \(FRs\) should never be
-combined into a single part.
+A part consolidation problem can be represented by a graph whose vertices are the functional requirements (FRs) of
+the design and whose edges indicate which endpoint FRs should never be combined into a single part.
 
 Graphs are often portrayed visually using labeled or filled circles for the vertices and lines for the edges such
 that each edge line is drawn between its two endpoint vertices.  An example graph is shown in Figure
@@ -95,7 +92,7 @@ Note that there is no requirement that every vertex in a graph be an endpoint to
 \begin{definition}[Isolated Vertex]
   Let \(G\) be a graph and let \(u\in V(G)\).  To say that \(u\) is an \emph{isolated} vertex means that it is not
   an endpoint for any edge in \(E(G)\):
-  \[\forall\,vw\in E(G),u\ne v\ \text{and}\ u\ne w\]
+  \[\forall\,e\in E(G),u\notin e\]
 \end{definition}
 
 In the example graph of Figure \ref{fig:exgraph}, notice that vertex \(c\) is an isolated vertex.
@@ -136,12 +133,13 @@ Two of the most important characteristics of a graph are the number of vertices 
 of the graph, and the number of edges in the graph, called the \emph{size} of the graph:
 
 \begin{definition}[Order]
-  Let \(G\) be a graph.  The \emph{order} of \(G\), denoted by \(n(G)\), is the number of vertices in \(G\):
+  Let \(G\) be a graph.  The \emph{order} of \(G\), denoted by \(n\) or \(n(G)\), is the number of vertices in
+  \(G\):
   \[n=n(G)=\abs{V(G)}\]
 \end{definition}
 
 \begin{definition}[Size]
-  Let \(G\) be a graph.  The \emph{size} of \(G\), denoted by \(m(G)\), is the number of edges in \(G\):
+  Let \(G\) be a graph.  The \emph{size} of \(G\), denoted by \(m\) or \(m(G)\), is the number of edges in \(G\):
   \[m=m(G)=\abs{E(G)}\]
 \end{definition}
 
@@ -161,7 +159,7 @@ Since every two vertices can have at most one edge between them, the number of e
 \end{proof}
 
 Some choices of graph order and size lead to certain degenerate cases that serve as important termination cases for
-the two algorithms:
+the the proposed algorithm:
 
 \begin{definition}[Degenerate Cases]
   \begin{itemize}[left=0pt]
@@ -186,7 +184,7 @@ In practice, when a graph theory problem requires a particular vertex or edge at
 corresponding relation \(\sR\) is assumed and we say something like, ``vertex \(v\) has attribute \(a\),'' instead
 of the more formal, ``vertex \(v\) has attribute \(\sR(v)\).''
 
-The following sections describe the three relations used by the algorithms.
+The following sections describe the two relations used by the algorithms.
 
 \subsubsection{Labels}
 
@@ -211,57 +209,9 @@ a vertex is freely identified by its label.  This is important to note when a pr
 ``let \(v\in V(G)\ldots\)'' since \(v\) may be a reference to any vertex in \(V(G)\) or may call out a specific
 vertex by its label; the intention is usually clear from the context.
 
-The \(FR\) graphs that act as the inputs to the two algorithms are labeled graphs, where the labels represent the
-various functional requirements:
+The design graphs that act as the inputs to the proposed algorithm are labeled graphs, where the labels represent
+the various functional requirements:
 \[FR_1,FR_2,FR_3,\ldots,FR_n\]
-
-\subsubsection{Edge Weight}
-
-Certain graph theory problems require that each edge be assigned a \emph{weight}.  An edge weight suggests a
-certain cost associated with the use of the edge, usually interpreted as traversing the edge from one endpoint to
-the other.  This requires the addition of a surjective weight function to the graph tuple:
-\[w:E(G)\to W\]
-where \(W\) is a set of edge weights, usually integers or rational numbers.  A special edge weight of \(\infty\) is
-used to indicate that an edge should never be used/traversed.  Non-adjacent vertices can be viewed as being
-connected by edges with either zero or infinite weight, depending on the problem.  In a drawn graph, edges are
-typically labeled with their weights, as shown in the example graph of Figure \ref{fig:exweight}.
-
-\begin{figure}[h]
-  \label{fig:exweight}
-  \begin{minipage}[t]{3in}
-    \begin{center}
-      \vspace{0in}
-      \begin{tikzpicture}
-        \begin{scope}[node distance=2cm,every node/.style={labeled node}]
-          \node (E) at (0,0) {\(e\)};
-          \node (A) [above left=of E] {\(a\)};
-          \node (B) [above right=of E] {\(b\)};
-          \node (C) [below right=of E] {\(c\)};
-          \node (D) [below left=of E] {\(d\)};
-        \end{scope}
-        \draw (A) edge node [auto] {\(1\)} (B);
-        \draw (B) edge node [auto] {\(\infty\)} (E);
-        \draw (E) edge node [auto] {\(5\)} (A);
-        \draw (A) edge node [auto,swap] {\(8\)} (D);
-        \draw (E) edge node [auto] {\(0\)} (C);
-      \end{tikzpicture}
-    \end{center}
-  \end{minipage}
-  \begin{minipage}[t]{3in}
-    \begin{gather*}
-      w(ab)=1 \\
-      w(ae)=5 \\
-      w(ad)=8 \\
-      w(be)=\infty \\
-      w(ce)=0
-    \end{gather*}
-  \end{minipage}
-  \caption{A Graph with Edge Weights}
-\end{figure}
-
-The first algorithm uses edge weights to represent the cost or penalty for consolidating an edge's two \(FR\)
-endpoints into the same part.  It is assumed that non-adjacent parts cannot be consolidated, and thus are
-considered to be joined by edges with infinite weight.
 
 \subsubsection{Vertex Color}
 
@@ -351,8 +301,6 @@ By inductive application of Proposition \ref{prop:coloring}, one can arrive at t
   \end{quote}
 \end{proposition}
 
-\subsubsection{Chromatic Coloring}
-
 Since \(k\in\N\), by the well-ordering principle, there exists some minimum \(k\) such that a graph \(G\) is
 \colorable{k}:
 
@@ -403,8 +351,6 @@ hence the distribution is a true partition.
   \caption{A Graph with a Chromatic \coloring{3}}
 \end{figure}
 
-\subsubsection{Independent Sets}
-
 The primary purpose of a \coloring{k} of a graph \(G\) is to distribute the vertices of \(G\) into \(k\) so-called
 \emph{independent} (some possibly empty) sets:
 
@@ -415,16 +361,16 @@ The primary purpose of a \coloring{k} of a graph \(G\) is to distribute the vert
 \end{definition}
 
 Since a \chromatic{k} coloring of a graph \(G\) is surjective, there are no unused colors (empty sets) and so the
-coloring partitions the vertices of \(G\) into exactly \(k\) independent sets.  The goal of the second algorithm is
-to find a chromatic coloring of an \(FR\) graph so that the resulting independent sets indicate how to consolidate
-the \(FRs\) into a minimum number of parts: one part per independent set.
+coloring partitions the vertices of \(G\) into exactly \(k\) independent sets.  The goal of the proposed algorithm
+is to find a chromatic coloring of a design graph so that the resulting independent sets indicate how to
+consolidate the FRs into a minimum number of parts: one part per independent set.
 
 \subsection{Subgraphs}
 
-The basic strategy of the algorithms is to arrive at a solution by mutating an input graph into simpler graphs such
-that a solution is more easily determined.  The algorithms make use of four particular mutators: vertex deletion,
-edge deletion, edge addition, and vertex contraction.  Before describing these mutators, it will be helpful to
-describe what is meant by graph equality and a \emph{subgraph} of a graph.
+The basic strategy of the proposed algorithm is to arrive at a solution by mutating an input graph into simpler
+graphs such that a solution is more easily determined.  The algorithm utilizes three particular mutators: vertex
+deletion, edge addition, and vertex contraction.  Before describing these mutators, it will be helpful to describe
+what is meant by graph equality and a \emph{subgraph} of a graph.
 
 \subsubsection{Graph Equality}
 
@@ -646,64 +592,8 @@ incident edges \(ae\) and \(be\).
 If \(\abs{S}=1\) then an alternate syntax can be used.  Assume \(v\in V(G)\):
 \[G-v=G-\set{v}\]
 
-The second algorithm uses vertex removal to simply a \colorable{k} graph into a simpler subgraph that is still
+The proposed algorithm uses vertex removal to simplify a \colorable{k} graph into a simpler subgraph that is still
 \colorable{k}.
-
-\subsubsection{Edge Removal}
-
-Let \(G\) be a graph and let \(X\subseteq E(G)\).  The spanning subgraph obtained by removing all of the edges
-in \(X\) is denoted by:
-\[G-X=H\left(V(G),E(G)-X\right)\]
-Thus, only edges are remove --- no vertices are removed.  If \(X\ne\emptyset\) then \(G-X\) is a proper subgraph of
-\(G\).  If \(X=E(G)\) then the result is an empty graph (no edges).
-
-Figure \ref{fig:eremove} shows an example of edge removal: edges \(ae\) and \(be\) are removed.
-
-\begin{figure}[h]
-  \label{fig:eremove}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw [red] (B) edge (E);
-        \draw [red] (E) edge (A);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G-\set{ae,be}\)
-    \end{center}
-  \end{minipage}
-  \caption{Edge Removal Example}
-\end{figure}
-
-If \(\abs{X}=1\) then an alternate syntax can be used.  Assume \(e\in E(G)\):
-\[G-e=G-\set{e}\]
-
-The first algorithm uses edge removal to prevent two adjacent \(FRs\) from being consolidated into the same part.
 
 \subsubsection{Edge Addition}
 
@@ -757,19 +647,19 @@ Figure \ref{fig:eadd} shows an example of edge addition: edge \(cd\) is added.
   \caption{Edge Addition Example}
 \end{figure}
 
-The second algorithm uses edge addition to prevent two non-adjacent \(FRs\) from being consolidated into the same
+The proposed algorithm uses edge addition to prevent two non-adjacent FRs from being consolidated into the same
 part.
 
 \subsubsection{Vertex Contraction}
 
 Vertex contraction is a bit different because it does not involve subgraphs.  Let \(G\) be a graph and let \(u,v\in
-V(G)\).  The graph \(G\cdot uv\) is constructed by identifying \(u\) and \(v\) as one vertex (merging them).  Any
-edge between the two vertices is discarded.  Any other edges that were incident to the two vertices become incident
-to the new single vertex.  Note that this may require supression of multiple edges to preserve the nature of a
-simple graph.
+V(G)\).  The graph \(G\cdot uv\) is constructed by identifying \(u\) and \(v\) as one vertex (i.e., merging them).
+Any edge between the two vertices is discarded.  Any other edges that were incident to the two vertices become
+incident to the new single vertex.  Note that this may require supression of multiple edges to preserve the nature
+of a simple graph.
 
 Figure \ref{fig:contract} shows an example of vertex contraction: vertices \(a\) and \(b\) are contracted into a
-single vertex.  Since edges \(ae\) and \(be\) would result in multiple edges between \(a\) and \(e\), so one of the
+single vertex.  Since edges \(ae\) and \(be\) would result in multiple edges between \(a\) and \(e\), one of the
 edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single vertex.
 
 \begin{figure}[h]
@@ -816,7 +706,183 @@ edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single 
 \end{figure}
 
 For the operation \(G\cdot uv\), if \(uv\in E(G)\) then the operation is also referred to as \emph{edge
-  contraction}.  The first algorithm uses edge contraction to consolidate two adjacent \(FRs\) into the same part,
-where the contracted edge weight is interpreted as a penalty for doing so.  Alternatively, if \(uv\notin E(G)\)
-then the operation is also referred to as \emph{vertex identification}.  The second algorithm uses vertex
-identification to consolidate two non-adjacent \(FRs\) into the same part.
+  contraction}.  If \(uv\notin E(G)\) then the operation is also referred to as \emph{vertex identification}.  The
+proposed algorithm uses vertex identification to consolidate two non-adjacent FRs into the same part.
+
+\subsection{Connected Graphs}
+
+The edges of a graph suggest the ability to ``walk'' from one vertex to another along the edges.  A graph where this
+is possible for any two vertices is called a \emph{connected} graph.  The concept of connectedness is an
+important topic in graph theory; however, an ideal coloring algorithm should work regardless of the connected
+nature of an input graph.  The concept of connectedness and how it impacts coloring is described in this section.
+
+\subsubsection{Walks}
+
+The undirected edges in a simple graph suggest bidirectional connectivity between their endpoint vertices.  This
+leads to the idea of ``traveling'' between two vertices in a graph by following the edges joining intermediate
+adjacent vertices.  Such a journey is referred to as a \emph{walk}:
+
+\begin{definition}[Walk]
+  A \(u-v\) \emph{walk} \(W\) in a graph \(G\) is a finite sequence of vertices \(w_i\in V(G)\) starting with
+  \(u=w_0\) and ending with \(v=w_k\):
+  \[W=(u=w_0,w_1,\ldots,w_k=v)\]
+  such that \(w_iw_{i+1}\in E(G)\) for \(0\le i<k\).
+
+  To say that \(W\) is \emph{open} means that \(u\ne v\).  To say that \(W\) is \emph{closed} means that \(u=v\).
+  The \emph{length} \(k\) of \(W\) is the number of edges traversed: \(k=\abs{W}\).
+
+  A \emph{trivial} walk is a walk of zero length --- i.e, a single vertex: \(W=(u)\).
+\end{definition}
+
+An example of two walks of length \(4\) is shown in Figure \ref{fig:walks}.  Note that \(W_1\) is an open walk
+because it starts and ends on distinct vertices, whereas \(W_2\) is a closed walk because it starts and ends on the
+same vertex.
+
+\begin{figure}[h]
+  \label{fig:walks}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{0.75in}{90}{}
+        \draw (1) edge (2) edge (3) edge (4) edge (5);
+        \draw (2) edge (3) edge (5);
+        \draw (3) edge (4);
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \(W_1=(a,b,e,a,c)\ \text{is open}\)
+
+    \(W_2=(a,e,b,c,a)\ \text{is closed}\)
+
+    \bigskip
+
+    \(\abs{W_1}=\abs{W_2}=4\)
+  \end{minipage}
+  \caption{Open and Closed Walks in a Graph}
+\end{figure}
+
+Note that in the general case, vertices and edges are allowed to be repeated during a walk.  Certain special walks
+can be defined by restricting such repeats:
+
+\begin{definition}[Special Walks]
+  \begin{tabular}{lll}
+    \emph{trail} & An open walk with no repeating edges & \((a,b,c,a,e)\) \\
+    \\
+    \emph{path} & A trail with no repeating vertices & \((a,e,b,c)\) \\
+    \\
+    \emph{circuit} & A closed trail & \((a,b,e,a,c,d,a)\) \\
+    \\
+    \emph{cycle} & A closed path & \((a,e,b,c,a)\)
+  \end{tabular}
+\end{definition}
+
+The example special walks stated above refer to the graph in Figure \ref{fig:walks}.
+
+When discussing the connectedness of a graph, the main concern is the existence of paths between vertices:
+
+\begin{definition}[Connected Vertices]
+  Let \(G\) be a graph and let \(u,v\in V(G)\).  To say that \(u\) and \(v\) are \emph{connected} means that \(G\)
+  contains a \(u-v\) path.
+\end{definition}
+
+But if there exists a \(u-v\) walk in a graph \(G\), does this also mean that there exists a \(u-v\) path in \(G\)
+--- i.e. a walk with no repeating edges or vertices?  The answer is yes, as shown by the following theorem:
+
+\begin{theorem}
+  Let \(G\) be a graph and let \(u,v\in V(G)\).  If \(G\) contains a \(u-v\) walk of length \(k\) then \(G\)
+  contains a \(u-v\) path of length \(\ell\le k\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(G\) contains at lease one \(u-v\) walk of length \(k\) and consider the set of all possible \(u-v\)
+  walks in \(G\); their lengths form a non-empty set of positive integers.  By the well-ordering principle, there
+  exists a \(u-v\) walk \(P\) of minimal length \(\ell\le k\):
+  \[P=(u=w_0,\ldots,w_{\ell}=v)\]
+  We claim that \(P\) is a path.
+
+  Assume by way of contradiction that \(P\) is not a path, and thus \(P\) has at least one repeating vertex.  Let
+  \(w_i=w_j\) for some \(0\le i<j\le\ell\) be such a repeating vertex.  There are two possibilities:
+  
+  \begin{description}
+  \item Case 1: The walk ends on a repeated vertex (\(j=\ell\)).  This is demonstrated in Figure \ref{fig:rend}.
+
+    \begin{figure}[h]
+      \label{fig:rend}
+      \begin{center}
+        \begin{tikzpicture}
+          \colorlet{cin}{green}
+          \begin{scope}[every node/.style={unlabeled node},node distance=1in]
+            \node (w0) at (0,0) {};
+            \node (w1) [right=of w0] {};
+            \node (wi) [right=of w1] {};
+            \node (wi1) [right=of wi] {};
+            \node (wj2) [right=of wi1] {};
+            \node (wj1) [below=of wi] {};
+          \end{scope}
+          \draw [cin] (w0) edge (w1);
+          \draw [dashed,cin] (w1) edge (wi);
+          \draw (wi) edge (wi1);
+          \draw [dashed] (wi1) edge (wj2);
+          \draw (wj2) edge (wj1);
+          \draw (wj1) edge (wi);
+          \node [above] at (w0) {\(u=w_0\)};
+          \node [above] at (w1) {\(w_1\)};
+          \node [above] at (wi) {\(w_i=w_j=w_{\ell}=v\)};
+          \node [above] at (wi1) {\(w_{i+1}\)};
+          \node [above] at (wj2) {\(w_{j-2}\)};
+          \node [below] at (wj1) {\(w_{j-1}\)};
+        \end{tikzpicture}
+      \end{center}
+      \caption{Repeated Vertex at End Case}
+    \end{figure}
+
+    Let \(P'=(u=w_0,w_1,\ldots,w_i=v)\) be the walk shown in green in the figure.  \(P'\) is a \(u-v\) walk of
+    length \(i<\ell\) in \(G\).
+
+  \item Case 2: A repeated vertex occurs inside the walk (\(j<\ell\)).  This is demonstrated in Figure
+    \ref{fig:rmiddle}.
+    
+    \begin{figure}[h]
+      \label{fig:rmiddle}
+      \begin{center}
+        \begin{tikzpicture}
+          \colorlet{cin}{green}
+          \begin{scope}[every node/.style={unlabeled node},node distance=1in]
+            \node (w0) at (0,0) {};
+            \node (w1) [right=of w0] {};
+            \node (wi) [right=of w1] {};
+            \node (wip1) [below right=of wi] {};
+            \node (wjm1) [below left=of wi] {};
+            \node (wjp1) [right=of wi] {};
+            \node (wl) [right=of wjp1] {};
+          \end{scope}
+          \draw [cin] (w0) edge (w1);
+          \draw [dotted,cin] (w1) edge (wi);
+          \draw (wi) edge (wip1);
+          \draw [dotted] (wip1) edge (wjm1);
+          \draw (wjm1) edge (wi);
+          \draw [cin] (wi) edge (wjp1);
+          \draw [dotted,cin] (wjp1) edge (wl);
+          \draw [dotted,cin] (wjp1) edge (wl);
+          \node [above] at (w0) {\(u=w_0\)};
+          \node [above] at (w1) {\(w_1\)};
+          \node [above] at (wi) {\(w_i=w_j\)};
+          \node [below] at (wip1) {\(w_{i+1}\)};
+          \node [below] at (wjm1) {\(w_{j-1}\)};
+          \node [above] at (wjp1) {\(w_{j+1}\)};
+          \node [above] at (wl) {\(w_{\ell}=v\)};
+        \end{tikzpicture}
+      \end{center}
+      \caption{Repeated Vertex Inside Case}
+    \end{figure}
+
+  Let \(P'=(u=w_0,w_1,\ldots,w_i,w_{j+1},\ldots,w_{\ell}=v)\) be the walk shown in green in the figure.  \(P'\) is
+  a \(u-v\) walk of length \(\ell-(j-i)<\ell\) in \(G\).
+  \end{description}
+
+  Both cases contradict the minimality of the length of \(P\).
+
+  \(\therefore P\) is a \(u-v\) path of length \(\ell\le k\) in \(G\).
+
+\end{proof}
