@@ -734,6 +734,13 @@ adjacent vertices.  Such a journey is referred to as a \emph{walk}:
   A \emph{trivial} walk is a walk of zero length --- i.e, a single vertex: \(W=(u)\).
 \end{definition}
 
+The bidirectional nature of the edges in a simple graph suggests the following proposition:
+
+\begin{proposition}
+  Let \(G\) be a graph and let \(u-v\) be a walk of length \(k\) in \(G\).  \(G\) contains a \(v-u\) walk of length
+  \(k\) in \(G\) by traversing \(u-v\) in the opposite direction.
+\end{proposition}
+
 An example of two walks of length \(4\) is shown in Figure \ref{fig:walks}.  Note that \(W_1\) is an open walk
 because it starts and ends on distinct vertices, whereas \(W_2\) is a closed walk because it starts and ends on the
 same vertex.
@@ -884,5 +891,80 @@ But if there exists a \(u-v\) walk in a graph \(G\), does this also mean that th
   Both cases contradict the minimality of the length of \(P\).
 
   \(\therefore P\) is a \(u-v\) path of length \(\ell\le k\) in \(G\).
-
 \end{proof}
+
+\subsubsection{Connected}
+
+A \emph{connected} graph is a graph whose vertices are all connected:
+
+\begin{definition}[Connected Graph]
+  To say that a graph \(G\) is \emph{connected} means that for all \(u,v\in V(G)\) there exists a \(u-v\) path.
+  Otherwise, \(G\) is said to be \emph{disconnected}.
+\end{definition}
+
+Examples of connected and disconnected graphs are shown in figure \ref{fig:connect}.
+
+\begin{figure}[h]
+  \label{fig:connect}
+  \begin{minipage}[t]{2.5in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleVnodes{\(a\),\(b\),\(c\),\(d\)}{(0,0)}{0.75in}{135}{}
+        \draw (1) edge (2) edge (3) edge (4);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \begin{tabular}{c}
+        \((a,b)\) \\
+        \((a,c)\) \\
+        \((a,d)\) \\
+        \((b,a,c)\) \\
+        \((b,a,d)\) \\
+        \((c,a,d)\)
+      \end{tabular}
+
+      \bigskip
+      
+      CONNECTED
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node},node distance=2cm]
+        \cycleVnodes{\(a\),\(b\),\(c\)}{(0,0)}{0.75in}{90}{l}
+        \draw (l1) edge (l2) edge (l3);
+        \pathVnodes{\(d\),\(e\)}{(3,0.5)}{right}{r};
+        \draw (r1) edge (r2);
+      \end{tikzpicture}
+
+      \bigskip
+      
+      No path from any of \(a,b,c\) to any of \(d,e\)
+
+      \bigskip
+
+      DISCONNECTED
+    \end{center}
+  \end{minipage}
+  \caption{Connected and Disconnected Graphs}
+\end{figure}
+
+By definition, the trivial graph is connected since the single vertex is connected to itself by a trivial path (of
+length \(0\)).
+
+\subsubsection{Components}
+
+It would seem that a disconnected graph is composed of some number of connected subgraphs that partition the
+graph's vertex set under a connected equivalence relation.  Each such subgraph is called a \emph{component} of the
+graph:
+
+\begin{definition}[Component]
+  Let \(G\) be a graph and let \(\SG\) be the set of all connected subgraphs of \(G\).  To say that a graph
+  \(H\in\SG\) is a \emph{component} of a \(G\) means that \(H\) is not a subgraph of any other connected subgraph
+  of \(\SG\):
+  \[\forall\,F\in\SG-\set{H},H\not\subset F\]
+  The number of distinct components in \(G\) is denoted by:
+  \[k=k(G)\]
+  For a connected graph: \(k(G)=1\).
+\end{definition}
