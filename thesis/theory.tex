@@ -934,6 +934,7 @@ Examples of connected and disconnected graphs are shown in figure \ref{fig:conne
       \begin{tikzpicture}[every node/.style={labeled node},node distance=2cm]
         \cycleVnodes{\(a\),\(b\),\(c\)}{(0,0)}{0.75in}{90}{l}
         \draw (l1) edge (l2) edge (l3);
+        \draw (l2) edge (l3);
         \pathVnodes{\(d\),\(e\)}{(3,0.5)}{right}{r};
         \draw (r1) edge (r2);
       \end{tikzpicture}
@@ -968,3 +969,44 @@ graph:
   \[k=k(G)\]
   For a connected graph: \(k(G)=1\).
 \end{definition}
+
+Each component of a graph \(G\) is denoted by \(G_i\) where \(1\le i\le k(G)\).  We also use union notation to
+denote that \(G\) is composed of its component parts:
+\[G=\bigcup_{0\le i\le k(G)}G_i\]
+Furthermore the \(G_i\) are induced by the vertex equivalence classes of the connectedness relation:
+
+\begin{theorem}
+  Let \(G\) be a graph with component \(G_i\).  \(G_i\) is an induced subgraph of \(G\).
+\end{theorem}
+
+\begin{proof}
+  By definition, \(G_i\) is a maximal connected subgraph of \(G\).  So assume by way of contradiction that
+  \(G_i\) is not an induced subgraph of \(G\).  Thus, \(G_i\) is missing some edges that when added would result in a
+  connected induced subgraph \(H\) of \(G\).  But then \(G_i\subset H\), contradicting the maximality of \(G_i\).
+
+  \(\therefore G_i\) is an induced subgraph of \(G\).
+\end{proof}
+
+\subsubsection{Coloring}
+
+The impact of disconnectedness on coloring depends on the selected algorithm.  One might assume that the selected
+algorithm should be run on each component individually in order to determine each \(\X(G_i)\) and then use Proposition
+\ref{prop:coloring2} to conclude that the maximum such value is sufficient for \(\X(G)\):
+\[\X(G)=\max_{1\le i\le k(G)}\X(G_i)\]
+For example, consider the disconnected graph in Figure \ref{fig:connect}.  The graph contains two components, so
+number the components from left-to-right:
+\begin{gather*}
+  \X(G_1)=3 \\
+  \X(G_2)=2 \\
+  \\
+  \X(G)=\max(3,2)=3
+\end{gather*}
+
+Using this technique requires application of an initial algorithm to partition the graph into components.  Such an
+algorithm is well-known and is described by Hopcroft and Tarjan, 1973 \cite{hopcroft}.  The algorithm employs a
+depth-first walk of vertices, assigning previously unencountered vertices to components.  The algorithm has a
+runtime complexity of \(\BO(\max(n,m))\).
+
+However, an ideal algorithm could be run on the entire graph at once regardless of the number of components in the
+graph.  The proposed algorithm is such a solution, and therefore saves the needless work of partitioning the graph
+into components first.

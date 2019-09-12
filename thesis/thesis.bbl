@@ -1,8 +1,13 @@
 \begin{thebibliography}{1}
 
 \bibitem{chartrand}
-G.~Chartrand and P.~Zhang.
+Gary Chartrand and Ping Zhang.
 \newblock {\em A First Course in Graph Theory}.
 \newblock Dover Publications, Mineola, New York, 2012.
+
+\bibitem{hopcroft}
+John Hopcroft and Robert Tarjan.
+\newblock Algorithm 447: Efficient algorithms for graph manipulation.
+\newblock {\em Commun. ACM}, 16(6):372--378, June 1973.
 
 \end{thebibliography}
