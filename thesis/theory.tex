@@ -1,8 +1,8 @@
 \section{Graph Theory}
 
 This section presents the concepts, definitions, and theorems from the field of graph theory that are needed in the
-development of the two algorithms.  This material is primarily taken from the textbooks used \cite{chartrand} and
-class notes compiled by the author during his undergraduate and graduate graph theory classes at SJSU.
+development of the proposed algorithm.  This material is primarily taken from the textbooks used \cite{chartrand}
+and class notes compiled by the author during his undergraduate and graduate graph theory classes at SJSU.
 
 \subsection{Simple Graphs}
 
@@ -184,7 +184,7 @@ In practice, when a graph theory problem requires a particular vertex or edge at
 corresponding relation \(\sR\) is assumed and we say something like, ``vertex \(v\) has attribute \(a\),'' instead
 of the more formal, ``vertex \(v\) has attribute \(\sR(v)\).''
 
-The following sections describe the two relations used by the algorithms.
+The following sections describe the two relations used by the proposed algorithm.
 
 \subsubsection{Labels}
 
@@ -537,7 +537,7 @@ subgraph of \(G\).
 
 \subsection{Mutators}
 
-The following sections describe the graph mutators used by the algorithms.
+The following sections describe the graph mutators used by the proposed algorithm.
 
 \subsubsection{Vertex Removal}
 
@@ -649,6 +649,61 @@ Figure \ref{fig:eadd} shows an example of edge addition: edge \(cd\) is added.
 
 The proposed algorithm uses edge addition to prevent two non-adjacent FRs from being consolidated into the same
 part.
+
+\subsubsection{Edge Removal}
+
+The proposed algorithm does not use edge removal; however, a number of related algorithms do rely on this mutator
+so it is presented here.  Let \(G\) be a graph and let \(X\subseteq E(G)\).  The spanning subgraph obtained by
+removing all of the edges in \(X\) is denoted by:
+\[G-X=H\left(V(G),E(G)-X\right)\]
+Thus, only edges are remove --- no vertices are removed.  If \(X\ne\emptyset\) then \(G-X\) is a proper subgraph of
+\(G\).  If \(X=E(G)\) then the result is an empty graph (no edges).
+
+Figure \ref{fig:eremove} shows an example of edge removal: edges \(ae\) and \(be\) are removed.
+
+\begin{figure}[h]
+  \label{fig:eremove}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw [red] (B) edge (E);
+        \draw [red] (E) edge (A);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+        \draw (A) edge (B);
+        \draw (A) edge (D);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G-\set{ae,be}\)
+    \end{center}
+  \end{minipage}
+  \caption{Edge Removal Example}
+\end{figure}
+
+If \(\abs{X}=1\) then an alternate syntax can be used.  Assume \(e\in E(G)\):
+\[G-e=G-\set{e}\]
 
 \subsubsection{Vertex Contraction}
 
@@ -987,7 +1042,7 @@ Furthermore the \(G_i\) are induced by the vertex equivalence classes of the con
   \(\therefore G_i\) is an induced subgraph of \(G\).
 \end{proof}
 
-\subsubsection{Coloring}
+\subsubsection{Impact on Coloring}
 
 The impact of disconnectedness on coloring depends on the selected algorithm.  One might assume that the selected
 algorithm should be run on each component individually in order to determine each \(\X(G_i)\) and then use Proposition
@@ -1010,3 +1065,126 @@ runtime complexity of \(\BO(\max(n,m))\).
 However, an ideal algorithm could be run on the entire graph at once regardless of the number of components in the
 graph.  The proposed algorithm is such a solution, and therefore saves the needless work of partitioning the graph
 into components first.
+
+\subsection{Vertex Degree}
+
+Besides a graph's order and size, the next most important parameter is the so-called \emph{degree} of each vertex.
+In order to define the degree of a vertex, we need to define what is meant by a vertex's \emph{neighborhood} first:
+
+\begin{definition}[Neighbor]
+  Let \(G\) be a graph and let \(u,v\in V(G)\).  To say that \(u\) is a \emph{neighbor} of \(v\) (and vice-versa)
+  means that \(uv\in E(G)\).
+\end{definition}
+
+Thus, neighbor vertices are adjacent.  Note that for simple graphs, a vertex is never a neighbor of itself.
+
+The set of all neighbors for a vertex is referred to as the vertex's neighborhood:
+
+\begin{definition}[Neighborhood]
+  Let \(G\) be a graph and let \(u\in V(G)\).  The \emph{neighborhood} of \(u\), denoted by \(N(u)\), is the set of
+  all neighbors of \(u\) in \(G\):
+  \[N(u)=\setb{v\in V(G)}{uv\in E(G)}\]
+\end{definition}
+
+The degree of a vertex is then defined to be the cardinality of its neighborhood:
+
+\begin{definition}[Degree]
+  Let \(G\) be a graph and let \(u\in G\).  The \emph{degree} of \(u\), denoted by \(\deg_G(u)\) or \(\deg(u)\), is
+  the cardinality of the neighborhood of \(u\):
+  \[\deg(u)=\abs{N(u)}\]
+\end{definition}
+
+Note that the degree of a vertex can be viewed as the number of neighbor vertices or the number of incident edges.
+
+When considering the degrees of all the vertices in a graph, the following limits are helpful:
+
+\begin{notation}
+  Let \(G\) be a graph:
+  \begin{gather*}
+    \d(G)=\min_{v\in V(G)}\deg(v) \\
+    \D(G)=\max_{v\in V(G)}\deg(v)
+  \end{gather*}
+\end{notation}
+
+And so, for a graph \(G\) or order \(n\), it must be the case that for every vertex \(v\in G\):
+\[0\le\d(G)\le\deg(v)\le\D(G)\le n-1\]
+
+Vertices can be classified based on their degree:
+
+\begin{definition}[Vertex Types]
+  Let \(G\) be a graph of order \(n\) and let \(u\in V(G)\):
+  \begin{quote}
+    \begin{tabular}{|c|l|}
+      \hline
+      \(\deg(u)\) & TYPE \\
+      \hline
+      \(0\) & isolated \\
+      \(1\) & pendant, end, leaf \\
+      \(n-1\) & universal \\
+      even & even \\
+      odd & odd \\
+      \hline
+    \end{tabular}
+  \end{quote}
+\end{definition}
+
+The degrees of the vertices in a graph and the number of edges in the graph are related by the so-called First
+Theorem of Graph Theory:
+
+\begin{theorem}[First Theorem of Graph Theory]
+  Let \(G\) be a graph of size \(m\):
+  \[\sum_{v\in V(G)}\deg(v)=2m\]
+\end{theorem}
+
+\begin{proof}
+  When summing all the degrees, each edge is counted twice: once for each endpoint.
+\end{proof}
+
+Thesis concepts are demonstrated by the graph in Figure \ref{fig:degree}; note that the sum of the vertex degrees
+is 30, which is twice the number of edges in the graph.
+
+\begin{figure}
+  \label{fig:degree}
+  \begin{minipage}[t]{3in}
+    \begin{center}
+      \vspace{0pt}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleV{\(v_2\),\(v_3\),\(v_4\),\(v_5\),\(v_6\),\(v_7\)}{(0,0)}{1in}{0}{c};
+        \node (v1) at (0,0) {\(v_1\)};
+        \node (v8) at (150:1.25in) {\(v8\)};
+        \foreach \i in {c1,c2,c3,c4,c5,c6}{
+          \draw (v1) edge (\i);
+        }
+        \draw (c1) edge (c5);
+        \draw (c2) edge (c4);
+        \draw (v1) edge (v8);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \begin{tabular}{ll}
+        \(n=8\) & \(m=15=\frac{30}{2}\) \\
+        \(\d(G)=1\) & \(\D(G)=7\) \\
+        \(\diam(G)=2\)
+      \end{tabular}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \vspace{0pt}
+    \begin{tabular}{c|c|l}
+      vertex & degree & type \\
+      \hline
+      \(v_1\) & 7 & universal,odd \\
+      \(v_2\) & 4 & even \\
+      \(v_3\) & 4 & even \\
+      \(v_4\) & 3 & odd \\
+      \(v_5\) & 4 & even \\
+      \(v_6\) & 4 & even \\
+      \(v_7\) & 3 & odd \\
+      \(v_8\) & 1 & pendant,odd \\
+      \hline
+      total & 30 &
+    \end{tabular}
+  \end{minipage}
+  \caption{Vertex Degrees}
+\end{figure}

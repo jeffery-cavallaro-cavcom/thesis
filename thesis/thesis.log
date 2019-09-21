@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  12 SEP 2019 13:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  21 SEP 2019 12:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -756,26 +756,26 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 (./theory.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 16.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Try loading font information for OT1+LinuxBiolinumT-TLF on 
-input line 14.
+input line 16.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.f
 d
@@ -783,7 +783,7 @@ File: OT1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/L
 inuxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 14.
+(Font)              scaled to size 12.0pt on input line 16.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -864,26 +864,26 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 23.
+(Font)              scaled to size 20.74pt on input line 25.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 23.
-LaTeX Font Info:    Try loading font information for U+msa on input line 23.
+(Font)              scaled to size 14.4pt on input line 25.
+LaTeX Font Info:    Try loading font information for U+msa on input line 25.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 23.
+LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 23.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 25.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TL
-F on input line 23.
+F on input line 25.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-
 TLF.fd
@@ -893,9 +893,9 @@ OT1/LinuxLibertineMonoT-TLF.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' in size <14.4>
  not available
 (Font)              Font shape `OT1/LinuxLibertineMonoT-TLF/regular/n' tried in
-stead on input line 23.
+stead on input line 25.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/regular/n' will be
-(Font)              scaled to size 14.4pt on input line 23.
+(Font)              scaled to size 14.4pt on input line 25.
  [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -943,26 +943,32 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [10] [11] [12]
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 761.
+(Font)              scaled to size 8.0pt on input line 816.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 761.
- [13]
+(Font)              scaled to size 6.0pt on input line 816.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[14]
+[13] [14]
 Missing character: There is no ; in font nullfont!
- [15] [16]) [17] (./thesis.bbl) [18
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15] [16] [17] [18]
+Missing character: There is no ; in font nullfont!
+) [19] (./thesis.bbl) [20
 
 ] (./thesis.aux (./theory.aux)) ) 
 Here is how much of TeX's memory you used:
- 17240 strings out of 492609
- 332809 string characters out of 6129048
- 383732 words of memory out of 5000000
- 20772 multiletter control sequences out of 15000+600000
+ 17316 strings out of 492609
+ 333863 string characters out of 6129048
+ 385655 words of memory out of 5000000
+ 20848 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,15n,84p,839b,1003s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,88p,839b,1003s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/
 dvips/libertine/lbtn_afusau.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/d
 vips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dv
@@ -981,10 +987,10 @@ ype1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
 e1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts
 /type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/public/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (18 pages, 295889 bytes).
+Output written on thesis.pdf (20 pages, 306393 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 133 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
