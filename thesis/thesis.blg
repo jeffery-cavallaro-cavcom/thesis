@@ -4,44 +4,44 @@ The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: theory.aux
 The style file: plain.bst
 Database file #1: thesis.bib
-You've used 2 entries,
+You've used 3 entries,
             2118 wiz_defined-function locations,
-            513 strings with 4249 characters,
-and the built_in function-call counts, 612 in all, are:
-= -- 58
-> -- 26
+            520 strings with 4346 characters,
+and the built_in function-call counts, 839 in all, are:
+= -- 80
+> -- 33
 < -- 0
-+ -- 11
-- -- 8
-* -- 43
-:= -- 109
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 9
++ -- 14
+- -- 10
+* -- 54
+:= -- 149
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 13
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 23
-empty$ -- 50
-format.name$ -- 8
-if$ -- 123
+cite$ -- 3
+duplicate$ -- 35
+empty$ -- 72
+format.name$ -- 10
+if$ -- 172
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 3
-newline$ -- 13
-num.names$ -- 4
-pop$ -- 11
+int.to.str$ -- 3
+missing$ -- 5
+newline$ -- 18
+num.names$ -- 6
+pop$ -- 17
 preamble$ -- 1
-purify$ -- 8
+purify$ -- 11
 quote$ -- 0
-skip$ -- 15
+skip$ -- 21
 stack$ -- 0
-substring$ -- 36
-swap$ -- 2
+substring$ -- 41
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 6
+type$ -- 8
 warning$ -- 0
-while$ -- 6
-width$ -- 3
-write$ -- 24
+while$ -- 8
+width$ -- 4
+write$ -- 36

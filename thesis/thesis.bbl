@@ -10,4 +10,9 @@ John Hopcroft and Robert Tarjan.
 \newblock Algorithm 447: Efficient algorithms for graph manipulation.
 \newblock {\em Commun. ACM}, 16(6):372--378, June 1973.
 
+\bibitem{west}
+Douglas~B. West.
+\newblock {\em Introduction to Graph Theory}.
+\newblock Prentice Hall, Upper Saddle River, NJ, \(2^{nd}\) edition, 2001.
+
 \end{thebibliography}

@@ -1,8 +1,9 @@
 \section{Graph Theory}
 
 This section presents the concepts, definitions, and theorems from the field of graph theory that are needed in the
-development of the proposed algorithm.  This material is primarily taken from the textbooks used \cite{chartrand}
-and class notes compiled by the author during his undergraduate and graduate graph theory classes at SJSU.
+development of the proposed algorithm.  This material is primarily taken from the textbooks used
+\cite{chartrand,west} and class notes compiled by the author during his undergraduate and graduate graph theory
+classes at SJSU.
 
 \subsection{Simple Graphs}
 
@@ -1058,13 +1059,16 @@ number the components from left-to-right:
 \end{gather*}
 
 Using this technique requires application of an initial algorithm to partition the graph into components.  Such an
-algorithm is well-known and is described by Hopcroft and Tarjan, 1973 \cite{hopcroft}.  The algorithm employs a
-depth-first walk of vertices, assigning previously unencountered vertices to components.  The algorithm has a
-runtime complexity of \(\BO(\max(n,m))\).
+algorithm is well-known and is described by Hopcroft and Tarjan, 1973 \cite{hopcroft}.  The algorithm is recursive.
+It starts by pushing a randomly selected vertex on the stack and walking the vertex's incident edges, removing each
+edge as it is traversed.  As each unmarked vertex is encountered, it is assigned to the current component.
+Vertices with incident edges are pushed onto the stack and newly isolated vertices are popped off the stack.  Once
+the stack is empty, any previously unmarked vertex is selected to start the next component and the process
+continues until all vertices are marked.  This algorithm has a runtime complexity of \(\BO(\max(n,m))\).
 
-However, an ideal algorithm could be run on the entire graph at once regardless of the number of components in the
-graph.  The proposed algorithm is such a solution, and therefore saves the needless work of partitioning the graph
-into components first.
+Alternatively, an ideal coloring algorithm could be run on the entire graph at once regardless of the number of
+components in the graph.  The proposed algorithm is such a solution, and therefore saves the needless work of
+partitioning the graph into components first.
 
 \subsection{Vertex Degree}
 
@@ -1109,6 +1113,9 @@ When considering the degrees of all the vertices in a graph, the following limit
 And so, for a graph \(G\) or order \(n\), it must be the case that for every vertex \(v\in G\):
 \[0\le\d(G)\le\deg(v)\le\D(G)\le n-1\]
 
+Intuitively, as \(\d(G)\) increases, a graph becomes denser (more edges) resulting in more adjacencies, making it
+harder to find a proper coloring at lower values of \(k\).
+
 Vertices can be classified based on their degree:
 
 \begin{definition}[Vertex Types]
@@ -1140,10 +1147,10 @@ Theorem of Graph Theory:
   When summing all the degrees, each edge is counted twice: once for each endpoint.
 \end{proof}
 
-Thesis concepts are demonstrated by the graph in Figure \ref{fig:degree}; note that the sum of the vertex degrees
-is 30, which is twice the number of edges in the graph.
+These concepts are demonstrated by the graph in Figure \ref{fig:degree}; note that the sum of the vertex degrees is
+30, which is twice the number of edges in the graph.
 
-\begin{figure}
+\begin{figure}[h]
   \label{fig:degree}
   \begin{minipage}[t]{3in}
     \begin{center}
@@ -1188,3 +1195,260 @@ is 30, which is twice the number of edges in the graph.
   \end{minipage}
   \caption{Vertex Degrees}
 \end{figure}
+
+\subsection{Special Graphs}
+
+We conclude this introductory section on graph theory with a discussion of some special classes of graphs that are
+important to the execution of the proposed algorithm.
+
+\subsubsection{Empty Graphs}
+
+An \emph{empty} graph of order \(n\), denoted by \(E_n\), is a graph with one or more vertices (\(n>1\)) and no
+edges (\(m=0\)).  An empty graph is connected iff \(n=1\).  Examples of empty graphs are shown in Figure
+\ref{fig:empty}.
+
+\begin{figure}[h]
+  \label{fig:empty}
+  \begin{minipage}{1.5in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \node at (0,0) {};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(E_1\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2.5in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \pathNnodes{4}{(0,0)}{right}{};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(E_4\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \pathNnodes{3}{(0,0)}{right}{};
+        \pathNnodes{3}{(0,1)}{right}{};
+        \pathNnodes{3}{(0,2)}{right}{};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(E_9\)
+    \end{center}
+  \end{minipage}
+  \caption{Empty Graphs}
+\end{figure}
+
+The null graph (\(n=0\)) is denoted by \(E_0\) and is defined to be \chromatic{0}.  All other empty graphs are
+\chromatic{1} and thus are important termination conditions for the proposed algorithm.
+
+\subsubsection{Paths}
+
+A \emph{path} graph of order \(n\) and length \(n-1\), denoted by \(P_n\), is a connected graph consisting of a
+single open path.  Examples of path graphs are shown in Figure \ref{fig:path}.
+
+\begin{figure}[h]
+  \label{fig:path}
+  \begin{minipage}{1.5in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \node at (0,0) {};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(P_1\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2.5in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \pathN{4}{(0,0)}{right}{};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(P_4\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \pathNnodes{3}{(0,0)}{right}{b};
+        \pathNnodes{3}{(0,1)}{right}{m};
+        \pathNnodes{3}{(0,2)}{right}{t};
+        \draw (t1) to (t2) to (t3) to (m3) to (m2) to (m1) to (b1) to (b2) to (b3);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(P_9\)
+    \end{center}
+  \end{minipage}
+  \caption{Path Graphs}
+\end{figure}
+
+Note that \(P_1=E_1\) is \chromatic{1}, whereas \(P_n,n>1\) is \chromatic{2}.
+
+Paths are not particularly important to the proposed algorithm; however, they play a part in the definition of
+cycles.
+
+\subsubsection{Cycles}
+
+A \emph{cycle} graph of order \(n\) and length \(n\) for \(n\ge3\), denoted by \(C_n\), is a connected graph
+consisting of a single closed path.  When \(n\) is odd then \(C_n\) is called an \emph{odd} cycle and when \(n\) is
+even then \(C_n\) is called an \emph{even} cycle.
+
+Examples of cycle graphs are shown in Figure \ref{fig:cycle}.
+
+\begin{figure}[h]
+  \label{fig:cycle}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \cycleN{3}{(0,0)}{0.5in}{90}{};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(C_3\) (odd)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \cycleN{4}{(0,0)}{0.5in}{135}{};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(C_4\) (even)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \cycleN{9}{(0,0)}{0.5in}{90}{};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(C_9\) (odd)
+    \end{center}
+  \end{minipage}
+  \caption{Cycle Graphs}
+\end{figure}
+
+Note that even cycles are \(2\)-chromatic; however, odd cycles are \(3\)-chromatic.
+
+Cycles are not particularly important to the proposed algorithm; however, they play a part in the definition of
+trees, which are important to the later Zykov analysis of coloring algorithms.
+
+\subsubsection{Complete Graphs}
+
+A \emph{complete} graph of order \(n\) and size \(\frac{n(n-1)}{2}\), denoted by \(K_n\), is a connected graph that
+contains every possible edge:
+\[E(G)=\ps_2(V(G))\]
+and thus all \(n\) vertices are adjacent to each other.
+
+Examples of complete graphs are shown in Figure \ref{fig:complete}.
+
+\begin{figure}[h]
+  \label{fig:complete}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \node at (0,0) {};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(K_1\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \completeN{4}{(0,0)}{0.5in}{135}{};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(K_4\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=unlabeled node]
+        \completeN{9}{(0,0)}{0.5in}{90}{};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(K_9\)
+    \end{center}
+  \end{minipage}
+  \caption{Complete Graphs}
+\end{figure}
+
+Note that \(K_1=P_1=E_1\).
+
+Since all of the vertices in a complete graph are adjacent to each other, each vertex requires a separate color in
+order to achieve a proper coloring.  Thus, \(K_n\) is \(n\)-chromatic and is also an important termination
+condition for the proposed algorithm.
+
+\subsubsection{Trees}
+
+A \emph{tree} is a connected graph that contains no cycles.  Typically, one vertex of the tree is selected as the
+\emph{root} vertex and then the tree is depicted in layers that contain vertices that are equidistant from the root
+vertex.  Note that the bottom layer is composed entirely of pendant vertices, but pendant vertices can exist in the
+other layers as well.  Such pendant vertices are usually referred to as \emph{leaves} in this context.
+
+An example tree is shown in Figure \ref{fig:tree}.  The root vertex \(r\) is shown in red and the leaf vertices
+\(b,e,g,h,i,j,k\) are shown in green.
+
+\begin{figure}
+  \label{fig:tree}
+  \begin{center}
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \colorlet{cr}{red!25!white}
+      \colorlet{cl}{green!25!white}
+      \node [fill=cr] (r) at (0,0) {\(r\)};
+      \node (v11) at (-3,-2) {\(a\)};
+      \node [fill=cl] (v12) at (0,-2) {\(b\)};
+      \node (v13) at (3,-2) {\(c\)};
+      \node (v21) at (-4.5,-4) {\(d\)};
+      \node [fill=cl] (v22) at (-3,-4) {\(e\)};
+      \node (v23) at (-1.5,-4) {\(f\)};
+      \node [fill=cl] (v24) at (1.75,-4) {\(g\)};
+      \node [fill=cl] (v25) at (4.25,-4) {\(h\)};
+      \node [fill=cl] (v31) at (-4.5,-6) {\(i\)};
+      \node [fill=cl] (v32) at (-2.25,-6) {\(j\)};
+      \node [fill=cl] (v33) at (-0.75,-6) {\(k\)};
+      \draw (r) edge (v11) edge (v12) edge (v13);
+      \draw (v11) edge (v21) edge (v22) edge (v23);
+      \draw (v21) edge (v31);
+      \draw (v23) edge (v32) edge (v33);
+      \draw (v13) edge (v24) edge (v25);
+    \end{tikzpicture}
+  \end{center}
+  \caption{A Tree Organized from Root to Leaves}
+\end{figure}
+
+Trees are important because they can be used to represent the ``paper tape'' for recursive Turing machine-type
+algorithms.  Each vertex represents a state of the problem and the edges represent ``movement'' of the tape to
+select the current state.  All states can be visited using a so-called \emph{depth-first} walk.  In the example
+in Figure \ref{fig:tree}, such a depth-first walk would be:
+\[(r,a,d,i,d,a,e,a,f,j,f,k,f,a,r,b,r,c,g,c,h,c,r)\]
+Note that this walk guarantees that each vertex is visited at least once.
+
+When such a tree is applied to the problem of exhaustively finding the chromatic number of a graph, the tree is
+called a \emph{Zykov} tree.  These concepts are described in detail in the next section.
