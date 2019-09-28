@@ -1,1 +1,475 @@
 \section{The Proposed Algorithm}
+
+In the exhaustive algorithm described in the previous section, each pair of non-adjacent vertices is subjected to
+the two choices of like or different color assignment.  This means that 
+
+\subsection{is-k-colorable(\(G\),\(k\))}
+
+\(G\) may be altered by the called subroutine.
+
+\begin{enumerate}
+\item \label{step:check} If \(n\le k\) then return true (Proposition \ref{prop:success}).
+
+\item \label{step:density} If \(\displaystyle m>\frac{n}{2k}(kn-n)\) then return false (Lemma \ref{lem:density}).
+
+\item \label{step:small} Set \(X=\setb{v\in V(G)}{\deg(v)<k}\).  If \(\abs{X}=0\) then go to \ref{step:neighbor}.  Otherwise,
+  replace \(G\) with \(G-X\) and go to \ref{step:check} (Corollary \ref{cor:lowdeg}).
+
+\item \label{step:neighbor} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace \(G\) with
+  \(G-u\) and go to \ref{step:check} (Lemma \ref{lem:subset}).
+
+\item \label{step:common} Select two non-adjacent vertices \(u,v\in V(G)\) with the smallest number of common neighbors.  If
+  \(k\ge2\) and \(\displaystyle\abs{N(u)\cap N(v)}>n-2-\frac{n-2}{k-1}\) then return false (Corollary \ref{cor:inter}).
+
+\item Return is-k-colorable(\(G\cdot uv\), \(k\)) or is-k-colorable(\(G+uv\), \(k\)) (Lemma \ref{lem:recurse}).
+
+\end{enumerate}
+
+This subroutine is guaranteed to return because either there will be sufficient contractions such that \(n\le k\) or
+sufficient edge additions such that the graph becomes complete and \(m>\frac{n}{2k}(kn-n)\) for any \(k<n\).
+
+\subsection{find-k-colorable(\(G\))}
+
+\begin{enumerate}
+\item \label{step:null} If \(n=0\) then return \(0\).
+
+\item \label{step:init} Set \(k=1\).  
+
+\item \label{step:call} If is-k-colorable(\(G\), \(k\)) then return \(k\).
+
+\item \label{step:incr} \(k=k+1\)
+
+\item \label{step:loop} Go to \ref{step:call}.
+\end{enumerate}
+
+This loop is guaranteed to complete because eventually \(k\) wiill exceed \(n\), which will cause the called subroutine to
+return true.
+
+\section{Theorems}
+
+\subsection{Algorithm Success Condition}
+
+\begin{proposition}
+  \label{prop:success}
+  Let \(G\) be a graph of order \(n\) and let \(k\in\N\cup\set{0}\):
+  \begin{quote}
+    \(n\le k\implies G\) is \colorable{k}.
+  \end{quote}
+\end{proposition}
+
+\subsection{Edge Density Test}
+
+\begin{lemma}
+  \label{lem:density}
+  Let \(G\) be a graph of order \(n\) and size \(m\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\displaystyle\implies m\le\frac{n}{2k}(nk-n)\).
+  \end{quote}
+\end{lemma}
+
+\begin{proof}
+  Assume \(G\) is \colorable{k}.  This means that \(V(G)\) can be distributed into \(k\) independent (some possibly empty)
+  subsets.  Call these subsets \(A_1,\ldots A_k\) and let \(a_i=\abs*{A_i}\).  Thus, each \(v\in A_i\) can be adjacent to at
+  most \(n-a_i\) other vertices in \(G\), and hence the maximum number of edges incident to vertices in \(A_i\) is given by:
+  \(a_i(n-a_i)=na_i-a_i^2\).  Now, using the fundamental theorem of graph theory, the maximum number of edges in \(G\) is given
+  by:
+  \[m\le\frac{1}{2}\sum_{i=1}^k(na_i-a_i^2)\]
+  with the constraint:
+  \[\sum_{i=1}^ka_i=n\]
+  This problem can be solved using the Lagrange multiplier technique:
+  \begin{gather*}
+    \frac{1}{2}(n-2a_i)=\l \\
+    a_i=\frac{n}{2}-\l \\
+    \\
+    \sum_{i=1}^ka_i=\sum_{i=1}^k\left(\frac{n}{2}-\l\right)=k\left(\frac{n}{2}-\l\right)=n \\
+    \l=\frac{n}{2}-\frac{n}{k} \\
+    \\
+    a_i=\frac{n}{2}-\left(\frac{n}{2}-\frac{n}{k}\right)=\frac{n}{k}
+  \end{gather*}
+  Therefore:
+  \[m\le\frac{1}{2}\sum_{i=1}^k\left[n\left(\frac{n}{k}\right)-\left(\frac{n}{k}\right)^2\right]=
+  \frac{k}{2}\left(\frac{n^2k-n^2}{k^2}\right)=\frac{n}{2k}(nk-n)\]
+\end{proof}
+
+\begin{corollary}
+  \label{cor:density}
+  Let \(G\) be a graph of order \(n\) and size \(m\) and let \(k\in\N\):
+  \begin{quote}
+    \(\displaystyle m>\frac{n}{2k}(nk-n)\implies G\) is not \colorable{k}.
+  \end{quote}
+\end{corollary}
+
+\subsection{Degree \(n-1\) Vertices}
+
+\begin{lemma}
+  \label{lem:adjall}
+  Let \(G\) be a graph of order \(n\) and let \(v\in V(G)\) such that \(\deg(v)=n-1\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\iff G-v\) is \colorable{(k-1)}.
+  \end{quote}
+\end{lemma}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume \(G\) is \colorable{k}.
+
+    Since \(\deg(v)=n-1\), \(v\) is adjacent to all vertices in \(G-v\) and so \(v\) must have its own unique color in any
+    proper \coloring{k} of \(G\).  Thus, \(G-v\) has a proper coloring using the remaining \(k-1\) colors.
+
+    \(\therefore G-v\) is \colorable{(k-1)}.
+    
+  \item[\(\impliedby\)] Assume \(G-v\) is \colorable{(k-1)}.
+
+    Extend \(G-v\) to \(G\) and color \(v\) with a unique color (i.e., not one of the original \(k-1\) colors).  This is a
+    proper coloring of \(G\) using \((k-1)+1=k\) colors.
+
+    \(\therefore G\) is \colorable{k}.
+  \end{description}
+\end{proof}
+
+\begin{corollary}
+  \label{cor:adjall}
+  Let \(G\) be a graph of order \(n\) and let \(X=\setb{v\in V(G)}{\deg(v)=n-1}\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\iff G-X\) is \colorable{(k-\abs{X})}.
+  \end{quote}
+\end{corollary}
+
+\begin{proof}
+  (by induction on \(\abs{X}\))
+  \begin{enumerate}
+  \item (Base Case) Let \(\abs{X}=0\).
+
+    Since \(G-X=G\) and \(k-0=k\), \(G\) is \colorable{k} \(\iff G-X=G\) is \colorable{(k-0=k)}.
+
+  \item (Inductive Assumption) Let \(\abs{X}=r\).
+
+    Assume \(G\) is \colorable{k} \(\iff G-X\) is \colorable{(k-r)}.
+
+  \item (Inductive Step) Consider \(\abs{X}=r+1\).
+    
+    Since \(\abs{X}=r+1>0\), there exists \(v\in X\) such that \(\deg(v)=n-1\).  Let \(Y=X-\set{v}\) and note that
+    \(\abs{Y}=\abs{X}-1=(r+1)-1=r\).  So, \(G\) is \colorable{k} \(\iff G-v\) is \colorable{(k-1)} (Lemma \ref{lem:adjall})
+    \(\iff (G-v)-Y=G-X\) is \colorable{\left((k-1)-r=k-(r+1)\right)} (inductive assumption).
+  \end{enumerate}
+
+  Therefore, by the principle of induction, \(G\) is \colorable{k} \(\iff G-X\) is \colorable{(k-\abs{X})}.
+\end{proof}
+
+\subsection{Low Degree Vertices}
+
+\begin{lemma}
+  \label{lem:remone}
+  Let \(G\) be a graph and let \(v\in V(G)\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\implies G-v\) is \colorable{k}.
+  \end{quote}
+\end{lemma}
+
+\begin{proof}
+  
+  Assume \(G\) is \colorable{k}.
+
+  \begin{description}
+  \item[Case 1:] \(v\) has its own unique color.
+      
+    \(G-v\) still has a proper coloring using \(k-1\) colors and hence is \colorable{(k-1)}, and thus is \colorable{k}.
+
+  \item[Case 2:] \(v\) shares a color with some other vertex.
+
+    \(G-v\) still has a proper coloring using \(k\) colors and is thus still \colorable{k}.
+  \end{description}
+
+  \(\therefore G-v\) is \colorable{k}.
+\end{proof}
+
+\begin{lemma}
+  \label{lem:lowdeg}
+  Let \(G\) be a graph and let \(v\in V(G)\) such that \(d(v)<k\) for some \(k\in\N\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\iff G-v\) is \colorable{k}.
+  \end{quote}
+\end{lemma}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume \(G\) is \colorable{k}.
+
+    \(\therefore G-v\) is \colorable{k} (Lemma \ref{lem:remone}).
+
+  \item[\(\impliedby\)] Assume \(G-v\) is \(k\)-colorable.
+    By assumption, \(d(v)<k\), meaning \(v\) has at most \(k-1\) neighbors, using at most \(k-1\) colors.  Thus, there is
+    always an additional color available for \(v\).  So extend \(G-v\) to \(G\) and color \(v\) with one of the available
+    \(k-d(v)\) colors.  The result is a proper \coloring{\left((k-1)+1=k\right)} of \(G\).
+
+    \(\therefore G\) is \colorable{k}.
+  \end{description}
+\end{proof}
+
+\begin{corollary}
+  \label{cor:lowdeg}
+  Let \(G\) be a graph of order \(n\) and let \(X=\setb{v\in V(G)}{\deg(v)<k}\) for some \(k\in\N\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\iff G-X\) is \colorable{k}.
+  \end{quote}
+\end{corollary}
+
+\begin{proof}
+  (by induction on \(\abs{X}\))
+  \begin{enumerate}
+  \item (Base Case) Let \(\abs{X}=0\).
+
+    Since \(G-X=G\), \(G\) is \colorable{k} \(\iff G-X=G\) is \colorable{k}.
+
+  \item (Inductive Assumption) Let \(\abs{X}=r\).
+
+    Assume \(G\) is \colorable{k} \(\iff G-X\) is \colorable{k}.
+
+  \item (Inductive Step) Consider \(\abs{X}=r+1\).
+    
+    Since \(\abs{X}=r+1>0\), there exists \(v\in X\) such that \(\deg(v)<k\).  Let \(Y=X-\set{v}\) and note that
+    \(\abs{Y}=\abs{X}-1=(r+1)-1=r\).  So, \(G\) is \colorable{k} \(\iff G-v\) is \colorable{k} (Lemma \ref{lem:lowdeg}) \(\iff
+    (G-v)-Y=G-X\) is \colorable{k} (inductive assumption).
+  \end{enumerate}
+
+  Therefore, by the principle of induction, \(G\) is \colorable{k} \(\iff G-X\) is \colorable{k}.
+\end{proof}
+
+\subsection{Neighbor Subsets}
+
+\begin{lemma}
+  \label{lem:subset}
+  Let \(G\) be a graph and let \(u,v\in V(G)\) such that \(N(u)\subseteq N(v)\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\iff G-u\) is \colorable{k}
+  \end{quote}
+\end{lemma}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume \(G\) is \colorable{k}.
+
+    \(\therefore G-u\) is \colorable{k} (Lemma \ref{lem:remone}).
+
+  \item[\(\impliedby\)] Assume \(G-u\) is \colorable{k}.
+
+    Since \(N(u)\subseteq N(v)\) and (by definition) \(u\notin N(u)\), it must be the case that \(u\notin N(v)\) and hence
+    \(uv\notin E(G)\).  Thus \(u\) and \(v\) are allowed to have the same color.  Furthermore, since every vertex adjacent to
+    \(u\) is also adjacent to \(v\), none of these vertices can have the same color as \(v\).  So extend \(G-u\) to \(G\) and
+    color \(u\) with the same color as \(v\).  The result is a proper coloring of \(G\) using the same \(k\) colors.
+
+    \(\therefore G\) is \colorable{k}.
+  \end{description}
+\end{proof}
+
+\subsection{Edge Density (Tighter Bound)}
+
+\begin{lemma}
+  \label{lem:neighbor}
+  Let \(G\) be a graph and let \(S\subseteq V(G)\) such that \(S\ne\emptyset\) and \(\forall\,u,v\in S,uv\notin E(G)\):
+  \[\left(\exists\,v\in S,\forall\,w\in V(G)-S,vw\in E(G)\right)\implies\forall\,u\in S,N(u)\subseteq N(v)\]
+\end{lemma}
+
+\begin{proof}
+  Assume \(\exists\,v\in S,\forall\,w\in V(G)-S,vw\in E(G)\).  Now, assume \(u\in S\):
+  \begin{description}
+  \item[Case 1:] \(N(u)=\emptyset\).
+      
+    Therefore, by definition, \(N(u)=\emptyset\subseteq N(v)\).
+
+  \item[Case 2:] \(N(u)\ne\emptyset\).
+
+    Assume \(w\in N(u)\).  This means that \(uw\in E(G)\) and hence \(w\notin S\).  So \(w\in V(G)-S\) and thus, by assumption,
+    \(vw\in E(G)\). Hence \(w\in N(v)\) and therefore \(N(u)\subseteq N(v)\).
+  \end{description}
+
+  \(\therefore\forall\,u\in S,N(u)\subseteq N(v)\)
+\end{proof}
+
+\begin{lemma}
+  \label{lem:tighter}
+  Let \(G\) be a graph of order \(n\) and size \(m\) such that:
+  \begin{enumerate}
+  \item \(\forall\,v\in V(G),\deg(v)<n-1\)
+  \item \(\forall\,u,v\in V(G),N(u)\not\subseteq N(v)\)
+  \end{enumerate}
+  and let \(k\in\N\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\displaystyle\implies m\le\frac{n}{2k}(nk-n-k)\).
+  \end{quote}
+\end{lemma}
+
+\begin{proof}
+  Assume \(G\) is \colorable{k}.  This means that \(V(G)\) can be distributed into \(k\) independent (some possibly empty)
+  subsets.  Call these subsets \(A_1,\ldots A_k\) and let \(a_i=\abs*{A_i}\).
+
+  First, assume by way of contradiction (ABC) that for some \(A_i\) where \(1\le i\le k\) there exists \(v\in A_i\) such that
+  \(v\) is adjacent to every vertex in \(V(G)-A_i\).
+
+  \begin{description}
+  \item[Case 1:] \(a_i=1\)
+
+    This means that \(v\) is adjacent to all of the other vertices in \(G\) and thus has degree \(n-1\), which contradicts
+    the initial assumption.
+
+  \item[Case 2:] \(a_i>1\)
+
+    Then there exists \(u\in A_i\) such that \(u\ne v\) and \(N(u)\subseteq N(v)\) (Lemma \ref{lem:neighbor}).
+  \end{description}
+
+  \(\therefore N(u)\subseteq N(v)\), which contradicts the initial assumption, and so for each \(v\in A_i\) there must exist
+  \(u\in V(G)-A_i\) such that \(uv\notin E(G)\), and hence each \(v\in A_i\) can be adjacent to at most \(n-a_i-1\) other
+  vertices in \(G\).  This means that the maximum number of edges incident to vertices in \(A_i\) is given by:
+  \(a_i(n-a_i-1)=na_i-a_i^2-a_i\).  Now, using the fundamental theorem of graph theory, the maximum number of edges in \(G\) is
+  given by:
+  \[m\le\frac{1}{2}\sum_{i=1}^k(na_i-a_i^2-a_i)\]
+  with the constraint:
+  \[\sum_{i=1}^ka_i=n\]
+  This problem can be solved using the Lagrange multiplier technique:
+  \begin{gather*}
+    \frac{1}{2}(n-2a_i-1)=\l \\
+    a_i=\frac{n}{2}-\frac{1}{2}-\l \\
+    \\
+    \sum_{i=1}^ka_i=\sum_{i=1}^k\left(\frac{n}{2}-\frac{1}{2}-\l\right)=k\left(\frac{n}{2}-\frac{1}{2}-\l\right)=n \\
+    \l=\frac{n}{2}-\frac{1}{2}-\frac{n}{k} \\
+    \\
+    a_i=\frac{n}{2}-\frac{1}{2}-\left(\frac{n}{2}-\frac{1}{2}-\frac{n}{k}\right)=\frac{n}{k}
+  \end{gather*}
+  Therefore:
+  \[m\le\frac{1}{2}\sum_{i=1}^k\left[n\left(\frac{n}{k}\right)-\left(\frac{n}{k}\right)^2-\frac{n}{k}\right]=
+  \frac{k}{2}\left(\frac{n^2k-n^2-kn}{k^2}\right)=\frac{n}{2k}(nk-n-k)\]
+\end{proof}
+
+\begin{corollary}
+  \label{cor:tighter}
+  Let \(G\) be a graph of order \(n\) and size \(m\) such that:
+  \begin{enumerate}
+  \item \(\forall\,v\in V(G),\deg(v)<n-1\)
+  \item \(\forall\,u,v\in V(G),N(u)\not\subseteq N(v)\)
+  \end{enumerate}
+  and let \(k\in\N\):
+  \begin{quote}
+    \(\displaystyle m>\frac{n}{2k}(nk-n-k)\implies G\) is not \colorable{k}.
+  \end{quote}
+\end{corollary}
+
+\subsection*{Neighborhood Intersection Test}
+
+\begin{lemma}
+  \label{lem:inter}
+  Let \(G\) be a graph of order \(n\) and size \(m\) such that \(\forall\,u,v\in V(G),N(u)\not\subseteq N(v)\) and let
+  \(k\in\N\) such that \(2\le k<n\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\implies\exists\,w,z\in V(G)\) such that \(\abs{N(w)\cap N(z)}\le n-2-\frac{n-2}{k-1}\).
+  \end{quote}
+\end{lemma}
+
+\begin{proof}
+  Assume \(G\) is \colorable{k}.  This means that \(V(G)\) can be distributed into \(k\) independent (some possibly empty)
+  subsets \(A_1,\ldots,A_k\) such that \(a_i=\abs*{A_i}\) and \(a_1\ge a_2\ge\cdots\ge a_k\).  Since \(n>k\), by the pigeonhole
+  principle, it must be the case that \(a_1\ge2\).  Assume \(v\in A_1\).
+
+  First, assume by way of contradiction (ABC) that \(v\) is adjacent to all other vertices in \(V(G)-A_1\).  Since \(a_1\ge2\),
+  there exists \(u\in A_1\) such that \(u\ne v\) and \(u\) is not adjacent to \(v\).  Thus, \(N(u)\subseteq N(v)\) (Lemma
+  \ref{lem:neighbor}), which contradicts the assumption.  Therefore, \(\exists\,v'\in V(G)-A_1\) such that \(vv'\notin E(G)\).
+  Assume \(v'\in A_i\) for some \(i\) such that \(1<i\le k\):
+
+  \begin{description}
+  \item [Case 1:] \(a_i=1\)
+
+    By the pigeonhole principle:
+    \[a_1\ge\ceil*{\frac{n-1}{k-1}}\ge\frac{n-1}{k-1}\]
+    Now, assume by way of contradiction (ABC) that \(v'\) is adjacent to all vertices in \(V(G)-A_1-A_i\) and assume
+    \(u\in N(v)\).  Then it must be the case that \(u\in V(G)-A_1-A_i\) and so \(uv'\in E(G)\) and thus \(u\in N(v')\).
+    Therefore \(N(v)\subseteq N(v')\), which contradicts the assumption.  This means that there exists some
+    \(u\in V(G)-A_1-A_i\) such that \(uv'\notin E(G)\).  This results in the upper bound:
+    \[\abs{N(v)\cap N(v')}\le n-2-\frac{n-1}{k-1}\]
+    Comparing this to the desired bound:
+    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-2-\frac{n-1}{k-1}\right)=\frac{1}{k-1}>0\]
+    for \(k\ge2\).  Thus the new bound is tighter and so:
+    \[\abs{N(v)\cap N(v')}\le n-2-\frac{n-1}{k-1}\le n-2-\frac{n-2}{k-1}\]
+    
+  \item [Case 2:] \(a_i=2\)
+
+    By the pigeonhole principle:
+    \[a_1\ge\ceil*{\frac{n-2}{k-1}}\ge\frac{n-2}{k-1}\]
+    This results in the upper bound:
+    \[\abs{N(v)\cap N(v')}\le n-2-\frac{n-2}{k-1}\]
+    
+  \item [Case 3:] \(a_i\ge3\)
+
+    By the pigeonhole principle:
+    \[a_1\ge\ceil*{\frac{n-3}{k-1}}\ge\frac{n-3}{k-1}\]
+    This results in the upper bound:
+    \[\abs{N(v)\cap N(v')}\le n-3-\frac{n-3}{k-1}\]
+    Comparing this to the desired bound:
+    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-3-\frac{n-3}{k-1}\right)=1-\frac{1}{k-1}\ge0\]
+    for \(k\ge2\).  Thus the new bound is tighter and so:
+    \[\abs{N(v)\cap N(v')}\le n-3-\frac{n-3}{k-1}\le n-2-\frac{n-2}{k-1}\]
+  \end{description}
+
+  \(\displaystyle \therefore\exists\,w,z\in V(G)\) such that \(\abs{N(w)\cap N(z)}\le n-2-\frac{n-2}{k-1}\).
+\end{proof}
+
+\begin{corollary}
+  \label{cor:inter}
+  Let \(G\) be a graph of order \(n\) and size \(m\) such that \(\forall\,u,v\in V(G),N(u)\not\subseteq N(v)\) and let
+  \(k\in\N\) such that \(2\le k<n\):
+  \begin{quote}
+    \(\displaystyle\left(\forall\,w,z\in V(G),\abs{N(w)\cap N(z)}>n-2-\frac{n-2}{k-1}\right)\implies G\) is not \colorable{k}.
+  \end{quote}
+\end{corollary}
+
+\subsection{Recursive Step}
+
+\begin{lemma}
+  \label{lem:recurse}
+  Let \(G\) be a graph of order \(n>=2\) and let \(u,v\in G\) such that \(uv\notin E(G)\):
+  \begin{quote}
+    \(G\) is \colorable{k} \(\iff G\cdot uv\) or \(G+uv\) is \colorable{k}.
+  \end{quote}
+\end{lemma}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume \(G\) is \colorable{k}.
+
+    \begin{description}
+    \item [Case a:] \(u\) and \(v\) have the same color.
+
+      Then \(\forall\,w\in N(u)\cup N(v)\) it must be the case that \(w\) is a different color than the color of \(u\) and
+      \(v\).  Let \(v'\) be the contracted vertex, so that \(N(v')=N(u)\cup N(v)\), and color \(v'\) with the same color as
+      \(u\) and \(v\).  The result is a proper \coloring{k} of \(G\cdot uv\).
+
+      \(\therefore G\cdot uv\) is \colorable{k}.
+      
+    \item [Case b:] \(u\) and \(v\) have the different colors in \(c\).
+
+      By adding edge \(uv\), \(u\) and \(v\) become adjacent and thus must have different colors.  Therefore, \(u\) and \(v\)
+      can retain their same colors.  The result is a proper \coloring{k} of \(G+uv\).
+    \end{description}
+
+    \(\therefore G\cdot uv\) or \(G+uv\) is \colorable{k}.
+    
+  \item[\(\impliedby\)] Assume \(G\cdot uv\) or \(G+uv\) is \colorable{k}.
+
+    \begin{description}
+    \item [Case a:] \(G\cdot uv\) is \colorable{k}.
+
+      Let \(v'\) be the contracted vertex with some assigned color.  It must be the case that \(\forall\,w\in N(v'), w\) has a
+      different color than \(v'\).  Expand \(G\cdot uv\) to \(G\) and color \(u\) and \(v\) with the same color as \(v'\).
+      The result is a proper \coloring{k} of \(G\).
+      
+    \item [Case b:] \(G+uv\) is \colorable{k}.
+
+      Remove edge \(uv\).  Since \(u\) and \(v\) are no longer adjacent, there are no requirements on their colors.  Thus,
+      they can retain their original colors.  The result is a proper \coloring{k} of \(G\).
+    \end{description}
+
+    \(\therefore G\) is \colorable{k}.
+  \end{description}
+\end{proof}

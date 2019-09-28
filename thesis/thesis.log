@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  21 SEP 2019 20:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  26 SEP 2019 14:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -284,7 +284,7 @@ Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count92
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/06/20 v3.9 Customized lists
+Package: enumitem 2019/02/04 v3.8 Customized lists
 \labelindent=\skip43
 \enit@outerparindent=\dimen112
 \enit@toks=\toks18
@@ -981,43 +981,97 @@ Missing character: There is no ; in font nullfont!
  [21]) [22]
 \openout2 = `algorithm.aux'.
 
- (./algorithm.tex) [23
+ (./algorithm.tex [23
 
 
-] (./thesis.bbl) [24
+]
 
-] (./thesis.aux
-(./theory.aux) (./algorithm.aux)) ) 
+LaTeX Warning: Command \l invalid in math mode on input line 88.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 88.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 88.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 88.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 88.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 88.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 88.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 88.
+
+[24] [25] [26] [27]
+
+LaTeX Warning: Command \l invalid in math mode on input line 340.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 340.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 340.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 340.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 340.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 340.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 340.
+
+
+LaTeX Warning: Command \l invalid in math mode on input line 340.
+
+[28] [29] [30] [31]) [32] (./thesis.bbl) [33
+
+] (./thesis.aux (./theory.aux)
+(./algorithm.aux))
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 17532 strings out of 492609
- 336736 string characters out of 6129048
- 398671 words of memory out of 5000000
- 21057 multiletter control sequences out of 15000+600000
+ 17555 strings out of 492609
+ 337018 string characters out of 6129049
+ 398917 words of memory out of 5000000
+ 21080 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,15n,88p,839b,1003s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/en
-c/dvips/libertine/lbtn_afusau.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc
-/dvips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/
-dvips/libertine/lbtn_3dk467.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1
-/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
-pe1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2019/texmf-dist/font
-s/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2019/texmf-dist/
-fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texlive/2019/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
-ype1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fon
-ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist
-/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (24 pages, 318966 bytes).
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_afusau.enc
+}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}<
+/usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumT
+B.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBioli
+numTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinL
+ibertineMT.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam
+10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.p
+fb>
+Output written on thesis.pdf (33 pages, 345596 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
+ 175 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
