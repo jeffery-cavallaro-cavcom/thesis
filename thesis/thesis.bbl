@@ -1,5 +1,14 @@
 \begin{thebibliography}{1}
 
+\bibitem{cavallaro}
+Sara Behdad, Praveen~Kumare Gopalakrishnan, Sogol Jahanbekam, and Jeffery
+  Cavallaro.
+\newblock A graph coloring technique for identifying the minimum number of
+  parts for physical integration in product design.
+\newblock {\em Proceedings of the ASME 2019 International Design Engineering
+  Technical Conferences \& Computers and Information in Engineering
+  Conference}, (DETC2018-98251), 2019.
+
 \bibitem{chartrand}
 Gary Chartrand and Ping Zhang.
 \newblock {\em A First Course in Graph Theory}.

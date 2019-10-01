@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  26 SEP 2019 14:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  28 SEP 2019 16:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -284,7 +284,7 @@ Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count92
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/02/04 v3.8 Customized lists
+Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip43
 \enit@outerparindent=\dimen112
 \enit@toks=\toks18
@@ -747,36 +747,126 @@ File: pgflibraryarrows.meta.code.tex 2019/05/09 v3.1.3 (3.1.3)
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 ))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/flowchart/flowchart.sty
+Package: flowchart 2015/03/19 3.3 Flowchart shapes for TikZ
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/makeshape/makeshape.sty
+Package: makeshape 2013/01/25 2.1 Making custom shapes for PGF/TikZ
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/pgflibraryinterse
+ctions.code.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.cod
+e.tex)
+\pgf@intersect@solutions=\count132
+)
+\crct@dim=\dimen185
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2019/05/09 v3.1.3 (3.1.3)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2019/05/09 v3.1.3 (3.1.3)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2019/05/09 v3.1.3 (3.1.3)
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2019/05/09 v3.1.3 (3.1.3)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2019/05/09 v3.1.3 (3.1.3)
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2019/05/09 v3.1.3 (3.1.3)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2019/05/09 v3.1.3 (3.1.3)
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.callouts.code.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.callouts.code.tex))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2019/05/09 v3.1.3 (3.1.3)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibrary
+shapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\pgfnodepartlowerbox=\box41
+\pgfnodeparttwobox=\box42
+\pgfnodepartthreebox=\box43
+\pgfnodepartfourbox=\box44
+\pgfnodeparttwentybox=\box45
+\pgfnodepartnineteenbox=\box46
+\pgfnodeparteighteenbox=\box47
+\pgfnodepartseventeenbox=\box48
+\pgfnodepartsixteenbox=\box49
+\pgfnodepartfifteenbox=\box50
+\pgfnodepartfourteenbox=\box51
+\pgfnodepartthirteenbox=\box52
+\pgfnodeparttwelvebox=\box53
+\pgfnodepartelevenbox=\box54
+\pgfnodeparttenbox=\box55
+\pgfnodepartninebox=\box56
+\pgfnodeparteightbox=\box57
+\pgfnodepartsevenbox=\box58
+\pgfnodepartsixbox=\box59
+\pgfnodepartfivebox=\box60
+))))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@proposition=\count132
- (./thesis.aux
-(./theory.aux) (./algorithm.aux))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+code.tex
+File: pgflibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
+\arrowsize=\dimen186
+))
+\c@proposition=\count133
+ (./thesis.aux (./theory.aux) (./algorithm.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 20.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Try loading font information for OT1+LinuxBiolinumT-TLF on 
-input line 16.
+input line 20.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.f
 d
@@ -784,7 +874,7 @@ File: OT1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/L
 inuxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 16.
+(Font)              scaled to size 12.0pt on input line 20.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -820,21 +910,21 @@ LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@mv@tabular=\count133
-\c@mv@boldtabular=\count134
+\c@mv@tabular=\count134
+\c@mv@boldtabular=\count135
 ABD: EveryShipout initializing macros
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count135
-\scratchdimen=\dimen185
-\scratchbox=\box41
-\nofMPsegments=\count136
-\nofMParguments=\count137
+\scratchcounter=\count136
+\scratchdimen=\dimen187
+\scratchbox=\box61
+\nofMPsegments=\count137
+\nofMParguments=\count138
 \everyMPshowfont=\toks43
-\MPscratchCnt=\count138
-\MPscratchDim=\dimen186
-\MPnumerator=\count139
-\makeMPintoPDFobject=\count140
+\MPscratchCnt=\count139
+\MPscratchDim=\dimen188
+\MPnumerator=\count140
+\makeMPintoPDFobject=\count141
 \everyMPtoPDFconversion=\toks44
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -865,26 +955,26 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 25.
+(Font)              scaled to size 20.74pt on input line 29.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 25.
-LaTeX Font Info:    Try loading font information for U+msa on input line 25.
+(Font)              scaled to size 14.4pt on input line 29.
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 25.
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 25.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 29.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TL
-F on input line 25.
+F on input line 29.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-
 TLF.fd
@@ -894,9 +984,9 @@ OT1/LinuxLibertineMonoT-TLF.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' in size <14.4>
  not available
 (Font)              Font shape `OT1/LinuxLibertineMonoT-TLF/regular/n' tried in
-stead on input line 25.
+stead on input line 29.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/regular/n' will be
-(Font)              scaled to size 14.4pt on input line 25.
+(Font)              scaled to size 14.4pt on input line 29.
  [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -981,97 +1071,47 @@ Missing character: There is no ; in font nullfont!
  [21]) [22]
 \openout2 = `algorithm.aux'.
 
- (./algorithm.tex [23
+ (./algorithm.tex
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[23
+
+
+] [24] [25] [26] [27] [28] [29] [30] [31] [32]) [33] (./thesis.bbl) [34
 
 ]
-
-LaTeX Warning: Command \l invalid in math mode on input line 88.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 88.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 88.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 88.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 88.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 88.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 88.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 88.
-
-[24] [25] [26] [27]
-
-LaTeX Warning: Command \l invalid in math mode on input line 340.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 340.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 340.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 340.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 340.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 340.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 340.
-
-
-LaTeX Warning: Command \l invalid in math mode on input line 340.
-
-[28] [29] [30] [31]) [32] (./thesis.bbl) [33
-
-] (./thesis.aux (./theory.aux)
-(./algorithm.aux))
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+(./thesis.aux (./theory.aux) (./algorithm.aux)) ) 
 Here is how much of TeX's memory you used:
- 17555 strings out of 492609
- 337018 string characters out of 6129049
- 398917 words of memory out of 5000000
- 21080 multiletter control sequences out of 15000+600000
+ 20729 strings out of 492609
+ 423853 string characters out of 6129048
+ 513843 words of memory out of 5000000
+ 24194 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,15n,88p,839b,1003s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_afusau.enc
-}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}<
-/usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pf
-b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumT
-B.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBioli
-numTI.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinL
-ibertineMT.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
-fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam
-10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/
-msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.p
-fb>
-Output written on thesis.pdf (33 pages, 345596 bytes).
+ 69i,15n,372p,839b,1212s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf
+-dist/fonts/enc/dvips/libertine/lbtn_afusau.enc}{/usr/local/texlive/2019/texmf-
+dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2019/texmf-d
+ist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}</usr/local/texlive/2019/texmf-di
+st/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2019/t
+exmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/texli
+ve/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texliv
+e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive
+/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/201
+9/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on thesis.pdf (34 pages, 353599 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 124 compressed objects within 2 object streams
+ 178 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

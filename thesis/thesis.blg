@@ -2,46 +2,49 @@ This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: theory.aux
+A level-1 auxiliary file: algorithm.aux
 The style file: plain.bst
 Database file #1: thesis.bib
-You've used 3 entries,
+Warning--there's a number but no volume in cavallaro
+You've used 4 entries,
             2118 wiz_defined-function locations,
-            520 strings with 4346 characters,
-and the built_in function-call counts, 839 in all, are:
-= -- 80
-> -- 33
+            527 strings with 4729 characters,
+and the built_in function-call counts, 1154 in all, are:
+= -- 108
+> -- 56
 < -- 0
-+ -- 14
-- -- 10
-* -- 54
-:= -- 149
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 13
++ -- 24
+- -- 18
+* -- 80
+:= -- 207
+add.period$ -- 12
+call.type$ -- 4
+change.case$ -- 20
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 35
-empty$ -- 72
-format.name$ -- 10
-if$ -- 172
+cite$ -- 5
+duplicate$ -- 45
+empty$ -- 90
+format.name$ -- 18
+if$ -- 232
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 5
-newline$ -- 18
-num.names$ -- 6
-pop$ -- 17
+int.to.str$ -- 4
+missing$ -- 6
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 23
 preamble$ -- 1
-purify$ -- 11
+purify$ -- 17
 quote$ -- 0
-skip$ -- 21
+skip$ -- 27
 stack$ -- 0
-substring$ -- 41
-swap$ -- 3
+substring$ -- 47
+swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
-warning$ -- 0
-while$ -- 8
-width$ -- 4
-write$ -- 36
+type$ -- 12
+warning$ -- 1
+while$ -- 10
+width$ -- 5
+write$ -- 47
+(There was 1 warning)

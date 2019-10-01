@@ -1,7 +1,97 @@
 \section{The Proposed Algorithm}
 
-In the exhaustive algorithm described in the previous section, each pair of non-adjacent vertices is subjected to
-the two choices of like or different color assignment.  This means that 
+The exhaustive algorithm described in the previous section subjects each pair of non-adjacent vertices in a graph
+\(G\) to the two choices of like (vertex contraction) or different (edge addition) color assignment in a recursive
+manner.  The leaves of the resulting Zykov tree represent complete graphs that describe all of the possible \(k\)
+colorings of \(G\), with the complete graphs of smallest order representing chromatic colorings of \(G\).  Thus,
+the high runtime complexity of the exhaustive algorithm is due to the need to generate the entire Zykov tree using
+an exponentially growing number of recursive calls.
+
+The proposed algorithm takes a somewhat different tack by running the exhaustive algorithm for assumed successive
+values of \(k\) and testing whether a graph \(G\) is \colorable{k}.  Since a candidate \(k\) value is known,
+certain tests can be applied to mutate \(G\) into simpler graphs with the same colorability and can result in early
+termination of branches in the corresponding Zykov tree.  The first \(k\) for which \(G\) (or one of its
+simplifications) is found to be \(k\)-colorable is the chromatic number of \(G\).  Thus, the need for rampant
+recursion is significantly reduced, resulting in a much better runtime complexity.
+
+This algorithm was first proposed by the author and his advisor in collaboration with a team of mechanical
+engineering researchers from SUNY Buffalo \cite{cavallaro}.  It accepts a graph \(G\) as input, provides \(\X(G)\)
+as output, and is composed of an outer loop on values of \(k\) and a subroutine called by the outer loop to
+determine if \(G\) is \colorable{k}.  The outer loop and called subroutine are summarized in the following
+sections.  A complete description of the theorems that support the various steps in algorithm and the application
+of the algorithm to a sample graph then follow.
+
+\subsection{Outer Loop}
+
+Let \(G\) be an input graph of order \(n\) and size \(m\).  The steps of the outer loop are as follows:
+\begin{enumerate}
+\item \label{step:null} If \(n=0\) then return \(0\), thus handling the edge case of a null graph.
+
+\item \label{step:one} If \(m=0\) then return \(1\), thus handling the edge case of an empty graph.
+
+\item \label{step:init} Initialize \(k\) to \(2\).
+
+\item \label{step:inner} Call the subroutine to determine if \(G\) is \colorable{k}.  The subroutine returns a
+  possibly simplified \(G\) called \(G'\) and a boolean value \(R\) that reports the result of the test.
+
+\item \label{step:call} If \(G\) is \colorable{k} (\(R=\) true) then return \(k\).
+
+\item \label{step:newg} Otherwise, replace \(G\) with \(G'\).  As will be seen, doing this avoids needless
+  reapplication of certain steps in the called subroutine.
+
+\item \label{step:incr} Increment \(k\).
+
+\item \label{step:loop} Go to \ref{step:inner}.
+\end{enumerate}
+A flowchart of these steps is shown in Figure \ref{fig:outer}.
+
+\begin{figure}[h]
+  \label{fig:outer}
+  \begin{center}
+    \scalebox{0.75}{
+      \begin{tikzpicture}[>=latex']
+        \node (start) [draw,terminal] at (0,0) {START};
+        \node (nullcheck) [draw,decision,below=of start] {\(n=0\)?};
+        \node (nulldone) [draw,terminal,right=of nullcheck] {RETURN 0};
+        \node (emptycheck) [draw,decision,below=of nullcheck] {\(m=0\)?};
+        \node (emptydone) [draw,terminal,right=of emptycheck] {RETURN 1};
+        \node (kinit) [draw,process,below=of emptycheck] {\(k=2\)};
+        \node (kcheck) [draw,predproc,below=of kinit] {CHECK \(k\)-COLORABLE};
+        \node (iskcolor) [draw,decision,below=of kcheck] {\(R=\)TRUE?};
+        \node (kdone) [draw,terminal,right=of iskcolor] {RETURN \(k\)};
+        \node (newg) [draw,process,below=of iskcolor] {\(G=G'\)};
+        \node (kinc) [draw,process,below=of newg] {\(k=k+1\)};
+        \node (belowinc) [coordinate,below=0.5cm of kinc] {};
+        \node (leftinc) [coordinate,left=3cm of belowinc] {};
+        \draw [->] (start) -- node [auto] {\(G\)} (nullcheck);
+        \draw [->] (nullcheck) -- node [auto] {YES} (nulldone);
+        \draw [->] (nullcheck) -- node [auto] {NO} (emptycheck);
+        \draw [->] (emptycheck) -- node [auto] {YES} (emptydone);
+        \draw [->] (emptycheck) -- node [auto] {NO} (kinit);
+        \draw [->] (kinit) -- (kcheck);
+        \draw [->] (kcheck) -- node [auto] {\(G',R\)} (iskcolor);
+        \draw [->] (iskcolor) -- node [auto] {YES} (kdone);
+        \draw [->] (iskcolor) -- node [auto] {NO} (newg);
+        \draw [->] (newg) -- (kinc);
+        \draw [->] (kinc) -- (belowinc) -- (leftinc) |- (kcheck);
+      \end{tikzpicture}
+    }
+  \end{center}
+  \caption{Algorithm Outer Loop}
+\end{figure}
+
+Note that the outer loop is guaranteed to complete because \(k\) will eventually equal \(n\), which will cause the
+called subroutine to return true.  This occurs when \(G\) (or one of its simplifications) has been reduced to a
+complete graph, which requires a separate color for each vertex.  This fact is expressed by the following
+proposition:
+
+\begin{proposition}[Algorithm Success Condition]
+  \label{prop:success}
+  Let \(G\) be a graph of order \(n\) and let \(k\in\N\):
+  \begin{quote}
+    If \(n\le k\) then \(G\) is \colorable{k}.
+  \end{quote}
+\end{proposition}
 
 \subsection{is-k-colorable(\(G\),\(k\))}
 
@@ -30,32 +120,10 @@ sufficient edge additions such that the graph becomes complete and \(m>\frac{n}{
 
 \subsection{find-k-colorable(\(G\))}
 
-\begin{enumerate}
-\item \label{step:null} If \(n=0\) then return \(0\).
-
-\item \label{step:init} Set \(k=1\).  
-
-\item \label{step:call} If is-k-colorable(\(G\), \(k\)) then return \(k\).
-
-\item \label{step:incr} \(k=k+1\)
-
-\item \label{step:loop} Go to \ref{step:call}.
-\end{enumerate}
-
-This loop is guaranteed to complete because eventually \(k\) wiill exceed \(n\), which will cause the called subroutine to
-return true.
 
 \section{Theorems}
 
 \subsection{Algorithm Success Condition}
-
-\begin{proposition}
-  \label{prop:success}
-  Let \(G\) be a graph of order \(n\) and let \(k\in\N\cup\set{0}\):
-  \begin{quote}
-    \(n\le k\implies G\) is \colorable{k}.
-  \end{quote}
-\end{proposition}
 
 \subsection{Edge Density Test}
 
