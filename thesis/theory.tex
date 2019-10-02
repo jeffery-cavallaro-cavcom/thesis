@@ -282,7 +282,7 @@ and hence \(c\) is surjective and \(G\) is \colorable{4}.  But we can always add
 Now, \(c\) is no longer surjective, and according to the definition: \(G\) is \colorable{5} --- the coloring \(c\)
 uses at most 5 colors (actually only 4), which is the cardinality of the codomain.
 
-Thus, we can make the following statement:
+Thus, we can make statement in Proposition \ref{prop:coloring}.
 
 \begin{proposition}
   \label{prop:coloring}
@@ -292,13 +292,26 @@ Thus, we can make the following statement:
   \end{quote}
 \end{proposition}
 
-By inductive application of Proposition \ref{prop:coloring}, one can arrive at the following conclusion:
+By inductive application of Proposition \ref{prop:coloring}, one can arrive at the conclusion in Proposition
+\ref{prop:coloring2}.
 
 \begin{proposition}
   \label{prop:coloring2}
   Let \(G\) be a graph:
   \begin{quote}
     \(G\) is \colorable{k} \(\implies G\) is \colorable{(k+r)} for some \(r\in\N\).
+  \end{quote}
+\end{proposition}
+
+Furthermore, for a graph \(G\) of order \(n\), if \(n\le k\) we can conclude that \(G\) is \colorable{k}, since
+there are sufficient colors such that each vertex can be assigned its own color.  This is stated in Proposition
+\ref{prop:coloring3}, which will turn out to be an important termination case for the proposed algorithm.
+
+\begin{proposition}
+  \label{prop:coloring3}
+  Let \(G\) be a graph of order \(n\) and let \(k\in\N\):
+  \begin{quote}
+    If \(n\le k\) then \(G\) is \colorable{k}.
   \end{quote}
 \end{proposition}
 

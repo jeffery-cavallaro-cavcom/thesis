@@ -3,16 +3,33 @@
 The exhaustive algorithm described in the previous section subjects each pair of non-adjacent vertices in a graph
 \(G\) to the two choices of like (vertex contraction) or different (edge addition) color assignment in a recursive
 manner.  The leaves of the resulting Zykov tree represent complete graphs that describe all of the possible \(k\)
-colorings of \(G\), with the complete graphs of smallest order representing chromatic colorings of \(G\).  Thus,
-the high runtime complexity of the exhaustive algorithm is due to the need to generate the entire Zykov tree using
-an exponentially growing number of recursive calls.
+colorings of \(G\), with the complete graphs of smallest order representing chromatic colorings of \(G\).
 
-The proposed algorithm takes a somewhat different tack by running the exhaustive algorithm for assumed successive
-values of \(k\) and testing whether a graph \(G\) is \colorable{k}.  Since a candidate \(k\) value is known,
-certain tests can be applied to mutate \(G\) into simpler graphs with the same colorability and can result in early
-termination of branches in the corresponding Zykov tree.  The first \(k\) for which \(G\) (or one of its
-simplifications) is found to be \(k\)-colorable is the chromatic number of \(G\).  Thus, the need for rampant
-recursion is significantly reduced, resulting in a much better runtime complexity.
+The major advantages of the exhaustive algorithm are that it isn't dependent on whether or not a graph is connected
+and the fact that the algorithm, due to its Turing machine nature, can be coded rather easily to run on a computer.
+Its major disadvantage is its high runtime complexity due to the need to generate the entire Zykov tree using an
+exponentially growing number of recursive calls.
+
+Thus, the goals of the proposed algorithm are as follows:
+\begin{enumerate}
+\item It does not depend on whether a graph is connected or not.
+\item It can be easily coded for execution on a computer.
+\item It has significantly better runtime complexity than the exhaustive algorithm.
+\end{enumerate}
+
+To accomplish these goals, the proposed algorithm takes a somewhat different tack by running the exhaustive
+algorithm for assumed successive values of \(k\) and testing whether a graph \(G\) is \colorable{k}.  Since a
+candidate \(k\) value is known, certain tests can be applied to mutate \(G\) into simpler graphs with the same
+colorability and can result in early termination of branches in the corresponding Zykov tree.  The first \(k\) for
+which \(G\) (or one of its simplifications) is found to be \(k\)-colorable is the chromatic number of \(G\).  Thus,
+the need for rampant recursion is significantly reduced, resulting in a much better runtime complexity.
+
+One disadvantage of the proposed algorithm is that whereas the exhaustive algorithm also provides examples of actual
+chromatic colorings, the proposed algorithm does not.  However, as was state earlier, during the axiomatic design
+phase it is more important to know the minimum number of parts as opposed to actual functional requirement allocation
+to those parts.  Since there are other well-known algorithms to find a \coloring{k}, the advantage of improved
+runtime complexity so that an answer is achievable in a reasonable amount of time overweighs the disadvantage of
+having to run a separate coloring algorithm later.
 
 This algorithm was first proposed by the author and his advisor in collaboration with a team of mechanical
 engineering researchers from SUNY Buffalo \cite{cavallaro}.  It accepts a graph \(G\) as input, provides \(\X(G)\)
@@ -24,6 +41,7 @@ of the algorithm to a sample graph then follow.
 \subsection{Outer Loop}
 
 Let \(G\) be an input graph of order \(n\) and size \(m\).  The steps of the outer loop are as follows:
+
 \begin{enumerate}
 \item \label{step:null} If \(n=0\) then return \(0\), thus handling the edge case of a null graph.
 
@@ -43,6 +61,7 @@ Let \(G\) be an input graph of order \(n\) and size \(m\).  The steps of the out
 
 \item \label{step:loop} Go to \ref{step:inner}.
 \end{enumerate}
+
 A flowchart of these steps is shown in Figure \ref{fig:outer}.
 
 \begin{figure}[h]
@@ -52,11 +71,11 @@ A flowchart of these steps is shown in Figure \ref{fig:outer}.
       \begin{tikzpicture}[>=latex']
         \node (start) [draw,terminal] at (0,0) {START};
         \node (nullcheck) [draw,decision,below=of start] {\(n=0\)?};
-        \node (nulldone) [draw,terminal,right=of nullcheck] {RETURN 0};
+        \node (nulldone) [draw,terminal,right=of nullcheck] {RETURN \(0\)};
         \node (emptycheck) [draw,decision,below=of nullcheck] {\(m=0\)?};
-        \node (emptydone) [draw,terminal,right=of emptycheck] {RETURN 1};
+        \node (emptydone) [draw,terminal,right=of emptycheck] {RETURN \(1\)};
         \node (kinit) [draw,process,below=of emptycheck] {\(k=2\)};
-        \node (kcheck) [draw,predproc,below=of kinit] {CHECK \(k\)-COLORABLE};
+        \node (kcheck) [draw,predproc,below=of kinit] {CALL \(G,k\)};
         \node (iskcolor) [draw,decision,below=of kcheck] {\(R=\)TRUE?};
         \node (kdone) [draw,terminal,right=of iskcolor] {RETURN \(k\)};
         \node (newg) [draw,process,below=of iskcolor] {\(G=G'\)};
@@ -80,40 +99,109 @@ A flowchart of these steps is shown in Figure \ref{fig:outer}.
   \caption{Algorithm Outer Loop}
 \end{figure}
 
-Note that the outer loop is guaranteed to complete because \(k\) will eventually equal \(n\), which will cause the
-called subroutine to return true.  This occurs when \(G\) (or one of its simplifications) has been reduced to a
-complete graph, which requires a separate color for each vertex.  This fact is expressed by the following
-proposition:
+Note that the outer loop is guaranteed to complete because \(k\) will eventually be greater than or equal to \(n\),
+and thus by Proposition \ref{prop:coloring3}, the current state of \(G\) is at least \colorable{k}, causing the
+called subroutine to return true.
 
-\begin{proposition}[Algorithm Success Condition]
-  \label{prop:success}
-  Let \(G\) be a graph of order \(n\) and let \(k\in\N\):
-  \begin{quote}
-    If \(n\le k\) then \(G\) is \colorable{k}.
-  \end{quote}
-\end{proposition}
+\subsection{Called Subroutine}
 
-\subsection{is-k-colorable(\(G\),\(k\))}
-
-\(G\) may be altered by the called subroutine.
+The called subroutine accepts the current state of \(G\) of order \(n\) and size \(m\) and the current value of
+\(k\) such that \(k\ge2\) as inputs.  It returns a possibly simplified version of \(G\) and a boolean value
+indicating whether the input \(G\) is \colorable{k}.  Note that whenever \(G\) is modified all values are with
+respect to the modified \(G\).  The steps of the called subroutine and their associated theorems are as follows:
 
 \begin{enumerate}
-\item \label{step:check} If \(n\le k\) then return true (Proposition \ref{prop:success}).
+\item \label{step:check} Iif \(n\le k\) then return true (Proposition \ref{prop:coloring3}).  This success
+  condition is achieved whenever \(G\) is simplified by removing vertices or when the outer loop has incremented
+  \(k\) such that \(k=n\).
 
-\item \label{step:density} If \(\displaystyle m>\frac{n}{2k}(kn-n)\) then return false (Lemma \ref{lem:density}).
+\item \label{step:dencalc} Calculate an edge density factor:
+  \[a=\frac{n^2(k-1)}{2k}\]
 
-\item \label{step:small} Set \(X=\setb{v\in V(G)}{\deg(v)<k}\).  If \(\abs{X}=0\) then go to \ref{step:neighbor}.  Otherwise,
-  replace \(G\) with \(G-X\) and go to \ref{step:check} (Corollary \ref{cor:lowdeg}).
+\item \label{step:density} If \(m>a\) then return false (Lemma \ref{lem:density}).
 
-\item \label{step:neighbor} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace \(G\) with
-  \(G-u\) and go to \ref{step:check} (Lemma \ref{lem:subset}).
+\item \label{step:smallcalc} Construct the set \(X\) of all vertices with degree less than \(k\):
+  \[X=\setb{v\in V(G)}{\deg(v)<k}\]
 
-\item \label{step:common} Select two non-adjacent vertices \(u,v\in V(G)\) with the smallest number of common neighbors.  If
-  \(k\ge2\) and \(\displaystyle\abs{N(u)\cap N(v)}>n-2-\frac{n-2}{k-1}\) then return false (Corollary \ref{cor:inter}).
+\item \label{step:small} \(X\ne\emptyset\) then replace \(G\) with \(G-X\) and go to step \ref{step:check} (Corollary
+  \ref{cor:lowdeg}).
+
+\item \label{step:neighbor} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace
+  \(G\) with \(G-u\) and go to step \ref{step:check} (Lemma \ref{lem:subset}).
+
+\item \label{step:common} Select two non-adjacent vertices \(u,v\in V(G)\) with the smallest number of common
+  neighbors.  If \(\displaystyle\abs{N(u)\cap N(v)}>n-2-\frac{n-2}{k-1}\) then return false (Corollary
+  \ref{cor:inter}).
 
 \item Return is-k-colorable(\(G\cdot uv\), \(k\)) or is-k-colorable(\(G+uv\), \(k\)) (Lemma \ref{lem:recurse}).
-
 \end{enumerate}
+
+A flowchart of these steps is shown in Figure \ref{fig:called}.
+
+\afterpage{\clearpage}
+
+\begin{figure}[h]
+  \label{fig:called}
+  \begin{center}
+    \scalebox{0.7}{
+      \begin{tikzpicture}[>=latex']
+        \node (start) [draw,terminal] at (0,0) {START};
+        \node (donecheck) [draw,decision,below=of start] {\(n\le k\)?};
+        \node (done) [draw,terminal,right=of donecheck] {RETURN \(G\),TRUE};
+        \node (edgecalc) [draw,process,below=of donecheck] {\(a=\frac{n^2(k-1)}{2k}\)};
+        \node (edgecheck) [draw,decision,below=of edgecalc] {\(m>a\)?};
+        \node (edgefail) [draw,terminal,right=of edgecheck] {RETURN \(G\),FALSE};
+        \node (nodecalc) [draw,process,below=of edgecheck] {\(X=\setb{v\in V(G)}{\deg(v)<k}\)};
+        \node (nodecheck) [draw,decision,below=of nodecalc] {\(X\ne\emptyset\)?};
+        \node (remnode) [draw,process,left=of nodecheck] {\(G=G-X\)};
+        \node (join) [coordinate] at ($(remnode)-(2.5cm,0)$) {};
+        \node (subcheck) [draw,decision,below=of nodecheck] {\(N(u)\subseteq N(v)\)?};
+        \node (remsub) [draw,process,left=of subcheck] {\(G=G-u\)};
+        \node (mininter) [draw,process,below=of subcheck] {\(\displaystyle b=\min_{u,v\in V(G)}\abs{N(u)\cap N(v)}\)};
+        \node (intercalc) [draw,process,below=of mininter] {\(c=n-2-\frac{n-2}{k-1}\)};
+        \node (intercheck) [draw,decision,below=of intercalc] {\(b>c\)?};
+        \node (interfail) [draw,terminal,right=of intercheck] {RETURN \(G\),FALSE};
+        \node (finduv) [draw,process,right=2.5cm of done] {\(\displaystyle \min_{uv\notin E(G)}\abs{N(u)\cap N(v)}\)};
+        \node (save1) [draw,process,below=of finduv] {\(G'=G\cdot uv\)};
+        \node (call1) [draw,predproc,below=of save1] {CALL \(G',k\)};
+        \node (check1) [draw,decision,below=of call1] {\(R=\)TRUE?};
+        \node (done1) [draw,terminal,right=of check1] {RETURN \(G\),TRUE};
+        \node (save2) [draw,process,below=of check1] {\(G'=G+uv\)};
+        \node (call2) [draw,predproc,below=of save2] {CALL \(G',k\)};
+        \node (check2) [draw,decision,below=of call2] {\(R=\)TRUE?};
+        \node (done2) [draw,terminal,right=of check2] {RETURN \(G\),TRUE};
+        \node (fail) [draw,terminal,below=of check2] {RETURN \(G\),FALSE};
+        \draw [->] (start) -- node [auto] {\(G,k\)} (donecheck);
+        \draw [->] (donecheck) -- node [auto] {YES} (done);
+        \draw [->] (donecheck) -- node [auto] {NO} (edgecalc);
+        \draw [->] (edgecalc) -- (edgecheck);
+        \draw [->] (edgecheck) -- node [auto] {YES} (edgefail);
+        \draw [->] (edgecheck) -- node [auto] {NO} (nodecalc);
+        \draw [->] (nodecalc) -- (nodecheck);
+        \draw [->] (nodecheck) -- node [auto] {YES} (remnode);
+        \draw [->] (remnode) -- (join) |- (donecheck);
+        \draw [->] (nodecheck) -- node [auto] {NO} (subcheck);
+        \draw [->] (subcheck) -- node [auto] {YES} (remsub);
+        \draw (remsub) -| (join);
+        \draw [->] (subcheck) -- node [auto] {NO} (mininter);
+        \draw [->] (mininter) -- (intercalc);
+        \draw [->] (intercalc) -- (intercheck);
+        \draw [->] (intercheck) -- node [auto] {YES} (interfail);
+        \draw [->] (intercheck) -- node [auto] {NO} ($(intercheck)-(0,2cm)$) -- ++(7cm,0) |- (finduv);
+        \draw [->] (finduv) -- (save1);
+        \draw [->] (save1) -- (call1);
+        \draw [->] (call1) -- node [auto] {\(G'',R\)} (check1);
+        \draw [->] (check1) -- node [auto] {YES} (done1);
+        \draw [->] (check1) -- node [auto] {NO} (save2);
+        \draw [->] (save2) -- (call2);
+        \draw [->] (call2) -- node [auto] {\(G'',R\)} (check2);
+        \draw [->] (check2) -- node [auto] {YES} (done2);
+        \draw [->] (check2) -- node [auto] {NO} (fail);
+      \end{tikzpicture}
+    }
+  \end{center}
+  \caption{Algorithm Called Subroutine}
+\end{figure}
 
 This subroutine is guaranteed to return because either there will be sufficient contractions such that \(n\le k\) or
 sufficient edge additions such that the graph becomes complete and \(m>\frac{n}{2k}(kn-n)\) for any \(k<n\).
