@@ -17,12 +17,14 @@ Thus, the goals of the proposed algorithm are as follows:
 \item It has significantly better runtime complexity than the exhaustive algorithm.
 \end{enumerate}
 
-To accomplish these goals, the proposed algorithm takes a somewhat different tack by running the exhaustive
-algorithm for assumed successive values of \(k\) and testing whether a graph \(G\) is \colorable{k}.  Since a
-candidate \(k\) value is known, certain tests can be applied to mutate \(G\) into simpler graphs with the same
-colorability and can result in early termination of branches in the corresponding Zykov tree.  The first \(k\) for
-which \(G\) (or one of its simplifications) is found to be \(k\)-colorable is the chromatic number of \(G\).  Thus,
-the need for rampant recursion is significantly reduced, resulting in a much better runtime complexity.
+To accomplish these goals, the proposed algorithm takes a somewhat different tack.  It loops on successively higher
+values of \(k\).  For each candidate \(k\) value, a graph is assumed to be \colorable{k} and a modified version of
+the exhaustive algorithm is executed to either prove or disprove this assumption.  Since a candidate \(k\) value is
+known, certain steps can be applied to mutate \(G\) into simpler graphs with the same colorability and test for
+very early termination of the current Zykov tree.  The first \(k\) for which \(G\) (or one of its simplifications)
+is found to be \(k\)-colorable is the chromatic number of \(G\).  The tradeoff of looping on \(k\) and very shallow
+execution of each corresponding Zykov tree far outweighs the need to generate an entire Zykov tree, resulting in a
+much better runtime complexity.
 
 One disadvantage of the proposed algorithm is that whereas the exhaustive algorithm also provides examples of actual
 chromatic colorings, the proposed algorithm does not.  However, as was state earlier, during the axiomatic design
@@ -40,7 +42,12 @@ of the algorithm to a sample graph then follow.
 
 \subsection{Outer Loop}
 
-Let \(G\) be an input graph of order \(n\) and size \(m\).  The steps of the outer loop are as follows:
+The outer loop accepts a graph \(G\) as input and returns \(\X(G)\).  It initially checks for some edge cases and
+then loops on increasing values of \(k\).  For each value of \(k\) the called subroutine executes the modified
+exhaustive algorithm to determine if \(G\) is \colorable{k}.  The first such successful return identifies
+\(\X(G)\).
+
+The steps of the outer loop are as follows:
 
 \begin{enumerate}
 \item \label{step:null} If \(n=0\) then return \(0\), thus handling the edge case of a null graph.
@@ -59,7 +66,7 @@ Let \(G\) be an input graph of order \(n\) and size \(m\).  The steps of the out
 
 \item \label{step:incr} Increment \(k\).
 
-\item \label{step:loop} Go to \ref{step:inner}.
+\item \label{step:loop} Go to step \ref{step:inner}.
 \end{enumerate}
 
 A flowchart of these steps is shown in Figure \ref{fig:outer}.
@@ -105,20 +112,23 @@ called subroutine to return true.
 
 \subsection{Called Subroutine}
 
-The called subroutine accepts the current state of \(G\) of order \(n\) and size \(m\) and the current value of
-\(k\) such that \(k\ge2\) as inputs.  It returns a possibly simplified version of \(G\) and a boolean value
-indicating whether the input \(G\) is \colorable{k}.  Note that whenever \(G\) is modified all values are with
-respect to the modified \(G\).  The steps of the called subroutine and their associated theorems are as follows:
+The called subroutine executes a modified version of the exhaustive algorithm that determines whether a graph is
+\colorable{k}.  It accepts the current state of \(G\) of order \(n\) and size \(m\) and the current value of
+\(k\ge2\) as inputs.  It returns a possibly simplified version of \(G\) and a boolean value indicating whether or
+not \(G\) is \colorable{k}.  Internally, various tests are applied to trim the corresponding Zykov tree or abandon
+it all together based on the current value of \(k\).
+
+The steps of the called subroutine and their associated theorems are as follows:
 
 \begin{enumerate}
-\item \label{step:check} Iif \(n\le k\) then return true (Proposition \ref{prop:coloring3}).  This success
-  condition is achieved whenever \(G\) is simplified by removing vertices or when the outer loop has incremented
-  \(k\) such that \(k=n\).
+\item \label{step:check} If \(n\le k\) then return true (Proposition \ref{prop:coloring3}).  This success condition
+  is achieved whenever \(G\) is simplified by removing sufficent vertices (steps \ref{step:small} and
+  \ref{step:neighbor}) or when the outer loop has sufficiently incremented \(k\).
 
-\item \label{step:dencalc} Calculate an edge density factor:
+\item \label{step:dencalc} Calculate a maximum edge threshold:
   \[a=\frac{n^2(k-1)}{2k}\]
 
-\item \label{step:density} If \(m>a\) then return false (Lemma \ref{lem:density}).
+\item \label{step:density} If \(m>a\) then return false (Lemma \ref{cor:density}).
 
 \item \label{step:smallcalc} Construct the set \(X\) of all vertices with degree less than \(k\):
   \[X=\setb{v\in V(G)}{\deg(v)<k}\]
@@ -129,16 +139,32 @@ respect to the modified \(G\).  The steps of the called subroutine and their ass
 \item \label{step:neighbor} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace
   \(G\) with \(G-u\) and go to step \ref{step:check} (Lemma \ref{lem:subset}).
 
-\item \label{step:common} Select two non-adjacent vertices \(u,v\in V(G)\) with the smallest number of common
-  neighbors.  If \(\displaystyle\abs{N(u)\cap N(v)}>n-2-\frac{n-2}{k-1}\) then return false (Corollary
-  \ref{cor:inter}).
+\item \label{step:select} Select two vertices \(u,v\in V(G)\) with the smallest number of common neighbors and let
+  \[b=\abs{N(u)\cap N(v)}\]
 
-\item Return is-k-colorable(\(G\cdot uv\), \(k\)) or is-k-colorable(\(G+uv\), \(k\)) (Lemma \ref{lem:recurse}).
+\item \label{step:neighcalc} Calculate an upper bound for the minimum number of common neighbors for all vertices
+  in \(G\):
+  \[c=n-2-\frac{n-2}{k-1}\]
+
+\item \label{step:common} If \(b>c\) then return false (Corollary \ref{cor:inter}).
+
+\item \label{step:select2} Select two non-adjacent vertices \(u,v\in V(G)\) with the smallest number of common
+  neighbors.  It will be shown below that such a pair of vertices is guaranteed to exist in the current state of
+  \(G\).
+
+\item \label{step:call1} Assume that \(u\) and \(v\) are assigned the same color by letting \(G'=G\cdot uv\).
+  Recursively call this routine to see if \(G'\) is \colorable{k}.  If so, then return true (Lemma
+  \ref{lem:recurse}).
+
+\item \label{step:call2} Assume that \(u\) and \(v\) are assigned different colors by letting \(G'=G+uv\).
+  Recursively call this routine to see if \(G'\) is \colorable{k}.  If so, then return true (Lemma
+  \ref{lem:recurse}).
+
+\item \label{step:fail} Since neither of the assumptions in steps \ref{step:call1} and \ref{step:call2} hold,
+  conclude that \(G\) is not \(k\)-colorable and return false.
 \end{enumerate}
 
 A flowchart of these steps is shown in Figure \ref{fig:called}.
-
-\afterpage{\clearpage}
 
 \begin{figure}[h]
   \label{fig:called}
@@ -203,115 +229,87 @@ A flowchart of these steps is shown in Figure \ref{fig:called}.
   \caption{Algorithm Called Subroutine}
 \end{figure}
 
-This subroutine is guaranteed to return because either there will be sufficient contractions such that \(n\le k\) or
-sufficient edge additions such that the graph becomes complete and \(m>\frac{n}{2k}(kn-n)\) for any \(k<n\).
+Steps \ref{step:check}--\ref{step:neighbor} of the subroutine attempt to remove vertices to achieve a simpler graph
+that is also \colorable{k}.  Note that each time a vertex is removed, the subtrees associated with that vertex in
+the corresponding Zykov tree for \(G\) are ignored.  Since these same steps would just be repeated for \(k+1\), the
+subroutine returns the current state of the possibly simplified \(G\) to the outer loop as a starting point for the
+next candidate value of \(k\).
 
-\subsection{find-k-colorable(\(G\))}
+Steps \ref{step:density} and \ref{step:common} of the subroutine apply tests that attempt to disprove that the
+current state of \(G\) is \colorable{k} for the current value of \(k\).  If so, then the current Zykov tree is
+abandoned and the subroutine returned false.  This allows the outer loop to continue with \(k+1\).
 
+Step \ref{step:select2} of the subroutine assumes that there exists at least one pair of non-adjacent vertices.
+The previous steps in the algorithm guarantee that this is indeed the case.  Otherwise, the current state of \(G\)
+at step \ref{step:select} would be a complete graph and thus \(b=n-2\).  Comparing this to the value of \(c\) in
+step \ref{step:neighcalc}:
+\[b-c=(n-2)-\left(n-2-\frac{n-2}{k-1}\right)=\frac{n-2}{k-1}\]
+with \(k\ge2\).  We can also conclude that \(n>2\) at this point, since any graph of order \(1\) or \(2\) would
+have been wiped out by vertex reduction in step \ref{step:small}.  And so \(b-c>0\), causing step \ref{step:common}
+to eliminated any complete graph.  Therefore, the current state of \(G\) is not complete and so there exists at
+least one pair of non-adjacent vertices.
 
-\section{Theorems}
+The remaining steps of the subroutine constitute the recursive portion of the modified exhaustive algorithm.  The
+subroutine is guaranteed to return because either there will be sufficient contractions such that \(n\le k\),
+resulting in a true return, or sufficient edge additions such that the graph becomes complete and is rejected by
+step \ref{step:common}, resulting in a false return.
 
-\subsection{Algorithm Success Condition}
+\clearpage
 
-\subsection{Edge Density Test}
+\subsection{Supporting Theorems}
 
-\begin{lemma}
-  \label{lem:density}
-  Let \(G\) be a graph of order \(n\) and size \(m\):
-  \begin{quote}
-    \(G\) is \colorable{k} \(\displaystyle\implies m\le\frac{n}{2k}(nk-n)\).
-  \end{quote}
-\end{lemma}
+This section contains the theorems that support the steps in the called subroutine.  Remember that the success check
+of step \ref{step:check} is already supported by Proposition \ref{prop:coloring3}.
+
+The maximum edge threshold test of steps \ref{step:dencalc} and \ref{step:density} are supported by Theorem
+\ref{thm:density} and Corollary \ref{cor:density}.
+
+\begin{theorem}[Maximum Edge Threshold]
+  \label{thm:density}
+  Let \(G\) be a graph of order \(n\) and size \(m\) and let \(k\in\N\).  If \(G\) is \colorable{k} then:
+  \[m\le\frac{n^2(k-1)}{2k}\]
+\end{theorem}
 
 \begin{proof}
-  Assume \(G\) is \colorable{k}.  This means that \(V(G)\) can be distributed into \(k\) independent (some possibly empty)
-  subsets.  Call these subsets \(A_1,\ldots A_k\) and let \(a_i=\abs*{A_i}\).  Thus, each \(v\in A_i\) can be adjacent to at
-  most \(n-a_i\) other vertices in \(G\), and hence the maximum number of edges incident to vertices in \(A_i\) is given by:
-  \(a_i(n-a_i)=na_i-a_i^2\).  Now, using the fundamental theorem of graph theory, the maximum number of edges in \(G\) is given
-  by:
+  Assume \(G\) is \colorable{k}.  This means that \(V(G)\) can be distributed into \(k\) independent (some possibly
+  empty) subsets.  Call these subsets \(A_1,\ldots A_k\) and let \(a_i=\abs*{A_i}\).  Thus, each \(v\in A_i\) can
+  be adjacent to at most \(n-a_i\) other vertices in \(G\), and hence the maximum number of edges incident to
+  vertices in \(A_i\) is given by: \(a_i(n-a_i)=na_i-a_i^2\).  Now, using Theorem \ref{thm:first}, the maximum
+  number of edges in \(G\) is given by:
   \[m\le\frac{1}{2}\sum_{i=1}^k(na_i-a_i^2)\]
   with the constraint:
   \[\sum_{i=1}^ka_i=n\]
-  This problem can be solved using the Lagrange multiplier technique:
-  \begin{gather*}
-    \frac{1}{2}(n-2a_i)=\l \\
-    a_i=\frac{n}{2}-\l \\
-    \\
-    \sum_{i=1}^ka_i=\sum_{i=1}^k\left(\frac{n}{2}-\l\right)=k\left(\frac{n}{2}-\l\right)=n \\
-    \l=\frac{n}{2}-\frac{n}{k} \\
-    \\
-    a_i=\frac{n}{2}-\left(\frac{n}{2}-\frac{n}{k}\right)=\frac{n}{k}
-  \end{gather*}
+  This problem can be solved using the Lagrange multiplier technique.  We start by defining:
+  \begin{align*}
+    F(a_1,\ldots,a_k) &= f(a_1,\ldots,a_k)-\l g(a_1,\ldots,a_k) \\
+    &= \frac{1}{2}\sum_{i=1}^k(na_i-a_i^2)-\l\sum_{i=1}^ka_i \\
+    &= \sum_{i=1}^k\left(\frac{1}{2}na_i-\frac{1}{2}a_i^2-\l a_i\right)
+  \end{align*}
+  Now, optimize by taking the gradient and setting the result equal to the zero vector:
+  \[\vec{\nabla}F=\sum_{i=1}^k(\frac{n}{2}-a_i-\l)\hat{a_i}=\vec{0}\]
+  This results in a system of \(k\) equations of the form:
+  \[\frac{n}{2}-a_i-\l=0\]
+  And so:
+  \[a_i=\frac{n}{2}-\l\]
+  Plugging this result back into the contraint:
+  \[\sum_{i=1}^ka_i=\sum_{i=1}^k\left(\frac{n}{2}-\l\right)=k\left(\frac{n}{2}-\l\right)=n\]
+  Solving for \(\l\) yields:
+  \[\l=\frac{n}{2}-\frac{n}{k}\]
+  And finally, to get \(a_i\) in terms of \(n\) and \(k\):
+  \[a_i=\frac{n}{2}-\left(\frac{n}{2}-\frac{n}{k}\right)=\frac{n}{k}\]
   Therefore:
   \[m\le\frac{1}{2}\sum_{i=1}^k\left[n\left(\frac{n}{k}\right)-\left(\frac{n}{k}\right)^2\right]=
-  \frac{k}{2}\left(\frac{n^2k-n^2}{k^2}\right)=\frac{n}{2k}(nk-n)\]
+  \frac{k}{2}\left(\frac{n^2k-n^2}{k^2}\right)=\frac{n^2(k-1)}{2k}\]
 \end{proof}
+
+The called subroutine actually uses the contrapositive of this result, as stated in Corollary \ref{cor:density}.
 
 \begin{corollary}
   \label{cor:density}
-  Let \(G\) be a graph of order \(n\) and size \(m\) and let \(k\in\N\):
-  \begin{quote}
-    \(\displaystyle m>\frac{n}{2k}(nk-n)\implies G\) is not \colorable{k}.
-  \end{quote}
+  Let \(G\) be a graph of order \(n\) and size \(m\) and let \(k\in\N\).  If:
+  \[m>\frac{n^2(k-1)}{2k}\]
+  then \(G\) is not \colorable{k}.
 \end{corollary}
-
-\subsection{Degree \(n-1\) Vertices}
-
-\begin{lemma}
-  \label{lem:adjall}
-  Let \(G\) be a graph of order \(n\) and let \(v\in V(G)\) such that \(\deg(v)=n-1\):
-  \begin{quote}
-    \(G\) is \colorable{k} \(\iff G-v\) is \colorable{(k-1)}.
-  \end{quote}
-\end{lemma}
-
-\begin{proof}
-  \begin{description}
-  \item[]
-  \item[\(\implies\)] Assume \(G\) is \colorable{k}.
-
-    Since \(\deg(v)=n-1\), \(v\) is adjacent to all vertices in \(G-v\) and so \(v\) must have its own unique color in any
-    proper \coloring{k} of \(G\).  Thus, \(G-v\) has a proper coloring using the remaining \(k-1\) colors.
-
-    \(\therefore G-v\) is \colorable{(k-1)}.
-    
-  \item[\(\impliedby\)] Assume \(G-v\) is \colorable{(k-1)}.
-
-    Extend \(G-v\) to \(G\) and color \(v\) with a unique color (i.e., not one of the original \(k-1\) colors).  This is a
-    proper coloring of \(G\) using \((k-1)+1=k\) colors.
-
-    \(\therefore G\) is \colorable{k}.
-  \end{description}
-\end{proof}
-
-\begin{corollary}
-  \label{cor:adjall}
-  Let \(G\) be a graph of order \(n\) and let \(X=\setb{v\in V(G)}{\deg(v)=n-1}\):
-  \begin{quote}
-    \(G\) is \colorable{k} \(\iff G-X\) is \colorable{(k-\abs{X})}.
-  \end{quote}
-\end{corollary}
-
-\begin{proof}
-  (by induction on \(\abs{X}\))
-  \begin{enumerate}
-  \item (Base Case) Let \(\abs{X}=0\).
-
-    Since \(G-X=G\) and \(k-0=k\), \(G\) is \colorable{k} \(\iff G-X=G\) is \colorable{(k-0=k)}.
-
-  \item (Inductive Assumption) Let \(\abs{X}=r\).
-
-    Assume \(G\) is \colorable{k} \(\iff G-X\) is \colorable{(k-r)}.
-
-  \item (Inductive Step) Consider \(\abs{X}=r+1\).
-    
-    Since \(\abs{X}=r+1>0\), there exists \(v\in X\) such that \(\deg(v)=n-1\).  Let \(Y=X-\set{v}\) and note that
-    \(\abs{Y}=\abs{X}-1=(r+1)-1=r\).  So, \(G\) is \colorable{k} \(\iff G-v\) is \colorable{(k-1)} (Lemma \ref{lem:adjall})
-    \(\iff (G-v)-Y=G-X\) is \colorable{\left((k-1)-r=k-(r+1)\right)} (inductive assumption).
-  \end{enumerate}
-
-  Therefore, by the principle of induction, \(G\) is \colorable{k} \(\iff G-X\) is \colorable{(k-\abs{X})}.
-\end{proof}
 
 \subsection{Low Degree Vertices}
 

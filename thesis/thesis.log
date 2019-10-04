@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  2 OCT 2019 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  3 OCT 2019 21:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -284,7 +284,7 @@ Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count92
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/02/04 v3.8 Customized lists
+Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip43
 \enit@outerparindent=\dimen112
 \enit@toks=\toks18
@@ -1087,21 +1087,25 @@ LaTeX Warning: `h' float specifier changed to `ht'.
  (./algorithm.tex [23
 
 
-] [24]
+]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[25] [26] [27
+[24] [25]
 
-] [28] [29] [30] [31] [32] [33] [34]) [35] (./thesis.bbl) [36
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[26] [27] [28
+
+] [29] [30] [31] [32] [33] [34]) [35] (./thesis.bbl) [36
 
 ]
 (./thesis.aux (./theory.aux) (./algorithm.aux)) ) 
 Here is how much of TeX's memory you used:
- 20925 strings out of 492609
- 427250 string characters out of 6129049
- 545494 words of memory out of 5000000
- 24387 multiletter control sequences out of 15000+600000
+ 20932 strings out of 492609
+ 427341 string characters out of 6129048
+ 542874 words of memory out of 5000000
+ 24394 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,15n,436p,839b,1322s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1124,7 +1128,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019
 /texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (36 pages, 369218 bytes).
+Output written on thesis.pdf (36 pages, 370948 bytes).
 PDF statistics:
  188 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams
