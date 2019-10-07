@@ -123,7 +123,7 @@ The steps of the called subroutine and their associated theorems are as follows:
 \begin{enumerate}
 \item \label{step:check} If \(n\le k\) then return true (Proposition \ref{prop:coloring3}).  This success condition
   is achieved whenever \(G\) is simplified by removing sufficent vertices (steps \ref{step:small} and
-  \ref{step:neighbor}) or when the outer loop has sufficiently incremented \(k\).
+  \ref{step:neighbor}) or when the outer loop has sufficiently incremented \(k\) (step \ref{step:incr}).
 
 \item \label{step:dencalc} Calculate a maximum edge threshold:
   \[a=\frac{n^2(k-1)}{2k}\]
@@ -311,55 +311,181 @@ The called subroutine actually uses the contrapositive of this result, as stated
   then \(G\) is not \colorable{k}.
 \end{corollary}
 
-\subsection{Low Degree Vertices}
+The theorems that support vertex removal make use of Lemma \ref{lem:remone}.
 
 \begin{lemma}
   \label{lem:remone}
-  Let \(G\) be a graph and let \(v\in V(G)\):
-  \begin{quote}
-    \(G\) is \colorable{k} \(\implies G-v\) is \colorable{k}.
-  \end{quote}
+  Let \(G\) be a graph and let \(v\in V(G)\).  If \(G\) is \colorable{k} then \(G-v\) is also \colorable{k}.
 \end{lemma}
 
 \begin{proof}
-  
-  Assume \(G\) is \colorable{k}.
+  Assume \(G\) is \colorable{k} and let \(c:V(G)\to C\) be such a coloring.  This means that \(\abs{C}=k\) and for
+  all \(uw\in E(G)\) such that \(v\notin uw\) it is the case that \(c(u)=c_1\) and \(c(w)=c_2\) and \(c_1\ne c_2\)
+  for some \(c_1,c_2\in C\).
 
-  \begin{description}
-  \item[Case 1:] \(v\) has its own unique color.
-      
-    \(G-v\) still has a proper coloring using \(k-1\) colors and hence is \colorable{(k-1)}, and thus is \colorable{k}.
-
-  \item[Case 2:] \(v\) shares a color with some other vertex.
-
-    \(G-v\) still has a proper coloring using \(k\) colors and is thus still \colorable{k}.
-  \end{description}
+  Now, consider the restricted function \(c'=\restrict{c}{V(G-v)}\).  It is still the case that \(c'(u)=c_1\) and
+  \(c'(w)=c_2\) and \(c_1\ne c_2\), so \(c'\) is still proper with \(\abs{C}=k\).
 
   \(\therefore G-v\) is \colorable{k}.
 \end{proof}
 
-\begin{lemma}
-  \label{lem:lowdeg}
-  Let \(G\) be a graph and let \(v\in V(G)\) such that \(d(v)<k\) for some \(k\in\N\):
-  \begin{quote}
-    \(G\) is \colorable{k} \(\iff G-v\) is \colorable{k}.
-  \end{quote}
-\end{lemma}
+Lemma \ref{lem:remone} is demonstrated in Figure \ref{fig:remone}.  No matter which vertex is removed, the resulting
+subgraph is still properly colored using at most four colors.
+
+\begin{figure}
+  \label{fig:remone}
+  \begin{minipage}{1.25in}
+    \begin{center}
+      \scalebox{0.75}{
+        \begin{tikzpicture}
+          \colorlet{c1}{green!25!white}
+          \colorlet{c2}{blue!25!white}
+          \colorlet{c3}{red!25!white}
+          \colorlet{c4}{yellow!25!white}
+          \begin{scope}[every node/.style={coordinate}]
+            \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+          \end{scope}
+          \begin{scope} [every node/.style={labeled node}]
+            \node [fill=c1] (v1) at (x1) {\(a\)};
+            \node [fill=c2] (v2) at (x2) {\(b\)};
+            \node [fill=c3] (v3) at (x3) {\(c\)};
+            \node [fill=c4] (v4) at (x4) {\(d\)};
+          \end{scope}
+          \draw (v1) edge (v2) edge (v3) edge (v4);
+          \draw (v2) edge (v3) edge (v4);
+          \draw (v3) edge (v4);
+        \end{tikzpicture}
+      }
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \begin{center}
+      \scalebox{0.75}{
+        \begin{tikzpicture}
+          \colorlet{c1}{green!25!white}
+          \colorlet{c2}{blue!25!white}
+          \colorlet{c3}{red!25!white}
+          \colorlet{c4}{yellow!25!white}
+          \begin{scope}[every node/.style={coordinate}]
+            \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+          \end{scope}
+          \begin{scope} [every node/.style={labeled node}]
+            \node [fill=c2] (v2) at (x2) {\(b\)};
+            \node [fill=c3] (v3) at (x3) {\(c\)};
+            \node [fill=c4] (v4) at (x4) {\(d\)};
+          \end{scope}
+          \draw (v2) edge (v3) edge (v4);
+          \draw (v3) edge (v4);
+        \end{tikzpicture}
+      }
+
+      \bigskip
+
+      \(G-a\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \begin{center}
+      \scalebox{0.75}{
+        \begin{tikzpicture}
+          \colorlet{c1}{green!25!white}
+          \colorlet{c2}{blue!25!white}
+          \colorlet{c3}{red!25!white}
+          \colorlet{c4}{yellow!25!white}
+          \begin{scope}[every node/.style={coordinate}]
+            \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+          \end{scope}
+          \begin{scope} [every node/.style={labeled node}]
+            \node [fill=c1] (v1) at (x1) {\(a\)};
+            \node [fill=c3] (v3) at (x3) {\(c\)};
+            \node [fill=c4] (v4) at (x4) {\(d\)};
+          \end{scope}
+          \draw (v1) edge (v3) edge (v4);
+          \draw (v3) edge (v4);
+        \end{tikzpicture}
+      }
+
+      \bigskip
+
+      \(G-b\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \begin{center}
+      \scalebox{0.75}{
+        \begin{tikzpicture}
+          \colorlet{c1}{green!25!white}
+          \colorlet{c2}{blue!25!white}
+          \colorlet{c3}{red!25!white}
+          \colorlet{c4}{yellow!25!white}
+          \begin{scope}[every node/.style={coordinate}]
+            \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+          \end{scope}
+          \begin{scope} [every node/.style={labeled node}]
+            \node [fill=c1] (v1) at (x1) {\(a\)};
+            \node [fill=c2] (v2) at (x2) {\(b\)};
+            \node [fill=c4] (v4) at (x4) {\(d\)};
+          \end{scope}
+          \draw (v1) edge (v2) edge (v4);
+          \draw (v2) edge (v4);
+        \end{tikzpicture}
+      }
+
+      \bigskip
+
+      \(G-c\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \begin{center}
+      \scalebox{0.75}{
+        \begin{tikzpicture}
+          \colorlet{c1}{green!25!white}
+          \colorlet{c2}{blue!25!white}
+          \colorlet{c3}{red!25!white}
+          \colorlet{c4}{yellow!25!white}
+          \begin{scope}[every node/.style={coordinate}]
+            \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+          \end{scope}
+          \begin{scope} [every node/.style={labeled node}]
+            \node [fill=c1] (v1) at (x1) {\(a\)};
+            \node [fill=c2] (v2) at (x2) {\(b\)};
+            \node [fill=c3] (v3) at (x3) {\(c\)};
+          \end{scope}
+          \draw (v1) edge (v2) edge (v3);
+          \draw (v2) edge (v3);
+        \end{tikzpicture}
+      }
+
+      \bigskip
+
+      \(G-d\)
+    \end{center}
+  \end{minipage}
+  \caption{Vertex Removal Example}
+\end{figure}
+
+Step \ref{step:small} removes vertices with degree less than \(k\).  This is supported by Theorem \ref{thm:lowdeg}.
+
+\begin{theorem}
+  \label{thm:lowdeg}
+  Let \(G\) be a graph and let \(v\in V(G)\) such that \(\deg(v)<k\) for some \(k\in\N\).  \(G\) is \colorable{k} iff
+  \(G-v\) is \colorable{k}.
+\end{theorem}
 
 \begin{proof}
-  \begin{description}
-  \item[]
-  \item[\(\implies\)] Assume \(G\) is \colorable{k}.
+  Assume \(G\) is \colorable{k}.  Therefore, by Lemma \ref{lem:remone}, \(G-v\) is also \colorable{k}.
 
-    \(\therefore G-v\) is \colorable{k} (Lemma \ref{lem:remone}).
+  For the converse, assume that \(G-v\) is \(k\)-colorable.  By assumption, \(\deg(v)<k\), meaning \(v\) has at
+  most \(k-1\) neighbors, using at most \(k-1\) colors.  Thus, there is always an additional color available for
+  \(v\).  So extend \(G-v\) to \(G\) and color \(v\) with one of the available \(k-\deg(v)\) colors.  The result is
+  a proper \coloring{\left((k-1)+1=k\right)} of \(G\).
 
-  \item[\(\impliedby\)] Assume \(G-v\) is \(k\)-colorable.
-    By assumption, \(d(v)<k\), meaning \(v\) has at most \(k-1\) neighbors, using at most \(k-1\) colors.  Thus, there is
-    always an additional color available for \(v\).  So extend \(G-v\) to \(G\) and color \(v\) with one of the available
-    \(k-d(v)\) colors.  The result is a proper \coloring{\left((k-1)+1=k\right)} of \(G\).
-
-    \(\therefore G\) is \colorable{k}.
-  \end{description}
+  \(\therefore G\) is \colorable{k}.
 \end{proof}
 
 \begin{corollary}
@@ -442,73 +568,6 @@ The called subroutine actually uses the contrapositive of this result, as stated
 
   \(\therefore\forall\,u\in S,N(u)\subseteq N(v)\)
 \end{proof}
-
-\begin{lemma}
-  \label{lem:tighter}
-  Let \(G\) be a graph of order \(n\) and size \(m\) such that:
-  \begin{enumerate}
-  \item \(\forall\,v\in V(G),\deg(v)<n-1\)
-  \item \(\forall\,u,v\in V(G),N(u)\not\subseteq N(v)\)
-  \end{enumerate}
-  and let \(k\in\N\):
-  \begin{quote}
-    \(G\) is \colorable{k} \(\displaystyle\implies m\le\frac{n}{2k}(nk-n-k)\).
-  \end{quote}
-\end{lemma}
-
-\begin{proof}
-  Assume \(G\) is \colorable{k}.  This means that \(V(G)\) can be distributed into \(k\) independent (some possibly empty)
-  subsets.  Call these subsets \(A_1,\ldots A_k\) and let \(a_i=\abs*{A_i}\).
-
-  First, assume by way of contradiction (ABC) that for some \(A_i\) where \(1\le i\le k\) there exists \(v\in A_i\) such that
-  \(v\) is adjacent to every vertex in \(V(G)-A_i\).
-
-  \begin{description}
-  \item[Case 1:] \(a_i=1\)
-
-    This means that \(v\) is adjacent to all of the other vertices in \(G\) and thus has degree \(n-1\), which contradicts
-    the initial assumption.
-
-  \item[Case 2:] \(a_i>1\)
-
-    Then there exists \(u\in A_i\) such that \(u\ne v\) and \(N(u)\subseteq N(v)\) (Lemma \ref{lem:neighbor}).
-  \end{description}
-
-  \(\therefore N(u)\subseteq N(v)\), which contradicts the initial assumption, and so for each \(v\in A_i\) there must exist
-  \(u\in V(G)-A_i\) such that \(uv\notin E(G)\), and hence each \(v\in A_i\) can be adjacent to at most \(n-a_i-1\) other
-  vertices in \(G\).  This means that the maximum number of edges incident to vertices in \(A_i\) is given by:
-  \(a_i(n-a_i-1)=na_i-a_i^2-a_i\).  Now, using the fundamental theorem of graph theory, the maximum number of edges in \(G\) is
-  given by:
-  \[m\le\frac{1}{2}\sum_{i=1}^k(na_i-a_i^2-a_i)\]
-  with the constraint:
-  \[\sum_{i=1}^ka_i=n\]
-  This problem can be solved using the Lagrange multiplier technique:
-  \begin{gather*}
-    \frac{1}{2}(n-2a_i-1)=\l \\
-    a_i=\frac{n}{2}-\frac{1}{2}-\l \\
-    \\
-    \sum_{i=1}^ka_i=\sum_{i=1}^k\left(\frac{n}{2}-\frac{1}{2}-\l\right)=k\left(\frac{n}{2}-\frac{1}{2}-\l\right)=n \\
-    \l=\frac{n}{2}-\frac{1}{2}-\frac{n}{k} \\
-    \\
-    a_i=\frac{n}{2}-\frac{1}{2}-\left(\frac{n}{2}-\frac{1}{2}-\frac{n}{k}\right)=\frac{n}{k}
-  \end{gather*}
-  Therefore:
-  \[m\le\frac{1}{2}\sum_{i=1}^k\left[n\left(\frac{n}{k}\right)-\left(\frac{n}{k}\right)^2-\frac{n}{k}\right]=
-  \frac{k}{2}\left(\frac{n^2k-n^2-kn}{k^2}\right)=\frac{n}{2k}(nk-n-k)\]
-\end{proof}
-
-\begin{corollary}
-  \label{cor:tighter}
-  Let \(G\) be a graph of order \(n\) and size \(m\) such that:
-  \begin{enumerate}
-  \item \(\forall\,v\in V(G),\deg(v)<n-1\)
-  \item \(\forall\,u,v\in V(G),N(u)\not\subseteq N(v)\)
-  \end{enumerate}
-  and let \(k\in\N\):
-  \begin{quote}
-    \(\displaystyle m>\frac{n}{2k}(nk-n-k)\implies G\) is not \colorable{k}.
-  \end{quote}
-\end{corollary}
 
 \subsection*{Neighborhood Intersection Test}
 
