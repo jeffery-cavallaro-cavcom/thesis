@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  4 OCT 2019 10:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  7 OCT 2019 08:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -284,7 +284,7 @@ Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count92
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/06/20 v3.9 Customized lists
+Package: enumitem 2019/02/04 v3.8 Customized lists
 \labelindent=\skip43
 \enit@outerparindent=\dimen112
 \enit@toks=\toks18
@@ -1105,7 +1105,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
  [29]
 
-LaTeX Warning: Reference `lem:lowdeg' on page 30 undefined on input line 513.
+LaTeX Warning: Reference `lem:lowdeg' on page 30 undefined on input line 515.
 
 [30] [31] [32] [33]) [34] (./thesis.bbl) [35
 
@@ -1116,10 +1116,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 20982 strings out of 492609
- 427970 string characters out of 6129048
- 543884 words of memory out of 5000000
- 24444 multiletter control sequences out of 15000+600000
+ 20980 strings out of 492609
+ 427944 string characters out of 6129049
+ 543877 words of memory out of 5000000
+ 24442 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,15n,436p,839b,1322s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1142,7 +1142,7 @@ b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
 pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
 
-Output written on thesis.pdf (35 pages, 369267 bytes).
+Output written on thesis.pdf (35 pages, 369348 bytes).
 PDF statistics:
  185 PDF objects out of 1000 (max. 8388607)
  131 compressed objects within 2 object streams

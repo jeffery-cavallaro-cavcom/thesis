@@ -5,33 +5,35 @@ The exhaustive algorithm described in the previous section subjects each pair of
 manner.  The leaves of the resulting Zykov tree represent complete graphs that describe all of the possible \(k\)
 colorings of \(G\), with the complete graphs of smallest order representing chromatic colorings of \(G\).
 
-The major advantages of the exhaustive algorithm are that it isn't dependent on whether or not a graph is connected
-and the fact that the algorithm, due to its Turing machine nature, can be coded rather easily to run on a computer.
-Its major disadvantage is its high runtime complexity due to the need to generate the entire Zykov tree using an
-exponentially growing number of recursive calls.
+The major advantages of the exhaustive algorithm are that it isn't dependent on whether or not a graph is
+connected, an example of a chromatic coloring is readily available, and the fact that the algorithm, due to its
+Turing machine nature, can be coded rather easily to run on a computer.  Its major disadvantage is its high runtime
+complexity due to the need to generate the entire Zykov tree using an exponentially growing number of recursive
+calls.
 
 Thus, the goals of the proposed algorithm are as follows:
 \begin{enumerate}
 \item It does not depend on whether a graph is connected or not.
+\item An example of a chromatic coloring should be easily available.
 \item It can be easily coded for execution on a computer.
 \item It has significantly better runtime complexity than the exhaustive algorithm.
 \end{enumerate}
 
-To accomplish these goals, the proposed algorithm takes a somewhat different tack.  It loops on successively higher
+To accomplish these goals, the proposed algorithm takes a somewhat different tack: it loops on successively higher
 values of \(k\).  For each candidate \(k\) value, a graph is assumed to be \colorable{k} and a modified version of
 the exhaustive algorithm is executed to either prove or disprove this assumption.  Since a candidate \(k\) value is
-known, certain steps can be applied to mutate \(G\) into simpler graphs with the same colorability and test for
-very early termination of the current Zykov tree.  The first \(k\) for which \(G\) (or one of its simplifications)
-is found to be \(k\)-colorable is the chromatic number of \(G\).  The tradeoff of looping on \(k\) and very shallow
-execution of each corresponding Zykov tree far outweighs the need to generate an entire Zykov tree, resulting in a
-much better runtime complexity.
+known, certain reversible steps can be applied to mutate \(G\) into simpler graphs with the same colorability and
+test for very early termination of the current Zykov tree.  The first \(k\) for which \(G\) (or one of its
+simplifications) is found to be \(k\)-colorable is the chromatic number of \(G\).  As will be shown, the tradeoff
+of looping on \(k\) and very shallow execution of each corresponding Zykov tree far outweighs the need to generate
+an entire Zykov tree, resulting in a much better runtime complexity.
 
-One disadvantage of the proposed algorithm is that whereas the exhaustive algorithm also provides examples of actual
-chromatic colorings, the proposed algorithm does not.  However, as was state earlier, during the axiomatic design
-phase it is more important to know the minimum number of parts as opposed to actual functional requirement allocation
-to those parts.  Since there are other well-known algorithms to find a \coloring{k}, the advantage of improved
-runtime complexity so that an answer is achievable in a reasonable amount of time overweighs the disadvantage of
-having to run a separate coloring algorithm later.
+One slight disadvantage of the proposed algorithm is that whereas the exhaustive algorithm readily provides
+examples of actual chromatic colorings, the proposed algorithm requires a reverse traversal of its reversible steps
+in order to construct such a coloring.  Nevertheless, this technique still has the advantage over common coloring
+algorithms such as greedy coloring because it is not heuristic.  However, as was stated earlier, during the
+axiomatic design phase it is more important to know the minimum number of parts as opposed to actual functional
+requirement allocation to those parts.
 
 This algorithm was first proposed by the author and his advisor in collaboration with a team of mechanical
 engineering researchers from SUNY Buffalo \cite{cavallaro}.  It accepts a graph \(G\) as input, provides \(\X(G)\)
