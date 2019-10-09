@@ -155,12 +155,12 @@ The steps of the called subroutine and references to their associated theorems a
   \(G\).
 
 \item \label{step:call1} Assume that \(u\) and \(v\) are assigned the same color by letting \(G'=G\cdot uv\).
-  Recursively call this routine to see if \(G'\) is \colorable{k}.  If so, then return true (Lemma
-  \ref{lem:recurse}).
+  Recursively call this routine to see if \(G'\) is \colorable{k}.  If so, then return true (Theorem
+  \ref{thm:recurse}).
 
 \item \label{step:call2} Assume that \(u\) and \(v\) are assigned different colors by letting \(G'=G+uv\).
-  Recursively call this routine to see if \(G'\) is \colorable{k}.  If so, then return true (Lemma
-  \ref{lem:recurse}).
+  Recursively call this routine to see if \(G'\) is \colorable{k}.  If so, then return true (Theorem
+  \ref{thm:recurse}).
 
 \item \label{step:fail} Since neither of the assumptions in steps \ref{step:call1} and \ref{step:call2} hold,
   conclude that \(G\) is not \(k\)-colorable and return false.
@@ -327,7 +327,7 @@ not a sufficient condition.
       \colorlet{c2}{blue!25!white}
       \colorlet{c3}{red!25!white}
       \begin{scope}[every node/.style={coordinate}]
-        \cycleNnodes{4}{(0,0)}{1in}{135}{c};
+        \cycleNnodes{4}{(0,0)}{0.75in}{135}{c};
       \end{scope}
       \begin{scope}[every node/.style={labeled node}]
         \node [fill=c1] (a) at (c1) {\(a\)};
@@ -727,9 +727,9 @@ Theorem \ref{thm:inter} establishes the desired upper bound.
 
 \begin{theorem}
   \label{thm:inter}
-  Let \(G\) be a graph of order \(n\) and size \(m\) such that there are no \(u,v\in V(G)\) such that
-  \(N(u)\subseteq N(v)\), and let \(k\in\N\) such that \(2\le k<n\).  If \(G\) is \colorable{k} then there exists
-  two vertices \(w,z\in V(G)\) such that:
+  Let \(G\) be a graph of order \(n\) and size \(m\) such that there are no \(u,v\in V(G)\) where \(N(u)\subseteq
+  N(v)\), and let \(k\in\N\) such that \(2\le k<n\).  If \(G\) is \colorable{k} then there exists two vertices
+  \(w,z\in V(G)\) such that:
   \[\abs{N(w)\cap N(z)}\le n-2-\frac{n-2}{k-1}\]
 \end{theorem}
 
@@ -786,9 +786,9 @@ Theorem \ref{thm:inter} establishes the desired upper bound.
 
     So there must exist some \(u\in V(G)-A_1-A_i\) such that \(u\) is not adjacent to \(v'\).  This results in the
     upper bound:
-    \[\abs{N(v)\cap N(v')}\le n-2-\frac{n-1}{k-1}\]
-    Comparing this to the desired bound:
-    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-2-\frac{n-1}{k-1}\right)=\frac{1}{k-1}>0\]
+    \[\abs{N(v)\cap N(v')}\le n-\abs{\set{u,v'}}-a_1\le n-2-\frac{n-1}{k-1}\]
+    Note that since \(v\in A_1\), it is already counted in \(a_1\).  Comparing this bound to the desired bound:
+    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-2-\frac{n-1}{k-1}\right)=\frac{(n-1)-(n-2)}{k-1}=\frac{1}{k-1}>0\]
     for \(k\ge2\).  Thus the new bound is tighter and so:
     \[\abs{N(v)\cap N(v')}\le n-2-\frac{n-1}{k-1}\le n-2-\frac{n-2}{k-1}\]
     
@@ -797,41 +797,88 @@ Theorem \ref{thm:inter} establishes the desired upper bound.
     By the pigeonhole principle:
     \[a_1\ge\ceil*{\frac{n-2}{k-1}}\ge\frac{n-2}{k-1}\]
     This results in the upper bound:
-    \[\abs{N(v)\cap N(v')}\le n-2-\frac{n-2}{k-1}\]
+    \[\abs{N(v)\cap N(v')}\le n-a_i-a_1\le n-2-\frac{n-2}{k-1}\]
     
   \item [Case 3:] \(a_i\ge3\)
 
     By the pigeonhole principle:
     \[a_1\ge\ceil*{\frac{n-3}{k-1}}\ge\frac{n-3}{k-1}\]
     This results in the upper bound:
-    \[\abs{N(v)\cap N(v')}\le n-3-\frac{n-3}{k-1}\]
+    \[\abs{N(v)\cap N(v')}\le n-a_i-a_1\le n-3-\frac{n-3}{k-1}\]
     Comparing this to the desired bound:
-    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-3-\frac{n-3}{k-1}\right)=1-\frac{1}{k-1}\ge0\]
+    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-3-\frac{n-3}{k-1}\right)=1-\frac{(n-3)-(n-2)}{k-1}=1-\frac{1}{k-1}>0\]
     for \(k\ge2\).  Thus the new bound is tighter and so:
     \[\abs{N(v)\cap N(v')}\le n-3-\frac{n-3}{k-1}\le n-2-\frac{n-2}{k-1}\]
   \end{description}
 
-  \(\displaystyle \therefore\exists\,w,z\in V(G)\) such that \(\abs{N(w)\cap N(z)}\le n-2-\frac{n-2}{k-1}\).
+  Therefore, there exists \(w,v\in V(G)\) such that:
+  \[\abs{N(w)\cap N(z)}\le n-2-\frac{n-2}{k-1}\]
 \end{proof}
+
+The called subroutine actually uses the contrapositive of this result, as stated in Corollary \ref{cor:inter}.
 
 \begin{corollary}
   \label{cor:inter}
-  Let \(G\) be a graph of order \(n\) and size \(m\) such that \(\forall\,u,v\in V(G),N(u)\not\subseteq N(v)\) and let
-  \(k\in\N\) such that \(2\le k<n\):
-  \begin{quote}
-    \(\displaystyle\left(\forall\,w,z\in V(G),\abs{N(w)\cap N(z)}>n-2-\frac{n-2}{k-1}\right)\implies G\) is not \colorable{k}.
-  \end{quote}
+  Let \(G\) be a graph of order \(n\) and size \(m\) such that there are no \(u,v\in V(G)\) where
+  \(N(u)\subseteq N(v)\), and let \(k\in\N\) such that \(2\le k<n\).  If for all \(w,z\in V(G)\) it is the case
+  that:
+  \[\abs{N(w)\cap N(z)}>n-2-\frac{n-2}{k-1}\]
+  then \(G\) is not \colorable{k}.
 \end{corollary}
 
-\subsection{Recursive Step}
+Corollary \ref{cor:inter} is demonstrated in Figure \ref{fig:inter}.  The shown graph has \(n=5\), is \chromatic{3},
+and has:
+\[\min_{u,v\in V(G)}\abs{N(u)\cap N(v)}=1\]
+Testing for \(k=2\):
+\[5-2-\frac{5-2}{2-1}=0\]
+But \(1>0\) and so we can conclude that \(G\) is not \colorable{2}.  However, testing for \(k=3\):
+\[5-2-\frac{5-2}{3-1}=\frac{3}{2}\]
+So \(1\ngtr\frac{3}{2}\) and thus \(G\) \emph{may} be \colorable{3}, since this test only provides a necessary and
+not a sufficient condition.
 
-\begin{lemma}
-  \label{lem:recurse}
-  Let \(G\) be a graph of order \(n>=2\) and let \(u,v\in G\) such that \(uv\notin E(G)\):
-  \begin{quote}
-    \(G\) is \colorable{k} \(\iff G\cdot uv\) or \(G+uv\) is \colorable{k}.
-  \end{quote}
-\end{lemma}
+\begin{figure}[h]
+  \label{fig:inter}
+  \begin{center}
+    \begin{tikzpicture}
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{blue!25!white}
+      \colorlet{c3}{red!25!white}
+      \begin{scope}[every node/.style={labeled node}]
+        \node [fill=c1] (a) at (0,0) {\(a\)};
+        \node [fill=c2,above left=of a] (b) {\(b\)};
+        \node [fill=c3,above right=of a] (c) {\(c\)};
+        \node [fill=c2,below left=of a] (d) {\(d\)};
+        \node [fill=c3,below right=of a] (e) {\(e\)};
+      \end{scope}
+      \draw (a) -- (b) -- (c) -- (a) -- (d) -- (e) -- (a);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G\)
+  \end{center}
+  \caption{Corollary \ref{cor:inter} Example}
+\end{figure}
+
+\subsubsection{Recursive Steps}
+
+If no more vertices can be removed and the failure tests pass then the called subroutine reverts to the exhaustive
+method.  Step \ref{step:select2} selects two non-adjacent vertices with the smallest number of shared neighbors.
+Such a pair must exist.  Otherwise, the current state of \(G\) is complete, which would have been eliminated by
+step \ref{step:density}.  The first recursive call (step \ref{step:call1}) assumes that the two selected vertices
+have the same color, so they are contracted.  The second recursive call (step \ref{step:call2}) assumes that the
+two selected vertices have different colors, so they are joined by an added edge.  Each call starts a new branch of
+the Zykov tree corresponding to the current value of \(k\).  If either call returns true then it can be concluded
+that the input graph was indeed \colorable{k}.  Otherwise, it can be concluded that the input graph is not
+\colorable{k} and the called subroutine returns the state of \(G\) prior to the recursive calls to the outer loop.
+
+These steps are supported by Theorem \ref{thm:recurse}.
+
+\begin{theorem}
+  \label{thm:recurse}
+  Let \(G\) be a graph of order \(n>=2\) and let \(u,v\in G\) such that \(u\) and \(v\) are not adjacent.  \(G\) is
+  \colorable{k} iff \(G\cdot uv\) or \(G+uv\) is \colorable{k}.
+\end{theorem}
 
 \begin{proof}
   \begin{description}
@@ -841,16 +888,16 @@ Theorem \ref{thm:inter} establishes the desired upper bound.
     \begin{description}
     \item [Case a:] \(u\) and \(v\) have the same color.
 
-      Then \(\forall\,w\in N(u)\cup N(v)\) it must be the case that \(w\) is a different color than the color of \(u\) and
-      \(v\).  Let \(v'\) be the contracted vertex, so that \(N(v')=N(u)\cup N(v)\), and color \(v'\) with the same color as
-      \(u\) and \(v\).  The result is a proper \coloring{k} of \(G\cdot uv\).
+      Then \(\forall\,w\in N(u)\cup N(v)\) it must be the case that \(w\) is a different color than the color of
+      \(u\) and \(v\).  Let \(v'\) be the contracted vertex, so that \(N(v')=N(u)\cup N(v)\), and color \(v'\) with
+      the same color as \(u\) and \(v\).  The result is a proper \coloring{k} of \(G\cdot uv\).
 
       \(\therefore G\cdot uv\) is \colorable{k}.
       
     \item [Case b:] \(u\) and \(v\) have the different colors in \(c\).
 
-      By adding edge \(uv\), \(u\) and \(v\) become adjacent and thus must have different colors.  Therefore, \(u\) and \(v\)
-      can retain their same colors.  The result is a proper \coloring{k} of \(G+uv\).
+      By adding edge \(uv\), \(u\) and \(v\) become adjacent and thus must have different colors.  Therefore, \(u\)
+      and \(v\) can retain their same colors.  The result is a proper \coloring{k} of \(G+uv\).
     \end{description}
 
     \(\therefore G\cdot uv\) or \(G+uv\) is \colorable{k}.
@@ -860,14 +907,14 @@ Theorem \ref{thm:inter} establishes the desired upper bound.
     \begin{description}
     \item [Case a:] \(G\cdot uv\) is \colorable{k}.
 
-      Let \(v'\) be the contracted vertex with some assigned color.  It must be the case that \(\forall\,w\in N(v'), w\) has a
-      different color than \(v'\).  Expand \(G\cdot uv\) to \(G\) and color \(u\) and \(v\) with the same color as \(v'\).
-      The result is a proper \coloring{k} of \(G\).
+      Let \(v'\) be the contracted vertex with some assigned color.  It must be the case that \(\forall\,w\in
+      N(v'), w\) has a different color than \(v'\).  Expand \(G\cdot uv\) to \(G\) and color \(u\) and \(v\) with
+      the same color as \(v'\).  The result is a proper \coloring{k} of \(G\).
       
     \item [Case b:] \(G+uv\) is \colorable{k}.
 
-      Remove edge \(uv\).  Since \(u\) and \(v\) are no longer adjacent, there are no requirements on their colors.  Thus,
-      they can retain their original colors.  The result is a proper \coloring{k} of \(G\).
+      Remove edge \(uv\).  Since \(u\) and \(v\) are no longer adjacent, there are no requirements on their colors.
+      Thus, they can retain their original colors.  The result is a proper \coloring{k} of \(G\).
     \end{description}
 
     \(\therefore G\) is \colorable{k}.
