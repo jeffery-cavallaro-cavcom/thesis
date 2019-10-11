@@ -930,7 +930,7 @@ These steps are supported by Theorem \ref{thm:recurse}.
     Let \(c_1=c(u)=c(v)\in C\).  For all \(w\in N(u)\cup N(v)\), since \(w\) is adjacent to \(u\) and \(v\) and
     because \(c\) is proper, it must be the case that \(w\) is a different color than the color of \(u\) and \(v\):
     \(c(w)\ne c_1\).  Let \(v'\) be the contracted vertex, so that \(N(v')=N(u)\cup N(v)\) and assign color \(c_1\)
-    to \(v'\).  This results in the coloring function \(c':V(G\cdot uv)\to C\) defined as follows:
+    to \(v'\).  So define \(c':V(G\cdot uv)\to C\) as follows:
     \[c'(w)=\begin{cases}
     c(w), & w\ne v' \\
     c_1, & w=v'
@@ -948,14 +948,16 @@ These steps are supported by Theorem \ref{thm:recurse}.
     \end{description}
 
     Thus, \(c'\) is a proper coloring of \(G\cdot uv\) using at most \(k\) colors.
-
-    Therefore \(G\cdot uv\) is \colorable{k}.
       
-  \item [Case 2:] \(u\) and \(v\) have the different colors in \(c\).
+    Therefore \(G\cdot uv\) is \colorable{k}.
+
+  \item [Case 2:] \(u\) and \(v\) have the different colors: \(c(u)\ne c(v)\).
 
     By adding edge \(uv\), \(u\) and \(v\) become adjacent and thus must have different colors.  Thus, \(u\)
     and \(v\) can retain their same colors.  So define \(c':V(G+uv)\to C\) as follows:
     \[c'(w)=c(w)\]
+    Now, assume \(wz\in E(G)\).  Since \(c\) is proper:
+    \[c'(w)=c(w)\ne c(z)=c'(z)\]
     Thus, \(c'\) is a proper coloring of \(G+uv\) using at most \(k\) colors.
 
     Therefore \(G+uv\) is \colorable{k}.
@@ -967,16 +969,53 @@ These steps are supported by Theorem \ref{thm:recurse}.
   \begin{description}
   \item [Case 1:] \(G\cdot uv\) is \colorable{k}.
 
-    Let \(c:V(G\cdot uv)\to C\) be such a coloring, and so \(\abs{C}=k\).
+    Let \(c:V(G\cdot uv)\to C\) be such a coloring, and so \(\abs{C}=k\).  Let \(v'\) be the contracted vertex, and
+    so \(N(v')=N(u)\cup N(v)\).  Let \(c(v')=c_1\in C\).  For all \(w\in N(v')\) in \(G\cdot uv\), since \(w\) and
+    \(v'\) are adjacent, they must have different colors: \(c(w)\ne c_1\).
 
-    It must be the case that for all \(w\in N(v')\), \(w\) has a different color than \(v'\).  Expand \(G\cdot uv\)
-    to \(G\) and color \(u\) and \(v\) with the same color as \(v'\).  The result is a proper \coloring{k} of
-    \(G\).
-    
+    Consider \(u\) and \(v\) in \(G\).  Since they are not adjacent, they can be assigned the same color.  So,
+    defined \(c':V(G)\to C\) as follows:
+    \[c'(w)=\begin{cases}
+    c(w), & w\ne u,v \\
+    c_1, & w=u \\
+    c_1, & w=v
+    \end{cases}\]
+    Now, assumed \(wz\in V(G)\) and consider the following cases:
+    \begin{description}
+    \item[Case a:] \(uv=wz\)
+
+      This is not possible since, by assumption, \(u\) is not adjacent to \(v\).
+
+    \item[Case b:] \(u\in wz\) and \(v\notin wz\)
+
+      Assume without loss of generality (AWLOG) that \(u=w\).  Since \(z\in N(u)\) in \(G\), it must be the case that
+      \(z\in N(v')\) in \(G\cdot uv\).  And so:
+      \[c'(u)=c_1\ne c(w)=c'(w)\]
+
+    \item[Case c:] \(u\notin wz\) and \(v\in wz\)
+
+      Assume without loss of generality (AWLOG) that \(v=w\).  Since \(z\in N(v)\) in \(G\), it must be the case that
+      \(z\in N(v')\) in \(G\cdot uv\).  And so:
+      \[c'(v)=c_1\ne c(w)=c'(w)\]
+
+    \item[Case d:] \(u,v\notin wz\)
+
+      Since \(c\) is proper:
+      \[c'(w)=c(w)\ne c(z)=c'(z)\]
+    \end{description}
+
+    Thus, \(c'\) is a proper coloring of \(G\) using at most \(k\) colors.
+
   \item [Case 2:] \(G+uv\) is \colorable{k}.
 
-    Remove edge \(uv\).  Since \(u\) and \(v\) are no longer adjacent, there are no requirements on their colors.
-    Thus, they can retain their original colors.  The result is a proper \coloring{k} of \(G\).
+    Let \(c:V(G+uv)\to C\) be such a coloring, and so \(\abs{C}=k\).  Since \(u\) and \(v\) are adjacent in
+    \(G+uv\), they must have different colors.  Once \(uv\) is removed in \(G\), \(u\) and \(v\) are no longer
+    adjacent and so there are no requirements on their colors.  Thus, they can retain their original colors from
+    \(G+uv\).  So define \(c':V(G)\to C\) as follows:
+    \[c'(w)=c(w)\]
+    Now assume \(wz\in E(G)\).  Since \(c\) is proper:
+    \[c'(w)=c(w)\ne c(z)=c'(z)\]
+    Thus, \(c'\) is a proper coloring of \(G\) using at most \(k\) colors.
   \end{description}
 
   Therefore \(G\) is \colorable{k}.

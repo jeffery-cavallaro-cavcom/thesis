@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  10 OCT 2019 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  10 OCT 2019 21:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1135,7 +1135,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[37] [38]) [39] (./thesis.bbl) [40
+[37] [38] [39]) [40] (./thesis.bbl) [41
 
 ] (./thesis.aux (./theory.aux)
 (./algorithm.aux)) ) 
@@ -1166,10 +1166,10 @@ onts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
 c/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (40 pages, 386145 bytes).
+Output written on thesis.pdf (41 pages, 388165 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
+ 206 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
