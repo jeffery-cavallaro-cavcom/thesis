@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  12 OCT 2019 18:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  14 OCT 2019 02:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -849,8 +849,8 @@ File: pgflibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
 \arrowsize=\dimen186
 ))
 \c@proposition=\count133
- (./thesis.aux (./theory.aux) (./algorithm.aux) (./example.aux)
-(./casestudy.aux))
+ (./thesis.aux (./theory.aux) (./traditional.aux) (./algorithm.aux)
+(./example.aux) (./casestudy.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
@@ -867,7 +867,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 23.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 23.
@@ -1082,32 +1083,28 @@ Missing character: There is no ; in font nullfont!
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [21]) [22]
+\openout2 = `traditional.aux'.
+
+ (./traditional.tex) [23
+
+
+]
 \openout2 = `algorithm.aux'.
 
- (./algorithm.tex [23
+ (./algorithm.tex [24
 
 
 ]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[24] [25]
+[25] [26]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26] [27] [28
+[27] [28] [29
 
 ]
-Missing character: There is no ; in font nullfont!
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[29]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 
@@ -1115,15 +1112,21 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [30]
 Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[31] [32]
+[31]
+Missing character: There is no ; in font nullfont!
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[33]
+[32] [33]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1131,28 +1134,25 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35] [36]
+[35]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[37] [38] [39]) [40]
+[36] [37]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[38] [39] [40]) [41]
 \openout2 = `example.aux'.
 
  (./example.tex
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[41
+[42
 
 
-] [42] [43]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[44]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+] [43] [44]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1160,11 +1160,18 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [46] [47]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [47] [48]
 \openout2 = `casestudy.aux'.
 
  (./casestudy.tex
-<toaster.jpg, id=170, 2007.5pt x 2007.5pt>
+<toaster.jpg, id=173, 2007.5pt x 2007.5pt>
 File: toaster.jpg Graphic file (type jpg)
 <use toaster.jpg>
 Package pdftex.def Info: toaster.jpg  used on input line 10.
@@ -1176,23 +1183,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[48
+[49
 
 
  <./toaster.jpg>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[49]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1209,41 +1203,54 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [51] [52] [53] [54] [55] (./thesis.bbl) [56
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[51]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [52] [53] [54] [55] [56] (./thesis.bbl) [57
 
 ] (./thesis.aux (./theory.aux)
-(./algorithm.aux) (./example.aux) (./casestudy.aux)) ) 
+(./traditional.aux) (./algorithm.aux) (./example.aux) (./casestudy.aux)) ) 
 Here is how much of TeX's memory you used:
- 21235 strings out of 492609
- 431233 string characters out of 6129048
- 544738 words of memory out of 5000000
- 24681 multiletter control sequences out of 15000+600000
+ 21243 strings out of 492609
+ 431354 string characters out of 6129048
+ 544013 words of memory out of 5000000
+ 24682 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,15n,436p,839b,1322s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/
-texmf-dist/fonts/enc/dvips/libertine/lbtn_afusau.enc}{/usr/local/texlive/2019/t
-exmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}{/usr/local/texlive/2019/te
-xmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}</usr/local/texlive/2019/tex
-mf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2019/
-texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texli
-ve/2019/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></usr/local/
-texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/t
-exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/te
-xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/201
-9/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (56 pages, 578781 bytes).
+{/usr
+/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_afusau.enc}{/usr/
+local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc}{/usr/l
+ocal/texlive/2019/texmf-dist/fonts/enc/dvips/libertine/lbtn_3dk467.enc}</usr/lo
+cal/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb><
+/usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.p
+fb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/libertine/LinLibertin
+eMT.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex
+10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+2.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><
+/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
+></usr/local/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on thesis.pdf (57 pages, 580099 bytes).
 PDF statistics:
- 255 PDF objects out of 1000 (max. 8388607)
- 179 compressed objects within 2 object streams
+ 258 PDF objects out of 1000 (max. 8388607)
+ 181 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
