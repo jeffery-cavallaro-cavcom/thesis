@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  14 OCT 2019 08:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  17 OCT 2019 12:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -284,7 +284,7 @@ Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count92
 ))
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/02/04 v3.8 Customized lists
+Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip43
 \enit@outerparindent=\dimen112
 \enit@toks=\toks18
@@ -1006,26 +1006,8 @@ LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 17.28pt on input line 1.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 12.0pt on input line 4.
-) [2
-
-]
-\openout2 = `theory.aux'.
-
- (./theory.tex
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 8.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 12.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3
-
-
-] [4] [5]
 LaTeX Font Info:    Try loading font information for TS1+LinuxBiolinumT-TLF on 
-input line 166.
+input line 30.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/TS1LinuxBiolinumT-TLF.f
 d
@@ -1033,54 +1015,62 @@ File: TS1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/L
 inuxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 166.
- [6]
+(Font)              scaled to size 12.0pt on input line 30.
+ [2
+
+]
+LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
+(Font)              scaled to size 14.4pt on input line 105.
+ [3]) [4]
+\openout2 = `theory.aux'.
+
+ (./theory.tex
+LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
+(Font)              scaled to size 12.0pt on input line 12.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7] [8] [9]
+[5
+
+
+] [6] [7] [8]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10] [11]
+[9] [10] [11]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12]
+[12] [13]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13] [14]
+[14]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15] [16]
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 8.0pt on input line 830.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 6.0pt on input line 830.
- [15] [16]
+ [17] [18]
 Missing character: There is no ; in font nullfont!
- [17] [18] [19]
-Missing character: There is no ; in font nullfont!
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[20]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
+ [19] [20] [21]
 Missing character: There is no ; in font nullfont!
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[21]
 Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[22]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1089,27 +1079,37 @@ Missing character: There is no ; in font nullfont!
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[22]) [23]
+[23]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[24]) [25]
 \openout2 = `traditional.aux'.
 
- (./traditional.tex) [24
+ (./traditional.tex) [26
 
 
 ]
 \openout2 = `algorithm.aux'.
 
- (./algorithm.tex [25
+ (./algorithm.tex [27
 
 
 ]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26] [27]
+[28] [29]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[28] [29] [30
+[30] [31] [32
 
 ]
 Missing character: There is no ; in font nullfont!
@@ -1117,7 +1117,7 @@ Missing character: There is no ; in font nullfont!
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[31]
+[33]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1127,58 +1127,58 @@ Missing character: There is no ; in font nullfont!
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[32]
+[34]
 Missing character: There is no ; in font nullfont!
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[33] [34]
+[35] [36]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35]
+[37]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[36]
+[38]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[37] [38]
+[39] [40]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[39] [40] [41]) [42]
+[41] [42] [43]) [44]
 \openout2 = `example.aux'.
 
  (./example.tex
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[43
+[45
 
 
-] [44] [45]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[46]
+] [46] [47]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[48]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[47]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [48] [49]
+[49]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [50] [51]
 \openout2 = `casestudy.aux'.
 
  (./casestudy.tex
-<toaster.jpg, id=177, 2007.5pt x 2007.5pt>
+<toaster.jpg, id=184, 2007.5pt x 2007.5pt>
 File: toaster.jpg Graphic file (type jpg)
 <use toaster.jpg>
 Package pdftex.def Info: toaster.jpg  used on input line 10.
@@ -1190,7 +1190,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[50
+[52
 
 
  <./toaster.jpg>]
@@ -1200,7 +1200,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[51]
+[53]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1213,7 +1213,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[52]
+[54]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1223,16 +1223,16 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [53] [54] [55] [56] [57] (./thesis.bbl) [58
+) [55] [56] [57] [58] [59] (./thesis.bbl) [60
 
 ] (./thesis.aux (./design.aux)
 (./theory.aux) (./traditional.aux) (./algorithm.aux) (./example.aux)
 (./casestudy.aux)) ) 
 Here is how much of TeX's memory you used:
- 21250 strings out of 492609
- 431414 string characters out of 6129049
- 544284 words of memory out of 5000000
- 24682 multiletter control sequences out of 15000+600000
+ 21426 strings out of 492609
+ 434672 string characters out of 6129048
+ 546366 words of memory out of 5000000
+ 24858 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,15n,436p,839b,1322s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1255,10 +1255,10 @@ onts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
 c/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (58 pages, 581591 bytes).
+Output written on thesis.pdf (60 pages, 588918 bytes).
 PDF statistics:
- 261 PDF objects out of 1000 (max. 8388607)
- 183 compressed objects within 2 object streams
+ 267 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

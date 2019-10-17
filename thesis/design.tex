@@ -1,15 +1,117 @@
 \section{Axiomatic Design}
 
-Axiomatic design as a design framework was developed in the late \(20^{th}\) century by Professor Nam P. Suh while
-at MIT and the NSF \cite{suh}.  This was in response to concern in the engineering community that \emph{design} was
-primarily creative endeavor with very little in the way of scientific discipline.  In the words of Professor Suh:
+The axiomatic design framework was developed in the late \(20^{th}\) century by Professor Nam P. Suh while at MIT
+and the NSF \cite{suh}.  This was in response to concern in the engineering community that \emph{design} was being
+practiced almost exclusively as an ad-hoc creative endeavor with very little in the way of scientific discipline.
+In the words of Professor Suh:
 \begin{quote}
-  From prehistoric periods, humanity has designed and made hunting implements, shelters, and clothing.  It might have
-  preceding the development of natural sciences by scores of centuries.  Yet, to this day, design is being done
-  intuitively as an art.  It is one of the few technical areas where experience is more important than formal
-  education.
+  It [design] might have preceding the development of natural sciences by scores of centuries.  Yet, to this day,
+  design is being done intuitively as an art.  It is one of the few technical areas where experience is more
+  important than formal education.
 \end{quote}
-This lament is well recognized by Mathematicians and Math Educators. Questions like, ``What makes someone good at
-solving math problems?'' and ``What constitutes a good proof?'' have led to comparisons of intuition versus
-pattern matching.  On a day-to-day basis, many of these questions have been answered by universally accepted methods
-of proof: direct, contradition, implication, equivalences, equality and subsets.
+It is important to note that Professor Suh was not making these claims in an educational vacuum, but in the shadow
+of several recent major design failures such as the Union Carbide plant disaster in India, nuclear power plant
+accidents at Three Mile Island and Chenobyl, and the Challenger space shuttle O-ring failure.  Furthermore,
+Professor Suh asserts that design-related issues resulting in production problems and operating failures were
+increasingly happening in everything from consumer products to big-ticket items.
+
+\emph{Design} is defined as the process by which it is determined \emph{what} needs to be achieved and then
+\emph{how} to achieve it.  Thus, the decisions on what do to are just as important as how to do it.  Creativity is
+the process by which experience and intuition are used to generate solutions to perceived needs.  This includes
+pattern matching to and adapting existing solutions and synthesizing new solutions.  Thus, creativity plays a vital
+role in design.  Since different designers may approach the same problem differently, their level of creativity may
+lead to very different, yet plausible, solutions.  Thus, there needs to be a design-agnostic method for comparing
+different designs with the goal of selecting the best one.
+
+This discussion will sound very familiar to mathematicians, since creativity is very important for solving math
+problems, and in particular, for writing proofs.  Starting with the work of Peano in the \(19^{th}\) century, the
+field of mathematics has established various tests on what constitutes a good proof.  For example:
+\begin{itemize}
+\item Does every conclusion result from proper implication from existing definitions, axioms, and previously-proved
+  conclusions?
+\item Is direct proof, contrapositive proof, or proof by contradiction the best approach for a particular problem?
+\item Are all subset and equality relationships properly proved via membership implication?
+\item Are all necessary cases included and stated in a mutually exclusive manner?
+\item Are all equivalences proved in a proper circular fashion?
+\item Are key and reused conclusions highlighted in lemmas?
+\end{itemize}
+In short, Professor Suh was looking for a similar framework for the more general concept of design.
+
+In a desire to not hinder the creative element needed for design, yet provide some methodology to distinguish bad
+designs from good designs from better designs, the framework shown in Figure \ref{fig:design} establishes the
+overall framework for axiomatic design.
+
+\begin{figure}[h]
+  \label{fig:design}
+  \begin{center}
+    \scalebox{0.75}{
+      \begin{tikzpicture}[>=latex',every text node part/.style={align=center}]
+        \node (cn) [draw,terminal] at (0,0) {customer \\ needs};
+        \node (pd) [draw,process,right=of cn] {problem \\ definition};
+        \node (cp) [draw,process,right=2cm of pd] {creative \\ process};
+        \node (ap) [draw,process,right=2cm of cp] {analytical \\ process};
+        \node (uc) [draw,process,right=of ap] {ultimate \\ check};
+        \node (fd) [draw,terminal,right=of uc] {final \\ design};
+        \draw [->] (cn) -- (pd);
+        \draw [->] (pd) -- node [auto] {FRs} (cp);
+        \draw [->] (cp) -- node [auto] {candidate \\ design} (ap);
+        \draw [->] (ap) -- (uc);
+        \draw [->] (uc) -- (fd);
+        \draw [->] (ap) -- ($(ap) + (0,-1.5cm)$) -| (cp);
+      \end{tikzpicture}
+    }
+  \end{center}
+  \caption{Axiomatic Design Framework}
+\end{figure}
+
+Design starts with the desire to fulfill a clear customer need.  In this sense, the term \emph{customer} refers to
+any entity that expresses a need, and can be as varied as individuals, organizations, or society.  The only
+requirement is that the need can be clearly expressed.  The first job of the designer is to determine how these
+needs will be meet by generating a list of \emph{functional requirements} (FRs).  It is this list of FRs that
+determine exactly \emph{what} is to be accomplished.
+
+Once the set of FRs has been determined, the designer begins the creative process by mapping the FRs into solutions
+that are embodied in so-called \emph{design parameters} (DPs).  The design parameters contain all of the
+information on \emph{how} the various FRs are fulfilled: parts lists, drawings, specifications, tolerances, etc.
+This process is described by Figure \ref{fig:mapping}.
+
+\begin{figure}[h]
+  \label{fig:mapping}
+  \begin{center}
+    \begin{tikzpicture}[>=latex',every text node part/.style={align=center}]
+      \node (fs) [draw,cloud] at (0,0) {FR1 \\ FR2 \\ FR3 \\ \vdots};
+      \node [below=1ex of fs] {functional \\ space};
+      \node (ps) [draw,cloud,right=1.5in of fs] {DP1 \\ DP2 \\ DP3 \\ \vdots};
+      \node [below=1ex of ps] {physical \\ space};
+      \draw [->] (fs) to [bend left=45] (ps);
+      \draw [->] (fs) to [bend left=30] (ps);
+      \draw [->] (fs) to [bend right=30] (ps);
+      \draw [->] (fs) to [bend right=45] (ps);
+      \draw [->] (fs) -- node [auto] {mapping} (ps);
+    \end{tikzpicture}
+  \end{center}
+  \caption{Mapping FRs to DPs}
+\end{figure}
+
+Note that the FRs exist in a design-agnostic \emph{functional space} and the DPs exist in a solution-specific
+physical space.  It is the designer's job to provide the most efficient mapping between the two spaces.  But since
+the mapping process is non-unique, there needs to be a method to compare plausible designs.  The axiomatic design
+framework includes two main axioms and their corollaries that define properties that are common to all good
+designs.  These axioms are applied in the analytical phase to determine the quality of a design, defined as the
+chances for success of the design based on its information content.  Thus, different designs can be compared based
+on how well they fulfill the requirements of the axioms.  These axioms: the independence axiom and the information
+axiom, are described in the following sections.
+
+\subsection{The Independence Axiom}
+
+\subsection{The Information Axiom}
+
+One particular area of design focus is the number of parts in a product design:
+\begin{quote}
+  Poorly designed products often cost more because they use more materials or parts than do well-designed products.
+  They are often difficult to manufacture and maintain.
+\end{quote}
+It is in this area, the number of parts, that this research desires to provide designers with a tool that they can
+use during the design phase to make a determination of the minimum number of parts needed to realize a particular
+design.  As will be shown, this is accomplished by proposing an algorithm that addresses the NP-hard problem of
+finding the chromatic number of a graph.
