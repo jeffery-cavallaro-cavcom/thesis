@@ -104,7 +104,60 @@ axiom, are described in the following sections.
 
 \subsection{The Independence Axiom}
 
+The independence axiom states that the functional requirements (FRs) should be independent 
+
+\begin{figure}
+  \label{fig:coupling}
+  \scalebox{0.75}{
+    \begin{minipage}{3in}
+      \begin{center}
+        \[\begin{bmatrix}
+        FR1 \\ FR2 \\ FR3
+        \end{bmatrix}=\begin{bmatrix}
+        X & 0 & 0 \\
+        0 & X & 0 \\
+        0 & 0 & X \\
+        \end{bmatrix}\begin{bmatrix}
+          DP1 \\ DP2 \\ DP3
+        \end{bmatrix}\]
+        Uncoupled
+      \end{center}
+    \end{minipage}
+    \begin{minipage}{3in}
+      \begin{center}
+        \[\begin{bmatrix}
+        FR1 \\ FR2 \\ FR3
+        \end{bmatrix}=\begin{bmatrix}
+        X & 0 & 0 \\
+        X & X & 0 \\
+        X & X & X \\
+        \end{bmatrix}\begin{bmatrix}
+          DP1 \\ DP2 \\ DP3
+        \end{bmatrix}\]
+        Decoupled
+      \end{center}
+    \end{minipage}
+    \begin{minipage}{3in}
+      \begin{center}
+        \[\begin{bmatrix}
+        FR1 \\ FR2 \\ FR3
+        \end{bmatrix}=\begin{bmatrix}
+        X & X & X \\
+        X & X & X \\
+        X & X & X \\
+        \end{bmatrix}\begin{bmatrix}
+          DP1 \\ DP2 \\ DP3
+        \end{bmatrix}\]
+        Coupled
+      \end{center}
+    \end{minipage}
+  }
+  \caption{Coupling Examples}
+\end{figure}
+
 \subsection{The Information Axiom}
+
+\subsection{Part Consolidation}
 
 One particular area of design focus is the number of parts in a product design:
 \begin{quote}

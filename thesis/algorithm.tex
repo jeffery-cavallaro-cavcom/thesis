@@ -640,7 +640,7 @@ Theorem \ref{thm:subset}.
   different color than \(v\), we should be able to assign \(u\) the same color as \(v\) in \(G\) in order to get a
   proper coloring of \(G\).
 
-  Let \(S=N(u)\cap N(v)=\set{w_1,\ldots w_r}\subset V(G-u)\) for some \(r=\deg{u}\le \deg{v}\).  For all \(w\in
+  Let \(S=N(u)\cap N(v)=\set{w_1,\ldots w_r}\subset V(G-u)\) for some \(r=\deg(u)\le \deg(v)\).  For all \(w\in
   S\), \(w\in N(v)\) meaning \(vw\in E(G-u)\).  And, because \(c\) is proper, it must be the case that \(c(w)\ne
   c(v)\).  So define \(c':V(G)\to C\) as follows:
   \[c'(w)=\begin{cases}
@@ -917,7 +917,7 @@ These steps are supported by Theorem \ref{thm:recurse}.
 
 \begin{theorem}
   \label{thm:recurse}
-  Let \(G\) be a graph of order \(n>=2\) and let \(u,v\in G\) such that \(u\) and \(v\) are not adjacent.  \(G\) is
+  Let \(G\) be a graph of order \(n\ge2\) and let \(u,v\in G\) such that \(u\) and \(v\) are not adjacent.  \(G\) is
   \colorable{k} iff \(G\cdot uv\) or \(G+uv\) is \colorable{k}.
 \end{theorem}
 
