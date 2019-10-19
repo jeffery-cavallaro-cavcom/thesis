@@ -15,9 +15,9 @@ accidents at Three Mile Island and Chenobyl, and the Challenger space shuttle O-
 Professor Suh asserts that design-related issues resulting in production problems and operating failures were
 increasingly happening in everything from consumer products to big-ticket items.
 
-The following sections provide an overview of axiomatic design as specified in detail by Professor Suh in \cite{suh},
-and summarized in \cite{cavallaro,jahanbekam,suh2}.  Following is a description of how the proposed algorithm can be
-a helpful tool to a designer using the axiomatic design framework.
+The following sections provide an overview of axiomatic design as specified in detail by Professor Suh in
+\cite{suh}, and summarized in \cite{cavallaro,jahanbekam,suh2}.  Following the overview is a description of how an
+algorithm proposed by this research can be a helpful tool to a designer using the axiomatic design framework.
 
 \subsection{Design}
 
@@ -29,11 +29,11 @@ role in design.  Since different designers may approach the same problem differe
 lead to very different, yet plausible, solutions.  Thus, there needs to be a design-agnostic method for comparing
 different designs with the goal of selecting the best one.
 
-This discussion will sound very familiar to mathematicians, since creativity is very important for solving math
-problems, and in particular, for writing proofs.  Starting with the work of Peano in the \(19^{th}\) century, the
-field of mathematics has established various tests on what constitutes a good proof.  For example:
+This discussion will sound familiar to mathematicians, since creativity is a very important part of solving math
+problems, and in particular, writing proofs.  Starting with the work of Peano in the \(19^{th}\) century, the field
+of mathematics has established various tests on what constitutes a good proof.  For example:
 \begin{itemize}
-\item Does every conclusion result by proper implication from existing definitions, axioms, and previously-proved
+\item Does every conclusion result by proper implication from existing definitions, axioms, and previously proved
   conclusions?
 \item Is direct proof, contrapositive proof, proof by contradiction, or proof by induction the best approach for a
   particular problem?
@@ -81,7 +81,7 @@ framework for axiomatic design.
   \caption{Axiomatic Design Framework}
 \end{figure}
 
-Design starts with the desire to fulfill a clear set of \emph{customer needs}.  The term \emph{customer} refers to
+Design starts with the desire to satisfy a set of clear \emph{customer needs}.  The term \emph{customer} refers to
 any entity that expresses needs, and can be as varied as individuals, organizations, or society.  The designer, in
 the \emph{problem definition} phase, determines how these customer needs will be meet by generating a list of
 \emph{functional requirements} (FRs).  It is this list of FRs that determines exactly \emph{what} is to be
@@ -89,7 +89,7 @@ accomplished.
 
 Once the set of FRs has been determined, the designer begins the \emph{creative process} by mapping the FRs into
 solutions that are embodied in so-called \emph{design parameters} (DPs).  The design parameters contain all of the
-information on \emph{how} the various FRs are fulfilled: parts lists, drawings, specifications, etc.  The FRs exist
+information on \emph{how} the various FRs are satisfied: parts lists, drawings, specifications, etc.  The FRs exist
 in a design-agnostic \emph{functional space} and the DPs exist in a solution-specific \emph{physical space}.  It is
 the designer's job to provide the most efficient mapping between the two spaces.  This process is represented by
 Figure \ref{fig:mapping}.
@@ -113,12 +113,12 @@ Figure \ref{fig:mapping}.
 \end{figure}
 
 Simple problems may require only one level of FRs; however, more complicated designs may require a hierarchial
-structure of FRs, from more general to more detailed requirements.  This type of design if oftern referred to as
+structure of FRs, from more general to more detailed requirements.  This type of design if often referred to as
 \emph{top-down} design.  Each individual FR layer has its own DP mapping.  In fact, the mapping process on one
 level should be completed prior to determining the FRs for the next level.  This is because DP choices on one level
-may affect choices on the next level.  For example, consider an FR related to a moving part in a design.  The DP
-for this FR could specify that the part be moved manually or automatically.  Each choice would result in different
-FRs for the actual mechanism selected by the DP.
+may affect requirements on the next level.  For example, consider an FR related to a moving part in a design.  The
+DP for this FR could specify that the part be moved manually or automatically.  Each choice would result in
+different FRs for the actual mechanism selected by the DP.
 
 The FR/DP mapping at each level in the design hierarchy is described by the \emph{design equation}, which is shown
 in Equation \ref{eqn:design}.
@@ -144,7 +144,7 @@ design is selected as the final design.
 
 \subsection{The Axioms}
 
-The analytical process is based on two major axioms: the independence axiom and the information axiom.  This section
+The analytical process is based on two main axioms: the independence axiom and the information axiom.  This section
 describes these axioms and their related corollaries and theorems.
 
 The independence axiom imposes a restriction on the FR/DP mapping:
@@ -197,8 +197,8 @@ reasonable compromises in designs that address complex problems.
   \caption{A Decoupled Design}
 \end{figure}
 
-The worst solution is a non-triangular matrix where every change in a DP affects multiple FRs both before it and
-after it.  This is referred to as a \emph{coupled} design, which is demonstrated in Figure \ref{fig:coupled}.
+The worst solution is a non-triangular matrix where every change in a DP affects multiple FRs in an unconstrained
+fashion.  This is referred to as a \emph{coupled} design, which is demonstrated in Figure \ref{fig:coupled}.
 Coupled designs are in complete violation of the independence axiom and generally should be decoupled by reworking
 the FRs or adding additional DPs.  Unfortunately, adding additional DPs runs counter to the second axiom.
 
@@ -223,7 +223,7 @@ the FRs or adding additional DPs.  Unfortunately, adding additional DPs runs cou
 \end{axiom}
 
 The \emph{Information} contained in a particular DP is inversely related to the probability that the DP can
-successfully fulfill its corresponding FR(s) by Equation \ref{eqn:info}.
+successfully satisfy its corresponding FR(s) by Equation \ref{eqn:info}.
 \begin{equation}
   \label{eqn:info}
   I=\log_2\left(\frac{1}{p}\right)
@@ -242,18 +242,18 @@ From these two axioms come the following seven corollaries:
 \item[Corollary 4:] Use standardized or interchangeable parts if the use of these parts is consistent with the FRs.
 \item[Corollary 5:] Use symmetrical shapes and/or arrangements if they are consistent with the FRs.
 \item[Corollary 6:] Specify the largest allowable tolerance in stating FRs.
-\item[Corollary 7:] Seek an uncoupled design that requires less information that coupled designs in satisfying a
+\item[Corollary 7:] Seek an uncoupled design that requires less information than coupled designs in satisfying a
   set of FRs.
 \end{description}
 
-We will now consider the theorems that arise from these axioms and corollaries that prove the optimal design results
-from a square design matrix.  In other words, the number of FRs \(m\) should be equal to the number of DPs \(n\).
-First, consider the case where \(m>n\).  Intuitively, this forces a single DP to be mapped to multiple FRs.
+We will now consider the theorems, arising from these axioms and corollaries, which prove that an optimal design
+results from a square design matrix.  In other words, the number of FRs \(m\) should be equal to the number of DPs
+\(n\).  First, consider the case where \(m>n\).  Intuitively, this forces a single DP to be mapped to multiple FRs.
 Otherwise, some FRs cannot be satisfied by the DPs.  This result is stated in Theorem \ref{thm:frgtdp}.
 
 \begin{theorem}
-  \label{thm:frgdp}
-  When the number of DPs is less that the number of FRs, either a coupled design results of the FRs cannot be
+  \label{thm:frgtdp}
+  When the number of DPs is less that the number of FRs, either a coupled design results or the FRs cannot be
   satisfied.
 \end{theorem}
 
@@ -295,7 +295,7 @@ The case where the number of FRs is less than the number of DPs is covered by Th
   When there are less FRs than DPs then the design is either coupled or redundant.
 \end{theorem}
 
-Finally, the previous three theorems result in the conclusion in Theorem \ref{freqdp}.
+Finally, the previous three theorems lead to the conclusion in Theorem \ref{thm:freqdp}.
 
 \begin{theorem}
   \label{thm:freqdp}
