@@ -1,13 +1,21 @@
 \begin{thebibliography}{1}
 
 \bibitem{cavallaro}
-Sara Behdad, Praveen~Kumare Gopalakrishnan, Sogol Jahanbekam, and Jeffery
-  Cavallaro.
+Sara Behdad, Jeffery Cavallaro, Praveen~Kumare Gopalakrishnan, and Sogol
+  Jahanbekam.
 \newblock A graph coloring technique for identifying the minimum number of
   parts for physical integration in product design.
 \newblock {\em Proceedings of the ASME 2019 International Design Engineering
   Technical Conferences \& Computers and Information in Engineering
   Conference}, (DETC2018-98251), 2019.
+
+\bibitem{jahanbekam}
+Sara Behdad, Praveen~Kumare Gopalakrishnan, Sogol Jahanbekam, and Helen Klein.
+\newblock Graph partitioning technique to identify physically integrated design
+  concepts.
+\newblock Proceedings of the ASME 2018 International Design Engineering
+  Technical Conferences \& Computers and Information in Engineering Conference
+  IDETC/CIE 2018", Quebec, Canada, Aug 26--29 2018.
 
 \bibitem{chartrand}
 Gary Chartrand and Ping Zhang.
@@ -23,6 +31,11 @@ John Hopcroft and Robert Tarjan.
 Nam~P. Suh.
 \newblock {\em The Principles of Design}.
 \newblock Oxford University Press, New York, 1990.
+
+\bibitem{suh2}
+Nam~P. Suh.
+\newblock Axiomatic design theory for systems.
+\newblock {\em Research in Engineering Design}, 10:189--209, 1998.
 
 \bibitem{west}
 Douglas~B. West.

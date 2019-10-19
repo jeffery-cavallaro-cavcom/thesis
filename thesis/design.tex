@@ -15,6 +15,12 @@ accidents at Three Mile Island and Chenobyl, and the Challenger space shuttle O-
 Professor Suh asserts that design-related issues resulting in production problems and operating failures were
 increasingly happening in everything from consumer products to big-ticket items.
 
+The following sections provide an overview of axiomatic design as specified in detail by Professor Suh in \cite{suh},
+and summarized in \cite{cavallaro,jahanbekam,suh2}.  Following is a description of how the proposed algorithm can be
+a helpful tool to a designer using the axiomatic design framework.
+
+\subsection{Design}
+
 \emph{Design} is defined as the process by which it is determined \emph{what} needs to be achieved and then
 \emph{how} to achieve it.  Thus, the decisions on what do to are just as important as how to do it.  Creativity is
 the process by which experience and intuition are used to generate solutions to perceived needs.  This includes
@@ -27,9 +33,11 @@ This discussion will sound very familiar to mathematicians, since creativity is 
 problems, and in particular, for writing proofs.  Starting with the work of Peano in the \(19^{th}\) century, the
 field of mathematics has established various tests on what constitutes a good proof.  For example:
 \begin{itemize}
-\item Does every conclusion result from proper implication from existing definitions, axioms, and previously-proved
+\item Does every conclusion result by proper implication from existing definitions, axioms, and previously-proved
   conclusions?
-\item Is direct proof, contrapositive proof, or proof by contradiction the best approach for a particular problem?
+\item Is direct proof, contrapositive proof, proof by contradiction, or proof by induction the best approach for a
+  particular problem?
+\item Do proofs by induction contain clear basic, assumptive, and inductive steps?
 \item Are all subset and equality relationships properly proved via membership implication?
 \item Are all necessary cases included and stated in a mutually exclusive manner?
 \item Are all equivalences proved in a proper circular fashion?
@@ -37,9 +45,11 @@ field of mathematics has established various tests on what constitutes a good pr
 \end{itemize}
 In short, Professor Suh was looking for a similar framework for the more general concept of design.
 
+\subsection{The Framework}
+
 In a desire to not hinder the creative element needed for design, yet provide some methodology to distinguish bad
-designs from good designs from better designs, the framework shown in Figure \ref{fig:design} establishes the
-overall framework for axiomatic design.
+designs from good designs from better designs, the diagram in Figure \ref{fig:design} establishes the overall
+framework for axiomatic design.
 
 \begin{figure}[h]
   \label{fig:design}
@@ -64,16 +74,16 @@ overall framework for axiomatic design.
   \caption{Axiomatic Design Framework}
 \end{figure}
 
-Design starts with the desire to fulfill a clear customer need.  In this sense, the term \emph{customer} refers to
-any entity that expresses a need, and can be as varied as individuals, organizations, or society.  The only
-requirement is that the need can be clearly expressed.  The first job of the designer is to determine how these
-needs will be meet by generating a list of \emph{functional requirements} (FRs).  It is this list of FRs that
-determine exactly \emph{what} is to be accomplished.
+Design starts with the desire to fulfill a clear set of \emph{customer needs}.  The term \emph{customer} refers to
+any entity that expresses needs, and can be as varied as individuals, organizations, or society.  The designer, in
+the \emph{problem definition} phase, determines how these customer needs will be meet by generating a list of
+\emph{functional requirements} (FRs).  It is this list of FRs that determines exactly \emph{what} is to be
+accomplished.
 
-Once the set of FRs has been determined, the designer begins the creative process by mapping the FRs into solutions
-that are embodied in so-called \emph{design parameters} (DPs).  The design parameters contain all of the
-information on \emph{how} the various FRs are fulfilled: parts lists, drawings, specifications, tolerances, etc.
-This process is described by Figure \ref{fig:mapping}.
+Once the set of FRs has been determined, the designer begins the \emph{creative process} by mapping the FRs into
+solutions that are embodied in so-called \emph{design parameters} (DPs).  The design parameters contain all of the
+information on \emph{how} the various FRs are fulfilled: parts lists, drawings, specifications, etc.  This process
+is represented by Figure \ref{fig:mapping}.
 
 \begin{figure}[h]
   \label{fig:mapping}
@@ -93,20 +103,41 @@ This process is described by Figure \ref{fig:mapping}.
   \caption{Mapping FRs to DPs}
 \end{figure}
 
-Note that the FRs exist in a design-agnostic \emph{functional space} and the DPs exist in a solution-specific
-physical space.  It is the designer's job to provide the most efficient mapping between the two spaces.  But since
-the mapping process is non-unique, there needs to be a method to compare plausible designs.  The axiomatic design
-framework includes two main axioms and their corollaries that define properties that are common to all good
-designs.  These axioms are applied in the analytical phase to determine the quality of a design, defined as the
-chances for success of the design based on its information content.  Thus, different designs can be compared based
-on how well they fulfill the requirements of the axioms.  These axioms: the independence axiom and the information
-axiom, are described in the following sections.
+The FRs exist in a design-agnostic \emph{functional space} and the DPs exist in a solution-specific
+\emph{physical space}.  It is the designer's job to provide the most efficient mapping between the two spaces.
 
-\subsection{The Independence Axiom}
+The FR/DP mapping is described by the \emph{design equation}, which is shown in Equation \ref{equ:design}.
+\begin{equation}
+  \label{equ:design}
+  [\text{FR}]=[\text{A}][\text{DP}]
+\end{equation}
+The design equation is a matrix equation that maps a vector of \(m\) FRs to a vector of \(n\) DPs via an \(m\times
+n\) design matrix A.  As will be shown, good designs require \(m=n\), and thus the design matrix is a square
+\(n\times n\) matrix.  A full discussion of the design matrix element values is beyond the scope of this research.
+Instead, we will use the following two values:
+\[A_{ij}=\begin{cases}
+X, & \text{FR}_i\ \text{depends on DP}_j \\
+0, & \text{FR}_i\ \text{does not depend on DP}_j
+\end{cases}\]
 
-The independence axiom states that the functional requirements (FRs) should be independent 
+Since the FR/DP mapping is non-unique, there needs to be a method to compare different plausible designs so that
+the best design can be selected as the final design.  Thus, the framework in Figure \ref{fig:design} includes an
+\emph{analytical process} where designs are judged by a set of axioms, corollaries, and theorems that specify the
+properties common to all good designs.  Once the best design, according to this analysis, is selected, it undergoes
+an \emph{ultimate check} to make sure that it sufficiently meets all of the customer's needs.  If so, then that
+design is selected as the final design.
 
-\begin{figure}
+\subsection{The Axioms}
+
+The independence axiom imposes a restriction on the FR/DP mapping:
+
+\begin{axiom}[Independence]
+  \label{axm:independ}
+  An optimal design always maintains the independence of the FRs.  This means that the FRs and DPs are related in
+  such a way that a specific DP can be adjusted to satisfy its corresponding FR without affecting other FRs.
+\end{axiom}
+
+\begin{figure}[h]
   \label{fig:coupling}
   \scalebox{0.75}{
     \begin{minipage}{3in}
@@ -154,8 +185,6 @@ The independence axiom states that the functional requirements (FRs) should be i
   }
   \caption{Coupling Examples}
 \end{figure}
-
-\subsection{The Information Axiom}
 
 \subsection{Part Consolidation}
 
