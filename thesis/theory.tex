@@ -306,41 +306,23 @@ graphs such that a solution is more easily determined.  The algorithm utilizes t
 deletion, edge addition, and vertex contraction.  Before describing these mutators, it will be helpful to describe
 what is meant by graph equality and a \emph{subgraph} of a graph.
 
-\subsubsection{Graph Equality}
+To say that graph \(G\) is \emph{equal} to graph \(H\), denoted by \(G=H\), means that the \emph{exact same graph}
+is given two names: \(G\) and \(H\).  It is specifically \emph{not} a comparison between two different graphs.  Two
+different graphs that have the same structure, meaning there exists an adjacency-preserving bijection between the
+vertices of the two graphs, are referred to as being \emph{isomorphic}, denoted by \(G\cong H\), and are not
+considered to be equal.  Of course, if \(G=H\) then \(G\cong H\); however, the converse is usually not true.  In
+fact, \(G=H\) if and only if \(V(G)=V(H)\) and \(E(G)=E(H)\).
 
-Graph equality follows from equality of the vertex and edge sets:
+To say that \(H\) is a \emph{subgraph} of a graph \(G\), denoted by \(H\subseteq G\), means that \(V(H)\subseteq
+V(G)\) and \(E(H)\subseteq E(G)\).  Thus, \(H\) can be achieved by removing zero or more vertices and/or edges from
+\(G\), and \(G\) can be achieved by adding zero or more vertices and/or edges to \(H\).  Once again, \(H\) is not a
+different graph.  If \(H\) is a different graph then one can say that it is isomorphic to a subgraph of \(G\), but
+not a subgraph of \(G\) itself.  By definition, \(G\subseteq G\) and the null graph is a subgraph of every graph.
 
-\begin{definition}[Graph Equality]
-  Let \(G\) and \(H\) be graphs.  To say that \(G\) is equal to \(H\), denoted \(G=H\), means that \(V(G)=V(H)\)
-  and \(E(G)=E(H)\).
-\end{definition}
-
-Note that this definition of equality ignores any additional relations that may be added to the graph tuples since
-those relations tend to be added by specific problems and do not reflect the actual parts of the graphs.
-
-\subsubsection{Subgraphs}
-
-Since graph equality follows from vertex and edge set equality, there should also be a concept of a \emph{subgraph}
-resulting from the subsets of those sets:
-
-\begin{definition}[Subgraph]
-  Let \(G\) and \(H\) be two graphs:
-  \begin{itemize}
-  \item To say that \(H\) is a \emph{subgraph} of \(G\), denoted \(H\subseteq G\), means that \(V(H)\subseteq V(G)\)
-    and \(E(H)\subseteq E(G)\).
-  \item To say that \(H\) is a \emph{proper subgraph} of \(G\), denoted \(H\subset G\), means that \(H\subseteq G\)
-    but \(H\ne G\): \(V(H)\subset V(G)\) or \(E(H)\subset E(G)\).
-  \item To say that \(H\) is a \emph{spanning subgraph} of \(G\) means that \(H\) is a subgraph of \(G\) such that
-    \(V(H)=V(G)\) and \(E(H)\subseteq E(G)\).
-  \end{itemize}
-\end{definition}
-
-Thus, given a graph \(G\) and a subgraph \(H\), there should be a sequence of zero or more vertex and/or edge
-removals to obtain \(H\) from \(G\).  Likewise, there should be a sequence of zero or more vertex and/or edge
-additions to obtain \(G\) from \(H\).  If \(H\) is a proper subgraph of \(G\) then \(H\) and \(G\) differ by at
-least one removed vertex or one removed edge.  If \(H\) is a spanning subgraph of \(G\) then \(H\) contains all of
-the vertices in \(G\) but may differ by removed edges only.  Per the definition, a graph is always a subgraph of
-itself \((G\subseteq G)\) and the null graph is a subgraph of every graph.
+When \(G\) and \(H\) differ by at least one vertex or edge then \(H\) is called a \emph{proper subgraph} of \(G\),
+denoted by \(H\subset G\).  In fact, \(H\subset G\) if and only if \(H\subseteq G\) but \(H\ne G\), meaning
+\(V(H)\subset V(G)\) or \(E(H)\subset E(G)\).  When \(H\) and \(G\) differ by edges only: \(V(H)=V(G)\) and
+\(E(H)\subseteq E(G)\), then \(H\) is called a \emph{spanning subgraph} of \(G\).
 
 The concept of subgraphs is demonstrated by graphs \(G\), \(H\), and \(F\) in Figure \ref{fig:subgraphs}.  \(H\) is
 a proper subgraph of \(G\) by removing vertices \(c\) and \(d\) and edges \(ad\) and \(be\).  \(F\) is a proper
@@ -405,27 +387,15 @@ spanning subgraph of \(G\) because \(F\) contains all of the vertices in \(G\) b
   \caption{Subgraph Examples}
 \end{figure}
 
-\subsubsection{Induced Subgraphs}
+An \emph{induced} subgraph is a special type of subgraph.  Let \(G\) be a graph and let \(S\subseteq V(G)\).  The
+subgraph of \(G\) \emph{induced} by \(S\), denoted by \(G[S]\), is a subgraph \(H\) such that \(V(H)=S\) and for
+every \(u,v\in S\), if \(u\) and \(v\) are adjacent in \(G\) then they are also adjacent in \(H\).  Such a subgraph
+\(H\) is called an \emph{induced subgraph} of \(G\).
 
-An \emph{induced} subgraph is a special type of subgraph:
-
-\begin{definition}[Induced Subgraph]
-  Let \(G\) be a graph and let \(S\) be a non-empty subset of \(V(G)\).  The subgraph of \(G\) \emph{induced} by
-  \(S\), denoted \(G[S]\), is a subgraph \(H\) such that:
-  \begin{itemize}
-  \item \(V(H)=S\)
-  \item \(u,v\in V(H)\) and \(uv\in E(G)\implies uv\in E(H)\)
-  \end{itemize}
-  Such a subgraph \(H\) is called an \emph{induced subgraph} of \(G\).
-\end{definition}
-
-Note that when a vertex is removed to make an induced subgraph then all of that vertex's incident edges are also
-removed.  However, for every pair of vertices included in an induced subgraph, if the vertices are the endpoints of
-a particular edge then that edge must also be included in the subgraph.  In the examples of Figure
-\ref{fig:subgraphs}, \(H\) is not an induced subgraph of \(G\) because it is missing edge \(be\).  Likewise, a
-proper spanning subgraph like \(F\) can never be induced due to missing edges.  In fact, the only induced spanning
-subgraph of a graph is the graph itself.  Figure \ref{fig:induced} adds edge \(be\) so that \(H\) is now an induced
-subgraph of \(G\).
+In the examples of Figure \ref{fig:subgraphs}, \(H\) is not an induced subgraph of \(G\) because it is missing edge
+\(be\).  Likewise, a proper spanning subgraph like \(F\) can never be induced due to missing edges.  In fact, the
+only induced spanning subgraph of a graph is the graph itself.  Figure \ref{fig:induced} adds edge \(be\) so that
+\(H\) is now an induced subgraph of \(G\).
 
 \begin{figure}[h]
   \label{fig:induced}
