@@ -1,31 +1,51 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{cavallaro}
 Sara Behdad, Jeffery Cavallaro, Praveen~Kumare Gopalakrishnan, and Sogol
   Jahanbekam.
 \newblock A graph coloring technique for identifying the minimum number of
   parts for physical integration in product design.
-\newblock {\em Proceedings of the ASME 2019 International Design Engineering
-  Technical Conferences \& Computers and Information in Engineering
-  Conference}, (DETC2018-98251), 2019.
+\newblock Number DETC2019-98251 in Proceedings of the ASME 2019 International
+  Design Engineering Technical Conferences \& Computers and Information in
+  Engineering Conference IDETC/CIE 2019, Anaheim, CA, Aug 18--21 2019.
 
 \bibitem{jahanbekam}
 Sara Behdad, Praveen~Kumare Gopalakrishnan, Sogol Jahanbekam, and Helen Klein.
 \newblock Graph partitioning technique to identify physically integrated design
   concepts.
-\newblock Proceedings of the ASME 2018 International Design Engineering
-  Technical Conferences \& Computers and Information in Engineering Conference
-  IDETC/CIE 2018", Quebec, Canada, Aug 26--29 2018.
+\newblock Number DETC2018-85646 in Proceedings of the ASME 2018 International
+  Design Engineering Technical Conferences \& Computers and Information in
+  Engineering Conference IDETC/CIE 2018, Quebec, Canada, Aug 26--29 2018.
+
+\bibitem{bron}
+Coen Bron and Joep Kerbosch.
+\newblock Algorithm 457: Finding all cliques of an undirected graph.
+\newblock {\em Communications of the ACM}, 16(9):575--577, September 1973.
 
 \bibitem{chartrand}
 Gary Chartrand and Ping Zhang.
 \newblock {\em A First Course in Graph Theory}.
 \newblock Dover Publications, Mineola, New York, 2012.
 
+\bibitem{edwards}
+C.S. Edwards and C.H. Elphick.
+\newblock Lower bounds for the clique and the chromatic numbers of a graph.
+\newblock {\em Discrete Applied Mathematics}, 5(1):51--64, 1983.
+
 \bibitem{hopcroft}
 John Hopcroft and Robert Tarjan.
 \newblock Algorithm 447: Efficient algorithms for graph manipulation.
-\newblock {\em Commun. ACM}, 16(6):372--378, June 1973.
+\newblock {\em Communications of the ACM}, 16(6):372--378, June 1973.
+
+\bibitem{mcdiarmid}
+Colin McDiarmid.
+\newblock Determining the chromatic number of a graph.
+\newblock {\em SIAM Journal on Computing}, 8(1):1--14, 02 1979.
+
+\bibitem{myers}
+B.R. Myers and R~Liu.
+\newblock A lower bound on the chromatic number of a graph.
+\newblock {\em Networks}, 1:273--277, 1972.
 
 \bibitem{suh}
 Nam~P. Suh.
@@ -41,5 +61,11 @@ Nam~P. Suh.
 Douglas~B. West.
 \newblock {\em Introduction to Graph Theory}.
 \newblock Prentice Hall, Upper Saddle River, NJ, \(2^{nd}\) edition, 2001.
+
+\bibitem{zykov}
+A.A. Zykov and American~Mathematical Society.
+\newblock {\em On Some Properties of Linear Complexes}, volume~7 of {\em
+  American Mathematical Society Translations Series One}.
+\newblock American Mathematical Society, 1952.
 
 \end{thebibliography}

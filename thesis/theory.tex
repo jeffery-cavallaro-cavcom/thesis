@@ -436,7 +436,7 @@ only induced spanning subgraph of a graph is the graph itself.  Figure \ref{fig:
       \(H=G[\set{a,b,e}]\)
     \end{center}
   \end{minipage}
-  \caption{Induced Subgraph Example}
+  \caption{An Induced Subgraph}
 \end{figure}
 
 \subsection{Mutators}
@@ -490,14 +490,13 @@ incident edges \(ae\) and \(be\).
       \(G-\set{c,e}\)
     \end{center}
   \end{minipage}
-  \caption{Vertex Removal Example}
+  \caption{Vertex Removal}
 \end{figure}
 
-If \(\abs{S}=1\) then an alternate syntax can be used.  Assume \(v\in V(G)\):
-\[G-v=G-\set{v}\]
+If \(S\) consists of a single vertex \(v\) then the alternate syntax \(G-v\) is used instead of \(G-\set{v}\).
 
-The proposed algorithm uses vertex removal to simplify a \colorable{k} graph into a simpler subgraph that is still
-\colorable{k}.
+The proposed algorithm uses vertex removal to simplify a graph that is assumed to be \colorable{k} into a smaller
+graph that is also \colorable{k}.
 
 \subsubsection{Edge Addition}
 
@@ -548,7 +547,7 @@ Figure \ref{fig:eadd} shows an example of edge addition: edge \(cd\) is added.
       \(G+cd\)
     \end{center}
   \end{minipage}
-  \caption{Edge Addition Example}
+  \caption{Edge Addition}
 \end{figure}
 
 The proposed algorithm uses edge addition to prevent two non-adjacent FRs from being consolidated into the same
@@ -561,7 +560,7 @@ so it is presented here.  Let \(G\) be a graph and let \(X\subseteq E(G)\).  The
 removing all of the edges in \(X\) is denoted by:
 \[G-X=H\left(V(G),E(G)-X\right)\]
 Thus, only edges are remove --- no vertices are removed.  If \(X\ne\emptyset\) then \(G-X\) is a proper subgraph of
-\(G\).  If \(X=E(G)\) then the result is an empty graph (no edges).
+\(G\).  If \(X=E(G)\) then the result is an empty graph.
 
 Figure \ref{fig:eremove} shows an example of edge removal: edges \(ae\) and \(be\) are removed.
 
@@ -603,11 +602,10 @@ Figure \ref{fig:eremove} shows an example of edge removal: edges \(ae\) and \(be
       \(G-\set{ae,be}\)
     \end{center}
   \end{minipage}
-  \caption{Edge Removal Example}
+  \caption{Edge Removal}
 \end{figure}
 
-If \(\abs{X}=1\) then an alternate syntax can be used.  Assume \(e\in E(G)\):
-\[G-e=G-\set{e}\]
+If \(X\) consists of a single edge \(e\) then the alternate syntax \(G-e\) is used instead of \(G-\set{e}\).
 
 \subsubsection{Vertex Contraction}
 
@@ -661,7 +659,7 @@ edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single 
       \(G\cdot ab\)
     \end{center}
   \end{minipage}
-  \caption{Vertex Contraction Example}
+  \caption{Vertex Contraction}
 \end{figure}
 
 For the operation \(G\cdot uv\), if \(uv\in E(G)\) then the operation is also referred to as \emph{edge
@@ -679,19 +677,14 @@ nature of an input graph.  The concept of connectedness and how it impacts color
 
 The undirected edges in a simple graph suggest bidirectional connectivity between their endpoint vertices.  This
 leads to the idea of ``traveling'' between two vertices in a graph by following the edges joining intermediate
-adjacent vertices.  Such a journey is referred to as a \emph{walk}:
+adjacent vertices.  Such a journey is referred to as a \emph{walk}.
 
-\begin{definition}[Walk]
-  A \(u-v\) \emph{walk} \(W\) in a graph \(G\) is a finite sequence of vertices \(w_i\in V(G)\) starting with
-  \(u=w_0\) and ending with \(v=w_k\):
-  \[W=(u=w_0,w_1,\ldots,w_k=v)\]
-  such that \(w_iw_{i+1}\in E(G)\) for \(0\le i<k\).
-
-  To say that \(W\) is \emph{open} means that \(u\ne v\).  To say that \(W\) is \emph{closed} means that \(u=v\).
-  The \emph{length} \(k\) of \(W\) is the number of edges traversed: \(k=\abs{W}\).
-
-  A \emph{trivial} walk is a walk of zero length --- i.e, a single vertex: \(W=(u)\).
-\end{definition}
+A \(u-v\) \emph{walk} \(W\) in a graph \(G\) is a finite sequence of vertices \(w_i\in V(G)\) starting with
+\(u=w_0\) and ending with \(v=w_k\):
+\[W=(u=w_0,w_1,\ldots,w_k=v)\]
+such that \(w_iw_{i+1}\in E(G)\) for \(0\le i<k\).  To say that \(W\) is \emph{open} means that \(u\ne v\).  To say
+that \(W\) is \emph{closed} means that \(u=v\).  The \emph{length} \(k\) of \(W\) is the number of edges traversed:
+\(k=\abs{W}\).  A \emph{trivial} walk is a walk of zero length --- i.e, a single vertex: \(W=(u)\).
 
 The bidirectional nature of the edges in a simple graph suggests the following proposition:
 
@@ -700,9 +693,9 @@ The bidirectional nature of the edges in a simple graph suggests the following p
   \(k\) in \(G\) by traversing \(u-v\) in the opposite direction.
 \end{proposition}
 
-An example of two walks of length \(4\) is shown in Figure \ref{fig:walks}.  Note that \(W_1\) is an open walk
-because it starts and ends on distinct vertices, whereas \(W_2\) is a closed walk because it starts and ends on the
-same vertex.
+An example of two walks of length \(4\) is shown in Figure \ref{fig:walks}.  \(W_1\) is an open walk because it
+starts and ends on distinct vertices, whereas \(W_2\) is a closed walk because it starts and ends on the same
+vertex.
 
 \begin{figure}[h]
   \label{fig:walks}
@@ -725,13 +718,13 @@ same vertex.
 
     \(\abs{W_1}=\abs{W_2}=4\)
   \end{minipage}
-  \caption{Open and Closed Walks in a Graph}
+  \caption{Open and Closed Walks}
 \end{figure}
 
 Note that in the general case, vertices and edges are allowed to be repeated during a walk.  Certain special walks
 can be defined by restricting such repeats:
 
-\begin{definition}[Special Walks]
+\begin{center}
   \begin{tabular}{lll}
     \emph{trail} & An open walk with no repeating edges & \((a,b,c,a,e)\) \\
     \\
@@ -741,16 +734,15 @@ can be defined by restricting such repeats:
     \\
     \emph{cycle} & A closed path & \((a,e,b,c,a)\)
   \end{tabular}
-\end{definition}
+\end{center}
 
 The example special walks stated above refer to the graph in Figure \ref{fig:walks}.
 
-When discussing the connectedness of a graph, the main concern is the existence of paths between vertices:
+\subsubsection{Paths}
 
-\begin{definition}[Connected Vertices]
-  Let \(G\) be a graph and let \(u,v\in V(G)\).  To say that \(u\) and \(v\) are \emph{connected} means that \(G\)
-  contains a \(u-v\) path.
-\end{definition}
+When discussing the connectedness of a graph, the main concern is the existence of paths between vertices.  Let
+\(G\) be a graph and let \(u,v\in V(G)\).  To say that \(u\) and \(v\) are \emph{connected} means that \(G\)
+contains a \(u-v\) path.
 
 But if there exists a \(u-v\) walk in a graph \(G\), does this also mean that there exists a \(u-v\) path in \(G\)
 --- i.e. a walk with no repeating edges or vertices?  The answer is yes, as shown by the following theorem:
@@ -854,14 +846,9 @@ But if there exists a \(u-v\) walk in a graph \(G\), does this also mean that th
 
 \subsubsection{Connected}
 
-A \emph{connected} graph is a graph whose vertices are all connected:
-
-\begin{definition}[Connected Graph]
-  To say that a graph \(G\) is \emph{connected} means that for all \(u,v\in V(G)\) there exists a \(u-v\) path.
-  Otherwise, \(G\) is said to be \emph{disconnected}.
-\end{definition}
-
-Examples of connected and disconnected graphs are shown in figure \ref{fig:connect}.
+A \emph{connected} graph \(G\) is a graph whose vertices are all connected: for all \(u,v\in V(G)\) there exists a
+\(u-v\) path.  Otherwise, \(G\) is said to be \emph{disconnected}.  Examples of connected and disconnected graphs
+are shown in figure \ref{fig:connect}.
 
 \begin{figure}[h]
   \label{fig:connect}
@@ -917,17 +904,12 @@ length \(0\)).
 
 It would seem that a disconnected graph is composed of some number of connected subgraphs that partition the
 graph's vertex set under a connected equivalence relation.  Each such subgraph is called a \emph{component} of the
-graph:
+graph.
 
-\begin{definition}[Component]
-  Let \(G\) be a graph and let \(\SG\) be the set of all connected subgraphs of \(G\).  To say that a graph
-  \(H\in\SG\) is a \emph{component} of a \(G\) means that \(H\) is not a subgraph of any other connected subgraph
-  of \(\SG\):
-  \[\forall\,F\in\SG-\set{H},H\not\subset F\]
-  The number of distinct components in \(G\) is denoted by:
-  \[k=k(G)\]
-  For a connected graph: \(k(G)=1\).
-\end{definition}
+Let \(G\) be a graph and let \(\SG\) be the set of all connected subgraphs of \(G\).  To say that a graph
+\(H\in\SG\) is a \emph{component} of a \(G\) means that \(H\) is not a subgraph of any other connected subgraph of
+\(\SG\): for every \(F\in\SG-\set{H}\) it is the case that \(H\not\subset F\).  The number of distinct components
+in \(G\) is denoted by k(G), or just \(k\) if \(G\) is unambiguous.  For a connected graph: \(k(G)=1\).
 
 Each component of a graph \(G\) is denoted by \(G_i\) where \(1\le i\le k(G)\).  We also use union notation to
 denote that \(G\) is composed of its component parts:
@@ -949,8 +931,8 @@ Furthermore the \(G_i\) are induced by the vertex equivalence classes of the con
 \subsubsection{Impact on Coloring}
 
 The impact of disconnectedness on coloring depends on the selected algorithm.  One might assume that the selected
-algorithm should be run on each component individually in order to determine each \(\X(G_i)\) and then use Proposition
-\ref{prop:coloring2} to conclude that the maximum such value is sufficient for \(\X(G)\):
+algorithm should be run on each component individually in order to determine each \(\X(G_i)\) and then, as pointed
+out by Zykov, 1949 (translated 1952) \cite{zykov}, conclude that the maximum such value is sufficient for \(\X(G)\):
 \[\X(G)=\max_{1\le i\le k(G)}\X(G_i)\]
 For example, consider the disconnected graph in Figure \ref{fig:connect}.  The graph contains two components, so
 number the components from left-to-right:
@@ -976,67 +958,42 @@ partitioning the graph into components first.
 \subsection{Vertex Degree}
 
 Besides a graph's order and size, the next most important parameter is the so-called \emph{degree} of each vertex.
-In order to define the degree of a vertex, we need to define what is meant by a vertex's \emph{neighborhood} first:
-
-\begin{definition}[Neighbor]
-  Let \(G\) be a graph and let \(u,v\in V(G)\).  To say that \(u\) is a \emph{neighbor} of \(v\) (and vice-versa)
-  means that \(uv\in E(G)\).
-\end{definition}
-
-Thus, neighbor vertices are adjacent.  Note that for simple graphs, a vertex is never a neighbor of itself.
-
-The set of all neighbors for a vertex is referred to as the vertex's neighborhood:
-
-\begin{definition}[Neighborhood]
-  Let \(G\) be a graph and let \(u\in V(G)\).  The \emph{neighborhood} of \(u\), denoted by \(N(u)\), is the set of
-  all neighbors of \(u\) in \(G\):
-  \[N(u)=\setb{v\in V(G)}{uv\in E(G)}\]
-\end{definition}
-
-The degree of a vertex is then defined to be the cardinality of its neighborhood:
-
-\begin{definition}[Degree]
-  Let \(G\) be a graph and let \(u\in G\).  The \emph{degree} of \(u\), denoted by \(\deg_G(u)\) or \(\deg(u)\), is
-  the cardinality of the neighborhood of \(u\):
-  \[\deg(u)=\abs{N(u)}\]
-\end{definition}
-
-Note that the degree of a vertex can be viewed as the number of neighbor vertices or the number of incident edges.
+In order to define the degree of a vertex, we need to define what is meant by a vertex's \emph{neighborhood} first.
+So let \(G\) be a graph and let \(u\in V(G)\).  If \(v\in V(G)\) is adjacent to \(u\) then \(u\) and \(v\) are
+called \emph{neighbors}.  Note that for simple graphs, a vertex is never a neighbor of itself.  The
+\emph{neighborhood} of \(u\), denoted by \(N(u)\), is the set of all the neighbors of \(u\):
+\[N(u)=\setb{v\in V(G)}{uv\in E(G)}\]
+The \emph{degree} of \(u\), denoted by \(\deg_G(u)\) or just \(\deg(u)\) if \(G\) is unambiguous, is then defined
+to be the cardinality of its neighborhood: \(\deg(u)=\abs{N(u)}\).  Thus, the degree of a vertex can be viewed as
+the number of neighbor vertices or the number of incident edges.
 
 When considering the degrees of all the vertices in a graph, the following limits are helpful:
+\begin{gather*}
+  \d(G)=\min_{v\in V(G)}\deg(v) \\
+  \D(G)=\max_{v\in V(G)}\deg(v)
+\end{gather*}
 
-\begin{notation}
-  Let \(G\) be a graph:
-  \begin{gather*}
-    \d(G)=\min_{v\in V(G)}\deg(v) \\
-    \D(G)=\max_{v\in V(G)}\deg(v)
-  \end{gather*}
-\end{notation}
-
-And so, for a graph \(G\) or order \(n\), it must be the case that for every vertex \(v\in G\):
+And so, for a graph \(G\) of order \(n\), it must be the case that for every vertex \(v\in G\):
 \[0\le\d(G)\le\deg(v)\le\D(G)\le n-1\]
 
 Intuitively, as \(\d(G)\) increases, a graph becomes denser (more edges) resulting in more adjacencies, making it
 harder to find a proper coloring at lower values of \(k\).
 
-Vertices can be classified based on their degree:
+Vertices can be classified based on their degree.  Let \(G\) be a graph of order \(n\) and let \(u\in V(G)\):
 
-\begin{definition}[Vertex Types]
-  Let \(G\) be a graph of order \(n\) and let \(u\in V(G)\):
-  \begin{quote}
-    \begin{tabular}{|c|l|}
-      \hline
-      \(\deg(u)\) & TYPE \\
-      \hline
-      \(0\) & isolated \\
-      \(1\) & pendant, end, leaf \\
-      \(n-1\) & universal \\
-      even & even \\
-      odd & odd \\
-      \hline
-    \end{tabular}
-  \end{quote}
-\end{definition}
+\begin{center}
+  \begin{tabular}{|c|l|}
+    \hline
+    \(\deg(u)\) & TYPE \\
+    \hline
+    \(0\) & isolated \\
+    \(1\) & pendant, end, leaf \\
+    \(n-1\) & universal \\
+    even & even \\
+    odd & odd \\
+    \hline
+  \end{tabular}
+\end{center}
 
 The degrees of the vertices in a graph and the number of edges in the graph are related by the so-called First
 Theorem of Graph Theory:
@@ -1051,8 +1008,7 @@ Theorem of Graph Theory:
   When summing all the degrees, each edge is counted twice: once for each endpoint.
 \end{proof}
 
-These concepts are demonstrated by the graph in Figure \ref{fig:degree}; note that the sum of the vertex degrees is
-30, which is twice the number of edges in the graph.
+These concepts are demonstrated by the graph in Figure \ref{fig:degree}.
 
 \begin{figure}[h]
   \label{fig:degree}
@@ -1102,13 +1058,13 @@ These concepts are demonstrated by the graph in Figure \ref{fig:degree}; note th
 
 \subsection{Special Graphs}
 
-We conclude this introductory section on graph theory with a discussion of some special classes of graphs that are
-important to the execution of the proposed algorithm.
+The following sections described of some special classes of graphs that are important to the execution of the
+proposed algorithm.
 
 \subsubsection{Empty Graphs}
 
 An \emph{empty} graph of order \(n\), denoted by \(E_n\), is a graph with one or more vertices (\(n>1\)) and no
-edges (\(m=0\)).  An empty graph is connected iff \(n=1\).  Examples of empty graphs are shown in Figure
+edges (\(m=0\)).  An empty graph is connected if and only if \(n=1\).  Examples of empty graphs are shown in Figure
 \ref{fig:empty}.
 
 \begin{figure}[h]
@@ -1200,7 +1156,7 @@ single open path.  Examples of path graphs are shown in Figure \ref{fig:path}.
   \caption{Path Graphs}
 \end{figure}
 
-Note that \(P_1=E_1\) is \chromatic{1}, whereas \(P_n,n>1\) is \chromatic{2}.
+Note that \(P_1=E_1\) is \chromatic{1}, whereas \(P_{n>1}\) is \chromatic{2}.
 
 Paths are not particularly important to the proposed algorithm; however, they play a part in the definition of
 cycles.
@@ -1254,14 +1210,13 @@ Examples of cycle graphs are shown in Figure \ref{fig:cycle}.
 Note that even cycles are \(2\)-chromatic; however, odd cycles are \(3\)-chromatic.
 
 Cycles are not particularly important to the proposed algorithm; however, they play a part in the definition of
-trees, which are important to the later Zykov analysis of coloring algorithms.
+trees, which are important to the later analysis of coloring algorithms.
 
 \subsubsection{Complete Graphs}
 
 A \emph{complete} graph of order \(n\) and size \(\frac{n(n-1)}{2}\), denoted by \(K_n\), is a connected graph that
-contains every possible edge:
-\[E(G)=\ps_2(V(G))\]
-and thus all \(n\) vertices are adjacent to each other.
+contains every possible edge: \(E(G)=\ps_2(V(G))\).  Thus, all of the vertices in a complete graph are universal and
+adjacent to each other.
 
 Examples of complete graphs are shown in Figure \ref{fig:complete}.
 
@@ -1356,4 +1311,55 @@ in Figure \ref{fig:tree}, such a depth-first walk would be:
 Note that this walk guarantees that each vertex is visited at least once.
 
 When such a tree is applied to the problem of exhaustively finding the chromatic number of a graph, the tree is
-called a \emph{Zykov} tree.  These concepts are described in detail in the next section.
+called a \emph{Zykov} tree \cite{mcdiarmid,zykov}.  These concepts are described in detail in the next section.
+
+\subsection{Cliques}
+
+A \emph{clique} is a complete subgraph of a graph.  A \emph{maximal} clique is a clique that cannot be extended by
+an additional vertex.  The \emph{maximum} clique is the maximal clique of highest order.  The \emph{clique number}
+of a graph \(G\), denoted by \(\w(G)\), is the order of the maximum clique in \(G\).  Consider the example in
+Figure \ref{fig:clique}.  \(G\) has lots of \clique{2}s; however, none of them are maximal.  \(G\) has several
+maximum \clique(3)s --- for example: \(G[\set{e,f,g}]\).  There is only one maximal \clique{4}:
+\(G[\set{a,b,c,d}]\) and no clique of higher order.  Thus, \(\w(G)=4\).
+
+\begin{figure}[h]
+  \label{fig:clique}
+  \begin{center}
+    \begin{tikzpicture}[every node/.style=labeled node]
+      \completeV{\(a\),\(b\),\(c\),\(d\)}{(0,0)}{0.75in}{135}{a};
+      \completeV{\(e\),\(f\),\(g\)}{(5,0)}{0.6in}{120}{b};
+      \node (h) [right=of b2] {\(h\)};
+      \draw (a2) edge (b1);
+      \draw (a3) edge (b3);
+      \draw (b2) edge (h);
+      \draw (a1) -- ($(a1)+(0,1cm)$) -| (b1);
+      \draw (a4) -- ($(a4)-(0,1cm)$) -| (b3);
+      \draw (a2) -- (b3);
+      \draw (b1) -| (h);
+      \draw (b3) -| (h);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G\)
+  \end{center}
+  \caption{A Graph with Cliques}
+\end{figure}
+
+Since a \clique{k} of a graph \(G\) needs at least \(k\) colors in any proper coloring of \(G\), this provides a
+lower bound for the chromatic number of \(G\): \(\w(G)\le\X(G)\).  Unfortunately, the clique number problem is
+known to be NP-hard.  Bron and Kerbosch, 1973 \cite{bron} provide two algorithms: one exhaustive and one
+branch-and-bound, that run in exponential time.  However, it is much easier to find a lower bound for \(\w(G)\),
+and hence \(\X(G)\).  Edwards and Elphick, 1983 \cite{edwards} provide a summary of several known methods for
+finding a lower bound for \(\w(G)\).  The simplist, although not the tightest, was found by Myers and Liu, 1970
+\cite{myers} and is stated in Theorem \ref{thm:clique}.
+
+\begin{theorem}[Myers and Liu, 1970]
+  \label{thm:clique}
+  Let \(G\) be a graph of order \(n\) and size \(m\):
+  \[\w(G)\ge\frac{n^2}{n^2-2m}\]
+\end{theorem}
+
+Applying this to the example graph in Figure \ref{fig:clique}, where \(n=8\) and \(m=17\):
+\[\w(G)\ge\frac{8^2}{8^2-2\cdot17}=\frac{64}{30}=2.4\]
+Therefore, \(\w(G)\ge3\).
