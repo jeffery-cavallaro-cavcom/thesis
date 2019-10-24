@@ -7,18 +7,13 @@ by the author during his undergraduate and graduate graph theory classes at SJSU
 \subsection{Simple Graphs}
 
 The problem of part consolidation is best served by a class of graphs called \emph{simple graphs}.  A \emph{simple
-  graph} is a mathematical object represented by an ordered pair \(G=(V,E)\) consisting of a non-empty and finite
+  graph} is a mathematical object represented by an ordered pair \(G=(V,E)\) consisting of a finite and non-empty
 set of \emph{vertices} (also called \emph{nodes}): \(V(G)\), and a finite and possibly empty set of edges:
 \(E(G)\).  Each edge is represented by a two-element subset of \(V(G)\) called the \emph{endpoints} of the edge:
 \(E(G)\subseteq\ps_2\left(V(G)\right)\).  For the remainder of this work, the use of the term ``graph'' implies a
 ``simple graph.''  Thus, a part consolidation problem can be represented by a graph whose vertices are the
 functional requirements (FRs) of the design and whose edges indicate which endpoint FRs should never be combined
 into a single part.
-
-In addition to the vertices and edges, a graph may be associated with one or more relations.  Each relation has
-\(V(G)\) or \(E(G)\) as its domain and is used to associate vertices or edges with problem-specific attributes such
-as labels or colors.  Some authors include these relations and their codomains as part of the graph tuple; however,
-since these extra tuple elements don't affect the structure of the graph, we will not do so.
 
 The choice of two-element subsets of \(V(G)\) for the edges has certain ramifications that are indeed characteristics
 that differentiate a simple graph from other classes of graphs:
@@ -31,7 +26,7 @@ that differentiate a simple graph from other classes of graphs:
   its endpoint vertices.
 \end{enumerate}
 When referring to the edges in a graph, the common notation of juxtaposition of the vertices will be used instead of
-the set syntax.  Thus, edge \(\set{u,v}\) is simply referred to as \(uv\).
+the set syntax.  Thus, edge \(\set{u,v}\) is simply referred to as \(uv\) or \(vu\).
 
 Graphs are often portrayed visually using labeled or filled circles for the vertices and lines for the edges such
 that each edge line is drawn between its two endpoint vertices.  An example graph is shown in Figure
@@ -72,8 +67,8 @@ that each edge line is drawn between its two endpoint vertices.  An example grap
     \end{center}
   \end{minipage}
   \begin{gather*}
-    V=V(G)=\set{a,b,c,d,e} \\
-    E=E(G)=\set[\big]{\set{a,b},\set{a,d},\set{a,e},\set{b,e}}
+    V(G)=\set{a,b,c,d,e} \\
+    E(G)=\set[\big]{ab,ad,ae,be}
   \end{gather*}
   \caption{An Example Graph (labeled and unlabeled)}
 \end{figure}
@@ -81,45 +76,24 @@ that each edge line is drawn between its two endpoint vertices.  An example grap
 When two vertices are the endpoints of the same edge, the vertices are said to be \emph{adjacent} or are called
 \emph{neighbors}, and the edge is said to \emph{join} its two endpoint vertices.  Furthermore, an edge is said to
 be \emph{incident} to its endpoint vertices.  In the example graph of Figure \ref{fig:exgraph}, vertex \(a\) is
-adjacent to vertices \(b\), \(d\), and \(e\).
+adjacent to vertices \(b\), \(d\), and \(e\); however, it is not adjacent to vertex \(c\).
 
 As demonstrated by vertex \(c\) in Figure \ref{fig:exgraph}, there is no requirement that every vertex in a graph
 be an endpoint for some edge.  In fact, a vertex that is not incident to any edge is called an \emph{isolated}
 vertex.
 
-We can also speak of adjacent edges, which are edges that share an endpoint:
-
-\begin{definition}[Adjacent Edges]
-  Let \(G\) be a graph and left \(e,f\in E(G)\).  To say that \(e\) and \(f\) are \emph{adjacent} edges means that
-  they share some endpoint \(v\in E(G)\):
-  \[\exists\,v\in V(G),e\cap f=\set{v}\]
-  or similarly:
-  \[\abs{e\cap f}=1\]
-\end{definition}
-
-Note that two edges in a simple graph can only share one endpoint; otherwise, the two edges would be multiple edges,
-which are not allowed in simple graphs.
-
-In the example graph of Figure \ref{fig:exgraph}, notice that \(ab\) is adjacent to \(ad\), \(ae\), and \(be\); and
-\(ae\) is adjacent to \(be\).
+We can also speak of adjacent edges, which are edges that share exactly one endpoint.  Note that two edges cannot
+share both of their endpoints --- otherwise they would be multiple edges, which are not allowed in simple graphs.
+In the example graph of Figure \ref{fig:exgraph}, edge \(ab\) is adjacent to edges \(ad\) and \(ae\) via common
+vertex \(a\), and \(be\) via common vertex \(b\).
 
 \subsection{Order and Size}
 
-Two of the most important characteristics of a graph are the number of vertices in the graph, called the \emph{order}
-of the graph, and the number of edges in the graph, called the \emph{size} of the graph:
-
-\begin{definition}[Order]
-  Let \(G\) be a graph.  The \emph{order} of \(G\), denoted by \(n\) or \(n(G)\), is the number of vertices in
-  \(G\):
-  \[n=n(G)=\abs{V(G)}\]
-\end{definition}
-
-\begin{definition}[Size]
-  Let \(G\) be a graph.  The \emph{size} of \(G\), denoted by \(m\) or \(m(G)\), is the number of edges in \(G\):
-  \[m=m(G)=\abs{E(G)}\]
-\end{definition}
-
-In the example graph of Figure \ref{fig:exgraph}, notice that \(n=5\) and \(m=4\).
+Two of the most important characteristics of a graph are its \emph{order} and its \emph{size}.  The \emph{order} of
+a graph \(G\), denoted by \(n(G)\) or just \(n\) when \(G\) is unambiguous, is the number of vertices in \(G\):
+\(n=\abs{V(G)}\).  The \emph{size} of a graph \(G\), denoted by \(m(G)\) or just \(m\) when \(G\) is unambiguous,
+is the number of edges in \(G\): \(m=\abs{E(G)}\).  In the example graph of Figure \ref{fig:exgraph}: \(n=5\) and
+\(m=4\).
 
 Since every two vertices can have at most one edge between them, the number of edges has an upper bound:
 
@@ -136,25 +110,23 @@ Since every two vertices can have at most one edge between them, the number of e
 
 Some choices of graph order and size lead to certain degenerate cases that serve as important termination cases for
 the the proposed algorithm:
+\begin{itemize}
+\item The \emph{null} graph is the non-graph with no vertices \((n=m=0)\).
+\item The \emph{trivial} graph is the graph with exactly one vertex and no edges \((n=1,m=0)\).  Otherwise, a graph
+  is called \emph{non-trivial}.
+\item An \emph{empty} graph is a graph containing no edges (\(m=0\)).
+\end{itemize}
 
-\begin{definition}[Degenerate Cases]
-  \begin{itemize}[left=0pt]
-  \item[]
-  \item The \emph{null} graph is the non-graph with no vertices \((n=m=0)\).
-  \item The \emph{trivial} graph is the graph with exactly one vertex and no edges \((n=1,m=0)\).  Otherwise, the
-    graph is \emph{non-trivial}.
-    \item An \emph{empty} graph is a graph with possibly some isolated vertices but with no edges \((m=0)\).
-  \end{itemize}
-\end{definition}
+Thus, both the null and trivial graphs are empty.
 
-Hence, both the null and trivial graphs are empty.
+\subsection{Graph Relations}
 
-\subsection{Graph Tuple Relations}
-
-Various problems in graph theory require that vertices and edges be assigned values of particular attributes.  This
-is accomplished by adding relations to the graph tuple that map the vertices and/or edges to their attribute values.
-Note that there are no particular limitations on the nature of such a relation --- everything from a basic relation
-to a bijective function is possible, depending on the problem.
+In addition to its vertices and edges, a graph may be associated with one or more relations.  Each relation has
+\(V(G)\) or \(E(G)\) as its domain and is used to associate vertices or edges with problem-specific attributes such
+as labels or colors.  Note that there are no particular limitations on the nature of such a relation --- everything
+from a basic relation to a bijective function are possible.  Some authors include these relations and their
+codomains as part of the graph tuple; however, since these extra tuple elements don't affect the structure of the
+graph, we will not do so.
 
 In practice, when a graph theory problem requires a particular vertex or edge attribute, the presence of some
 corresponding relation \(\sR\) is assumed and we say something like, ``vertex \(v\) has attribute \(a\),'' instead
@@ -164,16 +136,11 @@ The following sections describe the two relations used by the proposed algorithm
 
 \subsubsection{Labels}
 
-One of the possible relations in a graph tuple is a bijective function that assigns each vertex an identifying label.
-When such a function is present, the graph is said to be a \emph{labeled} graph:
-
-\begin{definition}[Labeled Graph]
-  To say that a graph \(G\) is \emph{labeled} means that its vertices are considered to be distinct and are
-  assigned identifying names (labels) by adding a bijective labeling function to the graph tuple:
-  \[\ell:V(G)\to L\]
-  where \(L\) is a set of labels (names).  Otherwise, the vertices are considered to be identical (only the
-  structure of the graph matters) and the graph is \emph{unlabeled}.
-\end{definition}
+One possible relation associated with a graph \(G\) is a bijective function \(\ell:V(G)\to L\) that assigns to each
+vertex a unique identifying label.  The codomain \(L\) is the set of available labels.  When such a function is
+present, the graph is said to be a \emph{labeled} graph and the vertices are considered to be distinct.  Otherwise,
+a graph is said to be \emph{unlabeled} and the vertices are considered to be identical (only the structure of the
+graph matters).
 
 The vertices in a labeled graph are typically draw as open circles containing the corresponding labels, whereas the
 vertices in an unlabeled graph are typically drawn as filled circles.  This is demonstrated in the example graph of
@@ -186,29 +153,23 @@ a vertex is freely identified by its label.  This is important to note when a pr
 vertex by its label; the intention is usually clear from the context.
 
 The design graphs that act as the inputs to the proposed algorithm are labeled graphs, where the labels represent
-the various functional requirements:
-\[FR_1,FR_2,FR_3,\ldots,FR_n\]
+the various functional requirements: \(\FR_1,\FR_2,\FR_3,\ldots,\FR_n\).
 
 \subsubsection{Vertex Color}
 
-Other graph theory problems require that the graph's vertex set be distributed into some number of sets based on
-some problem-specific criteria.  Usually, this distribution is a true partition (no empty sets), but this is not
-required depending on the problem.  One popular method of performing this distribution is by adding a
-\emph{coloring} function to the graph tuple:
-\[c:V(G)\to C\]
-where \(C\) is a set of \emph{colors}; vertices with the same color are assigned to the same set in the
-distribution.  Although the elements of \(C\) are usually actual colors (red, green, blue, etc.), a graph coloring
-problem is free to select any value type for the color attribute.  Note that there is no assumption that \(c\) is
-surjective, so the codomain \(C\) may contain unused colors, which corresponds to empty sets in the distribution.
+Other graph theory problems require that a graph's vertices be distributed into some number of sets based on some
+problem-specific criteria.  Usually, this distribution is a true partition (no empty sets), but this is not
+required depending on the problem.  One popular method of performing this distribution on a graph \(G\) is by using
+a \emph{coloring} function \(c:V(G)\to C\), where \(C\) is a set of \emph{colors}.  Vertices with the same color
+are assigned to the same set in the distribution.  Although the elements of \(C\) are usually actual colors
+(\txtclr{red}, \txtclr{green}, \txtclr{blue}, etc.), a graph coloring problem is free to select any value type for
+the color attribute.  Note that there is no assumption that \(c\) is surjective, so the codomain \(C\) may contain
+unused colors, which correspond to empty sets in the distribution.
 
-The most popular coloring scheme for a graph requires that adjacent vertices be assigned different colors:
-
-\begin{definition}[Proper Coloring]
-  A coloring \(c\) on a graph \(G\) is called \emph{proper} when no two adjacent vertices are assigned the same color:
-  \[\forall\,u,v\in V(G),uv\in E(G)\implies c(u)\ne c(v)\]
-  A proper coloring \(c\) with \(\abs{C}=k\) is called a \emph{\coloring{k}} of \(G\) and \(G\) is said to be
-  \emph{\colorable{k}}, meaning the actual coloring (range of \(c\)) uses \emph{at most} \(k\) colors.
-\end{definition}
+A coloring \(c:V(G)\to C\) on a graph \(G\) is called \emph{proper} when no two adjacent vertices in \(G\) are
+assigned the same color: for all \(u,v\in V(G)\), if \(uv\in E(G)\) then \(c(u)\ne c(v)\).  Otherwise, \(c\) is
+called \emph{improper}.  A proper coloring with \(\abs{C}=k\) is called a \emph{\coloring{k}} of \(G\) and \(G\) is
+said to be \emph{\colorable{k}}, meaning the actual coloring (range of \(c\)) uses \emph{at most} \(k\) colors.
 
 An example of a \coloring{4} is shown in Figure \ref{fig:exproper}.
 
@@ -238,33 +199,30 @@ An example of a \coloring{4} is shown in Figure \ref{fig:exproper}.
     \end{center}
   \end{minipage}
   \begin{minipage}[t]{3in}
-    \begin{gather*}
-      c(a)=green \\
-      c(b)=blue \\
-      c(c)=green \\
-      c(d)=orange \\
-      c(e)=red
-    \end{gather*}
+    \[C=\set{\mtxtclr{green},\mtxtclr{blue},\mtxtclr{red},\mtxtclr{orange}}\]
+    \begin{align*}
+      c(a) &= \mtxtclr{green} \\
+      c(b) &= \mtxtclr{blue} \\
+      c(c) &= \mtxtclr{green} \\
+      c(d) &= \mtxtclr{orange} \\
+      c(e) &= \mtxtclr{red}
+    \end{align*}
   \end{minipage}
   \caption{A Graph with a \coloring{4}}
 \end{figure}
 
 Since there is no requirement that a coloring \(c\) be surjective, the codomain \(C\) may contain unused colors.
-For example, the codomain of the coloring shown in Figure \ref{fig:exproper} might be:
-\[C=\set{green,blue,red,orange}\]
-and hence \(c\) is surjective and \(G\) is \colorable{4}.  But we can always add an unused color to \(C\):
-\[C=\set{green,blue,red,orange,brown}\]
-Now, \(c\) is no longer surjective, and according to the definition: \(G\) is \colorable{5} --- the coloring \(c\)
+For example, the coloring shown in Figure \ref{fig:exproper} is surjective, but we can add an unused color to
+\(C\):
+\[C=\set{\mtxtclr{green},\mtxtclr{blue},\mtxtclr{red},\mtxtclr{orange},\mtxtclr{brown}}\]
+Now, \(c\) is no longer surjective, and according to the definition, \(G\) is \colorable{5} --- the coloring \(c\)
 uses at most 5 colors (actually only 4), which is the cardinality of the codomain.
 
-Thus, we can make statement in Proposition \ref{prop:coloring}.
+Thus, we can make the statement in Proposition \ref{prop:coloring}.
 
 \begin{proposition}
   \label{prop:coloring}
-  Let \(G\) be a graph:
-  \begin{quote}
-    \(G\) is \colorable{k} \(\implies G\) is \colorable{(k+1)}
-  \end{quote}
+  Let \(G\) be a graph.  If \(G\) is \colorable{k} then \(G\) is \colorable{(k+1)}
 \end{proposition}
 
 By inductive application of Proposition \ref{prop:coloring}, one can arrive at the conclusion in Proposition
@@ -272,31 +230,21 @@ By inductive application of Proposition \ref{prop:coloring}, one can arrive at t
 
 \begin{proposition}
   \label{prop:coloring2}
-  Let \(G\) be a graph:
-  \begin{quote}
-    \(G\) is \colorable{k} \(\implies G\) is \colorable{(k+r)} for some \(r\in\N\).
-  \end{quote}
+  Let \(G\) be a graph and let \(r\in\N\).  If \(G\) is \colorable{k} then \(G\) is \colorable{(k+r)}.
 \end{proposition}
 
-Furthermore, for a graph \(G\) of order \(n\), if \(n\le k\) we can conclude that \(G\) is \colorable{k}, since
-there are sufficient colors such that each vertex can be assigned its own color.  This is stated in Proposition
+Furthermore, for a graph \(G\) of order \(n\), if \(n\le k\) then we can conclude that \(G\) is \colorable{k},
+since there are sufficient colors to assign each vertex its own unique color.  This is stated in Proposition
 \ref{prop:coloring3}, which will turn out to be an important termination case for the proposed algorithm.
 
 \begin{proposition}
   \label{prop:coloring3}
-  Let \(G\) be a graph of order \(n\) and let \(k\in\N\):
-  \begin{quote}
-    If \(n\le k\) then \(G\) is \colorable{k}.
-  \end{quote}
+  Let \(G\) be a graph of order \(n\) and let \(k\in\N\).  If \(n\le k\) then \(G\) is \colorable{k}.
 \end{proposition}
 
 Since \(k\in\N\), by the well-ordering principle, there exists some minimum \(k\) such that a graph \(G\) is
-\colorable{k}:
-
-\begin{definition}[Chromatic Coloring]
-  The minimum \(k\) such that a graph \(G\) is \colorable{k} is called the \emph{chromatic number} of \(G\), denoted
-  by \(\X(G)\).  A \coloring{k} for a graph \(G\) where \(k=\X(G)\) is called a \emph{\chromatic{k}} coloring.
-\end{definition}
+\colorable{k}.  This minimum \(k\) is called the \emph{chromatic number} of \(G\), denoted by \(\X(G)\).  A
+\coloring{k} for a graph \(G\) where \(k=\X(G)\) is called a \emph{\chromatic{k}} coloring of \(G\).
 
 Returning to the example \coloring{4} of Figure \ref{fig:exproper}, note that vertex \(d\) can be colored blue and
 then orange can be excluded from the codomain, resulting in a \coloring{3}.  This is shown in Figure
@@ -329,25 +277,22 @@ hence the distribution is a true partition.
     \end{center}
   \end{minipage}
   \begin{minipage}[t]{3in}
-    \begin{gather*}
-      c(a)=green \\
-      c(b)=blue \\
-      c(c)=green \\
-      c(d)=blue \\
-      c(e)=red
-    \end{gather*}
+    \[C=\set{\mtxtclr{green},\mtxtclr{blue},\mtxtclr{red}}\]
+    \begin{align*}
+      c(a) &= \mtxtclr{green} \\
+      c(b) &= \mtxtclr{blue} \\
+      c(c) &= \mtxtclr{green} \\
+      c(d) &= \mtxtclr{blue} \\
+      c(e) &= \mtxtclr{red}
+    \end{align*}
   \end{minipage}
-  \caption{A Graph with a Chromatic \coloring{3}}
+  \caption{A Graph with a \chromatic{3} Coloring}
 \end{figure}
 
 The primary purpose of a \coloring{k} of a graph \(G\) is to distribute the vertices of \(G\) into \(k\) so-called
-\emph{independent} (some possibly empty) sets:
-
-\begin{definition}[Independent Set]
-  Let \(G\) be a graph and let \(S\subseteq V(G)\).  To say that \(S\) is an \emph{independent} set means that all of
-  the vertices in \(S\) are non-adjacent in \(G\):
-  \[\forall\,u,v\in S,uv\notin E(G)\]
-\end{definition}
+\emph{independent} (some possibly empty) sets.  For a graph \(G\), an \emph{independent} set \(S\subseteq V(G)\) is
+a set of pairwise non-adjacent vertices in \(G\): for all \(u,v\in S\), \(uv\notin E(G)\).  Independent sets are
+sometimes called \emph{stable} sets.
 
 Since a \chromatic{k} coloring of a graph \(G\) is surjective, there are no unused colors (empty sets) and so the
 coloring partitions the vertices of \(G\) into exactly \(k\) independent sets.  The goal of the proposed algorithm
