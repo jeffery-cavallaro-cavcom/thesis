@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  24 OCT 2019 16:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  26 OCT 2019 21:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -840,31 +840,31 @@ File: pgflibraryarrows.code.tex 2019/05/09 v3.1.3 (3.1.3)
 ))
 \c@proposition=\count133
 \c@axiom=\count134
- (./thesis.aux (./design.aux) (./theory.aux) (./traditional.aux)
+ (./thesis.aux (./design.aux) (./theory.aux) (./exhaustive.aux)
 (./algorithm.aux) (./example.aux) (./casestudy.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 31.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Try loading font information for OT1+LinuxBiolinumT-TLF on 
-input line 30.
+input line 31.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.f
 d
@@ -872,7 +872,7 @@ File: OT1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/L
 inuxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 30.
+(Font)              scaled to size 12.0pt on input line 31.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -953,26 +953,26 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 39.
+(Font)              scaled to size 20.74pt on input line 40.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 39.
-LaTeX Font Info:    Try loading font information for U+msa on input line 39.
+(Font)              scaled to size 14.4pt on input line 40.
+LaTeX Font Info:    Try loading font information for U+msa on input line 40.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 39.
+LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 39.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 40.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TL
-F on input line 39.
+F on input line 40.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-
 TLF.fd
@@ -982,9 +982,9 @@ OT1/LinuxLibertineMonoT-TLF.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' in size <14.4>
  not available
 (Font)              Font shape `OT1/LinuxLibertineMonoT-TLF/regular/n' tried in
-stead on input line 39.
+stead on input line 40.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/regular/n' will be
-(Font)              scaled to size 14.4pt on input line 39.
+(Font)              scaled to size 14.4pt on input line 40.
  [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -1081,26 +1081,40 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 ) [26]
-\openout2 = `traditional.aux'.
+\openout2 = `exhaustive.aux'.
 
- (./traditional.tex) [27
+ (./exhaustive.tex
+<photo.jpg, id=106, 371.3875pt x 261.97874pt>
+File: photo.jpg Graphic file (type jpg)
+<use photo.jpg>
+Package pdftex.def Info: photo.jpg  used on input line 20.
+(pdftex.def)             Requested size: 371.38658pt x 261.9781pt.
+ [27
 
 
-]
+ <./photo.jpg>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[28] [29]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [30] [31]
 \openout2 = `algorithm.aux'.
 
- (./algorithm.tex [28
+ (./algorithm.tex [32
 
 
 ]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[29] [30]
+[33] [34]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[31] [32] [33
+[35] [36] [37
 
 ]
 Missing character: There is no ; in font nullfont!
@@ -1108,60 +1122,60 @@ Missing character: There is no ; in font nullfont!
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[34]
+[38]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[35]
-Missing character: There is no ; in font nullfont!
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[36] [37] [38]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [39]
+Missing character: There is no ; in font nullfont!
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[40] [41] [42] [43] [44]) [45]
+[40] [41] [42]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[43]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[44] [45] [46] [47] [48]) [49]
 \openout2 = `example.aux'.
 
  (./example.tex
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[46
+[50
 
 
-] [47] [48]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[49]
+] [51] [52]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[53]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[50]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [51] [52]
+[54]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [55] [56]
 \openout2 = `casestudy.aux'.
 
  (./casestudy.tex
-<toaster.jpg, id=190, 2007.5pt x 2007.5pt>
+<toaster.jpg, id=204, 2007.5pt x 2007.5pt>
 File: toaster.jpg Graphic file (type jpg)
 <use toaster.jpg>
 Package pdftex.def Info: toaster.jpg  used on input line 10.
@@ -1173,7 +1187,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[53
+[57
 
 
  <./toaster.jpg>]
@@ -1183,7 +1197,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[54]
+[58]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1199,26 +1213,26 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[55]
+[59]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [56] [57] [58] [59] [60] (./thesis.bbl) [61
+) [60] [61] [62] [63] [64] (./thesis.bbl [65
 
-] (./thesis.aux (./design.aux)
-(./theory.aux) (./traditional.aux) (./algorithm.aux) (./example.aux)
+]) [66] (./thesis.aux (./design.aux) (./theory.aux) (./exhaustive.aux) (./algor
+ithm.aux) (./example.aux)
 (./casestudy.aux)) ) 
 Here is how much of TeX's memory you used:
- 21485 strings out of 492609
- 435228 string characters out of 6129048
- 548455 words of memory out of 5000000
- 24919 multiletter control sequences out of 15000+600000
+ 21541 strings out of 492609
+ 436073 string characters out of 6129048
+ 551547 words of memory out of 5000000
+ 24974 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 77i,15n,436p,839b,1322s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 77i,17n,436p,839b,1322s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/liberti
 ne/lbtn_afusau.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertin
 e/lbtn_edcawa.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/libertine
@@ -1238,10 +1252,10 @@ onts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
 c/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (61 pages, 619398 bytes).
+Output written on thesis.pdf (66 pages, 654869 bytes).
 PDF statistics:
- 274 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
+ 291 PDF objects out of 1000 (max. 8388607)
+ 201 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

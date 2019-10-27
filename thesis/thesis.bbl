@@ -27,6 +27,11 @@ Gary Chartrand and Ping Zhang.
 \newblock {\em A First Course in Graph Theory}.
 \newblock Dover Publications, Mineola, New York, 2012.
 
+\bibitem{corneil}
+D.G. Corneil and B.~Graham.
+\newblock An algorithm for determining the chromatic number of a graph.
+\newblock {\em SIAM Journal on Computing}, 2(4):311--318, December 1973.
+
 \bibitem{edwards}
 C.S. Edwards and C.H. Elphick.
 \newblock Lower bounds for the clique and the chromatic numbers of a graph.
@@ -47,6 +52,11 @@ B.R. Myers and R~Liu.
 \newblock A lower bound on the chromatic number of a graph.
 \newblock {\em Networks}, 1:273--277, 1972.
 
+\bibitem{read}
+Ronald~C. Read.
+\newblock An introduction to chromatic polynomials.
+\newblock {\em Journal of Combinatorial Theory}, 4:52--71, 1968.
+
 \bibitem{suh}
 Nam~P. Suh.
 \newblock {\em The Principles of Design}.
@@ -56,6 +66,17 @@ Nam~P. Suh.
 Nam~P. Suh.
 \newblock Axiomatic design theory for systems.
 \newblock {\em Research in Engineering Design}, 10:189--209, 1998.
+
+\bibitem{voloshin}
+Vitaly Voloshin.
+\newblock A tribute to a. a. and t. e. zykovs on the occasion of a. a. zykov's
+  90th birthday.
+\newblock {\em Topics in Graph Theory}, November 2013.
+
+\bibitem{obit}
+Vitaly Voloshin.
+\newblock Alexander zykov 1922-2013.
+\newblock January 2014.
 
 \bibitem{west}
 Douglas~B. West.

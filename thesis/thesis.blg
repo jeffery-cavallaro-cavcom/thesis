@@ -3,7 +3,7 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: design.aux
 A level-1 auxiliary file: theory.aux
-A level-1 auxiliary file: traditional.aux
+A level-1 auxiliary file: exhaustive.aux
 A level-1 auxiliary file: algorithm.aux
 A level-1 auxiliary file: example.aux
 A level-1 auxiliary file: casestudy.aux
@@ -11,45 +11,46 @@ The style file: plain.bst
 Database file #1: thesis.bib
 Warning--empty booktitle in cavallaro
 Warning--empty booktitle in jahanbekam
-You've used 12 entries,
+Warning--empty journal in obit
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            586 strings with 6001 characters,
-and the built_in function-call counts, 3555 in all, are:
-= -- 346
-> -- 152
+            604 strings with 6378 characters,
+and the built_in function-call counts, 4581 in all, are:
+= -- 450
+> -- 186
 < -- 3
-+ -- 64
-- -- 48
-* -- 254
-:= -- 610
-add.period$ -- 36
-call.type$ -- 12
-change.case$ -- 57
++ -- 81
+- -- 58
+* -- 319
+:= -- 789
+add.period$ -- 48
+call.type$ -- 16
+change.case$ -- 74
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 141
-empty$ -- 293
-format.name$ -- 48
-if$ -- 729
+cite$ -- 19
+duplicate$ -- 183
+empty$ -- 378
+format.name$ -- 58
+if$ -- 934
 int.to.chr$ -- 0
-int.to.str$ -- 12
-missing$ -- 16
-newline$ -- 63
-num.names$ -- 24
-pop$ -- 65
+int.to.str$ -- 16
+missing$ -- 20
+newline$ -- 83
+num.names$ -- 32
+pop$ -- 80
 preamble$ -- 1
-purify$ -- 48
+purify$ -- 61
 quote$ -- 0
-skip$ -- 81
+skip$ -- 110
 stack$ -- 0
-substring$ -- 195
-swap$ -- 14
+substring$ -- 262
+swap$ -- 17
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 40
-warning$ -- 2
-while$ -- 35
-width$ -- 14
-write$ -- 135
-(There were 2 warnings)
+type$ -- 56
+warning$ -- 3
+while$ -- 47
+width$ -- 18
+write$ -- 176
+(There were 3 warnings)
