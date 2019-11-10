@@ -95,7 +95,7 @@ The algorithm steps are as follows.  Outer loop steps are marked by ``O\#'' and 
 
 \item (I\ref{step:small}) Since \(X=\emptyset\), continue.
 
-\item (I\ref{step:neighbor}) Note that \(N(g)=\set{d,f}\) and \(N(e)=\set{c,d,f}\).  Since \(N(g)\subseteq N(e)\),
+\item (I\ref{step:subset}) Note that \(N(g)=\set{d,f}\) and \(N(e)=\set{c,d,f}\).  Since \(N(g)\subseteq N(e)\),
   replace \(G\) with \(G-g\).  The result is shown in Figure \ref{fig:removeg}.  Now \(n=6\) and \(m=9\).
 
   \begin{figure}[h]
@@ -133,16 +133,16 @@ The algorithm steps are as follows.  Outer loop steps are marked by ``O\#'' and 
 
 \item (I\ref{step:small}) Since \(X=\emptyset\), continue.
 
-\item (I\ref{step:neighbor}) Since there is no \(N(u)\subseteq N(v)\), continue.
+\item (I\ref{step:subset}) Since there is no \(N(u)\subseteq N(v)\), continue.
 
 \item (I\ref{step:select}) Note that due to the symmetry of \(G\) every two vertices share exactly two neighbors:
   \[b=\min_{u,v\in V(G)}\abs{N(u)\cap N(v)]}=2\]
 
-\item (I\ref{step:neighcalc}) Calculate the upper bound for minimum number of common neighbors for \(n=6\) and
+\item (I\ref{step:ubcalc}) Calculate the upper bound for minimum number of common neighbors for \(n=6\) and
   \(k=2\):
   \[c=n-2-\frac{n-2}{k-1}=6-2-\frac{6-2}{2-1}=4-4=0\]
 
-\item (I\ref{step:common}) Since \(b=2>0=c\), conclude that \(G\) is not \colorable{2}.  Return false and the current
+\item (I\ref{step:ubcheck}) Since \(b=2>0=c\), conclude that \(G\) is not \colorable{2}.  Return false and the current
   state of \(G\) to the outer loop.
 
 \item (O\ref{step:call}) Since the called subroutine returned false, \(G\) is not \colorable{2}, so continue.
@@ -167,11 +167,11 @@ The algorithm steps are as follows.  Outer loop steps are marked by ``O\#'' and 
 \item (I\ref{step:select}) Note that due to the symmetry of \(G\) every two vertices share exactly two neighbors:
   \[b=\min_{u,v\in V(G)}\abs{N(u)\cap N(v)]}=2\]
 
-\item (I\ref{step:neighcalc}) Calculate the upper bound for minimum number of common neighbors for \(n=6\) and
+\item (I\ref{step:ubcalc}) Calculate the upper bound for minimum number of common neighbors for \(n=6\) and
   \(k=3\):
   \[c=n-2-\frac{n-2}{k-1}=6-2-\frac{6-2}{3-1}=4-2=2\]
 
-\item (I\ref{step:common}) Since \(b=2\ngtr2=c\), continue.
+\item (I\ref{step:ubcheck}) Since \(b=2\ngtr2=c\), continue.
 
 \item (I\ref{step:select2}) Since every two vertices share exactly two neighbors, select any two non-adjacent
   vertices: \(a\) and \(e\).

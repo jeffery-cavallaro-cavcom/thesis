@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  26 OCT 2019 21:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  10 NOV 2019 06:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1226,10 +1226,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ithm.aux) (./example.aux)
 (./casestudy.aux)) ) 
 Here is how much of TeX's memory you used:
- 21541 strings out of 492609
- 436073 string characters out of 6129048
- 551547 words of memory out of 5000000
- 24974 multiletter control sequences out of 15000+600000
+ 21549 strings out of 492609
+ 436199 string characters out of 6129048
+ 552265 words of memory out of 5000000
+ 24982 multiletter control sequences out of 15000+600000
  28706 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  77i,17n,436p,839b,1322s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1252,7 +1252,7 @@ onts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msam10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/am
 sfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
 c/rsfs/rsfs10.pfb>
-Output written on thesis.pdf (66 pages, 654869 bytes).
+Output written on thesis.pdf (66 pages, 655171 bytes).
 PDF statistics:
  291 PDF objects out of 1000 (max. 8388607)
  201 compressed objects within 3 object streams

@@ -138,17 +138,20 @@ The steps of the called subroutine and references to their associated theorems a
 \item \label{step:small} \(X\ne\emptyset\) then replace \(G\) with \(G-X\) and go to step \ref{step:check}
   (Corollary \ref{cor:lowdeg}).
 
-\item \label{step:neighbor} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace
+\item \label{step:common} Calculate the common number of neighbors between each vertex in \(G\), stopping if one
+  vertex's neighborhood is found to be a subset of another.
+
+\item \label{step:subset} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace
   \(G\) with \(G-u\) and go to step \ref{step:check} (Theorem \ref{thm:subset}).
 
 \item \label{step:select} Select two vertices \(u,v\in V(G)\) with the smallest number of common neighbors and let
   \[b=\abs{N(u)\cap N(v)}\]
 
-\item \label{step:neighcalc} Calculate an upper bound for the minimum number of common neighbors for all vertices
+\item \label{step:ubcalc} Calculate an upper bound for the minimum number of common neighbors for all vertices
   in \(G\):
   \[c=n-2-\frac{n-2}{k-1}\]
 
-\item \label{step:common} If \(b>c\) then return false (Corollary \ref{cor:inter}).
+\item \label{step:ubcheck} If \(b>c\) then return false (Corollary \ref{cor:inter}).
 
 \item \label{step:select2} Select two non-adjacent vertices \(u,v\in V(G)\) with the smallest number of common
   neighbors.  It will be shown below that such a pair of vertices is guaranteed to exist in the current state of
@@ -183,7 +186,8 @@ A flowchart of these steps is shown in Figure \ref{fig:called}.
         \node (nodecheck) [draw,decision,below=of nodecalc] {\(X\ne\emptyset\)?};
         \node (remnode) [draw,process,left=of nodecheck] {\(G=G-X\)};
         \node (join) [coordinate] at ($(remnode)-(2.5cm,0)$) {};
-        \node (subcheck) [draw,decision,below=of nodecheck] {\(N(u)\subseteq N(v)\)?};
+        \node (common) [draw,process,below=of nodecheck] {Calculate \(\abs{N(u)\cap N(v)}\)};
+        \node (subcheck) [draw,decision,below=of common] {\(N(u)\subseteq N(v)\)?};
         \node (remsub) [draw,process,left=of subcheck] {\(G=G-u\)};
         \node (mininter) [draw,process,below=of subcheck] {\(\displaystyle b=\min_{u,v\in V(G)}\abs{N(u)\cap N(v)}\)};
         \node (intercalc) [draw,process,below=of mininter] {\(c=n-2-\frac{n-2}{k-1}\)};
@@ -208,7 +212,8 @@ A flowchart of these steps is shown in Figure \ref{fig:called}.
         \draw [->] (nodecalc) -- (nodecheck);
         \draw [->] (nodecheck) -- node [auto] {YES} (remnode);
         \draw [->] (remnode) -- (join) |- (donecheck);
-        \draw [->] (nodecheck) -- node [auto] {NO} (subcheck);
+        \draw [->] (nodecheck) -- node [auto] {NO} (common);
+        \draw [->] (common) -- (subcheck);
         \draw [->] (subcheck) -- node [auto] {YES} (remsub);
         \draw (remsub) -| (join);
         \draw [->] (subcheck) -- node [auto] {NO} (mininter);
@@ -232,16 +237,16 @@ A flowchart of these steps is shown in Figure \ref{fig:called}.
 \end{figure}
 
 Step \ref{step:check} of the called subroutine is the success termination condition.  Success occurs when \(G\) is
-simplified by removing sufficent vertices (steps \ref{step:smallcalc}--\ref{step:neighbor}) or when the outer loop
+simplified by removing sufficent vertices (steps \ref{step:smallcalc}--\ref{step:subset}) or when the outer loop
 has sufficiently incremented \(k\) (step \ref{step:incr}) such that \(n\le k\).
 
-Steps \ref{step:smallcalc}--\ref{step:neighbor} of the called subroutine attempt to remove vertices to achieve a
+Steps \ref{step:smallcalc}--\ref{step:subset} of the called subroutine attempt to remove vertices to achieve a
 simpler graph that is equivalently \colorable{k}.  Each time a vertex is removed, the subtrees associated with that
 vertex in the corresponding Zykov tree for \(G\) are ignored.  Since these same steps would just be repeated for
 \(k+1\), the subroutine returns the current state of the possibly simplified \(G\) to the outer loop as a starting
 point for the next candidate value of \(k\).
 
-Steps \ref{step:dencalc}--\ref{step:density} and \ref{step:select}--\ref{step:common} of the called subroutine
+Steps \ref{step:dencalc}--\ref{step:density} and \ref{step:select}--\ref{step:ubcheck} of the called subroutine
 apply tests that attempt to disprove that the current state of \(G\) is \colorable{k} for the current value of
 \(k\).  If so, then the current Zykov tree is abandoned and the subroutine returned false.  This allows the outer
 loop to continue with \(k+1\).
@@ -621,7 +626,7 @@ Furthermore, after these vertices are removed, the remaining vertices \(a\), \(b
 \(2\).  Since \(2<4\), the remaining vertices are subsequently removed, leaving \(n=0<4\), indicating that the
 graph is indeed \colorable{4}.  This iterative collapsing of a graph is an ideal situation.
 
-Step \ref{step:neighbor} removes vertices whose neighborhoods are subsets of other vertices.  This is supported by
+Step \ref{step:subset} removes vertices whose neighborhoods are subsets of other vertices.  This is supported by
 Theorem \ref{thm:subset}.
 
 \begin{theorem}
@@ -692,7 +697,7 @@ indeed the graph is \colorable{3}.  Once again, this iterative removal of vertic
 
 \subsubsection{Minimum Shared Neighbor Upper Bound}
 
-Steps \ref{step:select}--\ref{step:common} establish an upper bound for the minimum shared neighbor count between
+Steps \ref{step:select}--\ref{step:ubcheck} establish an upper bound for the minimum shared neighbor count between
 any two vertices in a graph that is assumed to be \colorable{k}.  This limit is dependent on the following facts
 that are guaranteed by previous steps:
 \begin{enumerate}
