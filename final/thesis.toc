@@ -1,0 +1,9 @@
+\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Tables}{vii}{section*.4}% 
+\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Figures}{viii}{section*.5}% 
+ 
+\contentsline {section}{\numberline {1}Axiomatic Design}{1}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Design}{1}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}The Framework}{2}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.3}The Axioms}{5}{subsection.1.3}% 
+\contentsline {subsection}{\numberline {1.4}Part Consolidation}{8}{subsection.1.4}% 
+\contentsline {section}{Literature Cited}{10}{section*.6}% 

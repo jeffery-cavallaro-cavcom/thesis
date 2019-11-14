@@ -1,0 +1,29 @@
+\begin{thebibliography}{1}
+
+\bibitem{suh}
+N.~P. Suh, {\em The Principles of Design}.
+\newblock New York: Oxford University Press, 1990.
+
+\bibitem{cavallaro}
+S.~Behdad, J.~Cavallaro, P.~K. Gopalakrishnan, and S.~Jahanbekam, ``A graph
+  coloring technique for identifying the minimum number of parts for physical
+  integration in product design,'' No.~DETC2019-98251 in Proceedings of the
+  ASME 2019 International Design Engineering Technical Conferences \& Computers
+  and Information in Engineering Conference, (Anaheim, CA), Aug 18--21 2019.
+
+\bibitem{jahanbekam}
+S.~Behdad, P.~K. Gopalakrishnan, S.~Jahanbekam, and H.~Klein, ``Graph
+  partitioning technique to identify physically integrated design concepts,''
+  No.~DETC2018-85646 in Proceedings of the ASME 2018 International Design
+  Engineering Technical Conferences \& Computers and Information in Engineering
+  Conference, (Quebec, Canada), Aug 26--29 2018.
+
+\bibitem{suh2}
+N.~P. Suh, ``Axiomatic design theory for systems,'' {\em Research in
+  Engineering Design}, vol.~10, pp.~189--209, 1998.
+
+\bibitem{mcdiarmid}
+C.~McDiarmid, ``Determining the chromatic number of a graph,'' {\em SIAM
+  Journal on Computing}, vol.~8, pp.~1--14, 02 1979.
+
+\end{thebibliography}

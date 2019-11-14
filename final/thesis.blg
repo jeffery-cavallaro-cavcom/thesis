@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: thesis.aux
+The style file: ieeetr.bst
+A level-1 auxiliary file: sections.aux
+Database file #1: references.bib
+Warning--I'm ignoring jahanbekam's extra "series" field
+--line 24 of file references.bib
+Warning--I'm ignoring cavallaro's extra "series" field
+--line 37 of file references.bib
+Warning--empty booktitle in cavallaro
+Warning--empty booktitle in jahanbekam
+You've used 5 entries,
+            1876 wiz_defined-function locations,
+            516 strings with 4517 characters,
+and the built_in function-call counts, 1117 in all, are:
+= -- 102
+> -- 40
+< -- 0
++ -- 16
+- -- 11
+* -- 90
+:= -- 168
+add.period$ -- 6
+call.type$ -- 5
+change.case$ -- 4
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 60
+empty$ -- 118
+format.name$ -- 11
+if$ -- 267
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 6
+newline$ -- 19
+num.names$ -- 5
+pop$ -- 21
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 26
+stack$ -- 0
+substring$ -- 47
+swap$ -- 15
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 10
+width$ -- 6
+write$ -- 49
+(There were 4 warnings)
