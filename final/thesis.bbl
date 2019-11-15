@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{suh}
 N.~P. Suh, {\em The Principles of Design}.
@@ -8,6 +8,10 @@ N.~P. Suh, {\em The Principles of Design}.
 R.~A. Shirwaiker and G.~E. Okudan, ``Triz and axiomatic design: A review of
   case-studies and a proposed synergistic use,'' {\em Journal of Intelligent
   Manufacturing}, vol.~19, pp.~33--47, February 2008.
+
+\bibitem{suh2}
+N.~P. Suh, ``Axiomatic design theory for systems,'' {\em Research in
+  Engineering Design}, vol.~10, pp.~189--209, 1998.
 
 \bibitem{cavallaro}
 S.~Behdad, J.~Cavallaro, P.~K. Gopalakrishnan, and S.~Jahanbekam, ``A graph
@@ -23,10 +27,6 @@ S.~Behdad, P.~K. Gopalakrishnan, S.~Jahanbekam, and H.~Klein, ``Graph
   Engineering Technical Conferences \& Computers and Information in Engineering
   Conference, (Quebec, Canada), Aug 26--29 2018.
 
-\bibitem{suh2}
-N.~P. Suh, ``Axiomatic design theory for systems,'' {\em Research in
-  Engineering Design}, vol.~10, pp.~189--209, 1998.
-
 \bibitem{tang}
 Y.~Tang, S.~Yang, and Y.~F. Zhao, ``Sustainable design for additive
   manufacturing through functionality integration and part consolidation,'' in
@@ -36,5 +36,37 @@ Y.~Tang, S.~Yang, and Y.~F. Zhao, ``Sustainable design for additive
 \bibitem{mcdiarmid}
 C.~McDiarmid, ``Determining the chromatic number of a graph,'' {\em SIAM
   Journal on Computing}, vol.~8, pp.~1--14, 02 1979.
+
+\bibitem{chartrand}
+G.~Chartrand and P.~Zhang, {\em A First Course in Graph Theory}.
+\newblock Mineola, New York: Dover Publications, 2012.
+
+\bibitem{west}
+D.~B. West, {\em Introduction to Graph Theory}.
+\newblock Upper Saddle River, NJ: Prentice Hall, \(2^{nd}\)~ed., 2001.
+
+\bibitem{zykov}
+A.~Zykov and A.~M. Society, {\em On Some Properties of Linear Complexes},
+  vol.~7 of {\em American Mathematical Society Translations Series One}.
+\newblock American Mathematical Society, 1952.
+
+\bibitem{hopcroft}
+J.~Hopcroft and R.~Tarjan, ``Algorithm 447: Efficient algorithms for graph
+  manipulation,'' {\em Communications of the ACM}, vol.~16, pp.~372--378, June
+  1973.
+
+\bibitem{bron}
+C.~Bron and J.~Kerbosch, ``Algorithm 457: Finding all cliques of an undirected
+  graph,'' {\em Communications of the ACM}, vol.~16, pp.~575--577, September
+  1973.
+
+\bibitem{edwards}
+C.~Edwards and C.~Elphick, ``Lower bounds for the clique and the chromatic
+  numbers of a graph,'' {\em Discrete Applied Mathematics}, vol.~5, no.~1,
+  pp.~51--64, 1983.
+
+\bibitem{myers}
+B.~Myers and R.~Liu, ``A lower bound on the chromatic number of a graph,'' {\em
+  Networks}, vol.~1, pp.~273--277, 1972.
 
 \end{thebibliography}

@@ -1,8 +1,34 @@
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
 \usepackage{graphtheory}
 \usetikzlibrary{arrows}
 \usepackage{flowchart}
-\newcommand{\FR}{\text{FR}}
-\newcommand{\DP}{\text{DP}}
+\newtheorem{proposition}{Proposition}
 \newtheorem{axiom}{Axiom}
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
+\newcommand{\txtclr}[1]{\textcolor{#1}{#1}}  % colored text
+\newcommand{\mtxtclr}[1]{\text{\txtclr{#1}}}  % colored text in math mode
+\renewcommand{\a}{\alpha}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\renewcommand{\l}{\lambda}
+\newcommand{\w}{\omega}
+\newcommand{\X}{\chi}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\FR}{\text{FR}}  % FR in math mode
+\newcommand{\DP}{\text{DP}}  % DP in math mode\
+\newcommand{\SG}{\mathscr{G}}
+\newcommand{\BO}{\mathcal{O}}
+\newcommand{\ps}{\mathcal{P}}  % power set
+\newcommand{\sR}{\mathscr{R}}  % relation
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}  % absolute value
+\DeclarePairedDelimiter{\set}{\{}{\}}  % set notation
+\newcommand{\setb}[2]{\left\{{#1}\,\middle|\,{#2}\right\}}  % set builder notation
+\newcommand{\coloring}[1]{\(#1\)-coloring}
+\newcommand{\colorable}[1]{\(#1\)-colorable}
+\newcommand{\chromatic}[1]{\(#1\)-chromatic}
+\newcommand{\clique}[1]{\(#1\)-clique}
