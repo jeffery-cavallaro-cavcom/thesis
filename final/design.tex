@@ -3,11 +3,12 @@
 The axiomatic design framework was developed in the late \(20^{th}\) century by Professor Nam P. Suh while at MIT
 and the NSF~\cite{suh}.  This was in response to concern in the engineering community that \emph{design} was being
 practiced almost exclusively as an ad-hoc creative endeavor with very little in the way of scientific discipline.
-In the words of Professor Suh~\cite{suh}:
+In the words of Professor Suh:
 \begin{quote}
+  \vspace{-\baselineskip}
   It [design] might have preceding the development of natural sciences by scores of centuries.  Yet, to this day,
   design is being done intuitively as an art.  It is one of the few technical areas where experience is more
-  important than formal education.
+  important than formal education~\cite{suh}.
 \end{quote}
 Professor Suh was not making these claims in an educational vacuum, but in the shadow of several recent major
 design failures such as the Union Carbide plant disaster in India, nuclear power plant accidents at Three Mile
@@ -17,19 +18,20 @@ everything from consumer products to big-ticket items.  As a result, axiomatic d
 companies to promote efficiency and accuracy in the design process, resulting in more reliable products and reduced
 manufacturing costs~\cite{shirwaiker}.
 
-The following sections provide an overview of axiomatic design as specified in detail by Professor Suh
-in~\cite{suh}, and summarized in~\cite{cavallaro,jahanbekam,suh2}.  Following the overview is a description of how
-an algorithm proposed by this research can be a helpful tool to a designer using the axiomatic design framework.
+The following sections provide an overview of axiomatic design as specified in detail by Professor
+Suh~\cite{suh,suh2}, and summarized by Behdad, et al.~\cite{cavallaro,jahanbekam}.  Following the overview is a
+description of how an algorithm proposed by this research can be a helpful tool to a designer using the axiomatic
+design framework.
 
 \subsection{Design}\label{sec:sub:design}
 
 \emph{Design} is defined as the process by which it is determined \emph{what} needs to be achieved and then
-\emph{how} to achieve it.  Thus, the decisions on what to do are just as important as how to do it.  Creativity is
-the process by which experience and intuition are used to generate solutions to perceived needs.  This includes
-pattern matching to and adapting existing solutions and synthesizing new solutions.  Thus, creativity plays a vital
-role in design.  Since different designers may approach the same problem differently, their level of creativity may
-lead to very different, yet plausible, solutions.  Therefore, there needs to be a design-agnostic method for
-comparing different designs with the goal of selecting the best one.
+\emph{how} to achieve it.  Thus, the decisions on what to do are just as important as how to do it.
+\emph{Creativity} is the process by which experience and intuition are used to generate solutions to perceived
+needs.  This includes pattern matching to and adapting existing solutions and synthesizing new solutions.  Thus,
+creativity plays a vital role in design.  Since different designers may approach the same problem differently,
+their level of creativity may lead to very different, yet plausible, solutions.  Therefore, there needs to be a
+design-agnostic method for comparing different designs with the goal of selecting the best one.
 
 This discussion will sound familiar to mathematicians, since creativity is a very important part of solving math
 problems, and in particular, writing proofs.  Starting with the work of Peano in the \(19^{th}\) century, the field
@@ -48,20 +50,15 @@ of mathematics has established various tests on what constitutes a good proof.  
 \end{itemize}
 In short, Professor Suh was looking for a similar framework for the more general concept of design.
 
-\subsection{The Framework}\label{sec:sub:framework}
+\subsection{The Axiomatic Design Framework}\label{sec:sub:framework}
 
-The \emph{best} design among a set of candidates is the design that:
-\begin{enumerate}
-\item exactly satisfies a clearly defined set of needs.
-\item has the greatest probability of success.
-\end{enumerate}
-
-In a desire to not hinder the creative element needed for design, yet provide some methodology to distinguish bad
-designs from good designs from better designs, the diagram in \figurename~\ref{fig:design} establishes the overall
-framework for axiomatic design.
+The \emph{best} design among a set of candidates is the design that exactly satisfies a clearly defined set of
+needs and has the greatest probability of success.  In a desire not to hinder the creative element needed for
+design, yet provide some methodology to distinguish bad designs from good designs from better designs, the diagram
+in \figurename~\ref{fig:design} establishes the overall framework for axiomatic design.
 
 \begin{figure}[H]
-  \label{fig:design}
+  \centering
   \scalebox{0.75}{
     \begin{tikzpicture}[>=latex',every text node part/.style={align=center}]
       \node (cn) [draw,terminal] at (0,0) {customer \\[-2ex] needs};
@@ -79,6 +76,7 @@ framework for axiomatic design.
     \end{tikzpicture}
   }
   \caption{The axiomatic design framework.}
+  \label{fig:design}
 \end{figure}
 
 Design starts with the desire to satisfy a set of clear \emph{customer needs}.  The term \emph{customer} refers to
@@ -88,32 +86,31 @@ the \emph{problem definition} phase, determines how these customer needs will be
 accomplished.
 
 Once the set of FRs has been determined, the designer begins the \emph{creative process} by mapping the FRs into
-solutions that are embodied in so-called \emph{design parameters} (DPs).  The design parameters contain all of the
-information on \emph{how} the various FRs are satisfied: parts lists, drawings, specifications, etc.  The FRs exist
-in a design-agnostic \emph{functional space} and the {\DP}s exist in a solution-specific \emph{physical space}.  It
-is the designer's job to provide the most efficient mapping between the two spaces.  This process is represented by
+solutions that are embodied in so-called \emph{design parameters} (DPs).  The DPs contain all of the information on
+\emph{how} the various FRs are satisfied: parts lists, drawings, specifications, etc.  The FRs exist in a
+design-agnostic \emph{functional space} and the {\DP}s exist in a solution-specific \emph{physical space}.  It is
+the designer's job to provide the most efficient mapping between the two spaces.  This process is represented by
 \figurename~\ref{fig:mapping}.
 
 \begin{figure}[H]
-  \label{fig:mapping}
-  \begin{center}
-    \begin{tikzpicture}[>=latex',every text node part/.style={align=center}]
-      \node (fs) [draw,cloud] at (0,0) {FR1 \\ FR2 \\ FR3 \\ \vdots};
-      \node [below=1ex of fs] {functional \\ space};
-      \node (ps) [draw,cloud,right=1.5in of fs] {DP1 \\ DP2 \\ DP3 \\ \vdots};
-      \node [below=1ex of ps] {physical \\ space};
-      \draw [->] (fs) to [bend left=45] (ps);
-      \draw [->] (fs) to [bend left=30] (ps);
-      \draw [->] (fs) to [bend right=30] (ps);
-      \draw [->] (fs) to [bend right=45] (ps);
-      \draw [->] (fs) -- node [auto] {mapping} (ps);
-    \end{tikzpicture}
-  \end{center}
+  \centering
+  \begin{tikzpicture}[>=latex',every text node part/.style={align=center}]
+    \node (fs) [draw,cloud] at (0,0) {FR1 \\ FR2 \\ FR3 \\ \vdots};
+    \node [below=1ex of fs] {functional \\ space};
+    \node (ps) [draw,cloud,right=1.5in of fs] {DP1 \\ DP2 \\ DP3 \\ \vdots};
+    \node [below=1ex of ps] {physical \\ space};
+    \draw [->] (fs) to [bend left=45] (ps);
+    \draw [->] (fs) to [bend left=30] (ps);
+    \draw [->] (fs) to [bend right=30] (ps);
+    \draw [->] (fs) to [bend right=45] (ps);
+    \draw [->] (fs) -- node [auto] {mapping} (ps);
+  \end{tikzpicture}
   \caption{Mapping FRs to DPs.}
+  \label{fig:mapping}
 \end{figure}
 
 Simple problems may require only one level of FRs; however, more complicated designs may require a hierarchial
-structure of FRs, from more general to more detailed requirements.  This type of design is often referred to as
+structure of FRs from more general to more detailed requirements.  This type of design is often referred to as
 \emph{top-down} design.  Each individual FR layer has its own DP mapping.  In fact, the mapping process on one
 level should be completed prior to determining the FRs for the next level.  This is because DP choices on one level
 may affect requirements on the next level.  For example, consider a FR related to a moving part in a design.  The
@@ -159,7 +156,6 @@ exactly one DP.  This is referred to as an \emph{uncoupled} design, which is dem
 \figurename~\ref{fig:uncoupled}.  Uncoupled designs completely adhere to the independence axiom.
 
 \begin{figure}[H]
-  \label{fig:uncoupled}
   \begin{equation*}
     \begin{bmatrix}
       \FR1 \\ \FR2 \\ \FR3
@@ -171,7 +167,9 @@ exactly one DP.  This is referred to as an \emph{uncoupled} design, which is dem
       \DP1 \\ \DP2 \\ \DP3
     \end{bmatrix}
   \end{equation*}
+  \vspace{-\baselineskip}
   \caption{An uncoupled design.}
+  \label{fig:uncoupled}
 \end{figure}
 
 The next best situation is when the design matrix is a lower-triangular matrix.  The idea is to finalize the first
@@ -181,7 +179,6 @@ DPs before moving on to the later DPs.  Thus, \(\text{DP}_i\) can be adjusted wi
 they may be reasonable compromises in designs that address complex problems.
 
 \begin{figure}[H]
-  \label{fig:decoupled}
   \begin{equation*}
     \begin{bmatrix}
       \FR1 \\ \FR2 \\ \FR3
@@ -193,16 +190,17 @@ they may be reasonable compromises in designs that address complex problems.
       \DP1 \\ \DP2 \\ \DP3
     \end{bmatrix}
   \end{equation*}
+  \vspace{-\baselineskip}
   \caption{A decoupled design.}
+  \label{fig:decoupled}
 \end{figure}
 
 The worst solution is a non-triangular matrix, where every change in a DP affects multiple FRs in an unconstrained
 fashion.  This is referred to as a \emph{coupled} design, which is demonstrated in \figurename~\ref{fig:coupled}.
 Coupled designs are in complete violation of the independence axiom and generally should be decoupled by reworking
-the FRs or adding additional DPs.
+the FRs or by adding additional DPs.
 
 \begin{figure}[H]
-  \label{fig:coupled}
   \begin{equation*}
     \begin{bmatrix}
       \FR1 \\ \FR2 \\ \FR3
@@ -214,7 +212,9 @@ the FRs or adding additional DPs.
       \DP1 \\ \DP2 \\ \DP3
     \end{bmatrix}
   \end{equation*}
+  \vspace{-\baselineskip}
   \caption{A coupled design.}
+  \label{fig:coupled}
 \end{figure}
 
 Unfortunately, adding additional DPs runs counter to the second axiom: the information axiom~\cite{suh}.
@@ -286,7 +286,6 @@ A possible solution to this problem is given by Theorem~\ref{thm:adddp}~\cite{su
 An example is show in \figurename~\ref{fig:dcexample}.  Note that the addition of DP3 results in a decoupled design.
 
 \begin{figure}[H]
-  \label{fig:dcexample}
   \[\begin{bmatrix}
   \FR1 \\ \FR2 \\ \FR3
   \end{bmatrix}=\begin{bmatrix}
@@ -304,7 +303,9 @@ An example is show in \figurename~\ref{fig:dcexample}.  Note that the addition o
   \end{bmatrix}\begin{bmatrix}
     \DP1 \\ \DP2 \\ \DP3
   \end{bmatrix}\]
+  \vspace{-\baselineskip}
   \caption{Decoupling a design by adding DPs.}
+  \label{fig:dcexample}
 \end{figure}
 
 Next, consider the case where the number of FRs is less than the number of DPs.  Assuming that the design is not
@@ -326,11 +327,12 @@ Finally, the previous three theorems lead to the conclusion in Theorem~\ref{thm:
 
 \subsection{Part Consolidation}\label{sec:sub:parts}
 
-One particular area of design focus is the number of parts in a product design.  According to Professor
-Suh~\cite{suh}:
+One particularly important design parameter is the number of parts in a product design.  According to Professor
+Suh:
 \begin{quote}
+  \vspace{-\baselineskip}
   Poorly designed products often cost more because they use more materials or parts than do well-designed products.
-  They are often difficult to manufacture and maintain.
+  They are often difficult to manufacture and maintain~\cite{suh}.
 \end{quote}
 Decreasing the number of parts in a design while maintaining the independence of the FRs is consistent with
 Corollary \ref{cor:integrate} and lowers the information content of the design.  In fact, Tang, et al.~\cite{tang}
@@ -343,33 +345,31 @@ Both FRs are consolidated into a single part, yet remain independent as long as 
 and a bottle simultaneously (although that would be a popular trick around a campfire).
 
 \begin{figure}[H]
-  \label{fig:opener}
-  \begin{center}
-    \includegraphics{opener}
-  \end{center}
+  \centering
+  \includegraphics{opener}
   \caption{A part consolidation example.}
+  \label{fig:opener}
 \end{figure}
 
 \begin{table}[H]
-  \label{tab:opener}
   \caption{Opener Functional Requirements}
-  \begin{center}
-    \begin{tabular}{|c|l|}
-      \hline
-      FR1 & Open beverage cans \\
-      \hline
-      FR2 & Open beverage bottles \\
-      \hline
-    \end{tabular}
-  \end{center}
+  \label{tab:opener}
+  \centering
+  \begin{tabular}{|c|l|}
+    \hline
+    FR1 & Open beverage cans \\
+    \hline
+    FR2 & Open beverage bottles \\
+    \hline
+  \end{tabular}
 \end{table}
 
 The goal of this research is to provide designers with a tool that they can use to determine the minimum number of
 parts required to realize a particular design at a particular level in a FR/DP hierarchy.  The designer is required
-to construct a graph where the vertices are the FRs and the edges indicate that the endpoint FRs need to be
-realized by separate parts due to independence or other reason.  How these edges are actually determined is beyond
-the scope of this research.  Adjacent FRs are candidates for part consolidation.  The goal is to find the chromatic
-number of the resulting graph, which corresponds to the minimum number of parts.
+to construct a graph whose vertices are the FRs and whose edges indicate that the endpoint FRs need to be realized
+by separate parts due to specific design constraints.  How these edges are actually determined is beyond the scope
+of this research.  Adjacent FRs are candidates for part consolidation.  The goal is to find the chromatic number of
+the resulting graph, which corresponds to the minimum number of parts.
 
 To be a viable tool, a computer program must be able to deliver an answer in a reasonable amount of time.
 Unfortunately, finding the chromatic number of a graph is known to be an NP-hard problem~\cite{mcdiarmid} and so
