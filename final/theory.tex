@@ -240,7 +240,7 @@ since there are sufficient colors to assign each vertex its own unique color.  T
   Let \(G\) be a graph of order \(n\) and let \(k\in\N\).  If \(n\le k\) then \(G\) is \colorable{k}.
 \end{proposition}
 
-Since \(k\in\N\), by the well-ordering principle, there exists some minimum \(k\) such that a graph \(G\) is
+Since \(k\in\N\), by the well-ordering principle there exists some minimum \(k\) such that a graph \(G\) is
 \colorable{k}.  This minimum \(k\) is called the \emph{chromatic number} of \(G\), denoted by \(\X(G)\).  A
 \coloring{k} for a graph \(G\) where \(k=\X(G)\) is called a \emph{\chromatic{k}} coloring of \(G\).
 
@@ -654,8 +654,8 @@ consolidate the FRs into a minimum number of parts: one part per independent set
 
 A well-known algorithm for determining the chromatic number of a graph, introduced by Christofides
 (1971)~\cite{christofides}, is based on finding the largest possible independent set \(S\) for a graph and then
-continually repeating the process on \(G[V(G)-S]\) until \(S=\emptyset\).  The resulting partition represents a
-chromatic coloring of \(G\).  Part of this research compares the Christofides algorithm to the proposed algorithm.
+continually repeating the process on \(G-S\) until \(S=\emptyset\).  The resulting partition represents a chromatic
+coloring of \(G\).  Part of this research compares the Christofides algorithm to the proposed algorithm.
 
 \subsection{Connected Graphs}\label{sec:sub:connected}
 
@@ -711,8 +711,8 @@ vertex.
   \label{fig:walks}
 \end{figure}
 
-Note that in the general case, vertices and edges are allowed to be repeated during a walk.  Certain special walks
-can be defined by restricting such repeats:
+Vertices and edges are allowed to be repeated during a walk.  Certain special walks can be defined by restricting
+such repeats:
 
 \begin{center}
   \begin{tabular}{lll}
@@ -745,9 +745,9 @@ But if there exists a \(u-v\) walk in a graph \(G\), does this also mean that th
 \begin{proof}
   Assume that \(G\) contains at least one \(u-v\) walk of length \(k\) and consider the set of all possible \(u-v\)
   walks in \(G\); their lengths form a non-empty set of positive integers.  By the well-ordering principle, there
-  exists a \(u-v\) walk \(P\) of minimal length \(\ell\le k\):
+  exists a \(u-v\) walk \(P\) of minimum length \(\ell\le k\):
   \[P=(u=w_0,\ldots,w_{\ell}=v)\]
-  It is claimed that \(P\) is a path.
+  We claim that \(P\) is a path.
 
   Assume by way of contradiction that \(P\) is not a path, and thus \(P\) has at least one repeating vertex.  Let
   \(w_i=w_j\) for some \(0\le i<j\le\ell\) be such a repeating vertex.  There are two possibilities:
@@ -976,8 +976,8 @@ Vertices can be classified based on their degree, as shown in \tablename~\ref{ta
 
 \begin{table}[H]
   \centering
-  \label{tab:degree}
   \caption{Classifying Vertex \(u\) in Graph \(G\)}
+  \label{tab:degree}
   \begin{tabular}{|c|l|}
     \hline
     \(\deg(u)\) & TYPE \\
@@ -1151,8 +1151,7 @@ single open path.  Examples of path graphs are shown in \figurename~\ref{fig:pat
 
 Note that \(P_1=E_1\) is \chromatic{1}, whereas \(P_{n>1}\) is \chromatic{2}.
 
-Paths are not particularly important to the proposed algorithm; however, they play a part in the definition of
-cycles.
+Paths are not particularly important to the proposed algorithm; however, they are used in the definition of cycles.
 
 \subsubsection{Cycles}\label{sec:sub:sub:cycles}
 
@@ -1199,8 +1198,8 @@ Examples of cycle graphs are shown in \figurename~\ref{fig:cycle}.
 
 Note that even cycles are \(2\)-chromatic; however, odd cycles are \(3\)-chromatic.
 
-Cycles are not particularly important to the proposed algorithm; however, they play a part in the definition of
-trees, which are important to the later analysis of coloring algorithms.
+Cycles are not particularly important to the proposed algorithm; however, they are used in the definition of trees,
+which are important to the later analysis of coloring algorithms.
 
 \subsubsection{Complete Graphs}\label{sec:sub:sub:complete}
 
@@ -1305,7 +1304,7 @@ fact, the proposed algorithm is a variation of a standard Zykov algorithm.
 A \emph{clique} is a complete subgraph of a graph.  A \emph{maximal} clique is a clique that cannot be extended by
 an additional vertex.  The \emph{maximum} clique is the maximal clique of highest order.  The \emph{clique number}
 of a graph \(G\), denoted by \(\w(G)\), is the order of the maximum clique in \(G\).  Consider the example in
-\figurename~\ref{fig:clique}.  \(G\) has lots of \clique{2}s; however, none of them are maximal.  \(G\) has several
+\figurename~\ref{fig:clique}.  \(G\) has many \clique{2}s; however, none of them are maximal.  \(G\) has several
 maximal \clique{3}s --- for example: \(G[\set{b,e,g}]\).  There is only one maximal \clique{4}:
 \(G[\set{a,b,c,d}]\) and no clique of higher order.  Thus, \(\w(G)=4\).
 
@@ -1334,7 +1333,7 @@ maximal \clique{3}s --- for example: \(G[\set{b,e,g}]\).  There is only one maxi
 
 Since a \clique{k} of a graph \(G\) needs at least \(k\) colors in any proper coloring of \(G\), the clique number
 of \(G\) provides a nice lower bound for the chromatic number of \(G\).  Unfortunately, the clique number problem
-is known to be NP-hard as well~\cite{mcdiarmid}.  Thus, there are many attempts in the literature to find a good
+is known to be NP-hard as well~\cite{corneil}.  Thus, there are many attempts in the literature to find a good
 lower bound for the clique number of a graph \(G\), usually denoted by \(\w'(G)\).  If such a lower bound is known
 then the conclusion of Proposition~\ref{prop:clique} holds:
 

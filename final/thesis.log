@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  15 NOV 2019 12:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  15 NOV 2019 13:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1860,7 +1860,7 @@ Missing character: There is no ; in font nullfont!
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1199 
+l.1198 
        ]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1869,21 +1869,21 @@ Missing character: There is no ; in font nullfont!
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1253 \subsubsection
+l.1252 \subsubsection
                      {Trees}\label{sec:sub:sub:trees}pdfTeX warning (ext4): des
 tination with the same identifier (name{figure.25}) has been already used, dupl
 icate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1253 \subsubsection
+l.1252 \subsubsection
                      {Trees}\label{sec:sub:sub:trees}] [35pdfTeX warning (ext4)
 : destination with the same identifier (name{figure.26}) has been already used,
  duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1295 ...d,a,e,a,f,j,f,k,f,a,r,b,r,c,g,c,h,c,r)\]
+l.1294 ...d,a,e,a,f,j,f,k,f,a,r,b,r,c,g,c,h,c,r)\]
                                                   ]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1906,10 +1906,10 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 0E9C262B22DA5C6A4370BD0210078EE1;2262.
  ) 
 Here is how much of TeX's memory you used:
- 30581 strings out of 492609
- 578395 string characters out of 6129049
- 756572 words of memory out of 5000000
- 33479 multiletter control sequences out of 15000+600000
+ 30577 strings out of 492609
+ 578363 string characters out of 6129049
+ 755529 words of memory out of 5000000
+ 33477 multiletter control sequences out of 15000+600000
  78977 words of font info for 258 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,15n,436p,835b,947s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1935,10 +1935,10 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on thesis.pdf (48 pages, 230326 bytes).
+Output written on thesis.pdf (48 pages, 229787 bytes).
 PDF statistics:
- 670 PDF objects out of 1000 (max. 8388607)
- 596 compressed objects within 6 object streams
- 162 named destinations out of 1000 (max. 500000)
+ 668 PDF objects out of 1000 (max. 8388607)
+ 594 compressed objects within 6 object streams
+ 160 named destinations out of 1000 (max. 500000)
  26938 words of extra memory for PDF output out of 29859 (max. 10000000)
 
