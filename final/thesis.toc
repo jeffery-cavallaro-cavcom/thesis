@@ -12,24 +12,25 @@
 \contentsline {subsection}{\numberline {2.3}Graph Relations}{14}{subsection.2.3}% 
 \contentsline {subsubsection}{\numberline {2.3.1}Labels}{14}{subsubsection.2.3.1}% 
 \contentsline {subsubsection}{\numberline {2.3.2}Vertex Color}{15}{subsubsection.2.3.2}% 
-\contentsline {subsection}{\numberline {2.4}Subgraphs}{18}{subsection.2.4}% 
-\contentsline {subsection}{\numberline {2.5}Mutators}{20}{subsection.2.5}% 
+\contentsline {subsection}{\numberline {2.4}Subgraphs}{17}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Mutators}{19}{subsection.2.5}% 
 \contentsline {subsubsection}{\numberline {2.5.1}Vertex Removal}{20}{subsubsection.2.5.1}% 
-\contentsline {subsubsection}{\numberline {2.5.2}Edge Addition}{21}{subsubsection.2.5.2}% 
-\contentsline {subsubsection}{\numberline {2.5.3}Edge Removal}{22}{subsubsection.2.5.3}% 
+\contentsline {subsubsection}{\numberline {2.5.2}Edge Addition}{20}{subsubsection.2.5.2}% 
+\contentsline {subsubsection}{\numberline {2.5.3}Edge Removal}{21}{subsubsection.2.5.3}% 
 \contentsline {subsubsection}{\numberline {2.5.4}Vertex Contraction}{22}{subsubsection.2.5.4}% 
-\contentsline {subsection}{\numberline {2.6}Connected Graphs}{23}{subsection.2.6}% 
-\contentsline {subsubsection}{\numberline {2.6.1}Walks}{24}{subsubsection.2.6.1}% 
-\contentsline {subsubsection}{\numberline {2.6.2}Paths}{25}{subsubsection.2.6.2}% 
-\contentsline {subsubsection}{\numberline {2.6.3}Connected}{27}{subsubsection.2.6.3}% 
-\contentsline {subsubsection}{\numberline {2.6.4}Components}{28}{subsubsection.2.6.4}% 
-\contentsline {subsubsection}{\numberline {2.6.5}Impact on Coloring}{29}{subsubsection.2.6.5}% 
-\contentsline {subsection}{\numberline {2.7}Vertex Degree}{30}{subsection.2.7}% 
-\contentsline {subsection}{\numberline {2.8}Special Graphs}{32}{subsection.2.8}% 
-\contentsline {subsubsection}{\numberline {2.8.1}Empty Graphs}{32}{subsubsection.2.8.1}% 
-\contentsline {subsubsection}{\numberline {2.8.2}Paths}{32}{subsubsection.2.8.2}% 
-\contentsline {subsubsection}{\numberline {2.8.3}Cycles}{33}{subsubsection.2.8.3}% 
-\contentsline {subsubsection}{\numberline {2.8.4}Complete Graphs}{34}{subsubsection.2.8.4}% 
-\contentsline {subsubsection}{\numberline {2.8.5}Trees}{35}{subsubsection.2.8.5}% 
-\contentsline {subsection}{\numberline {2.9}Cliques}{36}{subsection.2.9}% 
-\contentsline {section}{Literature Cited}{39}{section*.6}% 
+\contentsline {subsection}{\numberline {2.6}Independent Sets}{23}{subsection.2.6}% 
+\contentsline {subsection}{\numberline {2.7}Connected Graphs}{24}{subsection.2.7}% 
+\contentsline {subsubsection}{\numberline {2.7.1}Walks}{24}{subsubsection.2.7.1}% 
+\contentsline {subsubsection}{\numberline {2.7.2}Paths}{25}{subsubsection.2.7.2}% 
+\contentsline {subsubsection}{\numberline {2.7.3}Connected}{27}{subsubsection.2.7.3}% 
+\contentsline {subsubsection}{\numberline {2.7.4}Components}{28}{subsubsection.2.7.4}% 
+\contentsline {subsubsection}{\numberline {2.7.5}Impact on Coloring}{29}{subsubsection.2.7.5}% 
+\contentsline {subsection}{\numberline {2.8}Vertex Degree}{30}{subsection.2.8}% 
+\contentsline {subsection}{\numberline {2.9}Special Graphs}{32}{subsection.2.9}% 
+\contentsline {subsubsection}{\numberline {2.9.1}Empty Graphs}{32}{subsubsection.2.9.1}% 
+\contentsline {subsubsection}{\numberline {2.9.2}Paths}{33}{subsubsection.2.9.2}% 
+\contentsline {subsubsection}{\numberline {2.9.3}Cycles}{33}{subsubsection.2.9.3}% 
+\contentsline {subsubsection}{\numberline {2.9.4}Complete Graphs}{34}{subsubsection.2.9.4}% 
+\contentsline {subsubsection}{\numberline {2.9.5}Trees}{35}{subsubsection.2.9.5}% 
+\contentsline {subsection}{\numberline {2.10}Cliques}{36}{subsection.2.10}% 
+\contentsline {section}{Literature Cited}{38}{section*.6}% 

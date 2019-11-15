@@ -17,18 +17,19 @@
 \BOOKMARK [3][-]{subsubsection.2.5.2}{Edge Addition}{subsection.2.5}% 17
 \BOOKMARK [3][-]{subsubsection.2.5.3}{Edge Removal}{subsection.2.5}% 18
 \BOOKMARK [3][-]{subsubsection.2.5.4}{Vertex Contraction}{subsection.2.5}% 19
-\BOOKMARK [2][-]{subsection.2.6}{Connected Graphs}{section.2}% 20
-\BOOKMARK [3][-]{subsubsection.2.6.1}{Walks}{subsection.2.6}% 21
-\BOOKMARK [3][-]{subsubsection.2.6.2}{Paths}{subsection.2.6}% 22
-\BOOKMARK [3][-]{subsubsection.2.6.3}{Connected}{subsection.2.6}% 23
-\BOOKMARK [3][-]{subsubsection.2.6.4}{Components}{subsection.2.6}% 24
-\BOOKMARK [3][-]{subsubsection.2.6.5}{Impact on Coloring}{subsection.2.6}% 25
-\BOOKMARK [2][-]{subsection.2.7}{Vertex Degree}{section.2}% 26
-\BOOKMARK [2][-]{subsection.2.8}{Special Graphs}{section.2}% 27
-\BOOKMARK [3][-]{subsubsection.2.8.1}{Empty Graphs}{subsection.2.8}% 28
-\BOOKMARK [3][-]{subsubsection.2.8.2}{Paths}{subsection.2.8}% 29
-\BOOKMARK [3][-]{subsubsection.2.8.3}{Cycles}{subsection.2.8}% 30
-\BOOKMARK [3][-]{subsubsection.2.8.4}{Complete Graphs}{subsection.2.8}% 31
-\BOOKMARK [3][-]{subsubsection.2.8.5}{Trees}{subsection.2.8}% 32
-\BOOKMARK [2][-]{subsection.2.9}{Cliques}{section.2}% 33
-\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 34
+\BOOKMARK [2][-]{subsection.2.6}{Independent Sets}{section.2}% 20
+\BOOKMARK [2][-]{subsection.2.7}{Connected Graphs}{section.2}% 21
+\BOOKMARK [3][-]{subsubsection.2.7.1}{Walks}{subsection.2.7}% 22
+\BOOKMARK [3][-]{subsubsection.2.7.2}{Paths}{subsection.2.7}% 23
+\BOOKMARK [3][-]{subsubsection.2.7.3}{Connected}{subsection.2.7}% 24
+\BOOKMARK [3][-]{subsubsection.2.7.4}{Components}{subsection.2.7}% 25
+\BOOKMARK [3][-]{subsubsection.2.7.5}{Impact on Coloring}{subsection.2.7}% 26
+\BOOKMARK [2][-]{subsection.2.8}{Vertex Degree}{section.2}% 27
+\BOOKMARK [2][-]{subsection.2.9}{Special Graphs}{section.2}% 28
+\BOOKMARK [3][-]{subsubsection.2.9.1}{Empty Graphs}{subsection.2.9}% 29
+\BOOKMARK [3][-]{subsubsection.2.9.2}{Paths}{subsection.2.9}% 30
+\BOOKMARK [3][-]{subsubsection.2.9.3}{Cycles}{subsection.2.9}% 31
+\BOOKMARK [3][-]{subsubsection.2.9.4}{Complete Graphs}{subsection.2.9}% 32
+\BOOKMARK [3][-]{subsubsection.2.9.5}{Trees}{subsection.2.9}% 33
+\BOOKMARK [2][-]{subsection.2.10}{Cliques}{section.2}% 34
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 35

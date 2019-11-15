@@ -45,10 +45,14 @@ G.~Chartrand and P.~Zhang, {\em A First Course in Graph Theory}.
 D.~B. West, {\em Introduction to Graph Theory}.
 \newblock Upper Saddle River, NJ: Prentice Hall, \(2^{nd}\)~ed., 2001.
 
+\bibitem{christofides}
+N.~Christofides, ``An algorithm for the chromatic number of a graph,'' {\em The
+  Computer Journal}, vol.~14, pp.~38--39, January 1971.
+
 \bibitem{zykov}
-A.~Zykov and A.~M. Society, {\em On Some Properties of Linear Complexes},
-  vol.~7 of {\em American Mathematical Society Translations Series One}.
-\newblock American Mathematical Society, 1952.
+A.~A. Zykov, {\em On Some Properties of Linear Complexes}, vol.~7 of {\em
+  American Mathematical Society Translations Series One}.
+\newblock American Mathematical Society, 1949 (translated 1952).
 
 \bibitem{hopcroft}
 J.~Hopcroft and R.~Tarjan, ``Algorithm 447: Efficient algorithms for graph

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  14 NOV 2019 21:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  15 NOV 2019 12:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1586,6 +1586,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
  [6]
 (./thesis.lot
 Package tocbasic Info: Using my definition of `\numberline' on input line 1.
+Package tocbasic Info: Using my definition of `\numberline' on input line 2.
 )
 \tf@lot=\write6
 \openout6 = `thesis.lot'.
@@ -1711,7 +1712,7 @@ ifier (name{figure.6}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.326 \end{theorem}
                    ]
-<opener.png, id=374, 280.79906pt x 63.98906pt>
+<opener.png, id=381, 280.79906pt x 63.98906pt>
 File: opener.png Graphic file (type png)
 <use opener.png>
 Package pdftex.def Info: opener.png  used on input line 349.
@@ -1734,12 +1735,7 @@ l.373
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.373 
-       <./opener.png>]) (./theory.tex [10]
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 36--66
-[]$[]$ $[]$ 
- []
-
-[11
+       <./opener.png>]) (./theory.tex [10] [11
 
 ] [12pdfTeX warning (ext4): destination with the same identifier (name{figure.8
 }) has been already used, duplicate ignored
@@ -1747,114 +1743,68 @@ Overfull \hbox (6.14323pt too wide) in paragraph at lines 36--66
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.96 
-     ] [13] [14]
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 176--208
-[]$[]$ $[]$
- []
-
-[15] [16pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.9}) has been already used, duplicate ignored
+     ] [13] [14] [15] [16pdfTeX warning (ext4): destination with the same ident
+ifier (name{figure.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.237 
-      ]
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 254--284
-[]$[]$ $[]$
- []
-
-[17pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
-) has been already used, duplicate ignored
+l.239   \label
+              {prop:coloring3}] [17pdfTeX warning (ext4): destination with the 
+same identifier (name{figure.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.293 S
-       ince a \chromatic{k} coloring of a graph \(G\) is surjective, there a...
-] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 330--383
-[]$[]$ $[]$
- []
-
-[19pdfTeX warning (ext4): destination with the same identifier (name{figure.11}
-) has been already used, duplicate ignored
+l.295 T
+       o say that graph \(G\) is \emph{equal} to graph \(H\), denoted by \(G...
+] [18] [19pdfTeX warning (ext4): destination with the same identifier (name{fig
+ure.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.395 
-      ]
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 398--435
-[]$[]$ $[]$
- []
-
-
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 454--489
-[]$[]$ $[]$
- []
-
-[20pdfTeX warning (ext4): destination with the same identifier (name{figure.12}
-) has been already used, duplicate ignored
+l.431 \[G-S=G[V(G)-S]\]
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{figure.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.491 
-      ]
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 507--546
-[]$[]$ $[]$
- []
-
-[21pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
-) has been already used, duplicate ignored
+l.431 \[G-S=G[V(G)-S]\]
+                       ] [20pdfTeX warning (ext4): destination with the same id
+entifier (name{figure.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.552 \subsubsection
-                    {Edge Removal}\label{sec:sub:sub:eremove}pdfTeX warning (ex
-t4): destination with the same identifier (name{figure.14}) has been already us
-ed, duplicate ignored
+l.529 
+      ] [21pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.552 \subsubsection
-                    {Edge Removal}\label{sec:sub:sub:eremove}]
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 565--601
-[]$[]$ $[]$
- []
-
-[22pdfTeX warning (ext4): destination with the same identifier (name{figure.15}
-) has been already used, duplicate ignored
+l.582 
+      ] [22pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.613 
-      ]
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 620--658
-[]$[]$ $[]$
- []
-
-[23pdfTeX warning (ext4): destination with the same identifier (name{figure.16}
-) has been already used, duplicate ignored
+l.637 
+      ] [23pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.16}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.672 \subsubsection
-                    {Walks}\label{sec:sub:sub:walks}]
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 698--717
-[]$[]$ $[]$
- []
-
-[24] [25pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.17}) has been already used, duplicate ignored
+l.659 
+      ] [24] [25pdfTeX warning (ext4): destination with the same identifier (na
+me{figure.17}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.755   \[
-          P=(u=w_0,\ldots,w_{\ell}=v)\]] [26pdfTeX warning (ext4): destination 
-with the same identifier (name{figure.18}) has been already used, duplicate ign
-ored
+l.741   L
+         et \(G\) be a graph and let \(u,v\in V(G)\).  If \(G\) contains a \...
+] [26pdfTeX warning (ext4): destination with the same identifier (name{figure.1
+8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.834 
+l.826 
       ]
 Missing character: There is no ; in font nullfont!
  [27pdfTeX warning (ext4): destination with the same identifier (name{figure.19
@@ -1862,128 +1812,107 @@ Missing character: There is no ; in font nullfont!
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.900 \subsubsection
+l.890 \subsubsection
                     {Components}\label{sec:sub:sub:components}pdfTeX warning (e
 xt4): destination with the same identifier (name{figure.20}) has been already u
 sed, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.900 \subsubsection
+l.890 \subsubsection
                     {Components}\label{sec:sub:sub:components}] [28] [29]
 [30]
 Missing character: There is no ; in font nullfont!
-
-Overfull \hbox (6.14323pt too wide) in paragraph at lines 1012--1053
-[][] []
- []
-
-[31pdfTeX warning (ext4): destination with the same identifier (name{figure.21}
-) has been already used, duplicate ignored
+ [31pdfTeX warning (ext4): destination with the same identifier (name{table.2})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1061 \subsubsection
-                     {Empty Graphs}\label{sec:sub:sub:empty}]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1069--1104
-[]$[]$ $[]$
- []
-
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1117--1153
-[]$[]$ $[]$
- []
-
-[32pdfTeX warning (ext4): destination with the same identifier (name{figure.22}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1155 
+l.1057 
        ]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1171--1204
-[]$[]$ $[]$
- []
-
-[33pdfTeX warning (ext4): destination with the same identifier (name{figure.23}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1206 
-       ]
 Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1222--1255
-[]$[]$ $[]$
- []
-
-[34pdfTeX warning (ext4): destination with the same identifier (name{figure.24}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1257 
-       ] [35pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.25}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1302 
-       ] [36pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.26}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1321 
-       ]
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [37pdfTeX warning (ext4): destination with the same identifier (name{figure.27
+ [32pdfTeX warning (ext4): destination with the same identifier (name{figure.21
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1361 ...c{8^2}{8^2-2\cdot17}=\frac{64}{30}=2.4\]
-                                                  ])) [38] (./thesis.bbl
-[39
+l.1109 \subsubsection
+                     {Paths}\label{sec:sub:sub:paths}pdfTeX warning (ext4): des
+tination with the same identifier (name{figure.22}) has been already used, dupl
+icate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1109 \subsubsection
+                     {Paths}\label{sec:sub:sub:paths}]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [33pdfTeX warning (ext4): destination with the same identifier (name{figure.23
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1199 
+       ]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [34pdfTeX warning (ext4): destination with the same identifier (name{figure.24
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1253 \subsubsection
+                     {Trees}\label{sec:sub:sub:trees}pdfTeX warning (ext4): des
+tination with the same identifier (name{figure.25}) has been already used, dupl
+icate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1253 \subsubsection
+                     {Trees}\label{sec:sub:sub:trees}] [35pdfTeX warning (ext4)
+: destination with the same identifier (name{figure.26}) has been already used,
+ duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1295 ...d,a,e,a,f,j,f,k,f,a,r,b,r,c,g,c,h,c,r)\]
+                                                  ]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+ [36])) [37pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.27}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.72 \begin{document}
+                     ] (./thesis.bbl [38
 
 
-]) [40]
+]) [39]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
  (./thesis.aux (./sections.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: C16A192F0DEEF7CD665B7E6ED6359019;2195.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(rerunfilecheck)             Checksum: 0E9C262B22DA5C6A4370BD0210078EE1;2262.
  ) 
 Here is how much of TeX's memory you used:
- 30566 strings out of 492609
- 578229 string characters out of 6129049
- 756873 words of memory out of 5000000
- 33474 multiletter control sequences out of 15000+600000
- 76061 words of font info for 251 fonts, out of 8000000 for 9000
+ 30581 strings out of 492609
+ 578395 string characters out of 6129049
+ 756572 words of memory out of 5000000
+ 33479 multiletter control sequences out of 15000+600000
+ 78977 words of font info for 258 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,15n,436p,835b,995s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 83i,15n,436p,835b,947s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{section*.6} has been referenced but does not exis
 t, replaced by a fixed one
 
@@ -2006,10 +1935,10 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on thesis.pdf (49 pages, 230433 bytes).
+Output written on thesis.pdf (48 pages, 230326 bytes).
 PDF statistics:
- 665 PDF objects out of 1000 (max. 8388607)
- 590 compressed objects within 6 object streams
- 159 named destinations out of 1000 (max. 500000)
- 26930 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 670 PDF objects out of 1000 (max. 8388607)
+ 596 compressed objects within 6 object streams
+ 162 named destinations out of 1000 (max. 500000)
+ 26938 words of extra memory for PDF output out of 29859 (max. 10000000)
 

@@ -1,8 +1,8 @@
 \section{Graph Theory}\label{sec:theory}
 
 This section presents the concepts, definitions, and theorems from the field of graph theory that are needed in the
-development of the proposed algorithm.  This material is primarily taken from the textbooks used
-by the author during his undergraduate and graduate graph theory classes at SJSU \cite{chartrand,west}.
+development of the proposed algorithm.  This material is primarily taken from the undergraduate graph theory text
+by Chartrand and Zhang (2012)~\cite{chartrand} and the graduate graph theory text by West (2001)~\cite{west}.
 
 \subsection{Simple Graphs}\label{sec:sub:simple}
 
@@ -33,7 +33,7 @@ that each edge line is drawn between its two endpoint vertices.  An example grap
 \figurename~\ref{fig:exgraph}.
 
 \begin{figure}[H]
-  \begin{minipage}{3in}
+  \begin{minipage}{2.75in}
     \vspace{0in}
     \centering
     \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
@@ -48,7 +48,7 @@ that each edge line is drawn between its two endpoint vertices.  An example grap
       \draw (A) edge (D);
     \end{tikzpicture}
   \end{minipage}
-  \begin{minipage}{3in}
+  \begin{minipage}{2.75in}
     \vspace{0in}
     \centering
     \begin{tikzpicture}[node distance=1.75cm,every node/.style={unlabeled node}]
@@ -173,7 +173,7 @@ said to be \emph{\colorable{k}}, meaning the actual coloring (range of \(c\)) us
 An example of a \coloring{4} is shown in \figurename~\ref{fig:exproper}.
 
 \begin{figure}[H]
-  \begin{minipage}{3in}
+  \begin{minipage}{2.75in}
     \centering
     \begin{tikzpicture}
       \colorlet{c1}{green!50!white}
@@ -194,7 +194,7 @@ An example of a \coloring{4} is shown in \figurename~\ref{fig:exproper}.
       \draw (E) edge (C);
     \end{tikzpicture}
   \end{minipage}
-  \begin{minipage}{3in}
+  \begin{minipage}{2.75in}
     \centering
     \(C=\set{\mtxtclr{green},\mtxtclr{blue},\mtxtclr{red},\mtxtclr{orange}}\)
     \begin{align*}
@@ -251,7 +251,7 @@ the graph, the coloring is \chromatic{3}.  Note that when a coloring is chromati
 (empty sets) and hence the distribution is a true partition.
 
 \begin{figure}[H]
-  \begin{minipage}{3in}
+  \begin{minipage}{2.75in}
     \centering
     \begin{tikzpicture}
       \colorlet{c1}{green!50!white}
@@ -271,7 +271,7 @@ the graph, the coloring is \chromatic{3}.  Note that when a coloring is chromati
       \draw (E) edge (C);
     \end{tikzpicture}
   \end{minipage}
-  \begin{minipage}{3in}
+  \begin{minipage}{2.75in}
     \[C=\set{\mtxtclr{green},\mtxtclr{blue},\mtxtclr{red}}\]
     \begin{align*}
       c(a) &= \mtxtclr{green} \\
@@ -284,16 +284,6 @@ the graph, the coloring is \chromatic{3}.  Note that when a coloring is chromati
   \caption{A Graph with a \chromatic{3} coloring.}
   \label{fig:exchromatic}
 \end{figure}
-
-The primary purpose of a \coloring{k} of a graph \(G\) is to distribute the vertices of \(G\) into \(k\) so-called
-\emph{independent} (some possibly empty) sets.  For a graph \(G\), an \emph{independent} set \(S\subseteq V(G)\) is
-a set of pairwise non-adjacent vertices in \(G\): for all \(u,v\in S\), \(uv\notin E(G)\).  Independent sets are
-sometimes called \emph{stable} sets.
-
-Since a \chromatic{k} coloring of a graph \(G\) is surjective, there are no unused colors (empty sets) and so the
-coloring partitions the vertices of \(G\) into exactly \(k\) independent sets.  The goal of the proposed algorithm
-is to find a chromatic coloring of a design graph so that the resulting independent sets indicate how to
-consolidate the FRs into a minimum number of parts: one part per independent set.
 
 \subsection{Subgraphs}\label{sec:sub:subgraphs}
 
@@ -326,61 +316,58 @@ proper spanning subgraph of \(G\) because \(F\) contains all of the vertices in 
 and \(be\).
 
 \begin{figure}[H]
+  \begin{minipage}{1.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E] {\(c\)};
+      \node (D) [below left=of E] {\(d\)};
+      \draw (A) edge (B);
+      \draw (B) edge (E);
+      \draw (E) edge (A);
+      \draw (A) edge (D);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G\)
+  \end{minipage}
+  \begin{minipage}{1.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E,color=white] {};
+      \node (D) [below left=of E,color=white] {};
+      \draw (A) edge (B);
+      \draw (E) edge (A);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(H\subset G\) (proper)
+  \end{minipage}
+  \begin{minipage}{1.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E] {\(c\)};
+      \node (D) [below left=of E] {\(d\)};
+      \draw (E) edge (A);
+      \draw (A) edge (D);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(F\subset G\) (spanning)
+  \end{minipage}
+  \caption{Subgraph examples.}
   \label{fig:subgraphs}
-  \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw (B) edge (E);
-        \draw (E) edge (A);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E,color=white] {};
-        \node (D) [below left=of E,color=white] {};
-        \draw (A) edge (B);
-        \draw (E) edge (A);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(H\subset G\) (proper)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (E) edge (A);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(F\subset G\) (spanning)
-    \end{center}
-  \end{minipage}
-  \caption{Subgraph Examples}
 \end{figure}
 
 An \emph{induced} subgraph is a special type of subgraph.  Let \(G\) be a graph and let \(S\subseteq V(G)\).  The
@@ -394,45 +381,43 @@ the only induced spanning subgraph of a graph is the graph itself.  \figurename~
 so that \(H\) is now an induced subgraph of \(G\).
 
 \begin{figure}[H]
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E] {\(c\)};
+      \node (D) [below left=of E] {\(d\)};
+      \draw (A) edge (B);
+      \draw (B) edge (E);
+      \draw (E) edge (A);
+      \draw (A) edge (D);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G\)
+  \end{minipage}
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E,color=white] {};
+      \node (D) [below left=of E,color=white] {};
+      \draw (A) edge (B);
+      \draw (B) edge (E);
+      \draw (E) edge (A);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(H=G[\set{a,b,e}]\)
+  \end{minipage}
+  \caption{An induced subgraph.}
   \label{fig:induced}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw (B) edge (E);
-        \draw (E) edge (A);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E,color=white] {};
-        \node (D) [below left=of E,color=white] {};
-        \draw (A) edge (B);
-        \draw (B) edge (E);
-        \draw (E) edge (A);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(H=G[\set{a,b,e}]\)
-    \end{center}
-  \end{minipage}
-  \caption{An Induced Subgraph}
 \end{figure}
 
 \subsection{Mutators}\label{sec:sub:mutators}
@@ -450,43 +435,41 @@ If \(S\ne\emptyset\) then \(G-S\) is a proper subgraph of \(G\).  If \(S=V(G)\) 
 their incident edges \(ae\) and \(be\).
 
 \begin{figure}[H]
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node [red] (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node [red] (C) [below right=of E] {\(c\)};
+      \node (D) [below left=of E] {\(d\)};
+      \draw (A) edge (B);
+      \draw [red] (B) edge (E);
+      \draw [red] (E) edge (A);
+      \draw (A) edge (D);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G\)
+  \end{minipage}
+  \begin{minipage}{3in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E,white] {\(c\)};
+      \node (D) [below left=of E] {\(d\)};
+      \draw (A) edge (B);
+      \draw (A) edge (D);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G-\set{c,e}\)
+  \end{minipage}
+  \caption{Vertex removal.}
   \label{fig:vremove}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node [red] (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node [red] (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw [red] (B) edge (E);
-        \draw [red] (E) edge (A);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E,white] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G-\set{c,e}\)
-    \end{center}
-  \end{minipage}
-  \caption{Vertex Removal}
 \end{figure}
 
 If \(S\) consists of a single vertex \(v\) then the alternate syntax \(G-v\) is used instead of \(G-\set{v}\).
@@ -503,47 +486,45 @@ same vertices as \(G\) and with edge set \(E(G)\cup\set{uv}\).  Note that \(G\) 
 \figurename~\ref{fig:eadd} shows an example of edge addition: edge \(cd\) is added.
 
 \begin{figure}[H]
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E] {\(c\)};
+      \node (D) [below left=of E] {\(d\)};
+      \draw (A) edge (B);
+      \draw (B) edge (E);
+      \draw (E) edge (A);
+      \draw (A) edge (D);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G\)
+  \end{minipage}
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E] {\(c\)};
+      \node (D) [below left=of E] {\(d\)};
+      \draw (A) edge (B);
+      \draw (B) edge (E);
+      \draw (E) edge (A);
+      \draw (A) edge (D);
+      \draw [green] (C) edge (D);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G+cd\)
+  \end{minipage}
+  \caption{Edge addition.}
   \label{fig:eadd}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw (B) edge (E);
-        \draw (E) edge (A);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw (B) edge (E);
-        \draw (E) edge (A);
-        \draw (A) edge (D);
-        \draw [green] (C) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G+cd\)
-    \end{center}
-  \end{minipage}
-  \caption{Edge Addition}
 \end{figure}
 
 The proposed algorithm uses edge addition to prevent two non-adjacent FRs from being consolidated into the same
@@ -555,50 +536,48 @@ The proposed algorithm does not use edge removal; however, a number of related a
 so it is presented here.  Let \(G\) be a graph and let \(X\subseteq E(G)\).  The spanning subgraph obtained by
 removing all of the edges in \(X\) is denoted by:
 \[G-X=H\left(V(G),E(G)-X\right)\]
-Thus, only edges are remove --- no vertices are removed.  If \(X\ne\emptyset\) then \(G-X\) is a proper subgraph of
+Thus, only edges are removed --- no vertices are removed.  If \(X\ne\emptyset\) then \(G-X\) is a proper subgraph of
 \(G\).  If \(X=E(G)\) then the result is an empty graph.
 
 \figurename~\ref{fig:eremove} shows an example of edge removal: edges \(ae\) and \(be\) are removed.
 
 \begin{figure}[H]
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E] {\(c\)};
+      \node (D) [below left=of E] {\(d\)};
+      \draw (A) edge (B);
+      \draw [red] (B) edge (E);
+      \draw [red] (E) edge (A);
+      \draw (A) edge (D);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G\)
+  \end{minipage}
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
+      \node (E) at (0,0) {\(e\)};
+      \node (A) [above left=of E] {\(a\)};
+      \node (B) [above right=of E] {\(b\)};
+      \node (C) [below right=of E] {\(c\)};
+      \node (D) [below left=of E] {\(d\)};
+      \draw (A) edge (B);
+      \draw (A) edge (D);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G-\set{ae,be}\)
+  \end{minipage}
+  \caption{Edge removal.}
   \label{fig:eremove}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw [red] (B) edge (E);
-        \draw [red] (E) edge (A);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[node distance=1cm,every node/.style={labeled node}]
-        \node (E) at (0,0) {\(e\)};
-        \node (A) [above left=of E] {\(a\)};
-        \node (B) [above right=of E] {\(b\)};
-        \node (C) [below right=of E] {\(c\)};
-        \node (D) [below left=of E] {\(d\)};
-        \draw (A) edge (B);
-        \draw (A) edge (D);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G-\set{ae,be}\)
-    \end{center}
-  \end{minipage}
-  \caption{Edge Removal}
 \end{figure}
 
 If \(X\) consists of a single edge \(e\) then the alternate syntax \(G-e\) is used instead of \(G-\set{e}\).
@@ -616,51 +595,67 @@ a single vertex.  Since edges \(ae\) and \(be\) would result in multiple edges b
 edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single vertex.
 
 \begin{figure}[H]
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{1in}{90}{}
+      \draw (1) edge (5);
+      \draw (2) edge (3) edge (4) edge (5);
+      \draw (3) edge (4);
+      \draw (4) edge (5);
+      \draw [dashed,red,->] (2) edge (1);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G\)
+  \end{minipage}
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}
+      \begin{scope}[every node/.style={coordinate}]
+        \cycleNnodes{5}{(0,0)}{1in}{90}{}
+      \end{scope}
+      \begin{scope}[every node/.style={labeled node}]
+        \node (AB) at (1) {\(ab\)};
+        \node (C) at (3) {\(c\)};
+        \node (D) at (4) {\(d\)};
+        \node (E) at (5) {\(e\)};
+      \end{scope}
+      \draw (AB) edge (C) edge (D) edge (E);
+      \draw (C) edge (D);
+      \draw (D) edge (E);
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(G\cdot ab\)
+  \end{minipage}
+  \caption{Vertex contraction.}
   \label{fig:contract}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style={labeled node}]
-        \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{1in}{90}{}
-        \draw (1) edge (5);
-        \draw (2) edge (3) edge (4) edge (5);
-        \draw (3) edge (4);
-        \draw (4) edge (5);
-        \draw [dashed,red,->] (2) edge (1);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{3in}
-    \begin{center} 
-      \begin{tikzpicture}
-        \begin{scope}[every node/.style={coordinate}]
-          \cycleNnodes{5}{(0,0)}{1in}{90}{}
-        \end{scope}
-        \begin{scope}[every node/.style={labeled node}]
-          \node (AB) at (1) {\(ab\)};
-          \node (C) at (3) {\(c\)};
-          \node (D) at (4) {\(d\)};
-          \node (E) at (5) {\(e\)};
-        \end{scope}
-        \draw (AB) edge (C) edge (D) edge (E);
-        \draw (C) edge (D);
-        \draw (D) edge (E);
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(G\cdot ab\)
-    \end{center}
-  \end{minipage}
-  \caption{Vertex Contraction}
 \end{figure}
 
 For the operation \(G\cdot uv\), if \(uv\in E(G)\) then the operation is also referred to as \emph{edge
   contraction}.  If \(uv\notin E(G)\) then the operation is also referred to as \emph{vertex identification}.  The
 proposed algorithm uses vertex identification to consolidate two non-adjacent FRs into the same part.
+
+\subsection{Independent Sets}\label{sec:sub:independent}
+
+The primary purpose of a \coloring{k} of a graph \(G\) is to distribute the vertices of \(G\) into \(k\) so-called
+\emph{independent} (some possibly empty) sets.  For a graph \(G\), an \emph{independent} set \(S\subseteq V(G)\),
+sometimes called a \emph{stable} set, is a set of pairwise non-adjacent vertices in \(G\): for all \(u,v\in S\),
+\(uv\notin E(G)\).  By definition, the empty set is an independent set.  The cardinality of the largest possible
+independent set for a graph \(G\), denoted by \(\a(G)\), is called the \emph{independence number} for \(G\).
+
+Since a \chromatic{k} coloring of a graph \(G\) is surjective, there are no unused colors (empty sets) and so the
+coloring partitions the vertices of \(G\) into exactly \(k\) non-empty independent sets.  The goal of the proposed
+algorithm is to find a chromatic coloring of a design graph so that the resulting independent sets indicate how to
+consolidate the FRs into a minimum number of parts: one part per independent set.
+
+A well-known algorithm for determining the chromatic number of a graph, introduced by Christofides
+(1971)~\cite{christofides}, is based on finding the largest possible independent set \(S\) for a graph and then
+continually repeating the process on \(G[V(G)-S]\) until \(S=\emptyset\).  The resulting partition represents a
+chromatic coloring of \(G\).  Part of this research compares the Christofides algorithm to the proposed algorithm.
 
 \subsection{Connected Graphs}\label{sec:sub:connected}
 
@@ -694,18 +689,16 @@ it starts and ends on distinct vertices, whereas \(W_2\) is a closed walk becaus
 vertex.
 
 \begin{figure}[H]
-  \label{fig:walks}
-  \begin{minipage}{3in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style={labeled node}]
-        \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{0.75in}{90}{}
-        \draw (1) edge (2) edge (3) edge (4) edge (5);
-        \draw (2) edge (3) edge (5);
-        \draw (3) edge (4);
-      \end{tikzpicture}
-    \end{center}
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{0.75in}{90}{}
+      \draw (1) edge (2) edge (3) edge (4) edge (5);
+      \draw (2) edge (3) edge (5);
+      \draw (3) edge (4);
+    \end{tikzpicture}
   \end{minipage}
-  \begin{minipage}{3in}
+  \begin{minipage}{2.75in}
     \(W_1=(a,b,e,a,c)\ \text{is open}\)
 
     \(W_2=(a,e,b,c,a)\ \text{is closed}\)
@@ -714,7 +707,8 @@ vertex.
 
     \(\abs{W_1}=\abs{W_2}=4\)
   \end{minipage}
-  \caption{Open and Closed Walks}
+  \caption{Open and closed walks.}
+  \label{fig:walks}
 \end{figure}
 
 Note that in the general case, vertices and edges are allowed to be repeated during a walk.  Certain special walks
@@ -749,11 +743,11 @@ But if there exists a \(u-v\) walk in a graph \(G\), does this also mean that th
 \end{theorem}
 
 \begin{proof}
-  Assume that \(G\) contains at lease one \(u-v\) walk of length \(k\) and consider the set of all possible \(u-v\)
+  Assume that \(G\) contains at least one \(u-v\) walk of length \(k\) and consider the set of all possible \(u-v\)
   walks in \(G\); their lengths form a non-empty set of positive integers.  By the well-ordering principle, there
   exists a \(u-v\) walk \(P\) of minimal length \(\ell\le k\):
   \[P=(u=w_0,\ldots,w_{\ell}=v)\]
-  We claim that \(P\) is a path.
+  It is claimed that \(P\) is a path.
 
   Assume by way of contradiction that \(P\) is not a path, and thus \(P\) has at least one repeating vertex.  Let
   \(w_i=w_j\) for some \(0\le i<j\le\ell\) be such a repeating vertex.  There are two possibilities:
@@ -763,77 +757,75 @@ But if there exists a \(u-v\) walk in a graph \(G\), does this also mean that th
     \figurename~\ref{fig:rend}.
 
     \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \colorlet{cin}{green}
+        \begin{scope}[every node/.style={unlabeled node},node distance=1in]
+          \node (w0) at (0,0) {};
+          \node (w1) [right=of w0] {};
+          \node (wi) [right=of w1] {};
+          \node (wi1) [right=of wi] {};
+          \node (wj2) [right=of wi1] {};
+          \node (wj1) [below=of wi] {};
+        \end{scope}
+        \draw [cin] (w0) edge (w1);
+        \draw [dashed,cin] (w1) edge (wi);
+        \draw (wi) edge (wi1);
+        \draw [dashed] (wi1) edge (wj2);
+        \draw (wj2) edge (wj1);
+        \draw (wj1) edge (wi);
+        \node [above] at (w0) {\(u=w_0\)};
+        \node [above] at (w1) {\(w_1\)};
+        \node [above] at (wi) {\(w_i=w_j=w_{\ell}=v\)};
+        \node [above] at (wi1) {\(w_{i+1}\)};
+        \node [above] at (wj2) {\(w_{j-2}\)};
+        \node [below] at (wj1) {\(w_{j-1}\)};
+      \end{tikzpicture}
+      \caption{Repeated vertex at end case.}
       \label{fig:rend}
-      \begin{center}
-        \begin{tikzpicture}
-          \colorlet{cin}{green}
-          \begin{scope}[every node/.style={unlabeled node},node distance=1in]
-            \node (w0) at (0,0) {};
-            \node (w1) [right=of w0] {};
-            \node (wi) [right=of w1] {};
-            \node (wi1) [right=of wi] {};
-            \node (wj2) [right=of wi1] {};
-            \node (wj1) [below=of wi] {};
-          \end{scope}
-          \draw [cin] (w0) edge (w1);
-          \draw [dashed,cin] (w1) edge (wi);
-          \draw (wi) edge (wi1);
-          \draw [dashed] (wi1) edge (wj2);
-          \draw (wj2) edge (wj1);
-          \draw (wj1) edge (wi);
-          \node [above] at (w0) {\(u=w_0\)};
-          \node [above] at (w1) {\(w_1\)};
-          \node [above] at (wi) {\(w_i=w_j=w_{\ell}=v\)};
-          \node [above] at (wi1) {\(w_{i+1}\)};
-          \node [above] at (wj2) {\(w_{j-2}\)};
-          \node [below] at (wj1) {\(w_{j-1}\)};
-        \end{tikzpicture}
-      \end{center}
-      \caption{Repeated Vertex at End Case}
     \end{figure}
 
-    Let \(P'=(u=w_0,w_1,\ldots,w_i=v)\) be the walk shown in green in the figure.  \(P'\) is a \(u-v\) walk of
-    length \(i<\ell\) in \(G\).
+    Let \(P'=(u=w_0,w_1,\ldots,w_i=v)\) be the walk shown in green in \figurename~\ref{fig:rend}.  \(P'\) is a
+    \(u-v\) walk of length \(i<\ell\) in \(G\).
 
   \item Case 2: A repeated vertex occurs inside the walk (\(j<\ell\)).  This is demonstrated in
     \figurename~\ref{fig:rmiddle}.
     
     \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \colorlet{cin}{green}
+        \begin{scope}[every node/.style={unlabeled node},node distance=1in]
+          \node (w0) at (0,0) {};
+          \node (w1) [right=of w0] {};
+          \node (wi) [right=of w1] {};
+          \node (wip1) [below right=of wi] {};
+          \node (wjm1) [below left=of wi] {};
+          \node (wjp1) [right=of wi] {};
+          \node (wl) [right=of wjp1] {};
+        \end{scope}
+        \draw [cin] (w0) edge (w1);
+        \draw [dotted,cin] (w1) edge (wi);
+        \draw (wi) edge (wip1);
+        \draw [dotted] (wip1) edge (wjm1);
+        \draw (wjm1) edge (wi);
+        \draw [cin] (wi) edge (wjp1);
+        \draw [dotted,cin] (wjp1) edge (wl);
+        \draw [dotted,cin] (wjp1) edge (wl);
+        \node [above] at (w0) {\(u=w_0\)};
+        \node [above] at (w1) {\(w_1\)};
+        \node [above] at (wi) {\(w_i=w_j\)};
+        \node [below] at (wip1) {\(w_{i+1}\)};
+        \node [below] at (wjm1) {\(w_{j-1}\)};
+        \node [above] at (wjp1) {\(w_{j+1}\)};
+        \node [above] at (wl) {\(w_{\ell}=v\)};
+      \end{tikzpicture}
+      \caption{Repeated vertex inside case.}
       \label{fig:rmiddle}
-      \begin{center}
-        \begin{tikzpicture}
-          \colorlet{cin}{green}
-          \begin{scope}[every node/.style={unlabeled node},node distance=1in]
-            \node (w0) at (0,0) {};
-            \node (w1) [right=of w0] {};
-            \node (wi) [right=of w1] {};
-            \node (wip1) [below right=of wi] {};
-            \node (wjm1) [below left=of wi] {};
-            \node (wjp1) [right=of wi] {};
-            \node (wl) [right=of wjp1] {};
-          \end{scope}
-          \draw [cin] (w0) edge (w1);
-          \draw [dotted,cin] (w1) edge (wi);
-          \draw (wi) edge (wip1);
-          \draw [dotted] (wip1) edge (wjm1);
-          \draw (wjm1) edge (wi);
-          \draw [cin] (wi) edge (wjp1);
-          \draw [dotted,cin] (wjp1) edge (wl);
-          \draw [dotted,cin] (wjp1) edge (wl);
-          \node [above] at (w0) {\(u=w_0\)};
-          \node [above] at (w1) {\(w_1\)};
-          \node [above] at (wi) {\(w_i=w_j\)};
-          \node [below] at (wip1) {\(w_{i+1}\)};
-          \node [below] at (wjm1) {\(w_{j-1}\)};
-          \node [above] at (wjp1) {\(w_{j+1}\)};
-          \node [above] at (wl) {\(w_{\ell}=v\)};
-        \end{tikzpicture}
-      \end{center}
-      \caption{Repeated Vertex Inside Case}
     \end{figure}
 
-  Let \(P'=(u=w_0,w_1,\ldots,w_i,w_{j+1},\ldots,w_{\ell}=v)\) be the walk shown in green in the figure.  \(P'\) is
-  a \(u-v\) walk of length \(\ell-(j-i)<\ell\) in \(G\).
+  Let \(P'=(u=w_0,w_1,\ldots,w_i,w_{j+1},\ldots,w_{\ell}=v)\) be the walk shown in green in the
+  \figurename~\ref{fig:rmiddle}.  \(P'\) is a \(u-v\) walk of length \(\ell-(j-i)<\ell\) in \(G\).
   \end{description}
 
   Both cases contradict the minimality of the length of \(P\).
@@ -848,50 +840,48 @@ A \emph{connected} graph \(G\) is a graph whose vertices are all connected: for 
 are shown in figure \ref{fig:connect}.
 
 \begin{figure}[H]
-  \label{fig:connect}
-  \begin{minipage}[t]{2.5in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style={labeled node}]
-        \cycleVnodes{\(a\),\(b\),\(c\),\(d\)}{(0,0)}{0.75in}{135}{}
-        \draw (1) edge (2) edge (3) edge (4);
-      \end{tikzpicture}
+  \begin{minipage}[t]{2.75in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \cycleVnodes{\(a\),\(b\),\(c\),\(d\)}{(0,0)}{0.75in}{135}{}
+      \draw (1) edge (2) edge (3) edge (4);
+    \end{tikzpicture}
 
-      \bigskip
+    \bigskip
 
-      \begin{tabular}{c}
-        \((a,b)\) \\
-        \((a,c)\) \\
-        \((a,d)\) \\
-        \((b,a,c)\) \\
-        \((b,a,d)\) \\
-        \((c,a,d)\)
-      \end{tabular}
+    \begin{tabular}{c}
+      \((a,b)\) \\
+      \((a,c)\) \\
+      \((a,d)\) \\
+      \((b,a,c)\) \\
+      \((b,a,d)\) \\
+      \((c,a,d)\)
+    \end{tabular}
 
-      \bigskip
-      
-      CONNECTED
-    \end{center}
+    \bigskip
+    
+    CONNECTED
   \end{minipage}
   \begin{minipage}[t]{3in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style={labeled node},node distance=2cm]
-        \cycleVnodes{\(a\),\(b\),\(c\)}{(0,0)}{0.75in}{90}{l}
-        \draw (l1) edge (l2) edge (l3);
-        \draw (l2) edge (l3);
-        \pathVnodes{\(d\),\(e\)}{(3,0.5)}{right}{r};
-        \draw (r1) edge (r2);
-      \end{tikzpicture}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node},node distance=2cm]
+      \cycleVnodes{\(a\),\(b\),\(c\)}{(0,0)}{0.75in}{90}{l}
+      \draw (l1) edge (l2) edge (l3);
+      \draw (l2) edge (l3);
+      \pathVnodes{\(d\),\(e\)}{(3,0.5)}{right}{r};
+      \draw (r1) edge (r2);
+    \end{tikzpicture}
 
-      \bigskip
-      
-      No path from any of \(a,b,c\) to any of \(d,e\)
+    \bigskip
+    
+    No path from any of \(a,b,c\) to any of \(d,e\)
 
-      \bigskip
+    \bigskip
 
-      DISCONNECTED
-    \end{center}
+    DISCONNECTED
   \end{minipage}
-  \caption{Connected and Disconnected Graphs}
+  \caption{Connected and disconnected graphs.}
+  \label{fig:connect}
 \end{figure}
 
 By definition, the trivial graph is connected since the single vertex is connected to itself by a trivial path (of
@@ -929,7 +919,7 @@ Furthermore the \(G_i\) are induced by the vertex equivalence classes of the con
 
 The impact of disconnectedness on coloring depends on the selected algorithm.  One might assume that the selected
 algorithm should be run on each component individually in order to determine each \(\X(G_i)\) and then, as pointed
-out by Zykov, 1949 (translated 1952) \cite{zykov}, conclude that the maximum such value is sufficient for \(\X(G)\):
+out by Zykov (1949)~\cite{zykov}, conclude that the maximum such value is sufficient for \(\X(G)\):
 \[\X(G)=\max_{1\le i\le k(G)}\X(G_i)\]
 For example, consider the disconnected graph in \figurename~\ref{fig:connect}.  The graph contains two components,
 so number the components from left-to-right:
@@ -941,12 +931,13 @@ so number the components from left-to-right:
 \end{gather*}
 
 Using this technique requires application of an initial algorithm to partition the graph into components.  Such an
-algorithm is well-known and is described by Hopcroft and Tarjan, 1973 \cite{hopcroft}.  The algorithm is recursive.
-It starts by pushing a randomly selected vertex on the stack and walking the vertex's incident edges, removing each
-edge as it is traversed.  As each unmarked vertex is encountered, it is assigned to the current component.
-Vertices with incident edges are pushed onto the stack and newly isolated vertices are popped off the stack.  Once
-the stack is empty, any previously unmarked vertex is selected to start the next component and the process
-continues until all vertices are marked.  This algorithm has a runtime complexity of \(\BO(\max(n,m))\).
+algorithm is well-known and is described by Hopcroft and Tarjan (1973)~\cite{hopcroft}.  The algorithm is
+recursive.  It starts by pushing a randomly selected vertex on the stack and walking the vertex's incident edges,
+removing each edge as it is traversed.  As each unmarked vertex is encountered, it is assigned to the current
+component.  Vertices with incident edges are pushed onto the stack and newly isolated vertices are popped off the
+stack.  Once the stack is empty, any previously unmarked vertex is selected to start the next component and the
+process continues until all vertices are marked.  Given a graph \(G\) of order \(n\) and size \(m\), this algorithm
+runs in \(\max(n,m)\) steps.
 
 Alternatively, an ideal coloring algorithm could be run on the entire graph at once regardless of the number of
 components in the graph.  The proposed algorithm is such a solution, and therefore saves the needless work of
@@ -956,9 +947,9 @@ partitioning the graph into components first.
 
 Besides a graph's order and size, the next most important parameter is the so-called \emph{degree} of each vertex.
 In order to define the degree of a vertex, we need to define what is meant by a vertex's \emph{neighborhood} first.
-So let \(G\) be a graph and let \(u\in V(G)\).  If \(v\in V(G)\) is adjacent to \(u\) then \(u\) and \(v\) are
-called \emph{neighbors}.  Note that for simple graphs, a vertex is never a neighbor of itself.  The
-\emph{neighborhood} of \(u\), denoted by \(N(u)\), is the set of all the neighbors of \(u\):
+Let \(G\) be a graph and let \(u\in V(G)\).  If \(v\in V(G)\) is adjacent to \(u\) then \(u\) and \(v\) are called
+\emph{neighbors}.  Note that for simple graphs, a vertex is never a neighbor of itself.  The \emph{neighborhood} of
+\(u\), denoted by \(N(u)\), is the set of all the neighbors of \(u\) in \(G\):
 \[N(u)=\setb{v\in V(G)}{uv\in E(G)}\]
 The \emph{degree} of \(u\), denoted by \(\deg_G(u)\) or just \(\deg(u)\) if \(G\) is unambiguous, is then defined
 to be the cardinality of its neighborhood: \(\deg(u)=\abs{N(u)}\).  Thus, the degree of a vertex can be viewed as
@@ -970,15 +961,23 @@ When considering the degrees of all the vertices in a graph, the following limit
   \D(G)=\max_{v\in V(G)}\deg(v)
 \end{gather*}
 
-And so, for a graph \(G\) of order \(n\), it must be the case that for every vertex \(v\in G\):
+Therefore, we can state the conclusion of Proposition~\ref{prop:degree}:
+
+\begin{proposition}
+  \label{prop:degree}
+  Let \(G\) be a graph of order \(n\).  For every vertex \(v\in G\):
 \[0\le\d(G)\le\deg(v)\le\D(G)\le n-1\]
+\end{proposition}
 
 Intuitively, as \(\d(G)\) increases, a graph becomes denser (more edges) resulting in more adjacencies, making it
 harder to find a proper coloring at lower values of \(k\).
 
-Vertices can be classified based on their degree.  Let \(G\) be a graph of order \(n\) and let \(u\in V(G)\):
+Vertices can be classified based on their degree, as shown in \tablename~\ref{tab:degree}.
 
-\begin{center}
+\begin{table}[H]
+  \centering
+  \label{tab:degree}
+  \caption{Classifying Vertex \(u\) in Graph \(G\)}
   \begin{tabular}{|c|l|}
     \hline
     \(\deg(u)\) & TYPE \\
@@ -990,7 +989,13 @@ Vertices can be classified based on their degree.  Let \(G\) be a graph of order
     odd & odd \\
     \hline
   \end{tabular}
-\end{center}
+\end{table}
+
+\emph{Isolated} vertices have degree \(0\); they are not adjacent to any other vertex in \(G\).  \emph{Pendant}
+(also called \emph{end} or \emph{leaf}) vertices have degree \(1\); they are adjacent to exactly one other vertex
+in \(G\).  \emph{Universal} vertices are adjacent to every other vertex in \(G\).  \emph{Even} vertices are adjacent
+to an even number of vertices in \(G\) and \emph{odd} vertices are adjacent to an odd number of vertices in \(G\).
+Note that if \(G\) has a universal vertex then it cannot have an isolated vertex, and vice-versa.
 
 The degrees of the vertices in a graph and the number of edges in the graph are related by the so-called First
 Theorem of Graph Theory:
@@ -1008,33 +1013,29 @@ Theorem of Graph Theory:
 These concepts are demonstrated by the graph in \figurename~\ref{fig:degree}.
 
 \begin{figure}[H]
-  \label{fig:degree}
-  \begin{minipage}[t]{3in}
-    \begin{center}
-      \vspace{0pt}
-      \begin{tikzpicture}[every node/.style={labeled node}]
-        \cycleV{\(v_2\),\(v_3\),\(v_4\),\(v_5\),\(v_6\),\(v_7\)}{(0,0)}{1in}{0}{c};
-        \node (v1) at (0,0) {\(v_1\)};
-        \node (v8) at (150:1.25in) {\(v8\)};
-        \foreach \i in {c1,c2,c3,c4,c5,c6}{
-          \draw (v1) edge (\i);
-        }
-        \draw (c1) edge (c5);
-        \draw (c2) edge (c4);
-        \draw (v1) edge (v8);
-      \end{tikzpicture}
+  \begin{minipage}{3.25in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \cycleV{\(v_2\),\(v_3\),\(v_4\),\(v_5\),\(v_6\),\(v_7\)}{(0,0)}{1in}{0}{c};
+      \node (v1) at (0,0) {\(v_1\)};
+      \node (v8) at (150:1.25in) {\(v8\)};
+      \foreach \i in {c1,c2,c3,c4,c5,c6}{
+        \draw (v1) edge (\i);
+      }
+      \draw (c1) edge (c5);
+      \draw (c2) edge (c4);
+      \draw (v1) edge (v8);
+    \end{tikzpicture}
 
-      \bigskip
+    \bigskip
 
-      \begin{tabular}{ll}
-        \(n=8\) & \(m=15=\frac{30}{2}\) \\
-        \(\d(G)=1\) & \(\D(G)=7\) \\
-        \(\diam(G)=2\)
-      \end{tabular}
-    \end{center}
+    \begin{tabular}{ll}
+      \(n=8\) & \(m=15=\frac{30}{2}\) \\
+      \(\d(G)=1\) & \(\D(G)=7\) \\
+      \(\diam(G)=2\)
+    \end{tabular}
   \end{minipage}
-  \begin{minipage}[t]{3in}
-    \vspace{0pt}
+  \begin{minipage}{2.5in}
     \begin{tabular}{c|c|l}
       vertex & degree & type \\
       \hline
@@ -1050,13 +1051,14 @@ These concepts are demonstrated by the graph in \figurename~\ref{fig:degree}.
       total & 30 &
     \end{tabular}
   \end{minipage}
-  \caption{Vertex Degrees}
+  \caption{Vertex degrees and the first theorem of graph theory.}
+  \label{fig:degree}
 \end{figure}
 
 \subsection{Special Graphs}\label{sec:sub:special}
 
-The following sections described of some special classes of graphs that are important to the execution of the
-proposed algorithm.
+The following sections described some special classes of graphs that are important to the execution of the proposed
+algorithm.
 
 \subsubsection{Empty Graphs}\label{sec:sub:sub:empty}
 
@@ -1065,43 +1067,40 @@ edges (\(m=0\)).  An empty graph is connected if and only if \(n=1\).  Examples 
 \figurename~\ref{fig:empty}.
 
 \begin{figure}[H]
-  \label{fig:empty}
-  \begin{minipage}{1.5in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \node at (0,0) {};
-      \end{tikzpicture}
+  \begin{minipage}{1in}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \node at (0,0) {};
+    \end{tikzpicture}
 
-      \bigskip
+    \bigskip
 
-      \(E_1\)
-    \end{center}
+    \(E_1\)
   \end{minipage}
   \begin{minipage}{2.5in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \pathNnodes{4}{(0,0)}{right}{};
-      \end{tikzpicture}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \pathNnodes{4}{(0,0)}{right}{};
+    \end{tikzpicture}
 
-      \bigskip
+    \bigskip
 
-      \(E_4\)
-    \end{center}
+    \(E_4\)
   \end{minipage}
   \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \pathNnodes{3}{(0,0)}{right}{};
-        \pathNnodes{3}{(0,1)}{right}{};
-        \pathNnodes{3}{(0,2)}{right}{};
-      \end{tikzpicture}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \pathNnodes{3}{(0,0)}{right}{};
+      \pathNnodes{3}{(0,1)}{right}{};
+      \pathNnodes{3}{(0,2)}{right}{};
+    \end{tikzpicture}
 
-      \bigskip
+    \bigskip
 
-      \(E_9\)
-    \end{center}
+    \(E_9\)
   \end{minipage}
-  \caption{Empty Graphs}
+  \caption{Empty graphs.}
+  \label{fig:empty}
 \end{figure}
 
 The null graph (\(n=0\)) is denoted by \(E_0\) and is defined to be \chromatic{0}.  All other empty graphs are
@@ -1113,44 +1112,41 @@ A \emph{path} graph of order \(n\) and length \(n-1\), denoted by \(P_n\), is a 
 single open path.  Examples of path graphs are shown in \figurename~\ref{fig:path}.
 
 \begin{figure}[H]
-  \label{fig:path}
-  \begin{minipage}{1.5in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \node at (0,0) {};
-      \end{tikzpicture}
+  \begin{minipage}{1in}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \node at (0,0) {};
+    \end{tikzpicture}
 
-      \bigskip
+    \bigskip
 
-      \(P_1\)
-    \end{center}
+    \(P_1\)
   \end{minipage}
   \begin{minipage}{2.5in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \pathN{4}{(0,0)}{right}{};
-      \end{tikzpicture}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \pathN{4}{(0,0)}{right}{};
+    \end{tikzpicture}
 
-      \bigskip
+    \bigskip
 
-      \(P_4\)
-    \end{center}
+    \(P_4\)
   \end{minipage}
   \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \pathNnodes{3}{(0,0)}{right}{b};
-        \pathNnodes{3}{(0,1)}{right}{m};
-        \pathNnodes{3}{(0,2)}{right}{t};
-        \draw (t1) to (t2) to (t3) to (m3) to (m2) to (m1) to (b1) to (b2) to (b3);
-      \end{tikzpicture}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \pathNnodes{3}{(0,0)}{right}{b};
+      \pathNnodes{3}{(0,1)}{right}{m};
+      \pathNnodes{3}{(0,2)}{right}{t};
+      \draw (t1) to (t2) to (t3) to (m3) to (m2) to (m1) to (b1) to (b2) to (b3);
+    \end{tikzpicture}
 
-      \bigskip
+    \bigskip
 
-      \(P_9\)
-    \end{center}
+    \(P_9\)
   \end{minipage}
-  \caption{Path Graphs}
+  \caption{Path graphs.}
+  \label{fig:path}
 \end{figure}
 
 Note that \(P_1=E_1\) is \chromatic{1}, whereas \(P_{n>1}\) is \chromatic{2}.
@@ -1167,41 +1163,38 @@ even then \(C_n\) is called an \emph{even} cycle.
 Examples of cycle graphs are shown in \figurename~\ref{fig:cycle}.
 
 \begin{figure}[H]
+  \begin{minipage}{1.75in}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \cycleN{3}{(0,0)}{0.5in}{90}{};
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(C_3\) (odd)
+  \end{minipage}
+  \begin{minipage}{1.75in}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \cycleN{4}{(0,0)}{0.5in}{135}{};
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(C_4\) (even)
+  \end{minipage}
+  \begin{minipage}{1.75in}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \cycleN{9}{(0,0)}{0.5in}{90}{};
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(C_9\) (odd)
+  \end{minipage}
+  \caption{Cycle graphs.}
   \label{fig:cycle}
-  \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \cycleN{3}{(0,0)}{0.5in}{90}{};
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(C_3\) (odd)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \cycleN{4}{(0,0)}{0.5in}{135}{};
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(C_4\) (even)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \cycleN{9}{(0,0)}{0.5in}{90}{};
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(C_9\) (odd)
-    \end{center}
-  \end{minipage}
-  \caption{Cycle Graphs}
 \end{figure}
 
 Note that even cycles are \(2\)-chromatic; however, odd cycles are \(3\)-chromatic.
@@ -1212,47 +1205,43 @@ trees, which are important to the later analysis of coloring algorithms.
 \subsubsection{Complete Graphs}\label{sec:sub:sub:complete}
 
 A \emph{complete} graph of order \(n\) and size \(\frac{n(n-1)}{2}\), denoted by \(K_n\), is a connected graph that
-contains every possible edge: \(E(G)=\ps_2(V(G))\).  Thus, all of the vertices in a complete graph are universal and
-adjacent to each other.
+contains every possible edge: \(E(G)=\ps_2(V(G))\).  Thus, all of the vertices in a complete graph are universal.
 
 Examples of complete graphs are shown in \figurename~\ref{fig:complete}.
 
 \begin{figure}[H]
+  \begin{minipage}{1.75in}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \node at (0,0) {};
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(K_1\)
+  \end{minipage}
+  \begin{minipage}{1.75in}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \completeN{4}{(0,0)}{0.5in}{135}{};
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(K_4\)
+  \end{minipage}
+  \begin{minipage}{1.75in}
+    \centering
+    \begin{tikzpicture}[every node/.style=unlabeled node]
+      \completeN{9}{(0,0)}{0.5in}{90}{};
+    \end{tikzpicture}
+
+    \bigskip
+
+    \(K_9\)
+  \end{minipage}
+  \caption{Complete graphs.}
   \label{fig:complete}
-  \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \node at (0,0) {};
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(K_1\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \completeN{4}{(0,0)}{0.5in}{135}{};
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(K_4\)
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{2in}
-    \begin{center}
-      \begin{tikzpicture}[every node/.style=unlabeled node]
-        \completeN{9}{(0,0)}{0.5in}{90}{};
-      \end{tikzpicture}
-
-      \bigskip
-
-      \(K_9\)
-    \end{center}
-  \end{minipage}
-  \caption{Complete Graphs}
 \end{figure}
 
 Note that \(K_1=P_1=E_1\).
@@ -1265,7 +1254,7 @@ condition for the proposed algorithm.
 
 A \emph{tree} is a connected graph that contains no cycles as subgraphs.  Typically, one vertex of the tree is
 selected as the \emph{root} vertex and then the tree is depicted in layers that contain vertices that are
-equidistant from the root vertex.  Note that the bottom layer is composed entirely of pendant vertices, but pendant
+equidistant from the root vertex.  Thus, the bottom layer is composed entirely of pendant vertices, but pendant
 vertices can exist in the other layers as well.  Such pendant vertices are usually referred to as \emph{leaves} in
 this context.
 
@@ -1273,42 +1262,43 @@ An example tree is shown in \figurename~\ref{fig:tree}.  The root vertex \(r\) i
 vertices \(b,e,g,h,i,j,k\) are shown in green.
 
 \begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[every node/.style={labeled node}]
+    \colorlet{cr}{red!25!white}
+    \colorlet{cl}{green!25!white}
+    \node [fill=cr] (r) at (0,0) {\(r\)};
+    \node (v11) at (-3,-2) {\(a\)};
+    \node [fill=cl] (v12) at (0,-2) {\(b\)};
+    \node (v13) at (3,-2) {\(c\)};
+    \node (v21) at (-4.5,-4) {\(d\)};
+    \node [fill=cl] (v22) at (-3,-4) {\(e\)};
+    \node (v23) at (-1.5,-4) {\(f\)};
+    \node [fill=cl] (v24) at (1.75,-4) {\(g\)};
+    \node [fill=cl] (v25) at (4.25,-4) {\(h\)};
+    \node [fill=cl] (v31) at (-4.5,-6) {\(i\)};
+    \node [fill=cl] (v32) at (-2.25,-6) {\(j\)};
+    \node [fill=cl] (v33) at (-0.75,-6) {\(k\)};
+    \draw (r) edge (v11) edge (v12) edge (v13);
+    \draw (v11) edge (v21) edge (v22) edge (v23);
+    \draw (v21) edge (v31);
+    \draw (v23) edge (v32) edge (v33);
+    \draw (v13) edge (v24) edge (v25);
+  \end{tikzpicture}
+  \caption{A tree organized from root to leaves.}
   \label{fig:tree}
-  \begin{center}
-    \begin{tikzpicture}[every node/.style={labeled node}]
-      \colorlet{cr}{red!25!white}
-      \colorlet{cl}{green!25!white}
-      \node [fill=cr] (r) at (0,0) {\(r\)};
-      \node (v11) at (-3,-2) {\(a\)};
-      \node [fill=cl] (v12) at (0,-2) {\(b\)};
-      \node (v13) at (3,-2) {\(c\)};
-      \node (v21) at (-4.5,-4) {\(d\)};
-      \node [fill=cl] (v22) at (-3,-4) {\(e\)};
-      \node (v23) at (-1.5,-4) {\(f\)};
-      \node [fill=cl] (v24) at (1.75,-4) {\(g\)};
-      \node [fill=cl] (v25) at (4.25,-4) {\(h\)};
-      \node [fill=cl] (v31) at (-4.5,-6) {\(i\)};
-      \node [fill=cl] (v32) at (-2.25,-6) {\(j\)};
-      \node [fill=cl] (v33) at (-0.75,-6) {\(k\)};
-      \draw (r) edge (v11) edge (v12) edge (v13);
-      \draw (v11) edge (v21) edge (v22) edge (v23);
-      \draw (v21) edge (v31);
-      \draw (v23) edge (v32) edge (v33);
-      \draw (v13) edge (v24) edge (v25);
-    \end{tikzpicture}
-  \end{center}
-  \caption{A Tree Organized from Root to Leaves}
 \end{figure}
 
-Trees are important because they can be used to represent the ``paper tape'' for recursive Turing machine-type
-algorithms.  Each vertex represents a state of the problem and the edges represent ``movement'' of the tape to
-select the current state.  All states can be visited using a so-called \emph{depth-first} walk.  In the example in
-\figurename~\ref{fig:tree}, such a depth-first walk would be:
+Trees are important because they can be used to track so-called ``branch-and-bound'' algorithms; each vertex
+represents a branch choice of the algorithm and thus a particular state of the problem.  All such states can be
+visited using a so-called \emph{depth-first} walk.  In the example in \figurename~\ref{fig:tree}, such a
+depth-first walk would be:
 \[(r,a,d,i,d,a,e,a,f,j,f,k,f,a,r,b,r,c,g,c,h,c,r)\]
 Note that this walk guarantees that each vertex is visited at least once.
 
-When such a tree is applied to the problem of exhaustively finding the chromatic number of a graph, the tree is
-called a \emph{Zykov} tree \cite{mcdiarmid,zykov}.  These concepts are described in detail in the next section.
+When such a tree is applied to the problem of exhaustively finding the chromatic number of a graph via a sequence
+of vertex contraction and edge addition choices, the tree is called a \emph{Zykov} tree and the algorithm is called
+a \emph{Zykov} algorithm~\cite{mcdiarmid}.  Zykov algorithms are described in detail in the following sections.  In
+fact, the proposed algorithm is a variation of a standard Zykov algorithm.
 
 \subsection{Cliques}\label{sec:sub:cliques}
 
@@ -1316,47 +1306,43 @@ A \emph{clique} is a complete subgraph of a graph.  A \emph{maximal} clique is a
 an additional vertex.  The \emph{maximum} clique is the maximal clique of highest order.  The \emph{clique number}
 of a graph \(G\), denoted by \(\w(G)\), is the order of the maximum clique in \(G\).  Consider the example in
 \figurename~\ref{fig:clique}.  \(G\) has lots of \clique{2}s; however, none of them are maximal.  \(G\) has several
-maximum \clique(3)s --- for example: \(G[\set{e,f,g}]\).  There is only one maximal \clique{4}:
+maximal \clique{3}s --- for example: \(G[\set{b,e,g}]\).  There is only one maximal \clique{4}:
 \(G[\set{a,b,c,d}]\) and no clique of higher order.  Thus, \(\w(G)=4\).
 
 \begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[every node/.style=labeled node]
+    \completeV{\(a\),\(b\),\(c\),\(d\)}{(0,0)}{0.75in}{135}{a};
+    \completeV{\(e\),\(f\),\(g\)}{(5,0)}{0.6in}{120}{b};
+    \node (h) [right=of b2] {\(h\)};
+    \draw (a2) edge (b1);
+    \draw (a3) edge (b3);
+    \draw (b2) edge (h);
+    \draw (a1) -- ($(a1)+(0,1cm)$) -| (b1);
+    \draw (a4) -- ($(a4)-(0,1cm)$) -| (b3);
+    \draw (a2) -- (b3);
+    \draw (b1) -| (h);
+    \draw (b3) -| (h);
+  \end{tikzpicture}
+
+  \bigskip
+
+  \(G\)
+  \caption{A graph with cliques.}
   \label{fig:clique}
-  \begin{center}
-    \begin{tikzpicture}[every node/.style=labeled node]
-      \completeV{\(a\),\(b\),\(c\),\(d\)}{(0,0)}{0.75in}{135}{a};
-      \completeV{\(e\),\(f\),\(g\)}{(5,0)}{0.6in}{120}{b};
-      \node (h) [right=of b2] {\(h\)};
-      \draw (a2) edge (b1);
-      \draw (a3) edge (b3);
-      \draw (b2) edge (h);
-      \draw (a1) -- ($(a1)+(0,1cm)$) -| (b1);
-      \draw (a4) -- ($(a4)-(0,1cm)$) -| (b3);
-      \draw (a2) -- (b3);
-      \draw (b1) -| (h);
-      \draw (b3) -| (h);
-    \end{tikzpicture}
-
-    \bigskip
-
-    \(G\)
-  \end{center}
-  \caption{A Graph with Cliques}
 \end{figure}
 
-Since a \clique{k} of a graph \(G\) needs at least \(k\) colors in any proper coloring of \(G\), this provides a
-lower bound for the chromatic number of \(G\): \(\w(G)\le\X(G)\).  Unfortunately, the clique number problem is
-known to be NP-hard.  Bron and Kerbosch, 1973 \cite{bron} provide two algorithms: one exhaustive and one
-branch-and-bound, that run in exponential time.  However, it is much easier to find a lower bound for \(\w(G)\),
-and hence \(\X(G)\).  Edwards and Elphick, 1983 \cite{edwards} provide a summary of several known methods for
-finding a lower bound for \(\w(G)\).  The simplist, although not the tightest, was found by Myers and Liu, 1970
-\cite{myers} and is stated in Theorem \ref{thm:clique}.
+Since a \clique{k} of a graph \(G\) needs at least \(k\) colors in any proper coloring of \(G\), the clique number
+of \(G\) provides a nice lower bound for the chromatic number of \(G\).  Unfortunately, the clique number problem
+is known to be NP-hard as well~\cite{mcdiarmid}.  Thus, there are many attempts in the literature to find a good
+lower bound for the clique number of a graph \(G\), usually denoted by \(\w'(G)\).  If such a lower bound is known
+then the conclusion of Proposition~\ref{prop:clique} holds:
 
-\begin{theorem}[Myers and Liu, 1970]
-  \label{thm:clique}
-  Let \(G\) be a graph of order \(n\) and size \(m\):
-  \[\w(G)\ge\frac{n^2}{n^2-2m}\]
-\end{theorem}
+\begin{proposition}
+  \label{prop:clique}
+  Let \(G\) be a graph with clique number lower bound \(\w'(G)\):
+  \[\w'(G)\le\w(G)\le\X(G)\]
+\end{proposition}
 
-Applying this to the example graph in \figurename~\ref{fig:clique}, where \(n=8\) and \(m=17\):
-\[\w(G)\ge\frac{8^2}{8^2-2\cdot17}=\frac{64}{30}=2.4\]
-Therefore, \(\w(G)\ge3\).
+Examples of such algorithms are discussed in detail in later sections, since they are typically used to ``bound''
+Zykov branch-and-bound algorithms.
