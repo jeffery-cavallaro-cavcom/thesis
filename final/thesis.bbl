@@ -4,6 +4,11 @@
 N.~P. Suh, {\em The Principles of Design}.
 \newblock New York: Oxford University Press, 1990.
 
+\bibitem{shirwaiker}
+R.~A. Shirwaiker and G.~E. Okudan, ``Triz and axiomatic design: A review of
+  case-studies and a proposed synergistic use,'' {\em Journal of Intelligent
+  Manufacturing}, vol.~19, pp.~33--47, February 2008.
+
 \bibitem{cavallaro}
 S.~Behdad, J.~Cavallaro, P.~K. Gopalakrishnan, and S.~Jahanbekam, ``A graph
   coloring technique for identifying the minimum number of parts for physical
@@ -21,6 +26,12 @@ S.~Behdad, P.~K. Gopalakrishnan, S.~Jahanbekam, and H.~Klein, ``Graph
 \bibitem{suh2}
 N.~P. Suh, ``Axiomatic design theory for systems,'' {\em Research in
   Engineering Design}, vol.~10, pp.~189--209, 1998.
+
+\bibitem{tang}
+Y.~Tang, S.~Yang, and Y.~F. Zhao, ``Sustainable design for additive
+  manufacturing through functionality integration and part consolidation,'' in
+  {\em Handbook of Sustainability in Additive Manufacturing} (S.~S. Muthu and
+  M.~M. Savalani, eds.), vol.~1, pp.~101--144, Singapore: Springer, 2016.
 
 \bibitem{mcdiarmid}
 C.~McDiarmid, ``Determining the chromatic number of a graph,'' {\em SIAM

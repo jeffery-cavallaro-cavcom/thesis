@@ -10,45 +10,45 @@ Warning--I'm ignoring cavallaro's extra "series" field
 --line 37 of file references.bib
 Warning--empty booktitle in cavallaro
 Warning--empty booktitle in jahanbekam
-You've used 5 entries,
+You've used 7 entries,
             1876 wiz_defined-function locations,
-            516 strings with 4517 characters,
-and the built_in function-call counts, 1117 in all, are:
-= -- 102
-> -- 40
+            533 strings with 4989 characters,
+and the built_in function-call counts, 1818 in all, are:
+= -- 173
+> -- 67
 < -- 0
-+ -- 16
-- -- 11
-* -- 90
-:= -- 168
-add.period$ -- 6
-call.type$ -- 5
-change.case$ -- 4
++ -- 25
+- -- 18
+* -- 145
+:= -- 264
+add.period$ -- 8
+call.type$ -- 7
+change.case$ -- 6
 chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 60
-empty$ -- 118
-format.name$ -- 11
-if$ -- 267
+cite$ -- 9
+duplicate$ -- 93
+empty$ -- 183
+format.name$ -- 18
+if$ -- 438
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 6
-newline$ -- 19
-num.names$ -- 5
-pop$ -- 21
+int.to.str$ -- 7
+missing$ -- 8
+newline$ -- 25
+num.names$ -- 9
+pop$ -- 26
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 26
+skip$ -- 55
 stack$ -- 0
-substring$ -- 47
-swap$ -- 15
+substring$ -- 103
+swap$ -- 31
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 10
-width$ -- 6
-write$ -- 49
+while$ -- 19
+width$ -- 8
+write$ -- 70
 (There were 4 warnings)
