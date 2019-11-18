@@ -4,51 +4,44 @@ The top-level auxiliary file: thesis.aux
 The style file: ieeetr.bst
 A level-1 auxiliary file: sections.aux
 Database file #1: references.bib
-Warning--I'm ignoring jahanbekam's extra "series" field
---line 24 of file references.bib
-Warning--I'm ignoring cavallaro's extra "series" field
---line 37 of file references.bib
-Warning--empty booktitle in cavallaro
-Warning--empty booktitle in jahanbekam
-You've used 13 entries,
+You've used 16 entries,
             1876 wiz_defined-function locations,
-            576 strings with 5786 characters,
-and the built_in function-call counts, 3212 in all, are:
-= -- 323
-> -- 103
+            594 strings with 6178 characters,
+and the built_in function-call counts, 3856 in all, are:
+= -- 391
+> -- 119
 < -- 0
-+ -- 40
-- -- 27
-* -- 237
-:= -- 454
-add.period$ -- 17
-call.type$ -- 13
-change.case$ -- 10
++ -- 47
+- -- 31
+* -- 274
+:= -- 541
+add.period$ -- 22
+call.type$ -- 16
+change.case$ -- 11
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 166
-empty$ -- 325
-format.name$ -- 27
-if$ -- 785
+cite$ -- 16
+duplicate$ -- 203
+empty$ -- 399
+format.name$ -- 31
+if$ -- 950
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 17
-newline$ -- 46
-num.names$ -- 15
-pop$ -- 45
+int.to.str$ -- 16
+missing$ -- 22
+newline$ -- 57
+num.names$ -- 18
+pop$ -- 56
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 102
+skip$ -- 121
 stack$ -- 0
-substring$ -- 191
-swap$ -- 60
+substring$ -- 223
+swap$ -- 73
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 34
-width$ -- 15
-write$ -- 129
-(There were 4 warnings)
+warning$ -- 0
+while$ -- 40
+width$ -- 18
+write$ -- 160

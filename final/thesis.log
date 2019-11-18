@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  15 NOV 2019 13:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  17 NOV 2019 21:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1712,7 +1712,7 @@ ifier (name{figure.6}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.326 \end{theorem}
                    ]
-<opener.png, id=381, 280.79906pt x 63.98906pt>
+<opener.png, id=386, 280.79906pt x 63.98906pt>
 File: opener.png Graphic file (type png)
 <use opener.png>
 Package pdftex.def Info: opener.png  used on input line 349.
@@ -1887,29 +1887,33 @@ l.1294 ...d,a,e,a,f,j,f,k,f,a,r,b,r,c,g,c,h,c,r)\]
                                                   ]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [36])) [37pdfTeX warning (ext4): destination with the same identifier (name{fi
-gure.27}) has been already used, duplicate ignored
+ [36]) (./complexity.tex
+[37pdfTeX warning (ext4): destination with the same identifier (name{figure.27}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.72 \begin{document}
-                     ] (./thesis.bbl [38
+l.1 \section
+            {Algorithms and Computational Complexity}] [38
+
+] [39] [40]))
+[41] (./thesis.bbl [42
 
 
-]) [39]
+]) [43]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
  (./thesis.aux (./sections.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 0E9C262B22DA5C6A4370BD0210078EE1;2262.
+(rerunfilecheck)             Checksum: F534E5204DAA7371A880B808F7E3F381;2337.
  ) 
 Here is how much of TeX's memory you used:
- 30577 strings out of 492609
- 578363 string characters out of 6129049
- 755529 words of memory out of 5000000
- 33477 multiletter control sequences out of 15000+600000
+ 30597 strings out of 492609
+ 578553 string characters out of 6129049
+ 755616 words of memory out of 5000000
+ 33483 multiletter control sequences out of 15000+600000
  78977 words of font info for 258 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,15n,436p,835b,947s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1935,10 +1939,10 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on thesis.pdf (48 pages, 229787 bytes).
+Output written on thesis.pdf (52 pages, 238605 bytes).
 PDF statistics:
- 668 PDF objects out of 1000 (max. 8388607)
- 594 compressed objects within 6 object streams
- 160 named destinations out of 1000 (max. 500000)
- 26938 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 706 PDF objects out of 1000 (max. 8388607)
+ 627 compressed objects within 7 object streams
+ 171 named destinations out of 1000 (max. 500000)
+ 26946 words of extra memory for PDF output out of 29859 (max. 10000000)
 

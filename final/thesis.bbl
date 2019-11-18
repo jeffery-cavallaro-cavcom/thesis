@@ -16,16 +16,18 @@ N.~P. Suh, ``Axiomatic design theory for systems,'' {\em Research in
 \bibitem{cavallaro}
 S.~Behdad, J.~Cavallaro, P.~K. Gopalakrishnan, and S.~Jahanbekam, ``A graph
   coloring technique for identifying the minimum number of parts for physical
-  integration in product design,'' No.~DETC2019-98251 in Proceedings of the
-  ASME 2019 International Design Engineering Technical Conferences \& Computers
-  and Information in Engineering Conference, (Anaheim, CA), Aug 18--21 2019.
+  integration in product design,'' in {\em Proceedings of the ASME 2019
+  International Design Engineering Technical Conferences \& Computers and
+  Information in Engineering Conference}, no.~DETC2019-98251 in IDETC/CIE 2019,
+  (Anaheim, CA), Aug 18--21 2019.
 
 \bibitem{jahanbekam}
 S.~Behdad, P.~K. Gopalakrishnan, S.~Jahanbekam, and H.~Klein, ``Graph
   partitioning technique to identify physically integrated design concepts,''
-  No.~DETC2018-85646 in Proceedings of the ASME 2018 International Design
-  Engineering Technical Conferences \& Computers and Information in Engineering
-  Conference, (Quebec, Canada), Aug 26--29 2018.
+  in {\em Proceedings of the ASME 2018 International Design Engineering
+  Technical Conferences \& Computers and Information in Engineering
+  Conference}, no.~DETC2018-85646 in IDETC/CIE 2018, (Quebec, Canada), Aug
+  26--29 2018.
 
 \bibitem{tang}
 Y.~Tang, S.~Yang, and Y.~F. Zhao, ``Sustainable design for additive
@@ -63,5 +65,19 @@ J.~Hopcroft and R.~Tarjan, ``Algorithm 447: Efficient algorithms for graph
 D.~G. Corneil and B.~Graham, ``An algorithm for determining the chromatic
   number of a graph,'' {\em SIAM Journal on Computing}, vol.~2, pp.~311--318,
   December 1973.
+
+\bibitem{garey}
+M.~R. Garey and D.~S. Johnson, {\em Computers and Intractability: A Guide to
+  the Theory of NP-Completeness}.
+\newblock San Francisco: W.H. Freeman and Company, 1979.
+
+\bibitem{dturing}
+D.~Turing, {\em Prof: Alan Turing Decoded}.
+\newblock Stroud, Gloucestershire: The History Press, 2015.
+
+\bibitem{aturing}
+A.~M. Turing, ``On computable numbers, with an application to the
+  entscheidungsproblem,'' {\em Proceedings of the London Mathematical Society},
+  vol.~42, no.~1, pp.~230--265, 1937.
 
 \end{thebibliography}

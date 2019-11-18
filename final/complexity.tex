@@ -1,0 +1,95 @@
+\section{Algorithms and Computational Complexity}
+
+The chromatic number problem is \emph{inherently intractable}.  Informally, this means that finding a solution for
+a given input graph, regardless of the means, can take a very, very long time in the worst cases.  In fact, the
+chromatic number problem is a member of a class of problems referred to as being \emph{NP-hard}, meaning that the
+time to find a solution increases exponentially with the number of vertices.  Thus, trying to find an efficient but
+exact method of solution in all cases is a fool's errand; about the best that can be done is to perform better than
+existing well-known methods in most cases.~\cite{garey}.  In order to better understand why the proposed algorithm
+is inherently intractable and how to compare it with existing well-known chromatic number algorithms, this section
+provides an overview of the computational complexity of algorithms.
+
+In today's modern computer age, the term \emph{algorithm} is used without much thought to represent a well-defined
+and finite (however large) sequence of steps to accomplish some well-defined goal, usually within the context of a
+computer program.  However, the programmable computer didn't exist until well into the 1950s.  In fact, the formal
+study of algorithms didn't really begin until the early \(20^{th}\) century.  In order to understand why the
+chromatic number problem is so intractable and how to measure that intractability, it will be helpful to
+investigate this fairly recent history of algorithms.
+
+The etymology for the word \emph{algorithm} is the Latinized name \emph{Algorithmi} for Muhammad ibn Musa
+al-Khwarizmi of algebra fame.  In Europe, the term algorithmi became synonymous with any well-defined procedure
+used in mathematical problem solving, such as the division algorithm of the Babylonians, al-Khw\b{a}rizm\b{i}'s
+completing the square, the sieve of Eratosthenes for finding primes, and Euclid's algorithm for find the GCD of two
+numbers.
+
+The modern understanding of algorithms has its roots in attempts by mathematicians of 1920s and 1930s to formalize
+mathematical systems.  German mathematician David Hilbert begins in 1920 by stating what he felt were requirements
+for a proper mathematical system based on some language or set of rules:
+
+\begin{description}
+\item[Completeness.] Every proposition that is true can be proven so using the rules of the system.
+\item[Consistency.] No contradictions arise when following the rules.
+\item[Decidability.] There exists a method for deciding whether something is true or false.
+\end{description}
+
+It is probably true that Hilbert had in mind mathematical systems based on first-order logic, which was the modus
+operandi of mathematicians of the time.  However, Austrian mathematician Kurt G\"{o}del upset the apple cart in
+1931 by showing that mathematical systems cannot be proved to be both complete and consistent.  Thus, only the
+third requirement of decideability remained, what was commonly referred to as the
+\emph{Entscheidunsproblem}~\cite{dturing}.
+
+In 1935, British mathematician and early pioneer of programmable computing Max Newman was giving a lecture on the
+Entscheidunsproblem at Cambridge.  Newman put forth of the question of whether there exists a \emph{mechanical}
+process that would meet the requirements of decideability.  In the audience was a young Alan Turing who would take
+the challenge for a mechical process to heart.  In 1936, Turing would submit his famous paper, ``On Computable
+Numbers, with an Application to the Entscheidungsproblem~\cite{aturing},'' which provided a definition of
+computable functions and a theoretical general-purpose machine to compute such functions: the A-machine, what we
+know today as the Turing machine.  Turing showed that there are some problems that appear to be true; however,
+there is no way to design a process to prove that they are actually true - or that the original process even
+terminates with an answer (the halting problem).  Most of these types of problems involve inherent contractions
+such as the Epimenides paradox: Epimenides the Cretan says that all Cretans are liars.~\cite{dturing}.  Thus,
+Hilbert's third pillar was demolished.~\cite{dturing}.
+
+It should be noted that American mathematician Alan Church arrived at the same conclusions as Turing a bit earlier
+with his 1935 paper on lambda calculus.  Unlike Newton and Leibniz, Turing and Church were willing collaborators,
+with Church eventually becoming Turing's PhD advisor at Princeton.  Indeed, Turing adopted the use of the lambda
+calculus in his work~\cite{dturing}.
+
+The next step in the evolution of computability and algorithms occurred in the field of cryptography during WWII.
+Although cryptography had been important in WWI, the horrors of the new era of warfare instigated by Adolf Hitler
+brought the importance of codebreaking to the forefront.  The story of the Polish code breakers and the efforts at
+Bletchley Park, in which Turing played a major role, are now legendary.  The goal was to break the German Enigma
+code, and in this application the notion of the intractability of some problems becomes evident.~\cite{dturing}.
+
+The Enigma code was a letter-swapping code; however, the swap table changed with each letter.  Clear messages were
+encoded using a typewriter-like device with the following characteristics:
+
+\begin{enumerate}
+\item Three slightly-different 26-position (one for each letter) rotors that selected the swap for the current
+  letter in the clear text.  As each character was added to the ciphertext, the rotors would rotate based on their
+  gear mechanism to select the next swap, thus changing the swap table each time.
+\item The ability to initialize the position of each rotor at the start of the message, which acted as a seed for the
+  current cipher.
+\item A plugboard where ten pairs of manual letter swaps could be specified.
+\end{enumerate}
+
+Each of the twenty letters that made up the ten pairs on the plugboard were distinct.  Furthermore, the ordering of
+the pairs was insignificant. Thus, the number of possible configurations \(N\) of the plugboard is given by:
+\begin{align*}
+  N &= \frac{\binom{26}{2}\binom{24}{2}\binom{22}{2}\binom{20}{2}\binom{18}{2}
+  \binom{16}{2}\binom{14}{2}\binom{12}{2}\binom{10}{2}\binom{8}{2}}{10!} \\
+  &=\frac{26!24!22!20!18!16!14!12!10!8!}{2^{10}24!22!20!18!16!14!12!10!8!6!10!} \\
+  &=\frac{26!}{2^{10}6!10!}
+\end{align*}
+The German army used a set of five rotors, any three of which could be selected for a day's messages.  Thus, the
+number of possible initial configurations for the army Enigma machine \(M\) is:
+\[M=5\cdot4\cdot3\cdot26^3\cdot\frac{26!}{2^{10}6!10!}=158.9\times10^{18}\]
+To put this in perspective, an Intel i7 has a speed of about \(50,000\) MIPS.  Assuming that each one of Enigma's
+initial configurations could be tried in one instruction means that it would take about 100 years to try all possible
+combinations.  Since it would actually take several thousand instructions to test each possible configuration, the
+real answer is upwards of 100,000 years --- intractible indeed.
+
+Although the German army used a set of five rotors, the German navy used a set eight rotors.  An in 1942, both
+changed to a four rotor system.  It is at this point that the art of crypography comes into play.  The goal is to
+use techniques like letter frequency and candidate clear text segments to eliminate enough of the configuration so
+that the correct configuration can be found in a reasonable amount of time.

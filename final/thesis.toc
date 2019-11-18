@@ -33,4 +33,5 @@
 \contentsline {subsubsection}{\numberline {2.9.4}Complete Graphs}{34}{subsubsection.2.9.4}% 
 \contentsline {subsubsection}{\numberline {2.9.5}Trees}{35}{subsubsection.2.9.5}% 
 \contentsline {subsection}{\numberline {2.10}Cliques}{36}{subsection.2.10}% 
-\contentsline {section}{Literature Cited}{38}{section*.6}% 
+\contentsline {section}{\numberline {3}Algorithms and Computational Complexity}{38}{section.3}% 
+\contentsline {section}{Literature Cited}{42}{section*.6}% 
