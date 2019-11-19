@@ -33,4 +33,15 @@
 \BOOKMARK [3][-]{subsubsection.2.9.5}{Trees}{subsection.2.9}% 33
 \BOOKMARK [2][-]{subsection.2.10}{Cliques}{section.2}% 34
 \BOOKMARK [1][-]{section.3}{Algorithms and Computational Complexity}{}% 35
-\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 36
+\BOOKMARK [2][-]{subsection.3.1}{Problems}{section.3}% 36
+\BOOKMARK [2][-]{subsection.3.2}{Enigma}{section.3}% 37
+\BOOKMARK [2][-]{subsection.3.3}{Algorithms}{section.3}% 38
+\BOOKMARK [1][-]{section.4}{The Proposed Algorithm}{}% 39
+\BOOKMARK [2][-]{subsection.4.1}{Outer Loop}{section.4}% 40
+\BOOKMARK [2][-]{subsection.4.2}{Called Subroutine}{section.4}% 41
+\BOOKMARK [2][-]{subsection.4.3}{Supporting Theorems}{section.4}% 42
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Maximum Edge Threshold}{subsection.4.3}% 43
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Vertex Removal}{subsection.4.3}% 44
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Minimum Common Neighbor Upper Bound}{subsection.4.3}% 45
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Recursive Steps}{subsection.4.3}% 46
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 47

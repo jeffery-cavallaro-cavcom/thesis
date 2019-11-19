@@ -12,16 +12,25 @@
 \contentsline {figure}{\numberline {12}{\ignorespaces An induced subgraph.}}{19}{figure.12}% 
 \contentsline {figure}{\numberline {13}{\ignorespaces Vertex removal.}}{20}{figure.13}% 
 \contentsline {figure}{\numberline {14}{\ignorespaces Edge addition.}}{21}{figure.14}% 
-\contentsline {figure}{\numberline {15}{\ignorespaces Edge removal.}}{22}{figure.15}% 
-\contentsline {figure}{\numberline {16}{\ignorespaces Vertex contraction.}}{23}{figure.16}% 
-\contentsline {figure}{\numberline {17}{\ignorespaces Open and closed walks.}}{25}{figure.17}% 
+\contentsline {figure}{\numberline {15}{\ignorespaces Edge removal.}}{21}{figure.15}% 
+\contentsline {figure}{\numberline {16}{\ignorespaces Vertex contraction.}}{22}{figure.16}% 
+\contentsline {figure}{\numberline {17}{\ignorespaces Open and closed walks.}}{24}{figure.17}% 
 \contentsline {figure}{\numberline {18}{\ignorespaces Repeated vertex at end case.}}{26}{figure.18}% 
-\contentsline {figure}{\numberline {19}{\ignorespaces Repeated vertex inside case.}}{27}{figure.19}% 
+\contentsline {figure}{\numberline {19}{\ignorespaces Repeated vertex inside case.}}{26}{figure.19}% 
 \contentsline {figure}{\numberline {20}{\ignorespaces Connected and disconnected graphs.}}{27}{figure.20}% 
-\contentsline {figure}{\numberline {21}{\ignorespaces Vertex degrees and the first theorem of graph theory.}}{32}{figure.21}% 
+\contentsline {figure}{\numberline {21}{\ignorespaces Vertex degrees and the first theorem of graph theory.}}{31}{figure.21}% 
 \contentsline {figure}{\numberline {22}{\ignorespaces Empty graphs.}}{32}{figure.22}% 
-\contentsline {figure}{\numberline {23}{\ignorespaces Path graphs.}}{33}{figure.23}% 
-\contentsline {figure}{\numberline {24}{\ignorespaces Cycle graphs.}}{34}{figure.24}% 
-\contentsline {figure}{\numberline {25}{\ignorespaces Complete graphs.}}{34}{figure.25}% 
-\contentsline {figure}{\numberline {26}{\ignorespaces A tree organized from root to leaves.}}{35}{figure.26}% 
-\contentsline {figure}{\numberline {27}{\ignorespaces A graph with cliques.}}{37}{figure.27}% 
+\contentsline {figure}{\numberline {23}{\ignorespaces Path graphs.}}{32}{figure.23}% 
+\contentsline {figure}{\numberline {24}{\ignorespaces Cycle graphs.}}{33}{figure.24}% 
+\contentsline {figure}{\numberline {25}{\ignorespaces Complete graphs.}}{33}{figure.25}% 
+\contentsline {figure}{\numberline {26}{\ignorespaces A tree organized from root to leaves.}}{34}{figure.26}% 
+\contentsline {figure}{\numberline {27}{\ignorespaces A graph with cliques.}}{35}{figure.27}% 
+\contentsline {figure}{\numberline {28}{\ignorespaces Proposed algorithm outer loop.}}{45}{figure.28}% 
+\contentsline {figure}{\numberline {29}{\ignorespaces Proposed algorithm called subroutine.}}{48}{figure.29}% 
+\contentsline {figure}{\numberline {30}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{52}{figure.30}% 
+\contentsline {figure}{\numberline {31}{\ignorespaces Lemma\nobreakspace \ref {lem:remone} example.}}{53}{figure.31}% 
+\contentsline {figure}{\numberline {32}{\ignorespaces Theorem\nobreakspace \ref {thm:lowdeg} example.}}{54}{figure.32}% 
+\contentsline {figure}{\numberline {33}{\ignorespaces Theorem \ref {thm:subset} example.}}{57}{figure.33}% 
+\contentsline {figure}{\numberline {34}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{58}{figure.34}% 
+\contentsline {figure}{\numberline {35}{\ignorespaces Case \(a_i=1\) contradiction.}}{60}{figure.35}% 
+\contentsline {figure}{\numberline {36}{\ignorespaces Corollary \ref {cor:inter} example.}}{62}{figure.36}% 

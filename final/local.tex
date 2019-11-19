@@ -8,13 +8,14 @@
 \usepackage{flowchart}
 \newtheorem{proposition}{Proposition}
 \newtheorem{axiom}{Axiom}
+\newtheorem{lemma}{Lemma}
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
 \newcommand{\txtclr}[1]{\textcolor{#1}{#1}}  % colored text
 \newcommand{\mtxtclr}[1]{\text{\txtclr{#1}}}  % colored text in math mode
 \renewcommand{\a}{\alpha}
-\renewcommand{\d}{\delta}
-\newcommand{\D}{\Delta}
+\newcommand{\dmin}{\delta}
+\newcommand{\dmax}{\Delta}
 \renewcommand{\l}{\lambda}
 \newcommand{\w}{\omega}
 \newcommand{\X}{\chi}
@@ -27,8 +28,10 @@
 \newcommand{\sR}{\mathscr{R}}  % relation
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}  % absolute value
 \DeclarePairedDelimiter{\set}{\{}{\}}  % set notation
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \newcommand{\setb}[2]{\left\{{#1}\,\middle|\,{#2}\right\}}  % set builder notation
 \newcommand{\coloring}[1]{\(#1\)-coloring}
 \newcommand{\colorable}[1]{\(#1\)-colorable}
 \newcommand{\chromatic}[1]{\(#1\)-chromatic}
 \newcommand{\clique}[1]{\(#1\)-clique}
+\newcommand{\restrict}[2]{#1\raise-0.5ex\hbox{\ensuremath|}_{#2}}

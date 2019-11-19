@@ -1,5 +1,5 @@
-\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Tables}{vii}{section*.4}% 
-\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Figures}{ix}{section*.5}% 
+\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Tables}{viii}{section*.4}% 
+\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Figures}{x}{section*.5}% 
  
 \contentsline {section}{\numberline {1}Axiomatic Design}{1}{section.1}% 
 \contentsline {subsection}{\numberline {1.1}Design}{1}{subsection.1.1}% 
@@ -19,19 +19,30 @@
 \contentsline {subsubsection}{\numberline {2.5.3}Edge Removal}{21}{subsubsection.2.5.3}% 
 \contentsline {subsubsection}{\numberline {2.5.4}Vertex Contraction}{22}{subsubsection.2.5.4}% 
 \contentsline {subsection}{\numberline {2.6}Independent Sets}{23}{subsection.2.6}% 
-\contentsline {subsection}{\numberline {2.7}Connected Graphs}{24}{subsection.2.7}% 
-\contentsline {subsubsection}{\numberline {2.7.1}Walks}{24}{subsubsection.2.7.1}% 
+\contentsline {subsection}{\numberline {2.7}Connected Graphs}{23}{subsection.2.7}% 
+\contentsline {subsubsection}{\numberline {2.7.1}Walks}{23}{subsubsection.2.7.1}% 
 \contentsline {subsubsection}{\numberline {2.7.2}Paths}{25}{subsubsection.2.7.2}% 
-\contentsline {subsubsection}{\numberline {2.7.3}Connected}{27}{subsubsection.2.7.3}% 
-\contentsline {subsubsection}{\numberline {2.7.4}Components}{28}{subsubsection.2.7.4}% 
-\contentsline {subsubsection}{\numberline {2.7.5}Impact on Coloring}{29}{subsubsection.2.7.5}% 
-\contentsline {subsection}{\numberline {2.8}Vertex Degree}{30}{subsection.2.8}% 
-\contentsline {subsection}{\numberline {2.9}Special Graphs}{32}{subsection.2.9}% 
+\contentsline {subsubsection}{\numberline {2.7.3}Connected}{26}{subsubsection.2.7.3}% 
+\contentsline {subsubsection}{\numberline {2.7.4}Components}{27}{subsubsection.2.7.4}% 
+\contentsline {subsubsection}{\numberline {2.7.5}Impact on Coloring}{28}{subsubsection.2.7.5}% 
+\contentsline {subsection}{\numberline {2.8}Vertex Degree}{29}{subsection.2.8}% 
+\contentsline {subsection}{\numberline {2.9}Special Graphs}{31}{subsection.2.9}% 
 \contentsline {subsubsection}{\numberline {2.9.1}Empty Graphs}{32}{subsubsection.2.9.1}% 
-\contentsline {subsubsection}{\numberline {2.9.2}Paths}{33}{subsubsection.2.9.2}% 
+\contentsline {subsubsection}{\numberline {2.9.2}Paths}{32}{subsubsection.2.9.2}% 
 \contentsline {subsubsection}{\numberline {2.9.3}Cycles}{33}{subsubsection.2.9.3}% 
-\contentsline {subsubsection}{\numberline {2.9.4}Complete Graphs}{34}{subsubsection.2.9.4}% 
-\contentsline {subsubsection}{\numberline {2.9.5}Trees}{35}{subsubsection.2.9.5}% 
-\contentsline {subsection}{\numberline {2.10}Cliques}{36}{subsection.2.10}% 
-\contentsline {section}{\numberline {3}Algorithms and Computational Complexity}{38}{section.3}% 
-\contentsline {section}{Literature Cited}{42}{section*.6}% 
+\contentsline {subsubsection}{\numberline {2.9.4}Complete Graphs}{33}{subsubsection.2.9.4}% 
+\contentsline {subsubsection}{\numberline {2.9.5}Trees}{34}{subsubsection.2.9.5}% 
+\contentsline {subsection}{\numberline {2.10}Cliques}{35}{subsection.2.10}% 
+\contentsline {section}{\numberline {3}Algorithms and Computational Complexity}{37}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Problems}{37}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Enigma}{38}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Algorithms}{40}{subsection.3.3}% 
+\contentsline {section}{\numberline {4}The Proposed Algorithm}{43}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Outer Loop}{44}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Called Subroutine}{45}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{49}{subsection.4.3}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{49}{subsubsection.4.3.1}% 
+\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{52}{subsubsection.4.3.2}% 
+\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{57}{subsubsection.4.3.3}% 
+\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{63}{subsubsection.4.3.4}% 
+\contentsline {section}{Literature Cited}{67}{section*.6}% 

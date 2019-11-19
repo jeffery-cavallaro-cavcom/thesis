@@ -330,8 +330,6 @@ and \(be\).
       \draw (A) edge (D);
     \end{tikzpicture}
 
-    \bigskip
-
     \(G\)
   \end{minipage}
   \begin{minipage}{1.75in}
@@ -346,8 +344,6 @@ and \(be\).
       \draw (E) edge (A);
     \end{tikzpicture}
 
-    \bigskip
-
     \(H\subset G\) (proper)
   \end{minipage}
   \begin{minipage}{1.75in}
@@ -361,8 +357,6 @@ and \(be\).
       \draw (E) edge (A);
       \draw (A) edge (D);
     \end{tikzpicture}
-
-    \bigskip
 
     \(F\subset G\) (spanning)
   \end{minipage}
@@ -395,8 +389,6 @@ so that \(H\) is now an induced subgraph of \(G\).
       \draw (A) edge (D);
     \end{tikzpicture}
 
-    \bigskip
-
     \(G\)
   \end{minipage}
   \begin{minipage}{2.75in}
@@ -411,8 +403,6 @@ so that \(H\) is now an induced subgraph of \(G\).
       \draw (B) edge (E);
       \draw (E) edge (A);
     \end{tikzpicture}
-
-    \bigskip
 
     \(H=G[\set{a,b,e}]\)
   \end{minipage}
@@ -449,8 +439,6 @@ their incident edges \(ae\) and \(be\).
       \draw (A) edge (D);
     \end{tikzpicture}
 
-    \bigskip
-
     \(G\)
   \end{minipage}
   \begin{minipage}{3in}
@@ -463,8 +451,6 @@ their incident edges \(ae\) and \(be\).
       \draw (A) edge (B);
       \draw (A) edge (D);
     \end{tikzpicture}
-
-    \bigskip
 
     \(G-\set{c,e}\)
   \end{minipage}
@@ -500,8 +486,6 @@ same vertices as \(G\) and with edge set \(E(G)\cup\set{uv}\).  Note that \(G\) 
       \draw (A) edge (D);
     \end{tikzpicture}
 
-    \bigskip
-
     \(G\)
   \end{minipage}
   \begin{minipage}{2.75in}
@@ -518,8 +502,6 @@ same vertices as \(G\) and with edge set \(E(G)\cup\set{uv}\).  Note that \(G\) 
       \draw (A) edge (D);
       \draw [green] (C) edge (D);
     \end{tikzpicture}
-
-    \bigskip
 
     \(G+cd\)
   \end{minipage}
@@ -556,8 +538,6 @@ Thus, only edges are removed --- no vertices are removed.  If \(X\ne\emptyset\) 
       \draw (A) edge (D);
     \end{tikzpicture}
 
-    \bigskip
-
     \(G\)
   \end{minipage}
   \begin{minipage}{2.75in}
@@ -571,8 +551,6 @@ Thus, only edges are removed --- no vertices are removed.  If \(X\ne\emptyset\) 
       \draw (A) edge (B);
       \draw (A) edge (D);
     \end{tikzpicture}
-
-    \bigskip
 
     \(G-\set{ae,be}\)
   \end{minipage}
@@ -606,8 +584,6 @@ edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single 
       \draw [dashed,red,->] (2) edge (1);
     \end{tikzpicture}
 
-    \bigskip
-
     \(G\)
   \end{minipage}
   \begin{minipage}{2.75in}
@@ -626,8 +602,6 @@ edges is discarded.  Edges \(bc\) and \(bd\) also become incident to the single 
       \draw (C) edge (D);
       \draw (D) edge (E);
     \end{tikzpicture}
-
-    \bigskip
 
     \(G\cdot ab\)
   \end{minipage}
@@ -957,8 +931,8 @@ the number of neighbor vertices or the number of incident edges.
 
 When considering the degrees of all the vertices in a graph, the following limits are helpful:
 \begin{gather*}
-  \d(G)=\min_{v\in V(G)}\deg(v) \\
-  \D(G)=\max_{v\in V(G)}\deg(v)
+  \dmin(G)=\min_{v\in V(G)}\deg(v) \\
+  \dmax(G)=\max_{v\in V(G)}\deg(v)
 \end{gather*}
 
 Therefore, we can state the conclusion of Proposition~\ref{prop:degree}:
@@ -966,10 +940,10 @@ Therefore, we can state the conclusion of Proposition~\ref{prop:degree}:
 \begin{proposition}
   \label{prop:degree}
   Let \(G\) be a graph of order \(n\).  For every vertex \(v\in G\):
-\[0\le\d(G)\le\deg(v)\le\D(G)\le n-1\]
+\[0\le\dmin(G)\le\deg(v)\le\dmax(G)\le n-1\]
 \end{proposition}
 
-Intuitively, as \(\d(G)\) increases, a graph becomes denser (more edges) resulting in more adjacencies, making it
+Intuitively, as \(\dmin(G)\) increases, a graph becomes denser (more edges) resulting in more adjacencies, making it
 harder to find a proper coloring at lower values of \(k\).
 
 Vertices can be classified based on their degree, as shown in \tablename~\ref{tab:degree}.
@@ -1031,7 +1005,7 @@ These concepts are demonstrated by the graph in \figurename~\ref{fig:degree}.
 
     \begin{tabular}{ll}
       \(n=8\) & \(m=15=\frac{30}{2}\) \\
-      \(\d(G)=1\) & \(\D(G)=7\) \\
+      \(\dmin(G)=1\) & \(\dmax(G)=7\) \\
       \(\diam(G)=2\)
     \end{tabular}
   \end{minipage}
@@ -1073,8 +1047,6 @@ edges (\(m=0\)).  An empty graph is connected if and only if \(n=1\).  Examples 
       \node at (0,0) {};
     \end{tikzpicture}
 
-    \bigskip
-
     \(E_1\)
   \end{minipage}
   \begin{minipage}{2.5in}
@@ -1082,8 +1054,6 @@ edges (\(m=0\)).  An empty graph is connected if and only if \(n=1\).  Examples 
     \begin{tikzpicture}[every node/.style=unlabeled node]
       \pathNnodes{4}{(0,0)}{right}{};
     \end{tikzpicture}
-
-    \bigskip
 
     \(E_4\)
   \end{minipage}
@@ -1094,8 +1064,6 @@ edges (\(m=0\)).  An empty graph is connected if and only if \(n=1\).  Examples 
       \pathNnodes{3}{(0,1)}{right}{};
       \pathNnodes{3}{(0,2)}{right}{};
     \end{tikzpicture}
-
-    \bigskip
 
     \(E_9\)
   \end{minipage}
@@ -1118,8 +1086,6 @@ single open path.  Examples of path graphs are shown in \figurename~\ref{fig:pat
       \node at (0,0) {};
     \end{tikzpicture}
 
-    \bigskip
-
     \(P_1\)
   \end{minipage}
   \begin{minipage}{2.5in}
@@ -1127,8 +1093,6 @@ single open path.  Examples of path graphs are shown in \figurename~\ref{fig:pat
     \begin{tikzpicture}[every node/.style=unlabeled node]
       \pathN{4}{(0,0)}{right}{};
     \end{tikzpicture}
-
-    \bigskip
 
     \(P_4\)
   \end{minipage}
@@ -1140,8 +1104,6 @@ single open path.  Examples of path graphs are shown in \figurename~\ref{fig:pat
       \pathNnodes{3}{(0,2)}{right}{t};
       \draw (t1) to (t2) to (t3) to (m3) to (m2) to (m1) to (b1) to (b2) to (b3);
     \end{tikzpicture}
-
-    \bigskip
 
     \(P_9\)
   \end{minipage}
@@ -1168,8 +1130,6 @@ Examples of cycle graphs are shown in \figurename~\ref{fig:cycle}.
       \cycleN{3}{(0,0)}{0.5in}{90}{};
     \end{tikzpicture}
 
-    \bigskip
-
     \(C_3\) (odd)
   \end{minipage}
   \begin{minipage}{1.75in}
@@ -1178,8 +1138,6 @@ Examples of cycle graphs are shown in \figurename~\ref{fig:cycle}.
       \cycleN{4}{(0,0)}{0.5in}{135}{};
     \end{tikzpicture}
 
-    \bigskip
-
     \(C_4\) (even)
   \end{minipage}
   \begin{minipage}{1.75in}
@@ -1187,8 +1145,6 @@ Examples of cycle graphs are shown in \figurename~\ref{fig:cycle}.
     \begin{tikzpicture}[every node/.style=unlabeled node]
       \cycleN{9}{(0,0)}{0.5in}{90}{};
     \end{tikzpicture}
-
-    \bigskip
 
     \(C_9\) (odd)
   \end{minipage}
@@ -1215,8 +1171,6 @@ Examples of complete graphs are shown in \figurename~\ref{fig:complete}.
       \node at (0,0) {};
     \end{tikzpicture}
 
-    \bigskip
-
     \(K_1\)
   \end{minipage}
   \begin{minipage}{1.75in}
@@ -1225,8 +1179,6 @@ Examples of complete graphs are shown in \figurename~\ref{fig:complete}.
       \completeN{4}{(0,0)}{0.5in}{135}{};
     \end{tikzpicture}
 
-    \bigskip
-
     \(K_4\)
   \end{minipage}
   \begin{minipage}{1.75in}
@@ -1234,8 +1186,6 @@ Examples of complete graphs are shown in \figurename~\ref{fig:complete}.
     \begin{tikzpicture}[every node/.style=unlabeled node]
       \completeN{9}{(0,0)}{0.5in}{90}{};
     \end{tikzpicture}
-
-    \bigskip
 
     \(K_9\)
   \end{minipage}
@@ -1323,8 +1273,6 @@ maximal \clique{3}s --- for example: \(G[\set{b,e,g}]\).  There is only one maxi
     \draw (b1) -| (h);
     \draw (b3) -| (h);
   \end{tikzpicture}
-
-  \bigskip
 
   \(G\)
   \caption{A graph with cliques.}
