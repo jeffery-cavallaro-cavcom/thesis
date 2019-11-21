@@ -34,3 +34,13 @@
 \contentsline {figure}{\numberline {34}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{58}{figure.34}% 
 \contentsline {figure}{\numberline {35}{\ignorespaces Case \(a_i=1\) contradiction.}}{60}{figure.35}% 
 \contentsline {figure}{\numberline {36}{\ignorespaces Corollary \ref {cor:inter} example.}}{62}{figure.36}% 
+\contentsline {figure}{\numberline {37}{\ignorespaces An example graph.}}{67}{figure.37}% 
+\contentsline {figure}{\numberline {38}{\ignorespaces Step: \(G-\set {h}\).}}{68}{figure.38}% 
+\contentsline {figure}{\numberline {39}{\ignorespaces Step: \(G-g\).}}{69}{figure.39}% 
+\contentsline {figure}{\numberline {40}{\ignorespaces Step: \(G\cdot ad\).}}{71}{figure.40}% 
+\contentsline {figure}{\numberline {41}{\ignorespaces Step: \(G+ad\).}}{72}{figure.41}% 
+\contentsline {figure}{\numberline {42}{\ignorespaces Step: \(G-\set {b,f}\)}}{74}{figure.42}% 
+\contentsline {figure}{\numberline {43}{\ignorespaces Initial coloring.}}{75}{figure.43}% 
+\contentsline {figure}{\numberline {44}{\ignorespaces Coloring \(b\) and \(f\).}}{75}{figure.44}% 
+\contentsline {figure}{\numberline {45}{\ignorespaces Coloring \(g\).}}{76}{figure.45}% 
+\contentsline {figure}{\numberline {46}{\ignorespaces Final chromatic coloring.}}{76}{figure.46}% 

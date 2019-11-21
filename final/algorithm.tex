@@ -43,9 +43,9 @@ The steps of the outer loop are as follows:
 \begin{enumerate}
 \item \label{step:outer:null} If \(n=0\) then return \(0\), thus handling the degenerate case of a null graph.
 
-\item \label{step:outer:one} If \(m=0\) then return \(1\), thus handling the degenerate case of an empty graph.
+\item \label{step:outer:empty} If \(m=0\) then return \(1\), thus handling the degenerate case of an empty graph.
 
-\item \label{step:outer:init} Initialize \(k\) to \(2\).
+\item \label{step:outer:initk} Initialize \(k\) to \(2\).
 
 \item \label{step:outer:call} Call the subroutine to determine if \(G\) is \colorable{k}.  The subroutine returns a
   possibly simplified \(G\) called \(G'\) and a boolean value \(R\) that reports the result of the test.
@@ -987,3 +987,549 @@ These steps are supported by Theorem~\ref{thm:recurse}.
 
   Therefore \(G\) is \colorable{k}.
 \end{proof}
+
+\subsection{An Example}\label{sec:sub:example}
+
+In this section, the proposed algorithm will be applied to the example graph \(G\) of order \(n=8\) and size
+\(m=12\) shown in \figurename~\ref{fig:example} in order to determine \(\X(G)\).  The steps of the algorithm are
+then traversed in reverse order to determine a chromatic coloring.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \node (a) [draw,circle] at (2,6) {\(a\)};
+    \node (b) [draw,circle] at (0,4) {\(b\)};
+    \node (c) [draw,circle] at (4,4) {\(c\)};
+    \node (d) [draw,circle] at (0,2) {\(d\)};
+    \node (e) [draw,circle] at (4,2) {\(e\)};
+    \node (f) [draw,circle] at (2,0) {\(f\)};
+    \node (g) [draw,circle] at (0,0) {\(g\)};
+    \node (h) [draw,circle] at (4,0) {\(h\)};
+    \draw (a) to (b);
+    \draw (a) to (c);
+    \draw (a) to (f);
+    \draw (b) to (c);
+    \draw (b) to (d);
+    \draw (c) to (e);
+    \draw (d) to (e);
+    \draw (d) to (f);
+    \draw (d) to (g);
+    \draw (e) to (f);
+    \draw (f) to (g);
+    \draw (f) to (h);
+  \end{tikzpicture}
+  \caption{An example graph.}
+  \label{fig:example}
+\end{figure}
+
+The algorithm steps are as follows.  Outer loop steps are marked by ``O\#'' and called subroutine steps are marked by
+``I\#.''.  Recursive subroutine calls add a call level: ``I\#--\#.''
+
+\begin{enumerate}
+\item (O\ref{step:outer:null}) Since \(n=8>0\), \(G\) is not the null graph, so continue.
+
+\item (O\ref{step:outer:empty}) Since \(n=8>1\), \(G\) is not an empty graph, so continue.
+
+\item (O\ref{step:outer:initk}) Initialize \(k\) to 2.
+
+\item (O\ref{step:outer:call}) Call the subroutine with \(G\) and \(k=2\).
+
+\item (I\ref{step:sub:check}) \(n=8\nleq k=2\), so continue.
+
+\item (I\ref{step:sub:dencalc}) Calculate the maximum edge threshold for \(n=8\) and \(k=2\):
+  \[a=\frac{n^2(k-1)}{2k}=\frac{8^2(2-1)}{2\cdot2}=\frac{64}{4}=16\]
+
+\item (I\ref{step:sub:density}) Since \(m=12\ngtr16=a\), continue.
+
+\item (I\ref{step:sub:smallcalc}) Since \(\deg(h)=1<2\), set \(X=\set{h}\).
+
+\item (I\ref{step:sub:small}) Since \(X\ne\emptyset\), replace \(G\) with \(G-X\).  The result is shown in
+  \figurename~\ref{fig:removeh}.  Now \(n=7\) and \(m=11\).
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \node (a) [draw,circle] at (2,6) {\(a\)};
+      \node (b) [draw,circle] at (0,4) {\(b\)};
+      \node (c) [draw,circle] at (4,4) {\(c\)};
+      \node (d) [draw,circle] at (0,2) {\(d\)};
+      \node (e) [draw,circle] at (4,2) {\(e\)};
+      \node (f) [draw,circle] at (2,0) {\(f\)};
+      \node (g) [draw,circle] at (0,0) {\(g\)};
+      \draw (a) to (b);
+      \draw (a) to (c);
+      \draw (a) to (f);
+      \draw (b) to (c);
+      \draw (b) to (d);
+      \draw (c) to (e);
+      \draw (d) to (e);
+      \draw (d) to (f);
+      \draw (d) to (g);
+      \draw (e) to (f);
+      \draw (f) to (g);
+    \end{tikzpicture}
+    \caption{Step: \(G-\set{h}\).}
+    \label{fig:removeh}
+  \end{figure}
+
+\item (I\ref{step:sub:check}) \(n=7\nleq k=2\), so continue.
+
+\item (I\ref{step:sub:dencalc}) Calculate the maximum edge threshold for \(n=7\) and \(k=2\):
+  \[a=\frac{n^2(k-1)}{2k}=\frac{7^2(2-1)}{2\cdot2}=\frac{49}{4}\approx12.3\]
+
+\item (I\ref{step:sub:density}) Since \(m=12\ngtr12.3=a\), continue.
+
+\item (I\ref{step:sub:smallcalc}) Since \(\d(G)=2\ge2=k\), set \(X=\emptyset\).
+
+\item (I\ref{step:sub:small}) Since \(X=\emptyset\), continue.
+
+\item (I\ref{step:sub:common}) Calculate the number of common neighbors, looking for any subsets.  The results are
+  shown in \tablename~\ref{tab:common1}.
+
+  \begin{table}[H]
+    \centering
+    \caption{Calculating Common Neighbors 1}
+    \label{tab:common1}
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      \(u\) & \(v\) & \(\abs{N(u)\cap N(v)}\) & subset? & adjacent? \\
+      \hline
+      \(a\) & \(b\) & 1 & N & Y \\
+      \hline
+      \(a\) & \(c\) & 1 & N & Y \\
+      \hline
+      \(a\) & \(d\) & 2 & N & N \\
+      \hline
+      \(a\) & \(e\) & 2 & N & N \\
+      \hline
+      \(a\) & \(f\) & 0 & N & Y \\
+      \hline
+      \(a\) & \(g\) & 1 & N & N \\
+      \hline
+      \(b\) & \(c\) & 1 & N & Y \\
+      \hline
+      \(b\) & \(d\) & 0 & N & Y \\
+      \hline
+      \(b\) & \(e\) & 2 & N & N \\
+      \hline
+      \(b\) & \(f\) & 2 & N & N \\
+      \hline
+      \(b\) & \(g\) & 1 & N & N \\
+      \hline
+      \(c\) & \(d\) & 2 & N & N \\
+      \hline
+      \(c\) & \(e\) & 0 & N & Y \\
+      \hline
+      \(c\) & \(f\) & 2 & N & N \\
+      \hline
+      \(c\) & \(g\) & 0 & N & N \\
+      \hline
+      \(d\) & \(e\) & 1 & N & Y \\
+      \hline
+      \(d\) & \(f\) & 2 & N & Y \\
+      \hline
+      \(d\) & \(g\) & 1 & N & Y \\
+      \hline
+      \(e\) & \(f\) & 1 & N & Y \\
+      \hline
+      \(e\) & \(g\) & 2 & Y & N \\
+      \hline
+      \(f\) & \(g\) & 1 & N & Y \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+\item (I\ref{step:sub:subset}) Note that \(N(g)=\set{d,f}\) and \(N(e)=\set{c,d,f}\).  Since \(N(g)\subseteq
+  N(e)\), replace \(G\) with \(G-g\).  The result is shown in \figurename~\ref{fig:removeg}.  Now \(n=6\) and
+  \(m=9\).
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \node (a) [draw,circle] at (2,6) {\(a\)};
+      \node (b) [draw,circle] at (0,4) {\(b\)};
+      \node (c) [draw,circle] at (4,4) {\(c\)};
+      \node (d) [draw,circle] at (0,2) {\(d\)};
+      \node (e) [draw,circle] at (4,2) {\(e\)};
+      \node (f) [draw,circle] at (2,0) {\(f\)};
+      \draw (a) to (b);
+      \draw (a) to (c);
+      \draw (a) to (f);
+      \draw (b) to (c);
+      \draw (b) to (d);
+      \draw (c) to (e);
+      \draw (d) to (e);
+      \draw (d) to (f);
+      \draw (e) to (f);
+    \end{tikzpicture}
+    \caption{Step: \(G-g\).}
+    \label{fig:removeg}
+  \end{figure}
+
+\item (I\ref{step:sub:check}) \(n=6\nleq k=2\), so continue.
+
+\item (I\ref{step:sub:dencalc}) Calculate the maximum edge threshold for \(n=6\) and \(k=2\):
+  \[a=\frac{n^2(k-1)}{2k}=\frac{6^2(2-1)}{2\cdot2}=\frac{36}{4}=9\]
+
+\item (I\ref{step:sub:density}) Since \(m=9\ngtr9=a\), continue.
+
+\item (I\ref{step:sub:smallcalc}) Since \(\d(G)=2\ge2=k\), set \(X=\emptyset\).
+
+\item (I\ref{step:sub:small}) Since \(X=\emptyset\), continue.
+
+\item (I\ref{step:sub:common}) Calculate the number of common neighbors, looking for any subsets.  The results are
+  shown in \tablename~\ref{tab:common2}.
+
+  \begin{table}[H]
+    \centering
+    \caption{Calculating Common Neighbors 2}
+    \label{tab:common2}
+    \begin{tabular}{|c|c|c|c|c|}
+      \hline
+      \(u\) & \(v\) & \(\abs{N(u)\cap N(v)}\) & subset? & adjacent? \\
+      \hline
+      \(a\) & \(b\) & 1 & N & Y \\
+      \hline
+      \(a\) & \(c\) & 1 & N & Y \\
+      \hline
+      \(a\) & \(d\) & 2 & N & N \\
+      \hline
+      \(a\) & \(e\) & 2 & N & N \\
+      \hline
+      \(a\) & \(f\) & 0 & N & Y \\
+      \hline
+      \(b\) & \(c\) & 1 & N & Y \\
+      \hline
+      \(b\) & \(d\) & 0 & N & Y \\
+      \hline
+      \(b\) & \(e\) & 2 & N & N \\
+      \hline
+      \(b\) & \(f\) & 2 & N & N \\
+      \hline
+      \(c\) & \(d\) & 2 & N & N \\
+      \hline
+      \(c\) & \(e\) & 0 & N & Y \\
+      \hline
+      \(c\) & \(f\) & 2 & N & N \\
+      \hline
+      \(d\) & \(e\) & 1 & N & Y \\
+      \hline
+      \(d\) & \(f\) & 1 & N & Y \\
+      \hline
+      \(e\) & \(f\) & 1 & N & Y \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+\item (I\ref{step:sub:subset}) Since there are no \(u,v\in V(G)\) such that \(N(u)\subseteq N(v)\), continue.
+
+\item (I\ref{step:sub:select}) From \tablename~\ref{tab:common2}, the minimum number of common neighbors is 0
+  (e.g., \(a\) and \(f\)).  So set \(b=0\).
+
+\item (I\ref{step:sub:ubcalc}) Calculate the upper bound for minimum number of common neighbors for \(n=6\) and
+  \(k=2\):
+  \[c=n-2-\frac{n-2}{k-1}=6-2-\frac{6-2}{2-1}=4-4=0\]
+
+\item (I\ref{step:sub:ubcheck}) Since \(b=0\ngtr0=c\), conclude that \(G\) may be \colorable{2} and continue.
+
+\item (I\ref{step:sub:select2}) Based on the results in \tablename~\ref{tab:common2}, all of the nonadjacent
+  vertices share two common neighbors, so select \(a\) and \(d\).
+
+\item (I\ref{step:sub:call1}) Recursively call the subroutine with \(G\cdot ad\), as shown in
+  \figurename~\ref{fig:contract1}.  Now, \(n=5\) and \(m=7\).
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \node (ad) [draw,circle] at (2,6) {\(ad\)};
+      \node (b) [draw,circle] at (0,4) {\(b\)};
+      \node (c) [draw,circle] at (4,4) {\(c\)};
+      \node (e) [draw,circle] at (4,2) {\(e\)};
+      \node (f) [draw,circle] at (2,0) {\(f\)};
+      \draw (ad) to (b);
+      \draw (ad) to (c);
+      \draw (ad) to (f);
+      \draw (b) to (c);
+      \draw (c) to (e);
+      \draw (ad) to (e);
+      \draw (e) to (f);
+    \end{tikzpicture}
+    \caption{Step: \(G\cdot ad\).}
+    \label{fig:contract1}
+  \end{figure}
+
+\item (I\ref{step:sub:check}-1) \(n=5\nleq k=2\), so continue.
+
+\item (I\ref{step:sub:dencalc}-1) Calculate the maximum edge threshold for \(n=5\) and \(k=2\):
+  \[a=\frac{n^2(k-1)}{2k}=\frac{5^2(2-1)}{2\cdot2}=\frac{25}{4}=6.25\]
+
+\item (I\ref{step:sub:density}-1) Since \(m=7>6.25=a\), conclude that \(G\) is not \colorable{2} and return false.
+
+\item (I\ref{step:sub:call2}) Returning to the \(G\) of \figurename~\ref{fig:removeg}, recursively call the
+  subroutine with \(G+ad\), as shown in \figurename~\ref{fig:edge1}.  Now, \(n=6\) and \(m=10\).
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \node (a) [draw,circle] at (2,6) {\(a\)};
+      \node (b) [draw,circle] at (0,4) {\(b\)};
+      \node (c) [draw,circle] at (4,4) {\(c\)};
+      \node (d) [draw,circle] at (0,2) {\(d\)};
+      \node (e) [draw,circle] at (4,2) {\(e\)};
+      \node (f) [draw,circle] at (2,0) {\(f\)};
+      \draw (a) to (b);
+      \draw (a) to (c);
+      \draw (a) to (f);
+      \draw (b) to (c);
+      \draw (b) to (d);
+      \draw (c) to (e);
+      \draw (d) to (e);
+      \draw (d) to (f);
+      \draw (e) to (f);
+      \draw (a) to (d);
+    \end{tikzpicture}
+    \caption{Step: \(G+ad\).}
+    \label{fig:edge1}
+  \end{figure}
+
+\item (I\ref{step:sub:check}-1) \(n=6\nleq k=2\), so continue.
+
+\item (I\ref{step:sub:dencalc}-1) Calculate the maximum edge threshold for \(n=6\) and \(k=2\):
+  \[a=\frac{n^2(k-1)}{2k}=\frac{6^2(2-1)}{2\cdot2}=\frac{36}{4}=9\]
+
+\item (I\ref{step:sub:density}-1) Since \(m=10>9=a\), conclude that \(G\) is not \colorable{2} and return false.
+
+\item (I\ref{step:sub:fail}) Conclude that the \(G\) of \figurename~\ref{fig:removeg} is not \colorable{2} and
+  return false with this \(G\).
+
+\item (O\ref{step:outer:result}) Since the called subroutine returned false, \(G\) is not \colorable{2}, so
+  continue.
+
+\item (O\ref{step:outer:newg}) Replace \(G\) with the graph returned by the previous call
+  (\figurename~\ref{fig:removeg}).
+
+\item (O\ref{step:outer:incrk}) Increment \(k\) to 3.
+
+\item (O\ref{step:outer:call}) Call the subroutine with the new \(G\) and \(k=3\).
+  
+\item (I\ref{step:sub:check}) \(n=6\nleq k=3\), so continue.
+
+\item (I\ref{step:sub:dencalc}) Calculate the maximum edge threshold for \(n=6\) and \(k=3\):
+  \[a=\frac{n^2(k-1)}{2k}=\frac{6^2(3-1)}{2\cdot3}=\frac{72}{6}=12\]
+
+\item (I\ref{step:sub:density}) Since \(m=9\ngtr11=a\), continue.
+
+\item (I\ref{step:sub:smallcalc}) Since \(\dmin(G)=3\ge3=k\), set \(X=\emptyset\).
+
+\item (I\ref{step:sub:small}) Since \(X=\emptyset\), continue.
+
+\item (I\ref{step:sub:common}) Calculate the number of common neighbors, looking for any subsets.  Note that the
+  results are the same as those shown in \tablename~\ref{tab:common2}.
+
+\item (I\ref{step:sub:subset}) Since there are no \(u,v\in V(G)\) such that \(N(u)\subseteq N(v)\), continue.
+
+\item (I\ref{step:sub:select}) From \tablename~\ref{tab:common2}, the minimum number of common neighbors is 0
+  (e.g., \(a\) and \(f\)).  So set \(b=0\).
+
+\item (I\ref{step:sub:ubcalc}) Calculate the upper bound for minimum number of common neighbors for \(n=6\) and
+  \(k=3\):
+  \[c=n-2-\frac{n-2}{k-1}=6-3-\frac{6-2}{3-1}=3-2=1\]
+
+\item (I\ref{step:sub:ubcheck}) Since \(b=0\ngtr1=c\), conclude that \(G\) may be \colorable{3} and continue.
+
+\item (I\ref{step:sub:select2}) Based on the results in \tablename~\ref{tab:common2}, all of the nonadjacent
+  vertices share two common neighbors, so select \(a\) and \(d\).
+
+\item (I\ref{step:sub:call1}) Recursively call the subroutine with \(G\cdot ad\), as shown in
+  \figurename~\ref{fig:contract1}.  Now, \(n=5\) and \(m=7\).
+
+\item (I\ref{step:sub:check}-1) \(n=5\nleq k=2\), so continue.
+
+\item (I\ref{step:sub:dencalc}-1) Calculate the maximum edge threshold for \(n=5\) and \(k=3\):
+  \[a=\frac{n^2(k-1)}{2k}=\frac{5^2(3-1)}{2\cdot3}=\frac{25}{3}=8.3\]
+
+\item (I\ref{step:sub:density}-1) Since \(m=7\ngtr8.3=a\), conclude that \(G\) may be \colorable{3} and continue.
+
+  
+\item (I\ref{step:sub:smallcalc}-1) Since \(\deg(b)=\deg(f)=2<3=k\), set \(X=\set{b,f}\).
+
+\item (I1-\ref{step:sub:small}-1) Since \(X\ne\emptyset\), replace \(G\) with \(G-X\).  The result is shown in Figure
+  \ref{fig:removecf}.  Now \(n=3\) and \(m=3\).
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \node (ad) [draw,circle] at (2,6) {\(ad\)};
+      \node (c) [draw,circle] at (4,4) {\(c\)};
+      \node (e) [draw,circle] at (4,2) {\(e\)};
+      \draw (ad) to (c);
+      \draw (c) to (e);
+      \draw (e) to (ad);
+    \end{tikzpicture}
+    \caption{Step: \(G-\set{b,f}\)}
+    \label{fig:removecf}
+  \end{figure}
+
+\item (I\ref{step:sub:check}-1) \(n=3\le k=3\), so conclude that the \(G\) of \figurename~\ref{fig:removecf} is
+  \colorable{3} and return true and this \(G\).
+
+\item (I\ref{step:sub:call1}) The recursive call returned true, so conclude that the returned \(G\) of
+  \figurename~\ref{fig:removecf} is \colorable{3} and return true with this \(G\).
+
+\item (O\ref{step:outer:call}) The called subroutine returned true, so conclude that the returned \(G\) of
+  \figurename~\ref{removecf} is \chromatic{3} and return \(\X(G)=3\).
+
+\end{enumerate}
+
+Thus, the algorithm determines that the example \(G\) of Figure \ref{fig:example} is \chromatic{3}.  In order to
+determine a \chromatic{3} coloring for \(G\), first construct a set \(C\) of three colors:
+\[C=\set{\text{\textcolor{green}{green}},\text{\textcolor{blue}{blue}},\text{\textcolor{red}{red}}}\]
+Next, follow the algorithm's modification steps in reverse order and color the corresponding vertices accordingly.
+The steps are as follows:
+
+\begin{enumerate}
+\item First, color the vertices that are present in the final simplified graph.  Assign each vertex its own color,
+  except assign contracted vertices the same color.  This is shown in \figurename~\ref{fig:cstart}.
+  
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{blue!25!white}
+      \colorlet{c3}{red!25!white}
+      \node [fill=c1] (a) [draw,circle] at (2,6) {\(a\)};
+      \node (b) [draw,circle] at (0,4) {\(b\)};
+      \node [fill=c2] (c) [draw,circle] at (4,4) {\(c\)};
+      \node [fill=c1] (d) [draw,circle] at (0,2) {\(d\)};
+      \node [fill=c3] (e) [draw,circle] at (4,2) {\(e\)};
+      \node (f) [draw,circle] at (2,0) {\(f\)};
+      \node (g) [draw,circle] at (0,0) {\(g\)};
+      \node (h) [draw,circle] at (4,0) {\(h\)};
+      \draw (a) to (b);
+      \draw (a) to (c);
+      \draw (a) to (f);
+      \draw (b) to (c);
+      \draw (b) to (d);
+      \draw (c) to (e);
+      \draw (d) to (e);
+      \draw (d) to (f);
+      \draw (d) to (g);
+      \draw (e) to (f);
+      \draw (f) to (g);
+      \draw (f) to (h);
+    \end{tikzpicture}
+    \caption{Initial coloring.}
+    \label{fig:cstart}
+  \end{figure}
+
+\item The last modification was the removal of vertices \(b\) and \(f\).  Note that color selection needs to honor
+  the vertices already colored.  This is shown in \figurename~\ref{fig:colorbf}.
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{blue!25!white}
+      \colorlet{c3}{red!25!white}
+      \node [fill=c1] (a) [draw,circle] at (2,6) {\(a\)};
+      \node [fill=c3] (b) [draw,circle] at (0,4) {\(b\)};
+      \node [fill=c2] (c) [draw,circle] at (4,4) {\(c\)};
+      \node [fill=c1] (d) [draw,circle] at (0,2) {\(d\)};
+      \node [fill=c3] (e) [draw,circle] at (4,2) {\(e\)};
+      \node [fill=c2] (f) [draw,circle] at (2,0) {\(f\)};
+      \node (g) [draw,circle] at (0,0) {\(g\)};
+      \node (h) [draw,circle] at (4,0) {\(h\)};
+      \draw (a) to (b);
+      \draw (a) to (c);
+      \draw (a) to (f);
+      \draw (b) to (c);
+      \draw (b) to (d);
+      \draw (c) to (e);
+      \draw (d) to (e);
+      \draw (d) to (f);
+      \draw (d) to (g);
+      \draw (e) to (f);
+      \draw (f) to (g);
+      \draw (f) to (h);
+    \end{tikzpicture}
+    \caption{Coloring \(b\) and \(f\).}
+    \label{fig:colorbf}
+  \end{figure}
+
+\item The contracted vertices have already been colored, so the next simplification to address is the removal of
+  \(g\) due to the neighborhood subset test.  Since \(N(g)\subseteq N(e)\), color \(g\) and \(e\) the same color.
+  Since \(e\) has already been assign a color, use it for \(g\).  The result is shown in
+  \figurename~\ref{fig:colorg}.
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{blue!25!white}
+      \colorlet{c3}{red!25!white}
+      \node [fill=c1] (a) [draw,circle] at (2,6) {\(a\)};
+      \node [fill=c3] (b) [draw,circle] at (0,4) {\(b\)};
+      \node [fill=c2] (c) [draw,circle] at (4,4) {\(c\)};
+      \node [fill=c1] (d) [draw,circle] at (0,2) {\(d\)};
+      \node [fill=c3] (e) [draw,circle] at (4,2) {\(e\)};
+      \node [fill=c2] (f) [draw,circle] at (2,0) {\(f\)};
+      \node [fill=c3] (g) [draw,circle] at (0,0) {\(g\)};
+      \node (h) [draw,circle] at (4,0) {\(h\)};
+      \draw (a) to (b);
+      \draw (a) to (c);
+      \draw (a) to (f);
+      \draw (b) to (c);
+      \draw (b) to (d);
+      \draw (c) to (e);
+      \draw (d) to (e);
+      \draw (d) to (f);
+      \draw (d) to (g);
+      \draw (e) to (f);
+      \draw (f) to (g);
+      \draw (f) to (h);
+    \end{tikzpicture}
+    \caption{Coloring \(g\).}
+    \label{fig:colorg}
+  \end{figure}
+
+\item Finally, color the first removed vertex \(h\) with any appropriate color.  The final result is shown in
+  \figurename~\ref{fig:cfinal}.
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{blue!25!white}
+      \colorlet{c3}{red!25!white}
+      \node [fill=c1] (a) [draw,circle] at (2,6) {\(a\)};
+      \node [fill=c3] (b) [draw,circle] at (0,4) {\(b\)};
+      \node [fill=c2] (c) [draw,circle] at (4,4) {\(c\)};
+      \node [fill=c1] (d) [draw,circle] at (0,2) {\(d\)};
+      \node [fill=c3] (e) [draw,circle] at (4,2) {\(e\)};
+      \node [fill=c2] (f) [draw,circle] at (2,0) {\(f\)};
+      \node [fill=c3] (g) [draw,circle] at (0,0) {\(g\)};
+      \node [fill=c1] (h) [draw,circle] at (4,0) {\(h\)};
+      \draw (a) to (b);
+      \draw (a) to (c);
+      \draw (a) to (f);
+      \draw (b) to (c);
+      \draw (b) to (d);
+      \draw (c) to (e);
+      \draw (d) to (e);
+      \draw (d) to (f);
+      \draw (d) to (g);
+      \draw (e) to (f);
+      \draw (f) to (g);
+      \draw (f) to (h);
+    \end{tikzpicture}
+    \caption{Final chromatic coloring.}
+    \label{fig:cfinal}
+  \end{figure}
+
+\end{enumerate}
+
+At first glance, one might wonder what advantage this method of coloring has over other sequential methods.  The
+difference is that the other sequential methods only have knowledge about what has already been colored, whereas
+this method uses assumptions that are made during the simplifications and recursive calls on the entire graph.
+Thus, the sequential algorithms are heuristic, but this method selects a particular workable coloring path through
+the resulting Zykov tree.
