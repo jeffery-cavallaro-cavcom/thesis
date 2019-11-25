@@ -1,0 +1,50 @@
+\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Tables}{viii}{section*.4}% 
+\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Figures}{xi}{section*.5}% 
+ 
+\contentsline {section}{\numberline {1}Axiomatic Design}{1}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Design}{1}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}The Axiomatic Design Framework}{2}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.3}The Axioms}{5}{subsection.1.3}% 
+\contentsline {subsection}{\numberline {1.4}Part Consolidation}{9}{subsection.1.4}% 
+\contentsline {section}{\numberline {2}Graph Theory}{11}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Simple Graphs}{11}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Order and Size}{13}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Graph Relations}{14}{subsection.2.3}% 
+\contentsline {subsubsection}{\numberline {2.3.1}Labels}{14}{subsubsection.2.3.1}% 
+\contentsline {subsubsection}{\numberline {2.3.2}Vertex Color}{15}{subsubsection.2.3.2}% 
+\contentsline {subsection}{\numberline {2.4}Subgraphs}{17}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Mutators}{19}{subsection.2.5}% 
+\contentsline {subsubsection}{\numberline {2.5.1}Vertex Removal}{20}{subsubsection.2.5.1}% 
+\contentsline {subsubsection}{\numberline {2.5.2}Edge Addition}{20}{subsubsection.2.5.2}% 
+\contentsline {subsubsection}{\numberline {2.5.3}Edge Removal}{21}{subsubsection.2.5.3}% 
+\contentsline {subsubsection}{\numberline {2.5.4}Vertex Contraction}{22}{subsubsection.2.5.4}% 
+\contentsline {subsection}{\numberline {2.6}Independent Sets}{23}{subsection.2.6}% 
+\contentsline {subsection}{\numberline {2.7}Connected Graphs}{23}{subsection.2.7}% 
+\contentsline {subsubsection}{\numberline {2.7.1}Walks}{23}{subsubsection.2.7.1}% 
+\contentsline {subsubsection}{\numberline {2.7.2}Paths}{25}{subsubsection.2.7.2}% 
+\contentsline {subsubsection}{\numberline {2.7.3}Connected}{26}{subsubsection.2.7.3}% 
+\contentsline {subsubsection}{\numberline {2.7.4}Components}{27}{subsubsection.2.7.4}% 
+\contentsline {subsubsection}{\numberline {2.7.5}Impact on Coloring}{28}{subsubsection.2.7.5}% 
+\contentsline {subsection}{\numberline {2.8}Vertex Degree}{29}{subsection.2.8}% 
+\contentsline {subsection}{\numberline {2.9}Special Graphs}{31}{subsection.2.9}% 
+\contentsline {subsubsection}{\numberline {2.9.1}Empty Graphs}{32}{subsubsection.2.9.1}% 
+\contentsline {subsubsection}{\numberline {2.9.2}Paths}{32}{subsubsection.2.9.2}% 
+\contentsline {subsubsection}{\numberline {2.9.3}Cycles}{33}{subsubsection.2.9.3}% 
+\contentsline {subsubsection}{\numberline {2.9.4}Complete Graphs}{33}{subsubsection.2.9.4}% 
+\contentsline {subsubsection}{\numberline {2.9.5}Trees}{34}{subsubsection.2.9.5}% 
+\contentsline {subsection}{\numberline {2.10}Cliques}{35}{subsection.2.10}% 
+\contentsline {section}{\numberline {3}Algorithms and Computational Complexity}{37}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Problems}{37}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Enigma}{38}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Algorithms}{40}{subsection.3.3}% 
+\contentsline {section}{\numberline {4}The Proposed Algorithm}{43}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Outer Loop}{44}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Called Subroutine}{45}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{49}{subsection.4.3}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{49}{subsubsection.4.3.1}% 
+\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{52}{subsubsection.4.3.2}% 
+\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{57}{subsubsection.4.3.3}% 
+\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{63}{subsubsection.4.3.4}% 
+\contentsline {subsection}{\numberline {4.4}An Example}{66}{subsection.4.4}% 
+\contentsline {section}{\numberline {5}Toaster Design Case Study}{78}{section.5}% 
+\contentsline {section}{Literature Cited}{88}{section*.6}% 

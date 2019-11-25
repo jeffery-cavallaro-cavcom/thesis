@@ -1,0 +1,87 @@
+\begin{thebibliography}{10}
+
+\bibitem{suh}
+N.~P. Suh, {\em The Principles of Design}.
+\newblock New York: Oxford University Press, 1990.
+
+\bibitem{shirwaiker}
+R.~A. Shirwaiker and G.~E. Okudan, ``Triz and axiomatic design: A review of
+  case-studies and a proposed synergistic use,'' {\em Journal of Intelligent
+  Manufacturing}, vol.~19, pp.~33--47, February 2008.
+
+\bibitem{suh2}
+N.~P. Suh, ``Axiomatic design theory for systems,'' {\em Research in
+  Engineering Design}, vol.~10, pp.~189--209, 1998.
+
+\bibitem{cavallaro}
+S.~Behdad, J.~Cavallaro, P.~K. Gopalakrishnan, and S.~Jahanbekam, ``A graph
+  coloring technique for identifying the minimum number of parts for physical
+  integration in product design,'' in {\em Proceedings of the ASME 2019
+  International Design Engineering Technical Conferences \& Computers and
+  Information in Engineering Conference}, no.~DETC2019-98251 in IDETC/CIE 2019,
+  (Anaheim, CA), Aug 18--21 2019.
+
+\bibitem{jahanbekam}
+S.~Behdad, P.~K. Gopalakrishnan, S.~Jahanbekam, and H.~Klein, ``Graph
+  partitioning technique to identify physically integrated design concepts,''
+  in {\em Proceedings of the ASME 2018 International Design Engineering
+  Technical Conferences \& Computers and Information in Engineering
+  Conference}, no.~DETC2018-85646 in IDETC/CIE 2018, (Quebec, Canada), Aug
+  26--29 2018.
+
+\bibitem{tang}
+Y.~Tang, S.~Yang, and Y.~F. Zhao, ``Sustainable design for additive
+  manufacturing through functionality integration and part consolidation,'' in
+  {\em Handbook of Sustainability in Additive Manufacturing} (S.~S. Muthu and
+  M.~M. Savalani, eds.), vol.~1, pp.~101--144, Singapore: Springer, 2016.
+
+\bibitem{mcdiarmid}
+C.~McDiarmid, ``Determining the chromatic number of a graph,'' {\em SIAM
+  Journal on Computing}, vol.~8, pp.~1--14, 02 1979.
+
+\bibitem{chartrand}
+G.~Chartrand and P.~Zhang, {\em A First Course in Graph Theory}.
+\newblock Mineola, New York: Dover Publications, 2012.
+
+\bibitem{west}
+D.~B. West, {\em Introduction to Graph Theory}.
+\newblock Upper Saddle River, NJ: Prentice Hall, \(2^{nd}\)~ed., 2001.
+
+\bibitem{christofides}
+N.~Christofides, ``An algorithm for the chromatic number of a graph,'' {\em The
+  Computer Journal}, vol.~14, pp.~38--39, January 1971.
+
+\bibitem{zykov}
+A.~A. Zykov, {\em On Some Properties of Linear Complexes}, vol.~7 of {\em
+  American Mathematical Society Translations Series One}.
+\newblock American Mathematical Society, 1949 (translated 1952).
+
+\bibitem{hopcroft}
+J.~Hopcroft and R.~Tarjan, ``Algorithm 447: Efficient algorithms for graph
+  manipulation,'' {\em Communications of the ACM}, vol.~16, pp.~372--378, June
+  1973.
+
+\bibitem{corneil}
+D.~G. Corneil and B.~Graham, ``An algorithm for determining the chromatic
+  number of a graph,'' {\em SIAM Journal on Computing}, vol.~2, pp.~311--318,
+  December 1973.
+
+\bibitem{garey}
+M.~R. Garey and D.~S. Johnson, {\em Computers and Intractability: A Guide to
+  the Theory of NP-Completeness}.
+\newblock San Francisco: W.H. Freeman and Company, 1979.
+
+\bibitem{dturing}
+D.~Turing, {\em Prof: Alan Turing Decoded}.
+\newblock Stroud, Gloucestershire: The History Press, 2015.
+
+\bibitem{bernhardt}
+C.~Bernhardt, {\em Turing's Vision: The Birth of Computer Science}.
+\newblock Cambridge, MA: The MIT Press, 2016.
+
+\bibitem{aturing}
+A.~M. Turing, ``On computable numbers, with an application to the
+  entscheidungsproblem,'' {\em Proceedings of the London Mathematical Society},
+  vol.~42, no.~1, pp.~230--265, 1937.
+
+\end{thebibliography}

@@ -1,0 +1,49 @@
+\BOOKMARK [1][-]{section*.4}{List of Tables}{}% 1
+\BOOKMARK [1][-]{section*.5}{List of Figures}{}% 2
+\BOOKMARK [1][-]{section.1}{Axiomatic Design}{}% 3
+\BOOKMARK [2][-]{subsection.1.1}{Design}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.2}{The Axiomatic Design Framework}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.3}{The Axioms}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.4}{Part Consolidation}{section.1}% 7
+\BOOKMARK [1][-]{section.2}{Graph Theory}{}% 8
+\BOOKMARK [2][-]{subsection.2.1}{Simple Graphs}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.2}{Order and Size}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.3}{Graph Relations}{section.2}% 11
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Labels}{subsection.2.3}% 12
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Vertex Color}{subsection.2.3}% 13
+\BOOKMARK [2][-]{subsection.2.4}{Subgraphs}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.5}{Mutators}{section.2}% 15
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Vertex Removal}{subsection.2.5}% 16
+\BOOKMARK [3][-]{subsubsection.2.5.2}{Edge Addition}{subsection.2.5}% 17
+\BOOKMARK [3][-]{subsubsection.2.5.3}{Edge Removal}{subsection.2.5}% 18
+\BOOKMARK [3][-]{subsubsection.2.5.4}{Vertex Contraction}{subsection.2.5}% 19
+\BOOKMARK [2][-]{subsection.2.6}{Independent Sets}{section.2}% 20
+\BOOKMARK [2][-]{subsection.2.7}{Connected Graphs}{section.2}% 21
+\BOOKMARK [3][-]{subsubsection.2.7.1}{Walks}{subsection.2.7}% 22
+\BOOKMARK [3][-]{subsubsection.2.7.2}{Paths}{subsection.2.7}% 23
+\BOOKMARK [3][-]{subsubsection.2.7.3}{Connected}{subsection.2.7}% 24
+\BOOKMARK [3][-]{subsubsection.2.7.4}{Components}{subsection.2.7}% 25
+\BOOKMARK [3][-]{subsubsection.2.7.5}{Impact on Coloring}{subsection.2.7}% 26
+\BOOKMARK [2][-]{subsection.2.8}{Vertex Degree}{section.2}% 27
+\BOOKMARK [2][-]{subsection.2.9}{Special Graphs}{section.2}% 28
+\BOOKMARK [3][-]{subsubsection.2.9.1}{Empty Graphs}{subsection.2.9}% 29
+\BOOKMARK [3][-]{subsubsection.2.9.2}{Paths}{subsection.2.9}% 30
+\BOOKMARK [3][-]{subsubsection.2.9.3}{Cycles}{subsection.2.9}% 31
+\BOOKMARK [3][-]{subsubsection.2.9.4}{Complete Graphs}{subsection.2.9}% 32
+\BOOKMARK [3][-]{subsubsection.2.9.5}{Trees}{subsection.2.9}% 33
+\BOOKMARK [2][-]{subsection.2.10}{Cliques}{section.2}% 34
+\BOOKMARK [1][-]{section.3}{Algorithms and Computational Complexity}{}% 35
+\BOOKMARK [2][-]{subsection.3.1}{Problems}{section.3}% 36
+\BOOKMARK [2][-]{subsection.3.2}{Enigma}{section.3}% 37
+\BOOKMARK [2][-]{subsection.3.3}{Algorithms}{section.3}% 38
+\BOOKMARK [1][-]{section.4}{The Proposed Algorithm}{}% 39
+\BOOKMARK [2][-]{subsection.4.1}{Outer Loop}{section.4}% 40
+\BOOKMARK [2][-]{subsection.4.2}{Called Subroutine}{section.4}% 41
+\BOOKMARK [2][-]{subsection.4.3}{Supporting Theorems}{section.4}% 42
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Maximum Edge Threshold}{subsection.4.3}% 43
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Vertex Removal}{subsection.4.3}% 44
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Minimum Common Neighbor Upper Bound}{subsection.4.3}% 45
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Recursive Steps}{subsection.4.3}% 46
+\BOOKMARK [2][-]{subsection.4.4}{An Example}{section.4}% 47
+\BOOKMARK [1][-]{section.5}{Toaster Design Case Study}{}% 48
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 49

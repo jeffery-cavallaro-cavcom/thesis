@@ -1,0 +1,57 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces The axiomatic design framework.}}{3}{figure.1}% 
+\contentsline {figure}{\numberline {2}{\ignorespaces Mapping FRs to DPs.}}{4}{figure.2}% 
+\contentsline {figure}{\numberline {3}{\ignorespaces An uncoupled design.}}{6}{figure.3}% 
+\contentsline {figure}{\numberline {4}{\ignorespaces A decoupled design.}}{6}{figure.4}% 
+\contentsline {figure}{\numberline {5}{\ignorespaces A coupled design.}}{6}{figure.5}% 
+\contentsline {figure}{\numberline {6}{\ignorespaces Decoupling a design by adding DPs.}}{8}{figure.6}% 
+\contentsline {figure}{\numberline {7}{\ignorespaces A part consolidation example.}}{9}{figure.7}% 
+\contentsline {figure}{\numberline {8}{\ignorespaces An example graph (labeled and unlabeled).}}{12}{figure.8}% 
+\contentsline {figure}{\numberline {9}{\ignorespaces A graph with a \(4\)-coloring.}}{16}{figure.9}% 
+\contentsline {figure}{\numberline {10}{\ignorespaces A Graph with a \(3\)-chromatic coloring.}}{17}{figure.10}% 
+\contentsline {figure}{\numberline {11}{\ignorespaces Subgraph examples.}}{19}{figure.11}% 
+\contentsline {figure}{\numberline {12}{\ignorespaces An induced subgraph.}}{19}{figure.12}% 
+\contentsline {figure}{\numberline {13}{\ignorespaces Vertex removal.}}{20}{figure.13}% 
+\contentsline {figure}{\numberline {14}{\ignorespaces Edge addition.}}{21}{figure.14}% 
+\contentsline {figure}{\numberline {15}{\ignorespaces Edge removal.}}{21}{figure.15}% 
+\contentsline {figure}{\numberline {16}{\ignorespaces Vertex contraction.}}{22}{figure.16}% 
+\contentsline {figure}{\numberline {17}{\ignorespaces Open and closed walks.}}{24}{figure.17}% 
+\contentsline {figure}{\numberline {18}{\ignorespaces Repeated vertex at end case.}}{26}{figure.18}% 
+\contentsline {figure}{\numberline {19}{\ignorespaces Repeated vertex inside case.}}{26}{figure.19}% 
+\contentsline {figure}{\numberline {20}{\ignorespaces Connected and disconnected graphs.}}{27}{figure.20}% 
+\contentsline {figure}{\numberline {21}{\ignorespaces Vertex degrees and the first theorem of graph theory.}}{31}{figure.21}% 
+\contentsline {figure}{\numberline {22}{\ignorespaces Empty graphs.}}{32}{figure.22}% 
+\contentsline {figure}{\numberline {23}{\ignorespaces Path graphs.}}{32}{figure.23}% 
+\contentsline {figure}{\numberline {24}{\ignorespaces Cycle graphs.}}{33}{figure.24}% 
+\contentsline {figure}{\numberline {25}{\ignorespaces Complete graphs.}}{33}{figure.25}% 
+\contentsline {figure}{\numberline {26}{\ignorespaces A tree organized from root to leaves.}}{34}{figure.26}% 
+\contentsline {figure}{\numberline {27}{\ignorespaces A graph with cliques.}}{35}{figure.27}% 
+\contentsline {figure}{\numberline {28}{\ignorespaces Proposed algorithm outer loop.}}{45}{figure.28}% 
+\contentsline {figure}{\numberline {29}{\ignorespaces Proposed algorithm called subroutine.}}{48}{figure.29}% 
+\contentsline {figure}{\numberline {30}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{52}{figure.30}% 
+\contentsline {figure}{\numberline {31}{\ignorespaces Lemma\nobreakspace \ref {lem:remone} example.}}{53}{figure.31}% 
+\contentsline {figure}{\numberline {32}{\ignorespaces Theorem\nobreakspace \ref {thm:lowdeg} example.}}{54}{figure.32}% 
+\contentsline {figure}{\numberline {33}{\ignorespaces Theorem \ref {thm:subset} example.}}{57}{figure.33}% 
+\contentsline {figure}{\numberline {34}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{58}{figure.34}% 
+\contentsline {figure}{\numberline {35}{\ignorespaces Case \(a_i=1\) contradiction.}}{60}{figure.35}% 
+\contentsline {figure}{\numberline {36}{\ignorespaces Corollary \ref {cor:inter} example.}}{62}{figure.36}% 
+\contentsline {figure}{\numberline {37}{\ignorespaces An example graph.}}{67}{figure.37}% 
+\contentsline {figure}{\numberline {38}{\ignorespaces Step: \(G-\set {h}\).}}{68}{figure.38}% 
+\contentsline {figure}{\numberline {39}{\ignorespaces Step: \(G-g\).}}{69}{figure.39}% 
+\contentsline {figure}{\numberline {40}{\ignorespaces Step: \(G\cdot ad\).}}{71}{figure.40}% 
+\contentsline {figure}{\numberline {41}{\ignorespaces Step: \(G+ad\).}}{72}{figure.41}% 
+\contentsline {figure}{\numberline {42}{\ignorespaces Step: \(G-\set {b,f}\)}}{74}{figure.42}% 
+\contentsline {figure}{\numberline {43}{\ignorespaces Initial coloring.}}{75}{figure.43}% 
+\contentsline {figure}{\numberline {44}{\ignorespaces Coloring \(b\) and \(f\).}}{75}{figure.44}% 
+\contentsline {figure}{\numberline {45}{\ignorespaces Coloring \(g\).}}{76}{figure.45}% 
+\contentsline {figure}{\numberline {46}{\ignorespaces Final chromatic coloring.}}{76}{figure.46}% 
+\contentsline {figure}{\numberline {47}{\ignorespaces An example toaster.}}{78}{figure.47}% 
+\contentsline {figure}{\numberline {48}{\ignorespaces First candidate design.}}{79}{figure.48}% 
+\contentsline {figure}{\numberline {49}{\ignorespaces Design 1---remove \(\text {FR}_2\).}}{80}{figure.49}% 
+\contentsline {figure}{\numberline {50}{\ignorespaces Design 1---Remove \(\text {FR}_4\) and \(\text {FR}_3\).}}{81}{figure.50}% 
+\contentsline {figure}{\numberline {51}{\ignorespaces Design 1---chromatic coloring.}}{82}{figure.51}% 
+\contentsline {figure}{\numberline {52}{\ignorespaces Second candidate design.}}{83}{figure.52}% 
+\contentsline {figure}{\numberline {53}{\ignorespaces Design 2---remove \(\text {FR}_6\).}}{84}{figure.53}% 
+\contentsline {figure}{\numberline {54}{\ignorespaces Design 2---remove \(FR_5\).}}{85}{figure.54}% 
+\contentsline {figure}{\numberline {55}{\ignorespaces Design 2---remove \(\text {FR}_2\).}}{85}{figure.55}% 
+\contentsline {figure}{\numberline {56}{\ignorespaces Design 2---remove \(\text {FR}_4\) and \(\text {FR}_7\).}}{86}{figure.56}% 
+\contentsline {figure}{\numberline {57}{\ignorespaces Design 2---chromatic coloring.}}{87}{figure.57}% 
