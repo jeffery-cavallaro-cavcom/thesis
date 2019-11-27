@@ -1,12 +1,12 @@
-Mechanical engineering design practices are increasingly moving towards a framework called \emph{axiomatic design},
-which starts with a set of independent \emph{functional requirements} ({\FR}s) for a manufactured product.  A key
-tenet of axiomatic design is to decrease the \emph{information content} of a design in order to increase the chance
-of manufacturing success.  One important way to decrease information content is to fulfill multiple {\FR}s by a
-single part: a process known as \emph{part consolidation}.  Thus, an important parameter when comparing two
-candidate designs is the minimum number of parts needed to satisfy all of the {\FR}s.  One possible method for
-determining the minimum number of parts is to represent the problem by a graph, where the vertices are the FRs and
-the edges represent the need to separate their endpoint FRs into separate parts.  The answer then becomes the
-solution to a vertex coloring problem: finding the chromatic number of such a graph.  Unfortunately, the chromatic
-number problem is known to be NP-hard.  This research investigates a new algorithm that determines the chromatic
-number for a graph and compares the new algorithm's computer runtime performance to existing Zykov branch
-and bound algorithms using random graph analysis.
+Mechanical engineering design practices are increasingly moving towards a framework called \emph{axiomatic design}
+(AD), which starts with a set of independent \emph{functional requirements} (FRs) for a manufactured product.  A
+key tenet of AD is to decrease the \emph{information content} of a design in order to increase the chance of
+manufacturing success.  One important way to decrease information content is to fulfill multiple FRs by a single
+part: a process known as \emph{part consolidation}.  Thus, an important parameter when comparing two candidate
+designs is the minimum number of parts needed to satisfy all of the FRs.  One possible method for determining the
+minimum number of parts is to represent the problem by a graph, where the vertices are the FRs and the edges
+represent the need to separate their endpoint FRs into separate parts.  The answer then becomes the solution to a
+vertex coloring problem: finding the chromatic number of such a graph.  Unfortunately, the chromatic number problem
+is known to be NP-hard.  This research investigates a new algorithm that determines the chromatic number for a
+graph and compares the new algorithm's computer runtime performance to other well-known algorithms using random
+graph analysis.

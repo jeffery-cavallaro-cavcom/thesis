@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{voloshin}
+V.~Voloshin, ``A tribute to a. a. and t. e. zykovs on the occasion of a. a.
+  zykov's 90th birthday,'' {\em Topics in Graph Theory}, November 2013.
+
 \bibitem{suh}
 N.~P. Suh, {\em The Principles of Design}.
 \newblock New York: Oxford University Press, 1990.
@@ -83,5 +87,12 @@ C.~Bernhardt, {\em Turing's Vision: The Birth of Computer Science}.
 A.~M. Turing, ``On computable numbers, with an application to the
   entscheidungsproblem,'' {\em Proceedings of the London Mathematical Society},
   vol.~42, no.~1, pp.~230--265, 1937.
+
+\bibitem{obit}
+V.~Voloshin, ``Alexander zykov 1922-2013,'' January 2014.
+
+\bibitem{read}
+R.~C. Read, ``An introduction to chromatic polynomials,'' {\em Journal of
+  Combinatorial Theory}, vol.~4, pp.~52--71, 1968.
 
 \end{thebibliography}

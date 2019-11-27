@@ -6,7 +6,7 @@
 \citation{suh,suh2}
 \citation{cavallaro,jahanbekam}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Axiomatic Design}{1}{section.1}\protected@file@percent }
-\newlabel{sec:design}{{1}{1}{Axiomatic Design}{section.1}{}}
+\newlabel{sec:axiomatic}{{1}{1}{Axiomatic Design}{section.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Design}{1}{subsection.1.1}\protected@file@percent }
 \newlabel{sec:sub:design}{{1.1}{1}{Design}{subsection.1.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2}The Axiomatic Design Framework}{2}{subsection.1.2}\protected@file@percent }
@@ -21,12 +21,12 @@
 \newlabel{sec:sub:axioms}{{1.3}{5}{The Axioms}{subsection.1.3}{}}
 \newlabel{axm:independence}{{1}{5}{The Independence Axiom}{axiom.1}{}}
 \citation{suh}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces An uncoupled design.}}{6}{figure.3}\protected@file@percent }
-\newlabel{fig:uncoupled}{{3}{6}{An uncoupled design}{figure.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A decoupled design.}}{6}{figure.4}\protected@file@percent }
-\newlabel{fig:decoupled}{{4}{6}{A decoupled design}{figure.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces A coupled design.}}{6}{figure.5}\protected@file@percent }
-\newlabel{fig:coupled}{{5}{6}{A coupled design}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces An example of an uncoupled design.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:uncoupled}{{3}{6}{An example of an uncoupled design}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces An example of a decoupled design.}}{6}{figure.4}\protected@file@percent }
+\newlabel{fig:decoupled}{{4}{6}{An example of a decoupled design}{figure.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces An example of a coupled design.}}{6}{figure.5}\protected@file@percent }
+\newlabel{fig:coupled}{{5}{6}{An example of a coupled design}{figure.5}{}}
 \citation{suh}
 \citation{suh}
 \newlabel{eqn:info}{{2}{7}{The Axioms}{equation.1.2}{}}
@@ -168,8 +168,8 @@
 \citation{garey}
 \citation{christofides}
 \citation{corneil}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Algorithms and Computational Complexity}{37}{section.3}\protected@file@percent }
-\newlabel{sec:complexity}{{3}{37}{Algorithms and Computational Complexity}{section.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}The Chromatic Number Problem}{37}{section.3}\protected@file@percent }
+\newlabel{sec:chromatic}{{3}{37}{The Chromatic Number Problem}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Problems}{37}{subsection.3.1}\protected@file@percent }
 \newlabel{sec:sub:problems}{{3.1}{37}{Problems}{subsection.3.1}{}}
 \citation{dturing}
@@ -185,143 +185,175 @@
 \citation{dturing}
 \citation{dturing}
 \citation{dturing}
+\citation{obit}
+\citation{voloshin}
+\citation{zykov}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Chromatic Number Lower Bound}{42}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:sub:lower}{{3.4}{42}{Chromatic Number Lower Bound}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Chromatic Number Upper Bound}{42}{subsection.3.5}\protected@file@percent }
+\newlabel{sec:sub:upper}{{3.5}{42}{Chromatic Number Upper Bound}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}The Christofides Algorithm}{42}{subsection.3.6}\protected@file@percent }
+\newlabel{sec:christofides}{{3.6}{42}{The Christofides Algorithm}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Zykov Algorithms}{42}{subsection.3.7}\protected@file@percent }
+\newlabel{sec:zykov}{{3.7}{42}{Zykov Algorithms}{subsection.3.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.7.1}The Chromatic Polynomial}{42}{subsubsection.3.7.1}\protected@file@percent }
+\newlabel{fig:zykov}{{3.7}{43}{Zykov Algorithms}{subsection.3.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces V.G Vizing (L), A.A. Zykov (C), and V.I. Voloshin (R) in Odessa (2001) \cite  {voloshin}}}{43}{figure.28}\protected@file@percent }
+\newlabel{fig:zvcon}{{3.7.1}{44}{The Chromatic Polynomial}{Item.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Same Colors with Vertex Contraction}}{44}{figure.29}\protected@file@percent }
+\newlabel{fig:zeadd}{{3.7.1}{44}{The Chromatic Polynomial}{figure.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Different Colors with Edge Addition}}{44}{figure.30}\protected@file@percent }
+\citation{read}
+\newlabel{fig:greqn}{{3.7.1}{45}{The Chromatic Polynomial}{figure.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Zykov Graph Equation}}{45}{figure.31}\protected@file@percent }
+\citation{corneil}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.7.2}An Exhaustive Algorithm}{46}{subsubsection.3.7.2}\protected@file@percent }
+\newlabel{thm:corneil}{{9}{46}{Corneil and Graham, 1973}{theorem.9}{}}
+\citation{corneil}
+\newlabel{step:zempty}{{3}{47}{An Exhaustive Algorithm}{Item.19}{}}
+\newlabel{step:zcheck}{{4}{47}{An Exhaustive Algorithm}{Item.20}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.7.3}Branch and Bound Strategies}{47}{subsubsection.3.7.3}\protected@file@percent }
+\newlabel{fig:ztree}{{3.7.2}{48}{An Exhaustive Algorithm}{Item.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces A Zykov Tree}}{48}{figure.32}\protected@file@percent }
 \citation{cavallaro}
-\@writefile{toc}{\contentsline {section}{\numberline {4}The Proposed Algorithm}{43}{section.4}\protected@file@percent }
-\newlabel{sec:algorithm}{{4}{43}{The Proposed Algorithm}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Outer Loop}{44}{subsection.4.1}\protected@file@percent }
-\newlabel{sec:sub:outer}{{4.1}{44}{Outer Loop}{subsection.4.1}{}}
-\newlabel{step:outer:null}{{1}{44}{Outer Loop}{Item.14}{}}
-\newlabel{step:outer:empty}{{2}{44}{Outer Loop}{Item.15}{}}
-\newlabel{step:outer:initk}{{3}{44}{Outer Loop}{Item.16}{}}
-\newlabel{step:outer:call}{{4}{44}{Outer Loop}{Item.17}{}}
-\newlabel{step:outer:result}{{5}{44}{Outer Loop}{Item.18}{}}
-\newlabel{step:outer:newg}{{6}{44}{Outer Loop}{Item.19}{}}
-\newlabel{step:outer:incrk}{{7}{44}{Outer Loop}{Item.20}{}}
-\newlabel{step:outer:loop}{{8}{44}{Outer Loop}{Item.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces Proposed algorithm outer loop.}}{45}{figure.28}\protected@file@percent }
-\newlabel{fig:outer}{{28}{45}{Proposed algorithm outer loop}{figure.28}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Called Subroutine}{45}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:sub:called}{{4.2}{45}{Called Subroutine}{subsection.4.2}{}}
-\newlabel{step:sub:check}{{1}{46}{Called Subroutine}{Item.22}{}}
-\newlabel{step:sub:dencalc}{{2}{46}{Called Subroutine}{Item.23}{}}
-\newlabel{step:sub:density}{{3}{46}{Called Subroutine}{Item.24}{}}
-\newlabel{step:sub:smallcalc}{{4}{46}{Called Subroutine}{Item.25}{}}
-\newlabel{step:sub:small}{{5}{46}{Called Subroutine}{Item.26}{}}
-\newlabel{step:sub:common}{{6}{46}{Called Subroutine}{Item.27}{}}
-\newlabel{step:sub:subset}{{7}{46}{Called Subroutine}{Item.28}{}}
-\newlabel{step:sub:select}{{8}{46}{Called Subroutine}{Item.29}{}}
-\newlabel{step:sub:ubcalc}{{9}{46}{Called Subroutine}{Item.30}{}}
-\newlabel{step:sub:ubcheck}{{10}{46}{Called Subroutine}{Item.31}{}}
-\newlabel{step:sub:select2}{{11}{47}{Called Subroutine}{Item.32}{}}
-\newlabel{step:sub:call1}{{12}{47}{Called Subroutine}{Item.33}{}}
-\newlabel{step:sub:call2}{{13}{47}{Called Subroutine}{Item.34}{}}
-\newlabel{step:sub:fail}{{14}{47}{Called Subroutine}{Item.35}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces Proposed algorithm called subroutine.}}{48}{figure.29}\protected@file@percent }
-\newlabel{fig:called}{{29}{48}{Proposed algorithm called subroutine}{figure.29}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{49}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:sub:theorems}{{4.3}{49}{Supporting Theorems}{subsection.4.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{49}{subsubsection.4.3.1}\protected@file@percent }
-\newlabel{sec:sub:sub:edges}{{4.3.1}{49}{Maximum Edge Threshold}{subsubsection.4.3.1}{}}
-\newlabel{thm:density}{{9}{49}{Maximum Edge Threshold}{theorem.9}{}}
-\newlabel{cor:density}{{8}{51}{}{corollary.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces Corollary\nobreakspace  \ref  {cor:density} example.}}{52}{figure.30}\protected@file@percent }
-\newlabel{fig:density}{{30}{52}{Corollary~\ref {cor:density} example}{figure.30}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{52}{subsubsection.4.3.2}\protected@file@percent }
-\newlabel{sec:sub:sub:vremove}{{4.3.2}{52}{Vertex Removal}{subsubsection.4.3.2}{}}
-\newlabel{lem:remone}{{1}{52}{}{lemma.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces Lemma\nobreakspace  \ref  {lem:remone} example.}}{53}{figure.31}\protected@file@percent }
-\newlabel{fig:remone}{{31}{53}{Lemma~\ref {lem:remone} example}{figure.31}{}}
-\newlabel{thm:lowdeg}{{10}{53}{}{theorem.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Theorem\nobreakspace  \ref  {thm:lowdeg} example.}}{54}{figure.32}\protected@file@percent }
-\newlabel{fig:lowdeg}{{32}{54}{Theorem~\ref {thm:lowdeg} example}{figure.32}{}}
-\newlabel{cor:lowdeg}{{9}{55}{}{corollary.9}{}}
-\newlabel{thm:subset}{{11}{55}{}{theorem.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Theorem \ref  {thm:subset} example.}}{57}{figure.33}\protected@file@percent }
-\newlabel{fig:subset}{{33}{57}{Theorem \ref {thm:subset} example}{figure.33}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{57}{subsubsection.4.3.3}\protected@file@percent }
-\newlabel{sec:sub:sub:common}{{4.3.3}{57}{Minimum Common Neighbor Upper Bound}{subsubsection.4.3.3}{}}
-\newlabel{lem:neighbor}{{2}{57}{}{lemma.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces Lemma \ref  {lem:neighbor} example.}}{58}{figure.34}\protected@file@percent }
-\newlabel{fig:neighbor}{{34}{58}{Lemma \ref {lem:neighbor} example}{figure.34}{}}
-\newlabel{thm:inter}{{12}{58}{}{theorem.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces Case \(a_i=1\) contradiction.}}{60}{figure.35}\protected@file@percent }
-\newlabel{fig:aione}{{35}{60}{Case \(a_i=1\) contradiction}{figure.35}{}}
-\newlabel{cor:inter}{{10}{61}{}{corollary.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces Corollary \ref  {cor:inter} example.}}{62}{figure.36}\protected@file@percent }
-\newlabel{fig:inter}{{36}{62}{Corollary \ref {cor:inter} example}{figure.36}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{63}{subsubsection.4.3.4}\protected@file@percent }
-\newlabel{thm:recurse}{{13}{63}{}{theorem.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}An Example}{66}{subsection.4.4}\protected@file@percent }
-\newlabel{sec:sub:example}{{4.4}{66}{An Example}{subsection.4.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces An example graph.}}{67}{figure.37}\protected@file@percent }
-\newlabel{fig:example}{{37}{67}{An example graph}{figure.37}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Step: \(G-\set  {h}\).}}{68}{figure.38}\protected@file@percent }
-\newlabel{fig:removeh}{{38}{68}{Step: \(G-\set {h}\)}{figure.38}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Calculating Common Neighbors 1}}{69}{table.3}\protected@file@percent }
-\newlabel{tab:common1}{{3}{69}{Calculating Common Neighbors 1}{table.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Step: \(G-g\).}}{69}{figure.39}\protected@file@percent }
-\newlabel{fig:removeg}{{39}{69}{Step: \(G-g\)}{figure.39}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Calculating Common Neighbors 2}}{70}{table.4}\protected@file@percent }
-\newlabel{tab:common2}{{4}{70}{Calculating Common Neighbors 2}{table.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces Step: \(G\cdot ad\).}}{71}{figure.40}\protected@file@percent }
-\newlabel{fig:contract1}{{40}{71}{Step: \(G\cdot ad\)}{figure.40}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces Step: \(G+ad\).}}{72}{figure.41}\protected@file@percent }
-\newlabel{fig:edge1}{{41}{72}{Step: \(G+ad\)}{figure.41}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces Step: \(G-\set  {b,f}\)}}{74}{figure.42}\protected@file@percent }
-\newlabel{fig:removecf}{{42}{74}{Step: \(G-\set {b,f}\)}{figure.42}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces Initial coloring.}}{75}{figure.43}\protected@file@percent }
-\newlabel{fig:cstart}{{43}{75}{Initial coloring}{figure.43}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {44}{\ignorespaces Coloring \(b\) and \(f\).}}{75}{figure.44}\protected@file@percent }
-\newlabel{fig:colorbf}{{44}{75}{Coloring \(b\) and \(f\)}{figure.44}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {45}{\ignorespaces Coloring \(g\).}}{76}{figure.45}\protected@file@percent }
-\newlabel{fig:colorg}{{45}{76}{Coloring \(g\)}{figure.45}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {46}{\ignorespaces Final chromatic coloring.}}{76}{figure.46}\protected@file@percent }
-\newlabel{fig:cfinal}{{46}{76}{Final chromatic coloring}{figure.46}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Toaster Design Case Study}{78}{section.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces An example toaster.}}{78}{figure.47}\protected@file@percent }
-\newlabel{fig:toaster}{{47}{78}{An example toaster}{figure.47}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Toaster Functional Requirements}}{79}{table.5}\protected@file@percent }
-\newlabel{toasterfrs}{{5}{79}{Toaster Functional Requirements}{table.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces First candidate design.}}{79}{figure.48}\protected@file@percent }
-\newlabel{fig:design1}{{48}{79}{First candidate design}{figure.48}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces Design 1---remove \(\text  {FR}_2\).}}{80}{figure.49}\protected@file@percent }
-\newlabel{fig:d1rem2}{{49}{80}{Design 1---remove \(\FR _2\)}{figure.49}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces Design 1---Remove \(\text  {FR}_4\) and \(\text  {FR}_3\).}}{81}{figure.50}\protected@file@percent }
-\newlabel{fig:d1rem34}{{50}{81}{Design 1---Remove \(\FR _4\) and \(\FR _3\)}{figure.50}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces Design 1---chromatic coloring.}}{82}{figure.51}\protected@file@percent }
-\newlabel{fig:d1color}{{51}{82}{Design 1---chromatic coloring}{figure.51}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces Second candidate design.}}{83}{figure.52}\protected@file@percent }
-\newlabel{fig:design2}{{52}{83}{Second candidate design}{figure.52}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces Design 2---remove \(\text  {FR}_6\).}}{84}{figure.53}\protected@file@percent }
-\newlabel{fig:d2rem6}{{53}{84}{Design 2---remove \(\FR _6\)}{figure.53}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces Design 2---remove \(FR_5\).}}{85}{figure.54}\protected@file@percent }
-\newlabel{fig:d2rem5}{{54}{85}{Design 2---remove \(FR_5\)}{figure.54}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {55}{\ignorespaces Design 2---remove \(\text  {FR}_2\).}}{85}{figure.55}\protected@file@percent }
-\newlabel{fig:d2rem2}{{55}{85}{Design 2---remove \(\FR _2\)}{figure.55}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {56}{\ignorespaces Design 2---remove \(\text  {FR}_4\) and \(\text  {FR}_7\).}}{86}{figure.56}\protected@file@percent }
-\newlabel{fig:d2rem47}{{56}{86}{Design 2---remove \(\FR _4\) and \(\FR _7\)}{figure.56}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {57}{\ignorespaces Design 2---chromatic coloring.}}{87}{figure.57}\protected@file@percent }
-\newlabel{fig:d2color}{{57}{87}{Design 2---chromatic coloring}{figure.57}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}The Proposed Algorithm}{49}{section.4}\protected@file@percent }
+\newlabel{sec:algorithm}{{4}{49}{The Proposed Algorithm}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Outer Loop}{50}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:sub:outer}{{4.1}{50}{Outer Loop}{subsection.4.1}{}}
+\newlabel{step:outer:null}{{1}{50}{Outer Loop}{Item.34}{}}
+\newlabel{step:outer:empty}{{2}{50}{Outer Loop}{Item.35}{}}
+\newlabel{step:outer:initk}{{3}{50}{Outer Loop}{Item.36}{}}
+\newlabel{step:outer:call}{{4}{50}{Outer Loop}{Item.37}{}}
+\newlabel{step:outer:result}{{5}{50}{Outer Loop}{Item.38}{}}
+\newlabel{step:outer:newg}{{6}{50}{Outer Loop}{Item.39}{}}
+\newlabel{step:outer:incrk}{{7}{50}{Outer Loop}{Item.40}{}}
+\newlabel{step:outer:loop}{{8}{50}{Outer Loop}{Item.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Proposed algorithm outer loop.}}{51}{figure.33}\protected@file@percent }
+\newlabel{fig:outer}{{33}{51}{Proposed algorithm outer loop}{figure.33}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Called Subroutine}{51}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:sub:called}{{4.2}{51}{Called Subroutine}{subsection.4.2}{}}
+\newlabel{step:sub:check}{{1}{52}{Called Subroutine}{Item.42}{}}
+\newlabel{step:sub:dencalc}{{2}{52}{Called Subroutine}{Item.43}{}}
+\newlabel{step:sub:density}{{3}{52}{Called Subroutine}{Item.44}{}}
+\newlabel{step:sub:smallcalc}{{4}{52}{Called Subroutine}{Item.45}{}}
+\newlabel{step:sub:small}{{5}{52}{Called Subroutine}{Item.46}{}}
+\newlabel{step:sub:common}{{6}{52}{Called Subroutine}{Item.47}{}}
+\newlabel{step:sub:subset}{{7}{52}{Called Subroutine}{Item.48}{}}
+\newlabel{step:sub:select}{{8}{52}{Called Subroutine}{Item.49}{}}
+\newlabel{step:sub:ubcalc}{{9}{52}{Called Subroutine}{Item.50}{}}
+\newlabel{step:sub:ubcheck}{{10}{52}{Called Subroutine}{Item.51}{}}
+\newlabel{step:sub:select2}{{11}{53}{Called Subroutine}{Item.52}{}}
+\newlabel{step:sub:call1}{{12}{53}{Called Subroutine}{Item.53}{}}
+\newlabel{step:sub:call2}{{13}{53}{Called Subroutine}{Item.54}{}}
+\newlabel{step:sub:fail}{{14}{53}{Called Subroutine}{Item.55}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces Proposed algorithm called subroutine.}}{54}{figure.34}\protected@file@percent }
+\newlabel{fig:called}{{34}{54}{Proposed algorithm called subroutine}{figure.34}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{55}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:sub:theorems}{{4.3}{55}{Supporting Theorems}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{55}{subsubsection.4.3.1}\protected@file@percent }
+\newlabel{sec:sub:sub:edges}{{4.3.1}{55}{Maximum Edge Threshold}{subsubsection.4.3.1}{}}
+\newlabel{thm:density}{{10}{55}{Maximum Edge Threshold}{theorem.10}{}}
+\newlabel{cor:density}{{8}{57}{}{corollary.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces Corollary\nobreakspace  \ref  {cor:density} example.}}{58}{figure.35}\protected@file@percent }
+\newlabel{fig:density}{{35}{58}{Corollary~\ref {cor:density} example}{figure.35}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{58}{subsubsection.4.3.2}\protected@file@percent }
+\newlabel{sec:sub:sub:vremove}{{4.3.2}{58}{Vertex Removal}{subsubsection.4.3.2}{}}
+\newlabel{lem:remone}{{1}{58}{}{lemma.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces Lemma\nobreakspace  \ref  {lem:remone} example.}}{59}{figure.36}\protected@file@percent }
+\newlabel{fig:remone}{{36}{59}{Lemma~\ref {lem:remone} example}{figure.36}{}}
+\newlabel{thm:lowdeg}{{11}{59}{}{theorem.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces Theorem\nobreakspace  \ref  {thm:lowdeg} example.}}{61}{figure.37}\protected@file@percent }
+\newlabel{fig:lowdeg}{{37}{61}{Theorem~\ref {thm:lowdeg} example}{figure.37}{}}
+\newlabel{cor:lowdeg}{{9}{61}{}{corollary.9}{}}
+\newlabel{thm:subset}{{12}{62}{}{theorem.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Theorem \ref  {thm:subset} example.}}{63}{figure.38}\protected@file@percent }
+\newlabel{fig:subset}{{38}{63}{Theorem \ref {thm:subset} example}{figure.38}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{64}{subsubsection.4.3.3}\protected@file@percent }
+\newlabel{sec:sub:sub:common}{{4.3.3}{64}{Minimum Common Neighbor Upper Bound}{subsubsection.4.3.3}{}}
+\newlabel{lem:neighbor}{{2}{64}{}{lemma.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Lemma \ref  {lem:neighbor} example.}}{65}{figure.39}\protected@file@percent }
+\newlabel{fig:neighbor}{{39}{65}{Lemma \ref {lem:neighbor} example}{figure.39}{}}
+\newlabel{thm:inter}{{13}{65}{}{theorem.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces Case \(a_i=1\) contradiction.}}{66}{figure.40}\protected@file@percent }
+\newlabel{fig:aione}{{40}{66}{Case \(a_i=1\) contradiction}{figure.40}{}}
+\newlabel{cor:inter}{{10}{68}{}{corollary.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces Corollary \ref  {cor:inter} example.}}{69}{figure.41}\protected@file@percent }
+\newlabel{fig:inter}{{41}{69}{Corollary \ref {cor:inter} example}{figure.41}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{69}{subsubsection.4.3.4}\protected@file@percent }
+\newlabel{thm:recurse}{{14}{69}{}{theorem.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}An Example}{72}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:sub:example}{{4.4}{72}{An Example}{subsection.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces An example graph.}}{73}{figure.42}\protected@file@percent }
+\newlabel{fig:example}{{42}{73}{An example graph}{figure.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces Step: \(G-\set  {h}\).}}{74}{figure.43}\protected@file@percent }
+\newlabel{fig:removeh}{{43}{74}{Step: \(G-\set {h}\)}{figure.43}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Calculating Common Neighbors 1}}{75}{table.3}\protected@file@percent }
+\newlabel{tab:common1}{{3}{75}{Calculating Common Neighbors 1}{table.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {44}{\ignorespaces Step: \(G-g\).}}{75}{figure.44}\protected@file@percent }
+\newlabel{fig:removeg}{{44}{75}{Step: \(G-g\)}{figure.44}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Calculating Common Neighbors 2}}{76}{table.4}\protected@file@percent }
+\newlabel{tab:common2}{{4}{76}{Calculating Common Neighbors 2}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {45}{\ignorespaces Step: \(G\cdot ad\).}}{77}{figure.45}\protected@file@percent }
+\newlabel{fig:contract1}{{45}{77}{Step: \(G\cdot ad\)}{figure.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {46}{\ignorespaces Step: \(G+ad\).}}{78}{figure.46}\protected@file@percent }
+\newlabel{fig:edge1}{{46}{78}{Step: \(G+ad\)}{figure.46}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces Step: \(G-\set  {b,f}\)}}{80}{figure.47}\protected@file@percent }
+\newlabel{fig:removecf}{{47}{80}{Step: \(G-\set {b,f}\)}{figure.47}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces Initial coloring.}}{81}{figure.48}\protected@file@percent }
+\newlabel{fig:cstart}{{48}{81}{Initial coloring}{figure.48}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces Coloring \(b\) and \(f\).}}{81}{figure.49}\protected@file@percent }
+\newlabel{fig:colorbf}{{49}{81}{Coloring \(b\) and \(f\)}{figure.49}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces Coloring \(g\).}}{82}{figure.50}\protected@file@percent }
+\newlabel{fig:colorg}{{50}{82}{Coloring \(g\)}{figure.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces Final chromatic coloring.}}{82}{figure.51}\protected@file@percent }
+\newlabel{fig:cfinal}{{51}{82}{Final chromatic coloring}{figure.51}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Toaster Design Case Study}{84}{section.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces An example toaster.}}{84}{figure.52}\protected@file@percent }
+\newlabel{fig:toaster}{{52}{84}{An example toaster}{figure.52}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Toaster Functional Requirements}}{85}{table.5}\protected@file@percent }
+\newlabel{toasterfrs}{{5}{85}{Toaster Functional Requirements}{table.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces First candidate design.}}{85}{figure.53}\protected@file@percent }
+\newlabel{fig:design1}{{53}{85}{First candidate design}{figure.53}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces Design 1---remove \(\text  {FR}_2\).}}{86}{figure.54}\protected@file@percent }
+\newlabel{fig:d1rem2}{{54}{86}{Design 1---remove \(\FR _2\)}{figure.54}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {55}{\ignorespaces Design 1---Remove \(\text  {FR}_4\) and \(\text  {FR}_3\).}}{87}{figure.55}\protected@file@percent }
+\newlabel{fig:d1rem34}{{55}{87}{Design 1---Remove \(\FR _4\) and \(\FR _3\)}{figure.55}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {56}{\ignorespaces Design 1---chromatic coloring.}}{88}{figure.56}\protected@file@percent }
+\newlabel{fig:d1color}{{56}{88}{Design 1---chromatic coloring}{figure.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {57}{\ignorespaces Second candidate design.}}{89}{figure.57}\protected@file@percent }
+\newlabel{fig:design2}{{57}{89}{Second candidate design}{figure.57}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {58}{\ignorespaces Design 2---remove \(\text  {FR}_6\).}}{90}{figure.58}\protected@file@percent }
+\newlabel{fig:d2rem6}{{58}{90}{Design 2---remove \(\FR _6\)}{figure.58}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {59}{\ignorespaces Design 2---remove \(FR_5\).}}{91}{figure.59}\protected@file@percent }
+\newlabel{fig:d2rem5}{{59}{91}{Design 2---remove \(FR_5\)}{figure.59}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {60}{\ignorespaces Design 2---remove \(\text  {FR}_2\).}}{91}{figure.60}\protected@file@percent }
+\newlabel{fig:d2rem2}{{60}{91}{Design 2---remove \(\FR _2\)}{figure.60}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {61}{\ignorespaces Design 2---remove \(\text  {FR}_4\) and \(\text  {FR}_7\).}}{92}{figure.61}\protected@file@percent }
+\newlabel{fig:d2rem47}{{61}{92}{Design 2---remove \(\FR _4\) and \(\FR _7\)}{figure.61}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {62}{\ignorespaces Design 2---chromatic coloring.}}{93}{figure.62}\protected@file@percent }
+\newlabel{fig:d2color}{{62}{93}{Design 2---chromatic coloring}{figure.62}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Random Graph Analysis}{94}{section.6}\protected@file@percent }
+\newlabel{sec:random}{{6}{94}{Random Graph Analysis}{section.6}{}}
 \@setckpt{sections}{
-\setcounter{page}{88}
+\setcounter{page}{95}
 \setcounter{equation}{2}
 \setcounter{enumi}{4}
-\setcounter{enumii}{0}
+\setcounter{enumii}{3}
 \setcounter{enumiii}{0}
 \setcounter{enumiv}{0}
 \setcounter{footnote}{0}
 \setcounter{mpfootnote}{0}
-\setcounter{section}{5}
+\setcounter{section}{6}
 \setcounter{subsection}{0}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{IEEEsubequation}{0}
-\setcounter{figure}{57}
+\setcounter{figure}{62}
 \setcounter{table}{5}
 \setcounter{IEEEbiography}{0}
-\setcounter{Item}{101}
+\setcounter{Item}{121}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{48}
+\setcounter{bookmark@seq@number}{56}
 \setcounter{float@type}{16}
 \setcounter{algorithm}{0}
 \setcounter{ALG@line}{0}
@@ -339,7 +371,7 @@
 \setcounter{proposition}{6}
 \setcounter{axiom}{2}
 \setcounter{lemma}{2}
-\setcounter{theorem}{13}
+\setcounter{theorem}{14}
 \setcounter{corollary}{10}
 \setcounter{section@level}{1}
 \setcounter{lstlisting}{0}
