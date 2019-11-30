@@ -12,47 +12,48 @@
 \contentsline {subsection}{\numberline {2.3}Graph Relations}{14}{subsection.2.3}% 
 \contentsline {subsubsection}{\numberline {2.3.1}Labels}{14}{subsubsection.2.3.1}% 
 \contentsline {subsubsection}{\numberline {2.3.2}Vertex Color}{15}{subsubsection.2.3.2}% 
-\contentsline {subsection}{\numberline {2.4}Subgraphs}{17}{subsection.2.4}% 
-\contentsline {subsection}{\numberline {2.5}Mutators}{19}{subsection.2.5}% 
+\contentsline {subsection}{\numberline {2.4}Subgraphs}{18}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Mutators}{20}{subsection.2.5}% 
 \contentsline {subsubsection}{\numberline {2.5.1}Vertex Removal}{20}{subsubsection.2.5.1}% 
-\contentsline {subsubsection}{\numberline {2.5.2}Edge Addition}{20}{subsubsection.2.5.2}% 
-\contentsline {subsubsection}{\numberline {2.5.3}Edge Removal}{21}{subsubsection.2.5.3}% 
+\contentsline {subsubsection}{\numberline {2.5.2}Edge Addition}{21}{subsubsection.2.5.2}% 
+\contentsline {subsubsection}{\numberline {2.5.3}Edge Removal}{22}{subsubsection.2.5.3}% 
 \contentsline {subsubsection}{\numberline {2.5.4}Vertex Contraction}{22}{subsubsection.2.5.4}% 
-\contentsline {subsection}{\numberline {2.6}Independent Sets}{23}{subsection.2.6}% 
-\contentsline {subsection}{\numberline {2.7}Connected Graphs}{23}{subsection.2.7}% 
-\contentsline {subsubsection}{\numberline {2.7.1}Walks}{23}{subsubsection.2.7.1}% 
-\contentsline {subsubsection}{\numberline {2.7.2}Paths}{25}{subsubsection.2.7.2}% 
-\contentsline {subsubsection}{\numberline {2.7.3}Connected}{26}{subsubsection.2.7.3}% 
-\contentsline {subsubsection}{\numberline {2.7.4}Components}{27}{subsubsection.2.7.4}% 
-\contentsline {subsubsection}{\numberline {2.7.5}Impact on Coloring}{28}{subsubsection.2.7.5}% 
-\contentsline {subsection}{\numberline {2.8}Vertex Degree}{29}{subsection.2.8}% 
-\contentsline {subsection}{\numberline {2.9}Special Graphs}{31}{subsection.2.9}% 
-\contentsline {subsubsection}{\numberline {2.9.1}Empty Graphs}{32}{subsubsection.2.9.1}% 
-\contentsline {subsubsection}{\numberline {2.9.2}Paths}{32}{subsubsection.2.9.2}% 
-\contentsline {subsubsection}{\numberline {2.9.3}Cycles}{33}{subsubsection.2.9.3}% 
-\contentsline {subsubsection}{\numberline {2.9.4}Complete Graphs}{33}{subsubsection.2.9.4}% 
-\contentsline {subsubsection}{\numberline {2.9.5}Trees}{34}{subsubsection.2.9.5}% 
-\contentsline {subsection}{\numberline {2.10}Cliques}{35}{subsection.2.10}% 
-\contentsline {section}{\numberline {3}The Chromatic Number Problem}{37}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Problems}{37}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}Enigma}{38}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Algorithms}{40}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Chromatic Number Lower Bound}{42}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}Chromatic Number Upper Bound}{42}{subsection.3.5}% 
-\contentsline {subsection}{\numberline {3.6}The Christofides Algorithm}{42}{subsection.3.6}% 
-\contentsline {subsection}{\numberline {3.7}Zykov Algorithms}{42}{subsection.3.7}% 
-\contentsline {subsubsection}{\numberline {3.7.1}The Chromatic Polynomial}{42}{subsubsection.3.7.1}% 
-\contentsline {subsubsection}{\numberline {3.7.2}An Exhaustive Algorithm}{46}{subsubsection.3.7.2}% 
-\contentsline {subsubsection}{\numberline {3.7.3}Branch and Bound Strategies}{47}{subsubsection.3.7.3}% 
-\contentsline {section}{\numberline {4}The Proposed Algorithm}{49}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Outer Loop}{50}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Called Subroutine}{51}{subsection.4.2}% 
-\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{55}{subsection.4.3}% 
-\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{55}{subsubsection.4.3.1}% 
-\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{58}{subsubsection.4.3.2}% 
-\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{64}{subsubsection.4.3.3}% 
-\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{69}{subsubsection.4.3.4}% 
-\contentsline {subsection}{\numberline {4.4}An Example}{72}{subsection.4.4}% 
-\contentsline {section}{\numberline {5}Toaster Design Case Study}{84}{section.5}% 
-\contentsline {section}{\numberline {6}Random Graph Analysis}{94}{section.6}% 
-\contentsline {section}{Literature Cited}{95}{section*.6}% 
+\contentsline {subsubsection}{\numberline {2.5.5}Graph Complement}{23}{subsubsection.2.5.5}% 
+\contentsline {subsection}{\numberline {2.6}Independent Sets}{24}{subsection.2.6}% 
+\contentsline {subsection}{\numberline {2.7}Cliques}{25}{subsection.2.7}% 
+\contentsline {subsection}{\numberline {2.8}Connected Graphs}{27}{subsection.2.8}% 
+\contentsline {subsubsection}{\numberline {2.8.1}Walks}{27}{subsubsection.2.8.1}% 
+\contentsline {subsubsection}{\numberline {2.8.2}Paths}{29}{subsubsection.2.8.2}% 
+\contentsline {subsubsection}{\numberline {2.8.3}Connected}{30}{subsubsection.2.8.3}% 
+\contentsline {subsubsection}{\numberline {2.8.4}Components}{31}{subsubsection.2.8.4}% 
+\contentsline {subsubsection}{\numberline {2.8.5}Impact on Coloring}{32}{subsubsection.2.8.5}% 
+\contentsline {subsection}{\numberline {2.9}Vertex Degree}{33}{subsection.2.9}% 
+\contentsline {subsection}{\numberline {2.10}Special Graphs}{35}{subsection.2.10}% 
+\contentsline {subsubsection}{\numberline {2.10.1}Empty Graphs}{36}{subsubsection.2.10.1}% 
+\contentsline {subsubsection}{\numberline {2.10.2}Paths}{36}{subsubsection.2.10.2}% 
+\contentsline {subsubsection}{\numberline {2.10.3}Cycles}{37}{subsubsection.2.10.3}% 
+\contentsline {subsubsection}{\numberline {2.10.4}Complete Graphs}{37}{subsubsection.2.10.4}% 
+\contentsline {subsubsection}{\numberline {2.10.5}Trees}{38}{subsubsection.2.10.5}% 
+\contentsline {section}{\numberline {3}The Chromatic Number Problem}{40}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Problems}{40}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Enigma}{41}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Algorithms}{43}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}Chromatic Number Lower Bound}{45}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.5}Chromatic Number Upper Bound}{45}{subsection.3.5}% 
+\contentsline {subsection}{\numberline {3.6}The Christofides Algorithm}{45}{subsection.3.6}% 
+\contentsline {subsection}{\numberline {3.7}Zykov Algorithms}{45}{subsection.3.7}% 
+\contentsline {subsubsection}{\numberline {3.7.1}The Chromatic Polynomial}{45}{subsubsection.3.7.1}% 
+\contentsline {subsubsection}{\numberline {3.7.2}An Exhaustive Algorithm}{49}{subsubsection.3.7.2}% 
+\contentsline {subsubsection}{\numberline {3.7.3}Branch and Bound Strategies}{50}{subsubsection.3.7.3}% 
+\contentsline {section}{\numberline {4}The Proposed Algorithm}{52}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Outer Loop}{53}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Called Subroutine}{54}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{58}{subsection.4.3}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{58}{subsubsection.4.3.1}% 
+\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{61}{subsubsection.4.3.2}% 
+\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{67}{subsubsection.4.3.3}% 
+\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{72}{subsubsection.4.3.4}% 
+\contentsline {subsection}{\numberline {4.4}An Example}{75}{subsection.4.4}% 
+\contentsline {section}{\numberline {5}Toaster Design Case Study}{87}{section.5}% 
+\contentsline {section}{\numberline {6}Random Graph Analysis}{97}{section.6}% 
+\contentsline {section}{Literature Cited}{98}{section*.6}% 

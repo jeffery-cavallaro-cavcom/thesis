@@ -97,7 +97,7 @@ A flowchart of these steps is shown in \figurename~\ref{fig:outer}.
 \end{figure}
 
 The outer loop is guaranteed to terminate because \(k\) will eventually be greater than or equal to \(n\).  Thus,
-by Proposition~\ref{prop:coloring3}, the current state of \(G\) is \colorable{k}, causing the called subroutine to
+by \theoremname~\ref{thm:nlek}, the current state of \(G\) is \colorable{k}, causing the called subroutine to
 return true.
 
 \subsection{Called Subroutine}\label{sec:sub:called}
@@ -111,7 +111,7 @@ it all together based on the current value of \(k\).
 The steps of the called subroutine and references to their associated theorems are as follows:
 
 \begin{enumerate}
-\item \label{step:sub:check} If \(n\le k\) then return true (Proposition~\ref{prop:coloring3}).
+\item \label{step:sub:check} If \(n\le k\) then return true (\theoremname~\ref{thm:nlek}).
 
 \item \label{step:sub:dencalc} Calculate a maximum edge threshold:
   \[a=\frac{n^2(k-1)}{2k}\]
@@ -246,7 +246,7 @@ resulting in a false return.  Note that in the event of a false return, any modi
 \subsection{Supporting Theorems}\label{sec:sub:theorems}
 
 This section contains the theorems that support the steps in the called subroutine.  Remember that the success
-check of step~\ref{step:sub:check} is already supported by Proposition~\ref{prop:coloring3}.
+check of step~\ref{step:sub:check} is already supported by \theoremname~\ref{thm:nlek}.
 
 \subsubsection{Maximum Edge Threshold}\label{sec:sub:sub:edges}
 

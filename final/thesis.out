@@ -17,41 +17,42 @@
 \BOOKMARK [3][-]{subsubsection.2.5.2}{Edge Addition}{subsection.2.5}% 17
 \BOOKMARK [3][-]{subsubsection.2.5.3}{Edge Removal}{subsection.2.5}% 18
 \BOOKMARK [3][-]{subsubsection.2.5.4}{Vertex Contraction}{subsection.2.5}% 19
-\BOOKMARK [2][-]{subsection.2.6}{Independent Sets}{section.2}% 20
-\BOOKMARK [2][-]{subsection.2.7}{Connected Graphs}{section.2}% 21
-\BOOKMARK [3][-]{subsubsection.2.7.1}{Walks}{subsection.2.7}% 22
-\BOOKMARK [3][-]{subsubsection.2.7.2}{Paths}{subsection.2.7}% 23
-\BOOKMARK [3][-]{subsubsection.2.7.3}{Connected}{subsection.2.7}% 24
-\BOOKMARK [3][-]{subsubsection.2.7.4}{Components}{subsection.2.7}% 25
-\BOOKMARK [3][-]{subsubsection.2.7.5}{Impact on Coloring}{subsection.2.7}% 26
-\BOOKMARK [2][-]{subsection.2.8}{Vertex Degree}{section.2}% 27
-\BOOKMARK [2][-]{subsection.2.9}{Special Graphs}{section.2}% 28
-\BOOKMARK [3][-]{subsubsection.2.9.1}{Empty Graphs}{subsection.2.9}% 29
-\BOOKMARK [3][-]{subsubsection.2.9.2}{Paths}{subsection.2.9}% 30
-\BOOKMARK [3][-]{subsubsection.2.9.3}{Cycles}{subsection.2.9}% 31
-\BOOKMARK [3][-]{subsubsection.2.9.4}{Complete Graphs}{subsection.2.9}% 32
-\BOOKMARK [3][-]{subsubsection.2.9.5}{Trees}{subsection.2.9}% 33
-\BOOKMARK [2][-]{subsection.2.10}{Cliques}{section.2}% 34
-\BOOKMARK [1][-]{section.3}{The Chromatic Number Problem}{}% 35
-\BOOKMARK [2][-]{subsection.3.1}{Problems}{section.3}% 36
-\BOOKMARK [2][-]{subsection.3.2}{Enigma}{section.3}% 37
-\BOOKMARK [2][-]{subsection.3.3}{Algorithms}{section.3}% 38
-\BOOKMARK [2][-]{subsection.3.4}{Chromatic Number Lower Bound}{section.3}% 39
-\BOOKMARK [2][-]{subsection.3.5}{Chromatic Number Upper Bound}{section.3}% 40
-\BOOKMARK [2][-]{subsection.3.6}{The Christofides Algorithm}{section.3}% 41
-\BOOKMARK [2][-]{subsection.3.7}{Zykov Algorithms}{section.3}% 42
-\BOOKMARK [3][-]{subsubsection.3.7.1}{The Chromatic Polynomial}{subsection.3.7}% 43
-\BOOKMARK [3][-]{subsubsection.3.7.2}{An Exhaustive Algorithm}{subsection.3.7}% 44
-\BOOKMARK [3][-]{subsubsection.3.7.3}{Branch and Bound Strategies}{subsection.3.7}% 45
-\BOOKMARK [1][-]{section.4}{The Proposed Algorithm}{}% 46
-\BOOKMARK [2][-]{subsection.4.1}{Outer Loop}{section.4}% 47
-\BOOKMARK [2][-]{subsection.4.2}{Called Subroutine}{section.4}% 48
-\BOOKMARK [2][-]{subsection.4.3}{Supporting Theorems}{section.4}% 49
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Maximum Edge Threshold}{subsection.4.3}% 50
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Vertex Removal}{subsection.4.3}% 51
-\BOOKMARK [3][-]{subsubsection.4.3.3}{Minimum Common Neighbor Upper Bound}{subsection.4.3}% 52
-\BOOKMARK [3][-]{subsubsection.4.3.4}{Recursive Steps}{subsection.4.3}% 53
-\BOOKMARK [2][-]{subsection.4.4}{An Example}{section.4}% 54
-\BOOKMARK [1][-]{section.5}{Toaster Design Case Study}{}% 55
-\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 56
-\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 57
+\BOOKMARK [3][-]{subsubsection.2.5.5}{Graph Complement}{subsection.2.5}% 20
+\BOOKMARK [2][-]{subsection.2.6}{Independent Sets}{section.2}% 21
+\BOOKMARK [2][-]{subsection.2.7}{Cliques}{section.2}% 22
+\BOOKMARK [2][-]{subsection.2.8}{Connected Graphs}{section.2}% 23
+\BOOKMARK [3][-]{subsubsection.2.8.1}{Walks}{subsection.2.8}% 24
+\BOOKMARK [3][-]{subsubsection.2.8.2}{Paths}{subsection.2.8}% 25
+\BOOKMARK [3][-]{subsubsection.2.8.3}{Connected}{subsection.2.8}% 26
+\BOOKMARK [3][-]{subsubsection.2.8.4}{Components}{subsection.2.8}% 27
+\BOOKMARK [3][-]{subsubsection.2.8.5}{Impact on Coloring}{subsection.2.8}% 28
+\BOOKMARK [2][-]{subsection.2.9}{Vertex Degree}{section.2}% 29
+\BOOKMARK [2][-]{subsection.2.10}{Special Graphs}{section.2}% 30
+\BOOKMARK [3][-]{subsubsection.2.10.1}{Empty Graphs}{subsection.2.10}% 31
+\BOOKMARK [3][-]{subsubsection.2.10.2}{Paths}{subsection.2.10}% 32
+\BOOKMARK [3][-]{subsubsection.2.10.3}{Cycles}{subsection.2.10}% 33
+\BOOKMARK [3][-]{subsubsection.2.10.4}{Complete Graphs}{subsection.2.10}% 34
+\BOOKMARK [3][-]{subsubsection.2.10.5}{Trees}{subsection.2.10}% 35
+\BOOKMARK [1][-]{section.3}{The Chromatic Number Problem}{}% 36
+\BOOKMARK [2][-]{subsection.3.1}{Problems}{section.3}% 37
+\BOOKMARK [2][-]{subsection.3.2}{Enigma}{section.3}% 38
+\BOOKMARK [2][-]{subsection.3.3}{Algorithms}{section.3}% 39
+\BOOKMARK [2][-]{subsection.3.4}{Chromatic Number Lower Bound}{section.3}% 40
+\BOOKMARK [2][-]{subsection.3.5}{Chromatic Number Upper Bound}{section.3}% 41
+\BOOKMARK [2][-]{subsection.3.6}{The Christofides Algorithm}{section.3}% 42
+\BOOKMARK [2][-]{subsection.3.7}{Zykov Algorithms}{section.3}% 43
+\BOOKMARK [3][-]{subsubsection.3.7.1}{The Chromatic Polynomial}{subsection.3.7}% 44
+\BOOKMARK [3][-]{subsubsection.3.7.2}{An Exhaustive Algorithm}{subsection.3.7}% 45
+\BOOKMARK [3][-]{subsubsection.3.7.3}{Branch and Bound Strategies}{subsection.3.7}% 46
+\BOOKMARK [1][-]{section.4}{The Proposed Algorithm}{}% 47
+\BOOKMARK [2][-]{subsection.4.1}{Outer Loop}{section.4}% 48
+\BOOKMARK [2][-]{subsection.4.2}{Called Subroutine}{section.4}% 49
+\BOOKMARK [2][-]{subsection.4.3}{Supporting Theorems}{section.4}% 50
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Maximum Edge Threshold}{subsection.4.3}% 51
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Vertex Removal}{subsection.4.3}% 52
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Minimum Common Neighbor Upper Bound}{subsection.4.3}% 53
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Recursive Steps}{subsection.4.3}% 54
+\BOOKMARK [2][-]{subsection.4.4}{An Example}{section.4}% 55
+\BOOKMARK [1][-]{section.5}{Toaster Design Case Study}{}% 56
+\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 57
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 58
