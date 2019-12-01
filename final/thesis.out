@@ -39,22 +39,23 @@
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Runtime Complexity}{subsection.3.2}% 39
 \BOOKMARK [3][-]{subsubsection.3.2.2}{Space Complexity}{subsection.3.2}% 40
 \BOOKMARK [3][-]{subsubsection.3.2.3}{Runtime Duration}{subsection.3.2}% 41
-\BOOKMARK [2][-]{subsection.3.3}{Chromatic Number Lower Bound}{section.3}% 42
-\BOOKMARK [2][-]{subsection.3.4}{Chromatic Number Upper Bound}{section.3}% 43
-\BOOKMARK [2][-]{subsection.3.5}{The Christofides Algorithm}{section.3}% 44
-\BOOKMARK [2][-]{subsection.3.6}{Zykov Algorithms}{section.3}% 45
-\BOOKMARK [3][-]{subsubsection.3.6.1}{The Chromatic Polynomial}{subsection.3.6}% 46
-\BOOKMARK [3][-]{subsubsection.3.6.2}{An Exhaustive Algorithm}{subsection.3.6}% 47
-\BOOKMARK [3][-]{subsubsection.3.6.3}{Branch and Bound Strategies}{subsection.3.6}% 48
-\BOOKMARK [1][-]{section.4}{The Proposed Algorithm}{}% 49
-\BOOKMARK [2][-]{subsection.4.1}{Outer Loop}{section.4}% 50
-\BOOKMARK [2][-]{subsection.4.2}{Called Subroutine}{section.4}% 51
-\BOOKMARK [2][-]{subsection.4.3}{Supporting Theorems}{section.4}% 52
-\BOOKMARK [3][-]{subsubsection.4.3.1}{Maximum Edge Threshold}{subsection.4.3}% 53
-\BOOKMARK [3][-]{subsubsection.4.3.2}{Vertex Removal}{subsection.4.3}% 54
-\BOOKMARK [3][-]{subsubsection.4.3.3}{Minimum Common Neighbor Upper Bound}{subsection.4.3}% 55
-\BOOKMARK [3][-]{subsubsection.4.3.4}{Recursive Steps}{subsection.4.3}% 56
-\BOOKMARK [2][-]{subsection.4.4}{An Example}{section.4}% 57
-\BOOKMARK [1][-]{section.5}{Toaster Design Case Study}{}% 58
-\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 59
-\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 60
+\BOOKMARK [2][-]{subsection.3.3}{Estimating the Chromatic Number of a Graph}{section.3}% 42
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Chromatic Number Lower Bound}{subsection.3.3}% 43
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Chromatic Number Upper Bound}{subsection.3.3}% 44
+\BOOKMARK [2][-]{subsection.3.4}{The Christofides Algorithm}{section.3}% 45
+\BOOKMARK [2][-]{subsection.3.5}{Zykov Algorithms}{section.3}% 46
+\BOOKMARK [3][-]{subsubsection.3.5.1}{The Chromatic Polynomial}{subsection.3.5}% 47
+\BOOKMARK [3][-]{subsubsection.3.5.2}{An Exhaustive Algorithm}{subsection.3.5}% 48
+\BOOKMARK [3][-]{subsubsection.3.5.3}{Branch and Bound Strategies}{subsection.3.5}% 49
+\BOOKMARK [1][-]{section.4}{The Proposed Algorithm}{}% 50
+\BOOKMARK [2][-]{subsection.4.1}{Outer Loop}{section.4}% 51
+\BOOKMARK [2][-]{subsection.4.2}{Called Subroutine}{section.4}% 52
+\BOOKMARK [2][-]{subsection.4.3}{Supporting Theorems}{section.4}% 53
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Maximum Edge Threshold}{subsection.4.3}% 54
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Vertex Removal}{subsection.4.3}% 55
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Minimum Common Neighbor Upper Bound}{subsection.4.3}% 56
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Recursive Steps}{subsection.4.3}% 57
+\BOOKMARK [2][-]{subsection.4.4}{An Example}{section.4}% 58
+\BOOKMARK [1][-]{section.5}{Toaster Design Case Study}{}% 59
+\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 60
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 61

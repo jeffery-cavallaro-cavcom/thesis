@@ -7,7 +7,7 @@ be done is to perform better than existing well-known methods in most cases.  Th
 overview of inherent intractability and describes why the chromatic number problem is of this type.  Most of this
 material is based on the early yet still very influential text by Garey and Johnson (1979)~\cite{garey} with some
 help from Spiser (2013)~\cite{sipser}.  Following the overview is an examination of some of the well-known
-algorithms for estimating or finding the chromatic number of a graph.
+algorithms for finding the chromatic number of a graph.
 
 \subsection{Problems}\label{sec:sub:problems}
 
@@ -24,9 +24,9 @@ step-by-step procedure that translates the input parameters to a corresponding w
 \emph{algorithm}.  To say that an algorithm \emph{solves} a problem \(\Pi\) means that the algorithm produces a
 valid solution for every possible instance \(I\) of the problem \(\Pi\).
 
-Thus, the chromatic number problem accepts a graph \(G\) and uses an algorithm to obtain a number \(k\in\N\) where
-\(k\) is the minimum value such that \(G\) is \colorable{k}.  The proposed algorithm is one such algorithm that can
-be used to solve the problem.  Other examples are the Christofides (1971)~\cite{christofides} and the Corneil/Graham
+The chromatic number problem accepts a graph \(G\) and uses an algorithm to obtain a number \(k\in\N\) where \(k\)
+is the minimum value such that \(G\) is \colorable{k}.  The proposed algorithm is one such algorithm that can be
+used to solve the problem.  Other examples are the Christofides (1971)~\cite{christofides} and the Corneil/Graham
 (1973)~\cite{corneil} algorithms, which are introduced later in this section and will be compared to the proposed
 algorithm using random graph analysis.
 
@@ -58,8 +58,8 @@ for a given length parameter \(n\) is asymptotic to the function \(f(n)\) as \(n
 tractable problems are those problems with polynomial \(\BO(n^c)\) or better runtime complexity for some real
 number constant \(c\ge0\), and intractable problems are those problems with exponential \(\BO(c^{f(n)})\) or worse
 runtime complexity for some real number constant \(c>1\).  Exponential problems are usually associated with
-so-called \emph{brute force} algorithms that must try all possibilities from an exponentially increasing set in
-order to find the desired solution.
+so-called \emph{brute force} algorithms that must try all possibilities from an exponentially increasing set of
+candidate solutions in order to find the desired solution.
 
 What constitutes a \emph{step} in an algorithm is relative to the overall runtime complexity of the algorithm: any
 process that has significantly less runtime complexity than the runtime complexity of the whole algorithm can be
@@ -132,13 +132,20 @@ Furthermore, runtime complexity is geared towards theoretical comparisons betwee
 an algorithm implementation on a given computer.  Thus, an important part of this research is a random graph
 analysis of several well-known algorithms and the proposed algorithm.
 
-\subsection{Chromatic Number Lower Bound}\label{sec:sub:lower}
+\subsection{Estimating the Chromatic Number of a Graph}
 
-\subsection{Chromatic Number Upper Bound}\label{sec:sub:upper}
+Since the chromatic number problem is NP-hard, an alternative to finding an exact answer is to find lower and upper
+bounds for the actual value.  If these bounds happen to match then they provide the actual chromatic number.  The
+following sections describe well-known methods for finding the upper and lower bounds for the chromatic number of a
+graph.
 
-\subsection{The Christofides Algorithm}\label{sec:christofides}
+\subsubsection{Finding a Lower Bound}\label{sec:sub:sub:lower}
 
-\subsection{Zykov Algorithms}\label{sec:zykov}
+\subsubsection{Finding an Upper Bound}\label{sec:sub:sub:upper}
+
+\subsection{The Christofides Algorithm}\label{sec:sub:christofides}
+
+\subsection{Zykov Algorithms}\label{sec:sub:zykov}
 
 An exhaustive, exponential-time algorithm for determining the chromatic number of a graph is derived from a
 nondeterministic Turing machine technique attributed to Ukranian graph theorist Alexandre A. Zykov (1922--2013)
