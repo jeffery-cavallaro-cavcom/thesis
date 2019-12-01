@@ -1,18 +1,17 @@
 \section{The Chromatic Number Problem}\label{sec:chromatic}
 
 The chromatic number problem is \emph{inherently intractable}.  Informally, this means that finding a solution for
-a given input graph, regardless of the means, can take a very, very long time in the worst cases.  In fact, the
-chromatic number problem is a member of a class of problems referred to as being \emph{NP-hard}, meaning that the
-time to find a solution increases exponentially with the number of vertices.  Thus, trying to find an efficient but
-exact method of solution that satisfies all cases is a fool's errand; about the best that can be done is to perform
-better than existing well-known methods in most cases~\cite{garey}.  In order to better understand why the proposed
-algorithm is inherently intractable and how to compare it with existing well-known chromatic number algorithms,
-this section provides an overview of the computational complexity of algorithms.
+a given input graph, regardless of the means, can take a very, very long time in the worst cases.  Thus, trying to
+find an efficient but exact method of solution that satisfies all cases is a fool's errand; about the best that can
+be done is to perform better than existing well-known methods in most cases.  This section begins with a brief
+overview of inherent intractability and describes why the chromatic number problem is of this type.  Most of this
+material is based on the early yet still very influential text by Garey and Johnson (1979)~\cite{garey} with some
+help from Spiser (2013)~\cite{sipser}.  Following the overview is an examination of some of the well-known
+algorithms for estimating or finding the chromatic number of a graph.
 
 \subsection{Problems}\label{sec:sub:problems}
 
-The various questions asked and answered in this section can be a bit confusing, so it is essential to clearly
-define the various terms that will be used.  A \emph{problem} consists of three parts:
+A \emph{problem} consists of three parts:
 
 \begin{enumerate}
 \item A specific question to be answered.
@@ -23,125 +22,115 @@ define the various terms that will be used.  A \emph{problem} consists of three 
 An \emph{instance} of a problem is constructed by specifying particular values for each input parameter.  The
 step-by-step procedure that translates the input parameters to a corresponding well-defined solution is called an
 \emph{algorithm}.  To say that an algorithm \emph{solves} a problem \(\Pi\) means that the algorithm produces a
-valid solution for every possible instance \(I\) of the problem \(\Pi\)~\cite{garey}.
+valid solution for every possible instance \(I\) of the problem \(\Pi\).
 
 Thus, the chromatic number problem accepts a graph \(G\) and uses an algorithm to obtain a number \(k\in\N\) where
 \(k\) is the minimum value such that \(G\) is \colorable{k}.  The proposed algorithm is one such algorithm that can
 be used to solve the problem.  Other examples are the Christofides (1971)~\cite{christofides} and the Corneil/Graham
-(1973)~\cite{corneil} algorithms, which are compared to the proposed algorithm in later sections.
+(1973)~\cite{corneil} algorithms, which are introduced later in this section and will be compared to the proposed
+algorithm using random graph analysis.
 
-\subsection{Enigma}\label{sec:sub:enigma}
+\subsection{Comparing Algorithms}\label{sec:sub:compare}
 
-A good example of an intractable problem that involved most of the personalities who would make important
-contributions to the development of a theory for computation occurred in the field of cryptography during WWII.
-Although cryptography had been important in WWI, the horrors of the new era of warfare instigated by Hitler's Third
-Reich brought the importance of codebreaking to the forefront.  The story of the Polish code breakers and their
-\emph{bombe} device and the efforts of the British at Bletchley Park using the bombes are now legendary.  The
-problem was to break the German Enigma code: given a set of ciphertext messages, convert them to intelligible
-cleartext messages.  It is in the nature of this problem that the inherent intractability of some problems becomes
-evident~\cite{dturing}.
+Computation theory is the branch of computer science that is concerned with determining and comparing the runtime
+performance of algorithms.  The history and specifics of computation theory, although interesting, are beyond the
+scope of this research.  This section presents a brief overview of what is needed from the field of computation
+theory in order to characterize the chromatic number problem.
 
-The Enigma code was a letter-swapping code; however, the swap table changed with each letter.  Cleartext messages
-were encoded using a typewriter-like device with the following characteristics:
-
+Algorithms are typically compared using three parameters:
 \begin{enumerate}
-\item Three slightly different 26-position (one for each letter) rotors that selected the swap for the current
-  letter in the cleartext.  As each character was added to the ciphertext, the rotors would rotate based on their
-  gear mechanisms to select the next swap, thus changing the swap table each time.
-\item The ability to initialize the position of each rotor at the start of the message, which acted as a seed for the
-  current cipher.
-\item A plugboard where ten pairs of bidirectional manual letter swaps could be specified.
+\item Runtime complexity
+\item Space complexity
+\item Runtime duration
 \end{enumerate}
 
-Each of the twenty letters that made up the ten pairs on the plugboard were distinct.  Furthermore, the ordering of
-the pairs was insignificant. Thus, the number of possible configurations \(N\) of the plugboard is given by:
-\begin{align*}
-  N &= \frac{\binom{26}{2}\binom{24}{2}\binom{22}{2}\binom{20}{2}\binom{18}{2}
-  \binom{16}{2}\binom{14}{2}\binom{12}{2}\binom{10}{2}\binom{8}{2}}{10!} \\
-  &=\frac{26!24!22!20!18!16!14!12!10!8!}{2^{10}24!22!20!18!16!14!12!10!8!6!10!} \\
-  &=\frac{26!}{2^{10}6!10!}
-\end{align*}
-The German army used a set of five rotors, any three of which could be selected for a day's messages.  Thus, the
-number of possible initial configurations for the army Enigma machine \(M\) was:
-\[M=5\cdot4\cdot3\cdot26^3\cdot\frac{26!}{2^{10}6!10!}=158.9\times10^{18}\]
-Given a ciphertext message, the bombes would (mechanically) try all possible Enigma initial configurations in an
-attempt to convert the ciphertext into an intelligible cleartext message (in German).  To put this in perspective,
-an Intel i7 has a speed of about \(50,000\) MIPS.  Assuming that each one of Enigma's initial configurations could
-be tried in one instruction means that it would take about 100 years to try all possible combinations.  Since it
-would actually take several thousand instructions to test each possible configuration, the real answer is upwards
-of 100,000 years --- intractable indeed.  Furthermore, although the German army used a set of five rotors, the German
-navy used a set of eight rotors.  And in 1942, both changed from a three rotor system to a four rotor system.
+These parameters are discussed in the following sections.
 
-Clearly, a day's Enigma configuration needed to be determined within a couple hours in order to make it useful to
-decode the day's messages.  It is at this point that the art of crypography comes into play.  The goal was to use
-techniques like letter frequency and candidate cleartext segments to eliminate enough of the possible initial
-configurations so that bombes could find the correct configuration in a reasonable amount of time.  Thus, there was
-no ``aha'' moment where the Enigma code was broken once and for all.  Each new day was a new instance of the
-problem that required a tremendous manual effort to eliminate possible configurations so that the bombes could try
-a minimum number of combinations to arrive at the current day's solution.
+\subsubsection{Runtime Complexity}\label{sec:sub:sub:runtime}
 
-\subsection{Algorithms}\label{sec:sub:algorithms}
+\emph{Runtime complexity} measures the number of \emph{steps} required to obtain a solution for the worst possible
+input parameter and is a function of some \emph{length} parameter of the problem.  For graph algorithms, the length
+parameter is usually the order of the graph, although size and structure can also affect the worst case scenario.
 
-The etymology for the word \emph{algorithm} is the Latinized name \emph{Algorithmi} for Mu\d{h}ammad ibn
-M\={u}s\={a} al-Khw\={a}rizm\={\i} of algebra fame.  In Europe, the term algorithmi became synonymous with any
-well-defined procedure used in mathematical problem solving, such as the division algorithm of the Babylonians,
-al-Khw\={a}rizm\={\i}'s completing the square, the sieve of Eratosthenes for finding primes, and Euclid's algorithm
-for find the GCD of two numbers~\cite{bernhardt}.
+The runtime complexity of an algorithm is stated using the so-called \emph{big-\(\BO\)} notation: to say that an
+algorithm has \(\BO(f(n))\) runtime complexity means that the maximum number of steps required to obtain a solution
+for a given length parameter \(n\) is asymptotic to the function \(f(n)\) as \(n\to\infty\).  Roughly speaking,
+tractable problems are those problems with polynomial \(\BO(n^c)\) or better runtime complexity for some real
+number constant \(c\ge0\), and intractable problems are those problems with exponential \(\BO(c^{f(n)})\) or worse
+runtime complexity for some real number constant \(c>1\).  Exponential problems are usually associated with
+so-called \emph{brute force} algorithms that must try all possibilities from an exponentially increasing set in
+order to find the desired solution.
 
-In today's modern computer age, the term \emph{algorithm} is used without much thought to represent a well-defined
-and finite (however large) sequence of steps to solve some problem, usually within the context of a computer
-program.  However, practical programmable computers didn't exist until well into the 1950s.  In fact, the formal
-study of algorithms actually began in the mid to late \(19^{th}\) century as part of the effort to formalize
-mathematical systems.  In order to understand why the chromatic number problem is so intractable and how to measure
-that intractability, it will be helpful to investigate this fairly recent history of algorithms.
+What constitutes a \emph{step} in an algorithm is relative to the overall runtime complexity of the algorithm: any
+process that has significantly less runtime complexity than the runtime complexity of the whole algorithm can be
+called a step.  For example, a process that has polynomial runtime complexity can be called a step of an algorithm
+that has exponential runtime complexity.
 
-In the mid \(19^{th}\) century, the field of mathematics found itself in a bit of a crisis.  Although logic was
-already the foundation of mathematics, there was a feeling that, like Euclid, many of the accepted axioms were
-making too many assumptions about the involved non-defined terms, ultimately resulting in paradoxes.  One of the
-most famous is the Russell paradox, communicated by British mathematician Bertrand Russell to German mathematician
-Gottlob Frege circa 1902, just as Frege was about to publish a major work on the set theory foundations of
-mathematical systems.  Frege had used na\"{\i}ve set theory and had made too many assumptions about the nature of
-collections, an idea that was left to intuition instead of definition.  This lead to paradoxes involving sets that
-were members of themselves~\cite{bernhardt}.
+Runtime complexity is used in two different ways to compare algorithms:
+\begin{enumerate}
+\item What is the runtime complexity for finding a solution to a problem given a particular input parameter?
+\item What is the runtime complexity for verifying that a given solution is in fact a solution for a given
+  input parameter?
+\end{enumerate}
 
-The first order of business was to formalize the rules for the algorithms that would be used to solve problems, and
-this was done by English mathematician George Boole in 1847 and 1856 with his papers that formalized the so-called
-zero-order logic, which includes: and, or, not, and implication.  This work was supplemented by the aforementioned
-Frege in 1879 and independently by American mathematician Charles Peirce in 1885 when they added quantifiers to
-Boole's work, resulting in the so-called first-order logic~\cite{bernhardt}.
+The two comparisons can be very different.  For example, finding a \clique{k} in a graph \(G\) for a particular value
+of \(k\) has exponential runtime complexity; however, determining whether or not a given subgraph of a graph is a
+\(k\)-clique has polynomial runtime complexity.
 
-The modern understanding of algorithms has its roots in attempts by mathematicians of the 1920s and 1930s to
-formalize mathematical systems.  German mathematician David Hilbert begins in 1920 by stating what he felt were
-requirements for a proper mathematical system based on some language or set of rules:
-
+These two methods of comparison are used to classify the runtime complexity of algorithms as follows:
 \begin{description}
-\item[Completeness.] Every proposition that is true can be proven so using the rules of the system.
-\item[Consistency.] No contradictions arise when following the rules.
-\item[Decidability.] There exists a method for deciding whether something is true or false.
+\item[P] Algorithms with polynomial or better runtime complexity to find or verify a solution.
+\item[NP] A superset of P with varying runtime complexity to find a solution but polynomial runtime complexity to
+  verify a solution.
+\item[NP-complete] A subset of NP problems that have been proven to have the same runtime complexity to find a
+  solution.  It is an open question as to whether \(P=NP\); however, it is conjectured that they are not equal.
+\item[NP-hard] Algorithms that have been proved to have the same runtime complexity as the NP-complete problems to
+  find a solution but varying runtime complexity to verify a solution.
 \end{description}
 
-It is probably true that Hilbert had in mind mathematical systems based on first-order logic, which was the modus
-operandi of mathematicians of the time.  However, Austrian mathematician Kurt G\"{o}del upset the apple cart in
-1931 by showing that mathematical systems cannot be proved to be both complete and consistent.  Thus, only the
-third requirement of decideability remained, what was commonly referred to as the
-\emph{Entscheidunsproblem}~\cite{dturing}.
+The relationships between these runtime complexity classes, assuming \(P\ne NP\), is shown in
+\figurename~\ref{fig:complexity}.
 
-In 1935, British mathematician and early pioneer of programmable computing Max Newman was giving a lecture on the
-Entscheidunsproblem at Cambridge.  Newman put forth of the question of whether there exists a \emph{mechanical}
-process that would meet the requirements of decideability.  In the audience was a young Alan Turing who would take
-the challenge for a mechical process to heart.  In 1936, Turing would submit his famous paper, ``On Computable
-Numbers, with an Application to the Entscheidungsproblem~\cite{aturing},'' which provided a definition of
-computable functions and a theoretical general-purpose machine to compute such functions: the A-machine, what we
-know today as the Turing machine.  Turing showed that there are some problems that appear to be true; however,
-there is no way to design a process to prove that they are actually true - or that the original process even
-terminates with an answer (the halting problem).  Most of these types of problems involve inherent contractions
-such as the Epimenides paradox: Epimenides the Cretan says that all Cretans are liars.~\cite{dturing}.  Thus,
-Hilbert's third pillar was demolished.~\cite{dturing}.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \node at (0,0) [circle,draw,minimum size=2in] {NP};
+    \node at (0,-1.5) [ellipse,draw,minimum width=1in, minimum height=0.5in] {P};
+    \draw (0,1) parabola (3,4);
+    \draw (0,1) parabola (-3,4);
+    \node at (0,1.75) {NP-complete};
+    \node at (0,3.25) {NP-hard};
+  \end{tikzpicture}
+  \caption{The runtime complexity classes.}
+  \label{fig:complexity}
+\end{figure}
 
-It should be noted that American mathematician Alan Church arrived at the same conclusions as Turing a bit earlier
-with his 1935 paper on lambda calculus.  Unlike Newton and Leibniz, Turing and Church were willing collaborators,
-with Church eventually becoming Turing's PhD advisor at Princeton.  Indeed, Turing adopted the use of the lambda
-calculus in his work~\cite{dturing}.
+For the purposes of this research, the NP-complete problems are assumed to have exponential runtime complexity to
+find a solution and polynomial runtime complexity to verify a solution, and the NP-hard problems are assumed to
+have exponential runtime for both finding and verifying solutions.
+
+The chromatic number problem is NP-hard: it requires exponential time to exhaustively generate and check all
+possible independent set partitions to find a partition with the smallest number of independent sets \(k\), and the
+same basic procedure must be used to verify that given a supposed \(k\)-chromatic coloring, there does not exist a
+proper coloring for smaller \(k\).
+
+\subsubsection{Space Complexity}\label{sec:sub:sub:space}
+
+\emph{Space complexity} measures the maximum amount of memory required at any point in time when an algorithm is
+run on a computer program.  The limited memory and CPU power in early computers forced algorithm designers and
+programmers to make careful tradeoffs between CPU cycles and the storage of intermediate results.  With today's
+fast CPUs and practically unlimited virtual memory systems, such concerns are not as important.  Thus, space
+complexity will not be considered when comparing the selected well-known algorithms to the proposed algorithm.
+
+\subsubsection{Runtime Duration}\label{sec:sub:sub:duration}
+
+\emph{Runtime duration} is an empirical measurement of how long an algorithm runs on a given computer, usually on
+best, average, and worst-case input parameter values.  Determining the runtime complexity for some algorithms can
+be very complicated when the number of possible steps is dependent on the peculiarities of the input parameters.
+In the case of graph algorithms, such things as order, size, and edge density can all affect the number of steps.
+Furthermore, runtime complexity is geared towards theoretical comparisons between algorithms, not actual runtime of
+an algorithm implementation on a given computer.  Thus, an important part of this research is a random graph
+analysis of several well-known algorithms and the proposed algorithm.
 
 \subsection{Chromatic Number Lower Bound}\label{sec:sub:lower}
 

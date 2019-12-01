@@ -71,22 +71,13 @@ M.~R. Garey and D.~S. Johnson, {\em Computers and Intractability: A Guide to
   the Theory of NP-Completeness}.
 \newblock San Francisco: W.H. Freeman and Company, 1979.
 
+\bibitem{sipser}
+M.~Sipser, {\em Introduction to the Theory of Computation}.
+\newblock Boston, MA: Cengage Learning, \(3^{rd}\)~ed., 2013.
+
 \bibitem{christofides}
 N.~Christofides, ``An algorithm for the chromatic number of a graph,'' {\em The
   Computer Journal}, vol.~14, pp.~38--39, January 1971.
-
-\bibitem{dturing}
-D.~Turing, {\em Prof: Alan Turing Decoded}.
-\newblock Stroud, Gloucestershire: The History Press, 2015.
-
-\bibitem{bernhardt}
-C.~Bernhardt, {\em Turing's Vision: The Birth of Computer Science}.
-\newblock Cambridge, MA: The MIT Press, 2016.
-
-\bibitem{aturing}
-A.~M. Turing, ``On computable numbers, with an application to the
-  entscheidungsproblem,'' {\em Proceedings of the London Mathematical Society},
-  vol.~42, no.~1, pp.~230--265, 1937.
 
 \bibitem{obit}
 V.~Voloshin, ``Alexander zykov 1922-2013,'' January 2014.
