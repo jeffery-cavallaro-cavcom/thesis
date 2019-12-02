@@ -79,6 +79,16 @@ M.~Sipser, {\em Introduction to the Theory of Computation}.
 N.~Christofides, ``An algorithm for the chromatic number of a graph,'' {\em The
   Computer Journal}, vol.~14, pp.~38--39, January 1971.
 
+\bibitem{zhang}
+T.~Zhang, ``Triangle free graphs and their chromatic number.''
+  \url{http://www.math.uchicago.edu/~may/VIGRE/VIGRE2008/REUPapers/Zhang.pdf}.
+\newblock Accessed: 2019-12-01.
+
+\bibitem{edwards}
+C.~Edwards and C.~Elphick, ``Lower bounds for the clique and the chromatic
+  numbers of a graph,'' {\em Discrete Applied Mathematics}, vol.~5, no.~1,
+  pp.~51--64, 1983.
+
 \bibitem{obit}
 V.~Voloshin, ``Alexander zykov 1922-2013,'' January 2014.
 

@@ -41,22 +41,22 @@
 \contentsline {subsubsection}{\numberline {3.2.2}Space Complexity}{44}{subsubsection.3.2.2}% 
 \contentsline {subsubsection}{\numberline {3.2.3}Runtime Duration}{44}{subsubsection.3.2.3}% 
 \contentsline {subsection}{\numberline {3.3}Estimating the Chromatic Number of a Graph}{44}{subsection.3.3}% 
-\contentsline {subsubsection}{\numberline {3.3.1}Chromatic Number Lower Bound}{45}{subsubsection.3.3.1}% 
-\contentsline {subsubsection}{\numberline {3.3.2}Chromatic Number Upper Bound}{45}{subsubsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.4}The Christofides Algorithm}{45}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}Zykov Algorithms}{45}{subsection.3.5}% 
-\contentsline {subsubsection}{\numberline {3.5.1}The Chromatic Polynomial}{45}{subsubsection.3.5.1}% 
-\contentsline {subsubsection}{\numberline {3.5.2}An Exhaustive Algorithm}{48}{subsubsection.3.5.2}% 
-\contentsline {subsubsection}{\numberline {3.5.3}Branch and Bound Strategies}{50}{subsubsection.3.5.3}% 
-\contentsline {section}{\numberline {4}The Proposed Algorithm}{51}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Outer Loop}{52}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Called Subroutine}{53}{subsection.4.2}% 
-\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{57}{subsection.4.3}% 
-\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{57}{subsubsection.4.3.1}% 
-\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{60}{subsubsection.4.3.2}% 
-\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{66}{subsubsection.4.3.3}% 
-\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{71}{subsubsection.4.3.4}% 
-\contentsline {subsection}{\numberline {4.4}An Example}{74}{subsection.4.4}% 
-\contentsline {section}{\numberline {5}Toaster Design Case Study}{86}{section.5}% 
-\contentsline {section}{\numberline {6}Random Graph Analysis}{96}{section.6}% 
-\contentsline {section}{Literature Cited}{97}{section*.6}% 
+\contentsline {subsubsection}{\numberline {3.3.1}Finding a Lower Bound}{45}{subsubsection.3.3.1}% 
+\contentsline {subsubsection}{\numberline {3.3.2}Finding an Upper Bound}{46}{subsubsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.4}The Christofides Algorithm}{46}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.5}Zykov Algorithms}{46}{subsection.3.5}% 
+\contentsline {subsubsection}{\numberline {3.5.1}The Chromatic Polynomial}{46}{subsubsection.3.5.1}% 
+\contentsline {subsubsection}{\numberline {3.5.2}An Exhaustive Algorithm}{49}{subsubsection.3.5.2}% 
+\contentsline {subsubsection}{\numberline {3.5.3}Branch and Bound Strategies}{51}{subsubsection.3.5.3}% 
+\contentsline {section}{\numberline {4}The Proposed Algorithm}{52}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Outer Loop}{53}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Called Subroutine}{54}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{58}{subsection.4.3}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{58}{subsubsection.4.3.1}% 
+\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{61}{subsubsection.4.3.2}% 
+\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{67}{subsubsection.4.3.3}% 
+\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{72}{subsubsection.4.3.4}% 
+\contentsline {subsection}{\numberline {4.4}An Example}{75}{subsection.4.4}% 
+\contentsline {section}{\numberline {5}Toaster Design Case Study}{87}{section.5}% 
+\contentsline {section}{\numberline {6}Random Graph Analysis}{97}{section.6}% 
+\contentsline {section}{Literature Cited}{98}{section*.6}% 

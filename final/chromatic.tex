@@ -141,6 +141,39 @@ graph.
 
 \subsubsection{Finding a Lower Bound}\label{sec:sub:sub:lower}
 
+The most popular strategy for estimating a lower bound for the chromatic number of a graph is based on the
+statement of \propname~\ref{prop:clique}.  For a graph \(G\):
+\[\w^*(G)\le\w(G)\le\X(G)\]
+where \(\w^*(G)\) is a lower bound estimate for the clique number of \(G\).  It is well-known that certain
+triangle-free graphs with \(\w(G)=2\) can have arbitrarily high \(\X(G)\) (for an example, see Zhang~\cite{zhang});
+however, for the general case the clique number is a suitable lower bound.
+
+Unfortunately, the clique number problem for a graph \(G\) is also NP-hard, so the next best step is to use a
+P-time calculation for a \(\w^*(G)\) that is as tight as possible to the actual \(\w(G)\).  Edwards and
+Elphick~(1982)~\cite{edwards} investigated several such methods and concluded that the best method was a simple
+calculation based on the adjacency matrix of \(G\).
+
+For a graph \(G\) of order \(n\), the adjacency matrix \(A\) for \(G\) is the \(n\times n\) matrix such that:
+\[A_{ij}=\begin{cases}
+0, & v_iv_j\notin E(G) \\
+1, & v_iv_j\in E(G)
+\end{cases}\]
+Note that the degree of a vertex \(v_i\) can be calculated from \(A\) by summing the \(A_{ik}\) row entries or the
+\(A_{ki}\) column entries, and \(\dmax(G)\) can be found from the maximum such sum.
+
+The Edwards algorithm is as follows.  Let \(G\) be a graph or order \(n\):
+\begin{enumerate}
+\item Select (either lowest index or at random) a vertex \(v\in V(G)\) of maximum degree in \(G\)
+  \((\deg(v)=\dmax(G))\) and let \(S=\set{v}\).
+\item\label{step:edw:select} Select the vertex \(v_i\in V(G)\) such that \(v_i\notin S\) with the minimum index
+  value \(i\) that is adjacent to all of the vertices in \(S\).  If no such vertex exists then go to
+  step~\ref{step:edw:done}.
+\item Add \(v_i\) to \(S\) and go to step~\ref{step:edw:select}.
+\item\label{step:edw:done} \(G[S]\) is a complete subgraph of \(G\) so conclude that \(\w^*(G)=\abs{S}\le\w(G)\).
+\end{enumerate}
+
+The Edwards algorithm has \(\BO(n^2)\) runtime complexity and so it is a suitable P-time algorithm.
+
 \subsubsection{Finding an Upper Bound}\label{sec:sub:sub:upper}
 
 \subsection{The Christofides Algorithm}\label{sec:sub:christofides}

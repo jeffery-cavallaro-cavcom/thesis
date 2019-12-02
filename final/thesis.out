@@ -40,8 +40,8 @@
 \BOOKMARK [3][-]{subsubsection.3.2.2}{Space Complexity}{subsection.3.2}% 40
 \BOOKMARK [3][-]{subsubsection.3.2.3}{Runtime Duration}{subsection.3.2}% 41
 \BOOKMARK [2][-]{subsection.3.3}{Estimating the Chromatic Number of a Graph}{section.3}% 42
-\BOOKMARK [3][-]{subsubsection.3.3.1}{Chromatic Number Lower Bound}{subsection.3.3}% 43
-\BOOKMARK [3][-]{subsubsection.3.3.2}{Chromatic Number Upper Bound}{subsection.3.3}% 44
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Finding a Lower Bound}{subsection.3.3}% 43
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Finding an Upper Bound}{subsection.3.3}% 44
 \BOOKMARK [2][-]{subsection.3.4}{The Christofides Algorithm}{section.3}% 45
 \BOOKMARK [2][-]{subsection.3.5}{Zykov Algorithms}{section.3}% 46
 \BOOKMARK [3][-]{subsubsection.3.5.1}{The Chromatic Polynomial}{subsection.3.5}% 47
