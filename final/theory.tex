@@ -1456,3 +1456,49 @@ When such a tree is applied to the problem of exhaustively finding the chromatic
 of vertex contraction and edge addition choices, the tree is called a \emph{Zykov} tree and the algorithm is called
 a \emph{Zykov} algorithm~\cite{mcdiarmid}.  Zykov algorithms are described in detail in the following sections.  In
 fact, the proposed algorithm is a variation of a standard Zykov algorithm.
+
+\subsection{The Adjacency Matrix}\label{sec:sub:adjacency}
+
+For a graph \(G\) of order \(n\), the adjacency matrix \(A\) for \(G\) is the \(n\times n\) matrix such that:
+\[a_{ij}=\begin{cases}
+0, & v_iv_j\notin E(G) \\
+1, & v_iv_j\in E(G)
+\end{cases}\]
+In the case of a simple graph:
+\begin{enumerate}
+\item The \(a_{ij}\) values are limited to \(0\) and \(1\) in order to avoid multiple edges.
+\item The diagonal values \(a_{ii}\) are always \(0\) in order to avoid loops.
+\item \(A\) is symmetric due to the bidirectional nature of the edges.
+\end{enumerate}
+
+An example graph and its adjacency matrix are shown in \figurename~\ref{fig:adjacency}.
+
+\begin{figure}[H]
+  \begin{minipage}{2.5in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \cycleV{\(1\),\(2\),\(3\),\(4\)}{(0,0)}{0.75in}{135}{};
+      \draw (1) edge (3);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{2.5in}
+    \centering
+    \[\begin{bmatrix}
+      0 & 1 & 1 & 1 \\
+      1 & 0 & 1 & 0 \\
+      1 & 1 & 0 & 1 \\
+      1 & 0 & 1 & 1
+    \end{bmatrix}\]
+  \end{minipage}
+  \caption{A graph and its adjacency matrix.}
+  \label{fig:adjacency}
+\end{figure}
+
+The degree of vertex \(v_i\) can be calculated by summing the \(i^{th}\) row or the \(i^{th}\) column:
+\[\deg(v_i)=\sum_{k=1}^na_{ik}=\sum_{k=1}^na_{ki}\]
+The minimum \((\dmin(G))\) and maximum \((\dmax(G))\) degree values can then be calculated by selecting the minimum
+and maximum calculated degree values.
+
+The adjacency matrix is extremely important to graph algorithms since it provides an instant report of vertex
+adjacency.  Furthermore, as the adjacency matrix is being constructed for a graph, it is easy to calculate each
+vertex degree as well as the minimum and maximum degree and cache these values for later use.
