@@ -1,5 +1,5 @@
 \contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Tables}{viii}{section*.4}% 
-\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Figures}{xi}{section*.5}% 
+\contentsline {section}{\normalfont \relax \fontsize {12bp}{14.4bp}\selectfont List of Figures}{xii}{section*.5}% 
  
 \contentsline {section}{\numberline {1}Axiomatic Design}{1}{section.1}% 
 \contentsline {subsection}{\numberline {1.1}Design}{1}{subsection.1.1}% 
@@ -43,21 +43,21 @@
 \contentsline {subsubsection}{\numberline {3.2.3}Runtime Duration}{45}{subsubsection.3.2.3}% 
 \contentsline {subsection}{\numberline {3.3}Estimating the Chromatic Number of a Graph}{45}{subsection.3.3}% 
 \contentsline {subsubsection}{\numberline {3.3.1}Finding a Lower Bound}{46}{subsubsection.3.3.1}% 
-\contentsline {subsubsection}{\numberline {3.3.2}Finding an Upper Bound}{47}{subsubsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.4}The Christofides Algorithm}{47}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}Zykov Algorithms}{47}{subsection.3.5}% 
-\contentsline {subsubsection}{\numberline {3.5.1}The Chromatic Polynomial}{47}{subsubsection.3.5.1}% 
-\contentsline {subsubsection}{\numberline {3.5.2}An Exhaustive Algorithm}{50}{subsubsection.3.5.2}% 
-\contentsline {subsubsection}{\numberline {3.5.3}Branch and Bound Strategies}{52}{subsubsection.3.5.3}% 
-\contentsline {section}{\numberline {4}The Proposed Algorithm}{53}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Outer Loop}{54}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Called Subroutine}{55}{subsection.4.2}% 
-\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{59}{subsection.4.3}% 
-\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{59}{subsubsection.4.3.1}% 
-\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{62}{subsubsection.4.3.2}% 
-\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{68}{subsubsection.4.3.3}% 
-\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{73}{subsubsection.4.3.4}% 
-\contentsline {subsection}{\numberline {4.4}An Example}{76}{subsection.4.4}% 
-\contentsline {section}{\numberline {5}Toaster Design Case Study}{88}{section.5}% 
-\contentsline {section}{\numberline {6}Random Graph Analysis}{98}{section.6}% 
-\contentsline {section}{Literature Cited}{99}{section*.6}% 
+\contentsline {subsubsection}{\numberline {3.3.2}Finding an Upper Bound}{50}{subsubsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.4}The Christofides Algorithm}{50}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.5}Zykov Algorithms}{50}{subsection.3.5}% 
+\contentsline {subsubsection}{\numberline {3.5.1}The Chromatic Polynomial}{50}{subsubsection.3.5.1}% 
+\contentsline {subsubsection}{\numberline {3.5.2}An Exhaustive Algorithm}{53}{subsubsection.3.5.2}% 
+\contentsline {subsubsection}{\numberline {3.5.3}Branch and Bound Strategies}{55}{subsubsection.3.5.3}% 
+\contentsline {section}{\numberline {4}The Proposed Algorithm}{56}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Outer Loop}{57}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Called Subroutine}{58}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Supporting Theorems}{62}{subsection.4.3}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Maximum Edge Threshold}{62}{subsubsection.4.3.1}% 
+\contentsline {subsubsection}{\numberline {4.3.2}Vertex Removal}{65}{subsubsection.4.3.2}% 
+\contentsline {subsubsection}{\numberline {4.3.3}Minimum Common Neighbor Upper Bound}{71}{subsubsection.4.3.3}% 
+\contentsline {subsubsection}{\numberline {4.3.4}Recursive Steps}{76}{subsubsection.4.3.4}% 
+\contentsline {subsection}{\numberline {4.4}An Example}{79}{subsection.4.4}% 
+\contentsline {section}{\numberline {5}Toaster Design Case Study}{91}{section.5}% 
+\contentsline {section}{\numberline {6}Random Graph Analysis}{101}{section.6}% 
+\contentsline {section}{Literature Cited}{102}{section*.6}% 

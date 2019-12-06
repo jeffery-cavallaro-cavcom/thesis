@@ -117,10 +117,10 @@ proper coloring for smaller \(k\).
 \subsubsection{Space Complexity}\label{sec:sub:sub:space}
 
 \emph{Space complexity} measures the maximum amount of memory required at any point in time when an algorithm is
-run on a computer program.  The limited memory and CPU power in early computers forced algorithm designers and
-programmers to make careful tradeoffs between CPU cycles and the storage of intermediate results.  With today's
-fast CPUs and practically unlimited virtual memory systems, such concerns are not as important.  Thus, space
-complexity will not be considered when comparing the selected well-known algorithms to the proposed algorithm.
+run on a computer.  The limited memory and CPU power in early computers forced algorithm designers and programmers
+to make careful tradeoffs between CPU cycles and the storage of intermediate results.  With today's fast CPUs and
+practically unlimited virtual memory systems, such concerns are not as important.  Thus, space complexity will not
+be considered when comparing the selected well-known algorithms to the proposed algorithm.
 
 \subsubsection{Runtime Duration}\label{sec:sub:sub:duration}
 
@@ -144,28 +144,76 @@ graph.
 The most popular strategy for estimating a lower bound for the chromatic number of a graph is based on the
 statement of \propname~\ref{prop:clique}.  For a graph \(G\):
 \[\w^*(G)\le\w(G)\le\X(G)\]
-where \(\w^*(G)\) is a lower bound estimate for the clique number of \(G\).  It is well-known that certain
-triangle-free graphs with \(\w(G)=2\) can have arbitrarily high \(\X(G)\) (for an example, see Zhang~\cite{zhang});
-however, for the general case the clique number is a suitable lower bound.
+where \(\w^*(G)\) is a lower bound estimate for the clique number of \(G\).
+
+It is well-known that certain triangle-free graphs with \(\w(G)=2\) can have arbitrarily high \(\X(G)\).  One such
+example are the graphs created using the so-called \emph{Mycielski} construction~\cite{west}:
+\begin{enumerate}
+\item Start with \(G=P_2\) \((\X(G)=2)\).
+\item\label{step:myc:repeat} For the vertices in \(v\in V(G)\), create new vertices \(U=\set{u_1,\ldots,u_n}\) such
+  that \(N(u_i)=N(v_i)\).  The new vertices form what is referred to as a \emph{shadow} graph.
+\item Add an additional vertex \(w\) such that \(N(w)=U\) and call this new graph \(G'\), which has
+  \(\X(G')=\X(G)+1\).
+\item Let \(G=G'\) and go to step~\ref{step:myc:repeat}.
+\end{enumerate}
+
+The first three graphs resulting from the Mycielski construction are shown in \figurename~\ref{fig:mycielski}.
+
+\begin{figure}[H]
+  \begin{minipage}{1in}
+    \centering
+    \scalebox{0.75}{
+      \begin{tikzpicture}[every node/.style={labeled node}, node distance=1in]
+        \pathV{\(v_1\),\(v_2\)}{(0,0)}{below};
+      \end{tikzpicture}
+    }
+
+    \(k=2\)
+  \end{minipage}
+  \begin{minipage}{2in}
+    \centering
+    \scalebox{0.75}{
+      \begin{tikzpicture}[every node/.style={labeled node}, node distance=1in]
+        \cycleV{\(v_1\),\(v_2\),\(u_1\),\(w\),\(u_2\)}{(0,0)}{0.75in}{90}{};
+      \end{tikzpicture}
+    }
+
+    \(k=3\)
+  \end{minipage}
+  \begin{minipage}{2.75in}
+    \centering
+    \scalebox{0.75}{
+      \begin{tikzpicture}[every node/.style={labeled node}, node distance=1in]
+        \cycleV{\(v_1\),\(v_2\),\(v_3\),\(v_4\),\(v_5\)}{(0,0)}{1.25in}{90}{o};
+        \cycleV{\(u_1\),\(u_2\),\(u_3\),\(u_4\),\(u_5\)}{(0,0)}{0.75in}{90}{i};
+        \draw (i1) edge (o5) edge (o2);
+        \draw (i2) edge (o1) edge (o3);
+        \draw (i3) edge (o2) edge (o4);
+        \draw (i4) edge (o3) edge (o5);
+        \draw (i5) edge (o4) edge (o1);
+        \node (w) at (0,0) {\(w\)};
+        \draw (w) edge (i1) edge (i2) edge (i3) edge (i4) edge (i5);
+      \end{tikzpicture}
+    }
+
+    \(k=4\)
+  \end{minipage}
+  \caption{The first three graphs from the Mycielski construction.}
+  \label{fig:mycielski}
+\end{figure}
+
+The third graph in \figurename~\ref{fig:mycielski} is called the \emph{Gr\"otzsch} graph.  For another example of
+triangle free graphs with arbitrary chromatic number, see Zhang~\cite{zhang}.  Nevertheless, for the general case
+the clique number is a suitable lower bound for the chromatic number.
 
 Unfortunately, the clique number problem for a graph \(G\) is also NP-hard, so the next best step is to use a
 P-time calculation for a \(\w^*(G)\) that is as tight as possible to the actual \(\w(G)\).  Edwards and
 Elphick~(1982)~\cite{edwards} investigated several such methods and concluded that the best method was a simple
-calculation based on the adjacency matrix of \(G\).
-
-For a graph \(G\) of order \(n\), the adjacency matrix \(A\) for \(G\) is the \(n\times n\) matrix such that:
-\[A_{ij}=\begin{cases}
-0, & v_iv_j\notin E(G) \\
-1, & v_iv_j\in E(G)
-\end{cases}\]
-Note that the degree of a vertex \(v_i\) can be calculated from \(A\) by summing the \(A_{ik}\) row entries or the
-\(A_{ki}\) column entries, and \(\dmax(G)\) can be found from the maximum such sum.
-
-The Edwards algorithm is as follows.  Let \(G\) be a graph or order \(n\):
+calculation based on the adjacency matrix of \(G\):
 \begin{enumerate}
 \item Select (either lowest index or at random) a vertex \(v\in V(G)\) of maximum degree in \(G\)
   \((\deg(v)=\dmax(G))\) and let \(S=\set{v}\).
-\item\label{step:edw:select} Select the vertex \(v_i\in V(G)\) such that \(v_i\notin S\) with the minimum index
+\item\label{step:edw:select} Select the vertex \(v_i\in V(G)\) such that \(v_i\notin S\) and with the minimum index
   value \(i\) that is adjacent to all of the vertices in \(S\).  If no such vertex exists then go to
   step~\ref{step:edw:done}.
 \item Add \(v_i\) to \(S\) and go to step~\ref{step:edw:select}.
@@ -173,6 +221,41 @@ The Edwards algorithm is as follows.  Let \(G\) be a graph or order \(n\):
 \end{enumerate}
 
 The Edwards algorithm has \(\BO(n^2)\) runtime complexity and so it is a suitable P-time algorithm.
+
+The results of a random graph analysis of the Edwards Elphick algorithm are shown in
+\figurename~\ref{fig:edwards1err}.  The graph shows edge probability versus the mean of \(\w(G)-\w^*(G)\) for
+graphs of increasing order with \(1000\) trials per edge probability.  Note that the error increases with both
+order and edge probability.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards1_error}
+  \caption{Edwards Elphick algorithm mean error.}
+  \label{fig:edwards1err}
+\end{figure}
+
+Step~\ref{step:edw:select} of the algorithm selects the next vertex of lowest index that is adjacent to all
+previously selected vertices.  An improvement would be to select a vertex with the highest degree that is adjacent
+to all previously selected vertices.  This would of course increase the average runtime complexity to the worst
+case of the unimproved algorithm, but it would still be P-time.  The results of this improved algorithm are shown
+in \figurename~\ref{fig:edwards2err}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards2_error}
+  \caption{Improved Edwards Elphick algorithm mean error.}
+  \label{fig:edwards2err}
+\end{figure}
+
+Note that the improved algorithm cuts the error in half.  The worst case time durations are shown in
+\figurename~\ref{fig:edwards2time}. Clearly, execution time is very small.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards2_time}
+  \caption{Improved Edwards Elphick algorithm maximum duration.}
+  \label{fig:edwards2time}
+\end{figure}
 
 \subsubsection{Finding an Upper Bound}\label{sec:sub:sub:upper}
 
