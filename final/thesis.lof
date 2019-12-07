@@ -28,43 +28,44 @@
 \contentsline {figure}{\numberline {28}{\ignorespaces Complete graphs.}}{37}{figure.28}% 
 \contentsline {figure}{\numberline {29}{\ignorespaces A tree organized from root to leaves.}}{38}{figure.29}% 
 \contentsline {figure}{\numberline {30}{\ignorespaces A graph and its adjacency matrix.}}{39}{figure.30}% 
-\contentsline {figure}{\numberline {31}{\ignorespaces The runtime complexity classes.}}{44}{figure.31}% 
-\contentsline {figure}{\numberline {32}{\ignorespaces The first three graphs from the Mycielski construction.}}{46}{figure.32}% 
-\contentsline {figure}{\numberline {33}{\ignorespaces Edwards Elphick algorithm mean error.}}{48}{figure.33}% 
-\contentsline {figure}{\numberline {34}{\ignorespaces Improved Edwards Elphick algorithm mean error.}}{49}{figure.34}% 
-\contentsline {figure}{\numberline {35}{\ignorespaces Improved Edwards Elphick algorithm maximum duration.}}{49}{figure.35}% 
-\contentsline {figure}{\numberline {36}{\ignorespaces V.G Vizing (L), A.A. Zykov (C), and V.I. Voloshin (R) in Odessa (2001) \cite {voloshin}}}{50}{figure.36}% 
-\contentsline {figure}{\numberline {37}{\ignorespaces Same Colors with Vertex Contraction}}{51}{figure.37}% 
-\contentsline {figure}{\numberline {38}{\ignorespaces Different Colors with Edge Addition}}{51}{figure.38}% 
-\contentsline {figure}{\numberline {39}{\ignorespaces Zykov Graph Equation}}{52}{figure.39}% 
-\contentsline {figure}{\numberline {40}{\ignorespaces A Zykov Tree}}{55}{figure.40}% 
-\contentsline {figure}{\numberline {41}{\ignorespaces Proposed algorithm outer loop.}}{58}{figure.41}% 
-\contentsline {figure}{\numberline {42}{\ignorespaces Proposed algorithm called subroutine.}}{61}{figure.42}% 
-\contentsline {figure}{\numberline {43}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{65}{figure.43}% 
-\contentsline {figure}{\numberline {44}{\ignorespaces Lemma\nobreakspace \ref {lem:remone} example.}}{66}{figure.44}% 
-\contentsline {figure}{\numberline {45}{\ignorespaces Theorem\nobreakspace \ref {thm:lowdeg} example.}}{68}{figure.45}% 
-\contentsline {figure}{\numberline {46}{\ignorespaces Theorem \ref {thm:subset} example.}}{70}{figure.46}% 
-\contentsline {figure}{\numberline {47}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{72}{figure.47}% 
-\contentsline {figure}{\numberline {48}{\ignorespaces Case \(a_i=1\) contradiction.}}{73}{figure.48}% 
-\contentsline {figure}{\numberline {49}{\ignorespaces Corollary \ref {cor:inter} example.}}{76}{figure.49}% 
-\contentsline {figure}{\numberline {50}{\ignorespaces An example graph.}}{80}{figure.50}% 
-\contentsline {figure}{\numberline {51}{\ignorespaces Step: \(G-\set {h}\).}}{81}{figure.51}% 
-\contentsline {figure}{\numberline {52}{\ignorespaces Step: \(G-g\).}}{82}{figure.52}% 
-\contentsline {figure}{\numberline {53}{\ignorespaces Step: \(G\cdot ad\).}}{84}{figure.53}% 
-\contentsline {figure}{\numberline {54}{\ignorespaces Step: \(G+ad\).}}{85}{figure.54}% 
-\contentsline {figure}{\numberline {55}{\ignorespaces Step: \(G-\set {b,f}\)}}{87}{figure.55}% 
-\contentsline {figure}{\numberline {56}{\ignorespaces Initial coloring.}}{88}{figure.56}% 
-\contentsline {figure}{\numberline {57}{\ignorespaces Coloring \(b\) and \(f\).}}{88}{figure.57}% 
-\contentsline {figure}{\numberline {58}{\ignorespaces Coloring \(g\).}}{89}{figure.58}% 
-\contentsline {figure}{\numberline {59}{\ignorespaces Final chromatic coloring.}}{89}{figure.59}% 
-\contentsline {figure}{\numberline {60}{\ignorespaces An example toaster.}}{91}{figure.60}% 
-\contentsline {figure}{\numberline {61}{\ignorespaces First candidate design.}}{92}{figure.61}% 
-\contentsline {figure}{\numberline {62}{\ignorespaces Design 1---remove \(\text {FR}_2\).}}{93}{figure.62}% 
-\contentsline {figure}{\numberline {63}{\ignorespaces Design 1---Remove \(\text {FR}_4\) and \(\text {FR}_3\).}}{94}{figure.63}% 
-\contentsline {figure}{\numberline {64}{\ignorespaces Design 1---chromatic coloring.}}{95}{figure.64}% 
-\contentsline {figure}{\numberline {65}{\ignorespaces Second candidate design.}}{96}{figure.65}% 
-\contentsline {figure}{\numberline {66}{\ignorespaces Design 2---remove \(\text {FR}_6\).}}{97}{figure.66}% 
-\contentsline {figure}{\numberline {67}{\ignorespaces Design 2---remove \(FR_5\).}}{98}{figure.67}% 
-\contentsline {figure}{\numberline {68}{\ignorespaces Design 2---remove \(\text {FR}_2\).}}{98}{figure.68}% 
-\contentsline {figure}{\numberline {69}{\ignorespaces Design 2---remove \(\text {FR}_4\) and \(\text {FR}_7\).}}{99}{figure.69}% 
-\contentsline {figure}{\numberline {70}{\ignorespaces Design 2---chromatic coloring.}}{100}{figure.70}% 
+\contentsline {figure}{\numberline {31}{\ignorespaces Depth-first versus breadth-first walks.}}{43}{figure.31}% 
+\contentsline {figure}{\numberline {32}{\ignorespaces The runtime complexity classes.}}{45}{figure.32}% 
+\contentsline {figure}{\numberline {33}{\ignorespaces The first three graphs from the Mycielski construction.}}{48}{figure.33}% 
+\contentsline {figure}{\numberline {34}{\ignorespaces Edwards Elphick algorithm mean error.}}{49}{figure.34}% 
+\contentsline {figure}{\numberline {35}{\ignorespaces Improved Edwards Elphick algorithm mean error.}}{50}{figure.35}% 
+\contentsline {figure}{\numberline {36}{\ignorespaces Improved Edwards Elphick algorithm maximum duration.}}{50}{figure.36}% 
+\contentsline {figure}{\numberline {37}{\ignorespaces V.G Vizing (L), A.A. Zykov (C), and V.I. Voloshin (R) in Odessa (2001) \cite {voloshin}}}{53}{figure.37}% 
+\contentsline {figure}{\numberline {38}{\ignorespaces Same Colors with Vertex Contraction}}{53}{figure.38}% 
+\contentsline {figure}{\numberline {39}{\ignorespaces Different Colors with Edge Addition}}{54}{figure.39}% 
+\contentsline {figure}{\numberline {40}{\ignorespaces Zykov Graph Equation}}{54}{figure.40}% 
+\contentsline {figure}{\numberline {41}{\ignorespaces A Zykov Tree}}{57}{figure.41}% 
+\contentsline {figure}{\numberline {42}{\ignorespaces Proposed algorithm outer loop.}}{61}{figure.42}% 
+\contentsline {figure}{\numberline {43}{\ignorespaces Proposed algorithm called subroutine.}}{64}{figure.43}% 
+\contentsline {figure}{\numberline {44}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{68}{figure.44}% 
+\contentsline {figure}{\numberline {45}{\ignorespaces Lemma\nobreakspace \ref {lem:remone} example.}}{69}{figure.45}% 
+\contentsline {figure}{\numberline {46}{\ignorespaces Theorem\nobreakspace \ref {thm:lowdeg} example.}}{71}{figure.46}% 
+\contentsline {figure}{\numberline {47}{\ignorespaces Theorem \ref {thm:subset} example.}}{73}{figure.47}% 
+\contentsline {figure}{\numberline {48}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{75}{figure.48}% 
+\contentsline {figure}{\numberline {49}{\ignorespaces Case \(a_i=1\) contradiction.}}{76}{figure.49}% 
+\contentsline {figure}{\numberline {50}{\ignorespaces Corollary \ref {cor:inter} example.}}{79}{figure.50}% 
+\contentsline {figure}{\numberline {51}{\ignorespaces An example graph.}}{83}{figure.51}% 
+\contentsline {figure}{\numberline {52}{\ignorespaces Step: \(G-\set {h}\).}}{84}{figure.52}% 
+\contentsline {figure}{\numberline {53}{\ignorespaces Step: \(G-g\).}}{85}{figure.53}% 
+\contentsline {figure}{\numberline {54}{\ignorespaces Step: \(G\cdot ad\).}}{87}{figure.54}% 
+\contentsline {figure}{\numberline {55}{\ignorespaces Step: \(G+ad\).}}{88}{figure.55}% 
+\contentsline {figure}{\numberline {56}{\ignorespaces Step: \(G-\set {b,f}\)}}{90}{figure.56}% 
+\contentsline {figure}{\numberline {57}{\ignorespaces Initial coloring.}}{91}{figure.57}% 
+\contentsline {figure}{\numberline {58}{\ignorespaces Coloring \(b\) and \(f\).}}{91}{figure.58}% 
+\contentsline {figure}{\numberline {59}{\ignorespaces Coloring \(g\).}}{92}{figure.59}% 
+\contentsline {figure}{\numberline {60}{\ignorespaces Final chromatic coloring.}}{92}{figure.60}% 
+\contentsline {figure}{\numberline {61}{\ignorespaces An example toaster.}}{94}{figure.61}% 
+\contentsline {figure}{\numberline {62}{\ignorespaces First candidate design.}}{95}{figure.62}% 
+\contentsline {figure}{\numberline {63}{\ignorespaces Design 1---remove \(\text {FR}_2\).}}{96}{figure.63}% 
+\contentsline {figure}{\numberline {64}{\ignorespaces Design 1---Remove \(\text {FR}_4\) and \(\text {FR}_3\).}}{97}{figure.64}% 
+\contentsline {figure}{\numberline {65}{\ignorespaces Design 1---chromatic coloring.}}{98}{figure.65}% 
+\contentsline {figure}{\numberline {66}{\ignorespaces Second candidate design.}}{99}{figure.66}% 
+\contentsline {figure}{\numberline {67}{\ignorespaces Design 2---remove \(\text {FR}_6\).}}{100}{figure.67}% 
+\contentsline {figure}{\numberline {68}{\ignorespaces Design 2---remove \(FR_5\).}}{101}{figure.68}% 
+\contentsline {figure}{\numberline {69}{\ignorespaces Design 2---remove \(\text {FR}_2\).}}{101}{figure.69}% 
+\contentsline {figure}{\numberline {70}{\ignorespaces Design 2---remove \(\text {FR}_4\) and \(\text {FR}_7\).}}{102}{figure.70}% 
+\contentsline {figure}{\numberline {71}{\ignorespaces Design 2---chromatic coloring.}}{103}{figure.71}% 

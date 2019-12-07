@@ -21,8 +21,8 @@ A \emph{problem} consists of three parts:
 
 An \emph{instance} of a problem is constructed by specifying particular values for each input parameter.  The
 step-by-step procedure that translates the input parameters to a corresponding well-defined solution is called an
-\emph{algorithm}.  To say that an algorithm \emph{solves} a problem \(\Pi\) means that the algorithm produces a
-valid solution for every possible instance \(I\) of the problem \(\Pi\).
+\emph{algorithm}.  To say that an algorithm \emph{solves} a problem means that the algorithm produces a valid
+solution for every possible instance of the problem.
 
 The chromatic number problem accepts a graph \(G\) and uses an algorithm to obtain a number \(k\in\N\) where \(k\)
 is the minimum value such that \(G\) is \colorable{k}.  The proposed algorithm is one such algorithm that can be
@@ -56,15 +56,54 @@ The runtime complexity of an algorithm is stated using the so-called \emph{big-\
 algorithm has \(\BO(f(n))\) runtime complexity means that the maximum number of steps required to obtain a solution
 for a given length parameter \(n\) is asymptotic to the function \(f(n)\) as \(n\to\infty\).  Roughly speaking,
 tractable problems are those problems with polynomial \(\BO(n^c)\) or better runtime complexity for some real
-number constant \(c\ge0\), and intractable problems are those problems with exponential \(\BO(c^{f(n)})\) or worse
-runtime complexity for some real number constant \(c>1\).  Exponential problems are usually associated with
-so-called \emph{brute force} algorithms that must try all possibilities from an exponentially increasing set of
-candidate solutions in order to find the desired solution.
+number constant \(c\ge0\), and intractable problems are those problems with exponential \(\BO(c^n)\) or worse
+runtime complexity for some real number constant \(c>1\).
 
 What constitutes a \emph{step} in an algorithm is relative to the overall runtime complexity of the algorithm: any
 process that has significantly less runtime complexity than the runtime complexity of the whole algorithm can be
 called a step.  For example, a process that has polynomial runtime complexity can be called a step of an algorithm
 that has exponential runtime complexity.
+
+Exponential problems are usually associated with so-called \emph{brute-force} algorithms that must try all
+possibilities from an exponentially increasing set of candidate solutions in order to find the desired solution.
+The states of a brute-force algorithm can be organized into a tree like that shown in \figurename~\ref{fig:tree}.
+Each leaf node of the tree represents a candidate solution.  Each non-leaf node represents a partial solution and
+serves as the root of a subtree leading to a set of related final candidate solutions.
+
+Exponential algorithms can walk their state trees in either depth-first or breadth-first fashion.  This is
+demonstrated in \figurename~\ref{fig:treewalks}
+
+\begin{figure}[H]
+  \begin{minipage}{3in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \node (a) at (0,0) {\(a\)};
+      \node (b) at (-2,-2) {\(b\)};
+      \node (c) at (2,-2) {\(c\)};
+      \node (d) at (-3,-4) {\(d\)};
+      \node (e) at (-1,-4) {\(e\)};
+      \node (f) at (1,-4) {\(f\)};
+      \node (g) at (3,-4) {\(g\)};
+      \draw (a) edge (b) edge (c);
+      \draw (b) edge (d) edge (e);
+      \draw (c) edge (f) edge (g);
+    \end{tikzpicture}
+    \caption{Depth-first versus breadth-first walks.}
+    \label{fig:treewalks}
+  \end{minipage}
+  \begin{minipage}{2.5in}
+    Depth: \((a,b,d,b,e,b,a,c,f,c,g,c,a)\)
+
+    Breadth: \((a,b,c,d,e,f,g)\)
+  \end{minipage}
+\end{figure}
+
+Although breadth-first walks are shorter, since nodes do not need to be revisited during the walk, they require
+more storage since each level must be retained in full; depth-first walks only require that the current branch be
+retained.
+
+The goal when designing such tree-tracked brute-force algorithms is to find ways to \emph{prune} subtrees from the
+tree: the less branches that need to be walked, the faster the algorithm.
 
 Runtime complexity is used in two different ways to compare algorithms:
 \begin{enumerate}
@@ -144,10 +183,25 @@ graph.
 The most popular strategy for estimating a lower bound for the chromatic number of a graph is based on the
 statement of \propname~\ref{prop:clique}.  For a graph \(G\):
 \[\w^*(G)\le\w(G)\le\X(G)\]
-where \(\w^*(G)\) is a lower bound estimate for the clique number of \(G\).
+where \(\w^*(G)\) is a lower bound estimate for the clique number of \(G\).  Another less popular bound is given by
+\theoremname~\ref{thm:lbalpha}.
 
-It is well-known that certain triangle-free graphs with \(\w(G)=2\) can have arbitrarily high \(\X(G)\).  One such
-example are the graphs created using the so-called \emph{Mycielski} construction~\cite{west}:
+\begin{theorem}
+  \label{thm:lbalpha}
+  Let \(G\) be a graph of order \(n\).  \(\displaystyle \X(G)\ge\frac{n}{\a(G)}\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(G\) is \chromatic{k}.  This means that \(V(G)\) can be partitioned into \(k\) non-empty independent
+  sets \(A_1,\ldots,A_k\), where each \(\abs{A_i}\le\a(G)\).
+  \[n=\abs*{\bigcup_{1\le i\le k}A_i}=\sum_{i=1}^k\abs{A_i}\le\sum_{i=1}^k\a(G)=k\a(G)\]
+  Therefore, \(\displaystyle k\ge\frac{n}{\a(G)}\).
+\end{proof}
+
+Note that both of the above lower bounds are tight when \(G\) is complete.
+
+It is well-known that certain triangle-free graphs with \(\w(G)=2\) can have arbitrarily high \(\X(G)\).  Examples
+are the graphs created using the so-called \emph{Mycielski} construction~\cite{west}:
 \begin{enumerate}
 \item Start with \(G=P_2\) \((\X(G)=2)\).
 \item\label{step:myc:repeat} For the vertices in \(v\in V(G)\), create new vertices \(U=\set{u_1,\ldots,u_n}\) such
@@ -203,8 +257,8 @@ The first three graphs resulting from the Mycielski construction are shown in \f
 \end{figure}
 
 The third graph in \figurename~\ref{fig:mycielski} is called the \emph{Gr\"otzsch} graph.  For another example of
-triangle free graphs with arbitrary chromatic number, see Zhang~\cite{zhang}.  Nevertheless, for the general case
-the clique number is a suitable lower bound for the chromatic number.
+triangle free graphs with arbitrarily high chromatic number, see Zhang~\cite{zhang}.  Nevertheless, for the general
+case the clique number is a suitable lower bound for the chromatic number.
 
 Unfortunately, the clique number problem for a graph \(G\) is also NP-hard, so the next best step is to use a
 P-time calculation for a \(\w^*(G)\) that is as tight as possible to the actual \(\w(G)\).  Edwards and
@@ -256,6 +310,43 @@ Note that the improved algorithm cuts the error in half.  The worst case time du
   \caption{Improved Edwards Elphick algorithm maximum duration.}
   \label{fig:edwards2time}
 \end{figure}
+
+As will be shown later in this section, being able to compute the clique number of a graph, or at least a suitable
+estimate, is an important bounding condition for many of the well-known algorithms for finding the chromatic number
+of a graph.  Many of these algorithms rely on the statement of \theoremname~\ref{thm:isclique} that a maximal
+clique in a graph \(G\) is a maximal independent set in \(\bar{G}\).  A nice summary of these algorithms is given
+by Xiao and Nagamouchi~(2017)~\cite{xiao}.  They claim that the known algorithms tend to converge on a runtime
+complexity of \(\BO(1.2^n)\).  These algorithms tend be somewhat complex and geared towards larger \(n\).
+
+A simpler yet efficient alternative to these exact algorithms is the Bron Kerbosch algorithm~(1973)~\cite{bron}.
+The advantage of the Bron Kerbosch (BK) algorithm is that it finds all possible maximal independent sets in a
+graph, and hence can be used to find \(\a(G)=\w(\bar{G})\).  Finding all of the maximal independent sets in a graph
+is a crucial part of the Christofides algorithm, which is discussed later in this section.
+
+The heart of BK is a recursive subroutine called \emph{extend}, where the calls to \emph{extend} implement a
+depth-first walk of an exhaustive search tree.  At each node in the search tree, three vertex lists are maintained:
+
+\begin{description}
+\item[compsub] The current maximal clique accumulator.
+\item[candidates] A set of vertices that can be added to \emph{compsub}.
+\item[old] A set of vertices that already have been used in the current search branch.
+\end{description}
+
+The initial call is seeded with an empty \emph{compsub} and all of the graph's vertices in \emph{candidates}.  Each
+call to \emph{extend} selects a vertex from \emph{candidate}, adds it to \emph{compsub}, constructs new
+\emph{candidates} and \emph{old} sets by removing vertices that are not adjacent to the selected vertex, and then
+calls itself with the new lists.  The termination leaf for each branch is when \emph{candidates} is empty.  If
+\emph{old} is also empty then \emph{compsub} contains a new maximal clique.  Otherwise, the clique in
+\emph{compsub} is a subset of an earlier found clique that contains the vertices in \emph{old} and thus is not
+maximal.  Upon each return from a call to \emph{extend}, the corresponding candidate is removed from \emph{compsub}
+and is added to \emph{old}.
+
+A small improvement added to BK by this research is to abandon the current branch when the desire is to only find
+\(\a(G)\) and the number of vertices in \emph{compsub} and \emph{candidates} are not enough to build a maximal
+clique larger than all previously found maximal cliques.
+
+Bron and Kerbosch actually propose two variations of the algorithm that differ by how the next vertex is selected
+from \emph{candidates}.  In the basic mode, any such vertex may be selected.
 
 \subsubsection{Finding an Upper Bound}\label{sec:sub:sub:upper}
 

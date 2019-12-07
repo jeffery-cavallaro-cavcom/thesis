@@ -89,6 +89,15 @@ C.~Edwards and C.~Elphick, ``Lower bounds for the clique and the chromatic
   numbers of a graph,'' {\em Discrete Applied Mathematics}, vol.~5, no.~1,
   pp.~51--64, 1983.
 
+\bibitem{xiao}
+M.~Xiao and H.~Nagamouchi, ``Exact algorithms for maximum independent set,''
+  {\em Information and Computation}, vol.~255, pp.~126--146, 2017.
+
+\bibitem{bron}
+C.~Bron and J.~Kerbosch, ``Algorithm 457: Finding all cliques of an undirected
+  graph,'' {\em Communications of the ACM}, vol.~16, pp.~575--577, September
+  1973.
+
 \bibitem{obit}
 V.~Voloshin, ``Alexander zykov 1922-2013,'' January 2014.
 
