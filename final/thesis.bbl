@@ -75,6 +75,11 @@ M.~R. Garey and D.~S. Johnson, {\em Computers and Intractability: A Guide to
 M.~Sipser, {\em Introduction to the Theory of Computation}.
 \newblock Boston, MA: Cengage Learning, \(3^{rd}\)~ed., 2013.
 
+\bibitem{johnston}
+H.~Johnston, ``Cliques of a graph---variations on the bron-kerbosch
+  algorithm,'' {\em International Journal of Computer and Information
+  Sciences}, vol.~5, no.~3, pp.~209--238, 1976.
+
 \bibitem{christofides}
 N.~Christofides, ``An algorithm for the chromatic number of a graph,'' {\em The
   Computer Journal}, vol.~14, pp.~38--39, January 1971.

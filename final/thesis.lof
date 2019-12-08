@@ -28,8 +28,8 @@
 \contentsline {figure}{\numberline {28}{\ignorespaces Complete graphs.}}{37}{figure.28}% 
 \contentsline {figure}{\numberline {29}{\ignorespaces A tree organized from root to leaves.}}{38}{figure.29}% 
 \contentsline {figure}{\numberline {30}{\ignorespaces A graph and its adjacency matrix.}}{39}{figure.30}% 
-\contentsline {figure}{\numberline {31}{\ignorespaces Depth-first versus breadth-first walks.}}{43}{figure.31}% 
-\contentsline {figure}{\numberline {32}{\ignorespaces The runtime complexity classes.}}{45}{figure.32}% 
+\contentsline {figure}{\numberline {31}{\ignorespaces The runtime complexity classes.}}{44}{figure.31}% 
+\contentsline {figure}{\numberline {32}{\ignorespaces Depth-first versus breadth-first walks.}}{46}{figure.32}% 
 \contentsline {figure}{\numberline {33}{\ignorespaces The first three graphs from the Mycielski construction.}}{48}{figure.33}% 
 \contentsline {figure}{\numberline {34}{\ignorespaces Edwards Elphick algorithm mean error.}}{49}{figure.34}% 
 \contentsline {figure}{\numberline {35}{\ignorespaces Improved Edwards Elphick algorithm mean error.}}{50}{figure.35}% 
