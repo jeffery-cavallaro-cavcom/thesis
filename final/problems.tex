@@ -139,48 +139,202 @@ Furthermore, runtime complexity is geared towards theoretical comparisons betwee
 an algorithm implementation on a given computer.  Thus, an important part of this research is a random graph
 analysis of several well-known algorithms and the proposed algorithm.
 
-\subsection{Branch and Bound Algorithms}
+\subsection{Branch and Bound Algorithms}\label{sec:sub:bandb}
 
 Exponential problems are usually associated with so-called \emph{brute-force} algorithms that must examine all
 possibilities from an exponentially increasing set of candidate solutions in order to find the desired solution.
-The states of a brute-force algorithm can be organized into a tree like that shown in \figurename~\ref{fig:tree}.
-Each leaf node of the tree represents a candidate solution.  Each non-leaf node represents a partial solution and
-serves as the root node of a subtree leading to a set of related candidate solutions.
+The states of a brute-force algorithm can be represented by nodes in a tree.  Each leaf node of the tree represents
+a candidate solution.  Each non-leaf node represents a partial solution and serves as the root node of a subtree
+leading to a set of related candidate solutions.  Such an algorithm is called a \emph{branching} algorithm because
+each candidate solution can be found by walking a unique path through the tree starting at the root node and ending
+at the candidate solution leaf node.
 
-
-
-Exponential algorithms can walk their state trees in either depth-first or breadth-first fashion.  This is
-demonstrated in \figurename~\ref{fig:treewalks}
+For example, consider the problem of finding all maximal cliques in the graph shown in
+\figurename\ref{fig:maxexample}.
 
 \begin{figure}[H]
-  \begin{minipage}{3in}
-    \centering
-    \begin{tikzpicture}[every node/.style={labeled node}]
-      \node (a) at (0,0) {\(a\)};
-      \node (b) at (-2,-2) {\(b\)};
-      \node (c) at (2,-2) {\(c\)};
-      \node (d) at (-3,-4) {\(d\)};
-      \node (e) at (-1,-4) {\(e\)};
-      \node (f) at (1,-4) {\(f\)};
-      \node (g) at (3,-4) {\(g\)};
-      \draw (a) edge (b) edge (c);
-      \draw (b) edge (d) edge (e);
-      \draw (c) edge (f) edge (g);
-    \end{tikzpicture}
-    \caption{Depth-first versus breadth-first walks.}
-    \label{fig:treewalks}
-  \end{minipage}
-  \begin{minipage}{2.5in}
-    Depth: \((a,b,d,b,e,b,a,c,f,c,g,c,a)\)
-
-    Breadth: \((a,b,c,d,e,f,g)\)
-  \end{minipage}
+  \centering
+  \begin{tikzpicture}[every node/.style={labeled node},node distance=1in]
+    \pathVnodes{\(1\),\(2\),\(3\)}{(0,0)}{right}{p};
+    \draw (p1) edge (p2);
+  \end{tikzpicture}
+  \caption{Finding maximal cliques example graph.}
+  \label{fig:maxexample}
 \end{figure}
 
-Although breadth-first walks are shorter, since nodes do not need to be revisited during the walk, they require
-more storage since each level must be retained in full; depth-first walks only require that the current branch be
-retained.
+First, consider the rather na\"{\i}ve solution of examining every subgraph in the graph.  The resulting tree is
+shown in \figurename\ref{fig:maxexall}.  Each node has two branches: include the next vertex and exclude the next
+vertex.  The results are summarized in the last row: green marks the desired maximal cliques, blue marks
+non-maximal cliques, and red marks non-cliques.
 
-The goal when designing such tree-tracked brute-force algorithms is to find ways to \emph{prune} subtrees from the
-tree: the less branches that need to be walked, the faster the algorithm.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[every node/.style={labeled node}]
+    \colorlet{c1}{green!25!white}
+    \colorlet{c2}{blue!25!white}
+    \colorlet{c3}{red!25!white}
+    \node (1) at (0,0) {};
+    \node (2) at (-4,-2) {\(1\)};
+    \node (3) at (4,-2) {\(\bar{1}\)};
+    \node (4) at (-6,-4) {\(12\)};
+    \node (5) at (-2,-4) {\(1\bar{2}\)};
+    \node (6) at (2,-4) {\(\bar{1}2\)};
+    \node (7) at (6,-4) {\(\bar{1}\bar{2}\)};
+    \node (8) at (-7,-6) {\(123\)};
+    \node (9) at (-5,-6) {\(12\bar{3}\)};
+    \node (10) at (-3,-6) {\(1\bar{2}3\)};
+    \node (11) at (-1,-6) {\(1\bar{2}\bar{3}\)};
+    \node (12) at (1,-6) {\(\bar{1}23\)};
+    \node (13) at (3,-6) {\(\bar{1}2\bar{3}\)};
+    \node (14) at (5,-6) {\(\bar{1}\bar{2}3\)};
+    \node (15) at (7,-6) {\(\bar{1}\bar{2}\bar{3}\)};
+    \node [fill=c3] (16) at (-7,-8) {\(123\)};
+    \node [fill=c1] (17) at (-5,-8) {\(12\)};
+    \node [fill=c3] (18) at (-3,-8) {\(13\)};
+    \node [fill=c2] (19) at (-1,-8) {\(1\)};
+    \node [fill=c3] (20) at (1,-8) {\(23\)};
+    \node [fill=c2] (21) at (3,-8) {\(2\)};
+    \node [fill=c1] (22) at (5,-8) {\(3\)};
+    \node [fill=c3] (23) at (7,-8) {\(\)};
+    \draw (1) edge (2) edge (3);
+    \draw (2) edge (4) edge (5);
+    \draw (3) edge (6) edge (7);
+    \draw (4) edge (8) edge (9);
+    \draw (5) edge (10) edge (11);
+    \draw (6) edge (12) edge (13);
+    \draw (7) edge (14) edge (15);
+    \draw (8) edge (16);
+    \draw (9) edge (17);
+    \draw (10) edge (18);
+    \draw (11) edge (19);
+    \draw (12) edge (20);
+    \draw (13) edge (21);
+    \draw (14) edge (22);
+    \draw (15) edge (23);
+  \end{tikzpicture}
+  \caption{Finding maximal cliques exhaustive tree example.}
+  \label{fig:maxexall}
+\end{figure}
 
+Exponential algorithms can walk their state trees in either depth-first or breadth-first fashion Breadth-first
+walks require that entire levels be maintained in memory, whereas depth-first walks only require that the current
+branch be maintained in memory.  Since state trees are generally much wider than they are deep, depth-first walks
+are almost always more desirable.
+
+When the state tree is binary and balanced like this example, it is easy to calculate that the number of required
+steps (branches) is \(2^{n+1}-2\).  Thus, there are \(14\) required steps to generate all of the subgraphs for this
+example.  But that is not the entire story.  Once all of the subgraphs have been generated, each one needs to be
+evaluated to see if it is a maximal clique.  This requires an extra \(11\) steps as follows:
+\begin{enumerate}
+\item Eliminate \(123\) due to nonadjacent nodes.
+\item Verify that \(12\) has all adjacent nodes.
+\item Eliminate \(13\) due to nonadjacent nodes.
+\item Verify that \(1\) has all adjacent nodes.
+\item Eliminate \(1\) as a subset of \(12\).
+\item Eliminate \(23\) due to nonadjacent nodes.
+\item Verify that \(2\) has all adjacent nodes.
+\item Eliminate \(2\) as a subset of \(12\).
+\item Verify that \(3\) has all adjacent nodes.
+\item Verify that \(3\) is not a subset of \(12\).
+\item Eliminate the null graph.
+\end{enumerate}
+
+In fact, each of the subset checks will take an addition number of steps, so the actual number of steps is greater
+than the \(25\) already mentioned.
+
+It would be better to terminate subtrees as soon as a nonadjacent vertex is added to a subset of adjacent vertices.
+Such a test is called a \emph{bounding} condition and subtrees that are terminated due to bounding conditions are
+said to be \emph{pruned}.  Branching algorithms that have bounding conditions are called \emph{branch and bound}
+algorithms.  The goal of any branch and bound algorithm is to prune as many subtrees as possible using bounding
+conditions.  The new tree with the nonadjacent bounding condition applied is shown in
+\figurename~\ref{fig:boundnonadj}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[every node/.style={labeled node}]
+    \colorlet{c1}{green!25!white}
+    \colorlet{c2}{blue!25!white}
+    \node (1) at (0,0) {};
+    \node (2) at (-4,-2) {\(1\)};
+    \node (3) at (4,-2) {\(\bar{1}\)};
+    \node (4) at (-6,-4) {\(12\)};
+    \node (5) at (-2,-4) {\(1\bar{2}\)};
+    \node (6) at (2,-4) {\(\bar{1}2\)};
+    \node (7) at (6,-4) {\(\bar{1}\bar{2}\)};
+    \node (9) at (-5,-6) {\(12\bar{3}\)};
+    \node (11) at (-1,-6) {\(1\bar{2}\bar{3}\)};
+    \node (13) at (3,-6) {\(\bar{1}2\bar{3}\)};
+    \node (14) at (5,-6) {\(\bar{1}\bar{2}3\)};
+    \node [fill=c1] (17) at (-5,-8) {\(12\)};
+    \node [fill=c2] (19) at (-1,-8) {\(1\)};
+    \node [fill=c2] (21) at (3,-8) {\(2\)};
+    \node [fill=c1] (22) at (5,-8) {\(3\)};
+    \draw (1) edge (2) edge (3);
+    \draw (2) edge (4) edge (5);
+    \draw (3) edge (6) edge (7);
+    \draw (4) edge (9);
+    \draw (5) edge (11);
+    \draw (6) edge (13);
+    \draw (7) edge (14);
+    \draw (9) edge (17);
+    \draw (11) edge (19);
+    \draw (13) edge (21);
+    \draw (14) edge (22);
+  \end{tikzpicture}
+  \caption{Finding maximal cliques nonadjacent bound.}
+  \label{fig:boundnonadj}
+\end{figure}
+
+Note that any subtree that attempts to combine vertex \(3\) with either vertex \(1\) or vertex \(2\) is pruned.
+
+There is still the problem of eliminating non-maximal cliques.  This can be accomplished by maintaining a list of
+``used'' vertices for each branch edge.  When transitioning to the right from an ``include vertex'' branch to an
+``exclude vertex'' branch, the excluded vertex is added to the branch's used list.  When transitioning down an
+``include vertex'' branch, used vertices that are not adjacent to the newly included vertex are removed from the
+branch's used list.  Thus, a leaf node resulting from a branch with a non-empty used list is a subset of some
+previously found clique and thus is not maximal.  The new tree with the non-maximal bounding condition applied is
+shown in \figurename~\ref{fig:boundnonmax}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \colorlet{c1}{green!25!white}
+    \colorlet{c2}{blue!25!white}
+    \begin{scope}[every node/.style={labeled node}]
+      \node (1) at (0,0) {};
+      \node (2) at (-4,-2) {\(1\)};
+      \node (3) at (4,-2) {\(\bar{1}\)};
+      \node (4) at (-6,-4) {\(12\)};
+      \node (5) at (-2,-4) {\(1\bar{2}\)};
+      \node (6) at (2,-4) {\(\bar{1}2\)};
+      \node (7) at (6,-4) {\(\bar{1}\bar{2}\)};
+      \node (9) at (-5,-6) {\(12\bar{3}\)};
+      \node (11) at (-1,-6) {\(1\bar{2}\bar{3}\)};
+      \node (13) at (3,-6) {\(\bar{1}2\bar{3}\)};
+      \node (14) at (5,-6) {\(\bar{1}\bar{2}3\)};
+      \node [fill=c1] (17) at (-5,-8) {\(12\)};
+      \node [fill=c1] (22) at (5,-8) {\(3\)};
+    \end{scope}
+    \draw (1) edge (2) edge node [auto] {\color{red}\(1\)} (3);
+    \draw (2) edge (4) edge node [auto] {\color{red}\(2\)} (5);
+    \draw (3) edge node [auto,swap] {\color{red}\(1\)} (6) edge node [auto] {\color{red}\(12\)} (7);
+    \draw (4) edge (9);
+    \draw (5) edge node [auto] {\color{red}\(2\)} (11);
+    \draw (6) edge node [auto,swap] {\color{red}\(1\)} (13);
+    \draw (7) edge (14);
+    \draw (9) edge (17);
+    \draw (14) edge (22);
+  \end{tikzpicture}
+  \caption{Finding maximal cliques non-maximal bound.}
+  \label{fig:boundnonmax}
+\end{figure}
+
+Note that leaf node \(1\bar{2}\bar{3}\) is not maximal because vertex \(2\) remains on the used list.  Also note
+that the branch from \(\bar{1}\bar{2}\) to \(\bar{1}\bar{2}3\) eliminates vertices \(1\) and \(2\) from the used
+list because they are not adjacent to vertex \(3\).  Thus, \(\bar{1}\bar{2}3\) is a desired maximal clique.
+
+Since bounding conditions are often very dependent on graph structure, it can be very hard to determine the
+theoretical runtime complexity for a specific branch and bound algorithm.  This is especially true when multiple
+bounding conditions interact such that it is unclear what constitutes a worst case for the algorithm.  In these
+cases, runtime complexity values gleaned from empirical data (such as random graph analysis) are convenient
+substitutes for truly theoretical answers.

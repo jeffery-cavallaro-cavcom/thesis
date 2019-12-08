@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  7 DEC 2019 18:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  7 DEC 2019 22:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1690,6 +1690,9 @@ Overfull \vbox (681.11009pt too high) has occurred while \output is active []
 
 [11]
 Package tocbasic Info: Using my definition of `\numberline' on input line 71.
+Package tocbasic Info: Using my definition of `\numberline' on input line 72.
+Package tocbasic Info: Using my definition of `\numberline' on input line 73.
+Package tocbasic Info: Using my definition of `\numberline' on input line 74.
 )
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
@@ -1774,7 +1777,7 @@ ifier (name{figure.6}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.327 \end{theorem}
                    ]
-<opener.png, id=651, 280.79906pt x 63.98906pt>
+<opener.png, id=657, 280.79906pt x 63.98906pt>
 File: opener.png Graphic file (type png)
 <use opener.png>
 Package pdftex.def Info: opener.png  used on input line 350.
@@ -1994,63 +1997,83 @@ gure.31}) has been already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.132 \subsubsection
-                    {Runtime Duration}\label{sec:sub:sub:duration}] [45])
-(./chromatic.tex [46pdfTeX warning (ext4): destination with the same identifier
- (name{figure.32}) has been already used, duplicate ignored
+                    {Runtime Duration}\label{sec:sub:sub:duration}]
+Missing character: There is no ; in font nullfont!
+ [45pdfTeX warning (ext4): destination with the same identifier (name{figure.32
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.169 
+      ] [46pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.33}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.229 \item E
+             liminate \(123\) due to nonadjacent nodes.] [47] [48pdfTeX warning
+ (ext4): destination with the same identifier (name{figure.34}) has been alread
+y used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.331 
+      ]) (./chromatic.tex [49pdfTeX warning (ext4): destination with the same i
+dentifier (name{figure.35}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \section
-            {The Chromatic Number Problem}\label{sec:chromatic}] [47
+            {The Chromatic Number Problem}\label{sec:chromatic}] [50
 
 ]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [48pdfTeX warning (ext4): destination with the same identifier (name{figure.33
+ [51pdfTeX warning (ext4): destination with the same identifier (name{figure.36
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.102 \item A
              dd \(v_i\) to \(S\) and go to step~\ref{step:edw:select}.]
-<edwards1_error.jpeg, id=952, 455.45157pt x 258.65053pt>
+<edwards1_error.jpeg, id=985, 455.45157pt x 258.65053pt>
 File: edwards1_error.jpeg Graphic file (type jpg)
 <use edwards1_error.jpeg>
 Package pdftex.def Info: edwards1_error.jpeg  used on input line 115.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<edwards2_error.jpeg, id=955, 455.45157pt x 258.65053pt>
+<edwards2_error.jpeg, id=988, 455.45157pt x 258.65053pt>
 File: edwards2_error.jpeg Graphic file (type jpg)
 <use edwards2_error.jpeg>
 Package pdftex.def Info: edwards2_error.jpeg  used on input line 128.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
 
-[49pdfTeX warning (ext4): destination with the same identifier (name{figure.34}
+[52pdfTeX warning (ext4): destination with the same identifier (name{figure.37}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.132 
        <./edwards1_error.jpeg>]
-<edwards2_time.jpeg, id=965, 455.45157pt x 258.65053pt>
+<edwards2_time.jpeg, id=996, 455.45157pt x 258.65053pt>
 File: edwards2_time.jpeg Graphic file (type jpg)
 <use edwards2_time.jpeg>
 Package pdftex.def Info: edwards2_time.jpeg  used on input line 138.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
- [50pdfTeX warning (ext4): destination with the same identifier (name{figure.35
+ [53pdfTeX warning (ext4): destination with the same identifier (name{figure.38
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.149 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
-36}) has been already used, duplicate ignored
+39}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.149 
-       <./edwards2_error.jpeg> <./edwards2_time.jpeg>] [51]
-<zykov.jpeg, id=980, 371.3875pt x 261.97874pt>
+       <./edwards2_error.jpeg> <./edwards2_time.jpeg>] [54]
+<zykov.jpeg, id=1011, 371.3875pt x 261.97874pt>
 File: zykov.jpeg Graphic file (type jpg)
 <use zykov.jpeg>
 Package pdftex.def Info: zykov.jpeg  used on input line 193.
@@ -2062,61 +2085,61 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[52]
+[55]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[53pdfTeX warning (ext4): destination with the same identifier (name{figure.37}
+[56pdfTeX warning (ext4): destination with the same identifier (name{figure.40}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.308 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
-38}) has been already used, duplicate ignored
+41}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.308 
-       <./zykov.jpeg>] [54pdfTeX warning (ext4): destination with the same iden
-tifier (name{figure.39}) has been already used, duplicate ignored
+       <./zykov.jpeg>] [57pdfTeX warning (ext4): destination with the same iden
+tifier (name{figure.42}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.412 Z
        ykov was trying to determine the number of \coloring{k}s of a graph w...
-pdfTeX warning (ext4): destination with the same identifier (name{figure.40}) h
+pdfTeX warning (ext4): destination with the same identifier (name{figure.43}) h
 as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.412 Z
        ykov was trying to determine the number of \coloring{k}s of a graph w...
-] [55] [56]) (./algorithm.tex [57pdfTeX warning (ext4): destination with the sa
-me identifier (name{figure.41}) has been already used, duplicate ignored
+] [58] [59]) (./algorithm.tex [60pdfTeX warning (ext4): destination with the sa
+me identifier (name{figure.44}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \section
-            {The Proposed Algorithm}\label{sec:algorithm}] [58] [59
+            {The Proposed Algorithm}\label{sec:algorithm}] [61] [62
 
-] [60]
-[61pdfTeX warning (ext4): destination with the same identifier (name{figure.42}
+] [63]
+[64pdfTeX warning (ext4): destination with the same identifier (name{figure.45}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.110 
-      ] [62] [63] [64pdfTeX warning (ext4): destination with the same identifie
-r (name{figure.43}) has been already used, duplicate ignored
+      ] [65] [66] [67pdfTeX warning (ext4): destination with the same identifie
+r (name{figure.46}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.229 S
        teps~\ref{step:sub:smallcalc}--\ref{step:sub:subset} attempt to remov...
-] [65] [66] [67]
+] [68] [69] [70]
 Missing character: There is no ; in font nullfont!
- [68pdfTeX warning (ext4): destination with the same identifier (name{figure.44
+ [71pdfTeX warning (ext4): destination with the same identifier (name{figure.47
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2128,7 +2151,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
- [69pdfTeX warning (ext4): destination with the same identifier (name{figure.45
+ [72pdfTeX warning (ext4): destination with the same identifier (name{figure.48
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2136,40 +2159,40 @@ Missing character: There is no ; in font nullfont!
 l.499 \end{theorem}
                    ]
 Missing character: There is no ; in font nullfont!
- [70] [71pdfTeX warning (ext4): destination with the same identifier (name{figu
-re.46}) has been already used, duplicate ignored
+ [73] [74pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.49}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.593 
-      ] [72] [73pdfTeX warning (ext4): destination with the same identifier (na
-me{figure.47}) has been already used, duplicate ignored
+      ] [75] [76pdfTeX warning (ext4): destination with the same identifier (na
+me{figure.50}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.669 \item \(
-              2\le k<n\)] [74] [75pdfTeX warning (ext4): destination with the s
-ame identifier (name{figure.48}) has been already used, duplicate ignored
+              2\le k<n\)] [77] [78pdfTeX warning (ext4): destination with the s
+ame identifier (name{figure.51}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.760   \item [Case 1:]
-                        \(a_i=1\)] [76pdfTeX warning (ext4): destination with t
-he same identifier (name{figure.49}) has been already used, duplicate ignored
+                        \(a_i=1\)] [79pdfTeX warning (ext4): destination with t
+he same identifier (name{figure.52}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.800 ...\frac{(n-1)-(n-2)}{k-1}=\frac{1}{k-1}>0\]
-                                                  ] [77] [78] [79pdfTeX warning
- (ext4): destination with the same identifier (name{figure.50}) has been alread
+                                                  ] [80] [81] [82pdfTeX warning
+ (ext4): destination with the same identifier (name{figure.53}) has been alread
 y used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.894   \item [Case 1:]
                         \(u\) and \(v\) have the same color: \(c(u)=c(v)\).]
-[80] [81] [82] [83pdfTeX warning (ext4): destination with the same identifier (
-name{figure.51}) has been already used, duplicate ignored
+[83] [84] [85] [86pdfTeX warning (ext4): destination with the same identifier (
+name{figure.54}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -2178,20 +2201,20 @@ l.1074
 
 LaTeX Warning: Command \d invalid in math mode on input line 1082.
 
-[84pdfTeX warning (ext4): destination with the same identifier (name{figure.52}
+[87pdfTeX warning (ext4): destination with the same identifier (name{figure.55}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1141 
-       ] [85pdfTeX warning (ext4): destination with the same identifier (name{t
+       ] [88pdfTeX warning (ext4): destination with the same identifier (name{t
 able.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1171 \item (
               I\ref{step:sub:dencalc}) Calculate the maximum edge threshold ...
-pdfTeX warning (ext4): destination with the same identifier (name{figure.53}) h
+pdfTeX warning (ext4): destination with the same identifier (name{figure.56}) h
 as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -2202,149 +2225,149 @@ l.1171 \item (
 
 LaTeX Warning: Command \d invalid in math mode on input line 1176.
 
-[86pdfTeX warning (ext4): destination with the same identifier (name{table.5}) 
+[89pdfTeX warning (ext4): destination with the same identifier (name{table.5}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1235 \item (
               I\ref{step:sub:select2}) Based on the results in \tablename~\r...
-] [87pdfTeX warning (ext4): destination with the same identifier (name{figure.5
-4}) has been already used, duplicate ignored
+] [90pdfTeX warning (ext4): destination with the same identifier (name{figure.5
+7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1294 
-       ] [88pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.55}) has been already used, duplicate ignored
+       ] [91pdfTeX warning (ext4): destination with the same identifier (name{f
+igure.58}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1324 \item (
-              I\ref{step:sub:small}) Since \(X=\emptyset\), continue.] [89]
+              I\ref{step:sub:small}) Since \(X=\emptyset\), continue.] [92]
 
-LaTeX Warning: Reference `removecf' on page 90 undefined on input line 1380.
+LaTeX Warning: Reference `removecf' on page 93 undefined on input line 1380.
 
-[90pdfTeX warning (ext4): destination with the same identifier (name{figure.56}
+[93pdfTeX warning (ext4): destination with the same identifier (name{figure.59}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1424 
-       ] [91pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.57}) has been already used, duplicate ignored
+       ] [94pdfTeX warning (ext4): destination with the same identifier (name{f
+igure.60}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1493   \end{figure}
                      pdfTeX warning (ext4): destination with the same identifie
-r (name{figure.58}) has been already used, duplicate ignored
+r (name{figure.61}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1493   \end{figure}
-                     ]) (./casestudy.tex [92pdfTeX warning (ext4): destination 
-with the same identifier (name{figure.59}) has been already used, duplicate ign
+                     ]) (./casestudy.tex [95pdfTeX warning (ext4): destination 
+with the same identifier (name{figure.62}) has been already used, duplicate ign
 ored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \section
             {Toaster Design Case Study}pdfTeX warning (ext4): destination with 
-the same identifier (name{figure.60}) has been already used, duplicate ignored
+the same identifier (name{figure.63}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \section
-            {Toaster Design Case Study}] [93]
-<toaster.jpeg, id=1463, 2007.5pt x 2007.5pt>
+            {Toaster Design Case Study}] [96]
+<toaster.jpeg, id=1495, 2007.5pt x 2007.5pt>
 File: toaster.jpeg Graphic file (type jpg)
 <use toaster.jpeg>
 Package pdftex.def Info: toaster.jpeg  used on input line 8.
 (pdftex.def)             Requested size: 401.49289pt x 401.49289pt.
- [94
+ [97
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.61}) h
+pdfTeX warning (ext4): destination with the same identifier (name{figure.64}) h
 as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.39 
-      <./toaster.jpeg>] [95pdfTeX warning (ext4): destination with the same ide
+      <./toaster.jpeg>] [98pdfTeX warning (ext4): destination with the same ide
 ntifier (name{table.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.80 ...)}{2\cdot3}=\frac{98}{6}\approx16.3>13=m\]
                                                   pdfTeX warning (ext4): destin
-ation with the same identifier (name{figure.62}) has been already used, duplica
+ation with the same identifier (name{figure.65}) has been already used, duplica
 te ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.80 ...)}{2\cdot3}=\frac{98}{6}\approx16.3>13=m\]
-                                                  ] [96pdfTeX warning (ext4): d
-estination with the same identifier (name{figure.63}) has been already used, du
+                                                  ] [99pdfTeX warning (ext4): d
+estination with the same identifier (name{figure.66}) has been already used, du
 plicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.139 
-      ] [97pdfTeX warning (ext4): destination with the same identifier (name{fi
-gure.64}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.182 
-      ] [98pdfTeX warning (ext4): destination with the same identifier (name{fi
-gure.65}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.219 
-      ] [99pdfTeX warning (ext4): destination with the same identifier (name{fi
-gure.66}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.252 
       ] [100pdfTeX warning (ext4): destination with the same identifier (name{f
 igure.67}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.284 
+l.182 
       ] [101pdfTeX warning (ext4): destination with the same identifier (name{f
 igure.68}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.327 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-69}) has been already used, duplicate ignored
+l.219 
+      ] [102pdfTeX warning (ext4): destination with the same identifier (name{f
+igure.69}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.327 
-      ] [102pdfTeX warning (ext4): destination with the same identifier (name{f
+l.252 
+      ] [103pdfTeX warning (ext4): destination with the same identifier (name{f
 igure.70}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
+l.284 
+      ] [104pdfTeX warning (ext4): destination with the same identifier (name{f
+igure.71}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.327 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+72}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.327 
+      ] [105pdfTeX warning (ext4): destination with the same identifier (name{f
+igure.73}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
 l.366 
-      ]) (./random.tex [103pdfTeX warning (ext4): destination with the same ide
-ntifier (name{figure.71}) has been already used, duplicate ignored
+      ]) (./random.tex [106pdfTeX warning (ext4): destination with the same ide
+ntifier (name{figure.74}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \section
-            {Random Graph Analysis}\label{sec:random}])) [104
+            {Random Graph Analysis}\label{sec:random}])) [107
 
 ] (./thesis.bbl
-[105
+[108
 
 
-]) [106]
+]) [109]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
  (./thesis.aux (./sections.aux))
@@ -2361,10 +2384,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 31805 strings out of 492609
- 594838 string characters out of 6129049
- 814908 words of memory out of 5000000
- 34354 multiletter control sequences out of 15000+600000
+ 31950 strings out of 492609
+ 596635 string characters out of 6129049
+ 817203 words of memory out of 5000000
+ 34482 multiletter control sequences out of 15000+600000
  84335 words of font info for 280 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,17n,436p,835b,1231s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2390,10 +2413,10 @@ dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/
 times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on thesis.pdf (118 pages, 646153 bytes).
+Output written on thesis.pdf (121 pages, 656534 bytes).
 PDF statistics:
- 1677 PDF objects out of 1728 (max. 8388607)
- 1518 compressed objects within 16 object streams
- 465 named destinations out of 1000 (max. 500000)
+ 1713 PDF objects out of 1728 (max. 8388607)
+ 1551 compressed objects within 16 object streams
+ 482 named destinations out of 1000 (max. 500000)
  28219 words of extra memory for PDF output out of 29859 (max. 10000000)
 
