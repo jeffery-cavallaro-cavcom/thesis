@@ -72,74 +72,8 @@ The graph \(G_1\) for the first candidate design with \(n=7\) and \(m=13\) is sh
   \label{fig:design1}
 \end{figure}
 
-For \(k=2\), the maximum edge threshold test fails:
-\[\frac{n^2(k-1)}{2k}=\frac{7^2(2-1)}{2\cdot2}=\frac{49}{4}\approx12.3<13=m\]
-so \(G_1\) is not \colorable{2}.
-
-For \(k=3\), the maximum edge threshold test passes:
-\[\frac{n^2(k-1)}{2k}=\frac{7^2(3-1)}{2\cdot3}=\frac{98}{6}\approx16.3>13=m\]
-There are no vertices with degrees less than \(k=3\); however, note that \(N(\FR_2)\subseteq N(\FR_1)\),
-so remove vertex \(\FR_2\).  The result is shown in \figurename~\ref{fig:d1rem2}.
-
-\begin{figure}[H]
-  \centering
-  \scalebox{0.75}{
-    \begin{tikzpicture}
-      \node [draw,circle] (fr1) at (4,0) {\(\FR_1\)};
-      \node [draw,circle] (fr3) at (0,6) {\(\FR_3\)};
-      \node [draw,circle] (fr4) at (1,2) {\(\FR_4\)};
-      \node [draw,circle] (fr5) at (0,-4) {\(\FR_5\)};
-      \node [draw,circle] (fr6) at (0,-1.5) {\(\FR_6\)};
-      \node [draw,circle] (fr7) at (-4,0) {\(\FR_7\)};
-      \draw (fr1) edge (fr3);
-      \draw (fr1) edge (fr4);
-      \draw (fr1) edge (fr5);
-      \draw (fr1) edge (fr6);
-      \draw (fr1) edge (fr7);
-      \draw (fr3) edge (fr4);
-      \draw (fr3) edge (fr7);
-      \draw (fr5) edge (fr6);
-      \draw (fr5) edge (fr7);
-      \draw (fr6) edge (fr7);
-    \end{tikzpicture}
-  }
-
-  \(G_1-\text{FR2}\)
-  \caption{Design 1---remove \(\FR_2\).}
-  \label{fig:d1rem2}
-\end{figure}
-
-Next, since \(\deg(\FR_4)=2<3=k\), remove \(\FR_4\).  As a result of removing \(\FR_4\), \(\deg(\FR_3)=2<3=k\), so
-remove \(FR_3\) as well.  The result is show in \figurename~\ref{fig:d1rem34}.
-
-\begin{figure}[H]
-  \begin{center}
-    \scalebox{0.75}{
-      \begin{tikzpicture}
-        \node [draw,circle] (fr1) at (4,0) {\(\FR_1\)};
-        \node [draw,circle] (fr5) at (0,-4) {\(\FR_5\)};
-        \node [draw,circle] (fr6) at (0,-1.5) {\(\FR_6\)};
-        \node [draw,circle] (fr7) at (-4,0) {\(\FR_7\)};
-        \draw (fr1) edge (fr5);
-        \draw (fr1) edge (fr6);
-        \draw (fr1) edge (fr7);
-        \draw (fr5) edge (fr6);
-        \draw (fr5) edge (fr7);
-        \draw (fr6) edge (fr7);
-      \end{tikzpicture}
-    }
-
-    \bigskip
-
-    \(G_1-\FR_4-\FR_3\)
-  \end{center}
-  \caption{Design 1---Remove \(\FR_4\) and \(\FR_3\).}
-  \label{fig:d1rem34}
-\end{figure}
-
-At this point, \(G_1=K_4\), so it is guaranteed to fail the maximum edge threshold check for \(k=3\) and thus not
-be \colorable{3}.  At \(k=4\) we have \(n=4\le4=k\).  Thus, we can conclude that \(G_1\) is \chromatic{4}. An
-example chromatic coloring with:
+Running the Bron Kerbosch and greedy last-first algorithms indicate that \(\X(G_1)=4\).  The \chromatic{4} coloring
+returned by the greedy algorithm with:
 \[C=\set{\text{\textcolor{green}{green}},\text{\textcolor{blue}{blue}},\text{\textcolor{red}{red}},
   \text{\textcolor{orange}{orange}}}\]
 is show in \figurename~\ref{fig:d1color}.
@@ -154,11 +88,11 @@ is show in \figurename~\ref{fig:d1color}.
       \colorlet{c4}{orange!25!white}
       \node [draw,circle,fill=c1] (fr1) at (4,0) {\(\FR_1\)};
       \node [draw,circle,fill=c1] (fr2) at (-1,2) {\(\FR_2\)};
-      \node [draw,circle,fill=c2] (fr3) at (0,6) {\(\FR_3\)};
-      \node [draw,circle,fill=c3] (fr4) at (1,2) {\(\FR_4\)};
-      \node [draw,circle,fill=c2] (fr5) at (0,-4) {\(\FR_5\)};
+      \node [draw,circle,fill=c3] (fr3) at (0,6) {\(\FR_3\)};
+      \node [draw,circle,fill=c2] (fr4) at (1,2) {\(\FR_4\)};
+      \node [draw,circle,fill=c4] (fr5) at (0,-4) {\(\FR_5\)};
       \node [draw,circle,fill=c3] (fr6) at (0,-1.5) {\(\FR_6\)};
-      \node [draw,circle,fill=c4] (fr7) at (-4,0) {\(\FR_7\)};
+      \node [draw,circle,fill=c2] (fr7) at (-4,0) {\(\FR_7\)};
       \draw (fr1) edge (fr3);
       \draw (fr1) edge (fr4);
       \draw (fr1) edge (fr5);
@@ -176,7 +110,7 @@ is show in \figurename~\ref{fig:d1color}.
   }
 
   \(G_1\)
-  \caption{Design 1---chromatic coloring.}
+  \caption{First design chromatic coloring.}
   \label{fig:d1color}
 \end{figure}
 
@@ -217,116 +151,8 @@ result is shown in \figurename~\ref{fig:design2}.
   \label{fig:design2}
 \end{figure}
 
-Rerun the algorithm on \(G_2\) for \(n=7\) and \(m=12\).  For \(k=2\), the maximum edge threshold test passes:
-\[\frac{n^2(k-1)}{2k}=\frac{7^2(2-1)}{2\cdot2}=\frac{49}{4}\approx12.3>12=m\]
-Note that \(N(\FR_6)\subseteq N(\FR_5)\), so remove \(\FR_6\).  The result is shown in
-\figurename~\ref{fig:d2rem6}.
-
-\begin{figure}[H]
-  \centering
-  \scalebox{0.75}{
-    \begin{tikzpicture}
-      \node [draw,circle] (fr1) at (4,0) {FR1};
-      \node [draw,circle] (fr2) at (-1,2) {FR2};
-      \node [draw,circle] (fr3) at (0,6) {FR3};
-      \node [draw,circle] (fr4) at (1,2) {FR4};
-      \node [draw,circle] (fr5) at (0,-4) {FR5};
-      \node [draw,circle] (fr7) at (-4,0) {FR7};
-      \draw (fr1) edge (fr3);
-      \draw (fr1) edge (fr4);
-      \draw (fr1) edge (fr5);
-      \draw (fr1) edge (fr7);
-      \draw (fr2) edge (fr3);
-      \draw (fr2) edge (fr4);
-      \draw (fr2) edge (fr7);
-      \draw (fr3) edge (fr4);
-      \draw (fr3) edge (fr7);
-      \draw (fr5) edge (fr7);
-    \end{tikzpicture}
-  }
-
-  \(G_2-\FR_6\)
-  \caption{Design 2---remove \(\FR_6\).}
-  \label{fig:d2rem6}
-\end{figure}
-
-Now, with \(n=6\) and \(m=10\), \(G_2\) fails the maximum edge threshold test for \(k=2\):
-\[\frac{n^2(k-1)}{2k}=\frac{6^2(2-1)}{2\cdot2}=\frac{36}{4}=9<10=m\]
-so \(G_2\) is not \colorable{2}.
-
-For \(k=3\), note that \(\deg(\FR_5)=2<3=k\), so remove \(\FR_5\).  The result is shown in
-\figurename~\ref{fig:d2rem5}.
-
-\begin{figure}[H]
-  \centering
-  \scalebox{0.75}{
-    \begin{tikzpicture}
-      \node [draw,circle] (fr1) at (4,0) {FR1};
-      \node [draw,circle] (fr2) at (-1,2) {FR2};
-      \node [draw,circle] (fr3) at (0,6) {FR3};
-      \node [draw,circle] (fr4) at (1,2) {FR4};
-      \node [draw,circle] (fr7) at (-4,0) {FR7};
-      \draw (fr1) edge (fr3);
-      \draw (fr1) edge (fr4);
-      \draw (fr1) edge (fr7);
-      \draw (fr2) edge (fr3);
-      \draw (fr2) edge (fr4);
-      \draw (fr2) edge (fr7);
-      \draw (fr3) edge (fr4);
-      \draw (fr3) edge (fr7);
-    \end{tikzpicture}
-  }
-
-  \(G_2-\FR_5\)
-  \caption{Design 2---remove \(FR_5\).}
-  \label{fig:d2rem5}
-\end{figure}
-
-Now, with \(n=5\) and \(m=8\), \(G_2\) passes the maximum edge threshold test for \(k=3\):
-\[\frac{n^2(k-1)}{2k}=\frac{5^2(3-1)}{2\cdot3}=\frac{50}{6}\approx8.3>8=m\]
-Since \(N(\FR_2)\subseteq N(\FR_1)\), remove \(\FR_2\).  The result is shown in \figurename~\ref{fig:d2rem2}.
-
-\begin{figure}[H]
-  \centering
-  \scalebox{0.75}{
-    \begin{tikzpicture}
-      \node [draw,circle] (fr1) at (4,0) {FR1};
-      \node [draw,circle] (fr3) at (0,6) {FR3};
-      \node [draw,circle] (fr4) at (1,2) {FR4};
-      \node [draw,circle] (fr7) at (-4,0) {FR7};
-      \draw (fr1) edge (fr3);
-      \draw (fr1) edge (fr4);
-      \draw (fr1) edge (fr7);
-      \draw (fr3) edge (fr4);
-      \draw (fr3) edge (fr7);
-    \end{tikzpicture}
-  }
-
-  \(G_2-\FR_2\)
-  \caption{Design 2---remove \(\FR_2\).}
-  \label{fig:d2rem2}
-\end{figure}
-
-Finally, \(\deg(\FR_4)=\deg(\FR_7)=2<3=k\), so remove \(\FR_4\) and \(\FR_7\).  The result is shown in
-\figurename~\ref{fig:d2rem47}.
-
-\begin{figure}[H]
-  \centering
-  \scalebox{0.75}{
-    \begin{tikzpicture}
-      \node [draw,circle] (fr1) at (4,0) {FR1};
-      \node [draw,circle] (fr3) at (0,6) {FR3};
-      \draw (fr1) edge (fr3);
-    \end{tikzpicture}
-  }
-
-  \(G_2-\set{\FR_4,\FR_7}\)
-  \caption{Design 2---remove \(\FR_4\) and \(\FR_7\).}
-  \label{fig:d2rem47}
-\end{figure}
-
-This final state of \(G_2\) has \(n=2\le3=k\), so we can conclude that \(G_2\) is \chromatic{3}.  An example
-chromatic coloring with:
+Now, running the Bron Kerbosch and greedy last-first algorithms indicate that \(\X(G_1)=3\).  The \chromatic{3}
+coloring returned by the greedy algorithm with:
 \[C=\set{\text{\textcolor{green}{green}},\text{\textcolor{blue}{blue}},\text{\textcolor{red}{red}}}\]
 is show in \figurename~\ref{fig:d2color}.
 
@@ -339,11 +165,11 @@ is show in \figurename~\ref{fig:d2color}.
       \colorlet{c3}{red!25!white}
       \node [draw,circle,fill=c1] (fr1) at (4,0) {FR1};
       \node [draw,circle,fill=c1] (fr2) at (-1,2) {FR2};
-      \node [draw,circle,fill=c2] (fr3) at (0,6) {FR3};
-      \node [draw,circle,fill=c3] (fr4) at (1,2) {FR4};
-      \node [draw,circle,fill=c2] (fr5) at (0,-4) {FR5};
-      \node [draw,circle,fill=c2] (fr6) at (0,-1.5) {FR6};
-      \node [draw,circle,fill=c3] (fr7) at (-4,0) {FR7};
+      \node [draw,circle,fill=c3] (fr3) at (0,6) {FR3};
+      \node [draw,circle,fill=c2] (fr4) at (1,2) {FR4};
+      \node [draw,circle,fill=c3] (fr5) at (0,-4) {FR5};
+      \node [draw,circle,fill=c3] (fr6) at (0,-1.5) {FR6};
+      \node [draw,circle,fill=c2] (fr7) at (-4,0) {FR7};
       \draw (fr1) edge (fr3);
       \draw (fr1) edge (fr4);
       \draw (fr1) edge (fr5);
@@ -360,10 +186,15 @@ is show in \figurename~\ref{fig:d2color}.
   }
 
   \(G_2\)
-  \caption{Design 2---chromatic coloring.}
+  \caption{Second design chromatic coloring.}
   \label{fig:d2color}
 \end{figure}
 
 This process gives the designer the feedback that the second design requires only three parts instead of four, and
 thus has less information content and hence a higher chance of success than the first design.  It will be up to the
 designer to weigh this result against other aspects of the design.
+
+Note that in both cases, the chromatic number is equal to the lower and upper bounds.  In fact, the author found it
+rather difficult to synthesis a case study with meaningful relationships between the FRs such that this was not the
+case.  The random graph analysis supports this, with such a high percentage of the random graphs exhibiting this
+quality.
