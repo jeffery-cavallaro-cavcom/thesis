@@ -350,7 +350,7 @@ In fact, the the test of Corollary~\ref{cor:density} will always fail for a comp
   &>0\qquad(n>k)
 \end{align*}
 
-\subsubsection{Vertex Removal}\label{sec:sub:sub:vremove}
+\subsubsection{Vertex Removal}\label{sec:sub:sub:vertex}
 
 The theorems that support vertex removal make use of Lemma~\ref{lem:remone}.
 
@@ -1148,7 +1148,7 @@ The algorithm steps are as follows.  Outer loop steps are marked by ``O\#'' and 
   vertices share two common neighbors, so select \(a\) and \(d\).
 
 \item (I\ref{step:sub:call1}) Recursively call the subroutine with \(G\cdot ad\), as shown in
-  \figurename~\ref{fig:contract}.  Now, \(n=5\) and \(m=7\).
+  \figurename~\ref{fig:contractad}.  Now, \(n=5\) and \(m=7\).
 
   \begin{figure}[H]
     \centering
@@ -1167,7 +1167,7 @@ The algorithm steps are as follows.  Outer loop steps are marked by ``O\#'' and 
       \draw (e) to (f);
     \end{tikzpicture}
     \caption{Step: \(G\cdot ad\).}
-    \label{fig:contract}
+    \label{fig:contractad}
   \end{figure}
 
 \item (I\ref{step:sub:check}-1) \(n=5\nleq3=k\), so continue.

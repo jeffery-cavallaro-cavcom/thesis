@@ -84,10 +84,11 @@ the computation classes shown in \tablename~\ref{tab:classes}.
     P & Algorithms with polynomial or better runtime complexity to find or verify a solution. \\
     \hline
     NP & A superset of P with varying runtime complexity to find a solution but polynomial runtime complexity to
-    verify a solution. \\
+    verify a solution.  It is an open question as to whether P=NP; however, it is conjectured that they are not
+    equal. \\
     \hline
     NP-complete & A subset of NP problems that have been proven to have the same runtime complexity to find a
-    solution.  It is an open question as to whether P=NP; however, it is conjectured that they are not equal. \\
+    solution. \\
     \hline
     NP-hard & Algorithms that have been proved to have the same runtime complexity as the NP-complete problems to
     find a solution but varying runtime complexity to verify a solution. \\
@@ -247,7 +248,8 @@ Such a test is called a \emph{bounding} condition and subtrees that are terminat
 said to be \emph{pruned}.  Branching algorithms that have bounding conditions are called \emph{branch and bound}
 algorithms.  The goal of any branch and bound algorithm is to prune as many subtrees as possible using bounding
 conditions.  The new tree with the nonadjacent bounding condition applied is shown in
-\figurename~\ref{fig:boundnonadj}.
+\figurename~\ref{fig:boundnonadj}.  Note that any subtree that attempts to combine vertex \(3\) with either vertex
+\(1\) or vertex \(2\) is pruned.
 
 \begin{figure}[H]
   \centering
@@ -281,18 +283,16 @@ conditions.  The new tree with the nonadjacent bounding condition applied is sho
     \draw (13) edge (21);
     \draw (14) edge (22);
   \end{tikzpicture}
-  \caption{Finding maximal cliques nonadjacent bound.}
+  \caption{Finding maximal cliques using nonadjacent bounding.}
   \label{fig:boundnonadj}
 \end{figure}
-
-Note that any subtree that attempts to combine vertex \(3\) with either vertex \(1\) or vertex \(2\) is pruned.
 
 There is still the problem of eliminating non-maximal cliques.  This can be accomplished by maintaining a list of
 ``used'' vertices for each branch edge.  When transitioning to the right from an ``include vertex'' branch to an
 ``exclude vertex'' branch, the excluded vertex is added to the branch's used list.  When transitioning down an
 ``include vertex'' branch, used vertices that are not adjacent to the newly included vertex are removed from the
 branch's used list.  Thus, a leaf node resulting from a branch with a non-empty used list is a subset of some
-previously found clique and thus is not maximal.  The new tree with the non-maximal bounding condition applied is
+previously found clique and hence is not maximal.  The new tree with the non-maximal bounding condition applied is
 shown in \figurename~\ref{fig:boundnonmax}.
 
 \begin{figure}[H]
@@ -325,7 +325,7 @@ shown in \figurename~\ref{fig:boundnonmax}.
     \draw (9) edge (17);
     \draw (14) edge (22);
   \end{tikzpicture}
-  \caption{Finding maximal cliques non-maximal bound.}
+  \caption{Finding maximal cliques using non-maximal bounding.}
   \label{fig:boundnonmax}
 \end{figure}
 
@@ -335,6 +335,14 @@ list because they are not adjacent to vertex \(3\).  Thus, \(\bar{1}\bar{2}3\) i
 
 Since bounding conditions are often very dependent on graph structure, it can be very hard to determine the
 theoretical runtime complexity for a specific branch and bound algorithm.  This is especially true when multiple
-bounding conditions interact such that it is unclear what constitutes a worst case for the algorithm.  In these
-cases, runtime complexity values gleaned from empirical data (such as random graph analysis) are convenient
-substitutes for truly theoretical answers.
+bounding conditions interact such that it is unclear what constitutes a worst case for the algorithm.  In the
+previous maximal clique example, it is clear that the worst case has an upper bound of \(\BO(2^n)\); however, this
+bound is not very tight.  In these cases, runtime complexity values gleaned from empirical data are convenient
+substitutes for truly theoretical answers.  In fact, it will be shown in the next section using empirical data that
+the actual runtime complexity of this maximal clique algorithm is less than \(\BO(1.3^n)\).
+
+Furthermore, runtime complexities for exponential algorithms tend to address large \(n\) cases where the
+exponential nature of the whole algorithm far exceeds the effect of any P-time steps.  These P-time steps are more
+significant at moderate values of \(n\) and may even dominate at lower values of \(n\).  Thus, worst case runtime
+complexity values for large \(n\) may be of little use if a problem domain is adequately addressed by lower values
+of \(n\).  For these cases, runtime duration of algorithms applied to real problems may be much more useful.
