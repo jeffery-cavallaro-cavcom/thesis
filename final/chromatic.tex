@@ -1,13 +1,14 @@
 \section{The Chromatic Number Problem}\label{sec:chromatic}
 
-\subsection{Estimating the Chromatic Number of a Graph}
+This section investigates the various well-known methods to either estimate or find the exact chromatic number for
+a graph.  Since the chromatic number problem is NP-hard, an alternative to finding an exact answer is finding lower
+and upper bounds for the actual value.  If these bounds happen to match then they provide the actual chromatic
+number.  Algorithms that find the exact chromatic number are of the branch and bound variety.  The two most
+well-known algorithms are one proposed by Christofides~1971~\cite{christofides} with modifications by
+Wang~(1974)~\cite{wang} and the so-called Zykov algorithms, with a particular implementation by Corneil and
+Graham~(1973)~\cite{corneil}.
 
-Since the chromatic number problem is NP-hard, an alternative to finding an exact answer is to find lower and upper
-bounds for the actual value.  If these bounds happen to match then they provide the actual chromatic number.  The
-following sections describe well-known methods for finding the upper and lower bounds for the chromatic number of a
-graph.
-
-\subsubsection{Finding a Lower Bound}\label{sec:sub:sub:lower}
+\subsection{Finding a Lower Bound}\label{sec:sub:lower}
 
 The most popular strategy for estimating a lower bound for the chromatic number of a graph is based on the
 statement of \propname~\ref{prop:clique}.  For a graph \(G\):
@@ -27,7 +28,9 @@ where \(\w^*(G)\) is a lower bound estimate for the clique number of \(G\).  Ano
   Therefore, \(\displaystyle k\ge\frac{n}{\a(G)}\).
 \end{proof}
 
-Note that both of the above lower bounds are tight when \(G\) is complete.
+Note that both of the above lower bounds are tight when \(G\) is complete and are related by the statement of
+\theoremname~\ref{thm:isclique}:
+\[\w(G)=\a(\bar{G})\]
 
 It is well-known that certain triangle-free graphs with \(\w(G)=2\) can have arbitrarily high \(\X(G)\).  Examples
 are the graphs created using the so-called \emph{Mycielski} construction~\cite{west}:
@@ -107,7 +110,7 @@ The Edwards algorithm has \(\BO(n^2)\) runtime complexity and so it is a suitabl
 
 The results of a random graph analysis of the Edwards Elphick algorithm are shown in
 \figurename~\ref{fig:edwards1err}.  The graph shows edge probability versus the mean of \(\w(G)-\w^*(G)\) for
-graphs of increasing order with \(1000\) trials per edge probability.  Note that the error increases with both
+graphs of increasing order with \(1000\) trials per edge probability.  Note that the mean error increases with both
 order and edge probability.
 
 \begin{figure}[H]
@@ -117,11 +120,12 @@ order and edge probability.
   \label{fig:edwards1err}
 \end{figure}
 
-Step~\ref{step:edw:select} of the algorithm selects the next vertex of lowest index that is adjacent to all
-previously selected vertices.  An improvement would be to select a vertex with the highest degree that is adjacent
-to all previously selected vertices.  This would of course increase the average runtime complexity to the worst
-case of the unimproved algorithm, but it would still be P-time.  The results of this improved algorithm are shown
-in \figurename~\ref{fig:edwards2err}.
+Step~\ref{step:edw:select} of the Edwards Elphick algorithm selects the next vertex of lowest index that is
+adjacent to all previously selected vertices.  An improvement would be to select a vertex with the highest degree
+that is adjacent to all previously selected vertices.  This would of course increase the average runtime complexity
+to the worst case of the unimproved algorithm, but it would still be P-time.  The results of this improved
+algorithm are shown in \figurename~\ref{fig:edwards2err}.  Note that the improved algorithm cuts the mean error in
+half.
 
 \begin{figure}[H]
   \centering
@@ -130,54 +134,102 @@ in \figurename~\ref{fig:edwards2err}.
   \label{fig:edwards2err}
 \end{figure}
 
-Note that the improved algorithm cuts the error in half.  The worst case time durations are shown in
-\figurename~\ref{fig:edwards2time}. Clearly, execution time is very small.
+As will be shown later in this section, being able to compute the exact or a suitable estimate of the clique number
+of a graph is an important bounding condition for many of the well-known branch and bound algorithms for finding
+the chromatic number of a graph.  A nice summary of well-known exact clique number algorithms is given by Xiao and
+Nagamouchi~(2017)~\cite{xiao}.  They claim that the known algorithms tend to converge on a runtime complexity of
+\(\BO(1.2^n)\).  These algorithms tend be somewhat complex and geared towards larger \(n\).
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=5in]{edwards2_time}
-  \caption{Improved Edwards Elphick algorithm maximum duration.}
-  \label{fig:edwards2time}
-\end{figure}
-
-As will be shown later in this section, being able to compute the clique number of a graph, or at least a suitable
-estimate, is an important bounding condition for many of the well-known algorithms for finding the chromatic number
-of a graph.  Many of these algorithms rely on the statement of \theoremname~\ref{thm:isclique} that a maximal
-clique in a graph \(G\) is a maximal independent set in \(\bar{G}\).  A nice summary of these algorithms is given
-by Xiao and Nagamouchi~(2017)~\cite{xiao}.  They claim that the known algorithms tend to converge on a runtime
-complexity of \(\BO(1.2^n)\).  These algorithms tend be somewhat complex and geared towards larger \(n\).
-
-A simpler yet efficient alternative to these exact algorithms is the Bron Kerbosch algorithm~(1973)~\cite{bron}.
-The advantage of the Bron Kerbosch (BK) algorithm is that it finds all possible maximal independent sets in a
+A simpler yet efficient alternative to these exact algorithms is the Bron Kerbosch (BK)
+algorithm~(1973)~\cite{bron}.  In fact, the algorithm that was incrementally developed in the previous section is
+essentially the BK algorithm.  The advantage of BK is that it finds all possible maximal independent sets in a
 graph, and hence can be used to find \(\a(G)=\w(\bar{G})\).  Finding all of the maximal independent sets in a graph
 is a crucial part of the Christofides algorithm, which is discussed later in this section.
 
-The heart of BK is a recursive subroutine called \emph{extend}, where the calls to \emph{extend} implement a
-depth-first walk of an exhaustive search tree.  At each node in the search tree, three vertex lists are maintained:
+The heart of BK is a recursive subroutine called \emph{extend} that implements the breadth of a level in the
+corresponding state tree, and recursively calls itself in order to implement the branches in the state tree.
+At each node in the state tree, three vertex lists are maintained:
 
 \begin{description}
 \item[compsub] The current maximal clique accumulator.
 \item[candidates] A set of vertices that can be added to \emph{compsub}.
-\item[old] A set of vertices that already have been used in the current search branch.
+\item[used] A set of vertices that already have been used in previous branches.
 \end{description}
 
 The initial call is seeded with an empty \emph{compsub} and all of the graph's vertices in \emph{candidates}.  Each
-call to \emph{extend} selects a vertex from \emph{candidate}, adds it to \emph{compsub}, constructs new
-\emph{candidates} and \emph{old} sets by removing vertices that are not adjacent to the selected vertex, and then
-calls itself with the new lists.  The termination leaf for each branch is when \emph{candidates} is empty.  If
-\emph{old} is also empty then \emph{compsub} contains a new maximal clique.  Otherwise, the clique in
-\emph{compsub} is a subset of an earlier found clique that contains the vertices in \emph{old} and thus is not
-maximal.  Upon each return from a call to \emph{extend}, the corresponding candidate is removed from \emph{compsub}
-and is added to \emph{old}.
+call to \emph{extend} performs the following steps:
+\begin{enumerate}
+\item\label{step:bron:check} If \emph{used} contains a vertex that is adjacent to everything in \emph{candidates}
+  then any generated cliques in the current subtree will never be maximal, so return.  This implements the
+  non-maximal bounding condition.
+\item\label{step:bron:select} The next vertex is selected from \emph{candidates} and is added to \emph{compsub}.
+  This implements the ``include vertex'' subtree.
+\item\label{step:bron:recalc} New versions of \emph{candidates} and \emph{used} are created by removing vertices
+  from the old lists that are not adjacent to the selected vertex.  This bounding condition prunes branches that
+  might mix adjacent and nonadjacent vertices.
+\item\label{step:bron:branch} A recursive call with the new \emph{candidates} and \emph{used} lists is made to
+  continue the current subtree.
+\item\label{step:bron:used} The selected vertex is removed from \emph{compsub} and is added to \emph{used}.  This
+  implements the ``exclude vertex'' subtree.
+\item\label{step:bron:leaf} If \emph{candidates} is not empty then go to step~\ref{step:bron:check}.
+\item\label{step:bron:done} If \emph{used} is empty then \emph{compsub} contains the vertices for a maximal clique.
+\item\label{step:bron:return} Return to the previous level in the state tree.
+\end{enumerate}
 
 A small improvement added to BK by this research is to abandon the current branch when the desire is to only find
 \(\a(G)\) and the number of vertices in \emph{compsub} and \emph{candidates} are not enough to build a maximal
 clique larger than all previously found maximal cliques.
 
-Bron and Kerbosch actually propose two variations of the algorithm that differ by how the next vertex is selected
-from \emph{candidates}.  In the basic mode, any such vertex may be selected.
+Bron and Kerbosch actually proposed two versions of their algorithm that differ by how the next vertex is selected
+from the \emph{candidates} list in step~\ref{step:bron:select}.  In the basic mode, the first (or any) vertex in
+the list is selected.  \figurename~\ref{fig:bron1:calls} shows the average number of calls to the \emph{extend}
+method versus edge probablity for \(1000\) random graphs per edge probability.
 
-\subsubsection{Finding an Upper Bound}\label{sec:sub:sub:upper}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{bron1_calls}
+  \caption{Basic Bron Kerbosch algorithm calls to extend versus edge probability.}
+  \label{fig:bron1:calls}
+\end{figure}
+
+The number of calls increases with both graph order and edge probability.  The worst case for each order is thus
+assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of calls to the
+\emph{extend} method for \(1000\) graphs at each order is plotted along with a line fit in order to approximate the
+runtime complexity for the algorithm.  The slope of the line indicates that the runtime complexity is about
+\(\BO(2^{0.3074n})\approx\BO(1.24^n)\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{bron1_runtime}
+  \caption{Basic Bron Kerbosch algorithm calls to extend versus edge probability.}
+  \label{fig:bron1:runtime}
+\end{figure}
+
+In smart mode, a particular vertex in the \emph{used} list with the smallest number of nonadjacencies to vertices
+in the \emph{candidates} list is identified.  The next selected vertex is then a vertex that is not adjacent to the
+identified vertex.  This causes the non-maximal bounding condition to occur as soon as possible.
+\figurename~\ref{fig:bron2:calls} shows the average number of calls to the \emph{extend} method for the smart
+version of the algorithm.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{bron1_calls}
+  \caption{Smart Bron Kerbosch algorithm calls to extend versus edge probability.}
+  \label{fig:bron2:calls}
+\end{figure}
+
+The runtime complexity estimate for the smart version of the algorithm is shown in
+\figurename~\ref{fig:bron2:runtime}.  Note that the runtime complexity is improved to
+\(\BO(2^{0.2718n})\approx\BO(1.21^n)\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{bron2_runtime}
+  \caption{Smart Bron Kerbosch algorithm calls to extend versus edge probability.}
+  \label{fig:bron2:runtime}
+\end{figure}
+
+\subsection{Finding an Upper Bound}\label{sec:sub:upper}
 
 \subsection{The Christofides Algorithm}\label{sec:sub:christofides}
 

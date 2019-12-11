@@ -5,45 +5,45 @@ The style file: ieeetr.bst
 A level-1 auxiliary file: sections.aux
 Database file #1: references.bib
 Warning--empty journal in obit
-You've used 23 entries,
+You've used 24 entries,
             1876 wiz_defined-function locations,
-            633 strings with 7042 characters,
-and the built_in function-call counts, 5465 in all, are:
-= -- 564
-> -- 159
+            639 strings with 7123 characters,
+and the built_in function-call counts, 5779 in all, are:
+= -- 601
+> -- 163
 < -- 0
-+ -- 64
-- -- 41
-* -- 380
-:= -- 764
-add.period$ -- 30
-call.type$ -- 23
-change.case$ -- 19
++ -- 66
+- -- 42
+* -- 401
+:= -- 804
+add.period$ -- 31
+call.type$ -- 24
+change.case$ -- 20
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 286
-empty$ -- 559
-format.name$ -- 41
-if$ -- 1345
+cite$ -- 25
+duplicate$ -- 303
+empty$ -- 589
+format.name$ -- 42
+if$ -- 1424
 int.to.chr$ -- 0
-int.to.str$ -- 23
-missing$ -- 28
-newline$ -- 79
-num.names$ -- 25
-pop$ -- 76
+int.to.str$ -- 24
+missing$ -- 29
+newline$ -- 82
+num.names$ -- 26
+pop$ -- 77
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 182
+skip$ -- 196
 stack$ -- 0
-substring$ -- 335
-swap$ -- 106
+substring$ -- 367
+swap$ -- 115
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 59
-width$ -- 25
-write$ -- 226
+while$ -- 63
+width$ -- 26
+write$ -- 237
 (There was 1 warning)

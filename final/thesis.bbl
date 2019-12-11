@@ -84,6 +84,11 @@ H.~Johnston, ``Cliques of a graph---variations on the bron-kerbosch
 N.~Christofides, ``An algorithm for the chromatic number of a graph,'' {\em The
   Computer Journal}, vol.~14, pp.~38--39, January 1971.
 
+\bibitem{wang}
+C.~C. Wang, ``An algorithm for the chromatic number of a graph,'' {\em Journal
+  of the Association for Computer Machinery}, vol.~21, no.~3, pp.~385--391,
+  1974.
+
 \bibitem{zhang}
 T.~Zhang, ``Triangle free graphs and their chromatic number.''
   \url{http://www.math.uchicago.edu/~may/VIGRE/VIGRE2008/REUPapers/Zhang.pdf}.
