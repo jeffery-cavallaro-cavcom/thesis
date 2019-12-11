@@ -1,0 +1,2 @@
+n,p,m_total,m_count,m_mean,m_min,m_max,time_total,time_count,time_mean,time_min,time_max,steps_total,steps_count,steps_mean,steps_min,steps_max,found_total,found_count,found_mean,found_min,found_max,actual_total,actual_count,actual_mean,actual_min,actual_max,differ_total,differ_count,differ_mean,differ_min,differ_max
+25,40,132,1,132,132,132,800.554,1,800.554,800.554,800.554,354,1,354,354,354,6,1,6,6,6,5,1,5,5,5,1,1,1,1,1

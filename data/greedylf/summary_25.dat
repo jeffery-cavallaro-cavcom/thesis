@@ -1,0 +1,4 @@
+n,p,m_total,m_count,m_mean,m_min,m_max,time_total,time_count,time_mean,time_min,time_max,steps_total,steps_count,steps_mean,steps_min,steps_max,found_total,found_count,found_mean,found_min,found_max,actual_total,actual_count,actual_mean,actual_min,actual_max,differ_total,differ_count,differ_mean,differ_min,differ_max
+25,10,287,10,28.7,20,43,0.153345,10,0.0153345,0.000307431,0.146139,3182,10,318.2,314,325,30,10,3,3,3,29,10,2.9,2,3,1,10,0.1,0,1
+25,20,608,10,60.8,52,73,883.158,10,88.3158,0.000370496,881.363,3331,10,333.1,325,338,44,10,4.4,4,5,40,10,4,4,4,4,10,0.4,0,1
+25,30,883,10,88.3,82,98,35004.2,10,3500.42,0.000474987,20624.8,3426,10,342.6,334,352,51,10,5.1,5,6,47,10,4.7,4,5,4,10,0.4,0,1
