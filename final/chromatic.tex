@@ -14,7 +14,7 @@ The most popular strategy for estimating a lower bound for the chromatic number 
 statement of \propname~\ref{prop:clique}.  For a graph \(G\):
 \[\w^*(G)\le\w(G)\le\X(G)\]
 where \(\w^*(G)\) is a lower bound estimate for the clique number of \(G\).  Another less popular bound is given by
-\theoremname~\ref{thm:lbalpha}.
+\theoremname~\ref{thm:lbalpha}~\cite{chartrand}.
 
 \begin{theorem}
   \label{thm:lbalpha}
@@ -230,6 +230,154 @@ The runtime complexity estimate for the smart version of the algorithm is shown 
 \end{figure}
 
 \subsection{Finding an Upper Bound}\label{sec:sub:upper}
+
+The most popular technique for finding an upper bound for the chromatic number of a graph is to construct a proper
+coloring for the graph using a so-called \emph{sequential} algorithm, often referred to as a \emph{greedy}
+algorithm.  The algorithms are sequential because the vertices are ordered in some fashion and are then colored
+according to that order.  The algorithms are greedy because a new color is selected whenever one is needed.  The
+result is that too many colors may be used; however, such algorithms are P-time and the number of colors used is
+suitable as an upper bound for the chromatic number since the graph is at least colorable using that many colors.
+
+The specific steps of a greedy algorithm for a graph \(G\) of order \(n\) are as follows:
+\begin{enumerate}
+\item Order the vertices in some fashion: \(V=\set{v_1,\ldots,v_n}\).
+\item Start with \(C=\emptyset\) and assume some coloring function: \(c:V\to C\).
+\item Let \(i=1\).
+\item\label{step:greedy:check} Let \(k=\abs{C}\).
+\item If \(i=n\) then done and \(k\) is an upper bound for the chromatic number.
+\item Determine all of the already colored vertices that are adjacent to \(v_i\):
+  \[S=\setb{v_j\in V}{j<i\ \text{and}\ v_iv_j\in E(G)}\]
+\item Determine all of the colors used by the vertices in \(S\): \(c[S]\).
+\item If \(c[S]=C\) then an additional color is needed for \(v_i\), so add \(c_{k+1}\) to \(C\), let
+  \(c_j=c_{k+1}\), and go to step~\ref{step:greedy:color}.
+\item Otherwise, an existing color can be reused for \(v_i\) so select \(c_j\) from \(C-c[S]\) with the smallest
+  \(j\).
+\item\label{step:greedy:color} Color \(v_i\) with \(c_j\) by extending \(c\): \(c(v_i)=c_j\).
+\item Let \(i=i+1\).
+\item Go to step~\ref{step:greedy:check}.
+\end{enumerate}
+
+Indeed, the two most popular theorems used to quickly estimate the chromatic number upper bound of a graph follow
+from the worst case result from this algorithm.  The first is based on a random ordering of the
+vertices~\cite{chartrand}.
+
+\begin{theorem}
+  \label{thm:upper}
+  Let \(G\) be a graph.  \(\X(G)\le1+\dmax(G)\)
+\end{theorem}
+
+The second, from Welsh and Powell (1967), is based on ordering by non-increasing vertex degree~\cite{welsh}.
+
+\begin{theorem}
+  \label{thm:welsh}
+  Let \(G\) be a graph:
+  \[\X(G)\le\max_i\min\left\{1+\deg(v_i),i\right\}\]
+\end{theorem}
+
+Matula, et al (1967)~\cite{matula} performed a study on the various well-known chromatic number upper bound
+algorithms and concluded that ordering the vertices by non-increasing degree order, as in the Welsh Powell bound,
+worked best.  Matula referred to this algorithm as the \emph{last-first} algorithm.  In fact, Matula offered an
+improvement to this algorithm known as \emph{color interchange}.
+
+Color interchange is based on the situation summarized by the example in \figurename~\ref{fig:interchange}.  When it
+is time to color \(v_4\), the normal greedy algorithm is forced to select a new color.  However, vertices \(v_1\)
+and \(v_3\) can swap colors and thus \(v_4\) can use an existing color.
+
+\begin{figure}[H]
+  \begin{minipage}{2.5in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{red!25!white}
+      \node (4) at (0,0) {\(v_4\)};
+      \node [fill=c1] (1) at (2,1) {\(v_1\)};
+      \node [fill=c2] (2) at (2,-1) {\(v_2\)};
+      \node [fill=c2] (3) at (4,1) {\(v_3\)};
+      \draw (4) edge (1) edge (2);
+      \draw (1) edge (3);
+    \end{tikzpicture}
+
+    Before Swap
+  \end{minipage}
+  \begin{minipage}{2.5in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{red!25!white}
+      \node (4) at (0,0) {\(v_4\)};
+      \node [fill=c2] (1) at (2,1) {\(v_1\)};
+      \node [fill=c2] (2) at (2,-1) {\(v_2\)};
+      \node [fill=c1] (3) at (4,1) {\(v_3\)};
+      \draw (4) edge (1) edge (2);
+      \draw (1) edge (3);
+    \end{tikzpicture}
+
+    After Swap
+  \end{minipage}
+  \caption{An example that allows color interchange.}
+  \label{fig:interchange}
+\end{figure}
+
+The specific steps for color interchange when attempting to color vertex \(v_i\) are as follows:
+\begin{enumerate}
+\item Determine all of the colors that are used for already colored vertices that are adjacent to \(v_i\).
+\item Select those colors that occur only once in the neighborhood of \(v_i\).
+\item Select all vertices that are already colored with the used-once colors.
+\item Construct a subgraph using the selected vertices.
+\item\label{step:color:part} Partition the subgraph into components.
+\item Find a component that includes one vertex and excludes one vertex that is adjacent to \(v_i\) in the original
+  graph.  If no such component is found then interchange is not possible and a new color must be used for \(v_i\).
+\item Let \(c_1\) be the color of the included vertex and let \(c_2\) be the color of the excluded vertex.
+\item Interchange colors \(c_1\) and \(c_2\) for all such colored vertices in the selected component.
+\item Color \(c_1\) is now available for \(v_i\).
+\end{enumerate}
+
+The results of a random graph analysis of the last-first greedy algorithm with color interchange are shown in
+\figurename~\ref{fig:greedyerr}.  The previously mentioned Hopcroft algorithm~\cite{hopcroft} was used to partition
+the subgraph in step~\ref{step:color:part}.  The graph shows edge probability versus the mean of the difference
+between the greedy value and the actual chromatic number for graphs of increasing order with \(10\) trials per edge
+probability.  Note that the algorithm tends to do better at lower and higher edge densities.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{greedy_error}
+  \caption{Last first greedy algorithm with interchange mean difference versus edge probability.}
+  \label{fig:greedyerr}
+\end{figure}
+
+Although still P-time, the interchange portion of the algorithm is somewhat stepwise expensive.  A random graph
+analysis was performed on \(1000\) graphs for various edge probabilities and graph order comparing upper bound
+values from greedy coloring with and without color interchange.  The results for \(n=50\) are typical and are
+shown in \tablename~\ref{tab:greedy}.
+
+\begin{table}[H]
+  \centering
+  \caption{Effectiveness of Color Interchange}
+  \label{tab:greedy}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    edge prob (\%) & with (mean) & withwithout (mean) \\
+    \hline
+    10 & 4.323 & 4.379 \\
+    \hline
+    20 & 6.297 & 6.313 \\
+    \hline
+    30 & 8.072 & 8.089 \\
+    \hline
+    40 & 9.941 & 9.962 \\
+    \hline
+    50 & 11.949 & 11.956 \\
+    \hline
+    60 & 14.161 & 14.165 \\
+    \hline
+    70 & 16.689 & 16.687 \\
+    \hline
+    80 & 20.009 & 20.012 \\
+    \hline
+    90 & 24.51 & 24.51 \\
+    \hline
+  \end{tabular}
+\end{table}
 
 \subsection{The Christofides Algorithm}\label{sec:sub:christofides}
 

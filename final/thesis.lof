@@ -40,29 +40,31 @@
 \contentsline {figure}{\numberline {40}{\ignorespaces Basic Bron Kerbosch algorithm calls to extend versus edge probability.}}{58}{figure.40}% 
 \contentsline {figure}{\numberline {41}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend versus edge probability.}}{59}{figure.41}% 
 \contentsline {figure}{\numberline {42}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend versus edge probability.}}{59}{figure.42}% 
-\contentsline {figure}{\numberline {43}{\ignorespaces V.G Vizing (L), A.A. Zykov (C), and V.I. Voloshin (R) in Odessa (2001) \cite {voloshin}}}{60}{figure.43}% 
-\contentsline {figure}{\numberline {44}{\ignorespaces Same Colors with Vertex Contraction}}{61}{figure.44}% 
-\contentsline {figure}{\numberline {45}{\ignorespaces Different Colors with Edge Addition}}{61}{figure.45}% 
-\contentsline {figure}{\numberline {46}{\ignorespaces Zykov Graph Equation}}{62}{figure.46}% 
-\contentsline {figure}{\numberline {47}{\ignorespaces A Zykov Tree}}{65}{figure.47}% 
-\contentsline {figure}{\numberline {48}{\ignorespaces The proposed algorithm outer loop.}}{68}{figure.48}% 
-\contentsline {figure}{\numberline {49}{\ignorespaces The proposed algorithm called subroutine.}}{71}{figure.49}% 
-\contentsline {figure}{\numberline {50}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{75}{figure.50}% 
-\contentsline {figure}{\numberline {51}{\ignorespaces Lemma\nobreakspace \ref {lem:remone} example.}}{76}{figure.51}% 
-\contentsline {figure}{\numberline {52}{\ignorespaces Theorem\nobreakspace \ref {thm:lowdeg} example.}}{78}{figure.52}% 
-\contentsline {figure}{\numberline {53}{\ignorespaces Theorem \ref {thm:subset} example.}}{80}{figure.53}% 
-\contentsline {figure}{\numberline {54}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{82}{figure.54}% 
-\contentsline {figure}{\numberline {55}{\ignorespaces Case \(a_i=1\) contradiction.}}{83}{figure.55}% 
-\contentsline {figure}{\numberline {56}{\ignorespaces Corollary \ref {cor:inter} example.}}{86}{figure.56}% 
-\contentsline {figure}{\numberline {57}{\ignorespaces An example graph.}}{90}{figure.57}% 
-\contentsline {figure}{\numberline {58}{\ignorespaces Step: \(G-\set {g,h}\).}}{91}{figure.58}% 
-\contentsline {figure}{\numberline {59}{\ignorespaces Step: \(G\cdot ad\).}}{93}{figure.59}% 
-\contentsline {figure}{\numberline {60}{\ignorespaces Step: \(G-\set {b,f}\)}}{94}{figure.60}% 
-\contentsline {figure}{\numberline {61}{\ignorespaces Initial coloring.}}{95}{figure.61}% 
-\contentsline {figure}{\numberline {62}{\ignorespaces Coloring \(b\) and \(f\).}}{95}{figure.62}% 
-\contentsline {figure}{\numberline {63}{\ignorespaces Final chromatic coloring.}}{96}{figure.63}% 
-\contentsline {figure}{\numberline {64}{\ignorespaces An example toaster.}}{98}{figure.64}% 
-\contentsline {figure}{\numberline {65}{\ignorespaces First candidate design.}}{99}{figure.65}% 
-\contentsline {figure}{\numberline {66}{\ignorespaces First design chromatic coloring.}}{100}{figure.66}% 
-\contentsline {figure}{\numberline {67}{\ignorespaces Second candidate design.}}{101}{figure.67}% 
-\contentsline {figure}{\numberline {68}{\ignorespaces Second design chromatic coloring.}}{102}{figure.68}% 
+\contentsline {figure}{\numberline {43}{\ignorespaces An example that allows color interchange.}}{61}{figure.43}% 
+\contentsline {figure}{\numberline {44}{\ignorespaces Last first greedy algorithm with interchange mean difference versus edge probability.}}{63}{figure.44}% 
+\contentsline {figure}{\numberline {45}{\ignorespaces V.G Vizing (L), A.A. Zykov (C), and V.I. Voloshin (R) in Odessa (2001) \cite {voloshin}}}{64}{figure.45}% 
+\contentsline {figure}{\numberline {46}{\ignorespaces Same Colors with Vertex Contraction}}{65}{figure.46}% 
+\contentsline {figure}{\numberline {47}{\ignorespaces Different Colors with Edge Addition}}{65}{figure.47}% 
+\contentsline {figure}{\numberline {48}{\ignorespaces Zykov Graph Equation}}{66}{figure.48}% 
+\contentsline {figure}{\numberline {49}{\ignorespaces A Zykov Tree}}{69}{figure.49}% 
+\contentsline {figure}{\numberline {50}{\ignorespaces The proposed algorithm outer loop.}}{72}{figure.50}% 
+\contentsline {figure}{\numberline {51}{\ignorespaces The proposed algorithm called subroutine.}}{75}{figure.51}% 
+\contentsline {figure}{\numberline {52}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{79}{figure.52}% 
+\contentsline {figure}{\numberline {53}{\ignorespaces Lemma\nobreakspace \ref {lem:remone} example.}}{80}{figure.53}% 
+\contentsline {figure}{\numberline {54}{\ignorespaces Theorem\nobreakspace \ref {thm:lowdeg} example.}}{82}{figure.54}% 
+\contentsline {figure}{\numberline {55}{\ignorespaces Theorem \ref {thm:subset} example.}}{84}{figure.55}% 
+\contentsline {figure}{\numberline {56}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{86}{figure.56}% 
+\contentsline {figure}{\numberline {57}{\ignorespaces Case \(a_i=1\) contradiction.}}{87}{figure.57}% 
+\contentsline {figure}{\numberline {58}{\ignorespaces Corollary \ref {cor:inter} example.}}{90}{figure.58}% 
+\contentsline {figure}{\numberline {59}{\ignorespaces An example graph.}}{94}{figure.59}% 
+\contentsline {figure}{\numberline {60}{\ignorespaces Step: \(G-\set {g,h}\).}}{95}{figure.60}% 
+\contentsline {figure}{\numberline {61}{\ignorespaces Step: \(G\cdot ad\).}}{97}{figure.61}% 
+\contentsline {figure}{\numberline {62}{\ignorespaces Step: \(G-\set {b,f}\)}}{98}{figure.62}% 
+\contentsline {figure}{\numberline {63}{\ignorespaces Initial coloring.}}{99}{figure.63}% 
+\contentsline {figure}{\numberline {64}{\ignorespaces Coloring \(b\) and \(f\).}}{99}{figure.64}% 
+\contentsline {figure}{\numberline {65}{\ignorespaces Final chromatic coloring.}}{100}{figure.65}% 
+\contentsline {figure}{\numberline {66}{\ignorespaces An example toaster.}}{102}{figure.66}% 
+\contentsline {figure}{\numberline {67}{\ignorespaces First candidate design.}}{103}{figure.67}% 
+\contentsline {figure}{\numberline {68}{\ignorespaces First design chromatic coloring.}}{104}{figure.68}% 
+\contentsline {figure}{\numberline {69}{\ignorespaces Second candidate design.}}{105}{figure.69}% 
+\contentsline {figure}{\numberline {70}{\ignorespaces Second design chromatic coloring.}}{106}{figure.70}% 
