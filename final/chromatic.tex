@@ -382,6 +382,162 @@ with interchange are shown.  The data suggests that color interchange might not 
 
 \subsection{The Christofides Algorithm}\label{sec:sub:christofides}
 
+The first exhaustive algorithm that will be examined was proposed by Cypriot mathematician Nicos
+Christofides~(1971)~\cite{christofides}.  The Christofides algorithm is a breadth-first algorithm that assembles
+maximal independent sets from a graph until the first combination that uses all of the vertices is found.  Thus,
+the Bron Kerbosch algorithm is a vital part of the Christofides algorithm.
+
+The Christofides algorithm starts by decomposing a graph \(G\) into all of its maximal independent sets.  This
+constitutes the first level of the state tree.  Then, for each maximal independent set with vertices \(S\), the
+subgraph \(G-S\) is constructed and all of its maximal independent sets are found.  Each of these sets is combined
+with the previous maximal independent sets to form the next layer of the state tree.  This process continues until
+the first time that all of the vertices in \(G\) are used.  The number of maximal independent sets used to form the
+final combination is the chromatic number.
+
+The Christofides does have bounding conditions.  If the vertices in any new combination of maximal independent sets
+is a subset of a previous combination then the subtree for the latter is pruned.  If the former is a subset of the
+latter then the former subtree is pruned by replacing its state with the state of the latter.
+
+For example, consider the graph in \figurename~\ref{fig:cfexample}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{c};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (1) at (c1) {\(1\)};
+      \node (2) at (c2) {\(2\)};
+      \node (3) at (c3) {\(3\)};
+      \node (4) at (c4) {\(4\)};
+      \node (5) at (c5) {\(5\)};
+    \end{scope}
+    \draw (1) edge (2) edge (3) edge (4) edge (5);
+    \draw (2) edge (3);
+    \draw (3) edge (4);
+    \draw (4) edge (5);
+  \end{tikzpicture}
+  \caption{A Christofides algorithm example.}
+  \label{fig:cfexample}
+\end{figure}
+
+The Bron Kerbosch algorithm is used to decompose \figurename~\ref{fig:cfexample} into the maximal independent sets
+\(\set{1}\), \(\set{2,4}\), \(\set{2,5}\), and \(\set{3,5}\).  This first level is shown in
+\figurename~\ref{fig:cflevel1}, along with the resulting subgraphs.
+
+\begin{figure}[H]
+  \begin{minipage}{1.5in}
+    \centering
+    \((1)\)
+
+    \bigskip
+
+    \begin{tikzpicture}
+      \cycleNnodes{5}{(0,0)}{0.5in}{90}{c};
+      \begin{scope}[every node/.style={labeled node}]
+        \node (2) at (c2) {\(2\)};
+        \node (3) at (c3) {\(3\)};
+        \node (4) at (c4) {\(4\)};
+        \node (5) at (c5) {\(5\)};
+      \end{scope}
+      \draw (2) edge (3);
+      \draw (3) edge (4);
+      \draw (4) edge (5);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \centering
+    \((2,4)\)
+
+    \bigskip
+
+    \begin{tikzpicture}
+      \cycleNnodes{5}{(0,0)}{0.5in}{90}{c};
+      \begin{scope}[every node/.style={labeled node}]
+        \node (1) at (c1) {\(1\)};
+        \node (3) at (c3) {\(3\)};
+        \node (5) at (c5) {\(5\)};
+      \end{scope}
+      \draw (1) edge (3) edge (5);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \centering
+    \((2,5)\)
+
+    \bigskip
+
+    \begin{tikzpicture}
+      \cycleNnodes{5}{(0,0)}{0.5in}{90}{c};
+      \begin{scope}[every node/.style={labeled node}]
+        \node (1) at (c1) {\(1\)};
+        \node (3) at (c3) {\(3\)};
+        \node (4) at (c4) {\(4\)};
+      \end{scope}
+      \draw (1) edge (3) edge (4);
+      \draw (3) edge (4);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \centering
+    \((3,5)\)
+
+    \bigskip
+
+    \begin{tikzpicture}
+      \cycleNnodes{5}{(0,0)}{0.5in}{90}{c};
+      \begin{scope}[every node/.style={labeled node}]
+        \node (1) at (c1) {\(1\)};
+        \node (2) at (c2) {\(2\)};
+        \node (4) at (c4) {\(4\)};
+      \end{scope}
+      \draw (1) edge (2) edge (4);
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{Level 1 of a Christofides algorithm example.}
+  \label{fig:cflevel1}
+\end{figure}
+
+The next level starts with the leftmost subgraph in \figurename~\ref{fig:cflevel1}.  It has the maximal independent
+sets \(\set{2,4}\) and \(\set{3,5}\).  These are combined with the parent state to form the next states
+\(\set{\set{1},\set{2,4}}\) and \(\set{\set{1},\set{3,5}}\).  Likewise, the second graph in
+\figurename~\ref{fig:cflevel1} contains maximal independent sets \(\set{1}\) and \(\set{3,5}\).  This yields the
+next states \(\set{\set{2,4},\set{1}}\) and \(\set{\set{2,4},\set{3,5}}\); however, the vertices in
+\(\set{\set{2,4},\set{1}}\) are a subset of the previous state \(\set{\set{1},\set{2,4}}\) and so the new subtree
+is pruned.  This process continues for the third and fourth subgraph in \figurename~\ref{fig:cflevel1}.  The second
+level results are as follows:
+
+\begin{tabular}{ccccccccc}
+  \((1|24)\) & \((1|35)\) & \(\cancel{(24|1)}\) & \((24|35)\) & \((25|1)\) & \(\cancel{(25|3)}\) &
+  \(\cancel{(25|4)}\) & \(\cancel{(35|1)}\) & \(\cancel{(35|24)}\)
+\end{tabular}
+
+Next, the first state in the second level contains a single maximal independent set \(\set{3,5}\), which when
+combined with the parent state uses all of the vertices.  The final coloring is thus \((1|24|35)\) and the graph is
+\chromatic{3} as shown in \figurename~\ref{fig:cfresults}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \colorlet{clr1}{red!25!white}
+    \colorlet{clr2}{green!25!white}
+    \colorlet{clr3}{blue!25!white}
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{c};
+    \begin{scope}[every node/.style={labeled node}]
+      \node [fill=clr1] (1) at (c1) {\(1\)};
+      \node [fill=clr2] (2) at (c2) {\(2\)};
+      \node [fill=clr3] (3) at (c3) {\(3\)};
+      \node [fill=clr2] (4) at (c4) {\(4\)};
+      \node [fill=clr3] (5) at (c5) {\(5\)};
+    \end{scope}
+    \draw (1) edge (2) edge (3) edge (4) edge (5);
+    \draw (2) edge (3);
+    \draw (3) edge (4);
+    \draw (4) edge (5);
+  \end{tikzpicture}
+  \caption{Christofides algorithm example results.}
+  \label{fig:cfresults}
+\end{figure}
+
 \subsection{Zykov Algorithms}\label{sec:sub:zykov}
 
 An exhaustive, exponential-time algorithm for determining the chromatic number of a graph is derived from a
