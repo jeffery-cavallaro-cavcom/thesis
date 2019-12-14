@@ -341,40 +341,41 @@ probability.  Note that the algorithm tends to do better at lower and higher edg
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{greedy_error}
-  \caption{Last first greedy algorithm with interchange mean difference versus edge probability.}
+  \caption{Last first greedy algorithm with interchange error versus edge probability.}
   \label{fig:greedyerr}
 \end{figure}
 
-Although still P-time, the interchange portion of the algorithm is somewhat stepwise expensive.  A random graph
-analysis was performed on \(1000\) graphs for various edge probabilities and graph order comparing upper bound
-values from greedy coloring with and without color interchange.  The results for \(n=50\) are typical and are
-shown in \tablename~\ref{tab:greedy}.
+Although still P-time, the interchange portion of the algorithm is stepwise expensive.  A random graph analysis was
+performed on \(1000\) graphs per various edge probabilities and graph order comparing upper bound values from
+greedy coloring with and without color interchange.  The results for \(n=50\) are typical and are shown in
+\tablename~\ref{tab:greedy}.  The mean, min, and max for greedy coloring without interchange minus greedy coloring
+with interchange are shown.  The data suggests that color interchange might not be very much of a benefit.
 
 \begin{table}[H]
   \centering
   \caption{Effectiveness of Color Interchange}
   \label{tab:greedy}
-  \begin{tabular}{|c|c|c|}
+  \begin{tabular}{|c|c|c|c|}
     \hline
-    edge prob (\%) & with (mean) & withwithout (mean) \\
+    edge prob (\%) & mean & min & max \\
     \hline
-    10 & 4.323 & 4.379 \\
+    10 & 0.04 & -1 & 1 \\
     \hline
-    20 & 6.297 & 6.313 \\
+    20 & 0.023 & -1 & 2 \\
     \hline
-    30 & 8.072 & 8.089 \\
+    30 & 0.027 & -2 & 2 \\
     \hline
-    40 & 9.941 & 9.962 \\
+    40 & 0.016 & -2 & 2 \\
     \hline
-    50 & 11.949 & 11.956 \\
+    50 & 0.008 & -2 & 2 \\
     \hline
-    60 & 14.161 & 14.165 \\
+    60 & -0.005 & -3 & 2 \\
     \hline
-    70 & 16.689 & 16.687 \\
+    70 & -0.001 & -2 & 2 \\
     \hline
-    80 & 20.009 & 20.012 \\
+    80 & 0.001 & 0 & 1 \\
     \hline
-    90 & 24.51 & 24.51 \\
+    90 & 0 & 0 & 0 \\
     \hline
   \end{tabular}
 \end{table}

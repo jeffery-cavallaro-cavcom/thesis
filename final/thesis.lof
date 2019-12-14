@@ -41,7 +41,7 @@
 \contentsline {figure}{\numberline {41}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend versus edge probability.}}{59}{figure.41}% 
 \contentsline {figure}{\numberline {42}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend versus edge probability.}}{59}{figure.42}% 
 \contentsline {figure}{\numberline {43}{\ignorespaces An example that allows color interchange.}}{61}{figure.43}% 
-\contentsline {figure}{\numberline {44}{\ignorespaces Last first greedy algorithm with interchange mean difference versus edge probability.}}{63}{figure.44}% 
+\contentsline {figure}{\numberline {44}{\ignorespaces Last first greedy algorithm with interchange error versus edge probability.}}{63}{figure.44}% 
 \contentsline {figure}{\numberline {45}{\ignorespaces V.G Vizing (L), A.A. Zykov (C), and V.I. Voloshin (R) in Odessa (2001) \cite {voloshin}}}{64}{figure.45}% 
 \contentsline {figure}{\numberline {46}{\ignorespaces Same Colors with Vertex Contraction}}{65}{figure.46}% 
 \contentsline {figure}{\numberline {47}{\ignorespaces Different Colors with Edge Addition}}{65}{figure.47}% 
