@@ -335,8 +335,8 @@ The specific steps for color interchange when attempting to color vertex \(v_i\)
 The results of a random graph analysis of the last-first greedy algorithm with color interchange are shown in
 \figurename~\ref{fig:greedyerr}.  The previously mentioned Hopcroft algorithm~\cite{hopcroft} was used to partition
 the subgraph in step~\ref{step:color:part}.  The graph shows edge probability versus the mean of the difference
-between the greedy value and the actual chromatic number for graphs of increasing order with \(10\) trials per edge
-probability.  Note that the algorithm tends to do better at lower and higher edge densities.
+between the greedy value and the actual chromatic number for graphs of increasing order with \(1000\) trials per
+edge probability.  Note that the algorithm tends to do better at lower and higher edge densities.
 
 \begin{figure}[H]
   \centering
@@ -539,8 +539,8 @@ combined with the parent state uses all of the vertices.  The final coloring is 
 \end{figure}
 
 The results of a random graph analysis of the Christofides algorithm are shown in \figurename~\ref{fig:cfstates}.
-The graph shows edge probability versus the mean of the number of states for graphs of increasing order with \(10\)
-trials per edge probability.  The limited number of trials is due to the required time duration at higher orders.
+The graph shows edge probability versus the mean of the number of states for graphs of increasing order with
+\(1000\) trials per edge probability.
 
 \begin{figure}[H]
   \centering
@@ -550,9 +550,9 @@ trials per edge probability.  The limited number of trials is due to the require
 \end{figure}
 
 The number of states increases with both graph order and edge probability.  The worst case for each order is thus
-assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of states for the \(10\)
-graphs at each order is plotted in \figurename~\ref{fig:cfruntime}.  A line fit is used to approximate the runtime
-complexity for the algorithm.  The slope of the line indicates that the runtime complexity is about
+assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of states for the
+\(1000\) graphs at each order is plotted in \figurename~\ref{fig:cfruntime}.  A line fit is used to approximate the
+runtime complexity for the algorithm.  The slope of the line indicates that the runtime complexity is about
 \(\BO(2^{0.8393n})\approx\BO(1.79^n)\).
 
 \begin{figure}[H]
