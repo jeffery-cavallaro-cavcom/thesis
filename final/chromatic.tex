@@ -194,14 +194,14 @@ method versus edge probablity for \(1000\) random graphs per edge probability.
 
 The number of calls increases with both graph order and edge probability.  The worst case for each order is thus
 assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of calls to the
-\emph{extend} method for \(1000\) graphs at each order is plotted along with a line fit in order to approximate the
-runtime complexity for the algorithm.  The slope of the line indicates that the runtime complexity is about
-\(\BO(2^{0.3074n})\approx\BO(1.24^n)\).
+\emph{extend} method for the \(1000\) graphs at each order is plotted in \figurename~\ref{fig:bron1:runtime}.  A
+line fit is used to approximate the runtime complexity for the algorithm.  The slope of the line indicates that the
+runtime complexity is about \(\BO(2^{0.3074n})\approx\BO(1.24^n)\).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron1_runtime}
-  \caption{Basic Bron Kerbosch algorithm calls to extend versus edge probability.}
+  \caption{Basic Bron Kerbosch algorithm runtime complexity approximation.}
   \label{fig:bron1:runtime}
 \end{figure}
 
@@ -225,7 +225,7 @@ The runtime complexity estimate for the smart version of the algorithm is shown 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron2_runtime}
-  \caption{Smart Bron Kerbosch algorithm calls to extend versus edge probability.}
+  \caption{Smart Bron Kerbosch algorithm runtime complexity approximation.}
   \label{fig:bron2:runtime}
 \end{figure}
 
@@ -536,6 +536,30 @@ combined with the parent state uses all of the vertices.  The final coloring is 
   \end{tikzpicture}
   \caption{Christofides algorithm example results.}
   \label{fig:cfresults}
+\end{figure}
+
+The results of a random graph analysis of the Christofides algorithm are shown in \figurename~\ref{fig:cfstates}.
+The graph shows edge probability versus the mean of the number of states for graphs of increasing order with \(10\)
+trials per edge probability.  The limited number of trials is due to the required time duration at higher orders.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{christofides_states}
+  \caption{Chistofides algorithm mean number of states.}
+  \label{fig:cfstates}
+\end{figure}
+
+The number of states increases with both graph order and edge probability.  The worst case for each order is thus
+assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of states for the \(10\)
+graphs at each order is plotted in \figurename~\ref{fig:cfruntime}.  A line fit is used to approximate the runtime
+complexity for the algorithm.  The slope of the line indicates that the runtime complexity is about
+\(\BO(2^{0.8393n})\approx\BO(1.79^n)\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{christofides_runtime}
+  \caption{Christofides algorithm runtime complexity approximation.}
+  \label{fig:cfruntime}
 \end{figure}
 
 \subsection{Zykov Algorithms}\label{sec:sub:zykov}

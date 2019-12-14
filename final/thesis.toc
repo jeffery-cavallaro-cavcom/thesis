@@ -46,20 +46,20 @@
 \contentsline {subsection}{\numberline {4.1}Finding a Lower Bound}{51}{subsection.4.1}% 
 \contentsline {subsection}{\numberline {4.2}Finding an Upper Bound}{60}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}The Christofides Algorithm}{64}{subsection.4.3}% 
-\contentsline {subsection}{\numberline {4.4}Zykov Algorithms}{66}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {4.4}Zykov Algorithms}{67}{subsection.4.4}% 
 \contentsline {subsubsection}{\numberline {4.4.1}The Chromatic Polynomial}{67}{subsubsection.4.4.1}% 
-\contentsline {subsubsection}{\numberline {4.4.2}An Exhaustive Algorithm}{70}{subsubsection.4.4.2}% 
-\contentsline {subsubsection}{\numberline {4.4.3}Branch and Bound Strategies}{71}{subsubsection.4.4.3}% 
-\contentsline {section}{\numberline {5}The Proposed Algorithm}{73}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}Outer Loop}{74}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}Called Subroutine}{76}{subsection.5.2}% 
-\contentsline {subsection}{\numberline {5.3}Supporting Theorems}{79}{subsection.5.3}% 
-\contentsline {subsubsection}{\numberline {5.3.1}Maximum Edge Threshold}{79}{subsubsection.5.3.1}% 
-\contentsline {subsubsection}{\numberline {5.3.2}Vertex Removal}{82}{subsubsection.5.3.2}% 
-\contentsline {subsubsection}{\numberline {5.3.3}Minimum Common Neighbor Upper Bound}{88}{subsubsection.5.3.3}% 
-\contentsline {subsubsection}{\numberline {5.3.4}Recursive Steps}{93}{subsubsection.5.3.4}% 
-\contentsline {subsection}{\numberline {5.4}An Example}{96}{subsection.5.4}% 
-\contentsline {section}{\numberline {6}Random Graph Analysis}{104}{section.6}% 
-\contentsline {section}{\numberline {7}Toaster Design Case Study}{105}{section.7}% 
-\contentsline {section}{\numberline {8}Conclusions}{110}{section.8}% 
-\contentsline {section}{Literature Cited}{111}{section*.6}% 
+\contentsline {subsubsection}{\numberline {4.4.2}An Exhaustive Algorithm}{71}{subsubsection.4.4.2}% 
+\contentsline {subsubsection}{\numberline {4.4.3}Branch and Bound Strategies}{72}{subsubsection.4.4.3}% 
+\contentsline {section}{\numberline {5}The Proposed Algorithm}{74}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Outer Loop}{75}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}Called Subroutine}{77}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}Supporting Theorems}{80}{subsection.5.3}% 
+\contentsline {subsubsection}{\numberline {5.3.1}Maximum Edge Threshold}{80}{subsubsection.5.3.1}% 
+\contentsline {subsubsection}{\numberline {5.3.2}Vertex Removal}{83}{subsubsection.5.3.2}% 
+\contentsline {subsubsection}{\numberline {5.3.3}Minimum Common Neighbor Upper Bound}{89}{subsubsection.5.3.3}% 
+\contentsline {subsubsection}{\numberline {5.3.4}Recursive Steps}{94}{subsubsection.5.3.4}% 
+\contentsline {subsection}{\numberline {5.4}An Example}{97}{subsection.5.4}% 
+\contentsline {section}{\numberline {6}Random Graph Analysis}{105}{section.6}% 
+\contentsline {section}{\numberline {7}Toaster Design Case Study}{106}{section.7}% 
+\contentsline {section}{\numberline {8}Conclusions}{111}{section.8}% 
+\contentsline {section}{Literature Cited}{112}{section*.6}% 
