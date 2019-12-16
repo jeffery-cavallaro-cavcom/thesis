@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  16 DEC 2019 06:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  16 DEC 2019 07:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2227,7 +2227,7 @@ gure.54}) has been already used, duplicate ignored
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.848 \end{equation}
-                    ] [73]) (./algorithm.tex [74] [75pdfTeX warning (ext4): des
+                    ] [73] [74]) (./algorithm.tex [75pdfTeX warning (ext4): des
 tination with the same identifier (name{figure.55}) has been already used, dupl
 icate ignored
 
@@ -2355,7 +2355,7 @@ l.1 \section
 [107
 
 ]
-<toaster.jpeg, id=1545, 2007.5pt x 2007.5pt>
+<toaster.jpeg, id=1546, 2007.5pt x 2007.5pt>
 File: toaster.jpeg Graphic file (type jpg)
 <use toaster.jpeg>
 Package pdftex.def Info: toaster.jpeg  used on input line 8.
@@ -2416,7 +2416,7 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 Here is how much of TeX's memory you used:
  32053 strings out of 492609
  598204 string characters out of 6129048
- 819841 words of memory out of 5000000
+ 819793 words of memory out of 5000000
  34558 multiletter control sequences out of 15000+600000
  84417 words of font info for 280 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2444,10 +2444,10 @@ exmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on thesis.pdf (128 pages, 774958 bytes).
+Output written on thesis.pdf (128 pages, 775161 bytes).
 PDF statistics:
- 1745 PDF objects out of 2073 (max. 8388607)
- 1569 compressed objects within 16 object streams
+ 1746 PDF objects out of 2073 (max. 8388607)
+ 1570 compressed objects within 16 object streams
  496 named destinations out of 1000 (max. 500000)
  28233 words of extra memory for PDF output out of 29859 (max. 10000000)
 

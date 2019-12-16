@@ -650,7 +650,7 @@ To solve this problem, Zykov notes that in any proper coloring of a graph:
 \item Adjacent vertices always have different colors.
 \end{enumerate}
 If nonadjacent vertices have the same color then they can be contracted and the resulting graph retains the same
-\coloring{k} as the original graph.  This is demonstrated in Figure \ref{fig:zvcon}.
+\coloring{k} as the original graph.  This is demonstrated in \figurename~\ref{fig:zvcon}.
 
 \begin{figure}[H]
   \begin{minipage}{2.5in}
@@ -688,7 +688,7 @@ If nonadjacent vertices have the same color then they can be contracted and the 
 \end{figure}
 
 If nonadjacent vertices have different colors then they can be joined by an edge and the resulting graph retains
-the same \coloring{k} as the original graph.  This is demonstrated in Figure \ref{fig:zeadd}.
+the same \coloring{k} as the original graph.  This is demonstrated in \figurename~\ref{fig:zeadd}.
 
 \begin{figure}[H]
   \begin{minipage}{2.5in}
@@ -736,7 +736,7 @@ chromatic number of the original graph.
 
 Zykov uses a graph equation syntax to record the recursive processing of a graph, where each line in the equation
 represents the next recursive layer.  Isomorphic graphs are combined with a frequency multiplier at each layer.
-This is demonstrated in Figure \ref{fig:greqn}.
+This is demonstrated in \figurename~\ref{fig:greqn}.
 
 \begin{figure}[H]
   \begin{align*}
@@ -834,7 +834,7 @@ of colors for a particular distribution is considered unique.  Thus, Zykov multi
 coefficient in the final line of a graph equation by the number of permutations resulting from selecting the order
 \(n\) of the particular complete graph from \(k\) colors:
 \[k^{(n)}=k(k-1)(k-2)\cdots(k-n+1)\]
-So the total number of unique colorings for the example shown in Figure \ref{fig:greqn} using \(k\) colors would
+So the total number of unique colorings for the example shown in \figurename~\ref{fig:greqn} using \(k\) colors would
 be:
 \begin{equation}
   \label{eqn:cpfact}
@@ -860,20 +860,18 @@ and proves several theorems regarding the expanded form.  Some examples are:
 In fact, Read shows that the expanded form is actually an inclusion-exclusion equation resulting from starting with
 all possible proper and improper colorings \(k^n\) and then subtracting the improper colorings.
 
-\subsection{The Corneil Graham Algorithm}\label{sec:sub:corneil}
+Corneil and Graham~(1973) extend Zykov's work with \theoremname~\cite{corneil}:
 
-Corneil and Graham~(1973) extend Zykov's work with the following theorem \cite{corneil}:
-
-\begin{theorem}[Corneil and Graham, 1973]
+\begin{theorem}
   \label{thm:corneil}
   Let \(G\) be a graph and let \(u\) and \(v\) be two nonadjacent vertices in \(G\):
   \[\X(G)=\min\set{\X(G\cdot uv),\X(G+uv)}\]
 \end{theorem}
 
-Zykov's method combined with Theorem \ref{thm:corneil} can be used to construct an exhaustive algorithm for finding
-the chromatic number and a chromatic coloring for a graph \(G\).  We define \(S\) to be a first-in-first out (FIFO)
-stack of graphs and \(X\) to be the last found complete graph of the smallest order.  Each vertex in \(X\)
-represents a set of contracted vertices.
+Zykov's method combined with \theoremname\ref{thm:corneil} can be used to construct a branching algorithm for
+finding the chromatic number and a chromatic coloring for a graph \(G\).  We define \(S\) to be a first-in-first
+out (FIFO) stack of graphs and \(X\) to be the last found complete graph of the smallest order.  Each vertex in
+\(X\) represents a set of contracted vertices.
 \begin{enumerate}
 \item Construct a graph \(G'\) that is isomorphic to \(G\) and where each vertex in \(G'\) is a list of contracted
   vertices initialized to a one element list containing the corresponding vertex in \(G\).
@@ -894,9 +892,8 @@ represents a set of contracted vertices.
 \item Go to step \ref{step:zcheck}.
 \end{enumerate}
 
-The steps of this algorithm can be tracked via a so-called \emph{Zykov tree} \cite{corneil}.  The Zykov tree for
-the example in Figure \ref{fig:greqn} is shown in Figure \ref{fig:ztree}.  Note that the exhaustive algorithm
-corresponds to a depth-first walk of the tree.
+The steps of this algorithm can be tracked via a so-called \emph{Zykov tree}~\cite{corneil}.  The Zykov tree for
+the example in \figurename~\ref{fig:greqn} is shown in \figurename~\ref{fig:ztree}.
 
 \begin{figure}[H]
   \centering
@@ -951,3 +948,9 @@ corresponds to a depth-first walk of the tree.
   \caption{A Zykov tree example.}
   \label{fig:ztree}
 \end{figure}
+
+Since the number of states grows exponentially, there is a need to develop bounding conditions.  Branch and bound
+algorithms of this type are called \emph{Zykov algorithms}~\cite{mcdiarmid}.  The next section examines a
+well-known example of a Zykov algorithm.
+
+\subsection{The Corneil Graham Algorithm}\label{sec:sub:corneil}

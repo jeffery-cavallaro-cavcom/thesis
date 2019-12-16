@@ -47,7 +47,7 @@
 \contentsline {subsection}{\numberline {4.2}Finding an Upper Bound}{60}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}The Christofides Algorithm}{64}{subsection.4.3}% 
 \contentsline {subsection}{\numberline {4.4}Zykov Algorithms}{70}{subsection.4.4}% 
-\contentsline {subsection}{\numberline {4.5}The Corneil Graham Algorithm}{73}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {4.5}The Corneil Graham Algorithm}{75}{subsection.4.5}% 
 \contentsline {section}{\numberline {5}The Proposed Algorithm}{76}{section.5}% 
 \contentsline {subsection}{\numberline {5.1}Outer Loop}{77}{subsection.5.1}% 
 \contentsline {subsection}{\numberline {5.2}Called Subroutine}{79}{subsection.5.2}% 
