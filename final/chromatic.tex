@@ -201,7 +201,7 @@ runtime complexity is about \(\BO(2^{0.3074n})\approx\BO(1.24^n)\).
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron1_runtime}
-  \caption{Basic Bron Kerbosch algorithm runtime complexity approximation.}
+  \caption{Basic Bron Kerbosch algorithm runtime complexity.}
   \label{fig:bron1:runtime}
 \end{figure}
 
@@ -225,7 +225,7 @@ The runtime complexity estimate for the smart version of the algorithm is shown 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron2_runtime}
-  \caption{Smart Bron Kerbosch algorithm runtime complexity approximation.}
+  \caption{Smart Bron Kerbosch algorithm runtime complexity.}
   \label{fig:bron2:runtime}
 \end{figure}
 
@@ -558,8 +558,82 @@ runtime complexity for the algorithm.  The slope of the line indicates that the 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{christofides_runtime}
-  \caption{Christofides algorithm runtime complexity approximation.}
+  \caption{Christofides algorithm runtime complexity.}
   \label{fig:cfruntime}
+\end{figure}
+
+One drawback of the Christofides algorithm is the fact that each level must be maintained entirely in memory before
+moving on to the next level.  As has been show, the breadth of state graphs grows exponentially, so depth-first
+algorithms are generally preferred.  Wang~(1974)~\cite{wang} proposes two improvements to the Christofides
+algorithm to combat this memory usage.  The first improvement prunes a large number of subtrees and the second
+improvement converts the algorithm to a depth-first search.
+
+Wang's first proposal is based on \lemmaname~\ref{lem:wang}
+
+\begin{lemma}
+  \label{lem:wang}
+  Let \(G\) be a graph, let \(v\in V(G)\), and let \(\set{M_1,\ldots,M_r}\) be all of the maximal independent sets
+  in \(G\) containing \(v\).  There exists a chromatic coloring of \(G\) containing one of the \(M_i\).
+\end{lemma}
+
+\begin{proof}
+  Assume that \(G\) is \chromatic{k} and let \(\set{A_1,\ldots,A_k}\) be the independent sets of a chromatic
+  coloring of \(G\).  Assume without loss of generality (AWLOG) that \(v\in A_1\).  It must be the case that
+  \(A_1\subseteq M_i\) for some \(1\le i\le r\), since all of the \(M_i\) are maximal.  Now, let \(X=M_i-A_1\) and
+  let \(X_j=A_j-X\) for \(2\le j\le k\).  Next, construct the coloring \(\set{M_i,X_2,\ldots,X_k}\).  This is a
+  \chromatic{k} coloring of \(G\) containing \(M_i\).
+\end{proof}
+
+Basically, \lemmaname~\ref{lem:wang} says that any independent set in a chromatic coloring of a graph \(G\)
+containing a vertex \(v\) can be extended to a maximal independent set containing \(v\) by snatching vertices from
+the other independent sets in the coloring.
+
+Next consider the fact that each state in the Christofides algorithm state tree represents a subgraph and the goal
+is to (recursively) find a chromatic coloring for that subgraph.  Therefore, a particular vertex can be selected
+and only MISs containing that vertex need be considered for the next level.  So, at each state, select the vertex
+that appears in the fewest MISs of the subgraph; the subtrees corresponding to the MISs that do not contain the
+selected vertex are pruned.
+
+Referring back to the example in \figurename~\ref{fig:cfexample}, recall that the first level MISs were:
+\(\set{1}\), \(\set{2,4}\), \(\set{2,5}\), and \(\set{3,5}\).  Vertices \(1\), \(3\), and \(4\) occur in only
+one MIS each.  So if \(1\) is selected, only the leftmost subgraph in \figurename~\ref{fig:cflevel1} need be
+considered.
+
+Wang's second improvement is to convert the search to a depth-first search, keeping track of the minimum length
+branch from the root state to a leaf state.  Branches that equal or exceed the current minimum are pruned.
+Branches that are smaller than the current minimum become the new current minimum.  Although this does require that
+the entire pruned tree be traversed, the hope is that the first improvement has pruned enough subtrees so that the
+depth-first search is now economical.
+
+The results of a random graph analysis of Wang's improvements to the Christofides algorithm are shown in
+\figurename~\ref{fig:wangstates}.  The graph shows edge probability versus the mean of the number of states for
+graphs of increasing order with \(1000\) trials per edge probability.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{wang_states}
+  \caption{Chistofides algorithm with Wang improvements mean number of states.}
+  \label{fig:wangstates}
+\end{figure}
+
+The results are quite surprising.  Not only is there a dramatic overall improvement, it now appears that the worst
+case occurs at moderate edge density.  Intuition suggests that lower edge density graphs will have fewer and larger
+MISs.  For the high density case, it may be that each vertex is in fewer MISs.  The worst case for each order is
+thus assumed to occur at \(50\%\) edge probability.  A log (base 2) plot of the maximum number of states for the
+\(1000\) graphs at each order is plotted in \figurename~\ref{fig:wangruntime}.  A line fit is used to approximate
+the runtime complexity for the algorithm.  The slope of the line indicates that the runtime complexity is about
+\(\BO(2^{0.7424n})\approx\BO(1.67^n)\).
+
+Although the improvement from \(BO(1.79^n)\) to \(BO(1.67^n)\) may not seem like much, the runtime duration
+difference was noticable during testing.  In fact, the Christofides algorithm topped out around \(20\) vertices
+before the time duration became overly long.  With the Wang improvements, reasonable runs greater than \(30\)
+vertices were possible.  Runtime duration comparisons will be considered in the next section.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{wang_runtime}
+  \caption{Christofides algorithm with Wang improvements runtime complexity.}
+  \label{fig:wangruntime}
 \end{figure}
 
 \subsection{Zykov Algorithms}\label{sec:sub:zykov}
