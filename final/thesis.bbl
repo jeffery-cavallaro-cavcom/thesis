@@ -1,9 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{voloshin}
-V.~Voloshin, ``A tribute to a. a. and t. e. zykovs on the occasion of a. a.
-  zykov's 90th birthday,'' {\em Topics in Graph Theory}, November 2013.
-
 \bibitem{suh}
 N.~P. Suh, {\em The Principles of Design}.
 \newblock New York: Oxford University Press, 1990.
@@ -117,9 +113,6 @@ D.~Welsh and M.~Powell, ``An upper bound for the chromatic number of a graph
 D.~W. Matula, G.~Marble, and J.~D. Isaacson, ``Graph coloring algorithms,'' in
   {\em Graph Theory and Computing} (R.~C. Read, ed.), pp.~109--122, New York:
   Academic Press, 1972.
-
-\bibitem{obit}
-V.~Voloshin, ``{A}lexander {Z}ykov 1922-2013,'' January 2014.
 
 \bibitem{read}
 R.~C. Read, ``An introduction to chromatic polynomials,'' {\em Journal of

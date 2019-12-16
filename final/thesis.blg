@@ -4,46 +4,44 @@ The top-level auxiliary file: thesis.aux
 The style file: ieeetr.bst
 A level-1 auxiliary file: sections.aux
 Database file #1: references.bib
-Warning--empty journal in obit
-You've used 26 entries,
+You've used 24 entries,
             1876 wiz_defined-function locations,
-            651 strings with 7401 characters,
-and the built_in function-call counts, 6455 in all, are:
-= -- 668
-> -- 186
+            642 strings with 7214 characters,
+and the built_in function-call counts, 6200 in all, are:
+= -- 647
+> -- 178
 < -- 0
-+ -- 74
-- -- 48
-* -- 451
-:= -- 896
-add.period$ -- 33
-call.type$ -- 26
-change.case$ -- 22
++ -- 70
+- -- 46
+* -- 433
+:= -- 853
+add.period$ -- 31
+call.type$ -- 24
+change.case$ -- 20
 chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 338
-empty$ -- 656
-format.name$ -- 48
-if$ -- 1593
+cite$ -- 24
+duplicate$ -- 322
+empty$ -- 626
+format.name$ -- 46
+if$ -- 1536
 int.to.chr$ -- 0
-int.to.str$ -- 26
-missing$ -- 31
-newline$ -- 88
-num.names$ -- 30
-pop$ -- 83
+int.to.str$ -- 24
+missing$ -- 29
+newline$ -- 82
+num.names$ -- 28
+pop$ -- 75
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 222
+skip$ -- 218
 stack$ -- 0
 substring$ -- 419
-swap$ -- 131
+swap$ -- 130
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 71
-width$ -- 28
-write$ -- 258
-(There was 1 warning)
+warning$ -- 0
+while$ -- 69
+width$ -- 26
+write$ -- 243

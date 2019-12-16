@@ -46,19 +46,17 @@
 \BOOKMARK [2][-]{subsection.4.2}{Finding an Upper Bound}{section.4}% 46
 \BOOKMARK [2][-]{subsection.4.3}{The Christofides Algorithm}{section.4}% 47
 \BOOKMARK [2][-]{subsection.4.4}{Zykov Algorithms}{section.4}% 48
-\BOOKMARK [3][-]{subsubsection.4.4.1}{The Chromatic Polynomial}{subsection.4.4}% 49
-\BOOKMARK [3][-]{subsubsection.4.4.2}{An Exhaustive Algorithm}{subsection.4.4}% 50
-\BOOKMARK [3][-]{subsubsection.4.4.3}{Branch and Bound Strategies}{subsection.4.4}% 51
-\BOOKMARK [1][-]{section.5}{The Proposed Algorithm}{}% 52
-\BOOKMARK [2][-]{subsection.5.1}{Outer Loop}{section.5}% 53
-\BOOKMARK [2][-]{subsection.5.2}{Called Subroutine}{section.5}% 54
-\BOOKMARK [2][-]{subsection.5.3}{Supporting Theorems}{section.5}% 55
-\BOOKMARK [3][-]{subsubsection.5.3.1}{Maximum Edge Threshold}{subsection.5.3}% 56
-\BOOKMARK [3][-]{subsubsection.5.3.2}{Vertex Removal}{subsection.5.3}% 57
-\BOOKMARK [3][-]{subsubsection.5.3.3}{Minimum Common Neighbor Upper Bound}{subsection.5.3}% 58
-\BOOKMARK [3][-]{subsubsection.5.3.4}{Recursive Steps}{subsection.5.3}% 59
-\BOOKMARK [2][-]{subsection.5.4}{An Example}{section.5}% 60
-\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 61
-\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 62
-\BOOKMARK [1][-]{section.8}{Conclusions}{}% 63
-\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 64
+\BOOKMARK [2][-]{subsection.4.5}{The Corneil Graham Algorithm}{section.4}% 49
+\BOOKMARK [1][-]{section.5}{The Proposed Algorithm}{}% 50
+\BOOKMARK [2][-]{subsection.5.1}{Outer Loop}{section.5}% 51
+\BOOKMARK [2][-]{subsection.5.2}{Called Subroutine}{section.5}% 52
+\BOOKMARK [2][-]{subsection.5.3}{Supporting Theorems}{section.5}% 53
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Maximum Edge Threshold}{subsection.5.3}% 54
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Vertex Removal}{subsection.5.3}% 55
+\BOOKMARK [3][-]{subsubsection.5.3.3}{Minimum Common Neighbor Upper Bound}{subsection.5.3}% 56
+\BOOKMARK [3][-]{subsubsection.5.3.4}{Recursive Steps}{subsection.5.3}% 57
+\BOOKMARK [2][-]{subsection.5.4}{An Example}{section.5}% 58
+\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 59
+\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 60
+\BOOKMARK [1][-]{section.8}{Conclusions}{}% 61
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 62
