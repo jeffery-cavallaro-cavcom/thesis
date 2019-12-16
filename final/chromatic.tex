@@ -950,7 +950,12 @@ the example in \figurename~\ref{fig:greqn} is shown in \figurename~\ref{fig:ztre
 \end{figure}
 
 Since the number of states grows exponentially, there is a need to develop bounding conditions.  Branch and bound
-algorithms of this type are called \emph{Zykov algorithms}~\cite{mcdiarmid}.  The next section examines a
-well-known example of a Zykov algorithm.
+algorithms of this type are called \emph{Zykov algorithms}.  In fact, McDiarmid~(1978)~\cite{mcdiarmid} shows that
+even with bounding, pure Zykov algorithms have at least \(\BO(c^{n\sqrt{\log(n)}})\) complexity for some real
+number constant \(c>1\), which is worse than exponential.  Thus pure Zykov algorithms will generally perform worse
+than Christofides/Wang-type algorithms.
+
+The next section examines a well-known example of a Zykov algorithm that will be compared to the proposed
+algorithm.
 
 \subsection{The Corneil Graham Algorithm}\label{sec:sub:corneil}

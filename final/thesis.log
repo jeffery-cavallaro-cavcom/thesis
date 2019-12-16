@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  16 DEC 2019 07:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  16 DEC 2019 10:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -898,7 +898,7 @@ Package: extdash 2018/06/24 v1.3 Extended Dash Package (NCC)
 Package: gensymb 2003/07/02 v1.0 (WaS)
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/06/20 v3.9 Customized lists
+Package: enumitem 2019/02/04 v3.8 Customized lists
 \labelindent=\skip74
 \enit@outerparindent=\dimen193
 \enit@toks=\toks42
@@ -2040,13 +2040,13 @@ Missing character: There is no ; in font nullfont!
 l.100 \item
             Select (either lowest index or at random) a vertex \(v\in V(G)\)...
 ]
-<edwards1_error.jpeg, id=984, 455.45157pt x 258.65053pt>
+<edwards1_error.jpeg, id=985, 455.45157pt x 258.65053pt>
 File: edwards1_error.jpeg Graphic file (type jpg)
 <use edwards1_error.jpeg>
 Package pdftex.def Info: edwards1_error.jpeg  used on input line 118.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [53]
-<edwards2_error.jpeg, id=996, 455.45157pt x 258.65053pt>
+<edwards2_error.jpeg, id=997, 455.45157pt x 258.65053pt>
 File: edwards2_error.jpeg Graphic file (type jpg)
 <use edwards2_error.jpeg>
 Package pdftex.def Info: edwards2_error.jpeg  used on input line 132.
@@ -2065,12 +2065,12 @@ same identifier (name{figure.38}) has been already used, duplicate ignored
 l.154 \item[compsub]
                      The current maximal clique accumulator. <./edwards2_error.
 jpeg>] [56]
-<bron1_calls.jpeg, id=1025, 455.45157pt x 258.65053pt>
+<bron1_calls.jpeg, id=1026, 455.45157pt x 258.65053pt>
 File: bron1_calls.jpeg Graphic file (type jpg)
 <use bron1_calls.jpeg>
 Package pdftex.def Info: bron1_calls.jpeg  used on input line 190.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<bron1_runtime.jpeg, id=1027, 455.45157pt x 258.65053pt>
+<bron1_runtime.jpeg, id=1028, 455.45157pt x 258.65053pt>
 File: bron1_runtime.jpeg Graphic file (type jpg)
 <use bron1_runtime.jpeg>
 Package pdftex.def Info: bron1_runtime.jpeg  used on input line 203.
@@ -2093,7 +2093,7 @@ Package pdftex.def Info: bron1_calls.jpeg  used on input line 216.
                                                   \fi \fi 
 l.220 
        <./bron1_runtime.jpeg>]
-<bron2_runtime.jpeg, id=1038, 455.45157pt x 258.65053pt>
+<bron2_runtime.jpeg, id=1039, 455.45157pt x 258.65053pt>
 File: bron2_runtime.jpeg Graphic file (type jpg)
 <use bron2_runtime.jpeg>
 Package pdftex.def Info: bron2_runtime.jpeg  used on input line 227.
@@ -2118,7 +2118,7 @@ the same identifier (name{figure.43}) has been already used, duplicate ignored
 l.324 \item S
              elect those colors that occur only once in the neighborhood of ...
 ]
-<greedy_error.jpeg, id=1078, 455.45157pt x 258.65053pt>
+<greedy_error.jpeg, id=1079, 455.45157pt x 258.65053pt>
 File: greedy_error.jpeg Graphic file (type jpg)
 <use greedy_error.jpeg>
 Package pdftex.def Info: greedy_error.jpeg  used on input line 343.
@@ -2156,12 +2156,12 @@ Missing character: There is no ; in font nullfont!
                                                   \fi \fi 
 l.540 
       ]
-<christofides_states.jpeg, id=1115, 455.45157pt x 258.65053pt>
+<christofides_states.jpeg, id=1116, 455.45157pt x 258.65053pt>
 File: christofides_states.jpeg Graphic file (type jpg)
 <use christofides_states.jpeg>
 Package pdftex.def Info: christofides_states.jpeg  used on input line 547.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<christofides_runtime.jpeg, id=1117, 455.45157pt x 258.65053pt>
+<christofides_runtime.jpeg, id=1118, 455.45157pt x 258.65053pt>
 File: christofides_runtime.jpeg Graphic file (type jpg)
 <use christofides_runtime.jpeg>
 Package pdftex.def Info: christofides_runtime.jpeg  used on input line 560.
@@ -2186,13 +2186,13 @@ cate ignored
                                                   \fi \fi 
 l.585 \end{proof}
                   <./christofides_runtime.jpeg>]
-<wang_states.jpeg, id=1134, 455.45157pt x 258.65053pt>
+<wang_states.jpeg, id=1135, 455.45157pt x 258.65053pt>
 File: wang_states.jpeg Graphic file (type jpg)
 <use wang_states.jpeg>
 Package pdftex.def Info: wang_states.jpeg  used on input line 614.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [68]
-<wang_runtime.jpeg, id=1140, 455.45157pt x 258.65053pt>
+<wang_runtime.jpeg, id=1141, 455.45157pt x 258.65053pt>
 File: wang_runtime.jpeg Graphic file (type jpg)
 <use wang_runtime.jpeg>
 Package pdftex.def Info: wang_runtime.jpeg  used on input line 634.
@@ -2355,7 +2355,7 @@ l.1 \section
 [107
 
 ]
-<toaster.jpeg, id=1546, 2007.5pt x 2007.5pt>
+<toaster.jpeg, id=1547, 2007.5pt x 2007.5pt>
 File: toaster.jpeg Graphic file (type jpg)
 <use toaster.jpeg>
 Package pdftex.def Info: toaster.jpeg  used on input line 8.
@@ -2414,10 +2414,10 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: EA38094BB5FDF8AB3AF7A58430432DA6;4145.
  ) 
 Here is how much of TeX's memory you used:
- 32053 strings out of 492609
- 598204 string characters out of 6129048
- 819793 words of memory out of 5000000
- 34558 multiletter control sequences out of 15000+600000
+ 32051 strings out of 492609
+ 598178 string characters out of 6129049
+ 819787 words of memory out of 5000000
+ 34556 multiletter control sequences out of 15000+600000
  84417 words of font info for 280 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,19n,436p,835b,1183s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2444,10 +2444,10 @@ exmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on thesis.pdf (128 pages, 775161 bytes).
+Output written on thesis.pdf (128 pages, 775836 bytes).
 PDF statistics:
- 1746 PDF objects out of 2073 (max. 8388607)
- 1570 compressed objects within 16 object streams
+ 1747 PDF objects out of 2073 (max. 8388607)
+ 1571 compressed objects within 16 object streams
  496 named destinations out of 1000 (max. 500000)
  28233 words of extra memory for PDF output out of 29859 (max. 10000000)
 
