@@ -142,9 +142,10 @@ Nagamouchi~(2017)~\cite{xiao}.  They claim that the known algorithms tend to con
 
 A simpler yet efficient alternative to these exact algorithms is the Bron Kerbosch (BK)
 algorithm~(1973)~\cite{bron}.  In fact, the algorithm that was incrementally developed in the previous section is
-essentially the BK algorithm.  The advantage of BK is that it finds all possible maximal independent sets in a
-graph, and hence can be used to find \(\a(G)=\w(\bar{G})\).  Finding all of the maximal independent sets in a graph
-is a crucial part of the Christofides algorithm, which is discussed later in this section.
+essentially the BK algorithm.  The advantage of BK is that it finds all possible cliques in a graph, and hence can
+be used to find \(\a(G)=\w(\bar{G})\).  Moon and Moser~(1965)~\cite{moon} show that every graph \(G\) of order
+\(n\) has at most \(3^{\frac{n}{3}}\) maximal cliques, so the runtime complexity of the Bron Kerbosch algorithm is
+expected to be about \(\BO(1.44^n)\).
 
 The heart of BK is a recursive subroutine called \emph{extend} that implements the breadth of a level in the
 corresponding state tree, and recursively calls itself in order to implement the branches in the state tree.
@@ -188,7 +189,7 @@ method versus edge probablity for \(1000\) random graphs per edge probability.
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron1_calls}
-  \caption{Basic Bron Kerbosch algorithm calls to extend versus edge probability.}
+  \caption{Basic Bron Kerbosch algorithm calls to extend.}
   \label{fig:bron1:calls}
 \end{figure}
 
@@ -196,7 +197,7 @@ The number of calls increases with both graph order and edge probability.  The w
 assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of calls to the
 \emph{extend} method for the \(1000\) graphs at each order is plotted in \figurename~\ref{fig:bron1:runtime}.  A
 line fit is used to approximate the runtime complexity for the algorithm.  The slope of the line indicates that the
-runtime complexity is about \(\BO(2^{0.3074n})\approx\BO(1.24^n)\).
+runtime complexity is about \(\BO(2^{0.3074n})\approx\BO(1.24^n)\), which is well below the theoretical value.
 
 \begin{figure}[H]
   \centering
@@ -214,7 +215,7 @@ version of the algorithm.
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron1_calls}
-  \caption{Smart Bron Kerbosch algorithm calls to extend versus edge probability.}
+  \caption{Smart Bron Kerbosch algorithm calls to extend.}
   \label{fig:bron2:calls}
 \end{figure}
 
@@ -341,7 +342,7 @@ edge probability.  Note that the algorithm tends to do better at lower and highe
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{greedy_error}
-  \caption{Last first greedy algorithm with interchange error versus edge probability.}
+  \caption{Last first greedy algorithm with interchange error.}
   \label{fig:greedyerr}
 \end{figure}
 

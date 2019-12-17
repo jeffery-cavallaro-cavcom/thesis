@@ -36,12 +36,12 @@
 \contentsline {figure}{\numberline {36}{\ignorespaces The first three graphs from the Mycielski construction.}}{52}{figure.36}% 
 \contentsline {figure}{\numberline {37}{\ignorespaces Edwards Elphick algorithm mean error.}}{54}{figure.37}% 
 \contentsline {figure}{\numberline {38}{\ignorespaces Improved Edwards Elphick algorithm mean error.}}{55}{figure.38}% 
-\contentsline {figure}{\numberline {39}{\ignorespaces Basic Bron Kerbosch algorithm calls to extend versus edge probability.}}{57}{figure.39}% 
+\contentsline {figure}{\numberline {39}{\ignorespaces Basic Bron Kerbosch algorithm calls to extend.}}{57}{figure.39}% 
 \contentsline {figure}{\numberline {40}{\ignorespaces Basic Bron Kerbosch algorithm runtime complexity.}}{58}{figure.40}% 
-\contentsline {figure}{\numberline {41}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend versus edge probability.}}{59}{figure.41}% 
+\contentsline {figure}{\numberline {41}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend.}}{59}{figure.41}% 
 \contentsline {figure}{\numberline {42}{\ignorespaces Smart Bron Kerbosch algorithm runtime complexity.}}{59}{figure.42}% 
 \contentsline {figure}{\numberline {43}{\ignorespaces An example that allows color interchange.}}{61}{figure.43}% 
-\contentsline {figure}{\numberline {44}{\ignorespaces Last first greedy algorithm with interchange error versus edge probability.}}{63}{figure.44}% 
+\contentsline {figure}{\numberline {44}{\ignorespaces Last first greedy algorithm with interchange error.}}{63}{figure.44}% 
 \contentsline {figure}{\numberline {45}{\ignorespaces A Christofides algorithm example.}}{64}{figure.45}% 
 \contentsline {figure}{\numberline {46}{\ignorespaces Level 1 of a Christofides algorithm example.}}{65}{figure.46}% 
 \contentsline {figure}{\numberline {47}{\ignorespaces Christofides algorithm example results.}}{66}{figure.47}% 

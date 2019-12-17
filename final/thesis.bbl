@@ -104,6 +104,10 @@ C.~Bron and J.~Kerbosch, ``Algorithm 457: Finding all cliques of an undirected
   graph,'' {\em Communications of the ACM}, vol.~16, pp.~575--577, September
   1973.
 
+\bibitem{moon}
+J.~Moon and L.~Moser, ``On cliques in graphs,'' {\em Israel Journal of
+  Mathematics}, vol.~3, pp.~23--28, 1965.
+
 \bibitem{welsh}
 D.~Welsh and M.~Powell, ``An upper bound for the chromatic number of a graph
   and its application to timetabling problems,'' {\em The Computer Journal},
