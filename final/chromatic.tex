@@ -861,7 +861,7 @@ and proves several theorems regarding the expanded form.  Some examples are:
 In fact, Read shows that the expanded form is actually an inclusion-exclusion equation resulting from starting with
 all possible proper and improper colorings \(k^n\) and then subtracting the improper colorings.
 
-Corneil and Graham~(1973) extend Zykov's work with \theoremname~\cite{corneil}:
+Corneil and Graham~(1973) extend Zykov's work with \theoremname~\ref{thm:corneil}~\cite{corneil}:
 
 \begin{theorem}
   \label{thm:corneil}
@@ -869,32 +869,17 @@ Corneil and Graham~(1973) extend Zykov's work with \theoremname~\cite{corneil}:
   \[\X(G)=\min\set{\X(G\cdot uv),\X(G+uv)}\]
 \end{theorem}
 
-Zykov's method combined with \theoremname\ref{thm:corneil} can be used to construct a branching algorithm for
-finding the chromatic number and a chromatic coloring for a graph \(G\).  We define \(S\) to be a first-in-first
-out (FIFO) stack of graphs and \(X\) to be the last found complete graph of the smallest order.  Each vertex in
-\(X\) represents a set of contracted vertices.
-\begin{enumerate}
-\item Construct a graph \(G'\) that is isomorphic to \(G\) and where each vertex in \(G'\) is a list of contracted
-  vertices initialized to a one element list containing the corresponding vertex in \(G\).
-\item Push \(G'\) onto \(S\).
-\item \label{step:zempty} If \(S\) is empty then return \(n(X)\) and \(X\).
-\item \label{step:zcheck} If the graph on the top of \(S\) is complete:
-  \begin{enumerate}
-  \item Pop the graph off of the top of \(S\) and save it as \(H\).
-  \item If \(X\) is not set or \(n(H)<n(X)\) then let \(X=H\).  Otherwise, discard \(H\).
-  \item Go to step \ref{step:zempty}.
-  \end{enumerate}
-\item The graph on the top of \(S\) is not complete.  Pop the graph off of \(S\) and save it as \(H\).
-\item Pick any two nonadjacent vertices \(u\) and \(v\) in \(H\).
-\item Push \(H+uv\) onto \(S\).
-\item Construct \(H'=H\cdot uv\), where the contracted vertex list for the new contracted vertex is a concatenation
-  of the lists for \(u\) and \(v\).
-\item Push \(H'\) onto \(S\).
-\item Go to step \ref{step:zcheck}.
-\end{enumerate}
+Zykov's method combined with \theoremname~\ref{thm:corneil} can be used to construct a depth-first branching
+algorithm for finding the chromatic number and a chromatic coloring for a graph \(G\).  Each state in the state
+tree for such an algorithm is represented by a graph whose nodes are sets of contracted vertices from \(G\) and
+hence represent independent sets in a candidate coloring, and whose edges are the edges remaining after the vertex
+contractions.  The leaves of the state tree are complete graphs that represent proper colorings.  The leaf state
+graphs with the smallest order are chromatic colorings.  Such a state tree is called a \emph{Zykov tree} and a
+branch (and bound) algorithm that uses such trees is called a \emph{Zykov algorithm}~\cite{corneil}.
 
-The steps of this algorithm can be tracked via a so-called \emph{Zykov tree}~\cite{corneil}.  The Zykov tree for
-the example in \figurename~\ref{fig:greqn} is shown in \figurename~\ref{fig:ztree}.
+The Zykov tree for the example in \figurename~\ref{fig:greqn} is shown in \figurename~\ref{fig:ztree}.  Note that
+the three leaf states are complete graphs of order \(3\) or \(4\).  Therefore, the example in
+\figurename~\ref{fig:greqn} is \chromatic{3} and the two \(K_3\) leaves represent chromatic colorings.
 
 \begin{figure}[H]
   \centering
@@ -949,6 +934,38 @@ the example in \figurename~\ref{fig:greqn} is shown in \figurename~\ref{fig:ztre
   \caption{A Zykov tree example.}
   \label{fig:ztree}
 \end{figure}
+
+Zykov algorithms typically have three components:
+\begin{enumerate}
+\item A main routine that establishes \(G\) as the root of the state tree.
+\item A global variable \(X\) that records the state corresponding to the current smallest \coloring{k}.
+\item A recursive subroutine that performs the depth-first search of the state tree and updates \(X\) as
+  necessary.
+\end{enumerate}
+
+The steps of the main routine are as follows:
+\begin{enumerate}
+\item Construct a graph \(G'\) that is isomorphic to \(G\) and where each vertex in \(G'\) is a set of contracted
+  vertices initialized to a one element set containing the corresponding vertex in \(G\).
+\item Initialize \(X=G'\).
+\item Call the recursive subroutine with \(G'\).
+\item Return \(n(X)\) as the found chromatic number for \(G\) and \(X\) representing a chromatic coloring of \(G\).
+\end{enumerate}
+
+The recursive subroutine is called with a graph \(H\) and has access to \(X\).  The steps are as follows:
+
+\begin{enumerate}
+\item\label{step:zykov:check} If \(H\) is not complete then go to step~\ref{step:zykov:branch}.
+\item If \(n(H)<n(X)\) then \(X=H\).
+\item Go to step~\ref{step:zykov:done}.
+\item\label{step:zykov:branch} Select any two nonadjacent vertices \(u\) and \(v\) in \(H\).
+\item Construct \(H'=H\cdot uv\), where the vertex set for the new contracted vertex is the union of the vertex
+  sets for \(u\) and \(v\).
+\item Recursively call this subroutine with \(H'\).
+\item Construct \(H''=H+uv\).
+\item Recursively call this subroutine with \(H''\).
+\item\label{step:zykov:done} Return.
+\end{enumerate}
 
 Since the number of states grows exponentially, there is a need to develop bounding conditions.  Branch and bound
 algorithms of this type are called \emph{Zykov algorithms}.  In fact, McDiarmid~(1978)~\cite{mcdiarmid} shows that
