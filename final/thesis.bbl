@@ -122,4 +122,8 @@ D.~W. Matula, G.~Marble, and J.~D. Isaacson, ``Graph coloring algorithms,'' in
 R.~C. Read, ``An introduction to chromatic polynomials,'' {\em Journal of
   Combinatorial Theory}, vol.~4, pp.~52--71, 1968.
 
+\bibitem{graham}
+B.~Graham, ``An algorithm to determine the chromatic number of a graph,''
+  Master's thesis, University of Toronto, Ontario, Canada, October 1972.
+
 \end{thebibliography}

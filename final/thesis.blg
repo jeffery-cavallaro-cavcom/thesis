@@ -4,36 +4,36 @@ The top-level auxiliary file: thesis.aux
 The style file: ieeetr.bst
 A level-1 auxiliary file: sections.aux
 Database file #1: references.bib
-You've used 25 entries,
+You've used 26 entries,
             1876 wiz_defined-function locations,
-            648 strings with 7301 characters,
-and the built_in function-call counts, 6489 in all, are:
-= -- 679
-> -- 186
+            654 strings with 7420 characters,
+and the built_in function-call counts, 6610 in all, are:
+= -- 692
+> -- 190
 < -- 0
-+ -- 73
-- -- 48
-* -- 452
-:= -- 892
-add.period$ -- 32
-call.type$ -- 25
-change.case$ -- 21
++ -- 75
+- -- 49
+* -- 461
+:= -- 916
+add.period$ -- 33
+call.type$ -- 26
+change.case$ -- 22
 chr.to.int$ -- 0
-cite$ -- 25
-duplicate$ -- 337
-empty$ -- 653
-format.name$ -- 48
-if$ -- 1608
+cite$ -- 26
+duplicate$ -- 343
+empty$ -- 664
+format.name$ -- 49
+if$ -- 1634
 int.to.chr$ -- 0
-int.to.str$ -- 25
+int.to.str$ -- 26
 missing$ -- 30
-newline$ -- 85
-num.names$ -- 29
-pop$ -- 77
+newline$ -- 88
+num.names$ -- 30
+pop$ -- 78
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 230
+skip$ -- 232
 stack$ -- 0
 substring$ -- 443
 swap$ -- 137
@@ -42,6 +42,6 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 73
-width$ -- 27
-write$ -- 253
+while$ -- 74
+width$ -- 28
+write$ -- 263
