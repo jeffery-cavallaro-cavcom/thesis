@@ -30,9 +30,9 @@
 \contentsline {subsubsection}{\numberline {2.8.5}Impact on Coloring}{33}{subsubsection.2.8.5}% 
 \contentsline {subsection}{\numberline {2.9}Vertex Degree}{34}{subsection.2.9}% 
 \contentsline {subsection}{\numberline {2.10}Special Graphs}{36}{subsection.2.10}% 
-\contentsline {subsubsection}{\numberline {2.10.1}Empty Graphs}{37}{subsubsection.2.10.1}% 
+\contentsline {subsubsection}{\numberline {2.10.1}Empty Graphs}{36}{subsubsection.2.10.1}% 
 \contentsline {subsubsection}{\numberline {2.10.2}Paths}{37}{subsubsection.2.10.2}% 
-\contentsline {subsubsection}{\numberline {2.10.3}Cycles}{38}{subsubsection.2.10.3}% 
+\contentsline {subsubsection}{\numberline {2.10.3}Cycles}{37}{subsubsection.2.10.3}% 
 \contentsline {subsubsection}{\numberline {2.10.4}Complete Graphs}{38}{subsubsection.2.10.4}% 
 \contentsline {subsubsection}{\numberline {2.10.5}Trees}{39}{subsubsection.2.10.5}% 
 \contentsline {subsection}{\numberline {2.11}The Adjacency Matrix}{40}{subsection.2.11}% 

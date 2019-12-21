@@ -635,8 +635,8 @@ proposed algorithm uses vertex identification to consolidate two non-adjacent FR
 
 One final important graph mutator is the \emph{complement} of a graph.  For a graph \(G\), the \emph{complement} of
 \(G\), denoted by \(\bar{G}\), is the graph with the same vertex set as \(G\): \(V(G)=V(\bar{G})\), and with edge
-set \(E(\bar{G})=\ps_2\left(V(G)\right)-E(G)\); if \(u,v\in G\) are adjacent in \(G\) \(\left(uv\in E(G)\right)\)
-then they are not adjacent in \(\bar{G}\) \(\left(uv\notin E(\bar{G})\right)\).
+set \(E(\bar{G})=\ps_2\left(V(G)\right)-E(G)\); if \(u,v\in V(G)\) are adjacent in \(G\) \(\left(uv\in
+E(G)\right)\) then they are not adjacent in \(\bar{G}\) \(\left(uv\notin E(\bar{G})\right)\).
 
 An example of a graph complement operation is shown in \figurename~\ref{fig:complement}.
 
@@ -677,8 +677,8 @@ Some important properties of the complement of a graph are stated in \propname~\
   \begin{enumerate}
   \item \(\bar{\bar{G}}=G\)
   \item \(G\) is empty if and only if \(\bar{G}\) is complete.
-  \item \(n(\bar{G})=n\)
-  \item \(m(\bar{G})=\frac{n(n-1)}{2}-m\)
+  \item \(n(\bar{G})=n(G)\)
+  \item \(m(\bar{G})=\frac{n(n-1)}{2}-m(G)\)
   \end{enumerate}
 \end{proposition}
 
@@ -692,10 +692,10 @@ The primary purpose of a \coloring{k} of a graph \(G\) is to distribute the vert
 \emph{independent} (some possibly empty) sets.  For a graph \(G\), an \emph{independent} set \(S\subseteq V(G)\),
 sometimes called a \emph{stable} set, is a set of pairwise non-adjacent vertices in \(G\): for all \(u,v\in S\),
 \(uv\notin E(G)\).  By definition, the empty set is an independent set of every graph \(G\).  A \emph{maximal}
-independent set of a graph \(G\), sometimes referred to as a MIS of \(G\), is an independent set of \(G\) that
-cannot be extended by an additional vertex in \(V(G)\); MISs of \(G\) are never proper subsets of other independent
-sets in \(G\).  The cardinality of the largest possible MIS in a graph \(G\), denoted by \(\a(G)\), is called the
-\emph{independence number} for \(G\).
+independent set of a graph \(G\), sometimes referred to as a \emph{MIS} of \(G\), is an independent set of \(G\)
+that cannot be extended by an additional vertex in \(V(G)\); MISs of \(G\) are never proper subsets of other
+independent sets in \(G\).  The cardinality of the largest possible MIS in a graph \(G\), denoted by \(\a(G)\), is
+called the \emph{independence number} for \(G\).
 
 Consider the example in \figurename~\ref{fig:independent}.  Although the graph contains independent sets of sizes
 \(1\) and \(2\), none of these are maximal.  All of the maximal independent sets are of sizes \(3\) and \(4\), and
@@ -829,9 +829,9 @@ as expected, every MIS in \figurename~\ref{fig:independent} is a maximal clique 
 
 Since a \clique{k} of a graph \(G\) needs at least \(k\) colors in any proper coloring of \(G\), the clique number
 of \(G\) provides a nice lower bound for the chromatic number of \(G\).  Unfortunately, the clique number problem
-is known to be NP-hard as well~\cite{corneil}.  Thus, there are many attempts in the literature to find a good
-lower bound for the clique number of a graph \(G\), usually denoted by \(\w'(G)\).  If such a lower bound is known
-then the conclusion of \propname~\ref{prop:clique} holds:
+is known to be inherently intractable as well~\cite{corneil}.  Thus, there are many attempts in the literature to
+find a good lower bound for the clique number of a graph \(G\), usually denoted by \(\w'(G)\).  If such a lower
+bound is known then the conclusion of \propname~\ref{prop:clique} holds:
 
 \begin{proposition}
   \label{prop:clique}
@@ -917,7 +917,7 @@ When discussing the connectedness of a graph, the main concern is the existence 
 contains a \(u-v\) path.
 
 But if there exists a \(u-v\) walk in a graph \(G\), does this also mean that there exists a \(u-v\) path in \(G\)
---- i.e. a walk with no repeating edges or vertices?  The answer is yes, as shown by the following theorem:
+--- i.e., a walk with no repeating edges or vertices?  The answer is yes, as shown by the following theorem:
 
 \begin{theorem}
   Let \(G\) be a graph and let \(u,v\in V(G)\).  If \(G\) contains a \(u-v\) walk of length \(k\) then \(G\)
@@ -1213,8 +1213,7 @@ These concepts are demonstrated by the graph in \figurename~\ref{fig:degree}.
 
     \begin{tabular}{ll}
       \(n=8\) & \(m=15=\frac{30}{2}\) \\
-      \(\dmin(G)=1\) & \(\dmax(G)=7\) \\
-      \(\diam(G)=2\)
+      \(\dmin(G)=1\) & \(\dmax(G)=7\)
     \end{tabular}
   \end{minipage}
   \begin{minipage}{2.5in}
@@ -1454,8 +1453,8 @@ Note that this walk guarantees that each vertex is visited at least once.
 
 When such a tree is applied to the problem of exhaustively finding the chromatic number of a graph via a sequence
 of vertex contraction and edge addition choices, the tree is called a \emph{Zykov} tree and the algorithm is called
-a \emph{Zykov} algorithm~\cite{mcdiarmid}.  Zykov algorithms are described in detail in the following sections.  In
-fact, the proposed algorithm is a variation of a standard Zykov algorithm.
+a \emph{Zykov} algorithm~\cite{mcdiarmid}.  Zykov algorithms are described in detail in
+\sectionname~\ref{sec:chromatic}.  In fact, the proposed algorithm is a variation of the standard Zykov algorithm.
 
 \subsection{The Adjacency Matrix}\label{sec:sub:adjacency}
 
