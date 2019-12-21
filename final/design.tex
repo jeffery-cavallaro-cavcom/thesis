@@ -365,17 +365,44 @@ and a bottle simultaneously (although that would be a popular trick around a cam
   \end{tabular}
 \end{table}
 
-The goal of this research is to provide designers with a tool that they can use to determine the minimum number of
-parts required to realize a particular design at a particular level in a FR/DP hierarchy.  The designer is required
-to construct a graph whose vertices are the FRs and whose edges indicate that the endpoint FRs need to be realized
-by separate parts due to various design constraints.  How these edges are actually determined is beyond the scope
-of this research.  Adjacent FRs are candidates for part consolidation.  The goal is to find the chromatic number of
-the resulting graph, which corresponds to the minimum number of parts required for the candidate design.
+\subsection{Research Goals}\label{sec:sub:goals}
 
-To be a viable tool, a computer program must be able to deliver an answer in a reasonable amount of time.
-Unfortunately, finding the chromatic number of a graph is known to be an NP-hard problem~\cite{mcdiarmid} and so
-the time required to find a solution grows exponentially with the number of vertices in the graph.  Thus, this
-research proposes an algorithm that can be run on a computer and provides a designer with an answer in a reasonable
-amount of time that is hopefully shorter than other well-known algorithms.  Designs with different minimum part
-requirements can then be compared during the analytical process phase of the axiomatic design as part of the
-overall process of selecting the best design.
+The primary goal of this research is to provide designers with a tool that they can use to determine the minimum
+number of parts required to realize a particular design at a particular level in a FR/DP hierarchy.  The designer
+is required to construct a graph whose vertices are the FRs and whose edges indicate that the endpoint FRs need to
+be realized by separate parts due to various design constraints.  How these edges are actually determined is beyond
+the scope of this research.  Adjacent FRs are candidates for part consolidation.  The goal is to find the chromatic
+number of the resulting graph, which corresponds to the minimum number of parts required for the candidate design.
+
+To be a viable tool, an algorithm running as a computer program must be able to deliver an answer in a reasonable
+amount of time.  Unfortunately, finding the chromatic number of a graph is known to be an inherently intractable
+problem~\cite{garey}.  The nature of such problems is discussed in \sectionname~\ref{sec:problems}, but for now
+this is taken to mean that the time required to find a solution grows exponentially with the number of vertices in
+the graph.  Furthermore, although not fully proven, it appears likely that there is no way to do any better than an
+exponential-time solution.  Therefore, it is necessary to apply some solution parameters:
+\begin{enumerate}
+\item Maximum number of FRs in a design graph.
+\item Target edge density in a design graph.
+\item Acceptable runtime duration to obtain a solution.
+\end{enumerate}
+
+Determining solid requirements for the maximum number of FRs and the target edge density would require a full case
+study by a qualified mechanical engineer; however, the examples submitted by our colleagues at SUNY, Buffalo all
+have under \(20\) FRs with low to average edge density.  These values seem reasonable: designs with too many FRs
+may become untenable and hence broken up into multiple layers in the design hierarchy and designs with too many
+edges may be too coupled.  Although acceptable duration time is subjective, a limit of about \(5\) minutes will be
+selected as the goal.
+
+Thus, the primary goal of this research is to provide AD designers with a tool that can determine the minimum
+number of parts needed to realize a particular design having about \(20\) FRs and less than \(50\%\) edge density
+in less than \(5\) minutes.  Designs with different minimum part requirements can then be compared during the
+analytical process phase of the axiomatic design as part of the overall process of selecting the best design.  Of
+course, this tool will be an algorithm that can be run on a computer.
+
+This research compares the two most well-known existing algorithms: the Christofides algorithm~\cite{christofides}
+with improvements by Wang~\cite{wang} and the Zykov algorithm~\cite{corneil}.  It will be shown that although both
+algorithms satisfy the stated requirements, the Christofides/Wang algorithm is faster and can handle up to \(30\)
+vertices.  A new algorithm is then proposed that is a modification of the Zykov algorithm in an attempt to match
+the advantages of the Christofides/Wang algorithm.  It will be shown that this proposed algorithm can also handle
+up to \(30\) vertices; however, it appears that the Christofides/Wang algorithm still enjoys a slight speed
+advantage.

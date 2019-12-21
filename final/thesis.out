@@ -5,58 +5,59 @@
 \BOOKMARK [2][-]{subsection.1.2}{The Axiomatic Design Framework}{section.1}% 5
 \BOOKMARK [2][-]{subsection.1.3}{The Axioms}{section.1}% 6
 \BOOKMARK [2][-]{subsection.1.4}{Part Consolidation}{section.1}% 7
-\BOOKMARK [1][-]{section.2}{Graph Theory}{}% 8
-\BOOKMARK [2][-]{subsection.2.1}{Simple Graphs}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.2}{Order and Size}{section.2}% 10
-\BOOKMARK [2][-]{subsection.2.3}{Graph Relations}{section.2}% 11
-\BOOKMARK [3][-]{subsubsection.2.3.1}{Labels}{subsection.2.3}% 12
-\BOOKMARK [3][-]{subsubsection.2.3.2}{Vertex Color}{subsection.2.3}% 13
-\BOOKMARK [2][-]{subsection.2.4}{Subgraphs}{section.2}% 14
-\BOOKMARK [2][-]{subsection.2.5}{Mutators}{section.2}% 15
-\BOOKMARK [3][-]{subsubsection.2.5.1}{Vertex Removal}{subsection.2.5}% 16
-\BOOKMARK [3][-]{subsubsection.2.5.2}{Edge Addition}{subsection.2.5}% 17
-\BOOKMARK [3][-]{subsubsection.2.5.3}{Edge Removal}{subsection.2.5}% 18
-\BOOKMARK [3][-]{subsubsection.2.5.4}{Vertex Contraction}{subsection.2.5}% 19
-\BOOKMARK [3][-]{subsubsection.2.5.5}{Graph Complement}{subsection.2.5}% 20
-\BOOKMARK [2][-]{subsection.2.6}{Independent Sets}{section.2}% 21
-\BOOKMARK [2][-]{subsection.2.7}{Cliques}{section.2}% 22
-\BOOKMARK [2][-]{subsection.2.8}{Connected Graphs}{section.2}% 23
-\BOOKMARK [3][-]{subsubsection.2.8.1}{Walks}{subsection.2.8}% 24
-\BOOKMARK [3][-]{subsubsection.2.8.2}{Paths}{subsection.2.8}% 25
-\BOOKMARK [3][-]{subsubsection.2.8.3}{Connected}{subsection.2.8}% 26
-\BOOKMARK [3][-]{subsubsection.2.8.4}{Components}{subsection.2.8}% 27
-\BOOKMARK [3][-]{subsubsection.2.8.5}{Impact on Coloring}{subsection.2.8}% 28
-\BOOKMARK [2][-]{subsection.2.9}{Vertex Degree}{section.2}% 29
-\BOOKMARK [2][-]{subsection.2.10}{Special Graphs}{section.2}% 30
-\BOOKMARK [3][-]{subsubsection.2.10.1}{Empty Graphs}{subsection.2.10}% 31
-\BOOKMARK [3][-]{subsubsection.2.10.2}{Paths}{subsection.2.10}% 32
-\BOOKMARK [3][-]{subsubsection.2.10.3}{Cycles}{subsection.2.10}% 33
-\BOOKMARK [3][-]{subsubsection.2.10.4}{Complete Graphs}{subsection.2.10}% 34
-\BOOKMARK [3][-]{subsubsection.2.10.5}{Trees}{subsection.2.10}% 35
-\BOOKMARK [2][-]{subsection.2.11}{The Adjacency Matrix}{section.2}% 36
-\BOOKMARK [1][-]{section.3}{Problems and Algorithms}{}% 37
-\BOOKMARK [2][-]{subsection.3.1}{Problems}{section.3}% 38
-\BOOKMARK [2][-]{subsection.3.2}{Comparing Algorithms}{section.3}% 39
-\BOOKMARK [3][-]{subsubsection.3.2.1}{Runtime Complexity}{subsection.3.2}% 40
-\BOOKMARK [3][-]{subsubsection.3.2.2}{Space Complexity}{subsection.3.2}% 41
-\BOOKMARK [3][-]{subsubsection.3.2.3}{Runtime Duration}{subsection.3.2}% 42
-\BOOKMARK [2][-]{subsection.3.3}{Branch and Bound Algorithms}{section.3}% 43
-\BOOKMARK [1][-]{section.4}{The Chromatic Number Problem}{}% 44
-\BOOKMARK [2][-]{subsection.4.1}{Finding a Lower Bound}{section.4}% 45
-\BOOKMARK [2][-]{subsection.4.2}{Finding an Upper Bound}{section.4}% 46
-\BOOKMARK [2][-]{subsection.4.3}{The Christofides Algorithm}{section.4}% 47
-\BOOKMARK [2][-]{subsection.4.4}{Zykov Algorithms}{section.4}% 48
-\BOOKMARK [2][-]{subsection.4.5}{The Corneil Graham Algorithm}{section.4}% 49
-\BOOKMARK [1][-]{section.5}{The Proposed Algorithm}{}% 50
-\BOOKMARK [2][-]{subsection.5.1}{Outer Loop}{section.5}% 51
-\BOOKMARK [2][-]{subsection.5.2}{Called Subroutine}{section.5}% 52
-\BOOKMARK [2][-]{subsection.5.3}{Supporting Theorems}{section.5}% 53
-\BOOKMARK [3][-]{subsubsection.5.3.1}{Maximum Edge Threshold}{subsection.5.3}% 54
-\BOOKMARK [3][-]{subsubsection.5.3.2}{Vertex Removal}{subsection.5.3}% 55
-\BOOKMARK [3][-]{subsubsection.5.3.3}{Minimum Common Neighbor Upper Bound}{subsection.5.3}% 56
-\BOOKMARK [3][-]{subsubsection.5.3.4}{Recursive Steps}{subsection.5.3}% 57
-\BOOKMARK [2][-]{subsection.5.4}{An Example}{section.5}% 58
-\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 59
-\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 60
-\BOOKMARK [1][-]{section.8}{Conclusions}{}% 61
-\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 62
+\BOOKMARK [2][-]{subsection.1.5}{Research Goals}{section.1}% 8
+\BOOKMARK [1][-]{section.2}{Graph Theory}{}% 9
+\BOOKMARK [2][-]{subsection.2.1}{Simple Graphs}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.2}{Order and Size}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.3}{Graph Relations}{section.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Labels}{subsection.2.3}% 13
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Vertex Color}{subsection.2.3}% 14
+\BOOKMARK [2][-]{subsection.2.4}{Subgraphs}{section.2}% 15
+\BOOKMARK [2][-]{subsection.2.5}{Mutators}{section.2}% 16
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Vertex Removal}{subsection.2.5}% 17
+\BOOKMARK [3][-]{subsubsection.2.5.2}{Edge Addition}{subsection.2.5}% 18
+\BOOKMARK [3][-]{subsubsection.2.5.3}{Edge Removal}{subsection.2.5}% 19
+\BOOKMARK [3][-]{subsubsection.2.5.4}{Vertex Contraction}{subsection.2.5}% 20
+\BOOKMARK [3][-]{subsubsection.2.5.5}{Graph Complement}{subsection.2.5}% 21
+\BOOKMARK [2][-]{subsection.2.6}{Independent Sets}{section.2}% 22
+\BOOKMARK [2][-]{subsection.2.7}{Cliques}{section.2}% 23
+\BOOKMARK [2][-]{subsection.2.8}{Connected Graphs}{section.2}% 24
+\BOOKMARK [3][-]{subsubsection.2.8.1}{Walks}{subsection.2.8}% 25
+\BOOKMARK [3][-]{subsubsection.2.8.2}{Paths}{subsection.2.8}% 26
+\BOOKMARK [3][-]{subsubsection.2.8.3}{Connected}{subsection.2.8}% 27
+\BOOKMARK [3][-]{subsubsection.2.8.4}{Components}{subsection.2.8}% 28
+\BOOKMARK [3][-]{subsubsection.2.8.5}{Impact on Coloring}{subsection.2.8}% 29
+\BOOKMARK [2][-]{subsection.2.9}{Vertex Degree}{section.2}% 30
+\BOOKMARK [2][-]{subsection.2.10}{Special Graphs}{section.2}% 31
+\BOOKMARK [3][-]{subsubsection.2.10.1}{Empty Graphs}{subsection.2.10}% 32
+\BOOKMARK [3][-]{subsubsection.2.10.2}{Paths}{subsection.2.10}% 33
+\BOOKMARK [3][-]{subsubsection.2.10.3}{Cycles}{subsection.2.10}% 34
+\BOOKMARK [3][-]{subsubsection.2.10.4}{Complete Graphs}{subsection.2.10}% 35
+\BOOKMARK [3][-]{subsubsection.2.10.5}{Trees}{subsection.2.10}% 36
+\BOOKMARK [2][-]{subsection.2.11}{The Adjacency Matrix}{section.2}% 37
+\BOOKMARK [1][-]{section.3}{Problems and Algorithms}{}% 38
+\BOOKMARK [2][-]{subsection.3.1}{Problems}{section.3}% 39
+\BOOKMARK [2][-]{subsection.3.2}{Comparing Algorithms}{section.3}% 40
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Runtime Complexity}{subsection.3.2}% 41
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Space Complexity}{subsection.3.2}% 42
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Runtime Duration}{subsection.3.2}% 43
+\BOOKMARK [2][-]{subsection.3.3}{Branch and Bound Algorithms}{section.3}% 44
+\BOOKMARK [1][-]{section.4}{The Chromatic Number Problem}{}% 45
+\BOOKMARK [2][-]{subsection.4.1}{Finding a Lower Bound}{section.4}% 46
+\BOOKMARK [2][-]{subsection.4.2}{Finding an Upper Bound}{section.4}% 47
+\BOOKMARK [2][-]{subsection.4.3}{The Christofides Algorithm}{section.4}% 48
+\BOOKMARK [2][-]{subsection.4.4}{Zykov Algorithms}{section.4}% 49
+\BOOKMARK [2][-]{subsection.4.5}{The Corneil Graham Algorithm}{section.4}% 50
+\BOOKMARK [1][-]{section.5}{The Proposed Algorithm}{}% 51
+\BOOKMARK [2][-]{subsection.5.1}{Outer Loop}{section.5}% 52
+\BOOKMARK [2][-]{subsection.5.2}{Called Subroutine}{section.5}% 53
+\BOOKMARK [2][-]{subsection.5.3}{Supporting Theorems}{section.5}% 54
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Maximum Edge Threshold}{subsection.5.3}% 55
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Vertex Removal}{subsection.5.3}% 56
+\BOOKMARK [3][-]{subsubsection.5.3.3}{Minimum Common Neighbor Upper Bound}{subsection.5.3}% 57
+\BOOKMARK [3][-]{subsubsection.5.3.4}{Recursive Steps}{subsection.5.3}% 58
+\BOOKMARK [2][-]{subsection.5.4}{An Example}{section.5}% 59
+\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 60
+\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 61
+\BOOKMARK [1][-]{section.8}{Conclusions}{}% 62
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 63
