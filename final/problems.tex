@@ -30,9 +30,7 @@ solution for every possible instance of the problem.
 
 The chromatic number problem accepts a graph \(G\) and uses an algorithm to obtain a number \(k\in\N\) where \(k\)
 is the minimum value such that \(G\) is \colorable{k}.  The proposed algorithm is one such algorithm that can be
-used to solve the chromatic number problem.  Other examples are the Christofides (1971)~\cite{christofides} and the
-Corneil/Graham (1973)~\cite{corneil} algorithms, which are introduced in the next section and will be compared to
-the proposed algorithm using random graph analysis.
+used to solve the chromatic number problem, as are the well-known Christofides and Zykov algorithms.
 
 \subsection{Comparing Algorithms}\label{sec:sub:compare}
 
@@ -52,16 +50,53 @@ input parameter and is a function of some \emph{length} parameter of the problem
 parameter is usually the order of the graph, although size and structure can also contribute to the worst case.
 
 The runtime complexity of an algorithm is stated using the so-called \emph{big-\(\BO\)} notation: to say that an
-algorithm has \(\BO(f(n))\) runtime complexity means that the maximum number of steps required to obtain a solution
-for a given length parameter \(n\) is asymptotic to the function \(f(n)\) as \(n\to\infty\).  Roughly speaking,
-tractable problems are those problems with polynomial \(\BO(n^c)\) or better runtime complexity for some real
-number constant \(c\ge0\), and intractable problems are those problems with exponential \(\BO(c^n)\) or worse
-runtime complexity for some real number constant \(c>1\).
+algorithm has \(\BO(f(n))\) runtime complexity means that the maximum number of steps \(N\) required to obtain a
+solution for a given length parameter \(n\) has an upper bound of \(cf(n)\) for some real number \(c>0\); \(N\) is
+asymptotic to \(f(n)\) as \(n\to\infty\).  Roughly speaking, tractable problems are those problems with polynomial
+\(\BO(n^c)\) or better runtime complexity for some real number constant \(c\ge0\), and intractable problems are
+those problems with exponential \(\BO(c^n)\) or worse runtime complexity for some real number constant \(c>1\).
 
-What constitutes a \emph{step} in an algorithm is relative to the overall runtime complexity of the algorithm: any
-process that has significantly less runtime complexity than the runtime complexity of the whole algorithm can be
-called a step.  Thus, a process that has polynomial runtime complexity can be called a step of an algorithm that
-has exponential runtime complexity.
+What constitutes a \emph{step} in an algorithm is relative to the length parameter and the overall runtime
+complexity of the algorithm.  One of the problems with big-\(BO\) notation is that it is geared towards large \(n\)
+where the effects of smaller steps are diminished.  Consider an algorithm that has an exponential number of steps
+\(2^{an}\) and for each of those steps it must execute a step with \(n^c\) steps.  The total number of steps would
+then be:
+\[n^c2^{an}=2^{\log(n^c)}2^{an}=2^{an+c\log(n)}\]
+For the types of algorithms examined in this research, a typical value for \(c\) would be no more than \(3\) and a
+typical value for \(a\) would be no more than \(1\).  \tablename~\ref{tab:grow} lists results for various values of
+\(n\).  Note that for higher values of \(n\) the effect of the polynomial time steps diminishes; however, for low
+to moderate values of \(n\) the effect is significant.  To put it bluntly, AD designers don't care a hoot about the
+runtime complexity at large \(n\); they only care about how long it takes to get an answer for values of \(n\) in
+the stated range of the tool.  Therefore, for the selected range of about \(20\) FRs, the effects of these steps
+can be significant.
+
+\begin{table}[H]
+  \setlength{\extrarowheight}{2ex}
+  \centering
+  \caption{Comparing Runtime Complexity for an Exponential/Polynomial Mix}
+  \label{tab:grow}
+  \begin{tabular}{|c|c|}
+    \hline
+    \(n\) & \(n+3\log(n)\) \\
+    \hline
+    \(10\) & 20 \\
+    \hline
+    \(15\) & 27 \\
+    \hline
+    \(20\) & 33 \\
+    \hline
+    \(25\) & 39 \\
+    \hline
+    \(30\) & 45 \\
+    \hline
+    \(100\) & 120 \\
+    \hline
+    \(1000\) & 1030 \\
+    \hline
+    \(10000\) & 10040 \\
+    \hline
+  \end{tabular}
+\end{table}
 
 Runtime complexity is used in two different ways to compare algorithms:
 \begin{enumerate}
@@ -128,7 +163,7 @@ does not exist a proper coloring for smaller \(k\).
 run on a computer.  The limited memory and CPU power in early computers forced algorithm designers and programmers
 to make careful tradeoffs between CPU cycles and the storage of intermediate results.  With today's fast CPUs and
 practically unlimited virtual memory systems, such concerns are not as important.  Thus, space complexity will not
-be considered when comparing the selected well-known algorithms to the proposed algorithm.
+be considered when comparing the three algorithms, except in a few limited cases where it may be an issue.
 
 \subsubsection{Runtime Duration}\label{sec:sub:sub:duration}
 
@@ -136,9 +171,10 @@ be considered when comparing the selected well-known algorithms to the proposed 
 best, average, and worst-case input parameter values.  Determining the runtime complexity for some algorithms can
 be very complicated when the number of possible steps is dependent on the peculiarities of the input parameters.
 In the case of graph algorithms, such things as order, size, and edge density can all affect the number of steps.
-Furthermore, runtime complexity is geared towards theoretical comparisons between algorithms, not actual runtime of
-an algorithm implementation on a given computer.  Thus, an important part of this research is a random graph
-analysis of several well-known algorithms and the proposed algorithm.
+Furthermore, runtime complexity is geared towards theoretical comparisons between algorithms at large \(n\), not
+actual runtime of an algorithm implementation on a given computer for a particular range of \(n\).  A comparison of
+runtime durations for the three algorithms for the selected parameter ranges is presented in
+\sectionname~\ref{sec:random}.
 
 \subsection{Branch and Bound Algorithms}\label{sec:sub:bandb}
 
@@ -256,6 +292,7 @@ conditions.  The new tree with the nonadjacent bounding condition applied is sho
   \begin{tikzpicture}[every node/.style={labeled node}]
     \colorlet{c1}{green!25!white}
     \colorlet{c2}{blue!25!white}
+    \colorlet{c3}{red!25!white}
     \node (1) at (0,0) {};
     \node (2) at (-4,-2) {\(1\)};
     \node (3) at (4,-2) {\(\bar{1}\)};
@@ -267,33 +304,36 @@ conditions.  The new tree with the nonadjacent bounding condition applied is sho
     \node (11) at (-1,-6) {\(1\bar{2}\bar{3}\)};
     \node (13) at (3,-6) {\(\bar{1}2\bar{3}\)};
     \node (14) at (5,-6) {\(\bar{1}\bar{2}3\)};
+    \node (15) at (7,-6) {\(\bar{1}\bar{2}\bar{3}\)};
     \node [fill=c1] (17) at (-5,-8) {\(12\)};
     \node [fill=c2] (19) at (-1,-8) {\(1\)};
     \node [fill=c2] (21) at (3,-8) {\(2\)};
     \node [fill=c1] (22) at (5,-8) {\(3\)};
+    \node [fill=c3] (23) at (7,-8) {\(\)};
     \draw (1) edge (2) edge (3);
     \draw (2) edge (4) edge (5);
     \draw (3) edge (6) edge (7);
     \draw (4) edge (9);
     \draw (5) edge (11);
     \draw (6) edge (13);
-    \draw (7) edge (14);
+    \draw (7) edge (14) edge (15);
     \draw (9) edge (17);
     \draw (11) edge (19);
     \draw (13) edge (21);
     \draw (14) edge (22);
+    \draw (15) edge (23);
   \end{tikzpicture}
   \caption{Finding maximal cliques using nonadjacent bounding.}
   \label{fig:boundnonadj}
 \end{figure}
 
-There is still the problem of eliminating non-maximal cliques.  This can be accomplished by maintaining a list of
-``used'' vertices for each branch edge.  When transitioning to the right from an ``include vertex'' branch to an
-``exclude vertex'' branch, the excluded vertex is added to the branch's used list.  When transitioning down an
-``include vertex'' branch, used vertices that are not adjacent to the newly included vertex are removed from the
-branch's used list.  Thus, a leaf node resulting from a branch with a non-empty used list is a subset of some
-previously found clique and hence is not maximal.  The new tree with the non-maximal bounding condition applied is
-shown in \figurename~\ref{fig:boundnonmax}.
+There is still the problem of eliminating non-maximal cliques and the null subgraph.  This can be accomplished by
+maintaining a list of ``used'' vertices for each branch edge.  When transitioning to the right from an ``include
+vertex'' branch to an ``exclude vertex'' branch, the excluded vertex is added to the branch's used list.  When
+transitioning down an ``include vertex'' branch, used vertices that are not adjacent to the newly included vertex
+are removed from the branch's used list.  Thus, a leaf node resulting from a branch with a non-empty used list is a
+subset of some previously found clique and hence is not maximal.  The new tree with the non-maximal bounding
+condition applied is shown in \figurename~\ref{fig:boundnonmax}.
 
 \begin{figure}[H]
   \centering
@@ -312,6 +352,7 @@ shown in \figurename~\ref{fig:boundnonmax}.
       \node (11) at (-1,-6) {\(1\bar{2}\bar{3}\)};
       \node (13) at (3,-6) {\(\bar{1}2\bar{3}\)};
       \node (14) at (5,-6) {\(\bar{1}\bar{2}3\)};
+      \node (15) at (7,-6) {\(\bar{1}\bar{2}\bar{3}\)};
       \node [fill=c1] (17) at (-5,-8) {\(12\)};
       \node [fill=c1] (22) at (5,-8) {\(3\)};
     \end{scope}
@@ -321,7 +362,7 @@ shown in \figurename~\ref{fig:boundnonmax}.
     \draw (4) edge (9);
     \draw (5) edge node [auto] {\color{red}\(2\)} (11);
     \draw (6) edge node [auto,swap] {\color{red}\(1\)} (13);
-    \draw (7) edge (14);
+    \draw (7) edge (14) edge node [auto] {\color{red}\(123\)} (15);
     \draw (9) edge (17);
     \draw (14) edge (22);
   \end{tikzpicture}
@@ -331,18 +372,20 @@ shown in \figurename~\ref{fig:boundnonmax}.
 
 Note that leaf node \(1\bar{2}\bar{3}\) is not maximal because vertex \(2\) remains on the used list.  Also note
 that the branch from \(\bar{1}\bar{2}\) to \(\bar{1}\bar{2}3\) eliminates vertices \(1\) and \(2\) from the used
-list because they are not adjacent to vertex \(3\).  Thus, \(\bar{1}\bar{2}3\) is a desired maximal clique.
+list because they are not adjacent to vertex \(3\).  Thus, \(\bar{1}\bar{2}3\) is a desired maximal clique.  The
+null subgraph is eliminated because all of the vertices are on the used list.
 
 Since bounding conditions are often very dependent on graph structure, it can be very hard to determine the
 theoretical runtime complexity for a specific branch and bound algorithm.  This is especially true when multiple
 bounding conditions interact such that it is unclear what constitutes a worst case for the algorithm.  In the
 previous maximal clique example, it is clear that the worst case has an upper bound of \(\BO(2^n)\); however, this
 bound is not very tight.  In these cases, runtime complexity values gleaned from empirical data are convenient
-substitutes for truly theoretical answers.  In fact, it will be shown in the next section using empirical data that
-the actual runtime complexity of this maximal clique algorithm is less than \(\BO(1.3^n)\).
+substitutes for truly theoretical answers.  In fact, it will be shown in \sectionname~\ref{sec:chromatic} using
+empirical data that the actual runtime complexity of this maximal clique algorithm is less than \(\BO(1.3^n)\).
 
 Furthermore, runtime complexities for exponential algorithms tend to address large \(n\) cases where the
-exponential nature of the whole algorithm far exceeds the effect of any P-time steps.  These P-time steps are more
-significant at moderate values of \(n\) and may even dominate at lower values of \(n\).  Thus, worst case runtime
-complexity values for large \(n\) may be of little use if a problem domain is adequately addressed by lower values
-of \(n\).  For these cases, runtime duration of algorithms applied to real problems may be much more useful.
+exponential nature of the whole algorithm far exceeds the effect of any P-time steps.  As was shown in
+\sectionname~\ref{sec:sub:sub:runtime}, these P-time steps are more significant at moderate values of \(n\).  Thus,
+worst case runtime complexity values for large \(n\) may be of little use if a problem domain is adequately
+addressed by lower values of \(n\).  For these cases, runtime duration of algorithms applied to real problems may
+be much more useful.
