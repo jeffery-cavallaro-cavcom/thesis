@@ -41,7 +41,7 @@
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Runtime Complexity}{subsection.3.2}% 41
 \BOOKMARK [3][-]{subsubsection.3.2.2}{Space Complexity}{subsection.3.2}% 42
 \BOOKMARK [3][-]{subsubsection.3.2.3}{Runtime Duration}{subsection.3.2}% 43
-\BOOKMARK [2][-]{subsection.3.3}{Branch and Bound Algorithms}{section.3}% 44
+\BOOKMARK [2][-]{subsection.3.3}{Branch-and-Bound Algorithms}{section.3}% 44
 \BOOKMARK [1][-]{section.4}{The Chromatic Number Problem}{}% 45
 \BOOKMARK [2][-]{subsection.4.1}{Finding a Lower Bound}{section.4}% 46
 \BOOKMARK [2][-]{subsection.4.2}{Finding an Upper Bound}{section.4}% 47

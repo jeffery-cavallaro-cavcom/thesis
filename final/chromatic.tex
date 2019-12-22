@@ -3,10 +3,17 @@
 This section investigates the various well-known methods to either estimate or find the exact chromatic number for
 a graph.  Since the chromatic number problem is NP-hard, an alternative to finding an exact answer is finding lower
 and upper bounds for the actual value.  If these bounds happen to match then they provide the actual chromatic
-number.  Algorithms that find the exact chromatic number are of the branch and bound variety.  The two most
+number.  Algorithms that find the exact chromatic number are of the branch-and-bound variety.  The two most
 well-known algorithms are one proposed by Christofides~1971~\cite{christofides} with modifications by
 Wang~(1974)~\cite{wang} and the so-called Zykov algorithms, with a particular implementation by Corneil and
 Graham~(1973)~\cite{corneil}.
+
+The specifics of the random graph analysis used throughout this research are described in detail in
+\sectionname~\ref{sec:random}.  In short, a binomial edge probabity model was used.  Trials were run for edge
+probabilities from \(p=10\%\) to \(p=90\%\) in steps of \(10\%\).  For P-time algorithms, \(1000\) trials were run
+for each edge probability and for each order from \(n=5\) to \(n=50\).  For non-P-time algorithms, due to increased
+runtime duration, the maximum order was reduced to \(30\) and the number of trials was reduced to \(100\) for
+\(n\ge20\).
 
 \subsection{Finding a Lower Bound}\label{sec:sub:lower}
 
@@ -106,36 +113,75 @@ calculation based on the adjacency matrix of \(G\):
 \item\label{step:edw:done} \(G[S]\) is a complete subgraph of \(G\) so conclude that \(\w'(G)=\abs{S}\le\w(G)\).
 \end{enumerate}
 
-The Edwards algorithm has \(\BO(n^2)\) runtime complexity and so it is a suitable P-time algorithm.
-
-The results of a random graph analysis of the Edwards Elphick algorithm are shown in
-\figurename~\ref{fig:edwards1err}.  The graph shows edge probability versus the mean of \(\w(G)-\w'(G)\) for
-graphs of increasing order with \(1000\) trials per edge probability.  Note that the mean error increases with both
-order and edge probability.
+The results of a random graph analysis of the Edwards Elphick algorithm measuring the mean of \(\w(G)-\w'(G)\) are
+shown in \figurename~\ref{fig:edwards1:error}.  The error generally increases with both edge probability and order;
+however, there appears to be a small hitch in the curves between \(p=80\%\) and \(p=90\%\) for orders \(n\le40\).
+This may be because of the increased probability that the next selected vertex is in fact universal.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{edwards1_error}
   \caption{Edwards Elphick algorithm mean error.}
-  \label{fig:edwards1err}
+  \label{fig:edwards1:error}
+\end{figure}
+
+The mean number of steps is shown in \figurename~\ref{fig:edwards1:steps}.  The number of steps increases with both
+edge probability and order, so the worst case for each order is assumed to be at \(P=90\%\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards1_steps}
+  \caption{Edwards Elphick algorithm mean number of steps.}
+  \label{fig:edwards1:steps}
+\end{figure}
+
+A graph of the \(P=90\%\) values for each order is shown in \figurename~\ref{fig:edwards1:runtime}.  Note that the
+runtime complexity is \(\BO(n^2)\) as expected.  Thus, the Edwards Elphick algorithm would be suitable for use as a
+lower bound approximator step in a branch-and-bound algorithm.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards1_runtime}
+  \caption{Edwards Elphick algorithm runtime complexity.}
+  \label{fig:edwards1:runtime}
 \end{figure}
 
 Step~\ref{step:edw:select} of the Edwards Elphick algorithm selects the next vertex of lowest index that is
 adjacent to all previously selected vertices.  An improvement would be to select a vertex with the highest degree
 that is adjacent to all previously selected vertices.  This would of course increase the average runtime complexity
-to the worst case of the unimproved algorithm, but it would still be P-time.  The results of this improved
-algorithm are shown in \figurename~\ref{fig:edwards2err}.  Note that the improved algorithm cuts the mean error in
-half.
+to the worst case of the unimproved algorithm, but it should still be P-time.  The results of this improved
+algorithm are shown in \figurename~\ref{fig:edwards2:error}.  Note that the improved algorithm cuts the mean error
+in half.  Also note that the hitch at \(p=80\%\) remains and is more pronounced, probably due to the increased
+probability of finding a high degree vertex that is more likely to be part of a clique.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{edwards2_error}
   \caption{Improved Edwards Elphick algorithm mean error.}
-  \label{fig:edwards2err}
+  \label{fig:edwards2:error}
+\end{figure}
+
+The increase in the number of steps is demonstrated in \figurename~\ref{fig:edwards2:steps}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards2_steps}
+  \caption{Improved Edwards Elphick algorithm mean number of steps.}
+  \label{fig:edwards2:steps}
+\end{figure}
+
+And the new runtime complexity approximation is shown in \figurename~\ref{fig:edwards2:runtime}.  The improved
+algorithm is still \(\BO(n^2\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards2_runtime}
+  \caption{Improved Edwards Elphick algorithm runtime complexity.}
+  \label{fig:edwards2:runtime}
 \end{figure}
 
 As will be shown later in this section, being able to compute the exact or a suitable estimate of the clique number
-of a graph is an important bounding condition for many of the well-known branch and bound algorithms for finding
+of a graph is an important bounding condition for many of the well-known branch-and-bound algorithms for finding
 the chromatic number of a graph.  A nice summary of well-known exact clique number algorithms is given by Xiao and
 Nagamouchi~(2017)~\cite{xiao}.  They claim that the known algorithms tend to converge on a runtime complexity of
 \(\BO(1.2^n)\).  These algorithms tend be somewhat complex and geared towards larger \(n\).
@@ -975,7 +1021,7 @@ where the \(S_{n,k}\) are the so-called Stirling numbers of the second kind:
 The actual runtime complexity is worse because each partition leaf node is at the end of a branch from the root
 state consisting of a certain number of states that depends on the number of nonadjacencies in a graph.
 
-Branch and bound Zykov algorithms require the following components:
+Branch-and-bound Zykov algorithms require the following components:
 \begin{enumerate}
 \item A main routine that establishes \(G\) as the root of the state tree.
 \item A global variable \(X\) that records the state corresponding to the current smallest \coloring{k}.

@@ -176,7 +176,7 @@ actual runtime of an algorithm implementation on a given computer for a particul
 runtime durations for the three algorithms for the selected parameter ranges is presented in
 \sectionname~\ref{sec:random}.
 
-\subsection{Branch and Bound Algorithms}\label{sec:sub:bandb}
+\subsection{Branch-and-Bound Algorithms}\label{sec:sub:bandb}
 
 Exponential problems are usually associated with so-called \emph{brute-force} algorithms that must examine all
 possibilities from an exponentially increasing set of candidate solutions in order to find the desired solution.
@@ -281,8 +281,8 @@ than the \(25\) already mentioned.
 
 It would be better to terminate subtrees as soon as a nonadjacent vertex is added to a subset of adjacent vertices.
 Such a test is called a \emph{bounding} condition and subtrees that are terminated due to bounding conditions are
-said to be \emph{pruned}.  Branching algorithms that have bounding conditions are called \emph{branch and bound}
-algorithms.  The goal of any branch and bound algorithm is to prune as many subtrees as possible using bounding
+said to be \emph{pruned}.  Branching algorithms that have bounding conditions are called \emph{branch-and-bound}
+algorithms.  The goal of any branch-and-bound algorithm is to prune as many subtrees as possible using bounding
 conditions.  The new tree with the nonadjacent bounding condition applied is shown in
 \figurename~\ref{fig:boundnonadj}.  Note that any subtree that attempts to combine vertex \(3\) with either vertex
 \(1\) or vertex \(2\) is pruned.
@@ -376,7 +376,7 @@ list because they are not adjacent to vertex \(3\).  Thus, \(\bar{1}\bar{2}3\) i
 null subgraph is eliminated because all of the vertices are on the used list.
 
 Since bounding conditions are often very dependent on graph structure, it can be very hard to determine the
-theoretical runtime complexity for a specific branch and bound algorithm.  This is especially true when multiple
+theoretical runtime complexity for a specific branch-and-bound algorithm.  This is especially true when multiple
 bounding conditions interact such that it is unclear what constitutes a worst case for the algorithm.  In the
 previous maximal clique example, it is clear that the worst case has an upper bound of \(\BO(2^n)\); however, this
 bound is not very tight.  In these cases, runtime complexity values gleaned from empirical data are convenient
