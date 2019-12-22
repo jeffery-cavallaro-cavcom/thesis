@@ -39,6 +39,8 @@ Note that both of the above lower bounds are tight when \(G\) is empty or comple
 of \theoremname~\ref{thm:isclique}:
 \[\w(G)=\a(\bar{G})\]
 
+\subsubsection{The Mycielski Construction}\label{sec:sub:sub:mycielski}
+
 It is well-known that certain triangle-free graphs with \(\w(G)=2\) can have arbitrarily high \(\X(G)\).  Examples
 are the graphs created using the so-called \emph{Mycielski} construction~\cite{west}:
 \begin{enumerate}
@@ -98,6 +100,8 @@ The first three graphs resulting from the Mycielski construction are shown in \f
 The third graph in \figurename~\ref{fig:mycielski} is called the \emph{Gr\"otzsch} graph.  For another example of
 triangle free graphs with arbitrarily high chromatic number, see Zhang~\cite{zhang}.  Nevertheless, for the general
 case the clique number is a suitable lower bound for the chromatic number.
+
+\subsubsection{The Edwards Elphick Algorithm}\label{sec:sub:sub:edwards}
 
 Unfortunately, the clique number problem for a graph \(G\) is also NP-hard, so the next best step is to use a
 P-time calculation for a \(\w'(G)\) that is as tight as possible to the actual \(\w(G)\).  Edwards and
@@ -179,6 +183,8 @@ algorithm is still \(\BO(n^2\).
   \caption{Improved Edwards Elphick algorithm runtime complexity.}
   \label{fig:edwards2:runtime}
 \end{figure}
+
+\subsubsection{The Bron Kerbosch Algorithm}\label{sec:sub:sub:bron}
 
 As will be shown later in this section, being able to compute the exact or a suitable estimate of the clique number
 of a graph is an important bounding condition for many of the well-known branch-and-bound algorithms for finding

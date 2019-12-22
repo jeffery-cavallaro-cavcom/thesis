@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  22 DEC 2019 14:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  22 DEC 2019 14:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2044,153 +2044,153 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 [54]
-<edwards1_error.jpeg, id=1022, 455.45157pt x 258.65053pt>
+<edwards1_error.jpeg, id=1023, 455.45157pt x 258.65053pt>
 File: edwards1_error.jpeg Graphic file (type jpg)
 <use edwards1_error.jpeg>
-Package pdftex.def Info: edwards1_error.jpeg  used on input line 123.
+Package pdftex.def Info: edwards1_error.jpeg  used on input line 127.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [55pdfTeX warning (ext4): destination with the same identifier (name{figure.36
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.126 \end{figure}
+l.130 \end{figure}
                   ]
-<edwards1_steps.jpeg, id=1035, 455.45157pt x 258.65053pt>
+<edwards1_steps.jpeg, id=1037, 455.45157pt x 258.65053pt>
 File: edwards1_steps.jpeg Graphic file (type jpg)
 <use edwards1_steps.jpeg>
-Package pdftex.def Info: edwards1_steps.jpeg  used on input line 133.
+Package pdftex.def Info: edwards1_steps.jpeg  used on input line 137.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [56pdfTeX warning (ext4): destination with the same identifier (name{figure.37
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.137 
+l.141 
        <./edwards1_error.jpeg>]
-<edwards1_runtime.jpeg, id=1041, 455.45157pt x 258.65053pt>
+<edwards1_runtime.jpeg, id=1043, 455.45157pt x 258.65053pt>
 File: edwards1_runtime.jpeg Graphic file (type jpg)
 <use edwards1_runtime.jpeg>
-Package pdftex.def Info: edwards1_runtime.jpeg  used on input line 144.
+Package pdftex.def Info: edwards1_runtime.jpeg  used on input line 148.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [57pdfTeX warning (ext4): destination with the same identifier (name{figure.38
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.156 
+l.160 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 39}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.156 
+l.160 
        <./edwards1_steps.jpeg> <./edwards1_runtime.jpeg>]
-<edwards2_error.jpeg, id=1048, 455.45157pt x 258.65053pt>
+<edwards2_error.jpeg, id=1050, 455.45157pt x 258.65053pt>
 File: edwards2_error.jpeg Graphic file (type jpg)
 <use edwards2_error.jpeg>
-Package pdftex.def Info: edwards2_error.jpeg  used on input line 159.
+Package pdftex.def Info: edwards2_error.jpeg  used on input line 163.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<edwards2_steps.jpeg, id=1050, 455.45157pt x 258.65053pt>
+<edwards2_steps.jpeg, id=1052, 455.45157pt x 258.65053pt>
 File: edwards2_steps.jpeg Graphic file (type jpg)
 <use edwards2_steps.jpeg>
-Package pdftex.def Info: edwards2_steps.jpeg  used on input line 168.
+Package pdftex.def Info: edwards2_steps.jpeg  used on input line 172.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [58pdfTeX warning (ext4): destination with the same identifier (name{figure.40
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.172 
+l.176 
        <./edwards2_error.jpeg>]
-<edwards2_runtime.jpeg, id=1056, 455.45157pt x 258.65053pt>
+<edwards2_runtime.jpeg, id=1058, 455.45157pt x 258.65053pt>
 File: edwards2_runtime.jpeg Graphic file (type jpg)
 <use edwards2_runtime.jpeg>
-Package pdftex.def Info: edwards2_runtime.jpeg  used on input line 178.
+Package pdftex.def Info: edwards2_runtime.jpeg  used on input line 182.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [59pdfTeX warning (ext4): destination with the same identifier (name{figure.41
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.188 
+l.194 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 42}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.188 
+l.194 
        <./edwards2_steps.jpeg> <./edwards2_runtime.jpeg>] [60]
-<bron1_calls.jpeg, id=1078, 455.45157pt x 258.65053pt>
+<bron1_calls.jpeg, id=1081, 455.45157pt x 258.65053pt>
 File: bron1_calls.jpeg Graphic file (type jpg)
 <use bron1_calls.jpeg>
-Package pdftex.def Info: bron1_calls.jpeg  used on input line 238.
+Package pdftex.def Info: bron1_calls.jpeg  used on input line 244.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [61]
-<bron1_runtime.jpeg, id=1091, 455.45157pt x 258.65053pt>
+<bron1_runtime.jpeg, id=1094, 455.45157pt x 258.65053pt>
 File: bron1_runtime.jpeg Graphic file (type jpg)
 <use bron1_runtime.jpeg>
-Package pdftex.def Info: bron1_runtime.jpeg  used on input line 252.
+Package pdftex.def Info: bron1_runtime.jpeg  used on input line 258.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [62pdfTeX warning (ext4): destination with the same identifier (name{figure.43
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.256 
+l.262 
        <./bron1_calls.jpeg>]
-<bron1_runtime_2.jpeg, id=1097, 455.45157pt x 258.65053pt>
+<bron1_runtime_2.jpeg, id=1100, 455.45157pt x 258.65053pt>
 File: bron1_runtime_2.jpeg Graphic file (type jpg)
 <use bron1_runtime_2.jpeg>
-Package pdftex.def Info: bron1_runtime_2.jpeg  used on input line 263.
+Package pdftex.def Info: bron1_runtime_2.jpeg  used on input line 269.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [63pdfTeX warning (ext4): destination with the same identifier (name{figure.44
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.273 
+l.279 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 45}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.273 
+l.279 
        <./bron1_runtime.jpeg> <./bron1_runtime_2.jpeg>]
 File: bron1_calls.jpeg Graphic file (type jpg)
 <use bron1_calls.jpeg>
-Package pdftex.def Info: bron1_calls.jpeg  used on input line 276.
+Package pdftex.def Info: bron1_calls.jpeg  used on input line 282.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<bron2_runtime.jpeg, id=1104, 455.45157pt x 258.65053pt>
+<bron2_runtime.jpeg, id=1107, 455.45157pt x 258.65053pt>
 File: bron2_runtime.jpeg Graphic file (type jpg)
 <use bron2_runtime.jpeg>
-Package pdftex.def Info: bron2_runtime.jpeg  used on input line 287.
+Package pdftex.def Info: bron2_runtime.jpeg  used on input line 293.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [64pdfTeX warning (ext4): destination with the same identifier (name{figure.46
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.291 
+l.297 
       ]
-<bron2_runtime_2.jpeg, id=1110, 455.45157pt x 258.65053pt>
+<bron2_runtime_2.jpeg, id=1113, 455.45157pt x 258.65053pt>
 File: bron2_runtime_2.jpeg Graphic file (type jpg)
 <use bron2_runtime_2.jpeg>
-Package pdftex.def Info: bron2_runtime_2.jpeg  used on input line 298.
+Package pdftex.def Info: bron2_runtime_2.jpeg  used on input line 304.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [65pdfTeX warning (ext4): destination with the same identifier (name{figure.47
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.306 \subsection
+l.312 \subsection
                  {Finding an Upper Bound}\label{sec:sub:upper}pdfTeX warning (e
 xt4): destination with the same identifier (name{figure.48}) has been already u
 sed, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.306 \subsection
+l.312 \subsection
                  {Finding an Upper Bound}\label{sec:sub:upper} <./bron2_runtime
 .jpeg> <./bron2_runtime_2.jpeg>] [66] [67pdfTeX warning (ext4): destination wit
 h the same identifier (name{figure.49}) has been already used, duplicate ignore
@@ -2198,26 +2198,26 @@ d
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.397 \item D
+l.403 \item D
              etermine all of the colors that are used for already colored ve...
 ]
-<greedy_error.jpeg, id=1149, 455.45157pt x 258.65053pt>
+<greedy_error.jpeg, id=1152, 455.45157pt x 258.65053pt>
 File: greedy_error.jpeg Graphic file (type jpg)
 <use greedy_error.jpeg>
-Package pdftex.def Info: greedy_error.jpeg  used on input line 417.
+Package pdftex.def Info: greedy_error.jpeg  used on input line 423.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [68] [69pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.50}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.463 
+l.469 
       pdfTeX warning (ext4): destination with the same identifier (name{table.5
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.463 
+l.469 
        <./greedy_error.jpeg>]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -2229,7 +2229,7 @@ Missing character: There is no ; in font nullfont!
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.572 \end{figure}
+l.578 \end{figure}
                   ]
 Missing character: There is no ; in font nullfont!
  [71pdfTeX warning (ext4): destination with the same identifier (name{figure.52
@@ -2237,86 +2237,86 @@ Missing character: There is no ; in font nullfont!
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.614 
+l.620 
       ]
-<christofides_states.jpeg, id=1187, 455.45157pt x 258.65053pt>
+<christofides_states.jpeg, id=1190, 455.45157pt x 258.65053pt>
 File: christofides_states.jpeg Graphic file (type jpg)
 <use christofides_states.jpeg>
-Package pdftex.def Info: christofides_states.jpeg  used on input line 622.
+Package pdftex.def Info: christofides_states.jpeg  used on input line 628.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [72pdfTeX warning (ext4): destination with the same identifier (name{figure.53
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.633 
+l.639 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 54}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.633 
+l.639 
        <./christofides_states.jpeg>]
-<christofides_runtime.jpeg, id=1193, 455.45157pt x 258.65053pt>
+<christofides_runtime.jpeg, id=1196, 455.45157pt x 258.65053pt>
 File: christofides_runtime.jpeg Graphic file (type jpg)
 <use christofides_runtime.jpeg>
-Package pdftex.def Info: christofides_runtime.jpeg  used on input line 636.
+Package pdftex.def Info: christofides_runtime.jpeg  used on input line 642.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [73pdfTeX warning (ext4): destination with the same identifier (name{figure.55
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.661 \end{proof}
+l.667 \end{proof}
                   <./christofides_runtime.jpeg>]
-<wang_states.jpeg, id=1206, 455.45157pt x 258.65053pt>
+<wang_states.jpeg, id=1209, 455.45157pt x 258.65053pt>
 File: wang_states.jpeg Graphic file (type jpg)
 <use wang_states.jpeg>
-Package pdftex.def Info: wang_states.jpeg  used on input line 691.
+Package pdftex.def Info: wang_states.jpeg  used on input line 697.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [74]
-<wang_runtime.jpeg, id=1212, 455.45157pt x 258.65053pt>
+<wang_runtime.jpeg, id=1215, 455.45157pt x 258.65053pt>
 File: wang_runtime.jpeg Graphic file (type jpg)
 <use wang_runtime.jpeg>
-Package pdftex.def Info: wang_runtime.jpeg  used on input line 706.
+Package pdftex.def Info: wang_runtime.jpeg  used on input line 712.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [75pdfTeX warning (ext4): destination with the same identifier (name{figure.56
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.710 
+l.716 
        <./wang_states.jpeg>] [76pdfTeX warning (ext4): destination with the sam
 e identifier (name{figure.57}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.729 \end{enumerate}
+l.735 \end{enumerate}
                       <./wang_runtime.jpeg>] [77pdfTeX warning (ext4): destinat
 ion with the same identifier (name{figure.58}) has been already used, duplicate
  ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.904 \end{figure}
+l.910 \end{figure}
                   pdfTeX warning (ext4): destination with the same identifier (
 name{figure.59}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.904 \end{figure}
+l.910 \end{figure}
                   ] [78pdfTeX warning (ext4): destination with the same identif
 ier (name{figure.60}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.920 \end{equation}
+l.926 \end{equation}
                     ] [79] [80pdfTeX warning (ext4): destination with the same 
 identifier (name{figure.61}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1018 \[B_n=\sum_{k=1}^nS_{n,k}\]
+l.1024 \[B_n=\sum_{k=1}^nS_{n,k}\]
                                   ] [81]) (./algorithm.tex [82] [83] [84
 
 ]
@@ -2439,7 +2439,7 @@ l.1 \section
 [115
 
 ]
-<toaster.jpeg, id=1643, 2007.5pt x 2007.5pt>
+<toaster.jpeg, id=1646, 2007.5pt x 2007.5pt>
 File: toaster.jpeg Graphic file (type jpg)
 <use toaster.jpeg>
 Package pdftex.def Info: toaster.jpeg  used on input line 8.
@@ -2494,14 +2494,24 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
  (./thesis.aux (./sections.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 9BCC4818C6A0978C3ECFF3EE678C80CF;4209.
+
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: 9BCC4818C6A0978C3ECFF3EE678C80CF;4209
+(rerunfilecheck)             After:  298F304E88E0216AC6C93C2BBC713310;4471.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 32126 strings out of 492609
- 599368 string characters out of 6129049
- 820781 words of memory out of 5000000
- 34592 multiletter control sequences out of 15000+600000
+ 32132 strings out of 492609
+ 599487 string characters out of 6129049
+ 821781 words of memory out of 5000000
+ 34595 multiletter control sequences out of 15000+600000
  86347 words of font info for 284 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,19n,436p,835b,1183s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2528,10 +2538,10 @@ exmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on thesis.pdf (136 pages, 916788 bytes).
+Output written on thesis.pdf (136 pages, 916979 bytes).
 PDF statistics:
- 1848 PDF objects out of 2073 (max. 8388607)
- 1657 compressed objects within 17 object streams
- 525 named destinations out of 1000 (max. 500000)
+ 1851 PDF objects out of 2073 (max. 8388607)
+ 1660 compressed objects within 17 object streams
+ 528 named destinations out of 1000 (max. 500000)
  28271 words of extra memory for PDF output out of 29859 (max. 10000000)
 

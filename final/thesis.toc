@@ -45,6 +45,9 @@
 \contentsline {subsection}{\numberline {3.3}Branch-and-Bound Algorithms}{47}{subsection.3.3}% 
 \contentsline {section}{\numberline {4}The Chromatic Number Problem}{53}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Finding a Lower Bound}{53}{subsection.4.1}% 
+\contentsline {subsubsection}{\numberline {4.1.1}The Mycielski Construction}{54}{subsubsection.4.1.1}% 
+\contentsline {subsubsection}{\numberline {4.1.2}The Edwards Elphick Algorithm}{55}{subsubsection.4.1.2}% 
+\contentsline {subsubsection}{\numberline {4.1.3}The Bron Kerbosch Algorithm}{60}{subsubsection.4.1.3}% 
 \contentsline {subsection}{\numberline {4.2}Finding an Upper Bound}{66}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}The Christofides Algorithm}{70}{subsection.4.3}% 
 \contentsline {subsection}{\numberline {4.4}Zykov Algorithms}{76}{subsection.4.4}% 
