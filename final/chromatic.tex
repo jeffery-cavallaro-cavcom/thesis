@@ -12,8 +12,8 @@ Graham~(1973)~\cite{corneil}.
 
 The most popular strategy for estimating a lower bound for the chromatic number of a graph is based on the
 statement of \propname~\ref{prop:clique}.  For a graph \(G\):
-\[\w^*(G)\le\w(G)\le\X(G)\]
-where \(\w^*(G)\) is a lower bound estimate for the clique number of \(G\).  Another less popular bound is given by
+\[\w'(G)\le\w(G)\le\X(G)\]
+where \(\w'(G)\) is a lower bound estimate for the clique number of \(G\).  Another less popular bound is given by
 \theoremname~\ref{thm:lbalpha}~\cite{chartrand}.
 
 \begin{theorem}
@@ -28,8 +28,8 @@ where \(\w^*(G)\) is a lower bound estimate for the clique number of \(G\).  Ano
   Therefore, \(\displaystyle k\ge\frac{n}{\a(G)}\).
 \end{proof}
 
-Note that both of the above lower bounds are tight when \(G\) is complete and are related by the statement of
-\theoremname~\ref{thm:isclique}:
+Note that both of the above lower bounds are tight when \(G\) is empty or complete and are related by the statement
+of \theoremname~\ref{thm:isclique}:
 \[\w(G)=\a(\bar{G})\]
 
 It is well-known that certain triangle-free graphs with \(\w(G)=2\) can have arbitrarily high \(\X(G)\).  Examples
@@ -93,7 +93,7 @@ triangle free graphs with arbitrarily high chromatic number, see Zhang~\cite{zha
 case the clique number is a suitable lower bound for the chromatic number.
 
 Unfortunately, the clique number problem for a graph \(G\) is also NP-hard, so the next best step is to use a
-P-time calculation for a \(\w^*(G)\) that is as tight as possible to the actual \(\w(G)\).  Edwards and
+P-time calculation for a \(\w'(G)\) that is as tight as possible to the actual \(\w(G)\).  Edwards and
 Elphick~(1982)~\cite{edwards} investigated several such methods and concluded that the best method was a simple
 calculation based on the adjacency matrix of \(G\):
 \begin{enumerate}
@@ -103,13 +103,13 @@ calculation based on the adjacency matrix of \(G\):
   value \(i\) that is adjacent to all of the vertices in \(S\).  If no such vertex exists then go to
   step~\ref{step:edw:done}.
 \item Add \(v_i\) to \(S\) and go to step~\ref{step:edw:select}.
-\item\label{step:edw:done} \(G[S]\) is a complete subgraph of \(G\) so conclude that \(\w^*(G)=\abs{S}\le\w(G)\).
+\item\label{step:edw:done} \(G[S]\) is a complete subgraph of \(G\) so conclude that \(\w'(G)=\abs{S}\le\w(G)\).
 \end{enumerate}
 
 The Edwards algorithm has \(\BO(n^2)\) runtime complexity and so it is a suitable P-time algorithm.
 
 The results of a random graph analysis of the Edwards Elphick algorithm are shown in
-\figurename~\ref{fig:edwards1err}.  The graph shows edge probability versus the mean of \(\w(G)-\w^*(G)\) for
+\figurename~\ref{fig:edwards1err}.  The graph shows edge probability versus the mean of \(\w(G)-\w'(G)\) for
 graphs of increasing order with \(1000\) trials per edge probability.  Note that the mean error increases with both
 order and edge probability.
 
@@ -140,12 +140,12 @@ the chromatic number of a graph.  A nice summary of well-known exact clique numb
 Nagamouchi~(2017)~\cite{xiao}.  They claim that the known algorithms tend to converge on a runtime complexity of
 \(\BO(1.2^n)\).  These algorithms tend be somewhat complex and geared towards larger \(n\).
 
-A simpler yet efficient alternative to these exact algorithms is the Bron Kerbosch (BK)
-algorithm~(1973)~\cite{bron}.  In fact, the algorithm that was incrementally developed in the previous section is
-essentially the BK algorithm.  The advantage of BK is that it finds all possible cliques in a graph, and hence can
-be used to find \(\a(G)=\w(\bar{G})\).  Moon and Moser~(1965)~\cite{moon} show that every graph \(G\) of order
-\(n\) has at most \(3^{\frac{n}{3}}\) maximal cliques, so the runtime complexity of the Bron Kerbosch algorithm is
-expected to be about \(\BO(1.44^n)\).
+A simpler yet efficient alternative to these exact algorithms for more modest values of \(n\) is the Bron Kerbosch
+(BK) algorithm~(1973)~\cite{bron}.  In fact, the algorithm that was incrementally developed in the
+\sectionname~\ref{sec:sub:bandb} is essentially the BK algorithm.  The advantage of BK is that it finds all
+possible cliques in a graph, and hence can be used to find \(\a(G)=\w(\bar{G})\).  Moon and
+Moser~(1965)~\cite{moon} show that every graph \(G\) of order \(n\) has at most \(3^{\frac{n}{3}}\) maximal
+cliques, so the runtime complexity of the Bron Kerbosch algorithm is expected to be about \(\BO(1.44^n)\).
 
 The heart of BK is a recursive subroutine called \emph{extend} that implements the breadth of a level in the
 corresponding state tree, and recursively calls itself in order to implement the branches in the state tree.
@@ -178,13 +178,14 @@ call to \emph{extend} performs the following steps:
 \end{enumerate}
 
 A small improvement added to BK by this research is to abandon the current branch when the desire is to only find
-\(\a(G)\) and the number of vertices in \emph{compsub} and \emph{candidates} are not enough to build a maximal
-clique larger than all previously found maximal cliques.
+\(\a(G)\) (and hence \(\w(\bar{G})\)) and the number of vertices in \emph{compsub} and \emph{candidates} are not
+enough to build a maximal clique larger than all previously found maximal cliques.
 
 Bron and Kerbosch actually proposed two versions of their algorithm that differ by how the next vertex is selected
 from the \emph{candidates} list in step~\ref{step:bron:select}.  In the basic mode, the first (or any) vertex in
 the list is selected.  \figurename~\ref{fig:bron1:calls} shows the average number of calls to the \emph{extend}
-method versus edge probablity for \(1000\) random graphs per edge probability.
+method versus edge probablity for \(1000\) random graphs per edge probability for orders of \(10\), \(20\), \(30\),
+\(40\), and \(50\).
 
 \begin{figure}[H]
   \centering
@@ -195,15 +196,27 @@ method versus edge probablity for \(1000\) random graphs per edge probability.
 
 The number of calls increases with both graph order and edge probability.  The worst case for each order is thus
 assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of calls to the
-\emph{extend} method for the \(1000\) graphs at each order is plotted in \figurename~\ref{fig:bron1:runtime}.  A
-line fit is used to approximate the runtime complexity for the algorithm.  The slope of the line indicates that the
-runtime complexity is about \(\BO(2^{0.3074n})\approx\BO(1.24^n)\), which is well below the theoretical value.
+\emph{extend} method for the \(1000\) graphs at \(90\%\) edge probability for orders from \(5\) to \(50\) is
+plotted in \figurename~\ref{fig:bron1:runtime}.  Although the graph indicates some sort of \(\log\) effect, a line
+fit is used to approximate the runtime complexity for the algorithm.  The slope of the line indicates that the
+runtime complexity is about \(\BO(2^{0.3218n})\approx\BO(1.25^n)\), which is well below the theoretical value.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron1_runtime}
-  \caption{Basic Bron Kerbosch algorithm runtime complexity.}
+  \caption{Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}
   \label{fig:bron1:runtime}
+\end{figure}
+
+The graph in \figurename~\ref{fig:bron1:runtime2} focuses in on the target range of orders less than \(20\).  In
+this region the linear fit is a bit steeper, indicating a runtime complexity of
+\(\BO(2^{0.4151})\approx\BO(1.33)\), still below the theoretical value.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{bron1_runtime_2}
+  \caption{Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\).}
+  \label{fig:bron1:runtime2}
 \end{figure}
 
 In smart mode, a particular vertex in the \emph{used} list with the smallest number of nonadjacencies to vertices
@@ -219,16 +232,30 @@ version of the algorithm.
   \label{fig:bron2:calls}
 \end{figure}
 
-The runtime complexity estimate for the smart version of the algorithm is shown in
+The runtime complexity estimate for the smart version of the algorithm for orders from \(5\) to \(50\) is shown in
 \figurename~\ref{fig:bron2:runtime}.  Note that the runtime complexity is improved to
-\(\BO(2^{0.2718n})\approx\BO(1.21^n)\).
+\(\BO(2^{0.2815n})\approx\BO(1.22^n)\).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron2_runtime}
-  \caption{Smart Bron Kerbosch algorithm runtime complexity.}
+  \caption{Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}
   \label{fig:bron2:runtime}
 \end{figure}
+
+And finally, \figurename~\ref{fig:bron2:runtime2} focuses on the target range of orders less than \(20\).  Once
+again, the line fit is a bit steeper in this range for a runtime complexity of about
+\(\BO(2^{0.3641})\approx\BO(1.29^n)\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{bron2_runtime_2}
+  \caption{Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\).}
+  \label{fig:bron2:runtime2}
+\end{figure}
+
+Therefore, BK in smart mode decreases the runtime complexity over the target range from \(\BO(1.33)\) to
+\(\BO(1.29)\) and so the improved bounding condition is effective.
 
 \subsection{Finding an Upper Bound}\label{sec:sub:upper}
 
