@@ -53,15 +53,15 @@
 \contentsline {subsection}{\numberline {4.4}Zykov Algorithms}{77}{subsection.4.4}% 
 \contentsline {subsection}{\numberline {4.5}The Corneil Graham Algorithm}{84}{subsection.4.5}% 
 \contentsline {section}{\numberline {5}The Proposed Algorithm}{85}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}Outer Loop}{86}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}Called Subroutine}{88}{subsection.5.2}% 
-\contentsline {subsection}{\numberline {5.3}Supporting Theorems}{91}{subsection.5.3}% 
-\contentsline {subsubsection}{\numberline {5.3.1}Maximum Edge Threshold}{91}{subsubsection.5.3.1}% 
-\contentsline {subsubsection}{\numberline {5.3.2}Vertex Removal}{94}{subsubsection.5.3.2}% 
-\contentsline {subsubsection}{\numberline {5.3.3}Minimum Common Neighbor Upper Bound}{100}{subsubsection.5.3.3}% 
-\contentsline {subsubsection}{\numberline {5.3.4}Recursive Steps}{105}{subsubsection.5.3.4}% 
-\contentsline {subsection}{\numberline {5.4}An Example}{108}{subsection.5.4}% 
-\contentsline {section}{\numberline {6}Random Graph Analysis}{116}{section.6}% 
-\contentsline {section}{\numberline {7}Toaster Design Case Study}{117}{section.7}% 
-\contentsline {section}{\numberline {8}Conclusions}{122}{section.8}% 
-\contentsline {section}{Literature Cited}{123}{section*.6}% 
+\contentsline {subsection}{\numberline {5.1}The Main Routine}{87}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}The Recursive Subroutine}{89}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}Supporting Theorems}{92}{subsection.5.3}% 
+\contentsline {subsubsection}{\numberline {5.3.1}Maximum Edge Threshold}{92}{subsubsection.5.3.1}% 
+\contentsline {subsubsection}{\numberline {5.3.2}Vertex Removal}{95}{subsubsection.5.3.2}% 
+\contentsline {subsubsection}{\numberline {5.3.3}Minimum Common Neighbor Upper Bound}{101}{subsubsection.5.3.3}% 
+\contentsline {subsubsection}{\numberline {5.3.4}Recursive Steps}{106}{subsubsection.5.3.4}% 
+\contentsline {subsection}{\numberline {5.4}An Example}{109}{subsection.5.4}% 
+\contentsline {section}{\numberline {6}Random Graph Analysis}{117}{section.6}% 
+\contentsline {section}{\numberline {7}Toaster Design Case Study}{118}{section.7}% 
+\contentsline {section}{\numberline {8}Conclusions}{123}{section.8}% 
+\contentsline {section}{Literature Cited}{124}{section*.6}% 

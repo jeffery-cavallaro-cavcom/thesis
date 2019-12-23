@@ -52,8 +52,8 @@
 \BOOKMARK [2][-]{subsection.4.4}{Zykov Algorithms}{section.4}% 52
 \BOOKMARK [2][-]{subsection.4.5}{The Corneil Graham Algorithm}{section.4}% 53
 \BOOKMARK [1][-]{section.5}{The Proposed Algorithm}{}% 54
-\BOOKMARK [2][-]{subsection.5.1}{Outer Loop}{section.5}% 55
-\BOOKMARK [2][-]{subsection.5.2}{Called Subroutine}{section.5}% 56
+\BOOKMARK [2][-]{subsection.5.1}{The Main Routine}{section.5}% 55
+\BOOKMARK [2][-]{subsection.5.2}{The Recursive Subroutine}{section.5}% 56
 \BOOKMARK [2][-]{subsection.5.3}{Supporting Theorems}{section.5}% 57
 \BOOKMARK [3][-]{subsubsection.5.3.1}{Maximum Edge Threshold}{subsection.5.3}% 58
 \BOOKMARK [3][-]{subsubsection.5.3.2}{Vertex Removal}{subsection.5.3}% 59

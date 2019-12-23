@@ -1,16 +1,21 @@
 \section{The Proposed Algorithm}\label{sec:algorithm}
 
-The major advantages of the Christofides and Zykov algorithms described in the previous section are that they don't
-depend on the connectedness of a graph, an example of a chromatic coloring is readily available, and the fact that
-the algorithms can be coded rather easily to run on a computer.  Their major disadvantage is their high runtime
-complexity, which is inherent to the chromatic number problem.
+It was shown in \sectionname~\ref{sec:chromatic} that the Christofides algorithm with the Wang improvements
+outperforms the Zykov algorithm.  But can some additional bounding conditions be added to the Zykov algorithm to
+close the performance gap.  This section proposes a new Zykov-like algorithm that attempts to do just that.
+
+The major advantages of the Christofides and Zykov algorithms are that they don't depend on the connectedness of a
+graph, an example of a chromatic coloring is readily available, and the fact that the algorithms can be coded
+rather easily to run on a computer.  Their major disadvantage is their high runtime complexity, which is inherent
+to the chromatic number problem.
 
 Thus, the goals of the proposed algorithm are as follows:
 \begin{enumerate}
 \item It should not depend on whether the graph is connected or not.
 \item An example of a chromatic coloring should be readily available.
 \item It can be easily coded for execution on a computer.
-\item It has better runtime performance than the well-known algorithms.
+\item It has better runtime performance than the well-known algorithms over the target range of less than
+  \(20\) nodes with less than \(50\%\) edge density.
 \end{enumerate}
 
 To accomplish these goals, the proposed algorithm loops on successively higher values of \(k\).  For each candidate
@@ -25,43 +30,72 @@ actual chromatic colorings, the proposed algorithm requires a reverse traversal 
 construct such a coloring.  However, as was stated earlier, it is more important during the axiomatic design
 analytical process to know the minimum number of parts as opposed to an actual FR allocation to those parts.
 
-This algorithm was first proposed by the author and his advisor in collaboration with a team of mechanical
-engineering researchers from SUNY Buffalo \cite{cavallaro}.  It accepts a graph \(G\) as input, provides \(\X(G)\)
-as output, and is composed of an outer loop on values of \(k\) and a recursive subroutine called by the outer loop
-to determine if \(G\) is \colorable{k}.  The outer loop and called subroutine are summarized in the following
-sections.  A complete description of the theorems that support the various steps in algorithm and the application
-of the algorithm to a sample graph then follow.
+An early version of this algorithm was first proposed by the author and his advisor in collaboration with a team of
+mechanical engineering researchers from SUNY Buffalo \cite{cavallaro}.  It accepts a graph \(G\) as input and
+provides \(\X(G)\) and a chromatic coloring as output and is composed of the following components:
+\begin{enumerate}
+\item A main routine that establishes \(G\) as the root of the state tree and loops on increasing values of \(k\).
+\item The Bron Kerbosch algorithm used by the main routine to determine a lower bound \(k_{min}\) for the chromatic
+  number of \(G\).
+\item The last-first with color interchange greedy coloring algorithm used by the main routine to determine an
+  initial upper bound \(k_{max}\) for the chromatic number of \(G\) and a corresponding \coloring{k_{max}} of
+  \(G\).
+\item A recursive subroutine that runs a modified Zykov algorithm with additional pruning to determine if
+  \(G\) is \colorable{k}.
+\item The Edwards Elphick algorithm used by the recursive subroutine to determine a lower bound for the chromatic
+  number of the graph at each state in the Zykov tree.
+\item A global value \(k_{adj}\) that is initially set to \(k_{max}\) but can be adjusted downward by the recursive
+  subroutine.
+\item A global list \(S\) of vertices removed by the recursive subroutine in the order removed.
+\item A coloring routine called by the main routine to construct a chromatic coloring of \(G\) based on the results
+  of the algorithm.
+\end{enumerate}
 
-\subsection{Outer Loop}\label{sec:sub:outer}
+The main routine, called subroutine, and coloring routine are summarized in the following sections.  A complete
+description of the theorems that support the various steps in the algorithm and the application of the algorithm to
+a sample graph then follow.
 
-The outer loop accepts a graph \(G\) as input and returns \(\X(G)\).  It initially computes lower and upper bounds
-for \(k\) using Bron Kerbosch and greedy last-first, respectively.  It then loops on increasing values of \(k\),
-starting with the lower bound and going no further than the upper bound.  For each value of \(k\), the called
-subroutine executes a modified Zykov algorithm to determine if \(G\) is \colorable{k}.  The first such successful
-return identifies \(\X(G)\).
+\subsection{The Main Routine}\label{sec:sub:main}
 
-The steps of the outer loop are as follows:
+The main routine accepts a graph \(G\) as input and returns \(\X(G)\) and a chromatic coloring.  It initially
+computes lower and upper bounds for \(k\) using Bron Kerbosch and greedy last-first, respectively.  It then loops
+on increasing values of \(k\), starting with the lower bound and going no further than the upper bound.  For each
+value of \(k\), the recursive subroutine executes a modified Zykov algorithm to determine if \(G\) is \colorable{k}.
+The first such successful return identifies \(\X(G)\) and then the coloring routine is called to construct the
+final coloring.
+
+The steps of the main routine are as follows:
 
 \begin{enumerate}
 \item\label{step:outer:bron} Use the Bron Kerbosch algorithm to compute a \(k_{min}\).
 
-\item\label{step:outer:greedy} Use the greedy last-first algorithm to compute a \(k_{max}\).
+\item\label{step:outer:greedy} Use the greedy last-first algorithm to compute a \(k_{max}\) and a default
+  \coloring{k_{max}}.
+
+\item\label{step:outer:initkadj} Initialize \(k_{adj}\) to \(k_{min}\).
+
+\item\label{step:outer:initr} Initialized the removed vertices list \(S\) to empty.
 
 \item\label{step:outer:initk} Initialize \(k\) to \(k_{min}\).
 
-\item\label{step:outer:match} If \(k=k_{max}\) then go to step~\ref{step:outer:done}.
+\item\label{step:outer:match} If \(k=k_{max}\) then accept the coloring found in step~\ref{step:outer:greedy} and
+  go to step~\ref{step:outer:done}.
 
-\item\label{step:outer:call} Call the subroutine to determine if \(G\) is \colorable{k}.  The subroutine returns a
-  possibly simplified \(G\) called \(G'\) and a boolean value \(R\) that reports the result of the test.
+\item\label{step:outer:call} Call the recursive subroutine to determine if \(G\) is \colorable{k}.  The recursive
+  subroutine returns a possibly simplified \(G\) called \(G'\) and a boolean value \(R\) that reports the result of
+  the test.  It may also adjust \(k_{max}\) downward and update \(S\).
 
-\item\label{step:outer:result} If \(G\) is \colorable{k} (\(R=\) true) then go to step~\ref{step:outer:done}.
+\item\label{step:outer:result} If \(G\) is \colorable{k} (\(R=\) true) then go to step~\ref{step:outer:color}.
 
 \item\label{step:outer:newg} Replace \(G\) with \(G'\).  As will be seen, doing this avoids needless reapplication
-  of certain steps in the called subroutine.
+  of certain steps in the recursive subroutine.
 
 \item\label{step:outer:incrk} Increment \(k\) and go to step~\ref{step:outer:match}.
 
-\item\label{step:outer:done} Return \(k\).
+\item\label{step:outer:color} Call the coloring routine to construct the final coloring based on the current state
+  of \(G\) and the removed vertex list \(S\).
+
+\item\label{step:outer:done} Return the current \(k\) as the chromatic number and the found chromatic coloring.
 \end{enumerate}
 
 A flowchart of these steps is shown in \figurename~\ref{fig:outer}.
@@ -71,49 +105,55 @@ A flowchart of these steps is shown in \figurename~\ref{fig:outer}.
   \scalebox{0.75}{
     \begin{tikzpicture}[>=latex']
       \node (start) [draw,terminal] at (0,0) {START};
-      \node (bron) [draw,predproc,below=of start] {\(\text{Bron}(G)\)};
-      \node (greedy) [draw,predproc,below=of bron] {\(\text{Greedy}(G)\)};
-      \node (kinit) [draw,process,below=of greedy] {\(k=k_{min}\)};
-      \node (kmatch) [draw,decision,below=of kinit] {\(k=k_{max}\)?};
-      \node (kcheck) [draw,predproc,below=of kmatch] {CALL \(G,k\)};
-      \node (iskcolor) [draw,decision,below=of kcheck] {\(R=\)TRUE?};
-      \node (kdone) [draw,terminal,right=of iskcolor] {RETURN \(k\)};
-      \node (newg) [draw,process,below=of iskcolor] {\(G=G'\)};
-      \node (kinc) [draw,process,below=of newg] {\(k=k+1\)};
+      \node (bron) [draw,predproc,below=of start] {BRON \(G\)};
+      \node (greedy) [draw,predproc,below=of bron] {GREEDY \(G\)};
+      \node (kadjinit) [draw,process,below=of greedy] {\(k_{adj}=k_{max}\)};
+      \node (sinit) [draw,process,below=of kadjinit] {\(S=\emptyset\)};
+      \node (kinit) [draw,process,below=of sinit] {\(k=k_{min}\)};
+      \node (kcheck) [draw,decision,below=of kinit] {\(k=k_{max}\)?};
+      \node (call) [draw,predproc,below=of kcheck] {CALL \(G,k\)};
+      \node (newg) [draw,process,below=of call] {\(G=G'\)};
+      \node (iskcolor) [draw,decision,below=of newg] {\(R=\)TRUE?};
+      \node (color) [draw,predproc,right=of iskcolor] {COLOR \(G,S\)};
+      \node (kdone) [draw,terminal,right=of color] {RETURN \(k\)};
+      \node (kinc) [draw,process,below=of iskcolor] {\(k=k+1\)};
       \node (belowinc) [coordinate,below=0.5cm of kinc] {};
       \node (leftinc) [coordinate,left=3cm of belowinc] {};
       \draw [->] (start) -- node [auto] {\(G\)} (bron);
       \draw [->] (bron) -- node [auto] {\(k_{min}\)} (greedy);
-      \draw [->] (greedy) -- node [auto] {\(k_{max}\)} (kinit);
-      \draw [->] (kinit) -- (kmatch);
-      \draw [->] (kmatch) -| node [auto,pos=0.1] {YES} (kdone);
-      \draw [->] (kmatch) -- node [auto] {NO} (kcheck);
-      \draw [->] (kcheck) -- node [auto] {\(G',R\)} (iskcolor);
-      \draw [->] (iskcolor) -- node [auto] {YES} (kdone);
-      \draw [->] (iskcolor) -- node [auto] {NO} (newg);
-      \draw [->] (newg) -- (kinc);
+      \draw [->] (greedy) -- node [auto] {\(k_{max}\)} (kadjinit);
+      \draw [->] (kadjinit) -- (sinit);
+      \draw [->] (sinit) -- (kinit);
+      \draw [->] (kinit) -- (kcheck);
+      \draw [->] (kcheck) -| node [auto,pos=0.1] {YES} (kdone);
+      \draw [->] (kcheck) -- node [auto] {NO} (call);
+      \draw [->] (call) -- node [auto] {\(G',R,k_{adj},S\)} (newg);
+      \draw [->] (newg) -- (iskcolor);
+      \draw [->] (iskcolor) -- node [auto] {YES} (color);
+      \draw [->] (color) -- (kdone);
+      \draw [->] (iskcolor) -- node [auto] {NO} (kinc);
       \draw [->] (kinc) -- (belowinc) -- (leftinc) |- (kcheck);
     \end{tikzpicture}
   }
-  \caption{The proposed algorithm outer loop.}
+  \caption{The proposed algorithm main routine.}
   \label{fig:outer}
 \end{figure}
 
-Note that in the case of the null or an empty graph, the upper and lower bounds for \(k\) will match and the outer
-loop will terminate immediately.  Thus, the subroutine is always called with \(k\ge2\).  Also note that the outer
-loop is guaranteed to terminate because \(k\) will eventually reach \(k_{max}\), or \(k\) will eventually equal or
-exceed \(n\) due to subgraph simplifications applied by the called subroutine.  The latter case causes the called
-subroutine to return true.
+Note that in the case of the null or an empty graph, the upper and lower bounds for \(k\) will match and the main
+routine will terminate immediately.  Thus, the recursive subroutine is always called with \(k\ge2\).  Also note
+that the main routine is guaranteed to terminate because \(k\) will eventually reach \(k_{max}\), or \(k\) will
+eventually equal or exceed \(n\) due to subgraph simplifications applied by the recursive subroutine.  The latter
+case causes the recursive subroutine to return true.
 
-\subsection{Called Subroutine}\label{sec:sub:called}
+\subsection{The Recursive Subroutine}\label{sec:sub:called}
 
-The called subroutine executes a modified version of a Zykov algorithm that determines whether a graph is
+The recursive subroutine executes a modified version of a Zykov algorithm that determines whether a graph is
 \colorable{k}.  It accepts the current state of \(G\) of order \(n\) and size \(m\) and the current value of
 \(k\ge2\) as inputs.  It returns a possibly simplified version of \(G\) and a boolean value indicating whether or
 not \(G\) is \colorable{k}.  Internally, various tests are applied to prune the corresponding Zykov tree or abandon
 it all together based on the current value of \(k\).
 
-The steps of the called subroutine and references to their associated theorems are as follows:
+The steps of the recursive subroutine and references to their associated theorems are as follows:
 
 \begin{enumerate}
 \item\label{step:sub:check} If \(n\le k\) then return true (\theoremname~\ref{thm:nlek}).
@@ -225,34 +265,34 @@ A flowchart of these steps is shown in \figurename~\ref{fig:called}.
       \draw [->] (check2) -- node [auto] {NO} (fail);
     \end{tikzpicture}
   }
-  \caption{The proposed algorithm called subroutine.}
+  \caption{The proposed algorithm recursive subroutine.}
   \label{fig:called}
 \end{figure}
 
 Step~\ref{step:sub:check} is the success termination condition.  Success occurs when \(G\) is simplified by
-removing sufficent vertices (steps~\ref{step:sub:smallcalc}--\ref{step:sub:subset}) and the outer loop has
+removing sufficent vertices (steps~\ref{step:sub:smallcalc}--\ref{step:sub:subset}) and the main routine has
 sufficiently incremented \(k\) (step~\ref{step:outer:incrk}) such that \(n\le k\).
 
 Steps~\ref{step:sub:smallcalc}--\ref{step:sub:subset} attempt to remove vertices to achieve a simpler graph that is
 equivalently \colorable{k}.  Each time a vertex is removed, the Zykov branches associated with that vertex are
 pruned.  Since these same steps would just be repeated for \(k+1\), the subroutine returns the current state of the
-possibly simplified \(G\) to the outer loop as a starting point for the next candidate value of \(k\).
+possibly simplified \(G\) to the main routine as a starting point for the next candidate value of \(k\).
 
 Steps~\ref{step:sub:dencalc}--\ref{step:sub:density} and \ref{step:sub:select}--\ref{step:sub:ubcheck} apply tests
 that attempt to disprove that the current state of \(G\) is \colorable{k} for the current value of \(k\).  If so,
-then the current Zykov tree is abandoned and the subroutine returns false.  This allows the outer loop to continue
+then the current Zykov tree is abandoned and the subroutine returns false.  This allows the main routine to continue
 with \(k+1\).
 
-The remaining steps of the called subroutine, steps~\ref{step:sub:select2}--\ref{step:sub:fail}, constitute the
+The remaining steps of the recursive subroutine, steps~\ref{step:sub:select2}--\ref{step:sub:fail}, constitute the
 recursive portion of the modified Zykov algorithm.  The recursive calls are guaranteed to terminate because either
 there will be sufficient vertex contractions such that \(n\le k\), resulting in a true return, or sufficient edge
 additions such that the graph becomes complete and (as will be shown) is rejected by step~\ref{step:sub:density},
 resulting in a false return.  Note that in the event of a false return, any modifications to the current state of
-\(G\) resulting from the recursive calls are not returned to the outer loop.
+\(G\) resulting from the recursive calls are not returned to the main routine.
 
 \subsection{Supporting Theorems}\label{sec:sub:theorems}
 
-This section contains the theorems that support the steps in the called subroutine.  Remember that the success
+This section contains the theorems that support the steps in the recursive subroutine.  Remember that the success
 check of step~\ref{step:sub:check} is already supported by \theoremname~\ref{thm:nlek}.
 
 \subsubsection{Maximum Edge Threshold}\label{sec:sub:sub:edges}
@@ -298,7 +338,7 @@ Theorem~\ref{thm:density}.
   \frac{k}{2}\left(\frac{n^2k-n^2}{k^2}\right)=\frac{n^2(k-1)}{2k}\]
 \end{proof}
 
-The called subroutine actually uses the contrapositive of this result, as stated in Corollary~\ref{cor:density}.
+The recursive subroutine actually uses the contrapositive of this result, as stated in Corollary~\ref{cor:density}.
 
 \begin{corollary}
   \label{cor:density}
@@ -562,7 +602,7 @@ Theorem~\ref{thm:lowdeg} is demonstrated in \figurename~\ref{fig:lowdeg} for \(k
   \label{fig:lowdeg}
 \end{figure}
 
-The called subroutine actually removes all such vertices at once, which is supported by the inductive proof in
+The recursive subroutine actually removes all such vertices at once, which is supported by the inductive proof in
 Corollary \ref{cor:lowdeg}.
 
 \begin{corollary}
@@ -831,7 +871,7 @@ Theorem~\ref{thm:inter} establishes the desired upper bound.
   \[\abs{N(w)\cap N(z)}\le n-2-\frac{n-2}{k-1}\]
 \end{proof}
 
-The called subroutine actually uses the contrapositive of this result, as stated in Corollary~\ref{cor:inter}.
+The recursive subroutine actually uses the contrapositive of this result, as stated in Corollary~\ref{cor:inter}.
 
 \begin{corollary}
   \label{cor:inter}
@@ -883,8 +923,8 @@ two selected vertices have the same color, so they are contracted.  The second r
 \ref{step:sub:call2}) assumes that the two selected vertices have different colors, so they are joined by an added
 edge.  Each call starts a new branch of the Zykov tree corresponding to the current value of \(k\).  If either call
 returns true then it can be concluded that the input graph was indeed \colorable{k}.  Otherwise, it can be
-concluded that the input graph is not \colorable{k} and the called subroutine returns the state of \(G\) prior to
-the recursive calls to the outer loop.
+concluded that the input graph is not \colorable{k} and the recursive subroutine returns the state of \(G\) prior to
+the recursive calls to the main routine.
 
 These steps are supported by Theorem~\ref{thm:recurse}.
 
@@ -1029,8 +1069,8 @@ then traversed in reverse order to determine a chromatic coloring.
   \label{fig:example}
 \end{figure}
 
-The algorithm steps are as follows.  Outer loop steps are marked by ``O\#'' and called subroutine steps are marked by
-``I\#.''.  Recursive subroutine calls add a call level: ``I\#--\#.''
+The algorithm steps are as follows.  Main routine steps are marked by ``O\#'' and recursive subroutine steps are
+marked by ``I\#.''.  Recursive subroutine calls add a call level: ``I\#--\#.''
 
 \begin{enumerate}
 \item (O\ref{step:outer:bron}) Use the Bron Kerbosch algorithm to calculate \(k_{min}=3\).
@@ -1202,7 +1242,7 @@ The algorithm steps are as follows.  Outer loop steps are marked by ``O\#'' and 
 \item (I\ref{step:sub:result1}) The recursive call returned true, so conclude that the \(G\) of
   \figurename~\ref{fig:removecf} is \colorable{3} and return true.
 
-\item (O\ref{step:outer:result})\label{step:last} The called subroutine returned true, so conclude that the \(G\)
+\item (O\ref{step:outer:result})\label{step:last} The recursive subroutine returned true, so conclude that the \(G\)
   is \chromatic{3} and return \(\X(G)=3\).
 \end{enumerate}
 
