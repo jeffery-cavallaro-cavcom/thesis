@@ -201,8 +201,8 @@
 \newlabel{sec:sub:sub:space}{{3.2.2}{46}{Space Complexity}{subsubsection.3.2.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Runtime Duration}{47}{subsubsection.3.2.3}\protected@file@percent }
 \newlabel{sec:sub:sub:duration}{{3.2.3}{47}{Runtime Duration}{subsubsection.3.2.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Branch and Bound Algorithms}{47}{subsection.3.3}\protected@file@percent }
-\newlabel{sec:sub:bandb}{{3.3}{47}{Branch and Bound Algorithms}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Branch-and-Bound Algorithms}{47}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:sub:bandb}{{3.3}{47}{Branch-and-Bound Algorithms}{subsection.3.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces Finding maximal cliques example graph.}}{48}{figure.32}\protected@file@percent }
 \newlabel{fig:maxexample}{{32}{48}{Finding maximal cliques example graph}{figure.32}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces Finding maximal cliques exhaustive tree example.}}{48}{figure.33}\protected@file@percent }
@@ -221,207 +221,217 @@
 \newlabel{sec:sub:lower}{{4.1}{53}{Finding a Lower Bound}{subsection.4.1}{}}
 \newlabel{thm:lbalpha}{{12}{53}{}{theorem.12}{}}
 \citation{west}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}The Mycielski Construction}{54}{subsubsection.4.1.1}\protected@file@percent }
+\newlabel{sec:sub:sub:mycielski}{{4.1.1}{54}{The Mycielski Construction}{subsubsection.4.1.1}{}}
+\newlabel{step:myc:repeat}{{2}{54}{The Mycielski Construction}{Item.34}{}}
 \citation{zhang}
 \citation{edwards}
-\newlabel{step:myc:repeat}{{2}{54}{Finding a Lower Bound}{Item.34}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces The first three graphs from the Mycielski construction.}}{54}{figure.36}\protected@file@percent }
-\newlabel{fig:mycielski}{{36}{54}{The first three graphs from the Mycielski construction}{figure.36}{}}
-\newlabel{step:edw:select}{{2}{55}{Finding a Lower Bound}{Item.38}{}}
-\newlabel{step:edw:done}{{4}{55}{Finding a Lower Bound}{Item.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces The first three graphs from the Mycielski construction.}}{55}{figure.36}\protected@file@percent }
+\newlabel{fig:mycielski}{{36}{55}{The first three graphs from the Mycielski construction}{figure.36}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}The Edwards Elphick Algorithm}{55}{subsubsection.4.1.2}\protected@file@percent }
+\newlabel{sec:sub:sub:edwards}{{4.1.2}{55}{The Edwards Elphick Algorithm}{subsubsection.4.1.2}{}}
+\newlabel{step:edw:select}{{2}{55}{The Edwards Elphick Algorithm}{Item.38}{}}
+\newlabel{step:edw:done}{{4}{55}{The Edwards Elphick Algorithm}{Item.40}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces Edwards Elphick algorithm mean error.}}{56}{figure.37}\protected@file@percent }
-\newlabel{fig:edwards1err}{{37}{56}{Edwards Elphick algorithm mean error}{figure.37}{}}
+\newlabel{fig:edwards1:error}{{37}{56}{Edwards Elphick algorithm mean error}{figure.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Edwards Elphick algorithm mean number of steps.}}{57}{figure.38}\protected@file@percent }
+\newlabel{fig:edwards1:steps}{{38}{57}{Edwards Elphick algorithm mean number of steps}{figure.38}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Edwards Elphick algorithm runtime complexity.}}{57}{figure.39}\protected@file@percent }
+\newlabel{fig:edwards1:runtime}{{39}{57}{Edwards Elphick algorithm runtime complexity}{figure.39}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces Improved Edwards Elphick algorithm mean error.}}{58}{figure.40}\protected@file@percent }
+\newlabel{fig:edwards2:error}{{40}{58}{Improved Edwards Elphick algorithm mean error}{figure.40}{}}
 \citation{xiao}
+\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces Improved Edwards Elphick algorithm mean number of steps.}}{59}{figure.41}\protected@file@percent }
+\newlabel{fig:edwards2:steps}{{41}{59}{Improved Edwards Elphick algorithm mean number of steps}{figure.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces Improved Edwards Elphick algorithm runtime complexity.}}{59}{figure.42}\protected@file@percent }
+\newlabel{fig:edwards2:runtime}{{42}{59}{Improved Edwards Elphick algorithm runtime complexity}{figure.42}{}}
 \citation{bron}
 \citation{moon}
-\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces Improved Edwards Elphick algorithm mean error.}}{57}{figure.38}\protected@file@percent }
-\newlabel{fig:edwards2err}{{38}{57}{Improved Edwards Elphick algorithm mean error}{figure.38}{}}
-\newlabel{step:bron:check}{{1}{58}{Finding a Lower Bound}{Item.41}{}}
-\newlabel{step:bron:select}{{2}{58}{Finding a Lower Bound}{Item.42}{}}
-\newlabel{step:bron:recalc}{{3}{58}{Finding a Lower Bound}{Item.43}{}}
-\newlabel{step:bron:branch}{{4}{58}{Finding a Lower Bound}{Item.44}{}}
-\newlabel{step:bron:used}{{5}{58}{Finding a Lower Bound}{Item.45}{}}
-\newlabel{step:bron:leaf}{{6}{58}{Finding a Lower Bound}{Item.46}{}}
-\newlabel{step:bron:done}{{7}{58}{Finding a Lower Bound}{Item.47}{}}
-\newlabel{step:bron:return}{{8}{58}{Finding a Lower Bound}{Item.48}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces Basic Bron Kerbosch algorithm calls to extend.}}{59}{figure.39}\protected@file@percent }
-\newlabel{fig:bron1:calls}{{39}{59}{Basic Bron Kerbosch algorithm calls to extend}{figure.39}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}}{60}{figure.40}\protected@file@percent }
-\newlabel{fig:bron1:runtime}{{40}{60}{Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\)}{figure.40}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\).}}{60}{figure.41}\protected@file@percent }
-\newlabel{fig:bron1:runtime2}{{41}{60}{Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\)}{figure.41}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend.}}{61}{figure.42}\protected@file@percent }
-\newlabel{fig:bron2:calls}{{42}{61}{Smart Bron Kerbosch algorithm calls to extend}{figure.42}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}}{62}{figure.43}\protected@file@percent }
-\newlabel{fig:bron2:runtime}{{43}{62}{Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\)}{figure.43}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {44}{\ignorespaces Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\).}}{62}{figure.44}\protected@file@percent }
-\newlabel{fig:bron2:runtime2}{{44}{62}{Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\)}{figure.44}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Finding an Upper Bound}{63}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:sub:upper}{{4.2}{63}{Finding an Upper Bound}{subsection.4.2}{}}
-\newlabel{step:greedy:check}{{4}{63}{Finding an Upper Bound}{Item.52}{}}
-\newlabel{step:greedy:color}{{10}{63}{Finding an Upper Bound}{Item.58}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}The Bron Kerbosch Algorithm}{60}{subsubsection.4.1.3}\protected@file@percent }
+\newlabel{sec:sub:sub:bron}{{4.1.3}{60}{The Bron Kerbosch Algorithm}{subsubsection.4.1.3}{}}
+\newlabel{step:bron:check}{{1}{60}{The Bron Kerbosch Algorithm}{Item.41}{}}
+\newlabel{step:bron:select}{{2}{60}{The Bron Kerbosch Algorithm}{Item.42}{}}
+\newlabel{step:bron:recalc}{{3}{61}{The Bron Kerbosch Algorithm}{Item.43}{}}
+\newlabel{step:bron:branch}{{4}{61}{The Bron Kerbosch Algorithm}{Item.44}{}}
+\newlabel{step:bron:used}{{5}{61}{The Bron Kerbosch Algorithm}{Item.45}{}}
+\newlabel{step:bron:leaf}{{6}{61}{The Bron Kerbosch Algorithm}{Item.46}{}}
+\newlabel{step:bron:done}{{7}{61}{The Bron Kerbosch Algorithm}{Item.47}{}}
+\newlabel{step:bron:return}{{8}{61}{The Bron Kerbosch Algorithm}{Item.48}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces Basic Bron Kerbosch algorithm calls to extend.}}{62}{figure.43}\protected@file@percent }
+\newlabel{fig:bron1:calls}{{43}{62}{Basic Bron Kerbosch algorithm calls to extend}{figure.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {44}{\ignorespaces Basic Bron Kerbosch algorithm runtime complexity.}}{62}{figure.44}\protected@file@percent }
+\newlabel{fig:bron1:runtime}{{44}{62}{Basic Bron Kerbosch algorithm runtime complexity}{figure.44}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {45}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend.}}{63}{figure.45}\protected@file@percent }
+\newlabel{fig:bron2:calls}{{45}{63}{Smart Bron Kerbosch algorithm calls to extend}{figure.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {46}{\ignorespaces Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}}{64}{figure.46}\protected@file@percent }
+\newlabel{fig:bron2:runtime}{{46}{64}{Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\)}{figure.46}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Finding an Upper Bound}{64}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:sub:upper}{{4.2}{64}{Finding an Upper Bound}{subsection.4.2}{}}
 \citation{chartrand}
 \citation{welsh}
 \citation{matula}
-\newlabel{thm:upper}{{13}{64}{}{theorem.13}{}}
-\newlabel{thm:welsh}{{14}{64}{}{theorem.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {45}{\ignorespaces An example that allows color interchange.}}{64}{figure.45}\protected@file@percent }
-\newlabel{fig:interchange}{{45}{64}{An example that allows color interchange}{figure.45}{}}
+\newlabel{step:greedy:check}{{4}{65}{Finding an Upper Bound}{Item.52}{}}
+\newlabel{step:greedy:color}{{10}{65}{Finding an Upper Bound}{Item.58}{}}
+\newlabel{thm:upper}{{13}{65}{}{theorem.13}{}}
+\newlabel{thm:welsh}{{14}{65}{}{theorem.14}{}}
 \citation{hopcroft}
-\newlabel{step:color:part}{{5}{65}{Finding an Upper Bound}{Item.65}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces An example that allows color interchange.}}{66}{figure.47}\protected@file@percent }
+\newlabel{fig:interchange}{{47}{66}{An example that allows color interchange}{figure.47}{}}
+\newlabel{step:color:part}{{5}{66}{Finding an Upper Bound}{Item.65}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces Last first greedy algorithm with interchange error.}}{67}{figure.48}\protected@file@percent }
+\newlabel{fig:greedyerr}{{48}{67}{Last first greedy algorithm with interchange error}{figure.48}{}}
 \citation{christofides}
-\@writefile{lof}{\contentsline {figure}{\numberline {46}{\ignorespaces Last first greedy algorithm with interchange error.}}{66}{figure.46}\protected@file@percent }
-\newlabel{fig:greedyerr}{{46}{66}{Last first greedy algorithm with interchange error}{figure.46}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Effectiveness of Color Interchange}}{66}{table.5}\protected@file@percent }
-\newlabel{tab:greedy}{{5}{66}{Effectiveness of Color Interchange}{table.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}The Christofides Algorithm}{67}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:sub:christofides}{{4.3}{67}{The Christofides Algorithm}{subsection.4.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces A Christofides algorithm example.}}{67}{figure.47}\protected@file@percent }
-\newlabel{fig:cfexample}{{47}{67}{A Christofides algorithm example}{figure.47}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces Level 1 of a Christofides algorithm example.}}{68}{figure.48}\protected@file@percent }
-\newlabel{fig:cflevel1}{{48}{68}{Level 1 of a Christofides algorithm example}{figure.48}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces Christofides algorithm example results.}}{69}{figure.49}\protected@file@percent }
-\newlabel{fig:cfresults}{{49}{69}{Christofides algorithm example results}{figure.49}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces Christofides algorithm mean number of states.}}{69}{figure.50}\protected@file@percent }
-\newlabel{fig:cfstates}{{50}{69}{Christofides algorithm mean number of states}{figure.50}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Effectiveness of Color Interchange}}{68}{table.5}\protected@file@percent }
+\newlabel{tab:greedy}{{5}{68}{Effectiveness of Color Interchange}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}The Christofides Algorithm}{68}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:sub:christofides}{{4.3}{68}{The Christofides Algorithm}{subsection.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces A Christofides algorithm example.}}{69}{figure.49}\protected@file@percent }
+\newlabel{fig:cfexample}{{49}{69}{A Christofides algorithm example}{figure.49}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces Level 1 of a Christofides algorithm example.}}{69}{figure.50}\protected@file@percent }
+\newlabel{fig:cflevel1}{{50}{69}{Level 1 of a Christofides algorithm example}{figure.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces Christofides algorithm example results.}}{70}{figure.51}\protected@file@percent }
+\newlabel{fig:cfresults}{{51}{70}{Christofides algorithm example results}{figure.51}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces Christofides algorithm mean number of states.}}{70}{figure.52}\protected@file@percent }
+\newlabel{fig:cfstates}{{52}{70}{Christofides algorithm mean number of states}{figure.52}{}}
 \citation{wang}
-\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces Christofides algorithm runtime complexity assuming \(\mathcal  {O}(c^n)\).}}{70}{figure.51}\protected@file@percent }
-\newlabel{fig:cfruntime}{{51}{70}{Christofides algorithm runtime complexity assuming \(\BO (c^n)\)}{figure.51}{}}
-\newlabel{lem:wang}{{1}{70}{}{lemma.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces Christofides algorithm with Wang improvements mean number of states.}}{72}{figure.52}\protected@file@percent }
-\newlabel{fig:wangstates}{{52}{72}{Christofides algorithm with Wang improvements mean number of states}{figure.52}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces Christofides algorithm runtime complexity assuming \(\mathcal  {O}(c^n)\).}}{71}{figure.53}\protected@file@percent }
+\newlabel{fig:cfruntime}{{53}{71}{Christofides algorithm runtime complexity assuming \(\BO (c^n)\)}{figure.53}{}}
+\newlabel{lem:wang}{{1}{71}{}{lemma.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces Christofides algorithm with Wang improvements mean number of states.}}{73}{figure.54}\protected@file@percent }
+\newlabel{fig:wangstates}{{54}{73}{Christofides algorithm with Wang improvements mean number of states}{figure.54}{}}
 \citation{zykov}
-\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces Christofides algorithm with Wang improvements runtime complexity.}}{73}{figure.53}\protected@file@percent }
-\newlabel{fig:wangruntime}{{53}{73}{Christofides algorithm with Wang improvements runtime complexity}{figure.53}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Zykov Algorithms}{73}{subsection.4.4}\protected@file@percent }
-\newlabel{sec:sub:zykov}{{4.4}{73}{Zykov Algorithms}{subsection.4.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {54}{\ignorespaces Same colors with vertex contraction.}}{74}{figure.54}\protected@file@percent }
-\newlabel{fig:zvcon}{{54}{74}{Same colors with vertex contraction}{figure.54}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {55}{\ignorespaces Different colors with edge addition.}}{74}{figure.55}\protected@file@percent }
-\newlabel{fig:zeadd}{{55}{74}{Different colors with edge addition}{figure.55}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {56}{\ignorespaces A Zykov graph equation example.}}{75}{figure.56}\protected@file@percent }
-\newlabel{fig:greqn}{{56}{75}{A Zykov graph equation example}{figure.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {55}{\ignorespaces Christofides algorithm with Wang improvements runtime complexity.}}{74}{figure.55}\protected@file@percent }
+\newlabel{fig:wangruntime}{{55}{74}{Christofides algorithm with Wang improvements runtime complexity}{figure.55}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Zykov Algorithms}{74}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:sub:zykov}{{4.4}{74}{Zykov Algorithms}{subsection.4.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {56}{\ignorespaces Same colors with vertex contraction.}}{75}{figure.56}\protected@file@percent }
+\newlabel{fig:zvcon}{{56}{75}{Same colors with vertex contraction}{figure.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {57}{\ignorespaces Different colors with edge addition.}}{75}{figure.57}\protected@file@percent }
+\newlabel{fig:zeadd}{{57}{75}{Different colors with edge addition}{figure.57}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {58}{\ignorespaces A Zykov graph equation example.}}{76}{figure.58}\protected@file@percent }
+\newlabel{fig:greqn}{{58}{76}{A Zykov graph equation example}{figure.58}{}}
 \citation{read}
 \citation{corneil}
 \citation{corneil}
-\newlabel{eqn:cpfact}{{3}{76}{Zykov Algorithms}{equation.4.3}{}}
-\newlabel{eqn:cpexp}{{4}{76}{Zykov Algorithms}{equation.4.4}{}}
-\newlabel{thm:corneil}{{15}{76}{}{theorem.15}{}}
+\newlabel{eqn:cpfact}{{3}{77}{Zykov Algorithms}{equation.4.3}{}}
+\newlabel{eqn:cpexp}{{4}{77}{Zykov Algorithms}{equation.4.4}{}}
+\newlabel{thm:corneil}{{15}{77}{}{theorem.15}{}}
 \citation{graham}
-\@writefile{lof}{\contentsline {figure}{\numberline {57}{\ignorespaces A Zykov tree example.}}{77}{figure.57}\protected@file@percent }
-\newlabel{fig:ztree}{{57}{77}{A Zykov tree example}{figure.57}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {59}{\ignorespaces A Zykov tree example.}}{78}{figure.59}\protected@file@percent }
+\newlabel{fig:ztree}{{59}{78}{A Zykov tree example}{figure.59}{}}
 \citation{mcdiarmid}
 \citation{corneil}
-\newlabel{step:zbound:branch}{{6}{79}{Zykov Algorithms}{Item.92}{}}
-\newlabel{step:zbound:done}{{11}{79}{Zykov Algorithms}{Item.97}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}The Corneil Graham Algorithm}{80}{subsection.4.5}\protected@file@percent }
-\newlabel{sec:sub:corneil}{{4.5}{80}{The Corneil Graham Algorithm}{subsection.4.5}{}}
+\newlabel{step:zbound:branch}{{6}{80}{Zykov Algorithms}{Item.92}{}}
+\newlabel{step:zbound:done}{{11}{80}{Zykov Algorithms}{Item.97}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}The Corneil Graham Algorithm}{81}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:sub:corneil}{{4.5}{81}{The Corneil Graham Algorithm}{subsection.4.5}{}}
 \citation{cavallaro}
-\@writefile{toc}{\contentsline {section}{\numberline {5}The Proposed Algorithm}{81}{section.5}\protected@file@percent }
-\newlabel{sec:algorithm}{{5}{81}{The Proposed Algorithm}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Outer Loop}{82}{subsection.5.1}\protected@file@percent }
-\newlabel{sec:sub:outer}{{5.1}{82}{Outer Loop}{subsection.5.1}{}}
-\newlabel{step:outer:bron}{{1}{82}{Outer Loop}{Item.102}{}}
-\newlabel{step:outer:greedy}{{2}{82}{Outer Loop}{Item.103}{}}
-\newlabel{step:outer:initk}{{3}{82}{Outer Loop}{Item.104}{}}
-\newlabel{step:outer:match}{{4}{82}{Outer Loop}{Item.105}{}}
-\newlabel{step:outer:call}{{5}{82}{Outer Loop}{Item.106}{}}
-\newlabel{step:outer:result}{{6}{82}{Outer Loop}{Item.107}{}}
-\newlabel{step:outer:newg}{{7}{82}{Outer Loop}{Item.108}{}}
-\newlabel{step:outer:incrk}{{8}{82}{Outer Loop}{Item.109}{}}
-\newlabel{step:outer:done}{{9}{82}{Outer Loop}{Item.110}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {58}{\ignorespaces The proposed algorithm outer loop.}}{83}{figure.58}\protected@file@percent }
-\newlabel{fig:outer}{{58}{83}{The proposed algorithm outer loop}{figure.58}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Called Subroutine}{84}{subsection.5.2}\protected@file@percent }
-\newlabel{sec:sub:called}{{5.2}{84}{Called Subroutine}{subsection.5.2}{}}
-\newlabel{step:sub:check}{{1}{84}{Called Subroutine}{Item.111}{}}
-\newlabel{step:sub:dencalc}{{2}{84}{Called Subroutine}{Item.112}{}}
-\newlabel{step:sub:density}{{3}{84}{Called Subroutine}{Item.113}{}}
-\newlabel{step:sub:smallcalc}{{4}{84}{Called Subroutine}{Item.114}{}}
-\newlabel{step:sub:small}{{5}{84}{Called Subroutine}{Item.115}{}}
-\newlabel{step:sub:common}{{6}{84}{Called Subroutine}{Item.116}{}}
-\newlabel{step:sub:subset}{{7}{84}{Called Subroutine}{Item.117}{}}
-\newlabel{step:sub:select}{{8}{84}{Called Subroutine}{Item.118}{}}
-\newlabel{step:sub:ubcalc}{{9}{84}{Called Subroutine}{Item.119}{}}
-\newlabel{step:sub:ubcheck}{{10}{85}{Called Subroutine}{Item.120}{}}
-\newlabel{step:sub:select2}{{11}{85}{Called Subroutine}{Item.121}{}}
-\newlabel{step:sub:call1}{{12}{85}{Called Subroutine}{Item.122}{}}
-\newlabel{step:sub:result1}{{13}{85}{Called Subroutine}{Item.123}{}}
-\newlabel{step:sub:call2}{{14}{85}{Called Subroutine}{Item.124}{}}
-\newlabel{step:sub:result2}{{15}{85}{Called Subroutine}{Item.125}{}}
-\newlabel{step:sub:fail}{{16}{85}{Called Subroutine}{Item.126}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {59}{\ignorespaces The proposed algorithm called subroutine.}}{86}{figure.59}\protected@file@percent }
-\newlabel{fig:called}{{59}{86}{The proposed algorithm called subroutine}{figure.59}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Supporting Theorems}{87}{subsection.5.3}\protected@file@percent }
-\newlabel{sec:sub:theorems}{{5.3}{87}{Supporting Theorems}{subsection.5.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Maximum Edge Threshold}{87}{subsubsection.5.3.1}\protected@file@percent }
-\newlabel{sec:sub:sub:edges}{{5.3.1}{87}{Maximum Edge Threshold}{subsubsection.5.3.1}{}}
-\newlabel{thm:density}{{16}{87}{Maximum Edge Threshold}{theorem.16}{}}
-\newlabel{cor:density}{{8}{89}{}{corollary.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {60}{\ignorespaces Corollary\nobreakspace  \ref  {cor:density} example.}}{90}{figure.60}\protected@file@percent }
-\newlabel{fig:density}{{60}{90}{Corollary~\ref {cor:density} example}{figure.60}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.2}Vertex Removal}{90}{subsubsection.5.3.2}\protected@file@percent }
-\newlabel{sec:sub:sub:vertex}{{5.3.2}{90}{Vertex Removal}{subsubsection.5.3.2}{}}
-\newlabel{lem:remone}{{2}{90}{}{lemma.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {61}{\ignorespaces Lemma\nobreakspace  \ref  {lem:remone} example.}}{91}{figure.61}\protected@file@percent }
-\newlabel{fig:remone}{{61}{91}{Lemma~\ref {lem:remone} example}{figure.61}{}}
-\newlabel{thm:lowdeg}{{17}{91}{}{theorem.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {62}{\ignorespaces Theorem\nobreakspace  \ref  {thm:lowdeg} example.}}{93}{figure.62}\protected@file@percent }
-\newlabel{fig:lowdeg}{{62}{93}{Theorem~\ref {thm:lowdeg} example}{figure.62}{}}
-\newlabel{cor:lowdeg}{{9}{93}{}{corollary.9}{}}
-\newlabel{thm:subset}{{18}{94}{}{theorem.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {63}{\ignorespaces Theorem \ref  {thm:subset} example.}}{95}{figure.63}\protected@file@percent }
-\newlabel{fig:subset}{{63}{95}{Theorem \ref {thm:subset} example}{figure.63}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.3}Minimum Common Neighbor Upper Bound}{96}{subsubsection.5.3.3}\protected@file@percent }
-\newlabel{sec:sub:sub:common}{{5.3.3}{96}{Minimum Common Neighbor Upper Bound}{subsubsection.5.3.3}{}}
-\newlabel{lem:neighbor}{{3}{96}{}{lemma.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {64}{\ignorespaces Lemma \ref  {lem:neighbor} example.}}{97}{figure.64}\protected@file@percent }
-\newlabel{fig:neighbor}{{64}{97}{Lemma \ref {lem:neighbor} example}{figure.64}{}}
-\newlabel{thm:inter}{{19}{97}{}{theorem.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {65}{\ignorespaces Case \(a_i=1\) contradiction.}}{98}{figure.65}\protected@file@percent }
-\newlabel{fig:aione}{{65}{98}{Case \(a_i=1\) contradiction}{figure.65}{}}
-\newlabel{cor:inter}{{10}{100}{}{corollary.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {66}{\ignorespaces Corollary \ref  {cor:inter} example.}}{101}{figure.66}\protected@file@percent }
-\newlabel{fig:inter}{{66}{101}{Corollary \ref {cor:inter} example}{figure.66}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.4}Recursive Steps}{101}{subsubsection.5.3.4}\protected@file@percent }
-\newlabel{thm:recurse}{{20}{101}{}{theorem.20}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}An Example}{104}{subsection.5.4}\protected@file@percent }
-\newlabel{sec:sub:example}{{5.4}{104}{An Example}{subsection.5.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {67}{\ignorespaces An example graph.}}{105}{figure.67}\protected@file@percent }
-\newlabel{fig:example}{{67}{105}{An example graph}{figure.67}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {68}{\ignorespaces Step: \(G-\set  {g,h}\).}}{106}{figure.68}\protected@file@percent }
-\newlabel{fig:removegh}{{68}{106}{Step: \(G-\set {g,h}\)}{figure.68}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Calculating Common Neighbors}}{107}{table.6}\protected@file@percent }
-\newlabel{tab:common}{{6}{107}{Calculating Common Neighbors}{table.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {69}{\ignorespaces Step: \(G\cdot ad\).}}{108}{figure.69}\protected@file@percent }
-\newlabel{fig:contractad}{{69}{108}{Step: \(G\cdot ad\)}{figure.69}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {70}{\ignorespaces Step: \(G-\set  {b,f}\)}}{109}{figure.70}\protected@file@percent }
-\newlabel{fig:removecf}{{70}{109}{Step: \(G-\set {b,f}\)}{figure.70}{}}
-\newlabel{step:last}{{30}{109}{An Example}{Item.158}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {71}{\ignorespaces Initial coloring.}}{110}{figure.71}\protected@file@percent }
-\newlabel{fig:cstart}{{71}{110}{Initial coloring}{figure.71}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {72}{\ignorespaces Coloring \(b\) and \(f\).}}{110}{figure.72}\protected@file@percent }
-\newlabel{fig:colorbf}{{72}{110}{Coloring \(b\) and \(f\)}{figure.72}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {73}{\ignorespaces Final chromatic coloring.}}{111}{figure.73}\protected@file@percent }
-\newlabel{fig:cfinal}{{73}{111}{Final chromatic coloring}{figure.73}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Random Graph Analysis}{112}{section.6}\protected@file@percent }
-\newlabel{sec:random}{{6}{112}{Random Graph Analysis}{section.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Toaster Design Case Study}{113}{section.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {74}{\ignorespaces An example toaster.}}{113}{figure.74}\protected@file@percent }
-\newlabel{fig:toaster}{{74}{113}{An example toaster}{figure.74}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Toaster Functional Requirements}}{114}{table.7}\protected@file@percent }
-\newlabel{toasterfrs}{{7}{114}{Toaster Functional Requirements}{table.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {75}{\ignorespaces First candidate design.}}{114}{figure.75}\protected@file@percent }
-\newlabel{fig:design1}{{75}{114}{First candidate design}{figure.75}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {76}{\ignorespaces First design chromatic coloring.}}{115}{figure.76}\protected@file@percent }
-\newlabel{fig:d1color}{{76}{115}{First design chromatic coloring}{figure.76}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {77}{\ignorespaces Second candidate design.}}{116}{figure.77}\protected@file@percent }
-\newlabel{fig:design2}{{77}{116}{Second candidate design}{figure.77}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {78}{\ignorespaces Second design chromatic coloring.}}{117}{figure.78}\protected@file@percent }
-\newlabel{fig:d2color}{{78}{117}{Second design chromatic coloring}{figure.78}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusions}{118}{section.8}\protected@file@percent }
-\newlabel{sec:conclusions}{{8}{118}{Conclusions}{section.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}The Proposed Algorithm}{82}{section.5}\protected@file@percent }
+\newlabel{sec:algorithm}{{5}{82}{The Proposed Algorithm}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Outer Loop}{83}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:sub:outer}{{5.1}{83}{Outer Loop}{subsection.5.1}{}}
+\newlabel{step:outer:bron}{{1}{83}{Outer Loop}{Item.102}{}}
+\newlabel{step:outer:greedy}{{2}{83}{Outer Loop}{Item.103}{}}
+\newlabel{step:outer:initk}{{3}{83}{Outer Loop}{Item.104}{}}
+\newlabel{step:outer:match}{{4}{83}{Outer Loop}{Item.105}{}}
+\newlabel{step:outer:call}{{5}{83}{Outer Loop}{Item.106}{}}
+\newlabel{step:outer:result}{{6}{83}{Outer Loop}{Item.107}{}}
+\newlabel{step:outer:newg}{{7}{83}{Outer Loop}{Item.108}{}}
+\newlabel{step:outer:incrk}{{8}{83}{Outer Loop}{Item.109}{}}
+\newlabel{step:outer:done}{{9}{83}{Outer Loop}{Item.110}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {60}{\ignorespaces The proposed algorithm outer loop.}}{84}{figure.60}\protected@file@percent }
+\newlabel{fig:outer}{{60}{84}{The proposed algorithm outer loop}{figure.60}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Called Subroutine}{85}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:sub:called}{{5.2}{85}{Called Subroutine}{subsection.5.2}{}}
+\newlabel{step:sub:check}{{1}{85}{Called Subroutine}{Item.111}{}}
+\newlabel{step:sub:dencalc}{{2}{85}{Called Subroutine}{Item.112}{}}
+\newlabel{step:sub:density}{{3}{85}{Called Subroutine}{Item.113}{}}
+\newlabel{step:sub:smallcalc}{{4}{85}{Called Subroutine}{Item.114}{}}
+\newlabel{step:sub:small}{{5}{85}{Called Subroutine}{Item.115}{}}
+\newlabel{step:sub:common}{{6}{85}{Called Subroutine}{Item.116}{}}
+\newlabel{step:sub:subset}{{7}{85}{Called Subroutine}{Item.117}{}}
+\newlabel{step:sub:select}{{8}{85}{Called Subroutine}{Item.118}{}}
+\newlabel{step:sub:ubcalc}{{9}{85}{Called Subroutine}{Item.119}{}}
+\newlabel{step:sub:ubcheck}{{10}{86}{Called Subroutine}{Item.120}{}}
+\newlabel{step:sub:select2}{{11}{86}{Called Subroutine}{Item.121}{}}
+\newlabel{step:sub:call1}{{12}{86}{Called Subroutine}{Item.122}{}}
+\newlabel{step:sub:result1}{{13}{86}{Called Subroutine}{Item.123}{}}
+\newlabel{step:sub:call2}{{14}{86}{Called Subroutine}{Item.124}{}}
+\newlabel{step:sub:result2}{{15}{86}{Called Subroutine}{Item.125}{}}
+\newlabel{step:sub:fail}{{16}{86}{Called Subroutine}{Item.126}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {61}{\ignorespaces The proposed algorithm called subroutine.}}{87}{figure.61}\protected@file@percent }
+\newlabel{fig:called}{{61}{87}{The proposed algorithm called subroutine}{figure.61}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Supporting Theorems}{88}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:sub:theorems}{{5.3}{88}{Supporting Theorems}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.1}Maximum Edge Threshold}{88}{subsubsection.5.3.1}\protected@file@percent }
+\newlabel{sec:sub:sub:edges}{{5.3.1}{88}{Maximum Edge Threshold}{subsubsection.5.3.1}{}}
+\newlabel{thm:density}{{16}{88}{Maximum Edge Threshold}{theorem.16}{}}
+\newlabel{cor:density}{{8}{90}{}{corollary.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {62}{\ignorespaces Corollary\nobreakspace  \ref  {cor:density} example.}}{91}{figure.62}\protected@file@percent }
+\newlabel{fig:density}{{62}{91}{Corollary~\ref {cor:density} example}{figure.62}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.2}Vertex Removal}{91}{subsubsection.5.3.2}\protected@file@percent }
+\newlabel{sec:sub:sub:vertex}{{5.3.2}{91}{Vertex Removal}{subsubsection.5.3.2}{}}
+\newlabel{lem:remone}{{2}{91}{}{lemma.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {63}{\ignorespaces Lemma\nobreakspace  \ref  {lem:remone} example.}}{92}{figure.63}\protected@file@percent }
+\newlabel{fig:remone}{{63}{92}{Lemma~\ref {lem:remone} example}{figure.63}{}}
+\newlabel{thm:lowdeg}{{17}{92}{}{theorem.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {64}{\ignorespaces Theorem\nobreakspace  \ref  {thm:lowdeg} example.}}{94}{figure.64}\protected@file@percent }
+\newlabel{fig:lowdeg}{{64}{94}{Theorem~\ref {thm:lowdeg} example}{figure.64}{}}
+\newlabel{cor:lowdeg}{{9}{94}{}{corollary.9}{}}
+\newlabel{thm:subset}{{18}{95}{}{theorem.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {65}{\ignorespaces Theorem \ref  {thm:subset} example.}}{96}{figure.65}\protected@file@percent }
+\newlabel{fig:subset}{{65}{96}{Theorem \ref {thm:subset} example}{figure.65}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.3}Minimum Common Neighbor Upper Bound}{97}{subsubsection.5.3.3}\protected@file@percent }
+\newlabel{sec:sub:sub:common}{{5.3.3}{97}{Minimum Common Neighbor Upper Bound}{subsubsection.5.3.3}{}}
+\newlabel{lem:neighbor}{{3}{97}{}{lemma.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {66}{\ignorespaces Lemma \ref  {lem:neighbor} example.}}{98}{figure.66}\protected@file@percent }
+\newlabel{fig:neighbor}{{66}{98}{Lemma \ref {lem:neighbor} example}{figure.66}{}}
+\newlabel{thm:inter}{{19}{98}{}{theorem.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {67}{\ignorespaces Case \(a_i=1\) contradiction.}}{99}{figure.67}\protected@file@percent }
+\newlabel{fig:aione}{{67}{99}{Case \(a_i=1\) contradiction}{figure.67}{}}
+\newlabel{cor:inter}{{10}{101}{}{corollary.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {68}{\ignorespaces Corollary \ref  {cor:inter} example.}}{102}{figure.68}\protected@file@percent }
+\newlabel{fig:inter}{{68}{102}{Corollary \ref {cor:inter} example}{figure.68}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.3.4}Recursive Steps}{102}{subsubsection.5.3.4}\protected@file@percent }
+\newlabel{thm:recurse}{{20}{102}{}{theorem.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}An Example}{105}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:sub:example}{{5.4}{105}{An Example}{subsection.5.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {69}{\ignorespaces An example graph.}}{106}{figure.69}\protected@file@percent }
+\newlabel{fig:example}{{69}{106}{An example graph}{figure.69}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {70}{\ignorespaces Step: \(G-\set  {g,h}\).}}{107}{figure.70}\protected@file@percent }
+\newlabel{fig:removegh}{{70}{107}{Step: \(G-\set {g,h}\)}{figure.70}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Calculating Common Neighbors}}{108}{table.6}\protected@file@percent }
+\newlabel{tab:common}{{6}{108}{Calculating Common Neighbors}{table.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {71}{\ignorespaces Step: \(G\cdot ad\).}}{109}{figure.71}\protected@file@percent }
+\newlabel{fig:contractad}{{71}{109}{Step: \(G\cdot ad\)}{figure.71}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {72}{\ignorespaces Step: \(G-\set  {b,f}\)}}{110}{figure.72}\protected@file@percent }
+\newlabel{fig:removecf}{{72}{110}{Step: \(G-\set {b,f}\)}{figure.72}{}}
+\newlabel{step:last}{{30}{110}{An Example}{Item.158}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {73}{\ignorespaces Initial coloring.}}{111}{figure.73}\protected@file@percent }
+\newlabel{fig:cstart}{{73}{111}{Initial coloring}{figure.73}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {74}{\ignorespaces Coloring \(b\) and \(f\).}}{111}{figure.74}\protected@file@percent }
+\newlabel{fig:colorbf}{{74}{111}{Coloring \(b\) and \(f\)}{figure.74}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {75}{\ignorespaces Final chromatic coloring.}}{112}{figure.75}\protected@file@percent }
+\newlabel{fig:cfinal}{{75}{112}{Final chromatic coloring}{figure.75}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Random Graph Analysis}{113}{section.6}\protected@file@percent }
+\newlabel{sec:random}{{6}{113}{Random Graph Analysis}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Toaster Design Case Study}{114}{section.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {76}{\ignorespaces An example toaster.}}{114}{figure.76}\protected@file@percent }
+\newlabel{fig:toaster}{{76}{114}{An example toaster}{figure.76}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Toaster Functional Requirements}}{115}{table.7}\protected@file@percent }
+\newlabel{toasterfrs}{{7}{115}{Toaster Functional Requirements}{table.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {77}{\ignorespaces First candidate design.}}{115}{figure.77}\protected@file@percent }
+\newlabel{fig:design1}{{77}{115}{First candidate design}{figure.77}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {78}{\ignorespaces First design chromatic coloring.}}{116}{figure.78}\protected@file@percent }
+\newlabel{fig:d1color}{{78}{116}{First design chromatic coloring}{figure.78}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {79}{\ignorespaces Second candidate design.}}{117}{figure.79}\protected@file@percent }
+\newlabel{fig:design2}{{79}{117}{Second candidate design}{figure.79}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {80}{\ignorespaces Second design chromatic coloring.}}{118}{figure.80}\protected@file@percent }
+\newlabel{fig:d2color}{{80}{118}{Second design chromatic coloring}{figure.80}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusions}{119}{section.8}\protected@file@percent }
+\newlabel{sec:conclusions}{{8}{119}{Conclusions}{section.8}{}}
 \@setckpt{sections}{
-\setcounter{page}{119}
+\setcounter{page}{120}
 \setcounter{equation}{4}
 \setcounter{enumi}{3}
 \setcounter{enumii}{0}
@@ -434,12 +444,12 @@
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
 \setcounter{IEEEsubequation}{0}
-\setcounter{figure}{78}
+\setcounter{figure}{80}
 \setcounter{table}{7}
 \setcounter{IEEEbiography}{0}
 \setcounter{Item}{161}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{62}
+\setcounter{bookmark@seq@number}{65}
 \setcounter{float@type}{16}
 \setcounter{algorithm}{0}
 \setcounter{ALG@line}{0}

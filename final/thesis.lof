@@ -33,46 +33,48 @@
 \contentsline {figure}{\numberline {33}{\ignorespaces Finding maximal cliques exhaustive tree example.}}{48}{figure.33}% 
 \contentsline {figure}{\numberline {34}{\ignorespaces Finding maximal cliques using nonadjacent bounding.}}{50}{figure.34}% 
 \contentsline {figure}{\numberline {35}{\ignorespaces Finding maximal cliques using non-maximal bounding.}}{51}{figure.35}% 
-\contentsline {figure}{\numberline {36}{\ignorespaces The first three graphs from the Mycielski construction.}}{54}{figure.36}% 
+\contentsline {figure}{\numberline {36}{\ignorespaces The first three graphs from the Mycielski construction.}}{55}{figure.36}% 
 \contentsline {figure}{\numberline {37}{\ignorespaces Edwards Elphick algorithm mean error.}}{56}{figure.37}% 
-\contentsline {figure}{\numberline {38}{\ignorespaces Improved Edwards Elphick algorithm mean error.}}{57}{figure.38}% 
-\contentsline {figure}{\numberline {39}{\ignorespaces Basic Bron Kerbosch algorithm calls to extend.}}{59}{figure.39}% 
-\contentsline {figure}{\numberline {40}{\ignorespaces Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}}{60}{figure.40}% 
-\contentsline {figure}{\numberline {41}{\ignorespaces Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\).}}{60}{figure.41}% 
-\contentsline {figure}{\numberline {42}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend.}}{61}{figure.42}% 
-\contentsline {figure}{\numberline {43}{\ignorespaces Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}}{62}{figure.43}% 
-\contentsline {figure}{\numberline {44}{\ignorespaces Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\).}}{62}{figure.44}% 
-\contentsline {figure}{\numberline {45}{\ignorespaces An example that allows color interchange.}}{64}{figure.45}% 
-\contentsline {figure}{\numberline {46}{\ignorespaces Last first greedy algorithm with interchange error.}}{66}{figure.46}% 
-\contentsline {figure}{\numberline {47}{\ignorespaces A Christofides algorithm example.}}{67}{figure.47}% 
-\contentsline {figure}{\numberline {48}{\ignorespaces Level 1 of a Christofides algorithm example.}}{68}{figure.48}% 
-\contentsline {figure}{\numberline {49}{\ignorespaces Christofides algorithm example results.}}{69}{figure.49}% 
-\contentsline {figure}{\numberline {50}{\ignorespaces Christofides algorithm mean number of states.}}{69}{figure.50}% 
-\contentsline {figure}{\numberline {51}{\ignorespaces Christofides algorithm runtime complexity assuming \(\mathcal {O}(c^n)\).}}{70}{figure.51}% 
-\contentsline {figure}{\numberline {52}{\ignorespaces Christofides algorithm with Wang improvements mean number of states.}}{72}{figure.52}% 
-\contentsline {figure}{\numberline {53}{\ignorespaces Christofides algorithm with Wang improvements runtime complexity.}}{73}{figure.53}% 
-\contentsline {figure}{\numberline {54}{\ignorespaces Same colors with vertex contraction.}}{74}{figure.54}% 
-\contentsline {figure}{\numberline {55}{\ignorespaces Different colors with edge addition.}}{74}{figure.55}% 
-\contentsline {figure}{\numberline {56}{\ignorespaces A Zykov graph equation example.}}{75}{figure.56}% 
-\contentsline {figure}{\numberline {57}{\ignorespaces A Zykov tree example.}}{77}{figure.57}% 
-\contentsline {figure}{\numberline {58}{\ignorespaces The proposed algorithm outer loop.}}{83}{figure.58}% 
-\contentsline {figure}{\numberline {59}{\ignorespaces The proposed algorithm called subroutine.}}{86}{figure.59}% 
-\contentsline {figure}{\numberline {60}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{90}{figure.60}% 
-\contentsline {figure}{\numberline {61}{\ignorespaces Lemma\nobreakspace \ref {lem:remone} example.}}{91}{figure.61}% 
-\contentsline {figure}{\numberline {62}{\ignorespaces Theorem\nobreakspace \ref {thm:lowdeg} example.}}{93}{figure.62}% 
-\contentsline {figure}{\numberline {63}{\ignorespaces Theorem \ref {thm:subset} example.}}{95}{figure.63}% 
-\contentsline {figure}{\numberline {64}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{97}{figure.64}% 
-\contentsline {figure}{\numberline {65}{\ignorespaces Case \(a_i=1\) contradiction.}}{98}{figure.65}% 
-\contentsline {figure}{\numberline {66}{\ignorespaces Corollary \ref {cor:inter} example.}}{101}{figure.66}% 
-\contentsline {figure}{\numberline {67}{\ignorespaces An example graph.}}{105}{figure.67}% 
-\contentsline {figure}{\numberline {68}{\ignorespaces Step: \(G-\set {g,h}\).}}{106}{figure.68}% 
-\contentsline {figure}{\numberline {69}{\ignorespaces Step: \(G\cdot ad\).}}{108}{figure.69}% 
-\contentsline {figure}{\numberline {70}{\ignorespaces Step: \(G-\set {b,f}\)}}{109}{figure.70}% 
-\contentsline {figure}{\numberline {71}{\ignorespaces Initial coloring.}}{110}{figure.71}% 
-\contentsline {figure}{\numberline {72}{\ignorespaces Coloring \(b\) and \(f\).}}{110}{figure.72}% 
-\contentsline {figure}{\numberline {73}{\ignorespaces Final chromatic coloring.}}{111}{figure.73}% 
-\contentsline {figure}{\numberline {74}{\ignorespaces An example toaster.}}{113}{figure.74}% 
-\contentsline {figure}{\numberline {75}{\ignorespaces First candidate design.}}{114}{figure.75}% 
-\contentsline {figure}{\numberline {76}{\ignorespaces First design chromatic coloring.}}{115}{figure.76}% 
-\contentsline {figure}{\numberline {77}{\ignorespaces Second candidate design.}}{116}{figure.77}% 
-\contentsline {figure}{\numberline {78}{\ignorespaces Second design chromatic coloring.}}{117}{figure.78}% 
+\contentsline {figure}{\numberline {38}{\ignorespaces Edwards Elphick algorithm mean number of steps.}}{57}{figure.38}% 
+\contentsline {figure}{\numberline {39}{\ignorespaces Edwards Elphick algorithm runtime complexity.}}{57}{figure.39}% 
+\contentsline {figure}{\numberline {40}{\ignorespaces Improved Edwards Elphick algorithm mean error.}}{58}{figure.40}% 
+\contentsline {figure}{\numberline {41}{\ignorespaces Improved Edwards Elphick algorithm mean number of steps.}}{59}{figure.41}% 
+\contentsline {figure}{\numberline {42}{\ignorespaces Improved Edwards Elphick algorithm runtime complexity.}}{59}{figure.42}% 
+\contentsline {figure}{\numberline {43}{\ignorespaces Basic Bron Kerbosch algorithm calls to extend.}}{62}{figure.43}% 
+\contentsline {figure}{\numberline {44}{\ignorespaces Basic Bron Kerbosch algorithm runtime complexity.}}{62}{figure.44}% 
+\contentsline {figure}{\numberline {45}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend.}}{63}{figure.45}% 
+\contentsline {figure}{\numberline {46}{\ignorespaces Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}}{64}{figure.46}% 
+\contentsline {figure}{\numberline {47}{\ignorespaces An example that allows color interchange.}}{66}{figure.47}% 
+\contentsline {figure}{\numberline {48}{\ignorespaces Last first greedy algorithm with interchange error.}}{67}{figure.48}% 
+\contentsline {figure}{\numberline {49}{\ignorespaces A Christofides algorithm example.}}{69}{figure.49}% 
+\contentsline {figure}{\numberline {50}{\ignorespaces Level 1 of a Christofides algorithm example.}}{69}{figure.50}% 
+\contentsline {figure}{\numberline {51}{\ignorespaces Christofides algorithm example results.}}{70}{figure.51}% 
+\contentsline {figure}{\numberline {52}{\ignorespaces Christofides algorithm mean number of states.}}{70}{figure.52}% 
+\contentsline {figure}{\numberline {53}{\ignorespaces Christofides algorithm runtime complexity assuming \(\mathcal {O}(c^n)\).}}{71}{figure.53}% 
+\contentsline {figure}{\numberline {54}{\ignorespaces Christofides algorithm with Wang improvements mean number of states.}}{73}{figure.54}% 
+\contentsline {figure}{\numberline {55}{\ignorespaces Christofides algorithm with Wang improvements runtime complexity.}}{74}{figure.55}% 
+\contentsline {figure}{\numberline {56}{\ignorespaces Same colors with vertex contraction.}}{75}{figure.56}% 
+\contentsline {figure}{\numberline {57}{\ignorespaces Different colors with edge addition.}}{75}{figure.57}% 
+\contentsline {figure}{\numberline {58}{\ignorespaces A Zykov graph equation example.}}{76}{figure.58}% 
+\contentsline {figure}{\numberline {59}{\ignorespaces A Zykov tree example.}}{78}{figure.59}% 
+\contentsline {figure}{\numberline {60}{\ignorespaces The proposed algorithm outer loop.}}{84}{figure.60}% 
+\contentsline {figure}{\numberline {61}{\ignorespaces The proposed algorithm called subroutine.}}{87}{figure.61}% 
+\contentsline {figure}{\numberline {62}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{91}{figure.62}% 
+\contentsline {figure}{\numberline {63}{\ignorespaces Lemma\nobreakspace \ref {lem:remone} example.}}{92}{figure.63}% 
+\contentsline {figure}{\numberline {64}{\ignorespaces Theorem\nobreakspace \ref {thm:lowdeg} example.}}{94}{figure.64}% 
+\contentsline {figure}{\numberline {65}{\ignorespaces Theorem \ref {thm:subset} example.}}{96}{figure.65}% 
+\contentsline {figure}{\numberline {66}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{98}{figure.66}% 
+\contentsline {figure}{\numberline {67}{\ignorespaces Case \(a_i=1\) contradiction.}}{99}{figure.67}% 
+\contentsline {figure}{\numberline {68}{\ignorespaces Corollary \ref {cor:inter} example.}}{102}{figure.68}% 
+\contentsline {figure}{\numberline {69}{\ignorespaces An example graph.}}{106}{figure.69}% 
+\contentsline {figure}{\numberline {70}{\ignorespaces Step: \(G-\set {g,h}\).}}{107}{figure.70}% 
+\contentsline {figure}{\numberline {71}{\ignorespaces Step: \(G\cdot ad\).}}{109}{figure.71}% 
+\contentsline {figure}{\numberline {72}{\ignorespaces Step: \(G-\set {b,f}\)}}{110}{figure.72}% 
+\contentsline {figure}{\numberline {73}{\ignorespaces Initial coloring.}}{111}{figure.73}% 
+\contentsline {figure}{\numberline {74}{\ignorespaces Coloring \(b\) and \(f\).}}{111}{figure.74}% 
+\contentsline {figure}{\numberline {75}{\ignorespaces Final chromatic coloring.}}{112}{figure.75}% 
+\contentsline {figure}{\numberline {76}{\ignorespaces An example toaster.}}{114}{figure.76}% 
+\contentsline {figure}{\numberline {77}{\ignorespaces First candidate design.}}{115}{figure.77}% 
+\contentsline {figure}{\numberline {78}{\ignorespaces First design chromatic coloring.}}{116}{figure.78}% 
+\contentsline {figure}{\numberline {79}{\ignorespaces Second candidate design.}}{117}{figure.79}% 
+\contentsline {figure}{\numberline {80}{\ignorespaces Second design chromatic coloring.}}{118}{figure.80}% 

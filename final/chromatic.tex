@@ -3,10 +3,17 @@
 This section investigates the various well-known methods to either estimate or find the exact chromatic number for
 a graph.  Since the chromatic number problem is NP-hard, an alternative to finding an exact answer is finding lower
 and upper bounds for the actual value.  If these bounds happen to match then they provide the actual chromatic
-number.  Algorithms that find the exact chromatic number are of the branch and bound variety.  The two most
+number.  Algorithms that find the exact chromatic number are of the branch-and-bound variety.  The two most
 well-known algorithms are one proposed by Christofides~1971~\cite{christofides} with modifications by
 Wang~(1974)~\cite{wang} and the so-called Zykov algorithms, with a particular implementation by Corneil and
 Graham~(1973)~\cite{corneil}.
+
+The specifics of the random graph analysis used throughout this research are described in detail in
+\sectionname~\ref{sec:random}.  In short, a binomial edge probabity model was used.  Trials were run for edge
+probabilities from \(p=10\%\) to \(p=90\%\) in steps of \(10\%\).  For P-time algorithms, \(1000\) trials were run
+for each edge probability and for each order from \(n=5\) to \(n=50\).  For non-P-time algorithms, due to increased
+runtime duration, the maximum order was reduced to \(30\) and the number of trials was reduced to \(100\) for
+\(n\ge20\).
 
 \subsection{Finding a Lower Bound}\label{sec:sub:lower}
 
@@ -31,6 +38,8 @@ where \(\w'(G)\) is a lower bound estimate for the clique number of \(G\).  Anot
 Note that both of the above lower bounds are tight when \(G\) is empty or complete and are related by the statement
 of \theoremname~\ref{thm:isclique}:
 \[\w(G)=\a(\bar{G})\]
+
+\subsubsection{The Mycielski Construction}\label{sec:sub:sub:mycielski}
 
 It is well-known that certain triangle-free graphs with \(\w(G)=2\) can have arbitrarily high \(\X(G)\).  Examples
 are the graphs created using the so-called \emph{Mycielski} construction~\cite{west}:
@@ -92,6 +101,8 @@ The third graph in \figurename~\ref{fig:mycielski} is called the \emph{Gr\"otzsc
 triangle free graphs with arbitrarily high chromatic number, see Zhang~\cite{zhang}.  Nevertheless, for the general
 case the clique number is a suitable lower bound for the chromatic number.
 
+\subsubsection{The Edwards Elphick Algorithm}\label{sec:sub:sub:edwards}
+
 Unfortunately, the clique number problem for a graph \(G\) is also NP-hard, so the next best step is to use a
 P-time calculation for a \(\w'(G)\) that is as tight as possible to the actual \(\w(G)\).  Edwards and
 Elphick~(1982)~\cite{edwards} investigated several such methods and concluded that the best method was a simple
@@ -106,42 +117,82 @@ calculation based on the adjacency matrix of \(G\):
 \item\label{step:edw:done} \(G[S]\) is a complete subgraph of \(G\) so conclude that \(\w'(G)=\abs{S}\le\w(G)\).
 \end{enumerate}
 
-The Edwards algorithm has \(\BO(n^2)\) runtime complexity and so it is a suitable P-time algorithm.
-
-The results of a random graph analysis of the Edwards Elphick algorithm are shown in
-\figurename~\ref{fig:edwards1err}.  The graph shows edge probability versus the mean of \(\w(G)-\w'(G)\) for
-graphs of increasing order with \(1000\) trials per edge probability.  Note that the mean error increases with both
-order and edge probability.
+The results of a random graph analysis of the Edwards Elphick algorithm measuring the mean of \(\w(G)-\w'(G)\) are
+shown in \figurename~\ref{fig:edwards1:error}.  The error generally increases with both edge probability and order;
+however, there appears to be a small hitch in the curves between \(p=80\%\) and \(p=90\%\) for orders \(n\le40\).
+This may be because of the increased probability that the next selected vertex is in fact universal.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{edwards1_error}
   \caption{Edwards Elphick algorithm mean error.}
-  \label{fig:edwards1err}
+  \label{fig:edwards1:error}
+\end{figure}
+
+The mean number of steps is shown in \figurename~\ref{fig:edwards1:steps}.  The number of steps increases with both
+edge probability and order, so the worst case for each order is assumed to be at \(P=90\%\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards1_steps}
+  \caption{Edwards Elphick algorithm mean number of steps.}
+  \label{fig:edwards1:steps}
+\end{figure}
+
+A graph of the \(P=90\%\) values for each order is shown in \figurename~\ref{fig:edwards1:runtime}.  Note that the
+runtime complexity is \(\BO(n^2)\) as expected.  Thus, the Edwards Elphick algorithm would be suitable for use as a
+lower bound approximator step in a branch-and-bound algorithm.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards1_runtime}
+  \caption{Edwards Elphick algorithm runtime complexity.}
+  \label{fig:edwards1:runtime}
 \end{figure}
 
 Step~\ref{step:edw:select} of the Edwards Elphick algorithm selects the next vertex of lowest index that is
 adjacent to all previously selected vertices.  An improvement would be to select a vertex with the highest degree
 that is adjacent to all previously selected vertices.  This would of course increase the average runtime complexity
-to the worst case of the unimproved algorithm, but it would still be P-time.  The results of this improved
-algorithm are shown in \figurename~\ref{fig:edwards2err}.  Note that the improved algorithm cuts the mean error in
-half.
+to the worst case of the unimproved algorithm, but it should still be P-time.  The results of this improved
+algorithm are shown in \figurename~\ref{fig:edwards2:error}.  Note that the improved algorithm cuts the mean error
+in half.  Also note that the hitch at \(p=80\%\) remains and is more pronounced, probably due to the increased
+probability of finding a high degree vertex that is more likely to be part of a clique.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{edwards2_error}
   \caption{Improved Edwards Elphick algorithm mean error.}
-  \label{fig:edwards2err}
+  \label{fig:edwards2:error}
 \end{figure}
 
-As will be shown later in this section, being able to compute the exact or a suitable estimate of the clique number
-of a graph is an important bounding condition for many of the well-known branch and bound algorithms for finding
-the chromatic number of a graph.  A nice summary of well-known exact clique number algorithms is given by Xiao and
+The increase in the number of steps is demonstrated in \figurename~\ref{fig:edwards2:steps}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards2_steps}
+  \caption{Improved Edwards Elphick algorithm mean number of steps.}
+  \label{fig:edwards2:steps}
+\end{figure}
+
+And the new runtime complexity approximation is shown in \figurename~\ref{fig:edwards2:runtime}.  The improved
+algorithm is still \(\BO(n^2\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{edwards2_runtime}
+  \caption{Improved Edwards Elphick algorithm runtime complexity.}
+  \label{fig:edwards2:runtime}
+\end{figure}
+
+\subsubsection{The Bron Kerbosch Algorithm}\label{sec:sub:sub:bron}
+
+Although an estimate of the clique number is nice, an exact value is better.  Unfortunately, the clique number
+problem is also NP-hard.  A nice summary of well-known exact clique number algorithms is given by Xiao and
 Nagamouchi~(2017)~\cite{xiao}.  They claim that the known algorithms tend to converge on a runtime complexity of
 \(\BO(1.2^n)\).  These algorithms tend be somewhat complex and geared towards larger \(n\).
 
 A simpler yet efficient alternative to these exact algorithms for more modest values of \(n\) is the Bron Kerbosch
-(BK) algorithm~(1973)~\cite{bron}.  In fact, the algorithm that was incrementally developed in the
+(BK) algorithm~(1973)~\cite{bron}.  In fact, the algorithm that was incrementally developed in
 \sectionname~\ref{sec:sub:bandb} is essentially the BK algorithm.  The advantage of BK is that it finds all
 possible cliques in a graph, and hence can be used to find \(\a(G)=\w(\bar{G})\).  Moon and
 Moser~(1965)~\cite{moon} show that every graph \(G\) of order \(n\) has at most \(3^{\frac{n}{3}}\) maximal
@@ -184,8 +235,9 @@ enough to build a maximal clique larger than all previously found maximal clique
 Bron and Kerbosch actually proposed two versions of their algorithm that differ by how the next vertex is selected
 from the \emph{candidates} list in step~\ref{step:bron:select}.  In the basic mode, the first (or any) vertex in
 the list is selected.  \figurename~\ref{fig:bron1:calls} shows the average number of calls to the \emph{extend}
-method versus edge probablity for \(1000\) random graphs per edge probability for orders of \(10\), \(20\), \(30\),
-\(40\), and \(50\).
+method.  The number of calls increases with both graph order and edge probability, except for the appearance of the
+mysterious hitch again at \(p=80\%\).  The worst case for each order is thus assumed to occur at \(90\%\) edge
+probability.
 
 \begin{figure}[H]
   \centering
@@ -194,29 +246,16 @@ method versus edge probablity for \(1000\) random graphs per edge probability fo
   \label{fig:bron1:calls}
 \end{figure}
 
-The number of calls increases with both graph order and edge probability.  The worst case for each order is thus
-assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of calls to the
-\emph{extend} method for the \(1000\) graphs at \(90\%\) edge probability for orders from \(5\) to \(50\) is
-plotted in \figurename~\ref{fig:bron1:runtime}.  Although the graph indicates some sort of \(\log\) effect, a line
-fit is used to approximate the runtime complexity for the algorithm.  The slope of the line indicates that the
-runtime complexity is about \(\BO(2^{0.3218n})\approx\BO(1.25^n)\), which is well below the theoretical value.
+A graph of the \(P=90\%\) values for each order is shown in \figurename~\ref{fig:bron1:runtime}.  This time, the
+graph appears to have a log effect and indeed the best curve fit is a mix of \(n\) and \(log(n)\).  This is expected
+based on the discussion in \sectionname~\ref{sec:sub:sub:runtime}.  The fit indicates that the runtime complexity is
+about \(\BO(2^{0.2259n})\approx\BO(1.17^n)\).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron1_runtime}
-  \caption{Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}
+  \caption{Basic Bron Kerbosch algorithm runtime complexity.}
   \label{fig:bron1:runtime}
-\end{figure}
-
-The graph in \figurename~\ref{fig:bron1:runtime2} focuses in on the target range of orders less than \(20\).  In
-this region the linear fit is a bit steeper, indicating a runtime complexity of
-\(\BO(2^{0.4151})\approx\BO(1.33)\), still below the theoretical value.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=5in]{bron1_runtime_2}
-  \caption{Basic Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\).}
-  \label{fig:bron1:runtime2}
 \end{figure}
 
 In smart mode, a particular vertex in the \emph{used} list with the smallest number of nonadjacencies to vertices
@@ -232,9 +271,9 @@ version of the algorithm.
   \label{fig:bron2:calls}
 \end{figure}
 
-The runtime complexity estimate for the smart version of the algorithm for orders from \(5\) to \(50\) is shown in
+The runtime complexity estimate for the smart version of the algorithm is shown in
 \figurename~\ref{fig:bron2:runtime}.  Note that the runtime complexity is improved to
-\(\BO(2^{0.2815n})\approx\BO(1.22^n)\).
+\(\BO(2^{0.1867n})\approx\BO(1.14^n)\).
 
 \begin{figure}[H]
   \centering
@@ -243,19 +282,8 @@ The runtime complexity estimate for the smart version of the algorithm for order
   \label{fig:bron2:runtime}
 \end{figure}
 
-And finally, \figurename~\ref{fig:bron2:runtime2} focuses on the target range of orders less than \(20\).  Once
-again, the line fit is a bit steeper in this range for a runtime complexity of about
-\(\BO(2^{0.3641})\approx\BO(1.29^n)\).
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=5in]{bron2_runtime_2}
-  \caption{Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(20\).}
-  \label{fig:bron2:runtime2}
-\end{figure}
-
-Therefore, BK in smart mode decreases the runtime complexity over the target range from \(\BO(1.33)\) to
-\(\BO(1.29)\) and so the improved bounding condition is effective.
+Therefore, BK in smart mode decreases the runtime complexity over the target range from \(\BO(1.17)\) to
+\(\BO(1.14)\) and so the improved bounding condition is effective.
 
 \subsection{Finding an Upper Bound}\label{sec:sub:upper}
 
@@ -975,7 +1003,7 @@ where the \(S_{n,k}\) are the so-called Stirling numbers of the second kind:
 The actual runtime complexity is worse because each partition leaf node is at the end of a branch from the root
 state consisting of a certain number of states that depends on the number of nonadjacencies in a graph.
 
-Branch and bound Zykov algorithms require the following components:
+Branch-and-bound Zykov algorithms require the following components:
 \begin{enumerate}
 \item A main routine that establishes \(G\) as the root of the state tree.
 \item A global variable \(X\) that records the state corresponding to the current smallest \coloring{k}.
