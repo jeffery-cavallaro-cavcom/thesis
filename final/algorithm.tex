@@ -156,7 +156,9 @@ it all together based on the current value of \(k\).
 The steps of the recursive subroutine and references to their associated theorems are as follows:
 
 \begin{enumerate}
-\item\label{step:sub:check} If \(n\le k\) then return true (\theoremname~\ref{thm:nlek}).
+\item\label{step:sub:sinit} Initialize \(S'\) to the emptyset.
+
+\item\label{step:sub:check} If \(n\le k\) then go to step~\ref{step:sub:success} (\theoremname~\ref{thm:nlek}).
 
 \item\label{step:sub:dencalc} Calculate a maximum edge threshold:
   \[a=\frac{n^2(k-1)}{2k}\]
@@ -166,14 +168,20 @@ The steps of the recursive subroutine and references to their associated theorem
 \item\label{step:sub:smallcalc} Construct the set \(X\) of all vertices with degree less than \(k\):
   \[X=\setb{v\in V(G)}{\deg(v)<k}\]
 
-\item\label{step:sub:small} If \(X\ne\emptyset\) then replace \(G\) with \(G-X\) and go to
+\item\label{step:sub:small} If \(X\ne\emptyset\) then append \(X\) to \(S'\), replace \(G\) with \(G-X\), and go to
   step~\ref{step:sub:check} (Corollary~\ref{cor:lowdeg}).
+
+\item\label{step:sub:kadj} If \(n<k_{adj}\) then \(k_{adj}=n\).
+
+\item\label{step:sub:lower} Use the Edwards Elphick algorithm to calculate a new lower bound \(\ell\) for \(G\).
+
+\item\label{step:sub:bound} If \(\ell\ge k_{adj}\) then return false.
 
 \item\label{step:sub:common} Calculate the common number of neighbors between each pair of vertices in \(G\),
   stopping if one vertex's neighborhood is found to be a subset of another.
 
 \item\label{step:sub:subset} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace
-  \(G\) with \(G-u\) and go to step~\ref{step:sub:check} (Theorem~\ref{thm:subset}).
+  \(G\) with \(G\cdot uv\) and go to step~\ref{step:sub:check} (Theorem~\ref{thm:subset}).
 
 \item\label{step:sub:select} Let \(b\) be the smallest number of common neighbors between any pair of vertices in
   \(G\) as found in step~\ref{step:sub:common}:
@@ -192,76 +200,93 @@ The steps of the recursive subroutine and references to their associated theorem
 \item\label{step:sub:call1} Assume that \(u\) and \(v\) are assigned the same color by letting \(G'=G\cdot uv\) and
   recursively calling this routine to see if \(G'\) is \colorable{k}.
 
-\item\label{step:sub:result1} If \(G\cdot uv\) is \colorable{k} then return true (Theorem~\ref{thm:recurse}).
+\item\label{step:sub:result1} If \(G'\) is \colorable{k} then replace \(G\) with \(G'\) and go to
+  step~\ref{step:sub:success} (Theorem~\ref{thm:recurse}).
 
 \item\label{step:sub:call2} Assume that \(u\) and \(v\) are assigned different colors by letting \(G'=G+uv\) and
   recursively calling this subroutine to see if \(G'\) is \colorable{k}.
 
-\item\label{step:sub:result2} If \(G+uv\) is \colorable{k} then return true (Theorem~\ref{thm:recurse}).
+\item\label{step:sub:result1} If \(G'\) is \colorable{k} then replace \(G\) with \(G'\) and go to
+  step~\ref{step:sub:success} (Theorem~\ref{thm:recurse}).
 
 \item\label{step:sub:fail} Since neither of the assumptions in steps \ref{step:sub:call1} nor \ref{step:sub:call2}
   hold, conclude that \(G\) is not \colorable{k} and return false.
+
+\item\label{step:sub:success} Replace \(S\) with \(S'\) and return true.
 \end{enumerate}
 
 A flowchart of these steps is shown in \figurename~\ref{fig:called}.
 
 \begin{figure}[H]
   \centering
-  \scalebox{0.65}{
+  \scalebox{0.5}{
     \begin{tikzpicture}[>=latex']
       \node (start) [draw,terminal] at (0,0) {START};
-      \node (donecheck) [draw,decision,below=of start] {\(n\le k\)?};
+      \node (sinit) [draw,process,below=of start] {\(S'=\emptyset\)};
+      \node (donecheck) [draw,decision,below=of sinit] {\(n\le k\)?};
       \node (done) [draw,terminal,right=of donecheck] {RETURN \(G\),TRUE};
       \node (edgecalc) [draw,process,below=of donecheck] {\(a=\frac{n^2(k-1)}{2k}\)};
       \node (edgecheck) [draw,decision,below=of edgecalc] {\(m>a\)?};
-      \node (edgefail) [draw,terminal,right=of edgecheck] {RETURN \(G\),FALSE};
       \node (nodecalc) [draw,process,below=of edgecheck] {\(X=\setb{v\in V(G)}{\deg(v)<k}\)};
       \node (nodecheck) [draw,decision,below=of nodecalc] {\(X\ne\emptyset\)?};
-      \node (remnode) [draw,process,left=of nodecheck] {\(G=G-X\)};
+      \node (remnode) [draw,process,left=of nodecheck] {\(\begin{array}{c}G=G-X \\ S'=S'\cup X\end{array}\)};
       \node (join) [coordinate] at ($(remnode)-(2.5cm,0)$) {};
-      \node (common) [draw,process,below=of nodecheck] {Calculate \(\abs{N(u)\cap N(v)}\)};
+      \node (kadj) [draw,decision,below=of nodecheck] {\(n<k_{adj}\)?};
+      \node (adjust) [draw,process,below=of kadj] {\(k_{adj}=n\)};
+      \node (edwards) [draw,predproc,below=of adjust] {EDWARDS \(G\)};
+      \node (bound) [draw,decision,below=of edwards] {\(\ell<k_{adj}\)?};
+      \node (bfail) [draw,terminal,right=of bound] {RETURN \(G\),FALSE};
+      \node (common) [draw,process,below=of bound] {Calculate \(\abs{N(u)\cap N(v)}\)};
       \node (subcheck) [draw,decision,below=of common] {\(N(u)\subseteq N(v)\)?};
-      \node (remsub) [draw,process,left=of subcheck] {\(G=G-u\)};
-      \node (mininter) [draw,process,below=of subcheck] {\(\displaystyle b=\min_{u,v\in V(G)}\abs{N(u)\cap N(v)}\)};
+      \node (remsub) [draw,process,left=of subcheck] {\(G=G\cdot uv\)};
+      \node (mininter) [draw,process,right=2.5cm of done] {\(\displaystyle b=\min_{u,v\in V(G)}\abs{N(u)\cap N(v)}\)};
       \node (intercalc) [draw,process,below=of mininter] {\(c=n-2-\frac{n-2}{k-1}\)};
       \node (intercheck) [draw,decision,below=of intercalc] {\(b>c\)?};
       \node (interfail) [draw,terminal,right=of intercheck] {RETURN \(G\),FALSE};
-      \node (finduv) [draw,process,right=2.5cm of done] {\(\displaystyle \min_{uv\notin E(G)}\abs{N(u)\cap N(v)}\)};
+      \node (finduv) [draw,process,below=of intercheck] {\(\displaystyle \min_{uv\notin E(G)}\abs{N(u)\cap N(v)}\)};
       \node (save1) [draw,process,below=of finduv] {\(G'=G\cdot uv\)};
       \node (call1) [draw,predproc,below=of save1] {CALL \(G',k\)};
       \node (check1) [draw,decision,below=of call1] {\(R=\)TRUE?};
-      \node (done1) [draw,terminal,right=of check1] {RETURN \(G\),TRUE};
       \node (save2) [draw,process,below=of check1] {\(G'=G+uv\)};
       \node (call2) [draw,predproc,below=of save2] {CALL \(G',k\)};
       \node (check2) [draw,decision,below=of call2] {\(R=\)TRUE?};
-      \node (done2) [draw,terminal,right=of check2] {RETURN \(G\),TRUE};
+      \node (sup2) [draw,process,right=3cmof check2] {\(S=S'\)};
+      \node (done2) [draw,terminal,below=of sup2] {RETURN \(G\),TRUE};
       \node (fail) [draw,terminal,below=of check2] {RETURN \(G\),FALSE};
-      \draw [->] (start) -- node [auto] {\(G,k\)} (donecheck);
+      \draw [->] (start) -- node [auto] {\(G,k\)} (sinit);
+      \draw [->] (sinit) -- (donecheck);
       \draw [->] (donecheck) -- node [auto] {YES} (done);
       \draw [->] (donecheck) -- node [auto] {NO} (edgecalc);
       \draw [->] (edgecalc) -- (edgecheck);
-      \draw [->] (edgecheck) -- node [auto] {YES} (edgefail);
+      \draw [->] (edgecheck) -| node [auto] {YES} (bfail);
       \draw [->] (edgecheck) -- node [auto] {NO} (nodecalc);
       \draw [->] (nodecalc) -- (nodecheck);
       \draw [->] (nodecheck) -- node [auto] {YES} (remnode);
       \draw [->] (remnode) -- (join) |- (donecheck);
-      \draw [->] (nodecheck) -- node [auto] {NO} (common);
+      \draw [->] (nodecheck) -- node [auto] {NO} (kadj);
+      \draw [->] (kadj) -- node [auto] {YES} (adjust);
+      \draw [->] (kadj) -- node [auto] {NO} ($(kadj)+(3cm,0)$) |- (edwards);
+      \draw [->] (adjust) -- (edwards);
+      \draw [->] (edwards) -- node [auto] {\(\ell\)} (bound);
+      \draw [->] (bound) -- node [auto] {YES} (common);
+      \draw [->] (bound) -- node [auto] {NO} (bfail);
       \draw [->] (common) -- (subcheck);
       \draw [->] (subcheck) -- node [auto] {YES} (remsub);
       \draw (remsub) -| (join);
-      \draw [->] (subcheck) -- node [auto] {NO} (mininter);
+      \draw [->] (subcheck) -- node [auto] {NO} ($(subcheck)-(0,3cm)$) -- ++(7cm,0) |- (mininter);
       \draw [->] (mininter) -- (intercalc);
       \draw [->] (intercalc) -- (intercheck);
       \draw [->] (intercheck) -- node [auto] {YES} (interfail);
-      \draw [->] (intercheck) -- node [auto] {NO} ($(intercheck)-(0,2cm)$) -- ++(7cm,0) |- (finduv);
+      \draw [->] (intercheck) -- node [auto] {NO} (finduv);
       \draw [->] (finduv) -- (save1);
       \draw [->] (save1) -- (call1);
       \draw [->] (call1) -- node [auto] {\(G'',R\)} (check1);
-      \draw [->] (check1) -- node [auto] {YES} (done1);
+      \draw [->] (check1) -| node [auto] {YES} (sup2);
       \draw [->] (check1) -- node [auto] {NO} (save2);
       \draw [->] (save2) -- (call2);
       \draw [->] (call2) -- node [auto] {\(G'',R\)} (check2);
-      \draw [->] (check2) -- node [auto] {YES} (done2);
+      \draw [->] (check2) -- node [auto] {YES} (sup2);
+      \draw [->] (sup2) -- (done2);
       \draw [->] (check2) -- node [auto] {NO} (fail);
     \end{tikzpicture}
   }
