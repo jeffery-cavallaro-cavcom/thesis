@@ -278,7 +278,7 @@ The runtime complexity estimate for the smart version of the algorithm is shown 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{bron2_runtime}
-  \caption{Smart Bron Kerbosch algorithm runtime complexity: \(n=5\) to \(50\).}
+  \caption{Smart Bron Kerbosch algorithm runtime complexity.}
   \label{fig:bron2:runtime}
 \end{figure}
 
@@ -330,14 +330,47 @@ The second, from Welsh and Powell (1967), is based on ordering by non-increasing
   \[\X(G)\le\max_i\min\left\{1+\deg(v_i),i\right\}\]
 \end{theorem}
 
-Matula, et al (1967)~\cite{matula} performed a study on the various well-known chromatic number upper bound
-algorithms and concluded that ordering the vertices by non-increasing degree order, as in the Welsh Powell bound,
-worked best.  Matula referred to this algorithm as the \emph{last-first} algorithm.  In fact, Matula offered an
-improvement to this algorithm known as \emph{color interchange}.
+Matula, et al.~(1967)~\cite{matula} performed a study on the various well-known chromatic number greedy algorithms
+and concluded that ordering the vertices by non-increasing degree order, as in the Welsh Powell bound, worked best.
+Matula referred to this algorithm as the \emph{last-first} algorithm.  The results of a random graph analysis of
+the last-first greedy algorithm are shown in \figurename~\ref{fig:greedy:error}.  The graph shows the mean
+difference between the value found by the greedy algorithm and the actual chromatic number.  Note that the former
+is always greater than or equal to the latter.  Due to runtime duration considerations, only \(100\) trials were
+run per edge probability and order was limited to \(20\), which is the target range.  The algorithm is exact for an
+empty or complete graphs and indeed \figurename~\ref{fig:greedy:error} indicates that the algorithm performs better
+at lower and higher edge probabilities.
 
-Color interchange is based on the situation summarized by the example in \figurename~\ref{fig:interchange}.  When it
-is time to color \(v_4\), the normal greedy algorithm is forced to select a new color.  However, vertices \(v_1\)
-and \(v_3\) can swap colors and thus \(v_4\) can use an existing color.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{greedy_error}
+  \caption{Last-first greedy algorithm error.}
+  \label{fig:greedy:error}
+\end{figure}
+
+The mean number of steps is shown in \figurename~\ref{fig:greedy:steps}.  The number of steps increases with both
+edge probability and order, so the worst case for each order is assumed to be at \(P=90\%\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{greedy_steps}
+  \caption{Last-first greedy algorithm steps.}
+  \label{fig:greedy:steps}
+\end{figure}
+
+A graph of the \(P=90\%\) values for each order is shown in \figurename~\ref{fig:greedy:runtime}.  Note that the
+runtime complexity is \(\BO(n^2)\) as expected.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{greedy_runtime}
+  \caption{Last-first greedy algorithm runtime complexity.}
+  \label{fig:greedy:runtime}
+\end{figure}
+
+Matula proposed an improvement to greedy algorithms known as \emph{color interchange}.  Color interchange is based
+on the situation summarized by the example in \figurename~\ref{fig:interchange}.  When it is time to color \(v_4\),
+the normal greedy algorithm is forced to select a new color.  However, vertices \(v_1\) and \(v_3\) can swap colors
+and thus \(v_4\) can use an existing color.
 
 \begin{figure}[H]
   \begin{minipage}{2.5in}
@@ -388,53 +421,39 @@ The specific steps for color interchange when attempting to color vertex \(v_i\)
 \item Color \(c_1\) is now available for \(v_i\).
 \end{enumerate}
 
-The results of a random graph analysis of the last-first greedy algorithm with color interchange are shown in
-\figurename~\ref{fig:greedyerr}.  The previously mentioned Hopcroft algorithm~\cite{hopcroft} was used to partition
-the subgraph in step~\ref{step:color:part}.  The graph shows edge probability versus the mean of the difference
-between the greedy value and the actual chromatic number for graphs of increasing order with \(1000\) trials per
-edge probability.  Note that the algorithm tends to do better at lower and higher edge densities.
+The mean error when color interchange is added to the last-first greedy algorithm is shown in
+\figurename~\ref{fig:greedyint:error}.  The Hopcroft Tarjan algorithm~\cite{hopcroft} introduced in
+\sectionname~\ref{sec:sub:sub:impact} was used to partition the subgraph in step~\ref{step:color:part}.  The
+algorithm still tends to do better at lower and higher edge densities.  It appears that color interchange has a
+slight advantage at higher orders.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=5in]{greedy_error}
-  \caption{Last first greedy algorithm with interchange error.}
-  \label{fig:greedyerr}
+  \includegraphics[width=5in]{greedyint_error}
+  \caption{Last-first greedy algorithm with color interchange error.}
+  \label{fig:greedy:error}
 \end{figure}
 
-Although still P-time, the interchange portion of the algorithm is stepwise expensive.  A random graph analysis was
-performed on \(1000\) graphs per various edge probabilities and graph order comparing upper bound values from
-greedy coloring with and without color interchange.  The results for \(n=50\) are typical and are shown in
-\tablename~\ref{tab:greedy}.  The mean, min, and max for greedy coloring without interchange minus greedy coloring
-with interchange are shown.  The data suggests that color interchange might not be very much of a benefit.
+The mean number of steps with interchange is shown in \figurename~\ref{fig:greedyint:steps}.  Once again, the
+number of steps increases with both edge probability and order, so the worst case for each order is assumed to be
+at \(P=90\%\).
 
-\begin{table}[H]
+\begin{figure}[H]
   \centering
-  \caption{Effectiveness of Color Interchange}
-  \label{tab:greedy}
-  \begin{tabular}{|c|c|c|c|}
-    \hline
-    edge prob (\%) & mean & min & max \\
-    \hline
-    10 & 0.04 & -1 & 1 \\
-    \hline
-    20 & 0.023 & -1 & 2 \\
-    \hline
-    30 & 0.027 & -2 & 2 \\
-    \hline
-    40 & 0.016 & -2 & 2 \\
-    \hline
-    50 & 0.008 & -2 & 2 \\
-    \hline
-    60 & -0.005 & -3 & 2 \\
-    \hline
-    70 & -0.001 & -2 & 2 \\
-    \hline
-    80 & 0.001 & 0 & 1 \\
-    \hline
-    90 & 0 & 0 & 0 \\
-    \hline
-  \end{tabular}
-\end{table}
+  \includegraphics[width=5in]{greedyint_steps}
+  \caption{Last-first greedy algorithm with color interchange steps.}
+  \label{fig:greedyint:steps}
+\end{figure}
+
+A graph of the \(P=90\%\) values for each order is shown in \figurename~\ref{fig:greedyint:runtime}.  Note that
+color interchange is a bit expensive; however, the runtime complexity is still\(\BO(n^2)\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{greedyint_runtime}
+  \caption{Last-first greedy algorithm with color interchange runtime complexity.}
+  \label{fig:greedyint:runtime}
+\end{figure}
 
 \subsection{The Christofides Algorithm}\label{sec:sub:christofides}
 
@@ -1016,7 +1035,7 @@ Branch-and-bound Zykov algorithms require the following components:
 \end{enumerate}
 
 The lower bound method is typically one of the clique number lower bound algorithms (e.g. Edwards Elphick).  The
-upper bound method is typically a greedy coloring algorithm (e.g., last first).
+upper bound method is typically a greedy coloring algorithm (e.g., last-first).
 
 The steps of the main routine are as follows:
 \begin{enumerate}
