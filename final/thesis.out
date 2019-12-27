@@ -54,13 +54,14 @@
 \BOOKMARK [1][-]{section.5}{The Proposed Algorithm}{}% 54
 \BOOKMARK [2][-]{subsection.5.1}{The Main Routine}{section.5}% 55
 \BOOKMARK [2][-]{subsection.5.2}{The Recursive Subroutine}{section.5}% 56
-\BOOKMARK [2][-]{subsection.5.3}{Supporting Theorems}{section.5}% 57
-\BOOKMARK [3][-]{subsubsection.5.3.1}{Maximum Edge Threshold}{subsection.5.3}% 58
-\BOOKMARK [3][-]{subsubsection.5.3.2}{Vertex Removal}{subsection.5.3}% 59
-\BOOKMARK [3][-]{subsubsection.5.3.3}{Minimum Common Neighbor Upper Bound}{subsection.5.3}% 60
-\BOOKMARK [3][-]{subsubsection.5.3.4}{Recursive Steps}{subsection.5.3}% 61
-\BOOKMARK [2][-]{subsection.5.4}{An Example}{section.5}% 62
-\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 63
-\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 64
-\BOOKMARK [1][-]{section.8}{Conclusions}{}% 65
-\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 66
+\BOOKMARK [3][-]{subsubsection.5.2.1}{The Coloring Routine}{subsection.5.2}% 57
+\BOOKMARK [2][-]{subsection.5.3}{Supporting Theorems}{section.5}% 58
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Maximum Edge Threshold}{subsection.5.3}% 59
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Vertex Removal}{subsection.5.3}% 60
+\BOOKMARK [3][-]{subsubsection.5.3.3}{Minimum Common Neighbor Upper Bound}{subsection.5.3}% 61
+\BOOKMARK [3][-]{subsubsection.5.3.4}{Recursive Steps}{subsection.5.3}% 62
+\BOOKMARK [2][-]{subsection.5.4}{An Example}{section.5}% 63
+\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 64
+\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 65
+\BOOKMARK [1][-]{section.8}{Conclusions}{}% 66
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 67

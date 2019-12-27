@@ -2,10 +2,12 @@
 
 It was shown in \sectionname~\ref{sec:chromatic} that the Christofides algorithm with the Wang improvements
 outperforms the Zykov algorithm.  But can some additional bounding conditions be added to the Zykov algorithm to
-close the performance gap?  This section proposes a new Zykov-like algorithm that attempts to do just that.
+close the performance gap?  This section proposes a new Zykov-like algorithm that attempts to do just that.  An
+early version of this new algorithm was first introduced by the author and his advisor in collaboration with a team
+of mechanical engineering researchers from SUNY Buffalo \cite{cavallaro}.
 
-The major advantages of the Christofides and Zykov algorithms are that they don't depend on the connectedness of a
-graph, an example of a chromatic coloring is readily available, and the fact that the algorithms can be coded
+The major advantages of the Christofides and the Zykov algorithms are that they don't depend on the connectedness
+of a graph, an example of a chromatic coloring is readily available, and the fact that the algorithms can be coded
 rather easily to run on a computer.  Their major disadvantage is their high runtime complexity, which is inherent
 to the chromatic number problem.
 
@@ -19,36 +21,35 @@ Thus, the goals of the proposed algorithm are as follows:
 \end{enumerate}
 
 To accomplish these goals, the proposed algorithm loops on successively higher values of \(k\).  For each candidate
-\(k\) value, a graph is assumed to be \colorable{k} and a modified version of a Zykov algorithm is executed to
-either prove or disprove this assumption.  Since a candidate \(k\) value is known, certain reversible steps can be
-applied to mutate \(G\) into simpler graphs with equivalent colorability and test for early termination of the
-current Zykov tree.  The first \(k\) for which \(G\) (or one of its simplifications) is found to be \colorable{k}
-is the chromatic number of \(G\).
+\(k\) value, a graph \(G\) is assumed to be \colorable{k} and a modified version of a Zykov algorithm is executed
+on \(G\) to either prove or disprove this assumption.  Since a candidate \(k\) value is known, certain reversible
+steps can be applied to mutate \(G\) into simpler graphs with equivalent colorability and test for early
+termination of the Zykov tree.  The first \(k\) for which \(G\) (or one of its simplifications) is found to be
+\colorable{k} is the chromatic number of \(G\).
 
 One slight disadvantage of the proposed algorithm is that whereas the other algorithms readily provide examples of
-actual chromatic colorings, the proposed algorithm requires a reverse traversal of its reversible steps in order to
-construct such a coloring.  However, this is only a P-time step.
+actual chromatic colorings, the proposed algorithm requires an additional step to construct a chromatic coloring: a
+greedy algorithm with a particular sorting of the vertices.  The coloring step is discussed in detail in
+\sectionname~\ref{sec:sub:sub:coloring}.  Albeit additional work, this extra coloring step is P-time so it does
+not have a significant impact on the performance of the proposed algorithm.
 
-An early version of this algorithm was first proposed by the author and his advisor in collaboration with a team of
-mechanical engineering researchers from SUNY Buffalo \cite{cavallaro}.  It accepts a graph \(G\) as input and
-provides \(\X(G)\) and a chromatic coloring as output and is composed of the following components:
+The proposed algorithm accepts a graph \(G\) as input and provides \(\X(G)\) and a chromatic coloring as output and
+is composed of the following components:
 \begin{enumerate}
-\item A main routine that establishes \(G\) as the root of the state tree and loops on increasing values of \(k\).
+\item A main routine that loops on increasing values of \(k\).
 \item The Bron Kerbosch algorithm used by the main routine to determine a lower bound \(k_{min}\) for the chromatic
   number of \(G\).
 \item The last-first with color interchange greedy coloring algorithm used by the main routine to determine an
-  initial upper bound \(k_{max}\) for the chromatic number of \(G\) and a corresponding \coloring{k_{max}} of
-  \(G\).
+  upper bound \(k_{max}\) for the chromatic number of \(G\) and a corresponding \coloring{k_{max}} of \(G\).
 \item A recursive subroutine that runs a modified Zykov algorithm with additional pruning to determine if
   \(G\) is \colorable{k}.
 \item The Edwards Elphick algorithm used by the recursive subroutine to determine a lower bound for the chromatic
-  number of the graph at each state in the Zykov tree.
-\item A list \(S\) of vertices removed by the recursive subroutine in the order removed.
+  number of a graph.
 \item A coloring routine called by the main routine to construct a chromatic coloring of \(G\) based on the results
   of the algorithm.
 \end{enumerate}
 
-The main routine, called subroutine, and coloring routine are summarized in the following sections.  A complete
+The main routine, recursive subroutine, and coloring routine are summarized in the following sections.  A complete
 description of the theorems that support the various steps in the algorithm and the application of the algorithm to
 a sample graph then follow.
 
@@ -62,40 +63,45 @@ bounds match then the default coloring is accepted.  If not, then the main routi
 recursive subroutine is called to execute a modified Zykov algorithm in order to determine if \(G\) is
 \colorable{k}.  If \(k\) reaches the upper bound then the default coloring is accepted as chromatic.
 
-Instead of walking a single Zykov tree for the whole graph, the Wang technique is used to break the input graph
-into smaller graphs by selecting a vertex that occurs in the least number of MISs.  Each of these MISs implies a
-set of vertex contractions and edge additions that are applied to the input graph.  Thus, the modified Zykov
-algorithm is applied in sequence to these separate trees for each \(k\) value.  The first successful return
-identifies \(\X(G)\) and then the coloring routine is called to construct the final coloring.
+Instead of walking a single Zykov tree for the whole graph \(G\), the Wang technique is used to mutate \(G\) into
+smaller graphs \(G_i\) by selecting a vertex that occurs in the least number of MISs in \(G\).  Each of these MISs
+implies a set of vertex contractions and edge additions that are applied to \(G\) to construct the corresponding
+\(G_i\).  Thus, the modified Zykov algorithm is applied in sequence to these separate \(G_i\) for each \(k\) value.
+The first successful return identifies \(\X(G)\) and then the coloring routine is called to construct the final
+coloring based on the information from the successful tree.
 
 The steps of the main routine are as follows:
 
 \begin{enumerate}
-\item\label{step:outer:bron} Use the Bron Kerbosch algorithm to compute a \(k_{min}\).
+\item\label{step:outer:bron} Use the Bron Kerbosch algorithm to compute a chromatic lower bound \(k_{min}\)
+  for the input \(G\).
 
-\item\label{step:outer:greedy} Use the greedy last-first algorithm to compute a \(k_{max}\) and a default
-  \coloring{k_{max}}.
-
-\item\label{step:outer:initr} Initialized the removed vertices list \(S\) to empty.
+\item\label{step:outer:greedy} Use the greedy last-first with color interchange algorithm to compute a chromatic
+  number upper bound \(k_{max}\) and a default \coloring{k_{max}} for \(G\).
 
 \item\label{step:outer:initk} Initialize \(k\) to \(k_{min}\).
 
-\item\label{step:outer:match} If \(k=k_{max}\) then accept the coloring found in step~\ref{step:outer:greedy} and
-  go to step~\ref{step:outer:done}.
+\item\label{step:outer:match} If \(k_{min}=k_{max}\) then accept the default coloring found in
+  step~\ref{step:outer:greedy} and go to step~\ref{step:outer:done}.
 
-\item\label{step:outer:call} Call the recursive subroutine to determine if \(G\) is \colorable{k}.  The recursive
-  subroutine returns a possibly simplified \(G\) called \(G'\) and a boolean value \(R\) that reports the result of
-  the test.  It may also adjust \(k_{max}\) downward and update \(S\).
+\item\label{step:outer:trees} Use the Bron algorithm on \(\bar{G}\) to find all the MISs in \(G\).  Select a vertex
+  that occurs in the smallest number of MISs and then use those MISs to construct \(n\) graphs that are the roots
+  of \(n\) Zykov trees.  Each tree is constructed from \(G\) by contracting the vertices in the MIS and adding
+  edges between the contracted vertex and all vertices not in the MIS.  Each tree is also associated with an
+  initially empty list of removed vertices \(S\).
 
-\item\label{step:outer:result} If \(G\) is \colorable{k} (\(R=\) true) then go to step~\ref{step:outer:color}.
+\item\label{step:outer:check} If \(k=k_{max}\) then accept the default coloring found in
+  step~\ref{step:outer:greedy} and go to step~\ref{step:outer:done}.
 
-\item\label{step:outer:newg} Replace \(G\) with \(G'\).  As will be seen, doing this avoids needless reapplication
-  of certain steps in the recursive subroutine.
+\item\label{step:outer:call} Call the recursive subroutine on each tree to determine if its \(G\) is \colorable{k}.
+  The recursive subroutine accepts the current tree's graph \(G\) and removed vertex list \(S\) as input and
+  returns a Boolean result \(R\).  The called routine may simplify \(G\) and may append removed vertices to
+  \(S\).  If a tree results in a solution (\(R=\)true) then go to step~\ref{step:outer:color}.
 
-\item\label{step:outer:incrk} Increment \(k\) and go to step~\ref{step:outer:match}.
+\item\label{step:outer:incrk} Increment \(k\) and go to step~\ref{step:outer:check}.
 
-\item\label{step:outer:color} Call the coloring routine to construct the final coloring based on the current state
-  of \(G\) and the removed vertex list \(S\).
+\item\label{step:outer:color} Call the coloring routine to construct the final coloring based on the successful
+  tree's final state of \(G\) and \(S\).
 
 \item\label{step:outer:done} Return the current \(k\) as the chromatic number and the found chromatic coloring.
 \end{enumerate}
@@ -142,7 +148,7 @@ A flowchart of these steps is shown in \figurename~\ref{fig:outer}.
       \draw [->] (check) -- node [auto] {NO} (iinc);
       \draw [->] (iinc) -- ++(-3cm,0) |- (icheck);
       \draw [->] (check) -- node [auto] {YES} (color);
-      \draw [->] (color) -- (done2);
+      \draw [->] (color) -- node [auto] {\(c\)} (done2);
     \end{tikzpicture}
   }
   \caption{The proposed algorithm main routine.}
@@ -150,10 +156,9 @@ A flowchart of these steps is shown in \figurename~\ref{fig:outer}.
 \end{figure}
 
 Note that in the case of the null or an empty graph, the upper and lower bounds for \(k\) will match and the main
-routine will terminate immediately.  Thus, the recursive subroutine is always called with \(k\ge2\).  Also note
-that the main routine is guaranteed to terminate because \(k\) will eventually reach \(k_{max}\), or \(k\) will
-eventually equal or exceed \(n\) due to subgraph simplifications applied by the recursive subroutine.  The latter
-case causes the recursive subroutine to return true.
+routine will terminate immediately with the default greedy coloring.  Thus, the recursive subroutine is always
+called with \(k\ge2\).  Also note that the main routine is guaranteed to terminate because \(k\) will eventually
+reach \(k_{max}\) or the recursive subroutine will return true when a simplification occurs such that \(n(G)\le k\).
 
 \subsection{The Recursive Subroutine}\label{sec:sub:called}
 
@@ -324,6 +329,8 @@ there will be sufficient vertex contractions such that \(n\le k\), resulting in 
 additions such that the graph becomes complete and (as will be shown) is rejected by step~\ref{step:sub:density},
 resulting in a false return.  Note that in the event of a false return, any modifications to the current state of
 \(G\) resulting from the recursive calls are not returned to the main routine.
+
+\subsubsection{The Coloring Routine}\label{sec:sub:sub:coloring}
 
 \subsection{Supporting Theorems}\label{sec:sub:theorems}
 
