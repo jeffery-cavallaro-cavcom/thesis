@@ -2,7 +2,7 @@
 
 It was shown in \sectionname~\ref{sec:chromatic} that the Christofides algorithm with the Wang improvements
 outperforms the Zykov algorithm.  But can some additional bounding conditions be added to the Zykov algorithm to
-close the performance gap.  This section proposes a new Zykov-like algorithm that attempts to do just that.
+close the performance gap?  This section proposes a new Zykov-like algorithm that attempts to do just that.
 
 The major advantages of the Christofides and Zykov algorithms are that they don't depend on the connectedness of a
 graph, an example of a chromatic coloring is readily available, and the fact that the algorithms can be coded
@@ -27,8 +27,7 @@ is the chromatic number of \(G\).
 
 One slight disadvantage of the proposed algorithm is that whereas the other algorithms readily provide examples of
 actual chromatic colorings, the proposed algorithm requires a reverse traversal of its reversible steps in order to
-construct such a coloring.  However, as was stated earlier, it is more important during the axiomatic design
-analytical process to know the minimum number of parts as opposed to an actual FR allocation to those parts.
+construct such a coloring.  However, this is only a P-time step.
 
 An early version of this algorithm was first proposed by the author and his advisor in collaboration with a team of
 mechanical engineering researchers from SUNY Buffalo \cite{cavallaro}.  It accepts a graph \(G\) as input and
@@ -44,9 +43,7 @@ provides \(\X(G)\) and a chromatic coloring as output and is composed of the fol
   \(G\) is \colorable{k}.
 \item The Edwards Elphick algorithm used by the recursive subroutine to determine a lower bound for the chromatic
   number of the graph at each state in the Zykov tree.
-\item A global value \(k_{adj}\) that is initially set to \(k_{max}\) but can be adjusted downward by the recursive
-  subroutine.
-\item A global list \(S\) of vertices removed by the recursive subroutine in the order removed.
+\item A list \(S\) of vertices removed by the recursive subroutine in the order removed.
 \item A coloring routine called by the main routine to construct a chromatic coloring of \(G\) based on the results
   of the algorithm.
 \end{enumerate}
@@ -57,12 +54,19 @@ a sample graph then follow.
 
 \subsection{The Main Routine}\label{sec:sub:main}
 
-The main routine accepts a graph \(G\) as input and returns \(\X(G)\) and a chromatic coloring.  It initially
-computes lower and upper bounds for \(k\) using Bron Kerbosch and greedy last-first, respectively.  It then loops
-on increasing values of \(k\), starting with the lower bound and going no further than the upper bound.  For each
-value of \(k\), the recursive subroutine executes a modified Zykov algorithm to determine if \(G\) is \colorable{k}.
-The first such successful return identifies \(\X(G)\) and then the coloring routine is called to construct the
-final coloring.
+The main routine accepts a graph \(G\) as input and returns \(\X(G)\) and a chromatic coloring for \(G\).  It
+initially computes a chromatic number lower bound using Bron Kerbosch and a chromatic number upper bound using
+greedy last-first with color interchange.  The latter also provides a default coloring.  If the lower and upper
+bounds match then the default coloring is accepted.  If not, then the main routine loops on increasing values of
+\(k\), starting with the lower bound and going no further than the upper bound.  For each value of \(k\), the
+recursive subroutine is called to execute a modified Zykov algorithm in order to determine if \(G\) is
+\colorable{k}.  If \(k\) reaches the upper bound then the default coloring is accepted as chromatic.
+
+Instead of walking a single Zykov tree for the whole graph, the Wang technique is used to break the input graph
+into smaller graphs by selecting a vertex that occurs in the least number of MISs.  Each of these MISs implies a
+set of vertex contractions and edge additions that are applied to the input graph.  Thus, the modified Zykov
+algorithm is applied in sequence to these separate trees for each \(k\) value.  The first successful return
+identifies \(\X(G)\) and then the coloring routine is called to construct the final coloring.
 
 The steps of the main routine are as follows:
 
@@ -71,8 +75,6 @@ The steps of the main routine are as follows:
 
 \item\label{step:outer:greedy} Use the greedy last-first algorithm to compute a \(k_{max}\) and a default
   \coloring{k_{max}}.
-
-\item\label{step:outer:initkadj} Initialize \(k_{adj}\) to \(k_{min}\).
 
 \item\label{step:outer:initr} Initialized the removed vertices list \(S\) to empty.
 
@@ -105,34 +107,42 @@ A flowchart of these steps is shown in \figurename~\ref{fig:outer}.
   \scalebox{0.75}{
     \begin{tikzpicture}[>=latex']
       \node (start) [draw,terminal] at (0,0) {START};
-      \node (bron) [draw,predproc,below=of start] {BRON \(G\)};
-      \node (greedy) [draw,predproc,below=of bron] {GREEDY \(G\)};
-      \node (kadjinit) [draw,process,below=of greedy] {\(k_{adj}=k_{max}\)};
-      \node (sinit) [draw,process,below=of kadjinit] {\(S=\emptyset\)};
-      \node (kinit) [draw,process,below=of sinit] {\(k=k_{min}\)};
-      \node (kcheck) [draw,decision,below=of kinit] {\(k=k_{max}\)?};
-      \node (call) [draw,predproc,below=of kcheck] {CALL \(G,k\)};
-      \node (newg) [draw,process,below=of call] {\(G=G'\)};
-      \node (iskcolor) [draw,decision,below=of newg] {\(R=\)TRUE?};
-      \node (color) [draw,predproc,right=of iskcolor] {COLOR \(G,S\)};
-      \node (kdone) [draw,terminal,right=of color] {RETURN \(k\)};
-      \node (kinc) [draw,process,below=of iskcolor] {\(k=k+1\)};
-      \node (belowinc) [coordinate,below=0.5cm of kinc] {};
-      \node (leftinc) [coordinate,left=3cm of belowinc] {};
+      \node (bron) [draw,predproc,below=of start]
+            {\(\begin{array}{c} \text{BRON}\ G \\ \text{GREEDY}\ G \end{array}\)};
+      \node (kinit) [draw,process,below=of bron] {\(k=k_{min}\)};
+      \node (kcheck) [draw,decision,below=of kinit] {\(k_{min}=k_{max}\)?};
+      \node (trees) [draw,predproc,below=of kcheck] {TREES \(G\)};
+      \node (kcheck2) [draw,decision,below=of trees] {\(k=k_{max}\)?};
+      \node (cdef) [draw,process,left=2cm of kcheck2] {\(c=c_{def}\)};
+      \node (done) [draw,terminal,below=of cdef] {RETURN \(k,c\)};
+      \node (iinit) [draw,process,below=of kcheck2] {\(i=1\)};
+      \node (icheck) [draw,decision,below=of iinit] {\(i\le n\)?};
+      \node (kinc) [draw,process,right=2cm of icheck] {\(k=k+1\)};
+      \node (select) [draw,process,below=of icheck] {\(\begin{array}{c} G=G[i] \\ S=S[i] \end{array}\)};
+      \node (zykov) [draw,predproc,below=of select] {ZYKOV \(G,S,k\)};
+      \node (check) [draw,decision,below=of zykov] {\(R\)?};
+      \node (iinc) [draw,process,below=of check] {\(i=i+1\)};
+      \node (color) [draw,predproc,right=2cm of check] {COLOR \(G,S\)};
+      \node (done2) [draw,terminal,below=of color] {RETURN \(k,c\)};
       \draw [->] (start) -- node [auto] {\(G\)} (bron);
-      \draw [->] (bron) -- node [auto] {\(k_{min}\)} (greedy);
-      \draw [->] (greedy) -- node [auto] {\(k_{max}\)} (kadjinit);
-      \draw [->] (kadjinit) -- (sinit);
-      \draw [->] (sinit) -- (kinit);
+      \draw [->] (bron) -- node [auto] {\(k_{min},k_{max},c_{def}\)} (kinit);
       \draw [->] (kinit) -- (kcheck);
-      \draw [->] (kcheck) -| node [auto,pos=0.1] {YES} (kdone);
-      \draw [->] (kcheck) -- node [auto] {NO} (call);
-      \draw [->] (call) -- node [auto] {\(G',R,k_{adj},S\)} (newg);
-      \draw [->] (newg) -- (iskcolor);
-      \draw [->] (iskcolor) -- node [auto] {YES} (color);
-      \draw [->] (color) -- (kdone);
-      \draw [->] (iskcolor) -- node [auto] {NO} (kinc);
-      \draw [->] (kinc) -- (belowinc) -- (leftinc) |- (kcheck);
+      \draw [->] (kcheck) -- node [auto] {NO} (trees);
+      \draw [->] (trees) -- node [auto] {\(G[1:n],S[1:n]\)} (kcheck2);
+      \draw [->] (kcheck2) -- node [auto,swap] {YES} (cdef);
+      \draw [->] (kcheck) -| node [auto,swap,pos=0.2] {YES} (cdef);
+      \draw [->] (cdef) -- (done);
+      \draw [->] (kcheck2) -- node [auto] {NO} (iinit);
+      \draw [->] (iinit) -- (icheck);
+      \draw [->] (icheck) -- node [auto] {NO} (kinc);
+      \draw [->] (kinc) |- (kcheck2);
+      \draw [->] (icheck) -- node [auto] {YES} (select);
+      \draw [->] (select) -- (zykov);
+      \draw [->] (zykov) -- node [auto] {\(G,S,R\)} (check);
+      \draw [->] (check) -- node [auto] {NO} (iinc);
+      \draw [->] (iinc) -- ++(-3cm,0) |- (icheck);
+      \draw [->] (check) -- node [auto] {YES} (color);
+      \draw [->] (color) -- (done2);
     \end{tikzpicture}
   }
   \caption{The proposed algorithm main routine.}
