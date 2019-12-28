@@ -357,8 +357,10 @@ for \(v\) regardless of how \(N(v)\) is colored.  This result is formalized in \
   \label{fig:reverse}
 \end{figure}
 
-The steps of the coloring routine are as follows for a complete graph \(G_i\) of order \(k\) and a removed vertex
-list \(S_i\) from tree \(i\), and an input graph \(G\) that is \chromatic{k}:
+The coloring routine accepts a graph \(G\) that is \chromatic{k}, a complete graph \(G_i\) of order \(k\) that
+results from running the modified Zykov algorithm on \(G\), and a removed vertex list \(R\) sorted by the order
+removed as inputs.  It outputs a \chromatic{k} coloring of \(G\).  The steps of the coloring routine are as
+follows:
 \begin{enumerate}
 \item Start with \(k\) empty color classes \(\set{c_1,\ldots,c_k}\).
 \item Order the vertices in \(G_i\) into a list.  Note that these vertices represent single and/or contracted
@@ -367,8 +369,8 @@ list \(S_i\) from tree \(i\), and an input graph \(G\) that is \chromatic{k}:
   single and/or contracted vertices from \(G\).
 \item Assign all of the vertices from \(G\) that are represented by \(v_j\in V(G_i)\) to color \(c_j\).
 \item Greedy color the remaining vertices in the list.  No additional colors should be required.  Note that when
-  determining color use by adjacent vertices, all of the single and/or contracted vertices from \(G\) represented a
-  vertex in the sorted list must be checked against all the single and/or contracted vertices from \(G\)
+  determining color use by adjacent vertices, all of the single and/or contracted vertices from \(G\) represented
+  by a vertex in the sorted list must be checked against all the single and/or contracted vertices from \(G\)
   represented by the previously colored vertices in the sorted list.
 \end{enumerate}
 
@@ -378,27 +380,87 @@ Consider the example graph \(G\) and its reduced form \(G_1\) in \figurename~\re
   \begin{minipage}{2.5in}
     \centering
     \begin{tikzpicture}[every node/.style={labeled node}]
+      \node (0) at (0,0) {\(0\)};
+      \node (1) [left=of 0] {\(1\)};
+      \node (2) [left=of 1] {\(2\)};
+      \node (3) [below=of 0] {\(3\)};
+      \node (4) [below=of 1] {\(4\)};
+      \node (5) [below=of 2] {\(5\)};
+      \draw (0) edge (1) edge (3);
+      \draw (1) edge (2) edge (3) edge (4);
+      \draw (3) edge (4);
+      \draw (4) edge (5);
     \end{tikzpicture}
 
     \(G\)
   \end{minipage}
-  \begin{minipage}{2.5in}
+  \begin{minipage}{2in}
     \centering
     \begin{tikzpicture}[every node/.style={labeled node}]
+      \node (1) at (0,0) {\(1\)};
+      \node (04) [below=of 1] {\(04\)};
+      \node (3) [left=of 04] {\(3\)};
+      \draw (1) edge (04) edge (3);
+      \draw (04) edge (3);
     \end{tikzpicture}
+
+    \(G_1\)
+  \end{minipage}
+  \begin{minipage}{1in}
+    \begin{tabular}{|c|}
+      \hline
+      \(S\) \\
+      \hline
+      \(2\) \\
+      \(5\) \\
+      \hline
+    \end{tabular}
   \end{minipage}
   \caption{A coloring routine example.}
   \label{fig:crex}
 \end{figure}
 
+Since \(\X(G)=3\), start with three empty color classes: \(\set{c_1,c_2,c_3}\).  Next, list the vertices in
+\(G_1\), followed by the removed vertices in reverse order: \(04,1,3,5,2\).  Now, assign the vertices from \(G_1\)
+to the color classes:
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \(c_1\) & \(0,4\) \\
+    \hline
+    \(c_2\) & \(1\) \\
+    \hline
+    \(c_3\) & \(3\) \\
+    \hline
+  \end{tabular}
+\end{center}
+
+Next, color the removed vertices.  Since \(5\) is adjacent to \(4\) but not to \(1\), \(5\) is assigned to \(c_2\).
+Finally, since \(2\) is adjacent to \(1\) but to neither \(0\) nor \(4\), \(2\) is assigned to \(c_1\):
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \(c_1\) & \(0,2,4\) \\
+    \hline
+    \(c_2\) & \(1,5\) \\
+    \hline
+    \(c_3\) & \(3\) \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\bigskip
+
 \subsection{Supporting Theorems}\label{sec:sub:theorems}
 
 This section contains the theorems that support the steps in the recursive subroutine.  Remember that the success
-check of step~\ref{step:sub:check} is already supported by \theoremname~\ref{thm:nlek}.
+check of step~\ref{step:sub:kcheck} is already supported by \theoremname~\ref{thm:nlek}.
 
 \subsubsection{Maximum Edge Threshold}\label{sec:sub:sub:edges}
 
-The maximum edge threshold test of steps~\ref{step:sub:dencalc} and \ref{step:sub:density} is supported by
+The maximum edge threshold test of steps~\ref{step:sub:ecalc} and \ref{step:sub:echeck} is supported by
 Theorem~\ref{thm:density}.
 
 \begin{theorem}[Maximum Edge Threshold]
@@ -637,7 +699,7 @@ resulting subgraph is still properly colored using at most four (in fact, three)
   \label{fig:remone}
 \end{figure}
 
-Steps~\ref{step:sub:smallcalc} and \ref{step:sub:small} remove vertices with degrees less than \(k\).  This is
+Steps~\ref{step:sub:xcalc} and \ref{step:sub:xcheck} remove vertices with degrees less than \(k\).  This is
 supported by Theorem~\ref{thm:lowdeg}.
 
 \begin{theorem}
@@ -652,9 +714,10 @@ supported by Theorem~\ref{thm:lowdeg}.
   For the converse, assume that \(G-v\) is \colorable{k}.  Let \(c:V(G-v)\to C\) be such a coloring, and so
   \(\abs{C}=k\).  By assumption, \(\deg(v)<k\), so \(v\) has at most \(k-1\) neighbors in \(G\), using at most
   \(k-1\) colors.  This means that there should be an additional color that can be assigned to \(v\) in \(G\) such
-  that the coloring remains proper.  So let \(N(v)=\set{v_1,\ldots,v_r}\subseteq V(G-v)\) for some \(r<k\), and let
-  \(c[N(v)]=\set{c_1,\ldots,c_s}\subset C\) for some \(s\le r<k\).  Since \(c[N(v)]\) is a proper subset of \(C\),
-  select \(c_k\in C-c[N(v)]\) and define \(c':V(G)\to C\) as follows:
+  that the coloring remains proper (see \figurename~\ref{fig:reverse}).  So let
+  \(N(v)=\set{v_1,\ldots,v_r}\subseteq V(G-v)\) for some \(r<k\), and let \(c[N(v)]=\set{c_1,\ldots,c_s}\subset C\)
+  for some \(s\le r<k\).  Since \(c[N(v)]\) is a proper subset of \(C\), select \(c_k\in C-c[N(v)]\) and define
+  \(c':V(G)\to C\) as follows:
   \[c'(u)=\begin{cases}
   c(u), & u\ne v \\
   c_k, & u=v
@@ -733,11 +796,8 @@ Corollary \ref{cor:lowdeg}.
   Therefore, by the principle of induction, \(G\) is \colorable{k} if and only if \(G-X\) is \colorable{k}.
 \end{proof}
 
-Returning to the example in \figurename~\ref{fig:lowdeg}, note that \(X=\set{v,b}\) is the set of all vertices with
-degree less than \(4\) and so both could be removed at once in accordance with Corollary \ref{cor:lowdeg}.
-Furthermore, after these vertices are removed, the remaining vertices \(a\), \(b\), and \(c\) will all have degree
-\(2\).  Since \(2<4\), the remaining vertices are subsequently removed, leaving \(n=0<4\), indicating that the
-graph is indeed \colorable{4}.  This iterative collapsing of a graph is an ideal situation.
+Returning to the example in \figurename~\ref{fig:lowdeg}, note that \(X=\set{v,b,d}\) is the set of all vertices
+with degree less than \(4\) and so all three can be removed at once in accordance with Corollary \ref{cor:lowdeg}.
 
 Step~\ref{step:sub:subset} removes vertices whose neighborhoods are subsets of other vertices.  This is supported
 by Theorem~\ref{thm:subset}.

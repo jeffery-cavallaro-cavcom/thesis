@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  27 DEC 2019 19:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  27 DEC 2019 23:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2377,55 +2377,33 @@ ure.67}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.407 
-      ]
-
-LaTeX Warning: Reference `step:sub:check' on page 97 undefined on input line 41
-1.
-
-
-LaTeX Warning: Reference `step:sub:dencalc' on page 97 undefined on input line 
-415.
-
-
-LaTeX Warning: Reference `step:sub:density' on page 97 undefined on input line 
-415.
-
-[97pdfTeX warning (ext4): destination with the same identifier (name{figure.68}
-) has been already used, duplicate ignored
+l.421 \end{figure}
+                  ] [97pdfTeX warning (ext4): destination with the same identif
+ier (name{figure.68}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.430 ...m\le\frac{1}{2}\sum_{i=1}^k(na_i-a_i^2)\]
-                                                  ] [98]
+l.478   \[
+          m\le\frac{1}{2}\sum_{i=1}^k(na_i-a_i^2)\]] [98]
 Missing character: There is no ; in font nullfont!
  [99] [100pdfTeX warning (ext4): destination with the same identifier (name{fig
 ure.69}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.522   \[c'(u)=c(u)\ne c(w)=c'(w)\]
-                                    ]
+l.570   \[
+          c'(u)=c(u)\ne c(w)=c'(w)\]]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-
-
-LaTeX Warning: Reference `step:sub:smallcalc' on page 101 undefined on input li
-ne 654.
-
-
-LaTeX Warning: Reference `step:sub:small' on page 101 undefined on input line 6
-54.
-
-[101pdfTeX warning (ext4): destination with the same identifier (name{figure.70
-}) has been already used, duplicate ignored
+ [101pdfTeX warning (ext4): destination with the same identifier (name{figure.7
+0}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.672   \[
+l.721   \[
           c'(u)=\begin{cases}]
 Missing character: There is no ; in font nullfont!
  [102pdfTeX warning (ext4): destination with the same identifier (name{figure.7
@@ -2433,165 +2411,164 @@ Missing character: There is no ; in font nullfont!
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.725   L
-         et \(G\) be a graph of order \(n\) and let \(X=\setb{v\in V(G)}{\de...
-] [103]
+l.773   \label
+              {cor:lowdeg}] [103]
 
 LaTeX Warning: Reference `step:sub:small' on page 104 undefined on input line 8
-00.
+46.
 
 
 LaTeX Warning: Reference `step:sub:check' on page 104 undefined on input line 8
-01.
+47.
 
 [104] [105pdfTeX warning (ext4): destination with the same identifier (name{fig
 ure.72}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.854   \item[Case 2:]
+l.900   \item[Case 2:]
                        \(N(u)\ne\emptyset\).] [106pdfTeX warning (ext4): destin
 ation with the same identifier (name{figure.73}) has been already used, duplica
 te ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.912 
+l.958 
       ] [107] [108pdfTeX warning (ext4): destination with the same identifier (
 name{figure.74}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.971 ...')}\le n-a_i-a_1\le n-2-\frac{n-2}{k-1}\]
+l.1017 ...)}\le n-a_i-a_1\le n-2-\frac{n-2}{k-1}\]
                                                   ] [109]
 
 LaTeX Warning: Reference `step:sub:density' on page 110 undefined on input line
- 1036.
+ 1082.
 
 [110pdfTeX warning (ext4): destination with the same identifier (name{figure.75
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1043 
+l.1089 
        ] [111] [112] [113] [114]
 
 LaTeX Warning: Reference `step:sub:check' on page 115 undefined on input line 1
-201.
+247.
 
 
 LaTeX Warning: Reference `step:sub:dencalc' on page 115 undefined on input line
- 1203.
+ 1249.
 
 
 LaTeX Warning: Reference `step:sub:density' on page 115 undefined on input line
- 1206.
+ 1252.
 
 
 LaTeX Warning: Reference `step:sub:smallcalc' on page 115 undefined on input li
-ne 1208.
+ne 1254.
 
 
 LaTeX Warning: Reference `step:sub:small' on page 115 undefined on input line 1
-210.
+256.
 
 [115pdfTeX warning (ext4): destination with the same identifier (name{figure.76
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1234   \end{figure}
+l.1280   \end{figure}
                      ]
 
 LaTeX Warning: Reference `step:sub:check' on page 116 undefined on input line 1
-236.
+282.
 
 
 LaTeX Warning: Reference `step:sub:dencalc' on page 116 undefined on input line
- 1238.
+ 1284.
 
 
 LaTeX Warning: Reference `step:sub:density' on page 116 undefined on input line
- 1241.
+ 1287.
 
 
 LaTeX Warning: Reference `step:sub:smallcalc' on page 116 undefined on input li
-ne 1243.
+ne 1289.
 
 
 LaTeX Warning: Reference `step:sub:small' on page 116 undefined on input line 1
-245.
+291.
 
 [116pdfTeX warning (ext4): destination with the same identifier (name{figure.77
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1290 
+l.1336 
        ] [117pdfTeX warning (ext4): destination with the same identifier (name{
 table.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1327 
+l.1373 
        ]
 
 LaTeX Warning: Reference `step:sub:check' on page 118 undefined on input line 1
-328.
+374.
 
 
 LaTeX Warning: Reference `step:sub:dencalc' on page 118 undefined on input line
- 1330.
+ 1376.
 
 
 LaTeX Warning: Reference `step:sub:density' on page 118 undefined on input line
- 1333.
+ 1379.
 
 
 LaTeX Warning: Reference `step:sub:smallcalc' on page 118 undefined on input li
-ne 1335.
+ne 1381.
 
 
 LaTeX Warning: Reference `step:sub:small' on page 118 undefined on input line 1
-337.
+383.
 
 [118pdfTeX warning (ext4): destination with the same identifier (name{figure.78
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1353 
+l.1399 
        ]
 
 LaTeX Warning: Reference `step:sub:check' on page 119 undefined on input line 1
-354.
+400.
 
 
 LaTeX Warning: Reference `step:sub:result1' on page 119 undefined on input line
- 1357.
+ 1403.
 
 
 LaTeX Warning: Reference `step:outer:result' on page 119 undefined on input lin
-e 1360.
+e 1406.
 
 [119pdfTeX warning (ext4): destination with the same identifier (name{figure.79
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1405 
+l.1451 
        ] [120pdfTeX warning (ext4): destination with the same identifier (name{
 figure.80}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1473 
+l.1519 
        pdfTeX warning (ext4): destination with the same identifier (name{figure
 .81}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1473 
+l.1519 
        ]) (./random.tex [121pdfTeX warning (ext4): destination with the same id
 entifier (name{figure.82}) has been already used, duplicate ignored
 
@@ -2602,7 +2579,7 @@ l.1 \section
 [122
 
 ]
-<toaster.jpeg, id=1715, 2007.5pt x 2007.5pt>
+<toaster.jpeg, id=1722, 2007.5pt x 2007.5pt>
 File: toaster.jpeg Graphic file (type jpg)
 <use toaster.jpeg>
 Package pdftex.def Info: toaster.jpeg  used on input line 8.
@@ -2668,10 +2645,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 32254 strings out of 492609
- 601200 string characters out of 6129048
+ 32261 strings out of 492609
+ 601289 string characters out of 6129048
  824878 words of memory out of 5000000
- 34687 multiletter control sequences out of 15000+600000
+ 34694 multiletter control sequences out of 15000+600000
  86347 words of font info for 284 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,19n,436p,835b,1183s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2698,10 +2675,10 @@ exmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on thesis.pdf (143 pages, 1001392 bytes).
+Output written on thesis.pdf (143 pages, 1002221 bytes).
 PDF statistics:
- 1927 PDF objects out of 2073 (max. 8388607)
- 1725 compressed objects within 18 object streams
+ 1933 PDF objects out of 2073 (max. 8388607)
+ 1731 compressed objects within 18 object streams
  555 named destinations out of 1000 (max. 500000)
  28326 words of extra memory for PDF output out of 29859 (max. 10000000)
 
