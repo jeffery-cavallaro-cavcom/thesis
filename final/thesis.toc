@@ -50,20 +50,20 @@
 \contentsline {subsubsection}{\numberline {4.1.3}The Bron Kerbosch Algorithm}{60}{subsubsection.4.1.3}% 
 \contentsline {subsection}{\numberline {4.2}Finding an Upper Bound}{64}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}The Christofides Algorithm}{71}{subsection.4.3}% 
-\contentsline {subsection}{\numberline {4.4}Wang Improvements to Christofides}{74}{subsection.4.4}% 
-\contentsline {subsection}{\numberline {4.5}Zykov Algorithms}{77}{subsection.4.5}% 
-\contentsline {subsection}{\numberline {4.6}The Corneil Graham Algorithm}{84}{subsection.4.6}% 
-\contentsline {section}{\numberline {5}The Proposed Algorithm}{85}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}The Main Routine}{86}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}The Recursive Subroutine}{90}{subsection.5.2}% 
-\contentsline {subsubsection}{\numberline {5.2.1}The Coloring Routine}{94}{subsubsection.5.2.1}% 
-\contentsline {subsection}{\numberline {5.3}Supporting Theorems}{94}{subsection.5.3}% 
-\contentsline {subsubsection}{\numberline {5.3.1}Maximum Edge Threshold}{94}{subsubsection.5.3.1}% 
-\contentsline {subsubsection}{\numberline {5.3.2}Vertex Removal}{97}{subsubsection.5.3.2}% 
-\contentsline {subsubsection}{\numberline {5.3.3}Minimum Common Neighbor Upper Bound}{103}{subsubsection.5.3.3}% 
-\contentsline {subsubsection}{\numberline {5.3.4}Recursive Steps}{108}{subsubsection.5.3.4}% 
-\contentsline {subsection}{\numberline {5.4}An Example}{111}{subsection.5.4}% 
-\contentsline {section}{\numberline {6}Random Graph Analysis}{119}{section.6}% 
-\contentsline {section}{\numberline {7}Toaster Design Case Study}{120}{section.7}% 
-\contentsline {section}{\numberline {8}Conclusions}{125}{section.8}% 
-\contentsline {section}{Literature Cited}{126}{section*.6}% 
+\contentsline {subsection}{\numberline {4.4}Wang Improvements to Christofides}{75}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {4.5}Zykov Algorithms}{78}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {4.6}The Corneil Graham Algorithm}{85}{subsection.4.6}% 
+\contentsline {section}{\numberline {5}The Proposed Algorithm}{86}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}The Main Routine}{87}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}The Recursive Subroutine}{91}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}The Coloring Routine}{95}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {5.4}Supporting Theorems}{97}{subsection.5.4}% 
+\contentsline {subsubsection}{\numberline {5.4.1}Maximum Edge Threshold}{97}{subsubsection.5.4.1}% 
+\contentsline {subsubsection}{\numberline {5.4.2}Vertex Removal}{100}{subsubsection.5.4.2}% 
+\contentsline {subsubsection}{\numberline {5.4.3}Minimum Common Neighbor Upper Bound}{105}{subsubsection.5.4.3}% 
+\contentsline {subsubsection}{\numberline {5.4.4}Recursive Steps}{111}{subsubsection.5.4.4}% 
+\contentsline {subsection}{\numberline {5.5}An Example}{114}{subsection.5.5}% 
+\contentsline {section}{\numberline {6}Random Graph Analysis}{122}{section.6}% 
+\contentsline {section}{\numberline {7}Toaster Design Case Study}{123}{section.7}% 
+\contentsline {section}{\numberline {8}Conclusions}{128}{section.8}% 
+\contentsline {section}{Literature Cited}{129}{section*.6}% 

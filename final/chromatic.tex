@@ -313,8 +313,18 @@ The specific steps of a greedy algorithm for a graph \(G\) of order \(n\) are as
 \item Go to step~\ref{step:greedy:check}.
 \end{enumerate}
 
-Indeed, the two most popular theorems used to quickly estimate the chromatic number upper bound of a graph follow
-from the worst case result from this algorithm.  The first is based on a random ordering of the
+The trick is to find the best ordering of the vertices in \(G\) so that the greedy algorithm gives the best
+answer.  Clearly, there is at least one optimal ordering that will produce an exact result.  This is stated
+in \propname~\ref{prop:greedy}.
+
+\begin{proposition}
+  \label{prop:greedy}
+  Let \(G\) be a graph.  There exists an ordering of the vertices in \(G\) such that the greedy algorithm produces
+  an exact result for \(\X(G)\).
+\end{proposition}
+
+The two most popular theorems used to quickly estimate the chromatic number upper bound of a graph follow from the
+worst case results from the greedy algorithm.  The first is based on a random ordering of the
 vertices~\cite{chartrand}.
 
 \begin{theorem}

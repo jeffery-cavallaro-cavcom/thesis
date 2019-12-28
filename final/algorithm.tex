@@ -30,8 +30,8 @@ termination of the Zykov tree.  The first \(k\) for which \(G\) (or one of its s
 One slight disadvantage of the proposed algorithm is that whereas the other algorithms readily provide examples of
 actual chromatic colorings, the proposed algorithm requires an additional step to construct a chromatic coloring: a
 greedy algorithm with a particular sorting of the vertices.  The coloring step is discussed in detail in
-\sectionname~\ref{sec:sub:sub:coloring}.  Albeit additional work, this extra coloring step is P-time so it does
-not have a significant impact on the performance of the proposed algorithm.
+\sectionname~\ref{sec:sub:coloring}.  Albeit additional work, this extra coloring step is P-time so it does not
+have a significant impact on the performance of the proposed algorithm.
 
 The proposed algorithm accepts a graph \(G\) as input and provides \(\X(G)\) and a chromatic coloring as output and
 is composed of the following components:
@@ -89,7 +89,8 @@ The steps of the main routine are as follows:
   that occurs in the smallest number of MISs and then use those MISs to construct \(n\) graphs that are the roots
   of \(n\) Zykov trees.  Each tree is constructed from \(G\) by contracting the vertices in the MIS and adding
   edges between the contracted vertex and all vertices not in the MIS.  Each tree is also associated with an
-  initially empty list of removed vertices \(S\).
+  initially empty list of removed vertices \(S\).  The trees are sorted by decreasing MIS length since graphs
+  resulting from larger MISs have fewer choices for branching and thus can be walked more expediently.
 
 \item\label{step:outer:check} If \(k=k_{max}\) then accept the default coloring found in
   step~\ref{step:outer:greedy} and go to step~\ref{step:outer:done}.
@@ -304,28 +305,91 @@ A flowchart of these steps is shown in \figurename~\ref{fig:called}.
   \label{fig:called}
 \end{figure}
 
-Step~\ref{step:sub:check} is the success termination condition.  Success occurs when \(G\) is simplified by
-removing sufficent vertices (steps~\ref{step:sub:smallcalc}--\ref{step:sub:subset}) and the main routine has
-sufficiently incremented \(k\) (step~\ref{step:outer:incrk}) such that \(n\le k\).
+Step~\ref{step:sub:kcheck} is the success condition.  Success occurs when \(G\) is simplified by removing or
+contracting sufficent vertices (sub steps~\ref{step:sub:xcalc}--\ref{step:sub:subset}) and the main routine has
+sufficiently incremented \(k\) (main step~\ref{step:outer:incrk}) such that \(n\le k\).
 
-Steps~\ref{step:sub:smallcalc}--\ref{step:sub:subset} attempt to remove vertices to achieve a simpler graph that is
-equivalently \colorable{k}.  Each time a vertex is removed, the Zykov branches associated with that vertex are
-pruned.  Since these same steps would just be repeated for \(k+1\), the subroutine returns the current state of the
-possibly simplified \(G\) to the main routine as a starting point for the next candidate value of \(k\).
+Steps~\ref{step:sub:xcalc}--\ref{step:sub:subset} attempt to simplify \(G\) using vertex removal and contraction in
+order to achieve a simpler graph that is equivalently \colorable{k}.  Each time vertices are removed or contracted
+the associated branches in the corresponding Zykov tree are pruned.  Since these same steps would just be repeated
+for \(k+1\), the subroutine saves the simplified \(G\) as a starting point for the next candidate value of \(k\).
 
-Steps~\ref{step:sub:dencalc}--\ref{step:sub:density} and \ref{step:sub:select}--\ref{step:sub:ubcheck} apply tests
+Steps~\ref{step:sub:ecalc}--\ref{step:sub:echeck} and \ref{step:sub:select}--\ref{step:sub:lcheck} apply tests
 that attempt to disprove that the current state of \(G\) is \colorable{k} for the current value of \(k\).  If so,
-then the current Zykov tree is abandoned and the subroutine returns false.  This allows the main routine to continue
-with \(k+1\).
+then the current Zykov tree is abandoned and the subroutine returns false.
 
-The remaining steps of the recursive subroutine, steps~\ref{step:sub:select2}--\ref{step:sub:fail}, constitute the
-recursive portion of the modified Zykov algorithm.  The recursive calls are guaranteed to terminate because either
-there will be sufficient vertex contractions such that \(n\le k\), resulting in a true return, or sufficient edge
-additions such that the graph becomes complete and (as will be shown) is rejected by step~\ref{step:sub:density},
-resulting in a false return.  Note that in the event of a false return, any modifications to the current state of
-\(G\) resulting from the recursive calls are not returned to the main routine.
+Steps~\ref{step:sub:select2}--\ref{step:sub:fail} constitute the recursive portion of the modified Zykov algorithm.
+The recursive calls are guaranteed to terminate because either there will be sufficient vertex contractions such
+that \(n\le k\), resulting in a true return, or sufficient edge additions such that the graph becomes complete and
+(as will be shown) is rejected by step~\ref{step:sub:echeck}, resulting in a false return.  Note that in the event
+of a false return, any modifications to the current states of \(G\) and \(S\) resulting from the recursive calls
+are not returned to the main routine.
 
-\subsubsection{The Coloring Routine}\label{sec:sub:sub:coloring}
+\subsection{The Coloring Routine}\label{sec:sub:coloring}
+
+The recursive subroutine will eventually return true when applied to a particular Zykov tree using a particular
+value of \(k\).  The final state of \(G\), which should be a complete graph of single and/or contracted vertices,
+and the final state of \(S\), which is a list of removed single and/or contracted vertices in the order removed are
+used to construct the final chromatic coloring.
+
+According to \propname~\ref{prop:greedy}, there exists some ordering of the vertices such that the greedy algorithm
+will produce an exact result for the chromatic number of a graph.  The removed vertices in reverse order removed is
+such an ordering.  Consider the example shown in \figurename~\ref{fig:reverse}.  If \(k=4\) and vertex \(v\) is to
+be removed since \(\deg(v)=3\), then in the reverse direction when \(v\) is added the fourth color is available for
+\(v\).  In general, given a graph \(G-v\) such that \(deg(v)<k\) in \(G\), there will always be an available color
+for \(v\) regardless of how \(N(v)\) is colored.  This result is formalized in \theoremname~\ref{thm:lowdeg}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw (0,0) circle [radius=2];
+    \node at (0,-1.5) {\(G-v\)};
+    \draw (0,0.5) ellipse (1 and 1.25);
+    \node (a) [unlabeled node=green!25!white] at (0,1.5) {};
+    \node (b) [unlabeled node=red!25!white] at (0,1.0) {};
+    \node (c) [unlabeled node=blue!25!white] at (0,0.5) {};
+    \node at (0,-0.25) {\(N(v)\)};
+    \node (v) [unlabeled node] at (4,1) {};
+    \node [below=1ex] at (v) {\(v\)};
+    \draw (v) edge (a) edge (b) edge (c);
+  \end{tikzpicture}
+  \caption{Coloring a removed vertex example.}
+  \label{fig:reverse}
+\end{figure}
+
+The steps of the coloring routine are as follows for a complete graph \(G_i\) of order \(k\) and a removed vertex
+list \(S_i\) from tree \(i\), and an input graph \(G\) that is \chromatic{k}:
+\begin{enumerate}
+\item Start with \(k\) empty color classes \(\set{c_1,\ldots,c_k}\).
+\item Order the vertices in \(G_i\) into a list.  Note that these vertices represent single and/or contracted
+  vertices from \(G\).
+\item Append the vertices in \(S\) to the list in reverse order.  Note that these vertices also represent
+  single and/or contracted vertices from \(G\).
+\item Assign all of the vertices from \(G\) that are represented by \(v_j\in V(G_i)\) to color \(c_j\).
+\item Greedy color the remaining vertices in the list.  No additional colors should be required.  Note that when
+  determining color use by adjacent vertices, all of the single and/or contracted vertices from \(G\) represented a
+  vertex in the sorted list must be checked against all the single and/or contracted vertices from \(G\)
+  represented by the previously colored vertices in the sorted list.
+\end{enumerate}
+
+Consider the example graph \(G\) and its reduced form \(G_1\) in \figurename~\ref{fig:crex}.
+
+\begin{figure}[H]
+  \begin{minipage}{2.5in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+    \end{tikzpicture}
+
+    \(G\)
+  \end{minipage}
+  \begin{minipage}{2.5in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{A coloring routine example.}
+  \label{fig:crex}
+\end{figure}
 
 \subsection{Supporting Theorems}\label{sec:sub:theorems}
 
