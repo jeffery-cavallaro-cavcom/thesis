@@ -35,9 +35,24 @@ Y.~Tang, S.~Yang, and Y.~F. Zhao, ``Sustainable design for additive
   {\em Handbook of Sustainability in Additive Manufacturing} (S.~S. Muthu and
   M.~M. Savalani, eds.), vol.~1, pp.~101--144, Singapore: Springer, 2016.
 
-\bibitem{mcdiarmid}
-C.~McDiarmid, ``Determining the chromatic number of a graph,'' {\em SIAM
-  Journal on Computing}, vol.~8, pp.~1--14, 02 1979.
+\bibitem{garey}
+M.~R. Garey and D.~S. Johnson, {\em Computers and Intractability: A Guide to
+  the Theory of NP-Completeness}.
+\newblock San Francisco: W.H. Freeman and Company, 1979.
+
+\bibitem{christofides}
+N.~Christofides, ``An algorithm for the chromatic number of a graph,'' {\em The
+  Computer Journal}, vol.~14, pp.~38--39, January 1971.
+
+\bibitem{wang}
+C.~C. Wang, ``An algorithm for the chromatic number of a graph,'' {\em Journal
+  of the Association for Computer Machinery}, vol.~21, no.~3, pp.~385--391,
+  1974.
+
+\bibitem{corneil}
+D.~G. Corneil and B.~Graham, ``An algorithm for determining the chromatic
+  number of a graph,'' {\em SIAM Journal on Computing}, vol.~2, pp.~311--318,
+  December 1973.
 
 \bibitem{chartrand}
 G.~Chartrand and P.~Zhang, {\em A First Course in Graph Theory}.
@@ -46,11 +61,6 @@ G.~Chartrand and P.~Zhang, {\em A First Course in Graph Theory}.
 \bibitem{west}
 D.~B. West, {\em Introduction to Graph Theory}.
 \newblock Upper Saddle River, NJ: Prentice Hall, \(2^{nd}\)~ed., 2001.
-
-\bibitem{corneil}
-D.~G. Corneil and B.~Graham, ``An algorithm for determining the chromatic
-  number of a graph,'' {\em SIAM Journal on Computing}, vol.~2, pp.~311--318,
-  December 1973.
 
 \bibitem{zykov}
 A.~A. Zykov, {\em On Some Properties of Linear Complexes}, vol.~7 of {\em
@@ -62,10 +72,9 @@ J.~Hopcroft and R.~Tarjan, ``Algorithm 447: Efficient algorithms for graph
   manipulation,'' {\em Communications of the ACM}, vol.~16, pp.~372--378, June
   1973.
 
-\bibitem{garey}
-M.~R. Garey and D.~S. Johnson, {\em Computers and Intractability: A Guide to
-  the Theory of NP-Completeness}.
-\newblock San Francisco: W.H. Freeman and Company, 1979.
+\bibitem{mcdiarmid}
+C.~McDiarmid, ``Determining the chromatic number of a graph,'' {\em SIAM
+  Journal on Computing}, vol.~8, pp.~1--14, 02 1979.
 
 \bibitem{sipser}
 M.~Sipser, {\em Introduction to the Theory of Computation}.
@@ -75,15 +84,6 @@ M.~Sipser, {\em Introduction to the Theory of Computation}.
 H.~Johnston, ``Cliques of a graph---variations on the bron-kerbosch
   algorithm,'' {\em International Journal of Computer and Information
   Sciences}, vol.~5, no.~3, pp.~209--238, 1976.
-
-\bibitem{christofides}
-N.~Christofides, ``An algorithm for the chromatic number of a graph,'' {\em The
-  Computer Journal}, vol.~14, pp.~38--39, January 1971.
-
-\bibitem{wang}
-C.~C. Wang, ``An algorithm for the chromatic number of a graph,'' {\em Journal
-  of the Association for Computer Machinery}, vol.~21, no.~3, pp.~385--391,
-  1974.
 
 \bibitem{zhang}
 T.~Zhang, ``Triangle free graphs and their chromatic number.''

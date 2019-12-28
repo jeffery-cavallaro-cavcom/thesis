@@ -63,12 +63,13 @@ bounds match then the default coloring is accepted.  If not, then the main routi
 recursive subroutine is called to execute a modified Zykov algorithm in order to determine if \(G\) is
 \colorable{k}.  If \(k\) reaches the upper bound then the default coloring is accepted as chromatic.
 
-Instead of walking a single Zykov tree for the whole graph \(G\), the Wang technique is used to mutate \(G\) into
-smaller graphs \(G_i\) by selecting a vertex that occurs in the least number of MISs in \(G\).  Each of these MISs
-implies a set of vertex contractions and edge additions that are applied to \(G\) to construct the corresponding
-\(G_i\).  Thus, the modified Zykov algorithm is applied in sequence to these separate \(G_i\) for each \(k\) value.
-The first successful return identifies \(\X(G)\) and then the coloring routine is called to construct the final
-coloring based on the information from the successful tree.
+Instead of walking a single Zykov tree for the whole graph \(G\), the Wang technique (see
+\sectionname~\ref{sec:sub:wang}) is used to mutate \(G\) into smaller graphs \(G_i\) by selecting a vertex that
+occurs in the least number of MISs in \(G\).  Each of these MISs implies a set of vertex contractions and edge
+additions that are applied to \(G\) to construct the corresponding \(G_i\).  Thus, the modified Zykov algorithm is
+applied in sequence to these separate \(G_i\) for each \(k\) value.  The first successful return identifies
+\(\X(G)\) and then the coloring routine is called to construct the final coloring based on the information from the
+successful tree.
 
 The steps of the main routine are as follows:
 
@@ -162,72 +163,73 @@ reach \(k_{max}\) or the recursive subroutine will return true when a simplifica
 
 \subsection{The Recursive Subroutine}\label{sec:sub:called}
 
-The recursive subroutine executes a modified version of a Zykov algorithm that determines whether a graph is
-\colorable{k}.  It accepts the current state of \(G\) of order \(n\) and size \(m\) and the current value of
-\(k\ge2\) as inputs.  It returns a possibly simplified version of \(G\) and a boolean value indicating whether or
-not \(G\) is \colorable{k}.  Internally, various tests are applied to prune the corresponding Zykov tree or abandon
-it all together based on the current value of \(k\).
+The recursive subroutine executes a modified version of the Zykov algorithm to determine whether a graph is
+\colorable{k}.  It accepts a graph \(G\) of order \(n\) and size \(m\), a list of already removed vertices \(S\)
+(in removed order), and the target value of \(k\ge2\) as inputs.  It returns a possibly simplified version of
+\(G\), a possibly extended list of removed vertices \(S\), and a boolean value \(R\) indicating whether or not
+\(G\) is \colorable{k}.  Internally, various tests are applied to prune the corresponding Zykov tree or abandon it
+all together based on the current value of \(k\).
 
 The steps of the recursive subroutine and references to their associated theorems are as follows:
 
 \begin{enumerate}
-\item\label{step:sub:sinit} Initialize \(S'\) to the emptyset.
+\item\label{step:sub:kcheck} If \(n\le k\) set \(R\) to true and go to step~\ref{step:sub:done}
+  (\theoremname~\ref{thm:nlek}).
 
-\item\label{step:sub:check} If \(n\le k\) then go to step~\ref{step:sub:success} (\theoremname~\ref{thm:nlek}).
-
-\item\label{step:sub:dencalc} Calculate a maximum edge threshold:
+\item\label{step:sub:ecalc} Calculate a maximum edge threshold:
   \[a=\frac{n^2(k-1)}{2k}\]
 
-\item\label{step:sub:density} If \(m>a\) then return false (Corollary~\ref{cor:density}).
+\item\label{step:sub:echeck} If \(m>a\) then set \(R\) to false and go to step~\ref{step:sub:done}
+  (Corollary~\ref{cor:density}).
 
-\item\label{step:sub:smallcalc} Construct the set \(X\) of all vertices with degree less than \(k\):
+\item\label{step:sub:xcalc} Construct the set \(X\) of all vertices with degree less than \(k\):
   \[X=\setb{v\in V(G)}{\deg(v)<k}\]
 
-\item\label{step:sub:small} If \(X\ne\emptyset\) then append \(X\) to \(S'\), replace \(G\) with \(G-X\), and go to
-  step~\ref{step:sub:check} (Corollary~\ref{cor:lowdeg}).
-
-\item\label{step:sub:kadj} If \(n<k_{adj}\) then \(k_{adj}=n\).
-
-\item\label{step:sub:lower} Use the Edwards Elphick algorithm to calculate a new lower bound \(\ell\) for \(G\).
-
-\item\label{step:sub:bound} If \(\ell\ge k_{adj}\) then return false.
+\item\label{step:sub:xcheck} If \(X\ne\emptyset\) then replace \(G\) with \(G-X\), append \(X\) to \(S\), and go to
+  step~\ref{step:sub:kcheck} (Corollary~\ref{cor:lowdeg}).
 
 \item\label{step:sub:common} Calculate the common number of neighbors between each pair of vertices in \(G\),
   stopping if one vertex's neighborhood is found to be a subset of another.
 
 \item\label{step:sub:subset} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace
-  \(G\) with \(G\cdot uv\) and go to step~\ref{step:sub:check} (Theorem~\ref{thm:subset}).
+  \(G\) with \(G\cdot uv\) and go to step~\ref{step:sub:kcheck} (Theorem~\ref{thm:subset}).
 
 \item\label{step:sub:select} Let \(b\) be the smallest number of common neighbors between any pair of vertices in
-  \(G\) as found in step~\ref{step:sub:common}:
+  \(G\) based on the calculations in step~\ref{step:sub:common}:
   \[b=\min_{u,v\in V(G)}\abs{N(u)\cap N(v)}\]
 
 \item\label{step:sub:ubcalc} Calculate an upper bound for the minimum number of common neighbors between any pair
   of vertices in \(G\):
   \[c=n-2-\frac{n-2}{k-1}\]
 
-\item\label{step:sub:ubcheck} If \(b>c\) then return false (Corollary~\ref{cor:inter}).
+\item\label{step:sub:ubcheck} If \(b>c\) then set \(R\) to false and go to step~\ref{step:sub:done}.
+  (Corollary~\ref{cor:inter}).
+
+\item\label{step:sub:lower} Use the Edwards Elphick algorithm to calculate a chromatic number lower bound \(\ell\)
+  for the current state of \(G\).
+
+\item\label{step:sub:lcheck} If \(\ell>k\) then set \(R\) to false and go to step~\ref{step:sub:done}.
 
 \item\label{step:sub:select2} Select two non-adjacent vertices \(u,v\in V(G)\) with the smallest number of common
-  neighbors as found in step~\ref{step:sub:common}.  It will be shown below that such a pair of vertices is
-  guaranteed to exist in the current state of \(G\).
+  neighbors based on the calculations in step~\ref{step:sub:common}.  It will be shown below that such a pair of
+  vertices is guaranteed to exist.
 
-\item\label{step:sub:call1} Assume that \(u\) and \(v\) are assigned the same color by letting \(G'=G\cdot uv\) and
-  recursively calling this routine to see if \(G'\) is \colorable{k}.
+\item\label{step:sub:call1} Assume that \(u\) and \(v\) are assigned the same color by letting \(G'=G\cdot uv\).
+  Also make a copy of the removed vertices list \(R'=R\).  Recursively call this routine using \(G'\), \(S'\), and
+  \(k\) as inputs to see if \(G'\) is \colorable{k}.  Note that \(G'\) and \(S'\) may be modified.  If \(G'\) is
+  \colorable{k} then replace \(G=G'\) and \(S=S'\), set \(R\) to true, and go to step~\ref{step:sub:done}
+  (\theoremname~\ref{thm:recurse}).
 
-\item\label{step:sub:result1} If \(G'\) is \colorable{k} then replace \(G\) with \(G'\) and go to
-  step~\ref{step:sub:success} (Theorem~\ref{thm:recurse}).
+\item\label{step:sub:call2} Assume that \(u\) and \(v\) are assigned different colors by letting \(G'=G+uv\).  Also
+  make a copy of the removed vertices list \(R'=R\).  Recursively call this routine using \(G'\), \(S'\), and \(k\)
+  as inputs to see if \(G'\) is \colorable{k}.  Note that \(G'\) and \(S'\) may be modified.  If \(G'\) is
+  \colorable{k} then replace \(G=G'\) and \(S=S'\), set \(R\) to true, and go to step~\ref{step:sub:done}
+  (\theoremname~\ref{thm:recurse}).
 
-\item\label{step:sub:call2} Assume that \(u\) and \(v\) are assigned different colors by letting \(G'=G+uv\) and
-  recursively calling this subroutine to see if \(G'\) is \colorable{k}.
+\item\label{step:sub:fail} Conclude that \(G\) is not \colorable{k} and set \(R\) to false.
 
-\item\label{step:sub:result1} If \(G'\) is \colorable{k} then replace \(G\) with \(G'\) and go to
-  step~\ref{step:sub:success} (Theorem~\ref{thm:recurse}).
-
-\item\label{step:sub:fail} Since neither of the assumptions in steps \ref{step:sub:call1} nor \ref{step:sub:call2}
-  hold, conclude that \(G\) is not \colorable{k} and return false.
-
-\item\label{step:sub:success} Replace \(S\) with \(S'\) and return true.
+\item\label{step:sub:done} Return the determine result \(R\), the possibly simplified \(G\), and the possibly
+  extended list of removed vertices \(S\).
 \end{enumerate}
 
 A flowchart of these steps is shown in \figurename~\ref{fig:called}.
