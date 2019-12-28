@@ -313,16 +313,6 @@ The specific steps of a greedy algorithm for a graph \(G\) of order \(n\) are as
 \item Go to step~\ref{step:greedy:check}.
 \end{enumerate}
 
-The trick is to find the best ordering of the vertices in \(G\) so that the greedy algorithm gives the best
-answer.  Clearly, there is at least one optimal ordering that will produce an exact result.  This is stated
-in \propname~\ref{prop:greedy}.
-
-\begin{proposition}
-  \label{prop:greedy}
-  Let \(G\) be a graph.  There exists an ordering of the vertices in \(G\) such that the greedy algorithm produces
-  an exact result for \(\X(G)\).
-\end{proposition}
-
 The two most popular theorems used to quickly estimate the chromatic number upper bound of a graph follow from the
 worst case results from the greedy algorithm.  The first is based on a random ordering of the
 vertices~\cite{chartrand}.
@@ -339,6 +329,30 @@ The second, from Welsh and Powell (1967), is based on ordering by non-increasing
   Let \(G\) be a graph:
   \[\X(G)\le\max_i\min\left\{1+\deg(v_i),i\right\}\]
 \end{theorem}
+
+But does there exist an ordering of the vertices such that the greedy algorithm gives the correct exact answer?
+This question is answered by \theoremname~\ref{thm:greedy}.
+
+\begin{theorem}
+  \label{thm:greedy}
+  Let \(G\) be a graph.  There exists an ordering of the vertices in \(G\) such that the greedy algorithm produces
+  an exact result for \(\X(G)\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(\X(G)=k\).  This means that \(V(G)\) can be partitions into \(k\) independent sets
+  \(\set{A_1,\ldots,A_k}\).  Order the vertices starting with the vertices in \(A_1\), and then \(A_2\) and so on,
+  finishing with the vertices in \(A_k\).  Use this ordering as an input to the greedy algorithm.
+
+  Consider the following proof by induction on \(1\le i\le n(G)\) where \(i\) selects the \(i^{th}\) vertex in the
+  ordered list.  Color \(v_1\) using color \(c_1\), which is trivially proper using one color.  Assume that the
+  coloring of the first \(v_i\) is proper and uses at most \(k\) colors.  Now consider \(v_{i+1}\).  Assume that
+  \(v_{i+1}\in A_j\) for \(1\le j\le k\).  If there exists some \(1\le r<j\) such that \(v_{i+1}\) is not adjacent
+  to any of the vertices in \(A_r\) then color \(v_{i+1}\) with color \(c_r\) using the smallest such \(r\).
+  Otherwise, since \(v_{i+1}\) is not adjacent to any of the vertices in \(A_j\), color \(v_{i+1}\) with color
+  \(c_j\).  In both cases the coloring is proper using at most \(k\) colors.  Therefore, the greedy coloring
+  algorithm produces an exact result.
+\end{proof}
 
 Matula, et al.~(1967)~\cite{matula} performed a study on the various well-known chromatic number greedy algorithms
 and concluded that ordering the vertices by non-increasing degree order, as in the Welsh Powell bound, worked best.
