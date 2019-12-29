@@ -38,13 +38,14 @@ is composed of the following components:
 \begin{enumerate}
 \item A main routine that loops on increasing values of \(k\).
 \item The Bron Kerbosch algorithm used by the main routine to determine a lower bound \(k_{min}\) for the chromatic
-  number of \(G\).
+  number of \(G\) (\sectionname~\ref{sec:sub:sub:bron}).
 \item The last-first with color interchange greedy coloring algorithm used by the main routine to determine an
-  upper bound \(k_{max}\) for the chromatic number of \(G\) and a corresponding \coloring{k_{max}} of \(G\).
+  upper bound \(k_{max}\) for the chromatic number of \(G\) and a corresponding \coloring{k_{max}} of \(G\)
+  (\sectionname~\ref{sec:sub:upper}).
 \item A recursive subroutine that runs a modified Zykov algorithm with additional pruning to determine if
   \(G\) is \colorable{k}.
 \item The Edwards Elphick algorithm used by the recursive subroutine to determine a lower bound for the chromatic
-  number of a graph.
+  number of a graph (\sectionname~\ref{sec:sub:sub:edwards});
 \item A coloring routine called by the main routine to construct a chromatic coloring of \(G\) based on the results
   of the algorithm.
 \end{enumerate}
@@ -799,44 +800,71 @@ Corollary \ref{cor:lowdeg}.
 Returning to the example in \figurename~\ref{fig:lowdeg}, note that \(X=\set{v,b,d}\) is the set of all vertices
 with degree less than \(4\) and so all three can be removed at once in accordance with Corollary \ref{cor:lowdeg}.
 
-Step~\ref{step:sub:subset} removes vertices whose neighborhoods are subsets of other vertices.  This is supported
+\subsubsection{Neighborhood Subsets}\label{sec:sub:sub:subset}
+
+Step~\ref{step:sub:subset} contracts vertices whose neighborhoods are subsets of other vertices.  This is supported
 by Theorem~\ref{thm:subset}.
 
 \begin{theorem}
   \label{thm:subset}
-  Let \(G\) be a graph and let \(u,v\in V(G)\) such that \(N(u)\subseteq N(v)\).  \(G\) is \colorable{k} if and
-  only if \(G-u\) is \colorable{k}.
+  Let \(G\) be a graph such that:
+  \begin{enumerate}
+  \item \(n(G)\ge 2\)
+  \item \(u,v\in V(G)\) and \(u\ne v\)
+  \item \(N(u)\subseteq N(v)\), and hence \(uv\notin E(G)\)
+  \item \(u\) and \(v\) are assigned the same color in any proper coloring of \(G\)
+  \end{enumerate}
+  and let \(k\in\N\).  \(G\) is \colorable{k} if and only if \(G\cdot uv\) is \colorable{k}.
 \end{theorem}
 
 \begin{proof}
-  Assume that \(G\) is \colorable{k}.  Therefore, by Lemma \ref{lem:remone}, \(G-u\) is also \colorable{k}.
-
-  For the converse, assume that \(G-u\) is \colorable{k}.  Let \(c:V(G-u)\to C\) be such a coloring, and so
-  \(\abs{C}=k\).  By definition, \(u\notin N(u)\), and since, by assumption, \(N(u)\subseteq N(v)\), it is also the
-  case that \(u\notin N(v)\).  Hence, \(u\) is not adjacent to \(v\) in \(G\).  But everything that is adjacent to
-  \(u\) in \(G\) is also adjacent to \(v\) in both \(G-u\) and \(G\).  Since everything adjacent to \(v\) has a
-  different color than \(v\), we should be able to assign \(u\) the same color as \(v\) in \(G\) in order to get a
-  proper coloring of \(G\).
-
-  Let \(S=N(u)\cap N(v)=\set{w_1,\ldots w_r}\subset V(G-u)\) for some \(r=\deg(u)\le \deg(v)\).  For all \(w\in
-  S\), \(w\in N(v)\) meaning \(vw\in E(G-u)\).  And, because \(c\) is proper, it must be the case that \(c(w)\ne
-  c(v)\).  So define \(c':V(G)\to C\) as follows:
-  \[c'(w)=\begin{cases}
-  c(w), & w\ne u \\
-  c(v), & w=u
+  Assume that \(G\) is \colorable{k}.  By definition, there exists some coloring function \(c:V(G)\to C\) where
+  \(c(u)=c(v)\) and \(\abs{C}=k\).  Let \(w\in V(G\cdot uv)\) be the identified vertex and define a coloring function
+  \(c':V(G\cdot uv)\to C\) as follows:
+  \[c'(z)=\begin{cases}
+  c(z), & z\ne w \\
+  c(u)=c(v), & z=w
   \end{cases}\]
-  Now, assume that \(wz\in E(G)\) and consider the following two cases:
+  Now, assume that \(xy\in E(G\cdot uv)\) and hence \(x\ne y\).
   \begin{description}
-  \item[Case 1:] \(u\notin wz\)
+  \item[Case 1:] \(w\notin xy\)
 
-    Since \(c\) is proper:
-    \[c'(w)=c(w)\ne c(z)=c'(z)\]
-  \item[Case 2:] \(u\in wz\)
+    So \(x,y\in E(G)\) and:
+    \[c'(x)=c(x)\ne c(y)=c'(y)\]
 
-    Assume without loss of generality (AWLOG) that \(u=w\).  Since \(vz\in E(G)\) and \(c\) is proper:
-    \[c'(u)=c(v)\ne c(z)=c'(z)\]
+  \item[Case 2:] \(w\in xy\)
+
+    Assume without loss of generality (AWLOG) that \(w=x\) and so \(w\ne y\).  Thus, \(y\in V(G)\),
+    \(y\notin\set{u,v}\), and:
+    \[c'(w)=c(u)\ne c(y)=c'(y)\]
   \end{description}
-  Thus, \(c'\) is a proper coloring of \(G\) using at most \(k\) colors.
+
+  This means that \(c':V(G\cdot uv)\to C\) is a proper coloring of \(G\cdot uv\) with \(\abs{C}=k\).
+
+  Therefore \(G\cdot v\) is \colorable{k}.
+
+  Fo the converse, assume that \(G\cdot uv\) is \colorable{k} and let \(w\in V(G\cdot uv\) be the identified
+  vertex.  By definition, there exists some coloring function \(c:V(G\cdot uv)\to C\) where \(\abs{C}=k\).  Define
+  the coloring function \(c':V(G)\to C\) as follows:
+  \[c'(z)=\begin{cases}
+  c(z), & z\notin\set{u,v} \\
+  c(w), & z\in\set{u,v}
+  \end{cases}\]
+  Now, assume that \(xy\in E(G)\) and hence \(x\ne y\).
+  \begin{description}
+  \item[Case 1:] \(u,v\notin xy\)
+
+    So \(x,y\in E(G\cdot uv)\) and:
+    \[c'(x)=c(x)\ne c(y)=c'(y)\]
+
+  \item[Case 2:] \(u\in xy\) and \(v\notin xy\) or \(u\notin xy\) and \(v\in xy\)
+
+    Assume without loss of generality (AWLOG) that \(u=x\) and \(v\ne y\).  Thus, \(y\in V(G\cdot uv)\),
+    \(y\ne w\), and:
+    \[c'(u)=c(w)\ne c(y)=c'(y)\]
+  \end{description}
+
+  This means that \(c':V(G)\to C\) is a proper coloring of \(G\) with \(\abs{C}=k\).
 
   Therefore \(G\) is \colorable{k}.
 \end{proof}

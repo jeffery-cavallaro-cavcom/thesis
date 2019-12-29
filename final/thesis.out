@@ -59,10 +59,11 @@
 \BOOKMARK [2][-]{subsection.5.4}{Supporting Theorems}{section.5}% 59
 \BOOKMARK [3][-]{subsubsection.5.4.1}{Maximum Edge Threshold}{subsection.5.4}% 60
 \BOOKMARK [3][-]{subsubsection.5.4.2}{Vertex Removal}{subsection.5.4}% 61
-\BOOKMARK [3][-]{subsubsection.5.4.3}{Minimum Common Neighbor Upper Bound}{subsection.5.4}% 62
-\BOOKMARK [3][-]{subsubsection.5.4.4}{Recursive Steps}{subsection.5.4}% 63
-\BOOKMARK [2][-]{subsection.5.5}{An Example}{section.5}% 64
-\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 65
-\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 66
-\BOOKMARK [1][-]{section.8}{Conclusions}{}% 67
-\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 68
+\BOOKMARK [3][-]{subsubsection.5.4.3}{Neighborhood Subsets}{subsection.5.4}% 62
+\BOOKMARK [3][-]{subsubsection.5.4.4}{Minimum Common Neighbor Upper Bound}{subsection.5.4}% 63
+\BOOKMARK [3][-]{subsubsection.5.4.5}{Recursive Steps}{subsection.5.4}% 64
+\BOOKMARK [2][-]{subsection.5.5}{An Example}{section.5}% 65
+\BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 66
+\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 67
+\BOOKMARK [1][-]{section.8}{Conclusions}{}% 68
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 69
