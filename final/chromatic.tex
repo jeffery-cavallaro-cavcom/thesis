@@ -282,8 +282,8 @@ The runtime complexity estimate for the smart version of the algorithm is shown 
   \label{fig:bron2:runtime}
 \end{figure}
 
-Therefore, BK in smart mode decreases the runtime complexity over the target range from \(\BO(1.17)\) to
-\(\BO(1.14)\) and so the improved bounding condition is effective.
+Therefore, BK in smart mode decreases the runtime complexity over the target range from \(\BO(1.17^n)\) to
+\(\BO(1.14^n)\) and so the improved bounding condition is effective.
 
 \subsection{Finding an Upper Bound}\label{sec:sub:upper}
 
@@ -498,8 +498,8 @@ the first time that all of the vertices in \(G\) are used.  The number of maxima
 final combination is the chromatic number.
 
 The Christofides does have bounding conditions.  If the vertices in any new combination of maximal independent sets
-is a subset of a previous combination then the subtree for the latter is pruned.  If the former is a subset of the
-latter then the former subtree is pruned by replacing its state with the state of the latter.
+is a subset of a previous combination then the new subtree is pruned.  If the new is a superset of a previous then the
+previous is pruned by replacing it with the new.
 
 For example, consider the graph in \figurename~\ref{fig:cfexample}.
 
@@ -641,29 +641,27 @@ combined with the parent state uses all of the vertices.  The final coloring is 
   \label{fig:cfresults}
 \end{figure}
 
-The results of a random graph analysis of the Christofides algorithm are shown in \figurename~\ref{fig:cfstates}.
-The graph shows edge probability versus the mean of the number of states for graphs of increasing order with
-\(1000\) trials per edge for orders less than \(20\) and \(100\) trials per edge for orders greater than or equal
-to \(20\) (due to increased runtime duration).
+\figurename~\ref{fig:cfcalls} shows the results of a random graph analysis of the Christofides algorithm.  It
+measures the mean number of calls to the routine that processes each found MIS and applies the bounding conditions.
+Thus, the number of calls is essentially the number of states in the state tree.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{christofides_calls}
-  \caption{Christofides algorithm mean number of states.}
-  \label{fig:cfstates}
+  \caption{Christofides algorithm mean number of calls.}
+  \label{fig:cfcalls}
 \end{figure}
 
-The number of states increases with both graph order and edge probability.  The worst case for each order is thus
-assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of states for each order
-at \(90\%\) edge probability is plotted in \figurename~\ref{fig:cfruntime}.  A logarithmic curve fit is used to
-approximate the runtime complexity for the algorithm.  The curve fit indicates that the runtime complexity is about
-\(\BO(2^{9.2127\ln(n)})\approx\BO(2^{6.7858\log(n)})\approx\BO(84^{\log(n)})\) --- still not polynomial but better
-than exponential.
+The number of calls increases with both graph order and edge probability.  The worst case for each order is thus
+assumed to occur at \(90\%\) edge probability.  A log (base 2) plot of the maximum number of calls for each order
+at \(90\%\) edge probability is shown in \figurename~\ref{fig:cfruntime}.  Note that due to excessive runtime
+duration, the test had to be stopped at \(n=20\).  A linear curve fit indicates that the runtime complexity for the
+Christofides algorithm is about \(\BO(2^{0.7607n})\approx\BO(1.69^n)\).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{christofides_runtime}
-  \caption{Christofides algorithm runtime complexity assuming \(\BO(c^n)\).}
+  \caption{Christofides algorithm runtime complexity.}
   \label{fig:cfruntime}
 \end{figure}
 
@@ -713,24 +711,21 @@ the entire pruned tree be traversed, the hope is that the first improvement has 
 depth-first search is now economical.
 
 The results of a random graph analysis of Wang's improvements to the Christofides algorithm are shown in
-\figurename~\ref{fig:wangstates}.  The graph shows edge probability versus the mean of the number of states for
-graphs of increasing order with \(1000\) trials per edge for orders less than \(20\) and \(100\) trials per edge
-for orders greater than or equal to \(20\) (due to increased runtime duration).
+\figurename~\ref{fig:wangcalls}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{wang_calls}
-  \caption{Christofides algorithm with Wang improvements mean number of states.}
-  \label{fig:wangstates}
+  \caption{Christofides algorithm with Wang improvements mean number of calls.}
+  \label{fig:wangcalls}
 \end{figure}
 
-The results are quite surprising.  Not only is there a dramatic overall improvement, it now appears that the worst
-case occurs at moderate edge density.  Intuition suggests that lower edge density graphs will have fewer and larger
+The results are quite surprising.  Not only is there a dramatic improvement, it now appears that the worst case
+occurs at moderate edge density.  Intuition suggests that lower edge density graphs will have fewer and larger
 MISs.  For the high density case, it may be that each vertex is in fewer MISs.  The worst case for each order is
-thus assumed to occur at \(50\%\) edge probability.  A log (base 2) plot of the maximum number of states for each
-order at \(50\%\) edge probability is plotted in \figurename~\ref{fig:wangruntime}.  This time, a polynomial curve
-fit appears to be more appropriate.  The curve fit indicates that the runtime complexity is about
-\(\BO(2^{0.0083n^2})\approx\BO(1.0057^{n^2})\).
+thus assumed to occur at \(50\%\) edge probability.  The runtime complexity calculation is shown in
+\figurename~\ref{fig:wangruntime}.  This time, a polynomial curve fit is required, resulting in a runtime
+complexity of about \(\BO(2^{0.0065n^2})\approx\BO(1.0045^{n^2})\).
 
 \begin{figure}[H]
   \centering
@@ -739,11 +734,12 @@ fit appears to be more appropriate.  The curve fit indicates that the runtime co
   \label{fig:wangruntime}
 \end{figure}
 
-A comparison of the Christofides and Wang runtime complexities indicates some pitfalls of big-\(\BO\) notation and
-improvements to exhaustive algorithms.  The \(\BO(c^{\log(n)})\) runtime complexity of Christofides versus the
-\(\BO(c^{n^2})\) runtime complexity of Wang indicates that for large \(n\) the benefits of the Wang improvements
-are lost to the required additional processing.  Comparing the two fit equations from \figurename~\ref{fig:cfruntime}
-and \figurename~\ref{fig:wangruntime}, the break even point appears to be \(n\approx30\).
+A comparison of the Christofides and Wang runtime complexities demonstrates some of the pitfalls of big-\(\BO\)
+notation and improvements to exhaustive algorithms.  The Wang improvements clearly have an advantage; however, the
+big-\(\BO\) analysis indicates that plain Christofides is \(\BO(a^n)\) and Wang is \(BO(b^{n^2})\).  The difference
+is due to the fact that \(a=1.69>1.0045=b\) and so for lower values of \(n\), Wang wins.  In fact, the runtime
+complexity analysis predicts that Wang loses its advantage at about \(n=43\).  Unfortunately, the runtime durations
+at that value of \(n\) are too long to test the threshold.
 
 \subsection{Zykov Algorithms}\label{sec:sub:zykov}
 
@@ -1049,8 +1045,57 @@ number~\cite{graham}:
 \[B_n=\sum_{k=1}^nS_{n,k}\]
 where the \(S_{n,k}\) are the so-called Stirling numbers of the second kind:
 \[S_{n,k}=\frac{1}{k!}\sum_{i=0}^k(-1)^i\binom{k}{i}(k-i)^n\]
-The actual runtime complexity is worse because each partition leaf node is at the end of a branch from the root
-state consisting of a certain number of states that depends on the number of nonadjacencies in a graph.
+The first 20 Bell numbers are provided in \tablename~\ref{tab:bell}~\cite{bell}.  The best case is a complete graph,
+which terminates immediately.
+
+\begin{table}[H]
+  \centering
+  \caption{Bell Numbers}
+  \label{tab:bell}
+  \begin{tabular}{|l|}
+    \hline
+    1 \\
+    \hline
+    1 \\
+    \hline
+    2 \\
+    \hline
+    5 \\
+    \hline
+    15 \\
+    \hline
+    52 \\
+    \hline
+    203 \\
+    \hline
+    877 \\
+    \hline
+    4,140 \\
+    \hline
+    21,147 \\
+    \hline
+    115,975 \\
+    \hline
+    678,570 \\
+    \hline
+    4,213,597 \\
+    \hline
+    27,644,437 \\
+    \hline
+    190,899,322 \\
+    \hline
+    1,382,958,545 \\
+    \hline
+    10,480,142,147 \\
+    \hline
+    82,864,869,804 \\
+    \hline
+    682,076,806,159 \\
+    \hline
+    5,832,742,205,057 \\
+    \hline
+  \end{tabular}
+\end{table}
 
 Branch-and-bound Zykov algorithms require the following components:
 \begin{enumerate}
@@ -1083,8 +1128,8 @@ The recursive subroutine is called with a graph \(H\) and has access to \(X\) an
 \item If \(H\) is not complete then go to step~\ref{step:zbound:branch}.
 \item If \(n(H)<n(X)\) then \(X=H\).
 \item Go to step~\ref{step:zbound:done}.
-\item Determine the chromatic number lower bound for \(H\).  If it is greater than or equal to the current
-  upper bound then go to step~\ref{step:zbound:done}.
+\item\label{step:zbound:lower} Determine the chromatic number lower bound for \(H\).  If it is greater than or
+  equal to the current upper bound then go to step~\ref{step:zbound:done}.
 \item\label{step:zbound:branch} Select any two nonadjacent vertices \(u\) and \(v\) in \(H\).
 \item Construct \(H'=H\cdot uv\), where the vertex set for the new contracted vertex is the union of the vertex
   sets for \(u\) and \(v\).
@@ -1094,11 +1139,40 @@ The recursive subroutine is called with a graph \(H\) and has access to \(X\) an
 \item\label{step:zbound:done} Return.
 \end{enumerate}
 
-McDiarmid~(1978)~\cite{mcdiarmid} predicts that even with bounding, Zykov algorithms have a runtime complexity of
-\(\BO(c^{n\sqrt{\log(n)}})\) for some real number constant \(c>1\), which is worse than exponential.  Thus Zykov
-algorithms will generally perform worse than Christofides-type algorithms.
+McDiarmid~(1978)~\cite{mcdiarmid} used a binomial edge probability module to predict that even with bounding, Zykov
+algorithms have a runtime complexity of \(\BO(c^{n\sqrt{\log(n)}})\) for some real number constant \(c>1\), which
+is worse than exponential.  If this is true, then Zykov algorithms will generally perform worse than
+Christofides-type algorithms.
 
-\subsection{The Corneil Graham Algorithm}\label{sec:sub:corneil}
+Corneil and Graham~(1973)~\cite{corneil} described and tested a Zykov algorithm that uses a custom lower bound
+estimation technique for step~\ref{step:zbound:lower} that they referred to as \(\a\)-clusters.  The full algorithm
+can be found in Graham~(1972)~\cite{graham}.  This technique is rather complex and it isn't clear that it performs
+any better than the Edwards Elphick algorithm, so Edwards Elphick is used for this research.
 
-This section examines a well-known example of a Zykov algorithm proposed by Corneil and
-Graham~(1973)~\cite{corneil}.
+A random graph analysis for the a Zykov algorithm using Edwards Elphick is shown in
+\figurename~\ref{fig:zykovcalls}.  It measures the mean number of calls to the recursive routine that processes
+each state and applies the bounding conditions.  Thus, the number of calls is essentially the number of states in
+the state tree.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{zykov_calls}
+  \caption{Zykov algorithm mean number of calls.}
+  \label{fig:zykovcalls}
+\end{figure}
+
+The number of calls increases with both graph order but decreases with probability.  This is consistent with the
+facts that the worst case is an empty graph and the best case is a complete graph.  The worst case for each order
+is assumed to occur at \(30\%\) edge probability.  A log (base 2) plot of the maximum number of calls for each
+order at \(30\%\) edge probability is shown in \figurename~\ref{fig:zykovruntime}.  Note that due to excessive
+runtime duration, the test had to be stopped at \(n=24\).  A linear curve fit indicates that the runtime complexity
+for the Zykov algorithm is about \(\BO(2^{1.7244n})\approx\BO(3.3^n)\).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{zykov_runtime}
+  \caption{Zykov algorithm runtime complexity.}
+  \label{fig:zykovruntime}
+\end{figure}
+
+Clearly, the Christofides/Wang algorithm outperforms the Zykov algorithm.

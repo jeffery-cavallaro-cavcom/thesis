@@ -126,4 +126,9 @@ R.~C. Read, ``An introduction to chromatic polynomials,'' {\em Journal of
 B.~Graham, ``An algorithm to determine the chromatic number of a graph,''
   Master's thesis, University of Toronto, Ontario, Canada, October 1972.
 
+\bibitem{bell}
+``The online encyclopedia of integer sequences: A000110.''
+  \url{https://oeis.org/A000110}.
+\newblock Accessed: 2019-12-29.
+
 \end{thebibliography}
