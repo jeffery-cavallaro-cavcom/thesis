@@ -60,10 +60,10 @@
 \contentsline {subsubsection}{\numberline {5.4.1}Maximum Edge Threshold}{99}{subsubsection.5.4.1}% 
 \contentsline {subsubsection}{\numberline {5.4.2}Vertex Removal}{102}{subsubsection.5.4.2}% 
 \contentsline {subsubsection}{\numberline {5.4.3}Neighborhood Subsets}{105}{subsubsection.5.4.3}% 
-\contentsline {subsubsection}{\numberline {5.4.4}Minimum Common Neighbor Upper Bound}{108}{subsubsection.5.4.4}% 
-\contentsline {subsubsection}{\numberline {5.4.5}Recursive Steps}{113}{subsubsection.5.4.5}% 
-\contentsline {subsection}{\numberline {5.5}An Example}{116}{subsection.5.5}% 
-\contentsline {section}{\numberline {6}Random Graph Analysis}{124}{section.6}% 
-\contentsline {section}{\numberline {7}Toaster Design Case Study}{125}{section.7}% 
-\contentsline {section}{\numberline {8}Conclusions}{130}{section.8}% 
-\contentsline {section}{Literature Cited}{131}{section*.6}% 
+\contentsline {subsubsection}{\numberline {5.4.4}Minimum Common Neighbor Upper Bound}{109}{subsubsection.5.4.4}% 
+\contentsline {subsubsection}{\numberline {5.4.5}Recursive Steps}{114}{subsubsection.5.4.5}% 
+\contentsline {subsection}{\numberline {5.5}An Example}{115}{subsection.5.5}% 
+\contentsline {section}{\numberline {6}Random Graph Analysis}{123}{section.6}% 
+\contentsline {section}{\numberline {7}Toaster Design Case Study}{124}{section.7}% 
+\contentsline {section}{\numberline {8}Conclusions}{129}{section.8}% 
+\contentsline {section}{Literature Cited}{130}{section*.6}% 

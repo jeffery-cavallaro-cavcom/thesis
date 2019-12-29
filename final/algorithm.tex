@@ -64,9 +64,9 @@ bounds match then the default coloring is accepted.  If not, then the main routi
 recursive subroutine is called to execute a modified Zykov algorithm in order to determine if \(G\) is
 \colorable{k}.  If \(k\) reaches the upper bound then the default coloring is accepted as chromatic.
 
-Instead of walking a single Zykov tree for the whole graph \(G\), the Wang technique (see
-\sectionname~\ref{sec:sub:wang}) is used to mutate \(G\) into smaller graphs \(G_i\) by selecting a vertex that
-occurs in the least number of MISs in \(G\).  Each of these MISs implies a set of vertex contractions and edge
+Instead of walking a single Zykov tree for the whole graph \(G\), the Wang technique
+(see~\sectionname~\ref{sec:sub:wang}) is used to mutate \(G\) into smaller graphs \(G_i\) by selecting a vertex
+that occurs in the least number of MISs in \(G\).  Each of these MISs implies a set of vertex contractions and edge
 additions that are applied to \(G\) to construct the corresponding \(G_i\).  Thus, the modified Zykov algorithm is
 applied in sequence to these separate \(G_i\) for each \(k\) value.  The first successful return identifies
 \(\X(G)\) and then the coloring routine is called to construct the final coloring based on the information from the
@@ -188,13 +188,13 @@ The steps of the recursive subroutine and references to their associated theorem
   \[X=\setb{v\in V(G)}{\deg(v)<k}\]
 
 \item\label{step:sub:xcheck} If \(X\ne\emptyset\) then replace \(G\) with \(G-X\), append \(X\) to \(S\), and go to
-  step~\ref{step:sub:kcheck} (Corollary~\ref{cor:lowdeg}).
+  step~\ref{step:sub:kcheck} (Corollary~\ref{cor:remall}).
 
 \item\label{step:sub:common} Calculate the common number of neighbors between each pair of vertices in \(G\),
   stopping if one vertex's neighborhood is found to be a subset of another.
 
 \item\label{step:sub:subset} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace
-  \(G\) with \(G\cdot uv\) and go to step~\ref{step:sub:kcheck} (Theorem~\ref{thm:subset}).
+  \(G\) with \(G\cdot uv\) and go to step~\ref{step:sub:kcheck} (Theorem~\ref{cor:subset}).
 
 \item\label{step:sub:select} Let \(b\) be the smallest number of common neighbors between any pair of vertices in
   \(G\) based on the calculations in step~\ref{step:sub:common}:
@@ -346,9 +346,9 @@ for \(v\) regardless of how \(N(v)\) is colored.  This result is formalized in \
     \draw (0,0) circle [radius=2];
     \node at (0,-1.5) {\(G-v\)};
     \draw (0,0.5) ellipse (1 and 1.25);
-    \node (a) [unlabeled node=green!25!white] at (0,1.5) {};
-    \node (b) [unlabeled node=red!25!white] at (0,1.0) {};
-    \node (c) [unlabeled node=blue!25!white] at (0,0.5) {};
+    \node (a) [unlabeled node=green] at (0,1.5) {};
+    \node (b) [unlabeled node=red] at (0,1.0) {};
+    \node (c) [unlabeled node=blue] at (0,0.5) {};
     \node at (0,-0.25) {\(N(v)\)};
     \node (v) [unlabeled node] at (4,1) {};
     \node [below=1ex] at (v) {\(v\)};
@@ -556,26 +556,12 @@ In fact, the the test of Corollary~\ref{cor:density} will always fail for a comp
 
 \subsubsection{Vertex Removal}\label{sec:sub:sub:vertex}
 
-The theorems that support vertex removal make use of Lemma~\ref{lem:remone}.
-
-\begin{lemma}
-  \label{lem:remone}
-  Let \(G\) be a graph and let \(v\in V(G)\).  If \(G\) is \colorable{k} then \(G-v\) is also \colorable{k}.
-\end{lemma}
-
-\begin{proof}
-  Assume that \(G\) is \colorable{k}.  Let \(c:V(G)\to C\) be such a coloring, and so \(\abs{C}=k\).  Intuitively,
-  removing \(v\) from \(G\) should not affect the proper coloring of the remaining vertices.  Thus, we should be
-  able to construct a proper coloring for \(G-v\) based upon \(c\).  So consider the restricted coloring function
-  \(c'=\restrict{c}{V(G-v)}\) and assume \(uw\in E(G-v)\).  Since \(c\) is proper:
-  \[c'(u)=c(u)\ne c(w)=c'(w)\]
-  Thus, \(c'\) is a proper coloring of \(G-v\) using at most \(k\) colors.
-
-  Therefore \(G-v\) is \colorable{k}.
-\end{proof}
-
-Lemma~\ref{lem:remone} is demonstrated in \figurename~\ref{fig:remone}.  No matter which vertex is removed, the
-resulting subgraph is still properly colored using at most four (in fact, three) colors.
+Steps~\ref{step:sub:xcalc} and \ref{step:sub:xcheck} remove vertices with degrees less than \(k\).  The idea is
+that since a vertex's neighbors only use less than \(k\) colors there will always be an available color for the
+vertex without adding a new color, regardless of how the vertex's neighbors are actually colored.  In order words,
+these small degree vertices do not affect the overall colorability of their graph.  This fact is demonstrated by
+\figurename~\ref{fig:remone}; no matter which vertex is removed, the resulting subgraph is still properly colored
+using at most four (in fact, three) colors.
 
 \begin{figure}[H]
   \centering
@@ -696,50 +682,58 @@ resulting subgraph is still properly colored using at most four (in fact, three)
 
     \(G-d\)
   \end{minipage}
-  \caption{Lemma~\ref{lem:remone} example.}
+  \caption{Vertex removal example.}
   \label{fig:remone}
 \end{figure}
 
-Steps~\ref{step:sub:xcalc} and \ref{step:sub:xcheck} remove vertices with degrees less than \(k\).  This is
-supported by Theorem~\ref{thm:lowdeg}.
+Vertex removal is supported by \theoremname~\ref{thm:remone}:
 
 \begin{theorem}
-  \label{thm:lowdeg}
+  \label{thm:remone}
   Let \(G\) be a graph and let \(v\in V(G)\) such that \(\deg(v)<k\) for some \(k\in\N\).  \(G\) is \colorable{k}
   if and only if \(G-v\) is \colorable{k}.
 \end{theorem}
 
 \begin{proof}
-  Assume that \(G\) is \colorable{k}.  Therefore, by Lemma~\ref{lem:remone}, \(G-v\) is also \colorable{k}.
+  Assume that \(G\) is \colorable{k}.  By definition, there exists some coloring function \(c:V(G)\to C\) where
+  \(\abs{C}=k\).  Consider the restricted coloring function \(c'=\restrict{c}{V(G-v)}\) and assume \(uw\in E(G-v)\)
+  and hence \(u\ne w\).  Since \(c\) is proper:
+  \[c'(u)=c(u)\ne c(w)=c'(w)\]
+  This means that \(c':V(G-v)\to C\) is a proper coloring of \(G-v\) with \(\abs{C}=k\).
 
-  For the converse, assume that \(G-v\) is \colorable{k}.  Let \(c:V(G-v)\to C\) be such a coloring, and so
-  \(\abs{C}=k\).  By assumption, \(\deg(v)<k\), so \(v\) has at most \(k-1\) neighbors in \(G\), using at most
-  \(k-1\) colors.  This means that there should be an additional color that can be assigned to \(v\) in \(G\) such
-  that the coloring remains proper (see \figurename~\ref{fig:reverse}).  So let
+  Therefore \(G-v\) is \colorable{k}.
+
+  For the converse, assume that \(G-v\) is \colorable{k}.  By definition, there exists some coloring function
+  \(c:V(G-v)\to C\) where \(\abs{C}=k\).  By assumption, \(\deg(v)<k\), so \(v\) has at most \(k-1\) neighbors in
+  \(G\), using at most \(k-1\) colors.  This means that there is an additional color that can be assigned to \(v\)
+  in \(G\) such that the coloring remains proper (see~\figurename~\ref{fig:reverse}).  So let
   \(N(v)=\set{v_1,\ldots,v_r}\subseteq V(G-v)\) for some \(r<k\), and let \(c[N(v)]=\set{c_1,\ldots,c_s}\subset C\)
-  for some \(s\le r<k\).  Since \(c[N(v)]\) is a proper subset of \(C\), select \(c_k\in C-c[N(v)]\) and define
-  \(c':V(G)\to C\) as follows:
+  for some \(s\le r<k\).  Since \(c[N(v)]\) is a proper subset of \(C\), select \(c_k\in C-c[N(v)]\) and define a
+  coloring function \(c':V(G)\to C\) as follows:
   \[c'(u)=\begin{cases}
   c(u), & u\ne v \\
   c_k, & u=v
   \end{cases}\]
-  Now, assume that \(uw\in E(G)\) and consider the following two cases:
+
+  Now, assume that \(uw\in E(G)\) and hence \(u\ne w\).
   \begin{description}
   \item[Case 1:] \(v\notin uw\)
 
-    Since \(c\) is proper:
+    So \(u,w\in E(G-v)\) and since \(c\) is proper:
     \[c'(u)=c(u)\ne c(w)=c'(w)\]
+
   \item[Case 2:] \(v\in uw\)
 
-    Assume without loss of generality (AWLOG) that \(u=v\).  This means that \(c'(v)=c_k\) and \(c'(w)=c(w)\in
-    c[N(v)]\).  But \(c_k\notin c[N(v)]\) and so \(c'(v)\ne c'(w)\).
+    Assume without loss of generality (AWLOG) that \(v=u\).  Thus, \(w\in V(G-v)\) and since \(c\) is proper:
+    \[c'(v)=c_k\ne c(u)=c'(u)\]
   \end{description}
-  Thus, \(c'\) is a proper coloring of \(G\) using at most \(k\) colors.
 
-  Therefore \(G\) is \colorable{k}.
+  This means that \(c':V(G)\to C\) is a proper coloring of \(G\) with \(\abs{C}=k\).
+
+  Therefore \(G-v\) is \colorable{k}.
 \end{proof}
 
-Theorem~\ref{thm:lowdeg} is demonstrated in \figurename~\ref{fig:lowdeg} for \(k=4\) and \(\deg(v)=3\).
+Theorem~\ref{thm:remone} is demonstrated in \figurename~\ref{fig:lowdeg} for \(k=4\) and \(\deg(v)=3\).
 
 \begin{figure}[H]
   \centering
@@ -763,15 +757,15 @@ Theorem~\ref{thm:lowdeg} is demonstrated in \figurename~\ref{fig:lowdeg} for \(k
     \draw (b) edge (c);
     \draw (c) edge (d);
   \end{tikzpicture}
-  \caption{Theorem~\ref{thm:lowdeg} example.}
+  \caption{Theorem~\ref{thm:remone} example.}
   \label{fig:lowdeg}
 \end{figure}
 
-The recursive subroutine actually removes all such vertices at once, which is supported by the inductive proof in
-Corollary \ref{cor:lowdeg}.
+The recursive subroutine actually removes all such small degree vertices at once, which is supported by the
+inductive proof in Corollary \ref{cor:remall}.
 
 \begin{corollary}
-  \label{cor:lowdeg}
+  \label{cor:remall}
   Let \(G\) be a graph of order \(n\) and let \(X=\setb{v\in V(G)}{\deg(v)<k}\) for some \(k\in\N\).  \(G\) is
   \colorable{k} if and only if \(G-X\) is \colorable{k}.
 \end{corollary}
@@ -791,27 +785,46 @@ Corollary \ref{cor:lowdeg}.
     
     Since \(\abs{X}=r+1>0\), there exists \(v\in X\) such that \(\deg(v)<k\).  Let \(Y=X-\set{v}\) and note that
     \(\abs{Y}=\abs{X}-1=(r+1)-1=r\).  So, \(G\) is \colorable{k} if and only if \(G-v\) is \colorable{k} (Theorem
-    \ref{thm:lowdeg}) if and only if \((G-v)-Y\) is \colorable{k} (inductive assumption).
+    \ref{thm:remone}) if and only if \((G-v)-Y\) is \colorable{k} (inductive assumption).
   \end{description}
 
   Therefore, by the principle of induction, \(G\) is \colorable{k} if and only if \(G-X\) is \colorable{k}.
 \end{proof}
 
 Returning to the example in \figurename~\ref{fig:lowdeg}, note that \(X=\set{v,b,d}\) is the set of all vertices
-with degree less than \(4\) and so all three can be removed at once in accordance with Corollary \ref{cor:lowdeg}.
+with degree less than \(4\) and so all three can be removed at once in accordance with Corollary \ref{cor:remall}.
 
 \subsubsection{Neighborhood Subsets}\label{sec:sub:sub:subset}
 
-Step~\ref{step:sub:subset} contracts vertices whose neighborhoods are subsets of other vertices.  This is supported
-by Theorem~\ref{thm:subset}.
+Step~\ref{step:sub:subset} contracts vertices whose neighborhoods are subsets of other vertices.
+\lemmaname~\ref{lem:subsame} states that in any \coloring{k} such vertices can be colored using the same color.
 
-\begin{theorem}
-  \label{thm:subset}
+\begin{lemma}
+  \label{lem:subsame}
   Let \(G\) be a graph such that:
   \begin{enumerate}
   \item \(n(G)\ge 2\)
   \item \(u,v\in V(G)\) and \(u\ne v\)
   \item \(N(u)\subseteq N(v)\), and hence \(uv\notin E(G)\)
+  \end{enumerate}
+  and let \(k\in\N\).  In any \coloring{k} of \(G\), \(u\) and \(v\) can be assigned the same color.
+\end{lemma}
+
+\begin{proof}
+  Assume that the coloring function \(c:V(G)\to C\) is proper where \(\abs{C}=k\).  Since \(N(u)\subseteq N(v)\),
+  it must be the case that \(c[N(u)]\subseteq c[N(v)]\).  But \(c(v)\notin c[N(v)]\) and hence \(c(v)\notin N(u)\).
+  Therefore, \(c(v)\) is available for \(u\).
+\end{proof}
+
+Theorem~\ref{thm:consame} states that any two vertices using the same color can be contracted without affecting
+colorability.
+
+\begin{theorem}
+  \label{thm:consame}
+  Let \(G\) be a graph such that:
+  \begin{enumerate}
+  \item \(n(G)\ge 2\)
+  \item \(u,v\in V(G)\) and \(u\ne v\)
   \item \(u\) and \(v\) are assigned the same color in any proper coloring of \(G\)
   \end{enumerate}
   and let \(k\in\N\).  \(G\) is \colorable{k} if and only if \(G\cdot uv\) is \colorable{k}.
@@ -829,13 +842,13 @@ by Theorem~\ref{thm:subset}.
   \begin{description}
   \item[Case 1:] \(w\notin xy\)
 
-    So \(x,y\in E(G)\) and:
+    So \(x,y\in E(G)\) and since \(c\) is proper:
     \[c'(x)=c(x)\ne c(y)=c'(y)\]
 
   \item[Case 2:] \(w\in xy\)
 
     Assume without loss of generality (AWLOG) that \(w=x\) and so \(w\ne y\).  Thus, \(y\in V(G)\),
-    \(y\notin\set{u,v}\), and:
+    \(y\notin\set{u,v}\), and since \(c\) is proper:
     \[c'(w)=c(u)\ne c(y)=c'(y)\]
   \end{description}
 
@@ -843,7 +856,7 @@ by Theorem~\ref{thm:subset}.
 
   Therefore \(G\cdot v\) is \colorable{k}.
 
-  Fo the converse, assume that \(G\cdot uv\) is \colorable{k} and let \(w\in V(G\cdot uv\) be the identified
+  For the converse, assume that \(G\cdot uv\) is \colorable{k} and let \(w\in V(G\cdot uv\) be the identified
   vertex.  By definition, there exists some coloring function \(c:V(G\cdot uv)\to C\) where \(\abs{C}=k\).  Define
   the coloring function \(c':V(G)\to C\) as follows:
   \[c'(z)=\begin{cases}
@@ -854,13 +867,13 @@ by Theorem~\ref{thm:subset}.
   \begin{description}
   \item[Case 1:] \(u,v\notin xy\)
 
-    So \(x,y\in E(G\cdot uv)\) and:
+    So \(x,y\in E(G\cdot uv)\) and since \(c\) is proper:
     \[c'(x)=c(x)\ne c(y)=c'(y)\]
 
   \item[Case 2:] \(u\in xy\) and \(v\notin xy\) or \(u\notin xy\) and \(v\in xy\)
 
     Assume without loss of generality (AWLOG) that \(u=x\) and \(v\ne y\).  Thus, \(y\in V(G\cdot uv)\),
-    \(y\ne w\), and:
+    \(y\ne w\), and since \(c\) is proper:
     \[c'(u)=c(w)\ne c(y)=c'(y)\]
   \end{description}
 
@@ -869,17 +882,35 @@ by Theorem~\ref{thm:subset}.
   Therefore \(G\) is \colorable{k}.
 \end{proof}
 
-Theorem~\ref{thm:subset} is demonstrated in \figurename~\ref{fig:subset}.
+Finally, \corollaryname~\ref{cor:subset} combines the previous two results.
+
+\begin{corollary}
+  \label{cor:subset}
+  Let \(G\) be a graph such that:
+  \begin{enumerate}
+  \item \(n(G)\ge 2\)
+  \item \(u,v\in V(G)\) and \(u\ne v\)
+  \item \(N(u)\subseteq N(v)\), and hence \(uv\notin E(G)\)
+  \end{enumerate}
+  and let \(k\in\N\).  \(G\) is \colorable{k} if and only if \(G\cdot uv\) is \colorable{k}.
+\end{corollary}
+
+\begin{proof}
+  By \lemmaname~\ref{lem:subsame}, \(u\) and \(v\) can be assigned the same color.  Therefore, by
+  \theoremname~\ref{thm:consame}, \(G\) is \colorable{k} if and only if \(G\cdot uv\) is \colorable{k}.
+\end{proof}
+
+Corollary~\ref{cor:subset} is demonstrated in \figurename~\ref{fig:subset}.
 
 \begin{figure}[H]
   \begin{minipage}{2.75in}
     \centering
     \begin{tikzpicture}
-      \colorlet{c1}{green!25!white}
-      \colorlet{c2}{blue!25!white}
-      \colorlet{c3}{yellow!25!white}
-      \colorlet{c4}{orange!25!white}
-      \colorlet{c5}{red!25!white}
+      \colorlet{c1}{green}
+      \colorlet{c2}{blue}
+      \colorlet{c3}{yellow}
+      \colorlet{c4}{orange}
+      \colorlet{c5}{red}
       \draw (0,0) circle (3);
       \node at (0,-2.75) {\(G\)};
       \draw (0,0) ellipse (1 and 2.5);
@@ -901,11 +932,11 @@ Theorem~\ref{thm:subset} is demonstrated in \figurename~\ref{fig:subset}.
   \begin{minipage}{2.75in}
     \centering
     \begin{tikzpicture}
-      \colorlet{c1}{green!25!white}
-      \colorlet{c2}{blue!25!white}
-      \colorlet{c3}{yellow!25!white}
-      \colorlet{c4}{orange!25!white}
-      \colorlet{c5}{red!25!white}
+      \colorlet{c1}{green}
+      \colorlet{c2}{blue}
+      \colorlet{c3}{yellow}
+      \colorlet{c4}{orange}
+      \colorlet{c5}{red}
       \draw (0,0) circle (3);
       \node at (0,-2.75) {\(G\cdot uv\)};
       \draw (0,0) ellipse (1 and 2.5);
@@ -919,7 +950,7 @@ Theorem~\ref{thm:subset} is demonstrated in \figurename~\ref{fig:subset}.
       \draw (v) edge (a) edge (b) edge (c) edge (d);
     \end{tikzpicture}
   \end{minipage}
-  \caption{Demonstration of \theoremname~\ref{thm:subset}.}
+  \caption{Demonstration of \theoremname~\ref{cor:subset}.}
   \label{fig:subset}
 \end{figure}
 
@@ -1140,13 +1171,13 @@ not a sufficient condition.
 If nothing more can be done in the preceding steps then steps~\ref{step:sub:select2}--\ref{step:sub:fail} revert to
 branching.  Step~\ref{step:sub:select2} selects two non-adjacent vertices with the smallest number of common
 neighbors.  Such a pair must exist.  Otherwise, the current state of \(G\) is complete, which would have been
-eliminated by step \ref{step:sub:density}.  The first recursive call (step~\ref{step:sub:call1}) assumes that the
+eliminated by step~\ref{step:sub:echeck}.  The first recursive call (step~\ref{step:sub:call1}) assumes that the
 two selected vertices have the same color, so they are contracted.  The second recursive call (step
 \ref{step:sub:call2}) assumes that the two selected vertices have different colors, so they are joined by an added
 edge.  Each call starts a new branch of the Zykov tree corresponding to the current value of \(k\).  If either call
 returns true then it can be concluded that the input graph was indeed \colorable{k}.  Otherwise, it can be
-concluded that the input graph is not \colorable{k} and the recursive subroutine returns the state of \(G\) prior to
-the recursive calls to the main routine.
+concluded that the input graph is not \colorable{k} and the recursive subroutine returns the state of \(G\) prior
+to the recursive calls to the main routine.
 
 These steps are supported by Theorem~\ref{thm:recurse}.
 
@@ -1157,104 +1188,20 @@ These steps are supported by Theorem~\ref{thm:recurse}.
 \end{theorem}
 
 \begin{proof}
-  Assume that \(G\) is \colorable{k}.  Let \(c:V(G)\to C\) be such a coloring, and so \(\abs{C}=k\).  There are two
-  possibilities, corresponding to the two recursive choices:
-  \begin{description}
-  \item [Case 1:] \(u\) and \(v\) have the same color: \(c(u)=c(v)\).
+  Assume that \(G\) is \colorable{k}.  By definition, there exists some coloring function \(c:V(G)\to C\) where
+  \(\abs{C}=k\).  There are two possibilities, corresponding to the two recursive choices: \(c(u)=c(v)\) (same
+  color) or \(c(u)\ne c(v)\) (different colors).  The case \(c(u)=c(v)\) has already been proven by
+  \theoremname~\ref{thm:consame}, so it remains to be proven that \(G\) is \colorable{k} if and only if \(G+uv\) is
+  \colorable{k}.
 
-    Let \(c_{uv}=c(u)=c(v)\in C\).  For all \(w\in N(u)\cup N(v)\), since \(w\) is adjacent to \(u\) and \(v\) and
-    because \(c\) is proper, it must be the case that \(w\) is a different color than the color of \(u\) and \(v\):
-    \(c(w)\ne c_{uv}\).  Let \(v'\) be the contracted vertex, so that \(N(v')=N(u)\cup N(v)\) and assign color
-    \(c_{uv}\) to \(v'\).  Define \(c':V(G\cdot uv)\to C\) as follows:
-    \[c'(w)=\begin{cases}
-    c(w), & w\ne v' \\
-    c_{uv}, & w=v'
-    \end{cases}\]
-    Now, assume that \(wz\in E(G\cdot uv)\) and consider the following two cases:
-    \begin{description}
-    \item[Case a:] \(v'\notin wz\)
-
-      Since \(c\) is proper:
-      \[c'(w)=c(w)\ne c(z)=c'(z)\]
-
-    \item[Case b:] \(v'\in wz\)
-
-      Assume without loss of generality that \(v'=w\).  Since \(z\in N(v')\):
-      \[c'(v')=c_{uv}\ne c(z)=c'(z)\]
-    \end{description}
-
-    Thus, \(c'\) is a proper coloring of \(G\cdot uv\) using at most \(k\) colors.
-      
-    Therefore \(G\cdot uv\) is \colorable{k}.
-
-  \item [Case 2:] \(u\) and \(v\) have the different colors: \(c(u)\ne c(v)\).
-
-    By adding edge \(uv\), \(u\) and \(v\) become adjacent and thus must have different colors.  Thus, \(u\)
-    and \(v\) can retain their same colors.  So define \(c':V(G+uv)\to C\) as follows:
-    \[c'(w)=c(w)\]
-    Now, assume \(wz\in E(G)\).  Since \(c\) is proper:
-    \[c'(w)=c(w)\ne c(z)=c'(z)\]
-    Thus, \(c'\) is a proper coloring of \(G+uv\) using at most \(k\) colors.
-
-    Therefore \(G+uv\) is \colorable{k}.
-  \end{description}
-
-  Therefore \(G\cdot uv\) or \(G+uv\) is \colorable{k}.
+  Assume \(c(u)\ne c(v)\).  By adding edge \(uv\), \(u\) and \(v\) become adjacent and thus must have different
+  colors.  Thus, \(u\) and \(v\) can retain their same colors, the coloring is unchanged and remains proper, and
+  therefore \(G+uv\) is \colorable{k}.
     
-  For the converse, assume \(G\cdot uv\) or \(G+uv\) is \colorable{k}.  Again, there are two cases:
-  \begin{description}
-  \item [Case 1:] \(G\cdot uv\) is \colorable{k}.
-
-    Let \(c:V(G\cdot uv)\to C\) be such a coloring, and so \(\abs{C}=k\).  Let \(v'\) be the contracted vertex, and
-    so \(N(v')=N(u)\cup N(v)\).  Let \(c(v')=c_{uv}\in C\).  For all \(w\in N(v')\) in \(G\cdot uv\), since \(w\) and
-    \(v'\) are adjacent, they must have different colors: \(c(w)\ne c_{uv}\).
-
-    Consider \(u\) and \(v\) in \(G\).  Since they are not adjacent, they can be assigned the same color.  So,
-    defined \(c':V(G)\to C\) as follows:
-    \[c'(w)=\begin{cases}
-    c(w), & w\ne u,v \\
-    c_{uv}, & w=u \\
-    c_{uv}, & w=v
-    \end{cases}\]
-    Now, assume \(wz\in E(G)\) and consider the following cases:
-    \begin{description}
-    \item[Case a:] \(uv=wz\)
-
-      This is not possible since, by assumption, \(u\) is not adjacent to \(v\).
-
-    \item[Case b:] \(u\in wz\) and \(v\notin wz\)
-
-      Assume without loss of generality (AWLOG) that \(u=w\).  Since \(z\in N(u)\) in \(G\), it must be the case that
-      \(z\in N(v')\) in \(G\cdot uv\).  And so:
-      \[c'(u)=c_{uv}\ne c(w)=c'(w)\]
-
-    \item[Case c:] \(u\notin wz\) and \(v\in wz\)
-
-      Assume without loss of generality (AWLOG) that \(v=w\).  Since \(z\in N(v)\) in \(G\), it must be the case that
-      \(z\in N(v')\) in \(G\cdot uv\).  And so:
-      \[c'(v)=c_{uv}\ne c(w)=c'(w)\]
-
-    \item[Case d:] \(u,v\notin wz\)
-
-      Since \(c\) is proper:
-      \[c'(w)=c(w)\ne c(z)=c'(z)\]
-    \end{description}
-
-    Thus, \(c'\) is a proper coloring of \(G\) using at most \(k\) colors.
-
-  \item [Case 2:] \(G+uv\) is \colorable{k}.
-
-    Let \(c:V(G+uv)\to C\) be such a coloring, and so \(\abs{C}=k\).  Since \(u\) and \(v\) are adjacent in
-    \(G+uv\), they must have different colors.  Once \(uv\) is removed in \(G\), \(u\) and \(v\) are no longer
-    adjacent and so there are no requirements on their colors.  Thus, they can retain their original colors from
-    \(G+uv\).  So define \(c':V(G)\to C\) as follows:
-    \[c'(w)=c(w)\]
-    Now assume \(wz\in E(G)\).  Since \(c\) is proper:
-    \[c'(w)=c(w)\ne c(z)=c'(z)\]
-    Thus, \(c'\) is a proper coloring of \(G\) using at most \(k\) colors.
-  \end{description}
-
-  Therefore \(G\) is \colorable{k}.
+  For the converse, assume that \(G+uv\) is \colorable{k}.  Since \(u\) and \(v\) are adjacent in
+  \(G+uv\), they must have different colors.  Once \(uv\) is removed in \(G\), \(u\) and \(v\) are no longer
+  adjacent and so there are no requirements on their colors.  Thus, \(u\) and \(v\) can retain their same colors, the
+  coloring is unchanged and remains proper, and therefore \(G\) is \colorable{k}.
 \end{proof}
 
 \subsection{An Example}\label{sec:sub:example}
