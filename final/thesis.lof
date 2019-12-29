@@ -69,19 +69,19 @@
 \contentsline {figure}{\numberline {69}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{100}{figure.69}% 
 \contentsline {figure}{\numberline {70}{\ignorespaces Lemma\nobreakspace \ref {lem:remone} example.}}{101}{figure.70}% 
 \contentsline {figure}{\numberline {71}{\ignorespaces Theorem\nobreakspace \ref {thm:lowdeg} example.}}{102}{figure.71}% 
-\contentsline {figure}{\numberline {72}{\ignorespaces Theorem \ref {thm:subset} example.}}{106}{figure.72}% 
+\contentsline {figure}{\numberline {72}{\ignorespaces Demonstration of Theorem\nobreakspace \ref {thm:subset}.}}{105}{figure.72}% 
 \contentsline {figure}{\numberline {73}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{107}{figure.73}% 
-\contentsline {figure}{\numberline {74}{\ignorespaces Case \(a_i=1\) contradiction.}}{109}{figure.74}% 
+\contentsline {figure}{\numberline {74}{\ignorespaces Case \(a_i=1\) contradiction.}}{108}{figure.74}% 
 \contentsline {figure}{\numberline {75}{\ignorespaces Corollary \ref {cor:inter} example.}}{111}{figure.75}% 
-\contentsline {figure}{\numberline {76}{\ignorespaces An example graph.}}{116}{figure.76}% 
-\contentsline {figure}{\numberline {77}{\ignorespaces Step: \(G-\set {g,h}\).}}{117}{figure.77}% 
-\contentsline {figure}{\numberline {78}{\ignorespaces Step: \(G\cdot ad\).}}{119}{figure.78}% 
-\contentsline {figure}{\numberline {79}{\ignorespaces Step: \(G-\set {b,f}\)}}{120}{figure.79}% 
-\contentsline {figure}{\numberline {80}{\ignorespaces Initial coloring.}}{121}{figure.80}% 
-\contentsline {figure}{\numberline {81}{\ignorespaces Coloring \(b\) and \(f\).}}{121}{figure.81}% 
-\contentsline {figure}{\numberline {82}{\ignorespaces Final chromatic coloring.}}{122}{figure.82}% 
-\contentsline {figure}{\numberline {83}{\ignorespaces An example toaster.}}{124}{figure.83}% 
-\contentsline {figure}{\numberline {84}{\ignorespaces First candidate design.}}{125}{figure.84}% 
-\contentsline {figure}{\numberline {85}{\ignorespaces First design chromatic coloring.}}{126}{figure.85}% 
-\contentsline {figure}{\numberline {86}{\ignorespaces Second candidate design.}}{127}{figure.86}% 
-\contentsline {figure}{\numberline {87}{\ignorespaces Second design chromatic coloring.}}{128}{figure.87}% 
+\contentsline {figure}{\numberline {76}{\ignorespaces An example graph.}}{115}{figure.76}% 
+\contentsline {figure}{\numberline {77}{\ignorespaces Step: \(G-\set {g,h}\).}}{116}{figure.77}% 
+\contentsline {figure}{\numberline {78}{\ignorespaces Step: \(G\cdot ad\).}}{118}{figure.78}% 
+\contentsline {figure}{\numberline {79}{\ignorespaces Step: \(G-\set {b,f}\)}}{119}{figure.79}% 
+\contentsline {figure}{\numberline {80}{\ignorespaces Initial coloring.}}{120}{figure.80}% 
+\contentsline {figure}{\numberline {81}{\ignorespaces Coloring \(b\) and \(f\).}}{120}{figure.81}% 
+\contentsline {figure}{\numberline {82}{\ignorespaces Final chromatic coloring.}}{121}{figure.82}% 
+\contentsline {figure}{\numberline {83}{\ignorespaces An example toaster.}}{123}{figure.83}% 
+\contentsline {figure}{\numberline {84}{\ignorespaces First candidate design.}}{124}{figure.84}% 
+\contentsline {figure}{\numberline {85}{\ignorespaces First design chromatic coloring.}}{125}{figure.85}% 
+\contentsline {figure}{\numberline {86}{\ignorespaces Second candidate design.}}{126}{figure.86}% 
+\contentsline {figure}{\numberline {87}{\ignorespaces Second design chromatic coloring.}}{127}{figure.87}% 

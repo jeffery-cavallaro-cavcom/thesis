@@ -869,31 +869,64 @@ by Theorem~\ref{thm:subset}.
   Therefore \(G\) is \colorable{k}.
 \end{proof}
 
-Theorem~\ref{thm:subset} is demonstrated in \figurename~\ref{fig:subset}.  Since \(N(u)\subseteq N(v)\), \(G\) and
-\(G-u\) are equivalently colorable.  Futhermore, once \(u\) is removed, the degrees of vertices \(a\) and \(c\)
-will have degree \(2\).  So if \(k=3\), those two vertices are subsequently removed by step \ref{step:sub:small}.
-The remaining graph is of order \(2\), which then passes the success check of step \ref{step:sub:check} because
-\(2<3\), so indeed the graph is \colorable{3}.  Once again, this iterative removal of vertices is very powerful.
+Theorem~\ref{thm:subset} is demonstrated in \figurename~\ref{fig:subset}.
 
 \begin{figure}[H]
-  \centering
-  \begin{tikzpicture}[every node/.style={labeled node}]
-    \colorlet{c1}{green!25!white}
-    \colorlet{c2}{blue!25!white}
-    \colorlet{c3}{red!25!white}
-    \node [fill=c1] (b) at (0,0) {\(b\)};
-    \node [fill=c2] (a) [above=of b] {\(a\)};
-    \node [fill=c2] (c) [below=of b] {\(c\)};
-    \node [fill=c3] (u) [left=of b] {\(u\)};
-    \node [fill=c3] (v) [right=of b] {\(v\)};
-    \draw [dashed,red] (u) edge (a) edge (b);
-    \draw (v) edge (a) edge (b) edge (c);
-    \draw (a) edge (b);
-    \draw (c) edge (b);
-  \end{tikzpicture}
-  \caption{Theorem \ref{thm:subset} example.}
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{blue!25!white}
+      \colorlet{c3}{yellow!25!white}
+      \colorlet{c4}{orange!25!white}
+      \colorlet{c5}{red!25!white}
+      \draw (0,0) circle (3);
+      \node at (0,-2.75) {\(G\)};
+      \draw (0,0) ellipse (1 and 2.5);
+      \draw (0,0.5) ellipse (0.75 and 1.5);
+      \node (a) [unlabeled node,fill=c1] at (0,1.75) {};
+      \node (b) [unlabeled node,fill=c2] at (0,1) {};
+      \node (c) [unlabeled node,fill=c3] at (0,0.25) {};
+      \node at (0,-0.25) {\(N(u)\)};
+      \node (d) [unlabeled node,fill=c4] at (0,-1.5) {};
+      \node at (0,-2) {\(N(v)\)};
+      \node [unlabeled node,fill=c5] (u) at (-2,0) {};
+      \node [below=1ex] at (u) {\(u\)};
+      \node [unlabeled node,fill=c5] (v) at (2,0) {};
+      \node [below=1ex] at (v) {\(v\)};
+      \draw (u) edge (a) edge (b) edge (c);
+      \draw (v) edge (a) edge (b) edge (c) edge (d);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{blue!25!white}
+      \colorlet{c3}{yellow!25!white}
+      \colorlet{c4}{orange!25!white}
+      \colorlet{c5}{red!25!white}
+      \draw (0,0) circle (3);
+      \node at (0,-2.75) {\(G\cdot uv\)};
+      \draw (0,0) ellipse (1 and 2.5);
+      \node (a) [unlabeled node,fill=c1] at (0,1.75) {};
+      \node (b) [unlabeled node,fill=c2] at (0,1) {};
+      \node (c) [unlabeled node,fill=c3] at (0,0.25) {};
+      \node (d) [unlabeled node,fill=c4] at (0,-1.5) {};
+      \node at (0,-2) {\(N(w)\)};
+      \node [unlabeled node,fill=c5] (v) at (2,0) {};
+      \node [below=1ex] at (v) {\(w\)};
+      \draw (v) edge (a) edge (b) edge (c) edge (d);
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{Demonstration of \theoremname~\ref{thm:subset}.}
   \label{fig:subset}
 \end{figure}
+
+In the original version of the proposed algorithm, if \(N(u)\subset N(v)\) then \(G\) was replaced by \(G-u\).
+Although technically correct, simply removing \(u\) loses the important information that \(u\) and \(v\) are
+assigned the same color, which would make the coloring routine more complicated.  Special thanks to
+Graham~\cite{graham} for pointing out that contraction is sufficient.
 
 \subsubsection{Minimum Common Neighbor Upper Bound}\label{sec:sub:sub:common}
 
