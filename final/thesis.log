@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  29 DEC 2019 20:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.7)  30 DEC 2019 10:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1348,6 +1348,9 @@ File: pgflibraryshapes.multipart.code.tex 2019/05/09 v3.1.3 (3.1.3)
 
 LaTeX Warning: Label `fig:greedy:error' multiply defined.
 
+
+LaTeX Warning: Label `fig:qzsubset' multiply defined.
+
 ))
 \openout1 = `thesis.aux'.
 
@@ -1685,12 +1688,12 @@ Package tocbasic Info: Using my definition of `\numberline' on input line 66.
 Package tocbasic Info: Using my definition of `\numberline' on input line 67.
 Package tocbasic Info: Using my definition of `\numberline' on input line 68.
 Package tocbasic Info: Using my definition of `\numberline' on input line 69.
-Package tocbasic Info: Using my definition of `\numberline' on input line 70.
 
 Overfull \vbox (681.11009pt too high) has occurred while \output is active []
 
 
 [11]
+Package tocbasic Info: Using my definition of `\numberline' on input line 70.
 Package tocbasic Info: Using my definition of `\numberline' on input line 71.
 Package tocbasic Info: Using my definition of `\numberline' on input line 72.
 Package tocbasic Info: Using my definition of `\numberline' on input line 73.
@@ -1714,15 +1717,23 @@ Package tocbasic Info: Using my definition of `\numberline' on input line 90.
 Package tocbasic Info: Using my definition of `\numberline' on input line 91.
 Package tocbasic Info: Using my definition of `\numberline' on input line 92.
 Package tocbasic Info: Using my definition of `\numberline' on input line 93.
-)
-\tf@lof=\write7
-\openout7 = `thesis.lof'.
-
 
 Overfull \vbox (681.11009pt too high) has occurred while \output is active []
 
 
 [12]
+Package tocbasic Info: Using my definition of `\numberline' on input line 94.
+Package tocbasic Info: Using my definition of `\numberline' on input line 95.
+Package tocbasic Info: Using my definition of `\numberline' on input line 96.
+Package tocbasic Info: Using my definition of `\numberline' on input line 97.
+Package tocbasic Info: Using my definition of `\numberline' on input line 98.
+Package tocbasic Info: Using my definition of `\numberline' on input line 99.
+Package tocbasic Info: Using my definition of `\numberline' on input line 100.
+)
+\tf@lof=\write7
+\openout7 = `thesis.lof'.
+
+
 Overfull \vbox (681.11009pt too high) has occurred while \output is active []
 
 
@@ -1802,7 +1813,7 @@ ifier (name{figure.6}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.327 \end{theorem}
                    ]
-<opener.png, id=715, 280.79906pt x 63.98906pt>
+<opener.png, id=750, 280.79906pt x 63.98906pt>
 File: opener.png Graphic file (type png)
 <use opener.png>
 Package pdftex.def Info: opener.png  used on input line 350.
@@ -2061,7 +2072,7 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
 [54]
-<edwards1_error.jpeg, id=1069, 455.45157pt x 258.65053pt>
+<edwards1_error.jpeg, id=1105, 455.45157pt x 258.65053pt>
 File: edwards1_error.jpeg Graphic file (type jpg)
 <use edwards1_error.jpeg>
 Package pdftex.def Info: edwards1_error.jpeg  used on input line 127.
@@ -2073,7 +2084,7 @@ Package pdftex.def Info: edwards1_error.jpeg  used on input line 127.
                                                   \fi \fi 
 l.130 \end{figure}
                   ]
-<edwards1_steps.jpeg, id=1081, 455.45157pt x 258.65053pt>
+<edwards1_steps.jpeg, id=1117, 455.45157pt x 258.65053pt>
 File: edwards1_steps.jpeg Graphic file (type jpg)
 <use edwards1_steps.jpeg>
 Package pdftex.def Info: edwards1_steps.jpeg  used on input line 137.
@@ -2085,7 +2096,7 @@ Package pdftex.def Info: edwards1_steps.jpeg  used on input line 137.
                                                   \fi \fi 
 l.141 
        <./edwards1_error.jpeg>]
-<edwards1_runtime.jpeg, id=1088, 455.45157pt x 258.65053pt>
+<edwards1_runtime.jpeg, id=1123, 455.45157pt x 258.65053pt>
 File: edwards1_runtime.jpeg Graphic file (type jpg)
 <use edwards1_runtime.jpeg>
 Package pdftex.def Info: edwards1_runtime.jpeg  used on input line 148.
@@ -2103,12 +2114,12 @@ l.160
                                                   \fi \fi 
 l.160 
        <./edwards1_steps.jpeg> <./edwards1_runtime.jpeg>]
-<edwards2_error.jpeg, id=1095, 455.45157pt x 258.65053pt>
+<edwards2_error.jpeg, id=1130, 455.45157pt x 258.65053pt>
 File: edwards2_error.jpeg Graphic file (type jpg)
 <use edwards2_error.jpeg>
 Package pdftex.def Info: edwards2_error.jpeg  used on input line 163.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<edwards2_steps.jpeg, id=1097, 455.45157pt x 258.65053pt>
+<edwards2_steps.jpeg, id=1132, 455.45157pt x 258.65053pt>
 File: edwards2_steps.jpeg Graphic file (type jpg)
 <use edwards2_steps.jpeg>
 Package pdftex.def Info: edwards2_steps.jpeg  used on input line 172.
@@ -2120,7 +2131,7 @@ Package pdftex.def Info: edwards2_steps.jpeg  used on input line 172.
                                                   \fi \fi 
 l.176 
        <./edwards2_error.jpeg>]
-<edwards2_runtime.jpeg, id=1103, 455.45157pt x 258.65053pt>
+<edwards2_runtime.jpeg, id=1138, 455.45157pt x 258.65053pt>
 File: edwards2_runtime.jpeg Graphic file (type jpg)
 <use edwards2_runtime.jpeg>
 Package pdftex.def Info: edwards2_runtime.jpeg  used on input line 182.
@@ -2138,13 +2149,13 @@ l.193
                                                   \fi \fi 
 l.193 
        <./edwards2_steps.jpeg> <./edwards2_runtime.jpeg>] [60]
-<bron1_calls.jpeg, id=1125, 455.45157pt x 258.65053pt>
+<bron1_calls.jpeg, id=1160, 455.45157pt x 258.65053pt>
 File: bron1_calls.jpeg Graphic file (type jpg)
 <use bron1_calls.jpeg>
 Package pdftex.def Info: bron1_calls.jpeg  used on input line 244.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [61]
-<bron1_runtime.jpeg, id=1138, 455.45157pt x 258.65053pt>
+<bron1_runtime.jpeg, id=1173, 455.45157pt x 258.65053pt>
 File: bron1_runtime.jpeg Graphic file (type jpg)
 <use bron1_runtime.jpeg>
 Package pdftex.def Info: bron1_runtime.jpeg  used on input line 256.
@@ -2166,7 +2177,7 @@ File: bron1_calls.jpeg Graphic file (type jpg)
 <use bron1_calls.jpeg>
 Package pdftex.def Info: bron1_calls.jpeg  used on input line 269.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<bron2_runtime.jpeg, id=1145, 455.45157pt x 258.65053pt>
+<bron2_runtime.jpeg, id=1180, 455.45157pt x 258.65053pt>
 File: bron2_runtime.jpeg Graphic file (type jpg)
 <use bron2_runtime.jpeg>
 Package pdftex.def Info: bron2_runtime.jpeg  used on input line 280.
@@ -2185,18 +2196,18 @@ gure.46}) has been already used, duplicate ignored
 l.303 \item I
              f \(i=n\) then done and \(k\) is an upper bound for the chromat...
  <./bron2_runtime.jpeg>] [65]
-<greedy_error.jpeg, id=1183, 455.45157pt x 258.65053pt>
+<greedy_error.jpeg, id=1219, 455.45157pt x 258.65053pt>
 File: greedy_error.jpeg Graphic file (type jpg)
 <use greedy_error.jpeg>
 Package pdftex.def Info: greedy_error.jpeg  used on input line 373.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [66]
-<greedy_steps.jpeg, id=1191, 455.45157pt x 258.65053pt>
+<greedy_steps.jpeg, id=1227, 455.45157pt x 258.65053pt>
 File: greedy_steps.jpeg Graphic file (type jpg)
 <use greedy_steps.jpeg>
 Package pdftex.def Info: greedy_steps.jpeg  used on input line 383.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<greedy_runtime.jpeg, id=1193, 455.45157pt x 258.65053pt>
+<greedy_runtime.jpeg, id=1229, 455.45157pt x 258.65053pt>
 File: greedy_runtime.jpeg Graphic file (type jpg)
 <use greedy_runtime.jpeg>
 Package pdftex.def Info: greedy_runtime.jpeg  used on input line 393.
@@ -2233,18 +2244,18 @@ l.441 \item S
 LaTeX Warning: Reference `fig:greedyint:error' on page 69 undefined on input li
 ne 453.
 
-<greedyint_error.jpeg, id=1207, 455.45157pt x 258.65053pt>
+<greedyint_error.jpeg, id=1242, 455.45157pt x 258.65053pt>
 File: greedyint_error.jpeg Graphic file (type jpg)
 <use greedyint_error.jpeg>
 Package pdftex.def Info: greedyint_error.jpeg  used on input line 460.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
 [69]
-<greedyint_steps.jpeg, id=1222, 455.45157pt x 258.65053pt>
+<greedyint_steps.jpeg, id=1257, 455.45157pt x 258.65053pt>
 File: greedyint_steps.jpeg Graphic file (type jpg)
 <use greedyint_steps.jpeg>
 Package pdftex.def Info: greedyint_steps.jpeg  used on input line 471.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<greedyint_runtime.jpeg, id=1224, 455.45157pt x 258.65053pt>
+<greedyint_runtime.jpeg, id=1259, 455.45157pt x 258.65053pt>
 File: greedyint_runtime.jpeg Graphic file (type jpg)
 <use greedyint_runtime.jpeg>
 Package pdftex.def Info: greedyint_runtime.jpeg  used on input line 481.
@@ -2288,7 +2299,7 @@ l.611
 l.611 
       ]
 Missing character: There is no ; in font nullfont!
-<christofides_calls.jpeg, id=1247, 455.45157pt x 258.65053pt>
+<christofides_calls.jpeg, id=1282, 455.45157pt x 258.65053pt>
 File: christofides_calls.jpeg Graphic file (type jpg)
 <use christofides_calls.jpeg>
 Package pdftex.def Info: christofides_calls.jpeg  used on input line 650.
@@ -2300,7 +2311,7 @@ Package pdftex.def Info: christofides_calls.jpeg  used on input line 650.
                                                   \fi \fi 
 l.654 
       ]
-<christofides_runtime.jpeg, id=1254, 455.45157pt x 258.65053pt>
+<christofides_runtime.jpeg, id=1289, 455.45157pt x 258.65053pt>
 File: christofides_runtime.jpeg Graphic file (type jpg)
 <use christofides_runtime.jpeg>
 Package pdftex.def Info: christofides_runtime.jpeg  used on input line 663.
@@ -2318,13 +2329,13 @@ the same identifier (name{figure.58}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.690 \end{proof}
                   <./christofides_runtime.jpeg>]
-<wang_calls.jpeg, id=1270, 455.45157pt x 258.65053pt>
+<wang_calls.jpeg, id=1305, 455.45157pt x 258.65053pt>
 File: wang_calls.jpeg Graphic file (type jpg)
 <use wang_calls.jpeg>
 Package pdftex.def Info: wang_calls.jpeg  used on input line 718.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
  [76]
-<wang_runtime.jpeg, id=1276, 455.45157pt x 258.65053pt>
+<wang_runtime.jpeg, id=1311, 455.45157pt x 258.65053pt>
 File: wang_runtime.jpeg Graphic file (type jpg)
 <use wang_runtime.jpeg>
 Package pdftex.def Info: wang_runtime.jpeg  used on input line 732.
@@ -2376,7 +2387,7 @@ able.5}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.1115 T
         he steps of the main routine are as follows:] [85]
-<zykov_calls.jpeg, id=1376, 455.45157pt x 258.65053pt>
+<zykov_calls.jpeg, id=1411, 455.45157pt x 258.65053pt>
 File: zykov_calls.jpeg Graphic file (type jpg)
 <use zykov_calls.jpeg>
 Package pdftex.def Info: zykov_calls.jpeg  used on input line 1159.
@@ -2388,7 +2399,7 @@ Package pdftex.def Info: zykov_calls.jpeg  used on input line 1159.
                                                   \fi \fi 
 l.1170 
         <./zykov_calls.jpeg>]
-<zykov_runtime.jpeg, id=1382, 455.45157pt x 258.65053pt>
+<zykov_runtime.jpeg, id=1417, 455.45157pt x 258.65053pt>
 File: zykov_runtime.jpeg Graphic file (type jpg)
 <use zykov_runtime.jpeg>
 Package pdftex.def Info: zykov_runtime.jpeg  used on input line 1173.
@@ -2567,90 +2578,166 @@ l.1550
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1550 
-       ]) (./random.tex [123]
-<qz_steps.jpeg, id=1713, 455.45157pt x 258.65053pt>
+       ]) (./random.tex [123] [124
+
+] [125pdfTeX warning (ext4): destination with the same identifier (name{figure.
+87}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.59 
+     ]
+<qz_steps.jpeg, id=1759, 455.45157pt x 258.65053pt>
 File: qz_steps.jpeg Graphic file (type jpg)
 <use qz_steps.jpeg>
-Package pdftex.def Info: qz_steps.jpeg  used on input line 5.
+Package pdftex.def Info: qz_steps.jpeg  used on input line 83.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-<qz_runtime.jpeg, id=1714, 455.45157pt x 258.65053pt>
+ [126]
+<qz_runtime.jpeg, id=1768, 455.45157pt x 258.65053pt>
 File: qz_runtime.jpeg Graphic file (type jpg)
 <use qz_runtime.jpeg>
-Package pdftex.def Info: qz_runtime.jpeg  used on input line 12.
+Package pdftex.def Info: qz_runtime.jpeg  used on input line 90.
 (pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
-) (./casestudy.tex [124
+<qz_match.jpeg, id=1769, 455.45157pt x 258.65053pt>
+File: qz_match.jpeg Graphic file (type jpg)
+<use qz_match.jpeg>
+Package pdftex.def Info: qz_match.jpeg  used on input line 99.
+(pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
+ [127pdfTeX warning (ext4): destination with the same identifier (name{figure.8
+8}) has been already used, duplicate ignored
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.87}) h
-as been already used, duplicate ignored
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.103 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+89}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.103 
+       <./qz_steps.jpeg> <./qz_runtime.jpeg>]
+<qz_edges.jpeg, id=1774, 455.45157pt x 258.65053pt>
+File: qz_edges.jpeg Graphic file (type jpg)
+<use qz_edges.jpeg>
+Package pdftex.def Info: qz_edges.jpeg  used on input line 106.
+(pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
+<qz_small.jpeg, id=1775, 455.45157pt x 258.65053pt>
+File: qz_small.jpeg Graphic file (type jpg)
+<use qz_small.jpeg>
+Package pdftex.def Info: qz_small.jpeg  used on input line 113.
+(pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
+ [128pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+0}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.117 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+91}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.117 
+       <./qz_match.jpeg> <./qz_edges.jpeg>]
+<qz_subset.jpeg, id=1780, 455.45157pt x 258.65053pt>
+File: qz_subset.jpeg Graphic file (type jpg)
+<use qz_subset.jpeg>
+Package pdftex.def Info: qz_subset.jpeg  used on input line 120.
+(pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
+<qz_common.jpeg, id=1781, 455.45157pt x 258.65053pt>
+File: qz_common.jpeg Graphic file (type jpg)
+<use qz_common.jpeg>
+Package pdftex.def Info: qz_common.jpeg  used on input line 127.
+(pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
+ [129pdfTeX warning (ext4): destination with the same identifier (name{figure.9
+2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.131 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+93}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.131 
+       <./qz_small.jpeg> <./qz_subset.jpeg>]
+<qz_bounding.jpeg, id=1786, 455.45157pt x 258.65053pt>
+File: qz_bounding.jpeg Graphic file (type jpg)
+<use qz_bounding.jpeg>
+Package pdftex.def Info: qz_bounding.jpeg  used on input line 134.
+(pdftex.def)             Requested size: 361.34999pt x 205.21573pt.
+) (./casestudy.tex [130pdfTeX warning (ext4): destination with the same identif
+ier (name{figure.94}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \section
             {Toaster Design Case Study}pdfTeX warning (ext4): destination with 
-the same identifier (name{figure.88}) has been already used, duplicate ignored
+the same identifier (name{figure.95}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \section
-            {Toaster Design Case Study} <./qz_steps.jpeg> <./qz_runtime.jpeg>]
-<toaster.jpeg, id=1720, 2007.5pt x 2007.5pt>
+            {Toaster Design Case Study} <./qz_common.jpeg> <./qz_bounding.jpeg>
+]
+<toaster.jpeg, id=1792, 2007.5pt x 2007.5pt>
 File: toaster.jpeg Graphic file (type jpg)
 <use toaster.jpeg>
 Package pdftex.def Info: toaster.jpeg  used on input line 8.
 (pdftex.def)             Requested size: 401.49289pt x 401.49289pt.
+ [131
 
-[125
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.89}) h
+pdfTeX warning (ext4): destination with the same identifier (name{figure.96}) h
 as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.39 
-      <./toaster.jpeg>] [126pdfTeX warning (ext4): destination with the same id
+      <./toaster.jpeg>] [132pdfTeX warning (ext4): destination with the same id
 entifier (name{table.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.115 \end{figure}
                   pdfTeX warning (ext4): destination with the same identifier (
-name{figure.90}) has been already used, duplicate ignored
+name{figure.97}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.115 \end{figure}
-                  ] [127pdfTeX warning (ext4): destination with the same identi
-fier (name{figure.91}) has been already used, duplicate ignored
+                  ] [133pdfTeX warning (ext4): destination with the same identi
+fier (name{figure.98}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.153 
-      ] [128pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.92}) has been already used, duplicate ignored
+      ] [134pdfTeX warning (ext4): destination with the same identifier (name{f
+igure.99}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.192 
-      ]) (./conclusions.tex [129pdfTeX warning (ext4): destination with the sam
-e identifier (name{figure.93}) has been already used, duplicate ignored
+      ]) (./conclusions.tex [135pdfTeX warning (ext4): destination with the sam
+e identifier (name{figure.100}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \section
-            {Conclusions}\label{sec:conclusions}])) [130
+            {Conclusions}\label{sec:conclusions}])) [136
 
 ] (./thesis.bbl
-[131
+[137
 
 
-] [132]) [133]
+] [138]) [139]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
  (./thesis.aux (./sections.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 00E948BE68D8B17C25F27CBD5C27EA23;4639.
+(rerunfilecheck)             Checksum: 851F0E97735FED4452E9122338CD44AA;4921.
 
 
 LaTeX Warning: There were undefined references.
@@ -2660,11 +2747,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 32257 strings out of 492609
- 601379 string characters out of 6129049
- 825531 words of memory out of 5000000
- 34700 multiletter control sequences out of 15000+600000
- 86281 words of font info for 283 fonts, out of 8000000 for 9000
+ 32331 strings out of 492609
+ 602413 string characters out of 6129049
+ 826160 words of memory out of 5000000
+ 34745 multiletter control sequences out of 15000+600000
+ 86400 words of font info for 285 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,19n,436p,835b,1183s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{section*.6} has been referenced but does not exis
@@ -2690,10 +2777,10 @@ exmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/f
 onts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
 /urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on thesis.pdf (146 pages, 1074307 bytes).
+Output written on thesis.pdf (152 pages, 1214225 bytes).
 PDF statistics:
- 1933 PDF objects out of 2073 (max. 8388607)
- 1724 compressed objects within 18 object streams
- 542 named destinations out of 1000 (max. 500000)
- 28346 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 2007 PDF objects out of 2073 (max. 8388607)
+ 1786 compressed objects within 18 object streams
+ 562 named destinations out of 1000 (max. 500000)
+ 28408 words of extra memory for PDF output out of 29859 (max. 10000000)
 

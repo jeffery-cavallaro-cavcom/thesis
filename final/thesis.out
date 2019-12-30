@@ -63,6 +63,10 @@
 \BOOKMARK [3][-]{subsubsection.5.4.5}{Recursive Steps}{subsection.5.4}% 63
 \BOOKMARK [2][-]{subsection.5.5}{An Example}{section.5}% 64
 \BOOKMARK [1][-]{section.6}{Random Graph Analysis}{}% 65
-\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 66
-\BOOKMARK [1][-]{section.8}{Conclusions}{}% 67
-\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 68
+\BOOKMARK [2][-]{subsection.6.1}{The Testbed}{section.6}% 66
+\BOOKMARK [2][-]{subsection.6.2}{Runtime Complexity Results}{section.6}% 67
+\BOOKMARK [2][-]{subsection.6.3}{Bounding Test Results}{section.6}% 68
+\BOOKMARK [2][-]{subsection.6.4}{Runtime Duration Results}{section.6}% 69
+\BOOKMARK [1][-]{section.7}{Toaster Design Case Study}{}% 70
+\BOOKMARK [1][-]{section.8}{Conclusions}{}% 71
+\BOOKMARK [1][-]{section*.6}{Literature Cited}{}% 72

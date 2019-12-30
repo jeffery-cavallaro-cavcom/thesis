@@ -64,6 +64,10 @@
 \contentsline {subsubsection}{\numberline {5.4.5}Recursive Steps}{114}{subsubsection.5.4.5}% 
 \contentsline {subsection}{\numberline {5.5}An Example}{115}{subsection.5.5}% 
 \contentsline {section}{\numberline {6}Random Graph Analysis}{124}{section.6}% 
-\contentsline {section}{\numberline {7}Toaster Design Case Study}{125}{section.7}% 
-\contentsline {section}{\numberline {8}Conclusions}{130}{section.8}% 
-\contentsline {section}{Literature Cited}{131}{section*.6}% 
+\contentsline {subsection}{\numberline {6.1}The Testbed}{124}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {6.2}Runtime Complexity Results}{127}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {6.3}Bounding Test Results}{128}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {6.4}Runtime Duration Results}{130}{subsection.6.4}% 
+\contentsline {section}{\numberline {7}Toaster Design Case Study}{131}{section.7}% 
+\contentsline {section}{\numberline {8}Conclusions}{136}{section.8}% 
+\contentsline {section}{Literature Cited}{137}{section*.6}% 
