@@ -74,16 +74,42 @@ as efficient as possible.  The testbed software creates a new graph using the fo
   registered in the connection matrix, which increments the degrees for the endpoint vertices.
 \end{enumerate}
 
-Thus, new graph creation has runtime complexity \(\BO(n+m)\).
+The runtime complexity for new graph construction ignoring memory allocation is determined as follows:
+\begin{itemize}
+\item Appending a vertex onto the vertex list is \(\BO(1)\).
+\item Since the C++ map type is implemented using red/black self-balancing trees, inserting a new vertex into the
+  lookup table is \(\BO(\log(n))\).
+\item Appending an edge onto the edge list is \(\BO(1)\).
+\item Finding each edge's two endpoint vertex numbers in the lookup table is \(\BO(\log(n))\).
+\item Adding the edge to the connection matrix and incrementing the endpoint vertex degrees is \(\BO(1)\).
+\end{itemize}
+
+The worst case is a complete graph with on the order of \(n^2\) edges.  Therefore, the runtime complexity for
+constructing a new graph is \(\BO(n^2\log(n))\).
 
 \subsection{Runtime Complexity Results}\label{sec:sub:runtime}
 
+The proposed algorithm was executed on random graphs for binomial edge probabilities of \(10\%\) to \(90\%\) in
+\(10\%\) steps and graph orders of \(5\) to \(30\).  \(1000\) trials were performed per edge probability for graph
+orders less than \(20\).  For \(20\) or more, the number of trials was reduced to \(100\) due to increased runtime
+duration.  The mean number of calls (\(\log\) base \(2\)) to the recursive method, and hence the mean number of
+Zykov tree states traversed, is shown in \figurename~\ref{fig:qzcalls}.
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=5in]{qz_steps}
-  \caption{Proposed algorithm mean number of steps.}
-  \label{fig:qzsteps}
+  \includegraphics[width=5in]{qz_calls}
+  \caption{Proposed algorithm mean number of calls.}
+  \label{fig:qzcalls}
 \end{figure}
+
+When \figurename~\ref{fig:qzcalls} is compared to the Christofides/Wang results in \figurename~\ref{fig:cfcalls},
+it can be seen that for both algorithms the number of calls increases with graph order and peaks with edge density
+of \(50\%\).  The bounding tests in the proposed algorithms appear to be effective, resulting in a noticable
+decrease in the mean number of states traversed of as much as \(85\%\).
+
+\figurename~\ref{fig:qzruntime} shows the maximum number of calls (log base 2) for each order at \(50\%\) edge
+possibility.  A polynomial curve fit to the data indicates a runtime complexity of about
+\(\BO(2^{0.0148})\approx\BO(1.0103^{n^2})\).
 
 \begin{figure}[H]
   \centering
@@ -92,7 +118,28 @@ Thus, new graph creation has runtime complexity \(\BO(n+m)\).
   \label{fig:qzruntime}
 \end{figure}
 
+When \figurename~\ref{fig:qzruntime} is compared to the Christofides/Wang results in
+\figurename~\ref{fig:cfruntime}, it can be seen that Christofides/Wang runtime complexity is a bit better:
+\(\BO(1.0045^{n^2})\) versus \(BO(1.0103^{n^2})\).  This means that even though the proposed algorithm performs
+better in the target range, it will eventually lose to Christofides/Wang.  Based on the equations for the two curve
+fits, the break-even point appears to be at about \(n=37\).
+
 \subsection{Bounding Test Results}\label{sec:sub:bounding}
+
+An examination of the effectiveness of the various bounding tests explains why the proposed algorithm eventually
+loses to Christofides/Wang.  There are six such bounding tests:
+\begin{enumerate}
+\item Chromatic number lower/upper bound comparison
+\item Maximum edge threshold
+\item Small vertex removal
+\item Neighorhood subset contraction
+\item Minimum common neighbors upper bound
+\item Standard Zykov bounding
+\end{enumerate}
+
+The frequency with which the Bron Kerbosch estimated chromatic number lower bound and the greedy estimated chromatic
+number upper bound match is shown in \figurename~\ref{fig:qzmatch}.  This test is extremely effective at lower orders
+but seems to become a non-factor for \(n>25\).
 
 \begin{figure}[H]
   \centering
@@ -101,12 +148,22 @@ Thus, new graph creation has runtime complexity \(\BO(n+m)\).
   \label{fig:qzmatch}
 \end{figure}
 
+The effectiveness of the maximum edge threshold hits, measured as hits/tries, is shown in
+\figurename~\ref{fig:qzedges}.  This test rapidly becomes a non-factor at higher orders; however, since it is a
+simple \(\BO(1)\) calculation it is still worth doing.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{qz_edges}
   \caption{Proposed algorithm maximum edge threshold test.}
   \label{fig:qzedges}
 \end{figure}
+
+The effectiveness of removing small degree vertices, measured as hits/tries, is shown in
+\figurename~\ref{fig:qzsmall}.  This test rapidly becomes a non-factor at higher orders.  This is expected because
+vertex contraction and edge addition result in degree increases, so no new small degree vertices are ever exposed
+once branching begins.  Since the test requires an \(\BO(n)\) scan of the vertices it is still pretty cheap, but is
+a candidate for elimination outside of the target range of \(n<20\).
 
 \begin{figure}[H]
   \centering
@@ -115,6 +172,10 @@ Thus, new graph creation has runtime complexity \(\BO(n+m)\).
   \label{fig:qzsmall}
 \end{figure}
 
+The effectiveness of contracting neighborhood subsets, measured as hits/tries, is shown in
+\figurename~\ref{fig:qzsubset}.  This test appears to maintain a decent level of effectiveness at higher orders.
+The is not so surprising because more vertices and edges provide more subset opportunities.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{qz_subset}
@@ -122,12 +183,23 @@ Thus, new graph creation has runtime complexity \(\BO(n+m)\).
   \label{fig:qzsubset}
 \end{figure}
 
+The effectiveness of the minimum common neighbors upper bound test, measured as hits/tries, is shown in
+\figurename~\ref{fig:qzcommon}.  This test becomes a complete non-factor at higher orders; however, it is based on
+the same \(\BO(n^2)\) calculation step required for the more effective neighborhood subset test and only adds an
+additional \(\BO(1)\) calculation.  Thus, this test should only be retained if the neighborhood subset test is
+retained.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=5in]{qz_common}
   \caption{Proposed algorithm minimum common neighbors upper bound test.}
-  \label{fig:qzsubset}
+  \label{fig:qzcommon}
 \end{figure}
+
+Finally, the effectiveness of the standard Zykov bounding test, measured as hits/tries, is shown in
+\figurename~\ref{fig:qzcommon}.  This is the test that uses the Edwards Elphick algorithm to calculate a new
+chromatic number lower bound and prune if that value exceeds the current value of \(k\).  This test appears to have
+increased effectiveness at higher orders.
 
 \begin{figure}[H]
   \centering
