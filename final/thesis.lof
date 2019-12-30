@@ -75,17 +75,19 @@
 \contentsline {figure}{\numberline {75}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{110}{figure.75}% 
 \contentsline {figure}{\numberline {76}{\ignorespaces Case \(a_i=1\) contradiction.}}{111}{figure.76}% 
 \contentsline {figure}{\numberline {77}{\ignorespaces Corollary \ref {cor:inter} example.}}{114}{figure.77}% 
-\contentsline {figure}{\numberline {78}{\ignorespaces An example graph.}}{116}{figure.78}% 
-\contentsline {figure}{\numberline {79}{\ignorespaces Step: \(G-\set {g,h}\).}}{117}{figure.79}% 
-\contentsline {figure}{\numberline {80}{\ignorespaces Step: \(G\cdot ad\).}}{119}{figure.80}% 
-\contentsline {figure}{\numberline {81}{\ignorespaces Step: \(G-\set {b,f}\)}}{120}{figure.81}% 
-\contentsline {figure}{\numberline {82}{\ignorespaces Initial coloring.}}{121}{figure.82}% 
-\contentsline {figure}{\numberline {83}{\ignorespaces Coloring \(b\) and \(f\).}}{121}{figure.83}% 
-\contentsline {figure}{\numberline {84}{\ignorespaces Final chromatic coloring.}}{122}{figure.84}% 
-\contentsline {figure}{\numberline {85}{\ignorespaces Proposed algorithm mean number of steps.}}{123}{figure.85}% 
-\contentsline {figure}{\numberline {86}{\ignorespaces Proposed algorithm runtime complexity.}}{123}{figure.86}% 
-\contentsline {figure}{\numberline {87}{\ignorespaces An example toaster.}}{124}{figure.87}% 
-\contentsline {figure}{\numberline {88}{\ignorespaces First candidate design.}}{125}{figure.88}% 
-\contentsline {figure}{\numberline {89}{\ignorespaces First design chromatic coloring.}}{126}{figure.89}% 
-\contentsline {figure}{\numberline {90}{\ignorespaces Second candidate design.}}{127}{figure.90}% 
-\contentsline {figure}{\numberline {91}{\ignorespaces Second design chromatic coloring.}}{128}{figure.91}% 
+\contentsline {figure}{\numberline {78}{\ignorespaces The Gr\"otzsch example: input graph.}}{115}{figure.78}% 
+\contentsline {figure}{\numberline {79}{\ignorespaces The Gr\"otzsch example: first tree initial graph.}}{117}{figure.79}% 
+\contentsline {figure}{\numberline {80}{\ignorespaces The Gr\"otzsch example: vertex \(b\) removed.}}{117}{figure.80}% 
+\contentsline {figure}{\numberline {81}{\ignorespaces The Gr\"otzsch example: vertices \(g\) and \(j\) contracted.}}{118}{figure.81}% 
+\contentsline {figure}{\numberline {82}{\ignorespaces The Gr\"otzsch example: vertices \(e\) and \(k\) contracted.}}{119}{figure.82}% 
+\contentsline {figure}{\numberline {83}{\ignorespaces The Gr\"otzsch example: vertex \(i\) removed.}}{120}{figure.83}% 
+\contentsline {figure}{\numberline {84}{\ignorespaces The Gr\"otzsch example: edge \(ek\) added.}}{121}{figure.84}% 
+\contentsline {figure}{\numberline {85}{\ignorespaces The Gr\"otzsch example: vertices \(gj\) and \(e\) contracted.}}{122}{figure.85}% 
+\contentsline {figure}{\numberline {86}{\ignorespaces The Gr\"otzsch example: vertex \(d\) removed.}}{122}{figure.86}% 
+\contentsline {figure}{\numberline {87}{\ignorespaces Proposed algorithm mean number of steps.}}{124}{figure.87}% 
+\contentsline {figure}{\numberline {88}{\ignorespaces Proposed algorithm runtime complexity.}}{124}{figure.88}% 
+\contentsline {figure}{\numberline {89}{\ignorespaces An example toaster.}}{125}{figure.89}% 
+\contentsline {figure}{\numberline {90}{\ignorespaces First candidate design.}}{126}{figure.90}% 
+\contentsline {figure}{\numberline {91}{\ignorespaces First design chromatic coloring.}}{127}{figure.91}% 
+\contentsline {figure}{\numberline {92}{\ignorespaces Second candidate design.}}{128}{figure.92}% 
+\contentsline {figure}{\numberline {93}{\ignorespaces Second design chromatic coloring.}}{129}{figure.93}% 

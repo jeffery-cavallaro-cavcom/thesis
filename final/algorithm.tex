@@ -1206,329 +1206,349 @@ These steps are supported by Theorem~\ref{thm:recurse}.
 
 \subsection{An Example}\label{sec:sub:example}
 
-In this section, the proposed algorithm will be applied to the example graph \(G\) of order \(n=8\) and size
-\(m=12\) shown in \figurename~\ref{fig:example} in order to determine \(\X(G)\).  The steps of the algorithm are
-then traversed in reverse order to determine a chromatic coloring.
+In this section, the proposed algorithm will be applied to the Gr\"otzsch graph \(G\) with \(n=11\), \(m=20\), and
+\(\X(M)=4\) (see~\sectionname~\ref{sec:sub:sub:mycielski}) shown in \figurename~\ref{fig:example}.
 
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
-    \node (a) [draw,circle] at (2,6) {\(a\)};
-    \node (b) [draw,circle] at (0,4) {\(b\)};
-    \node (c) [draw,circle] at (4,4) {\(c\)};
-    \node (d) [draw,circle] at (0,2) {\(d\)};
-    \node (e) [draw,circle] at (4,2) {\(e\)};
-    \node (f) [draw,circle] at (2,0) {\(f\)};
-    \node (g) [draw,circle] at (0,0) {\(g\)};
-    \node (h) [draw,circle] at (4,0) {\(h\)};
-    \draw (a) to (b);
-    \draw (a) to (c);
-    \draw (a) to (f);
-    \draw (b) to (c);
-    \draw (b) to (d);
-    \draw (c) to (e);
-    \draw (d) to (e);
-    \draw (d) to (f);
-    \draw (d) to (g);
-    \draw (e) to (f);
-    \draw (f) to (g);
-    \draw (f) to (h);
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (0) at (o1) {\(a\)};
+      \node (1) at (o2) {\(b\)};
+      \node (2) at (o3) {\(c\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at (o4) {\(d\)};
+      \node (5) at (i1) {\(f\)};
+      \node (6) at (i2) {\(g\)};
+      \node (7) at (i3) {\(h\)};
+      \node (8) at (i5) {\(j\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (0) edge (1);
+    \draw (2) edge (1);
+    \draw (4) edge (2);
+    \draw (3) edge (0);
+    \draw (4) edge (3);
+    \draw (5) edge (1);
+    \draw (5) edge (3);
+    \draw (10) edge (5);
+    \draw (6) edge (0);
+    \draw (6) edge (2);
+    \draw (10) edge (6);
+    \draw (7) edge (1);
+    \draw (7) edge (4);
+    \draw (10) edge (7);
+    \draw (8) edge (0);
+    \draw (8) edge (4);
+    \draw (10) edge (8);
+    \draw (9) edge (2);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
   \end{tikzpicture}
-  \caption{An example graph.}
+  \caption{The Gr\"otzsch example: input graph.}
   \label{fig:example}
 \end{figure}
 
-The algorithm steps are as follows.  Main routine steps are marked by ``O\#'' and recursive subroutine steps are
-marked by ``I\#.''.  Recursive subroutine calls add a call level: ``I\#--\#.''
+The main routine first executes the Bron Kerbosch algorithm and finds that the chromatic number lower bound is
+\(k_{min}=2\).  It then executes the greedy algorithm and finds that the chromatic number upper bound is
+\(k_{max}=4\) with the following default coloring:
+\[\begin{array}{l}
+  \set{0, 2, 10} \\
+  \set{1, 3, 6, 8} \\
+  \set{4, 5, 9} \\
+  \set{7}
+\end{array}\]
+Since the lower and upper bounds do not match, the main routine continues.  The Bron Kerbosch algorithm is executed
+on the complement of \(G\) to discover than \(G\) has \(16\) MISs.  Vertex \(a\) is found to occur in the least
+number of these MISs: \(5\) times.  These \(5\) selected MISs, sorted by decreasing length, are as follows:
+\[\begin{array}{l}
+  \set{0, 2, 5, 7} \\
+  \set{0, 4, 5, 9} \\
+  \set{0, 5, 7, 9} \\
+  \set{0, 2, 10} \\
+  \set{0, 4, 10}
+\end{array}\]
+The main routine creates \(5\) Zykov trees, one per selected MIS.  For brevity, the remainder of this example will
+focus on the first tree; assume that the other \(4\) trees are processed similarly and that none of them produces a
+solution.  The outer loop initializes \(k=2\) and since \(k=2<4=k_{max}\), the recursive subroutine is called on
+the first tree with \(k=2\).
 
-\begin{enumerate}
-\item (O\ref{step:outer:bron}) Use the Bron Kerbosch algorithm to calculate \(k_{min}=3\).
+The starting graph for the first tree is constructed by contracting all of the vertices in the first MIS and then
+adding edges between the contracted vertex and all other vertices.  The result is shown in
+\figurename~\ref{fig:ex:ginit}.
 
-\item (O\ref{step:outer:greedy}) Use the greedy last-first algorithm to calculate \(k_{max}=4\).
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (1) at (o2) {\(b\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at ($(o4)+(-0.5cm,0)$) {\(d\)};
+      \node (6) at (i2) {\(g\)};
+      \node (8) at (i5) {\(j\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (11) edge (1);
+    \draw (4) edge (11);
+    \draw (3) edge (11);
+    \draw (4) edge (3);
+    \draw (10) edge (11);
+    \draw (6) edge (11);
+    \draw (10) edge (6);
+    \draw (8) edge (11);
+    \draw (8) edge (4);
+    \draw (10) edge (8);
+    \draw (9) edge (11);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: first tree initial graph.}
+  \label{fig:ex:ginit}
+\end{figure}
 
-\item (O\ref{step:outer:initk}) Initialize \(k=k_{min}=3\).
+Since \(n=8\ge2=4\), the called routine continues and calculates a maximum edge threshold of \(a=16\).  Since
+\(m=13<=16=a\) the called routine continues and finds that \(\deg(b)=1<2=k\) and so vertex \(b\) is removed and
+added to the removed vertex list \(R\).  The resulting graph is shown in \figurename~\ref{fig:ex:remb}.
 
-\item (O\ref{step:outer:match}) \(k=3\ne4=k_{max}\), so continue.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at ($(o4)+(-0.5cm,0)$) {\(d\)};
+      \node (6) at (i2) {\(g\)};
+      \node (8) at (i5) {\(j\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (3) edge (11);
+    \draw (4) edge (3);
+    \draw (10) edge (11);
+    \draw (6) edge (11);
+    \draw (10) edge (6);
+    \draw (8) edge (11);
+    \draw (8) edge (4);
+    \draw (10) edge (8);
+    \draw (9) edge (11);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertex \(b\) removed.}
+  \label{fig:ex:remb}
+\end{figure}
 
-\item (O\ref{step:outer:call}) Call the subroutine with \(G\) and \(k=3\).
+Now, \(n=7\ge2=k\) so the called routine continues.  The new maximum edge threshold is \(a=12.25\) and since
+\(m=12\le12.25=a\) the called routine continues.  There are no more small degree vertices; however it is found that
+\(N(g)\subseteq N(j)\) and so these two vertices are contracted.  The resulting graph is shown in
+\figurename~\ref{fig:ex:congj}.
 
-\item (I\ref{step:sub:check}) \(n=8\nleq3=k\), so continue.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at ($(o4)+(-0.5cm,-1cm)$) {\(d\)};
+      \node (12) at (i2) {\(gj\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (3) edge (11);
+    \draw (4) edge (3);
+    \draw (10) edge (11);
+    \draw (12) edge (11);
+    \draw (10) edge (12);
+    \draw (12) edge (4);
+    \draw (9) edge (11);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertices \(g\) and \(j\) contracted.}
+  \label{fig:ex:congj}
+\end{figure}
 
-\item (I\ref{step:sub:dencalc}) Calculate the maximum edge threshold for \(n=8\) and \(k=3\):
-  \[a=\frac{n^2(k-1)}{2k}=\frac{8^2(3-1)}{2\cdot3}\approx21.3\]
+Now, \(n=6\ge2=k\) so the called routine continues.  The new maximum edge threshold is \(a=9\) and since
+\(m=10>9=a\) the maximum edge check fails.  The called routine returns with false, the current graph, and a removed
+vertex list of \(R=(b)\).  The remaining \(4\) trees similarly fail, so the main routine increments \(k=3\) and
+since \(k=3<4=k_{max}\) the recursive subroutine is recalled on the first tree.
 
-\item (I\ref{step:sub:density}) \(m=12\ngtr21.3=a\), so continue.
+Since \(n=6>3=k\) the called routine continues.  The new maximum edge threshold is \(a=12\) and since
+\(m=10<=12=a\) the called routine continues.  No small degree vertices or neighborhood subsets are found, so
+vertices \(d\) and \(e\) are selected as having the smallest number of common neighbors: \(b=1\).  The minimum
+common neighbors upper bound is calculated to be \(c=2\) and since \(b=1<2=c\) the called routine continues.
+The Edwards Elphick algorithm is executed to determine that the new chromatic number lower bound is \(3\), and
+since \(3<=3=k\), the called routine continues.
 
-\item (I\ref{step:sub:smallcalc}) \(\deg(g)=2<3\) and \(\deg(h)=1<3\), so set \(X=\set{g,h}\).
+At this point all bounding efforts have failed so it is time to start branching.  Since all nonadjacent vertices
+share \(2\) common neigbors, vertices \(e\) and \(k\) are selected and are contracted.  The resulting graph is
+shown in \figurename~\ref{fig:ex:conek}.  Copies are made of this graph and the removed vertex list and a recursive
+call is made with these values.
 
-\item (I\ref{step:sub:small}) \(X\ne\emptyset\), so replace \(G\) with \(G-X\).  The result is shown in
-  \figurename~\ref{fig:removegh}.  Now \(n=6\) and \(m=9\).
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (13) at (o5) {\(ek\)};
+      \node (4) at ($(o4)+(-0.5cm,-1cm)$) {\(d\)};
+      \node (12) at (i2) {\(gj\)};
+      \node (9) at (i4) {\(i\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (13) edge (11);
+    \draw (4) edge (13);
+    \draw (12) edge (11);
+    \draw (13) edge (12);
+    \draw (12) edge (4);
+    \draw (9) edge (11);
+    \draw (9) edge (13);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertices \(e\) and \(k\) contracted.}
+  \label{fig:ex:conek}
+\end{figure}
 
-  \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-      \node (a) [draw,circle] at (2,6) {\(a\)};
-      \node (b) [draw,circle] at (0,4) {\(b\)};
-      \node (c) [draw,circle] at (4,4) {\(c\)};
-      \node (d) [draw,circle] at (0,2) {\(d\)};
-      \node (e) [draw,circle] at (4,2) {\(e\)};
-      \node (f) [draw,circle] at (2,0) {\(f\)};
-      \draw (a) to (b);
-      \draw (a) to (c);
-      \draw (a) to (f);
-      \draw (b) to (c);
-      \draw (b) to (d);
-      \draw (c) to (e);
-      \draw (d) to (e);
-      \draw (d) to (f);
-      \draw (e) to (f);
-    \end{tikzpicture}
-    \caption{Step: \(G-\set{g,h}\).}
-    \label{fig:removegh}
-  \end{figure}
+Now, \(n=5\ge3=k\) so the called routine continues.  The new maximum edge threshold is \(a=8.33\) and since
+\(m=8\le8.33=a\) the called routine continues.  Since \(deg(i)=2<3=k\), vertex \(i\) is removed and the removed
+vertex list is now \(R=(b,i)\).  The resulting graph is shown in \figurename~\ref{fig:ex:remi}.
 
-\item (I\ref{step:sub:check}) \(n=6\nleq3=k\), so continue.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (13) at (o5) {\(ek\)};
+      \node (4) at (o4) {\(d\)};
+      \node (12) at (i2) {\(gj\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (13) edge (11);
+    \draw (4) edge (13);
+    \draw (12) edge (11);
+    \draw (13) edge (12);
+    \draw (12) edge (4);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertex \(i\) removed.}
+  \label{fig:ex:remi}
+\end{figure}
 
-\item (I\ref{step:sub:dencalc}) Calculate the maximum edge threshold for \(n=6\) and \(k=3\):
-  \[a=\frac{n^2(k-1)}{2k}=\frac{6^2(3-1)}{2\cdot3}=12\]
+The current state is now a leaf node with a complete graph of order 4.  Since \(n=4>3=k\) the called routine
+continues; however, the new maximum edge threshold is \(a=5.33\) and since \(m=6>5.33\) the edge threshold test
+fails as expected and the recursive call returns false.  Modifications to the graph and removed vertex list
+resulting from the contraction are discarded and the graph of \figurename~\ref{fig:ex:congj} remains the current graph
+for the first tree with a removed vertex list of just \(R=(b)\).
 
-\item (I\ref{step:sub:density}) \(m=12\ngtr12=a\), so continue.
+For the next branch, the edge \(ek\) is added.  The resulting graph is shown in \figurename~\ref{fig:ex:addek}.
+Copies are made of this graph and the removed vertex list and a recursive call is made with these values.
 
-\item (I\ref{step:sub:smallcalc}) \(\dmin(G)=3\ge3=k\), so set \(X=\emptyset\).
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at ($(o4)+(-0.5cm,-1cm)$) {\(d\)};
+      \node (12) at (i2) {\(gj\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (3) edge (11);
+    \draw (4) edge (3);
+    \draw (10) edge (11);
+    \draw (12) edge (11);
+    \draw (10) edge (12);
+    \draw (12) edge (4);
+    \draw (9) edge (11);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
+    \draw (3) edge (10);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: edge \(ek\) added.}
+  \label{fig:ex:addek}
+\end{figure}
 
-\item (I\ref{step:sub:small}) \(X=\emptyset\), so continue.
+Now, \(n=6>3=k\) so the called routine continues and calculates the new maximum edge threshold \(a=12\).  Since
+\(m=11<12=a\) the called routine continues.  No small degree vertices are found; however, it is found that
+\(N(gj)\subseteq N(e)\), so these vertices are contracted.  The resulting graph is shown in
+\figurename~\ref{fig:ex:congje}.
 
-\item (I\ref{step:sub:common}) Calculate the number of common neighbors, looking for any subsets.  The results are
-  shown in \tablename~\ref{tab:common}.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (13) at (o5) {\(egj\)};
+      \node (4) at ($(o4) + (-0.5cm,0)$) {\(d\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (13) edge (11);
+    \draw (4) edge (13);
+    \draw (10) edge (11);
+    \draw (10) edge (13);
+    \draw (9) edge (11);
+    \draw (9) edge (13);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertices \(gj\) and \(e\) contracted.}
+  \label{fig:ex:congje}
+\end{figure}
 
-  \begin{table}[H]
-    \centering
-    \caption{Calculating Common Neighbors}
-    \label{tab:common}
-    \begin{tabular}{|c|c|c|c|c|}
-      \hline
-      \(u\) & \(v\) & \(\abs{N(u)\cap N(v)}\) & subset? & adjacent? \\
-      \hline
-      \(a\) & \(b\) & 1 & N & Y \\
-      \hline
-      \(a\) & \(c\) & 1 & N & Y \\
-      \hline
-      \(a\) & \(d\) & 2 & N & N \\
-      \hline
-      \(a\) & \(e\) & 2 & N & N \\
-      \hline
-      \(a\) & \(f\) & 0 & N & Y \\
-      \hline
-      \(b\) & \(c\) & 1 & N & Y \\
-      \hline
-      \(b\) & \(d\) & 0 & N & Y \\
-      \hline
-      \(b\) & \(e\) & 2 & N & N \\
-      \hline
-      \(b\) & \(f\) & 2 & N & N \\
-      \hline
-      \(c\) & \(d\) & 2 & N & N \\
-      \hline
-      \(c\) & \(e\) & 0 & N & Y \\
-      \hline
-      \(c\) & \(f\) & 2 & N & N \\
-      \hline
-      \(d\) & \(e\) & 1 & N & Y \\
-      \hline
-      \(d\) & \(f\) & 1 & N & Y \\
-      \hline
-      \(e\) & \(f\) & 1 & N & Y \\
-      \hline
-    \end{tabular}
-  \end{table}
+Now, \(n=5>3=k\) so the called routine continues and calculates the new edge threshold \(a=8.33\).  Since
+\(m=8<8.33=a\) the called routine continues and finds that \(\deg(d)=2<3=k\) so vertex \(d\) is removed.  The
+resulting graph is shown in \figurename~\ref{fig:ex:remd} and the new removed vertex list is now \(R=(b,d)\).
 
-\item (I\ref{step:sub:subset}) There are no \(u,v\in V(G)\) such that \(N(u)\subseteq N(v)\), so continue.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (13) at (o5) {\(egj\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (13) edge (11);
+    \draw (10) edge (11);
+    \draw (10) edge (13);
+    \draw (9) edge (11);
+    \draw (9) edge (13);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertex \(d\) removed.}
+  \label{fig:ex:remd}
+\end{figure}
 
-\item (I\ref{step:sub:select}) From \tablename~\ref{tab:common}, the minimum number of common neighbors is 0
-  (e.g., \(a\) and \(f\)), so set \(b=0\).
+Once again, a leaf node with a complete graph of order \(4\) is achieved.  Since \(n=4>3=k\) the called routine
+continues.  The new maximum edge threshold is \(a=5.33\) and since \(m=6>5.33=a\) the edge threshold test fails as
+expected.  All of the changes to the graph and removed vertex list applied by this branch are discarded and the
+recursive call returns false.
 
-\item (I\ref{step:sub:ubcalc}) Calculate the upper bound for minimum number of common neighbors for \(n=6\) and
-  \(k=3\):
-  \[c=n-2-\frac{n-2}{k-1}=6-2-\frac{6-2}{3-1}=2\]
-
-\item (I\ref{step:sub:ubcheck}) \(b=0\ngtr2=c\), so conclude that \(G\) may be \colorable{3} and continue.
-
-\item (I\ref{step:sub:select2}) Based on the results in \tablename~\ref{tab:common}, all of the nonadjacent
-  vertices share two common neighbors, so select \(a\) and \(d\).
-
-\item (I\ref{step:sub:call1}) Recursively call the subroutine with \(G\cdot ad\), as shown in
-  \figurename~\ref{fig:contractad}.  Now, \(n=5\) and \(m=7\).
-
-  \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-      \node (ad) [draw,circle] at (2,6) {\(ad\)};
-      \node (b) [draw,circle] at (0,4) {\(b\)};
-      \node (c) [draw,circle] at (4,4) {\(c\)};
-      \node (e) [draw,circle] at (4,2) {\(e\)};
-      \node (f) [draw,circle] at (2,0) {\(f\)};
-      \draw (ad) to (b);
-      \draw (ad) to (c);
-      \draw (ad) to (f);
-      \draw (b) to (c);
-      \draw (c) to (e);
-      \draw (ad) to (e);
-      \draw (e) to (f);
-    \end{tikzpicture}
-    \caption{Step: \(G\cdot ad\).}
-    \label{fig:contractad}
-  \end{figure}
-
-\item (I\ref{step:sub:check}-1) \(n=5\nleq3=k\), so continue.
-
-\item (I\ref{step:sub:dencalc}-1) Calculate the maximum edge threshold for \(n=5\) and \(k=3\):
-  \[a=\frac{n^2(k-1)}{2k}=\frac{5^2(3-1)}{2\cdot3}\approx8.3\]
-
-\item (I\ref{step:sub:density}-1) \(m=7\ngtr8.3=a\), so conclude that \(G\) may be \colorable{3} and continue.
-  
-\item (I\ref{step:sub:smallcalc}-1) \(\deg(b)=\deg(f)=2<3=k\), so set \(X=\set{b,f}\).
-
-\item (I1-\ref{step:sub:small}-1) \(X\ne\emptyset\), so replace \(G\) with \(G-X\).  The result is shown in Figure
-  \ref{fig:removecf}.  Now \(n=3\) and \(m=3\).
-
-  \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-      \node (ad) [draw,circle] at (2,6) {\(ad\)};
-      \node (c) [draw,circle] at (4,4) {\(c\)};
-      \node (e) [draw,circle] at (4,2) {\(e\)};
-      \draw (ad) to (c);
-      \draw (c) to (e);
-      \draw (e) to (ad);
-    \end{tikzpicture}
-    \caption{Step: \(G-\set{b,f}\)}
-    \label{fig:removecf}
-  \end{figure}
-
-\item (I\ref{step:sub:check}-1) \(n=3\le3=k\), so conclude that the \(G\) of \figurename~\ref{fig:removecf} is
-  \colorable{3} and return true.
-
-\item (I\ref{step:sub:result1}) The recursive call returned true, so conclude that the \(G\) of
-  \figurename~\ref{fig:removecf} is \colorable{3} and return true.
-
-\item (O\ref{step:outer:result})\label{step:last} The recursive subroutine returned true, so conclude that the \(G\)
-  is \chromatic{3} and return \(\X(G)=3\).
-\end{enumerate}
-
-Thus, the algorithm determines that the example \(G\) of Figure \ref{fig:example} is \chromatic{3} in
-\ref{step:last} steps.  In order to determine a \chromatic{3} coloring for \(G\), first construct a set \(C\) of
-three colors:
-\[C=\set{\text{\textcolor{green}{green}},\text{\textcolor{blue}{blue}},\text{\textcolor{red}{red}}}\]
-Next, follow the algorithm's modification steps in reverse order and color the corresponding vertices accordingly.
-The steps are as follows:
-
-\begin{enumerate}
-\item First, color the vertices that are present in the final simplified graph.  Assign each vertex its own color,
-  except assign contracted vertices the same color.  This is shown in \figurename~\ref{fig:cstart}.
-  
-  \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-      \colorlet{c1}{green!25!white}
-      \colorlet{c2}{blue!25!white}
-      \colorlet{c3}{red!25!white}
-      \node [fill=c1] (a) [draw,circle] at (2,6) {\(a\)};
-      \node (b) [draw,circle] at (0,4) {\(b\)};
-      \node [fill=c2] (c) [draw,circle] at (4,4) {\(c\)};
-      \node [fill=c1] (d) [draw,circle] at (0,2) {\(d\)};
-      \node [fill=c3] (e) [draw,circle] at (4,2) {\(e\)};
-      \node (f) [draw,circle] at (2,0) {\(f\)};
-      \node (g) [draw,circle] at (0,0) {\(g\)};
-      \node (h) [draw,circle] at (4,0) {\(h\)};
-      \draw (a) to (b);
-      \draw (a) to (c);
-      \draw (a) to (f);
-      \draw (b) to (c);
-      \draw (b) to (d);
-      \draw (c) to (e);
-      \draw (d) to (e);
-      \draw (d) to (f);
-      \draw (d) to (g);
-      \draw (e) to (f);
-      \draw (f) to (g);
-      \draw (f) to (h);
-    \end{tikzpicture}
-    \caption{Initial coloring.}
-    \label{fig:cstart}
-  \end{figure}
-
-\item The last modification was the removal of vertices \(b\) and \(f\).  Note that color selection needs to honor
-  the vertices already colored.  This is shown in \figurename~\ref{fig:colorbf}.
-
-  \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-      \colorlet{c1}{green!25!white}
-      \colorlet{c2}{blue!25!white}
-      \colorlet{c3}{red!25!white}
-      \node [fill=c1] (a) [draw,circle] at (2,6) {\(a\)};
-      \node [fill=c3] (b) [draw,circle] at (0,4) {\(b\)};
-      \node [fill=c2] (c) [draw,circle] at (4,4) {\(c\)};
-      \node [fill=c1] (d) [draw,circle] at (0,2) {\(d\)};
-      \node [fill=c3] (e) [draw,circle] at (4,2) {\(e\)};
-      \node [fill=c2] (f) [draw,circle] at (2,0) {\(f\)};
-      \node (g) [draw,circle] at (0,0) {\(g\)};
-      \node (h) [draw,circle] at (4,0) {\(h\)};
-      \draw (a) to (b);
-      \draw (a) to (c);
-      \draw (a) to (f);
-      \draw (b) to (c);
-      \draw (b) to (d);
-      \draw (c) to (e);
-      \draw (d) to (e);
-      \draw (d) to (f);
-      \draw (d) to (g);
-      \draw (e) to (f);
-      \draw (f) to (g);
-      \draw (f) to (h);
-    \end{tikzpicture}
-    \caption{Coloring \(b\) and \(f\).}
-    \label{fig:colorbf}
-  \end{figure}
-
-\item Finally, color the first removed vertices \(g\) and \(h\) with any appropriate color.  The final result is
-  shown in \figurename~\ref{fig:cfinal}.
-
-  \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-      \colorlet{c1}{green!25!white}
-      \colorlet{c2}{blue!25!white}
-      \colorlet{c3}{red!25!white}
-      \node [fill=c1] (a) [draw,circle] at (2,6) {\(a\)};
-      \node [fill=c3] (b) [draw,circle] at (0,4) {\(b\)};
-      \node [fill=c2] (c) [draw,circle] at (4,4) {\(c\)};
-      \node [fill=c1] (d) [draw,circle] at (0,2) {\(d\)};
-      \node [fill=c3] (e) [draw,circle] at (4,2) {\(e\)};
-      \node [fill=c2] (f) [draw,circle] at (2,0) {\(f\)};
-      \node [fill=c3] (g) [draw,circle] at (0,0) {\(g\)};
-      \node [fill=c1] (h) [draw,circle] at (4,0) {\(h\)};
-      \draw (a) to (b);
-      \draw (a) to (c);
-      \draw (a) to (f);
-      \draw (b) to (c);
-      \draw (b) to (d);
-      \draw (c) to (e);
-      \draw (d) to (e);
-      \draw (d) to (f);
-      \draw (d) to (g);
-      \draw (e) to (f);
-      \draw (f) to (g);
-      \draw (f) to (h);
-    \end{tikzpicture}
-    \caption{Final chromatic coloring.}
-    \label{fig:cfinal}
-  \end{figure}
-
-\end{enumerate}
-
-At first glance, one might wonder what advantage this method of coloring has over other sequential methods.  The
-difference is that the other sequential methods only have knowledge about what has already been colored, whereas
-this method uses assumptions that are made during the simplifications and recursive calls on the entire graph.
-Thus, the sequential algorithms are heuristic, but this method selects a particular workable coloring path through
-the resulting Zykov tree.
+At this point, both branches have failed and so the called routine returns false to the main routine with the graph
+shown in \figurename~\ref{fig:ex:congj} and a removed vertex list of just \(R=(b)\).  The remaining \(4\) trees
+similarly fail, so the main routine increments \(k=4\) and since \(k=4=4=k_{max}\) the default \coloring{4} is
+accepted as the chromatic coloring for the input graph.
