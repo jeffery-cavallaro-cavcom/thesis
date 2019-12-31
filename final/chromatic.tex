@@ -486,9 +486,18 @@ color interchange is a bit expensive; however, the runtime complexity is still\(
 \subsection{The Christofides Algorithm}\label{sec:sub:christofides}
 
 The first exhaustive algorithm that will be examined was proposed by Cypriot mathematician Nicos
-Christofides~(1971)~\cite{christofides}.  The Christofides algorithm is a breadth-first algorithm that assembles
-maximal independent sets from a graph until the first combination that uses all of the vertices is found.  Thus,
-the Bron Kerbosch algorithm is a vital part of the Christofides algorithm.
+Christofides~(1971)~\cite{christofides}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{christofides}
+  \caption{Nicos Christofides in an unknown East Coast airport.}
+  \label{fig:pic:christofides}
+\end{figure}
+
+The Christofides algorithm is a breadth-first algorithm that assembles maximal independent sets from a graph until
+the first combination that uses all of the vertices is found.  Thus, the Bron Kerbosch algorithm is a vital part of
+the Christofides algorithm.
 
 The Christofides algorithm starts by decomposing a graph \(G\) into all of its maximal independent sets.  This
 constitutes the first level of the state tree.  Then, for each maximal independent set with vertices \(S\), the
@@ -744,7 +753,16 @@ at that value of \(n\) are too long to test the threshold.
 \subsection{Zykov Algorithms}\label{sec:sub:zykov}
 
 The second exhaustive algorithm that will be examined is based on a branching technique attributed to Ukranian
-mathematician Alexandre A. Zykov.  In his 1949 paper (translated by the AMS in 1952)~\cite{zykov}, Zykov addresses
+mathematician Alexandre A. Zykov.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=5in]{zykov}
+  \caption{Varim Vizing, Alexandre Zykov, and Vitaly Voloshin in Odessa, Ukraine.}
+  \label{fig:pic:zykov}
+\end{figure}
+
+In his 1949 paper (translated by the AMS in 1952)~\cite{zykov}, Zykov addresses
 the question: given a graph \(G\) and a number \(k\in\N\), how many ways are there to properly color \(G\) using at
 most \(k\) colors?  In fact, he is not particularly concerned about the chromatic number, which he calls the
 \emph{rank} of a graph.

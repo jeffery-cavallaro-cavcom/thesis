@@ -1,7 +1,8 @@
 \section{Toaster Design Case Study}
 
-This section contains a simplistic case study of how the proposed algorithm could be used to compare the FR graphs
-resulting from two slightly different designs of the basic kitchen toaster shown in \figurename~\ref{fig:toaster}.
+This section contains a simplistic case study of how a chromatic number part consolidation tool would be used by a
+designer: the FR graphs for two slightly different designs of a basic kitchen toaster similar to that shown in
+\figurename~\ref{fig:toaster} are compared.
 
 \begin{figure}[H]
   \begin{center}
@@ -72,11 +73,8 @@ The graph \(G_1\) for the first candidate design with \(n=7\) and \(m=13\) is sh
   \label{fig:design1}
 \end{figure}
 
-Running the Bron Kerbosch and greedy last-first algorithms indicate that \(\X(G_1)=4\).  The \chromatic{4} coloring
-returned by the greedy algorithm with:
-\[C=\set{\text{\textcolor{green}{green}},\text{\textcolor{blue}{blue}},\text{\textcolor{red}{red}},
-  \text{\textcolor{orange}{orange}}}\]
-is show in \figurename~\ref{fig:d1color}.
+When the design tool is run on this first design graph, the graph is found to be \chromatic{4} with the example
+chromatic coloring shown in \figurename~\ref{fig:d1color}.
 
 \begin{figure}[H]
   \centering
@@ -151,10 +149,8 @@ result is shown in \figurename~\ref{fig:design2}.
   \label{fig:design2}
 \end{figure}
 
-Now, running the Bron Kerbosch and greedy last-first algorithms indicate that \(\X(G_1)=3\).  The \chromatic{3}
-coloring returned by the greedy algorithm with:
-\[C=\set{\text{\textcolor{green}{green}},\text{\textcolor{blue}{blue}},\text{\textcolor{red}{red}}}\]
-is show in \figurename~\ref{fig:d2color}.
+Now, running the tool indicates that the second design graph is \chromatic{3} with the example coloring shown in
+\figurename~\ref{fig:d2color}.
 
 \begin{figure}[H]
   \centering
@@ -193,8 +189,3 @@ is show in \figurename~\ref{fig:d2color}.
 This process gives the designer the feedback that the second design requires only three parts instead of four, and
 thus has less information content and hence a higher chance of success than the first design.  It will be up to the
 designer to weigh this result against other aspects of the design.
-
-Note that in both cases, the chromatic number is equal to the lower and upper bounds.  In fact, the author found it
-rather difficult to synthesis a case study with meaningful relationships between the FRs such that this was not the
-case.  The random graph analysis supports this, with such a high percentage of the random graphs exhibiting this
-quality.

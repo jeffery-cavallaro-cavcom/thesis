@@ -390,18 +390,19 @@ Determining solid requirements for the maximum number of FRs and the target edge
 study by a qualified mechanical engineer; however, the examples submitted by our colleagues at SUNY, Buffalo all
 have under \(20\) FRs with low to average edge density.  These values seem reasonable: designs with too many FRs
 may become untenable and hence broken up into multiple layers in the design hierarchy and designs with too many
-edges may be too coupled.  Although acceptable duration time is subjective, a limit of about \(5\) minutes will be
+edges may be too coupled.  Although acceptable duration time is subjective, a limit of about \(2\) minutes will be
 selected as the goal.
 
 Thus, the primary goal of this research is to provide AD designers with a tool that can determine the minimum
 number of parts needed to realize a particular design having about \(20\) FRs and less than \(50\%\) edge density
-in less than \(5\) minutes.  Designs with different minimum part requirements can then be compared during the
+in less than \(2\) minutes.  Designs with different minimum parts requirements can then be compared during the
 analytical process phase of the axiomatic design as part of the overall process of selecting the best design.  Of
 course, this tool will be an algorithm that can be run on a computer.
 
 This research compares the two most well-known existing algorithms: the Christofides algorithm~\cite{christofides}
-with improvements by Wang~\cite{wang} and the Zykov algorithm~\cite{corneil}.  It will be shown that although both
-algorithms satisfy the stated requirements, the Christofides/Wang algorithm is faster and can handle up to \(30\)
-vertices.  A new algorithm is then proposed that is a modification of the Zykov algorithm in an attempt to match
-the advantages of the Christofides/Wang algorithm.  It will be shown that this proposed algorithm can also handle
-up to \(30\) vertices and runs faster than the Christofides/Wang algorithm for problems in the target range.
+with improvements by Wang~\cite{wang} and the Zykov algorithm~\cite{corneil}.  A new algorithm is then proposed that
+is a modification of the Zykov algorithm with the goal of outperforming the existing algorithms.  At first glance,
+although all three algorithms satisfy the stated requirements, the Christofides/Wang algorithm will seem to be the
+fastest.  However, a closer examination and a small tweak to the existing algorithms suggested by the new algorithm
+will lead to the final conclusion that any of the three algorithms would be suitable for use in the desired
+design tool.
