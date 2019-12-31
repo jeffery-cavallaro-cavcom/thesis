@@ -68,6 +68,6 @@
 \contentsline {subsection}{\numberline {6.2}Runtime Complexity Results}{127}{subsection.6.2}% 
 \contentsline {subsection}{\numberline {6.3}Bounding Test Results}{128}{subsection.6.3}% 
 \contentsline {subsection}{\numberline {6.4}Runtime Duration Results}{133}{subsection.6.4}% 
-\contentsline {section}{\numberline {7}Toaster Design Case Study}{134}{section.7}% 
-\contentsline {section}{\numberline {8}Conclusions}{139}{section.8}% 
-\contentsline {section}{Literature Cited}{140}{section*.6}% 
+\contentsline {section}{\numberline {7}Toaster Design Case Study}{135}{section.7}% 
+\contentsline {section}{\numberline {8}Conclusions}{140}{section.8}% 
+\contentsline {section}{Literature Cited}{141}{section*.6}% 

@@ -93,8 +93,11 @@
 \contentsline {figure}{\numberline {93}{\ignorespaces Proposed algorithm neighborhood subset test.}}{131}{figure.93}% 
 \contentsline {figure}{\numberline {94}{\ignorespaces Proposed algorithm minimum common neighbors upper bound test.}}{132}{figure.94}% 
 \contentsline {figure}{\numberline {95}{\ignorespaces Proposed algorithm bounding test.}}{133}{figure.95}% 
-\contentsline {figure}{\numberline {96}{\ignorespaces An example toaster.}}{134}{figure.96}% 
-\contentsline {figure}{\numberline {97}{\ignorespaces First candidate design.}}{135}{figure.97}% 
-\contentsline {figure}{\numberline {98}{\ignorespaces First design chromatic coloring.}}{136}{figure.98}% 
-\contentsline {figure}{\numberline {99}{\ignorespaces Second candidate design.}}{137}{figure.99}% 
-\contentsline {figure}{\numberline {100}{\ignorespaces Second design chromatic coloring.}}{138}{figure.100}% 
+\contentsline {figure}{\numberline {96}{\ignorespaces Runtime durations at \(n=10\).}}{133}{figure.96}% 
+\contentsline {figure}{\numberline {97}{\ignorespaces Runtime durations at \(n=15\).}}{134}{figure.97}% 
+\contentsline {figure}{\numberline {98}{\ignorespaces Runtime durations at \(n=20\).}}{134}{figure.98}% 
+\contentsline {figure}{\numberline {99}{\ignorespaces An example toaster.}}{135}{figure.99}% 
+\contentsline {figure}{\numberline {100}{\ignorespaces First candidate design.}}{136}{figure.100}% 
+\contentsline {figure}{\numberline {101}{\ignorespaces First design chromatic coloring.}}{137}{figure.101}% 
+\contentsline {figure}{\numberline {102}{\ignorespaces Second candidate design.}}{138}{figure.102}% 
+\contentsline {figure}{\numberline {103}{\ignorespaces Second design chromatic coloring.}}{139}{figure.103}% 
