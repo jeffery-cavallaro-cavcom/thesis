@@ -56,7 +56,7 @@
 \contentsline {figure}{\numberline {56}{\ignorespaces Last-first greedy algorithm with color interchange error.}}{75}{figure.56}% 
 \contentsline {figure}{\numberline {57}{\ignorespaces Last-first greedy algorithm with color interchange steps.}}{75}{figure.57}% 
 \contentsline {figure}{\numberline {58}{\ignorespaces Last-first greedy algorithm with color interchange runtime complexity.}}{76}{figure.58}% 
-\contentsline {figure}{\numberline {59}{\ignorespaces Nicos Christofides in an unknown East Coast airport.}}{77}{figure.59}% 
+\contentsline {figure}{\numberline {59}{\ignorespaces Nicos Christofides in an unknown East Coast airport\nobreakspace \cite {lotus}.}}{77}{figure.59}% 
 \contentsline {figure}{\numberline {60}{\ignorespaces A Christofides algorithm example.}}{78}{figure.60}% 
 \contentsline {figure}{\numberline {61}{\ignorespaces Level 1 of a Christofides algorithm example.}}{78}{figure.61}% 
 \contentsline {figure}{\numberline {62}{\ignorespaces Christofides algorithm example results.}}{79}{figure.62}% 
@@ -64,7 +64,7 @@
 \contentsline {figure}{\numberline {64}{\ignorespaces Christofides algorithm runtime complexity.}}{81}{figure.64}% 
 \contentsline {figure}{\numberline {65}{\ignorespaces Christofides algorithm with Wang improvements mean number of calls.}}{83}{figure.65}% 
 \contentsline {figure}{\numberline {66}{\ignorespaces Christofides algorithm with Wang improvements runtime complexity.}}{84}{figure.66}% 
-\contentsline {figure}{\numberline {67}{\ignorespaces Varim Vizing, Alexandre Zykov, and Vitaly Voloshin in Odessa, Ukraine.}}{85}{figure.67}% 
+\contentsline {figure}{\numberline {67}{\ignorespaces Varim Vizing, Alexandre Zykov, and Vitaly Voloshin in Odessa, Ukraine\nobreakspace \cite {voloshin}.}}{85}{figure.67}% 
 \contentsline {figure}{\numberline {68}{\ignorespaces Same colors with vertex contraction.}}{86}{figure.68}% 
 \contentsline {figure}{\numberline {69}{\ignorespaces Different colors with edge addition.}}{86}{figure.69}% 
 \contentsline {figure}{\numberline {70}{\ignorespaces A Zykov graph equation example.}}{87}{figure.70}% 
@@ -103,4 +103,4 @@
 \contentsline {figure}{\numberline {103}{\ignorespaces Runtime durations at \(n=10\).}}{141}{figure.103}% 
 \contentsline {figure}{\numberline {104}{\ignorespaces Runtime durations at \(n=15\).}}{141}{figure.104}% 
 \contentsline {figure}{\numberline {105}{\ignorespaces Runtime durations at \(n=20\).}}{142}{figure.105}% 
-\contentsline {figure}{\numberline {106}{\ignorespaces Couple and uncouple information.}}{142}{figure.106}% 
+\contentsline {figure}{\numberline {106}{\ignorespaces Coupled and uncoupled information.}}{142}{figure.106}% 
