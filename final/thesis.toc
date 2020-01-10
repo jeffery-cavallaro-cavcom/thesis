@@ -64,11 +64,10 @@
 \contentsline {subsubsection}{\numberline {6.4.4}Minimum Common Neighbor Upper Bound}{115}{subsubsection.6.4.4}% 
 \contentsline {subsubsection}{\numberline {6.4.5}Recursive Steps}{120}{subsubsection.6.4.5}% 
 \contentsline {subsection}{\numberline {6.5}An Example}{121}{subsection.6.5}% 
-\contentsline {section}{\numberline {7}Random Graph Analysis}{130}{section.7}% 
-\contentsline {subsection}{\numberline {7.1}The Testbed}{130}{subsection.7.1}% 
-\contentsline {subsection}{\numberline {7.2}Runtime Complexity Results}{133}{subsection.7.2}% 
-\contentsline {subsection}{\numberline {7.3}Bounding Test Results}{134}{subsection.7.3}% 
-\contentsline {subsection}{\numberline {7.4}Runtime Duration Results}{139}{subsection.7.4}% 
-\contentsline {subsection}{\numberline {7.5}The Nature of Information}{142}{subsection.7.5}% 
-\contentsline {section}{\numberline {8}Conclusions}{145}{section.8}% 
-\contentsline {section}{Literature Cited}{147}{section*.6}% 
+\contentsline {section}{\numberline {7}Random Graph Analysis}{131}{section.7}% 
+\contentsline {subsection}{\numberline {7.1}The Testbed}{131}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {7.2}Runtime Complexity Results}{134}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {7.3}Bounding Test Results}{135}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {7.4}Runtime Duration Results}{140}{subsection.7.4}% 
+\contentsline {section}{\numberline {8}Conclusions}{144}{section.8}% 
+\contentsline {section}{Literature Cited}{146}{section*.6}% 

@@ -1552,3 +1552,51 @@ At this point, both branches have failed and so the called routine returns false
 shown in \figurename~\ref{fig:ex:congj} and a removed vertex list of just \(R=(b)\).  The remaining \(4\) trees
 similarly fail, so the main routine increments \(k=4\) and since \(k=4=4=k_{max}\) the default \coloring{4} is
 accepted as the chromatic coloring for the input graph.
+
+\tablename~\ref{tab:ex:results} compares the performance of the proposed, Christofides/Wang, and Zykov algorithms
+when applied to the Gr\"{o}tzsch graph, which has \(n=11\) and \(m=20\).  The table shows the number of calls to
+the recursive routine and the mean time duration for \(100\) trials.  The proposed algorithm has a slight advantage
+over Christofides/Wang and a somewhat larger advantage over Zykov.
+
+\begin{table}[H]
+  \centering
+  \caption{Gr\"{o}tzsch Graph Algorithm Performance}
+  \label{tab:ex:results}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    ALGORITHM & CALLS & DURATION(s) \\
+    \hline
+    proposed & \(20\) & \(0.0013\) \\
+    \hline
+    Christofides/Wang & \(40\) & \(0.0015\) \\
+    \hline
+    Zykov & \(175\) & \(00062\) \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\tablename~\ref{tab:ex:results2} compares the performance of the three algorithms when applied to the \chromatic{5}
+Mycielski graph, which has \(n=23\) and \(m=71\). The proposed algorithm still has a very slight advantage over
+Christofides/Wang; however, the Zykov algorithm performance is horrible.  This is most probably due to the
+unbalanced nature of the graph: the proposed algorithm can eliminate the lower-degree vertices; however, the Zykov
+algorithm is forced to branch on them.
+
+\begin{table}[H]
+  \centering
+  \caption{Mycielski \chromatic{5} Graph Algorithm Performance}
+  \label{tab:ex:results2}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    ALGORITHM & CALLS & DURATION(s) \\
+    \hline
+    proposed & \(723\) & \(0.0999\) \\
+    \hline
+    Christofides/Wang & \(1420\) & \(0.1078\) \\
+    \hline
+    Zykov & 2848167 & \(>250\) \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\sectionname~\ref{sec:sub:duration} contains additional runtime duration comparisons of the three algorithms.
+

@@ -104,7 +104,7 @@ Zykov tree states traversed, is shown in \figurename~\ref{fig:qzcalls}.
 
 When \figurename~\ref{fig:qzcalls} is compared to the Christofides/Wang results in \figurename~\ref{fig:cfcalls},
 it can be seen that for both algorithms the number of calls increases with graph order and peaks with edge density
-of \(50\%\).  The bounding tests in the proposed algorithms appear to be effective, resulting in a noticable
+of \(50\%\).  The bounding tests in the proposed algorithms appear to be effective, resulting in a noticeable
 decrease in the mean number of states traversed of as much as \(85\%\).
 
 \figurename~\ref{fig:qzruntime} shows the maximum number of calls (log base 2) for each order at \(50\%\) edge
@@ -208,7 +208,7 @@ increased effectiveness at higher orders.
   \label{fig:qzbound}
 \end{figure}
 
-\subsection{Runtime Duration Results}
+\subsection{Runtime Duration Results}\label{sec:sub:duration}
 
 As was discussed in \sectionname~\ref{sec:sub:sub:runtime}, it is important to determine what is being called a
 \emph{step} in the runtime complexity estimate.  In the case of the three chromatic coloring algorithms considered
@@ -230,7 +230,8 @@ The most lightweight processing is the plain Zykov algorithm, which uses a singl
 algorithm uses two P-time steps: the common neighbor calculation and the Edwards Elphick algorithm, and may run
 these steps multiple times per state if vertices are removed or contracted.  The Christofides/Wang algorithm uses
 the exponential Bron Kerbosch algorithm.  All three algorithms require a P-time step to create the graph for the
-next branch.
+next branch.  In order to determine the relative effectiveness or penalty of this per-step processing, a better
+measure of performance is to observe the empirical runtime durations of the three algorithms on like graphs.
 
 The runtime duration results for the three algorithms at \(n=10\), \(n=15\), and \(n=20\) are shown in
 \figurename~\ref{fig:duration10}, \figurename~\ref{fig:duration15}, and \figurename~\ref{fig:duration20},
@@ -260,67 +261,13 @@ author didn't quite believe them at first and made sure that they were correct a
   \label{fig:duration20}
 \end{figure}
 
-The runtime durations for the three algorithms are exactly the same!  Thus, any of the algorithms would be suitable
-for the desired designers tool that this reseach set out to find.  In fact, the basic Zykov algorithm is simpler
-than the other two and certainly uses less space than the Christofides/Wang algorithm, so the plain Zykov algorithm
-may be the best choice.
+The runtime durations for the three algorithms are exactly the same!  These results vary significantly from the
+results for the Mycielski graphs in \sectionname~\ref{sec:sub:example}, where the proposed algorithm had an
+advantage.  Although both the random graphs and the Mycielski graph have rather consistent edge density, the
+Mycielski graphs have much more symmetry.  It may be that the proposed and Wang/Christofides algorithms are better
+suitable to take advantage of that symmetry.
 
-\subsection{The Nature of Information}\label{sec:sub:info}
-
-The random graph analysis results suggest what may be an inherent and important principle of the nature of
-information.  Before stating this principle, first consider that two pieces of information may be coupled or
-uncoupled, as demonstrated in \figurename~\ref{fig:info}.
-
-\begin{figure}[H]
-  \begin{minipage}{2.5in}
-    \centering
-    \begin{tikzpicture}[every node/.style={labeled node}]
-      \node (i1) at (0,0) {\(I_1\)};
-      \node (i2) [right=of i1] {\(I_2\)};
-      \draw [<->] (i1) edge (i2);
-    \end{tikzpicture}
-
-    COUPLED
-  \end{minipage}
-  \begin{minipage}{2.5in}
-    \centering
-    \begin{tikzpicture}[every node/.style={labeled node}]
-      \node (i1) at (0,0) {\(I_1\)};
-      \node (i2) [right=of i1] {\(I_2\)};
-    \end{tikzpicture}
-
-    UNCOUPLED
-  \end{minipage}
-  \caption{Coupled and uncoupled information.}
-  \label{fig:info}
-\end{figure}
-
-Examples of coupled information include the gravitational or electromagnetic forces between bodies; by examining
-one body one can make some conclusions about the second body.  An example of uncoupled information is the vertices
-of a graph: given one vertex, one cannot make any further conclusions about a second without ``touching'' the
-second in some fashion, be it the vertex itself, the incident edge between the two vertices, or an eigenvalue in
-spectral graph theory.
-
-When applying an algorithm to uncoupled data, such as the vertices in a graph, there are two questions that are
-constantly asked:
-\begin{enumerate}
-\item How are two pieces of uncoupled information to be combined into a new piece of information.
-\item Have enough pieces of information been addressed in order to come to a conclusion.
-\end{enumerate}
-An example of the first question is whether or not two vertices should be assigned the same color.  An example of
-the second question is whether or not a current coloring constructed from asking the first question multiple times
-has more colors than an earlier completed construction and so can be discarded.  Of course, this is the nature of a
-branch-and-bound algorithm.
-
-The inherent and important principle is that to answer the first question one \emph{must} ``touch'' all of the
-relevant pieces of uncoupled information; there are no shortcuts.  Trying to do otherwise is analogous to trying to
-construct a perpetual motion machine.  This is the nature of an inherently intractable problem.  Of course, one
-tries to touch a minimum amount of information and in particular tries to touch the same uncouple bit of information
-a minimum number of times.
-
-By adding the Bron Kerbosch/greedy algorithm phase to all three of the algorithms, it appears that the graphs that
-would require excessive information touching according to the specifics of each algorithm are eliminated, and thus
-the speed advantages of certain algorithms are also eliminated.  What is left are those graphs where multiple
-touching of information is required and no speed advantage is possible.  Therefore, for those graphs, the three
-algorithms compared in this research just touch the same information but in slightly different ways.  In the end,
-one type of touch is no better than the other.
+Due to equal performance for most graphs and better performance for some graphs, the proposed or Christofides/Wang
+algorithms appear to be better general case solutions.  Furthermore, due to the excessive space requirements of the
+Christofides algorithm even with the Wang improvements, the proposed algorithm is a better selection for the
+desired design tool.

@@ -91,16 +91,15 @@
 \contentsline {figure}{\numberline {91}{\ignorespaces The Gr\"otzsch example: edge \(ek\) added.}}{127}{figure.91}% 
 \contentsline {figure}{\numberline {92}{\ignorespaces The Gr\"otzsch example: vertices \(gj\) and \(e\) contracted.}}{128}{figure.92}% 
 \contentsline {figure}{\numberline {93}{\ignorespaces The Gr\"otzsch example: vertex \(d\) removed.}}{128}{figure.93}% 
-\contentsline {figure}{\numberline {94}{\ignorespaces Graph layout in memory.}}{131}{figure.94}% 
-\contentsline {figure}{\numberline {95}{\ignorespaces Proposed algorithm mean number of calls.}}{133}{figure.95}% 
-\contentsline {figure}{\numberline {96}{\ignorespaces Proposed algorithm runtime complexity.}}{134}{figure.96}% 
-\contentsline {figure}{\numberline {97}{\ignorespaces Proposed algorithm lower/upper bound matching test.}}{135}{figure.97}% 
-\contentsline {figure}{\numberline {98}{\ignorespaces Proposed algorithm maximum edge threshold test.}}{136}{figure.98}% 
-\contentsline {figure}{\numberline {99}{\ignorespaces Proposed algorithm small degree vertex test.}}{137}{figure.99}% 
-\contentsline {figure}{\numberline {100}{\ignorespaces Proposed algorithm neighborhood subset test.}}{137}{figure.100}% 
-\contentsline {figure}{\numberline {101}{\ignorespaces Proposed algorithm minimum common neighbors upper bound test.}}{138}{figure.101}% 
-\contentsline {figure}{\numberline {102}{\ignorespaces Proposed algorithm bounding test.}}{139}{figure.102}% 
-\contentsline {figure}{\numberline {103}{\ignorespaces Runtime durations at \(n=10\).}}{141}{figure.103}% 
-\contentsline {figure}{\numberline {104}{\ignorespaces Runtime durations at \(n=15\).}}{141}{figure.104}% 
-\contentsline {figure}{\numberline {105}{\ignorespaces Runtime durations at \(n=20\).}}{142}{figure.105}% 
-\contentsline {figure}{\numberline {106}{\ignorespaces Coupled and uncoupled information.}}{142}{figure.106}% 
+\contentsline {figure}{\numberline {94}{\ignorespaces Graph layout in memory.}}{132}{figure.94}% 
+\contentsline {figure}{\numberline {95}{\ignorespaces Proposed algorithm mean number of calls.}}{134}{figure.95}% 
+\contentsline {figure}{\numberline {96}{\ignorespaces Proposed algorithm runtime complexity.}}{135}{figure.96}% 
+\contentsline {figure}{\numberline {97}{\ignorespaces Proposed algorithm lower/upper bound matching test.}}{136}{figure.97}% 
+\contentsline {figure}{\numberline {98}{\ignorespaces Proposed algorithm maximum edge threshold test.}}{137}{figure.98}% 
+\contentsline {figure}{\numberline {99}{\ignorespaces Proposed algorithm small degree vertex test.}}{138}{figure.99}% 
+\contentsline {figure}{\numberline {100}{\ignorespaces Proposed algorithm neighborhood subset test.}}{138}{figure.100}% 
+\contentsline {figure}{\numberline {101}{\ignorespaces Proposed algorithm minimum common neighbors upper bound test.}}{139}{figure.101}% 
+\contentsline {figure}{\numberline {102}{\ignorespaces Proposed algorithm bounding test.}}{140}{figure.102}% 
+\contentsline {figure}{\numberline {103}{\ignorespaces Runtime durations at \(n=10\).}}{142}{figure.103}% 
+\contentsline {figure}{\numberline {104}{\ignorespaces Runtime durations at \(n=15\).}}{142}{figure.104}% 
+\contentsline {figure}{\numberline {105}{\ignorespaces Runtime durations at \(n=20\).}}{143}{figure.105}% 

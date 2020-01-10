@@ -14,12 +14,12 @@ Three algorithms were considered:
 
 These three algorithms were originally compared using empirical runtime complexity values obtained from a random
 graph analysis.  For the purposes of this analysis, a step was defined to be a call to a routine that performs all
-of the necessary processing for a state in an algorithms state tree.  The results are shown in
+of the necessary processing for a state in an algorithms state tree.  The results are summarized in
 \tablename~\ref{tab:rtresults}.
 
 \begin{table}[H]
   \centering
-  \caption{Runtime Complexity Comparison for the Three Chromatic Coloring Algorithms}
+  \caption{Runtime Complexity Comparison}
   \label{tab:rtresults}
   \begin{tabular}{|c|c|}
     \hline
@@ -35,13 +35,13 @@ of the necessary processing for a state in an algorithms state tree.  The result
 \end{table}
 
 Assuming that number of states processed translates to runtime duration, tt would seem that the Christofides/Wang
-algorithm has a slight speed advantage.  However, it was noted that the initial chromatic number lower and upper
-bound estimate test that was presented as part of the new proposed algorithm could be added to the two well-known
-algorithms.  Thus, a runtime duration test was performed limited to random graphs where the estimated lower and
-upper bounds do not match.  The results presented in \sectionname~\ref{sec:random} showed that the three algorithms
-took exactly the same amount of time to produce a solution, which was well under the one minute requirement.  This
-led to certain ideas about the nature of uncoupled information and inherently intractable problems that were
-discussed in \sectionname~\ref{sec:sub:info}.
+algorithm would have a slight speed advantage over the proposed algorithm and a large speed advantage over the
+plain Zykobv algoithm.  It was noted that the initial chromatic number lower and upper bound estimate test that was
+presented as part of the new proposed algorithm could be added to the two well-known algorithms.  Thus, a runtime
+duration test was performed limited to random graphs where the estimated lower and upper bounds do not match.  The
+results presented in \sectionname~\ref{sec:random} showed that the three algorithms took exactly the same amount of
+time to produce a solution, which was well under the one minute requirement.
 
-Although all three algorithms are suitable for the desired design tool, the simplicity of the basic Zykov algorithm
-and its efficient use of space indicate that it is the best choice.
+However, it was found in \sectionname~\ref{sec:sub:example} that there are some graphs where the proposed and
+Christofides/Wang algorithms have a performance advantage.  Since the Christofides/Wang algorithm has a larger
+memory footprint, the proposed algorithm is a more suitable choice for the desired design tool.
