@@ -459,7 +459,7 @@ slight advantage at higher orders.
   \centering
   \includegraphics[width=5in]{greedyint_error}
   \caption{Last-first greedy algorithm with color interchange error.}
-  \label{fig:greedy:error}
+  \label{fig:greedyint:error}
 \end{figure}
 
 The mean number of steps with interchange is shown in \figurename~\ref{fig:greedyint:steps}.  Once again, the
@@ -506,9 +506,9 @@ with the previous maximal independent sets to form the next layer of the state t
 the first time that all of the vertices in \(G\) are used.  The number of maximal independent sets used to form the
 final combination is the chromatic number.
 
-The Christofides does have bounding conditions.  If the vertices in any new combination of maximal independent sets
-is a subset of a previous combination then the new subtree is pruned.  If the new is a superset of a previous then the
-previous is pruned by replacing it with the new.
+The Christofides algorithm does have bounding conditions.  If the vertices in any new combination of maximal
+independent sets is a subset of a previous combination then the new subtree is pruned.  If the new is a superset of
+a previous then the previous is pruned by replacing it with the new.
 
 For example, consider the graph in \figurename~\ref{fig:cfexample}.
 
@@ -745,7 +745,7 @@ complexity of about \(\BO(2^{0.0065n^2})\approx\BO(1.0045^{n^2})\).
 
 A comparison of the Christofides and Wang runtime complexities demonstrates some of the pitfalls of big-\(\BO\)
 notation and improvements to exhaustive algorithms.  The Wang improvements clearly have an advantage; however, the
-big-\(\BO\) analysis indicates that plain Christofides is \(\BO(a^n)\) and Wang is \(BO(b^{n^2})\).  The difference
+big-\(\BO\) analysis indicates that plain Christofides is \(\BO(a^n)\) and Wang is \(\BO(b^{n^2})\).  The difference
 is due to the fact that \(a=1.69>1.0045=b\) and so for lower values of \(n\), Wang wins.  In fact, the runtime
 complexity analysis predicts that Wang loses its advantage at about \(n=43\).  Unfortunately, the runtime durations
 at that value of \(n\) are too long to test the threshold.
@@ -1157,7 +1157,7 @@ The recursive subroutine is called with a graph \(H\) and has access to \(X\) an
 \item\label{step:zbound:done} Return.
 \end{enumerate}
 
-McDiarmid~(1978)~\cite{mcdiarmid} used a binomial edge probability module to predict that even with bounding, Zykov
+McDiarmid~(1978)~\cite{mcdiarmid} used a binomial edge probability model to predict that even with bounding, Zykov
 algorithms have a runtime complexity of \(\BO(c^{n\sqrt{\log(n)}})\) for some real number constant \(c>1\), which
 is worse than exponential.  If this is true, then Zykov algorithms will generally perform worse than
 Christofides-type algorithms.

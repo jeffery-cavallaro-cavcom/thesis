@@ -57,17 +57,17 @@ asymptotic to \(f(n)\) as \(n\to\infty\).  Roughly speaking, tractable problems 
 those problems with exponential \(\BO(c^n)\) or worse runtime complexity for some real number constant \(c>1\).
 
 What constitutes a \emph{step} in an algorithm is relative to the length parameter and the overall runtime
-complexity of the algorithm.  One of the problems with big-\(BO\) notation is that it is geared towards large \(n\)
-where the effects of smaller steps are diminished.  Consider an algorithm that has an exponential number of steps
-\(2^{an}\) and for each of those steps it must execute a step with \(n^c\) steps.  The total number of steps would
-then be:
+complexity of the algorithm.  One of the problems with big-\(\BO\) notation is that it is geared towards very large
+\(n\) where the effects of smaller steps are diminished.  Consider an algorithm that has an exponential number of
+steps \(2^{an}\) and for each of those steps it must execute a step with \(n^c\) steps.  The total number of steps
+would then be:
 \[n^c2^{an}=2^{\log(n^c)}2^{an}=2^{an+c\log(n)}\]
 For the types of algorithms examined in this research, a typical value for \(c\) would be no more than \(3\) and a
 typical value for \(a\) would be no more than \(1\).  \tablename~\ref{tab:grow} lists results for various values of
 \(n\).  Note that for higher values of \(n\) the effect of the polynomial time steps diminishes; however, for low
 to moderate values of \(n\) the effect is significant.  To put it bluntly, AD designers don't give a hoot about the
-runtime complexity at large \(n\); they only care about how long it takes to get an answer for values of \(n\) in
-the stated range of the tool.  Therefore, for the selected range of about \(20\) FRs, the effects of these steps
+runtime complexity at very large \(n\); they only care about how long it takes to get an answer for values of \(n\)
+in the stated range of the tool.  Therefore, for the selected range of about \(20\) FRs, the effects of these steps
 can be significant.
 
 \begin{table}[H]
@@ -171,10 +171,10 @@ be considered when comparing the three algorithms, except in a few limited cases
 best, average, and worst-case input parameter values.  Determining the runtime complexity for some algorithms can
 be very complicated when the number of possible steps is dependent on the peculiarities of the input parameters.
 In the case of graph algorithms, such things as order, size, and edge density can all affect the number of steps.
-Furthermore, runtime complexity is geared towards theoretical comparisons between algorithms at large \(n\), not
-actual runtime of an algorithm implementation on a given computer for a particular range of \(n\).  A comparison of
-runtime durations for the three algorithms for the selected parameter ranges is presented in
-\sectionname~\ref{sec:random}.
+Furthermore, runtime complexity is geared towards theoretical comparisons between algorithms at very large \(n\),
+not actual runtime of an algorithm implementation on a given computer for a particular range of \(n\).  A
+comparison of runtime durations for the existing and new algorithms for the selected parameter ranges is presented
+in \sectionname~\ref{sec:random}.
 
 \subsection{Branch-and-Bound Algorithms}\label{sec:sub:bandb}
 

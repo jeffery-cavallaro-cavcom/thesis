@@ -371,8 +371,9 @@ The primary goal of this research is to provide designers with a tool that they 
 number of parts required to realize a particular design at a particular level in a FR/DP hierarchy.  The designer
 is required to construct a graph whose vertices are the FRs and whose edges indicate that the endpoint FRs need to
 be realized by separate parts due to various design constraints.  How these edges are actually determined is beyond
-the scope of this research.  Adjacent FRs are candidates for part consolidation.  The goal is to find the chromatic
-number of the resulting graph, which corresponds to the minimum number of parts required for the candidate design.
+the scope of this research.  Nonadjacent FRs are candidates for part consolidation.  The goal is to find the
+chromatic number of the resulting graph, which corresponds to the minimum number of parts required for the
+candidate design.
 
 To be a viable tool, an algorithm running as a computer program must be able to deliver an answer in a reasonable
 amount of time.  Unfortunately, finding the chromatic number of a graph is known to be an inherently intractable

@@ -36,12 +36,14 @@ of the necessary processing for a state in an algorithms state tree.  The result
 
 Assuming that number of states processed translates to runtime duration, tt would seem that the Christofides/Wang
 algorithm would have a slight speed advantage over the proposed algorithm and a large speed advantage over the
-plain Zykobv algoithm.  It was noted that the initial chromatic number lower and upper bound estimate test that was
+plain Zykobv algorithm.  It was noted that the initial chromatic number lower and upper bound estimate test that was
 presented as part of the new proposed algorithm could be added to the two well-known algorithms.  Thus, a runtime
 duration test was performed limited to random graphs where the estimated lower and upper bounds do not match.  The
 results presented in \sectionname~\ref{sec:random} showed that the three algorithms took exactly the same amount of
 time to produce a solution, which was well under the one minute requirement.
 
-However, it was found in \sectionname~\ref{sec:sub:example} that there are some graphs where the proposed and
-Christofides/Wang algorithms have a performance advantage.  Since the Christofides/Wang algorithm has a larger
-memory footprint, the proposed algorithm is a more suitable choice for the desired design tool.
+However, it was found in \sectionname~\ref{sec:sub:example} that there are some graphs where the proposed and the
+Christofides/Wang algorithms have a performance advantage.  Nevertheless, it must be admitted that Chistofides/Wang
+is a much simpler algorithm, and that the various steps in the proposed algorithm don't seem to deliver a decisive
+performance advantage over the target range.  Thus, the simplicity of Christofides/Wang makes it a better choice
+for the desired design tool.
