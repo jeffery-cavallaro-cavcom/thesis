@@ -1111,13 +1111,13 @@ Theorem~\ref{thm:inter} establishes the desired upper bound.
   \item [Case 3:] \(a_i\ge3\)
 
     By the pigeonhole principle:
-    \[a_1\ge\ceil*{\frac{n-3}{k-1}}\ge\frac{n-3}{k-1}\]
+    \[a_1\ge\ceil*{\frac{n-a_i}{k-1}}\ge\frac{n-a_i}{k-1}\]
     This results in the upper bound:
-    \[\abs{N(v)\cap N(v')}\le n-a_i-a_1\le n-3-\frac{n-3}{k-1}\]
+    \[\abs{N(v)\cap N(v')}\le n-a_i-a_1\le n-a_i-\frac{n-a_i}{k-1}\]
     Comparing this to the desired bound:
-    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-3-\frac{n-3}{k-1}\right)=1-\frac{(n-3)-(n-2)}{k-1}=1-\frac{1}{k-1}>0\]
-    for \(k\ge2\).  Thus the new bound is tighter and so:
-    \[\abs{N(v)\cap N(v')}\le n-3-\frac{n-3}{k-1}\le n-2-\frac{n-2}{k-1}\]
+    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-a_i-\frac{n-a_i}{k-1}\right)=(a_i-2)\left(1-\frac{1}{k-1}\right)\ge0\]
+    for \(k\ge2\) and \(a_i\ge3\).  Thus the new bound is as good or tighter and so:
+    \[\abs{N(v)\cap N(v')}\le n-2-\frac{n-2}{k-1}\]
   \end{description}
 
   Therefore, there exists \(w,v\in V(G)\) such that:
@@ -1256,20 +1256,20 @@ The main routine first executes the Bron Kerbosch algorithm and finds that the c
 \(k_{min}=2\).  It then executes the greedy algorithm and finds that the chromatic number upper bound is
 \(k_{max}=4\) with the following default coloring:
 \[\begin{array}{l}
-  \set{0, 2, 10} \\
-  \set{1, 3, 6, 8} \\
-  \set{4, 5, 9} \\
-  \set{7}
+  \set{a, c, k} \\
+  \set{b, e, g, j} \\
+  \set{d, f, i} \\
+  \set{h}
 \end{array}\]
 Since the lower and upper bounds do not match, the main routine continues.  The Bron Kerbosch algorithm is executed
 on the complement of \(G\) to discover than \(G\) has \(16\) MISs.  Vertex \(a\) is found to occur in the least
 number of these MISs: \(5\) times.  These \(5\) selected MISs, sorted by decreasing length, are as follows:
 \[\begin{array}{l}
-  \set{0, 2, 5, 7} \\
-  \set{0, 4, 5, 9} \\
-  \set{0, 5, 7, 9} \\
-  \set{0, 2, 10} \\
-  \set{0, 4, 10}
+  \set{a, c, f, h} \\
+  \set{a, d, f, i} \\
+  \set{a, f, h, i} \\
+  \set{a, c, k} \\
+  \set{a, d, k}
 \end{array}\]
 The main routine creates \(5\) Zykov trees, one per selected MIS.  For brevity, the remainder of this example will
 focus on the first tree; assume that the other \(4\) trees are processed similarly and that none of them produces a
