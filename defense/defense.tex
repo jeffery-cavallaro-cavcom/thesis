@@ -17,6 +17,7 @@
 \newcommand{\w}{\omega}
 \newcommand{\D}{\Delta}
 \newcommand{\X}{\chi}
+\newcommand{\FR}{\text{FR}}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\set}{\{}{\}}
 
@@ -655,6 +656,102 @@
     \end{minipage}
 
     \[3+2+2+1=8=2\cdot 4\]
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Case Study: Toaster Design}
+  \begin{center}
+    \includegraphics[scale=0.1]{toaster}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Functional Requirements}
+  \begin{center}
+    \begin{tabular}{|c|l|}
+      \hline
+      \(\FR_1\) & Body contains all parts \\
+      \hline
+      \(\FR_2\) & Can be safely moved while hot \\
+      \hline
+      \(\FR_3\) & Can hold two slices of bread \\
+      \hline
+      \(\FR_4\) & Heats each slice of bread on both sides \\
+      \hline
+      \(\FR_5\) & Toasting is manually started \\
+      \hline
+      \(\FR_6\) & Toasting is automatically or can be manually stopped \\
+      \hline
+      \(\FR_7\) & Heat level can be controlled \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Design 1: Four Parts}
+  \begin{center}
+    \scalebox{0.65}{
+      \begin{tikzpicture}
+        \colorlet{c1}{green!25!white}
+        \colorlet{c2}{blue!25!white}
+        \colorlet{c3}{red!25!white}
+        \colorlet{c4}{orange!25!white}
+        \node [draw,circle,fill=c1] (fr1) at (4,0) {\(\FR_1\)};
+        \node [draw,circle,fill=c1] (fr2) at (-1,2) {\(\FR_2\)};
+        \node [draw,circle,fill=c3] (fr3) at (0,6) {\(\FR_3\)};
+        \node [draw,circle,fill=c2] (fr4) at (1,2) {\(\FR_4\)};
+        \node [draw,circle,fill=c4] (fr5) at (0,-4) {\(\FR_5\)};
+        \node [draw,circle,fill=c3] (fr6) at (0,-1.5) {\(\FR_6\)};
+        \node [draw,circle,fill=c2] (fr7) at (-4,0) {\(\FR_7\)};
+        \draw (fr1) edge (fr3);
+        \draw (fr1) edge (fr4);
+        \draw (fr1) edge (fr5);
+        \draw (fr1) edge (fr6);
+        \draw (fr1) edge (fr7);
+        \draw (fr2) edge (fr3);
+        \draw (fr2) edge (fr4);
+        \draw (fr2) edge (fr7);
+        \draw (fr3) edge (fr4);
+        \draw (fr3) edge (fr7);
+        \draw (fr5) edge (fr6);
+        \draw (fr5) edge (fr7);
+        \draw (fr6) edge (fr7);
+      \end{tikzpicture}
+    }
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Design 2: Three Parts}
+  \begin{center}
+    \scalebox{0.65}{
+      \begin{tikzpicture}
+        \colorlet{c1}{green!25!white}
+        \colorlet{c2}{blue!25!white}
+        \colorlet{c3}{red!25!white}
+        \node [draw,circle,fill=c1] (fr1) at (4,0) {FR1};
+        \node [draw,circle,fill=c1] (fr2) at (-1,2) {FR2};
+        \node [draw,circle,fill=c3] (fr3) at (0,6) {FR3};
+        \node [draw,circle,fill=c2] (fr4) at (1,2) {FR4};
+        \node [draw,circle,fill=c3] (fr5) at (0,-4) {FR5};
+        \node [draw,circle,fill=c3] (fr6) at (0,-1.5) {FR6};
+        \node [draw,circle,fill=c2] (fr7) at (-4,0) {FR7};
+        \draw (fr1) edge (fr3);
+        \draw (fr1) edge (fr4);
+        \draw (fr1) edge (fr5);
+        \draw (fr1) edge (fr6);
+        \draw (fr1) edge (fr7);
+        \draw (fr2) edge (fr3);
+        \draw (fr2) edge (fr4);
+        \draw (fr2) edge (fr7);
+        \draw (fr3) edge (fr4);
+        \draw (fr3) edge (fr7);
+        \draw (fr5) edge (fr7);
+        \draw (fr6) edge (fr7);
+      \end{tikzpicture}
+    }
   \end{center}
 \end{frame}
 
