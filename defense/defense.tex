@@ -11,6 +11,8 @@
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\txtclr}[1]{\textcolor{#1}{#1}}  % colored text
 \newcommand{\mtxtclr}[1]{\text{\txtclr{#1}}}  % colored text in math mode
+\renewcommand{\a}{\alpha}
+\newcommand{\w}{\omega}
 \newcommand{\X}{\chi}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\set}{\{}{\}}
@@ -249,7 +251,7 @@
       \draw (E) edge (C);
     \end{tikzpicture}
   \end{minipage}
-  \begin{minipage}{2in}
+  \begin{minipage}{2.2in}
     \centering
     \scalebox{0.9}{
       \(C=\set{\mtxtclr{green},\mtxtclr{blue},\mtxtclr{red},\mtxtclr{orange},\mtxtclr{brown}}\)
@@ -480,6 +482,116 @@
       \bigskip
 
       \(\bar{G}\)
+    \end{minipage}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Independent (Stable) Sets}
+  \begin{itemize}
+  \item A subset of \(V(G)\) whose elements are nonadjacent vertices.
+  \item Maximal (MIS) if not a proper subset of some other independent set.
+  \item Maximum if cardinality is \(\ge\) any other MIS.
+  \item The \emph{independence number} \(\a(G)\) is the cardinality of a maximum MIS in \(G\).
+  \item A proper coloring distributes vertices into independent sets.
+  \item A chromatic coloring partitions vertices into independent sets.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{MIS Example}
+  \begin{center}
+    \begin{minipage}{2in}
+      \centering
+      \begin{tikzpicture}[scale=0.7,every node/.style={labeled node}]
+        \node (a) at (0,0) {\(a\)};
+        \node (b) at (2,0) {\(b\)};
+        \node (c) at (4,0) {\(c\)};
+        \node (d) at (6,0) {\(d\)};
+        \node (e) at (5,-2) {\(e\)};
+        \node (f) at (3,-2) {\(f\)};
+        \node (g) at (1,-2) {\(g\)};
+        \node (h) at (3,2) {\(h\)};
+        \draw (a) edge (f) edge (g) edge (h);
+        \draw (b) edge (f) edge (h);
+        \draw (c) edge (e) edge (f) edge (h);
+        \draw (d) edge (e) edge (f) edge (h);
+      \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{2in}
+      \centering
+      \begin{tabular}{c|c}
+        MIS & SIZE \\
+        \hline
+        \(\set{a, b, c, d}\) & \(4\) \\
+        \(\set{a, b, e}\) & \(3\) \\
+        \(\set{b, c, d, g}\) & \(4\) \\
+        \(\set{b, e, g}\) & \(3\) \\
+        \(\set{e, f, g, h}\) & \(4\)
+      \end{tabular}
+
+      \bigskip
+
+      \(\a(G)=4\)
+    \end{minipage}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cliques}
+  \begin{itemize}
+  \item A complete graph embedded in (a subgraph of) a graph.
+  \item A clique of order \(k\) is called a \(k\)-clique.
+  \item A proper coloring for a graph with a \(k\)-clique requires at least \(k\) colors.
+  \item Maximal if not a subgraph some other clique.
+  \item Maximum if order is \(\ge\) any other clique.
+  \item The \emph{clique number} \(\w(G)\) is the order of a max clique in \(G\).
+  \item A (maximal) clique in \(G\) is a (maximal) independent set in \(\bar{G}\).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Maximal Clique Example}
+  \begin{center}
+    \begin{minipage}{3.5in}
+      \centering
+      \scalebox{0.75}{
+        \begin{tikzpicture}[every node/.style=labeled node]
+          \completeV{\(a\),\(b\),\(c\),\(d\)}{(0,0)}{0.75in}{135}{a};
+          \completeV{\(e\),\(f\),\(g\)}{(5,0)}{0.6in}{120}{b};
+          \node (h) [right=of b2] {\(h\)};
+          \draw (a2) edge (b1);
+          \draw (a3) edge (b3);
+          \draw (b2) edge (h);
+          \draw (a1) -- ($(a1)+(0,1cm)$) -| (b1);
+          \draw (a4) -- ($(a4)-(0,1cm)$) -| (b3);
+          \draw (a2) -- (b3);
+          \draw (b1) -| (h);
+          \draw (b3) -| (h);
+        \end{tikzpicture}
+      }
+
+      \(G\)
+    \end{minipage}
+
+    \bigskip
+
+    \begin{minipage}{2in}
+      \centering
+      \scalebox{0.75}{
+        \begin{tabular}{c|c}
+          MAXIMAL CLIQUE & ORDER \\
+          \hline
+          \(G[\set{a, b, c, d}]\) & \(4\) \\
+          \(G[\set{a, b, e}]\) & \(3\) \\
+          \(G[\set{b, c, d, g}]\) & \(4\) \\
+          \(G[\set{b, e, g}]\) & \(3\) \\
+          \(G[\set{e, f, g, h}]\) & \(4\)
+        \end{tabular}
+      }
+    \end{minipage}
+    \begin{minipage}{1in}
+      \(\w(G)=4\)
     \end{minipage}
   \end{center}
 \end{frame}
