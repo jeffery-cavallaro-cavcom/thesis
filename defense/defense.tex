@@ -18,6 +18,8 @@
 \newcommand{\D}{\Delta}
 \newcommand{\X}{\chi}
 \newcommand{\FR}{\text{FR}}
+\newcommand{\BO}{\mathcal{O}}
+\newcommand{\BigO}{Big-\(\mathcal{O}\)}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\set}{\{}{\}}
 
@@ -753,6 +755,62 @@
       \end{tikzpicture}
     }
   \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comparing Algorithms}
+  \begin{itemize}
+  \item Methods:
+    \begin{itemize}
+    \item Runtime Complexity (number of states)
+    \item Space Complexity (required memory)
+    \item Time Duration (execution time)
+    \end{itemize}
+  \item Can be stated as best case, average case, and worst case.
+  \item Best use is worst case in a specific problem domain.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Runtime Complexity}
+  \begin{itemize}
+  \item Based on a length parameter of the problem: graph order \(n\).
+  \item Measured by \BigO\ notation: \(\BO(f(n))\) means the number of steps required to find a solution is
+    \(N\le cf(n)\) for some \(c>0\).
+  \item Most useful algorithms are P(olynomial)-time: \(\BO(n^c)\) for some \(c\ge0\).
+  \item Inherently intractable algorithms are exponential (or worse) time: \(\BO(c^n)\) for some \(c>1\).
+  \item Really meant to show asymptotic behavior at very large \(n\).
+  \item \(\BO(0.001n^2)\) and \(\BO(1000n^2)\) are still \(\BO(n^2)\).
+  \item At lower \(n\), P-time steps intended to ``speed up'' an algorithm can get in the way.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Random Graph Analysis}
+  \begin{itemize}
+  \item Binomial edge probability model.
+  \item Edge probabilities from \(10\%\) to \(90\%\) in steps of \(10\%\).
+  \item P-time algorithms:
+    \begin{itemize}
+    \item \(n=5\) to \(n=50\) in steps of \(1\).
+    \item \(1000\) trials for each \(n\).
+    \end{itemize}
+  \item Exponential algorithms:
+    \begin{itemize}
+    \item \(n=5\) to \(n=30\) in steps of \(1\).
+    \item \(1000\) trials for each \(n<20\).
+    \item \(100\) trials for each \(n\ge20\).
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Estimating a Lower Bound}
+  \begin{itemize}
+  \item \(\w(G)\le\a(G)\).
+  \item The clique number problems is also inherently intractable.
+    \item 
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
