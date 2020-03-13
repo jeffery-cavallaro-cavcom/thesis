@@ -782,6 +782,7 @@
   \item Really meant to show asymptotic behavior at very large \(n\).
   \item \(\BO(0.001n^2)\) and \(\BO(1000n^2)\) are still \(\BO(n^2)\).
   \item At lower \(n\), P-time steps intended to ``speed up'' an algorithm can get in the way.
+  \item Better to use empirical measurements for smaller \(n\).
   \end{itemize}
 \end{frame}
 
@@ -841,10 +842,138 @@
 \begin{frame}
   \frametitle{Bron Kerbosh Algorithm (1973)}
   \begin{itemize}
-  \item An exponential yet reasonable fast algorithm for determining all maximal cliques in a graph.
+  \item An exponential yet relatively fast algorithm for finding all maximal cliques in a graph.
   \item Moon and Moser (1965) show that \(\displaystyle 3^{\frac{n}{3}}\) is an upper bound.
-  \item So the runtime complexity should be \(\BO(1.44^n)\).
+  \item So the runtime complexity should be about \(\BO(1.44^n)\).
+  \item Can be used to find MISs in \(\bar{G}\).
+  \item Thus can be used to determine \(\w(G)\) and \(\a(G)\) exactly.
+  \item Uses a recursive ''extend'' routine to extend the currently constructed clique.
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bron Kerbosh Mean Calls to Extend}
+  \begin{center}
+    \includegraphics[width=4in]{../final/bron2_calls}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bron Kerbosh Runtime Complexity}
+  \begin{center}
+    \includegraphics[width=4in]{../final/bron2_runtime}
+
+    \bigskip
+
+    \(\BO(2^{0.1867n})=\BO(1.14^n)\)
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Estimating an Upper Bound}
+  \begin{itemize}
+  \item Use a P-time sequential (greedy) algorithm that adds a new color when needed.
+  \item Vertices are arranged and colored in a particular order.
+  \item Matula (1967) concludes that ordering by non-increasing degree works best: last-first.
+  \item Suggests color interchange to increase accuracy at the cost of greater complexity.
+  \item Advantage: an empirical \(k\)-coloring.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Color Interchange}
+  \begin{center}
+    \begin{minipage}{2in}
+      \centering
+      \begin{tikzpicture}[scale=0.75,every node/.style={labeled node}]
+        \colorlet{c1}{green!25!white}
+        \colorlet{c2}{red!25!white}
+        \node (4) at (0,0) {\(v_4\)};
+        \node [fill=c1] (1) at (2,1) {\(v_1\)};
+        \node [fill=c2] (2) at (2,-1) {\(v_2\)};
+        \node [fill=c2] (3) at (4,1) {\(v_3\)};
+        \draw (4) edge (1) edge (2);
+        \draw (1) edge (3);
+      \end{tikzpicture}
+
+      Before Swap
+    \end{minipage}
+    \begin{minipage}{2in}
+      \centering
+      \begin{tikzpicture}[scale=0.75,every node/.style={labeled node}]
+        \colorlet{c1}{green!25!white}
+        \colorlet{c2}{red!25!white}
+        \node (4) at (0,0) {\(v_4\)};
+        \node [fill=c2] (1) at (2,1) {\(v_1\)};
+        \node [fill=c2] (2) at (2,-1) {\(v_2\)};
+        \node [fill=c1] (3) at (4,1) {\(v_3\)};
+        \draw (4) edge (1) edge (2);
+        \draw (1) edge (3);
+      \end{tikzpicture}
+
+      After Swap
+    \end{minipage}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Last-First Greedy with Color Interchange Mean Error}
+  \begin{center}
+    \includegraphics[width=4in]{../final/greedyint_error}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Last-First Greedy with Color Interchange Mean Steps}
+  \begin{center}
+    \includegraphics[width=4in]{../final/greedyint_steps}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Last-First Greedy with Color Interchange Runtime Complexity}
+  \begin{center}
+    \includegraphics[width=4in]{../final/greedyint_runtime}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Christofides Algorithm (1971)}
+  \begin{itemize}
+  \item An exponential algorithm to find an exact value for \(\X(G)\).
+  \item Uses BK on \(\bar{G}\) to find all MISs.
+  \item Removes each MIS and recursively uses BK to find all MISs in what is left.
+  \item Pieces the various MISs together to find the first combination that uses all the vertices.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wang Improvements (1974)}
+  \begin{itemize}
+  \item Select a vertex \(v\in V(G)\).
+  \item Note that there is some chromatic coloring of \(G\) such that \(v\) is in some MIS of \(G\).
+  \item Can prove by starting with a chromatic coloring and stealing nonadjacent vertices from other ISs until
+    the target IS is maximal.
+  \item So choose a vertex that occurs in the least number of MISs and only consider those.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Christofides/Wang Mean Recursive Calls}
+  \begin{center}
+    \includegraphics[width=4in]{../final/wang_calls}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Christofides/Wang Runtime Complexity}
+  \begin{center}
+    \includegraphics[width=4in]{../final/wang_runtime}
+
+    \bigskip
+
+    \(\BO(0.0065n^2)=\BO(1.0045^{n^2})\)
+  \end{center}
 \end{frame}
 
 \begin{frame}
