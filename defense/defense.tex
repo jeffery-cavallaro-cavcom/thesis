@@ -11,8 +11,11 @@
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\txtclr}[1]{\textcolor{#1}{#1}}  % colored text
 \newcommand{\mtxtclr}[1]{\text{\txtclr{#1}}}  % colored text in math mode
+\newcommand{\setb}[2]{\left\{{#1}\,\middle|\,{#2}\right\}}  % set builder notation
 \renewcommand{\a}{\alpha}
+\renewcommand{\d}{\delta}
 \newcommand{\w}{\omega}
+\newcommand{\D}{\Delta}
 \newcommand{\X}{\chi}
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\set}{\{}{\}}
@@ -160,7 +163,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Order and Size}
+  \frametitle{Graph Order and Size}
   \begin{itemize}
   \item The \emph{order} of a graph is the number of vertices: \(n=\abs{V(G)}\).
   \item The \emph{size} of a graph is the number of edges: \(m=\abs{E(G)}\).
@@ -547,6 +550,7 @@
   \item Maximum if order is \(\ge\) any other clique.
   \item The \emph{clique number} \(\w(G)\) is the order of a max clique in \(G\).
   \item A (maximal) clique in \(G\) is a (maximal) independent set in \(\bar{G}\).
+  \item \(\w(G)\le\X(G)\)
   \end{itemize}
 \end{frame}
 
@@ -593,6 +597,64 @@
     \begin{minipage}{1in}
       \(\w(G)=4\)
     \end{minipage}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Vertex Degree}
+  \begin{itemize}
+  \item The \emph{neighborhood} of a vertex \(u\in V(G)\) is the set of all its neighbors:
+    \[N(u)=\setb{v\in V(G)}{uv\in E(G)}\]
+  \item The \emph{degree} of \(u\) is the cardinality of its neighborhood:
+    \[\deg(u)=\abs{N(u)}\]
+  \item First Theorem of Graph Theory:
+    \[\sum_{v\in V(G)}\deg(v)=2m\]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Min/Max Degree}
+  \begin{itemize}
+  \item Minimum degree:
+    \[\d(G)=\min_{v\in V(G)}\deg(v)\]
+  \item Maximum degree:
+    \[\D(G)=\max_{v\in V(G)}\deg(v)\]
+  \item Possible values:
+    \[0\le\d(G)\le\deg(v)\le\D(G)\le n-1\]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Degree Example}
+  \begin{center}
+    \begin{minipage}{1.5in}
+      \centering
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \node (a) at (0,0) {\(a\)};
+        \node (b) [right=of a] {\(b\)};
+        \node (c) [below=of b] {\(c\)};
+        \node (d) [below=of a] {\(d\)};
+        \draw (a) edge (b) edge (c) edge (d);
+        \draw (b) edge (c);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{minipage}
+    \begin{minipage}{2in}
+      \begin{gather*}
+        \deg(a)=3 \\
+        \deg(b)=2 \\
+        \deg(c)=2 \\
+        \deg(d)=1 \\
+        \\
+        \d(G)=1 \\
+        \D(G)=3
+      \end{gather*}
+    \end{minipage}
+
+    \[3+2+2+1=8=2\cdot 4\]
   \end{center}
 \end{frame}
 
