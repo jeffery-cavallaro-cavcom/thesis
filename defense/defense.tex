@@ -63,7 +63,7 @@
   \end{itemize}
 
   \begin{center}
-    \includegraphics[scale=0.5]{opener}
+    \includegraphics[scale=0.5]{../final/opener}
   \end{center}
 \end{frame}
 
@@ -664,7 +664,7 @@
 \begin{frame}
   \frametitle{Case Study: Toaster Design}
   \begin{center}
-    \includegraphics[scale=0.1]{toaster}
+    \includegraphics[scale=0.1]{../final/toaster}
   \end{center}
 \end{frame}
 
@@ -808,8 +808,42 @@
   \frametitle{Estimating a Lower Bound}
   \begin{itemize}
   \item \(\w(G)\le\a(G)\).
-  \item The clique number problems is also inherently intractable.
-    \item 
+  \item The clique number problem is also inherently intractable.
+  \item Use the Edwards Elphick (1982) algorithm to find a lower bound: \(\w'(G)\le\w(G)\le\X(G)\).
+  \item Label the vertices from \(1\) to \(n\).
+  \item Find a vertex \(v\) with \(\deg(v)=\D(G)\).
+  \item Add unselected vertices with lowest index that are adjacent to all selected vertices.
+  \item Modification: choose the next vertex of highest degree (more time but increased accuracy).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Improved Edwards Elphick Mean Error}
+  \begin{center}
+    \includegraphics[width=4in]{../final/edwards2_error}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Improved Edwards Elphick Mean Steps}
+  \begin{center}
+    \includegraphics[width=4in]{../final/edwards2_steps}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Improved Edwards Elphick Runtime Complexity}
+  \begin{center}
+    \includegraphics[width=4in]{../final/edwards2_runtime}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bron Kerbosh Algorithm (1973)}
+  \begin{itemize}
+  \item An exponential yet reasonable fast algorithm for determining all maximal cliques in a graph.
+  \item Moon and Moser (1965) show that \(\displaystyle 3^{\frac{n}{3}}\) is an upper bound.
+  \item So the runtime complexity should be \(\BO(1.44^n)\).
   \end{itemize}
 \end{frame}
 

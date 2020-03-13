@@ -194,7 +194,7 @@ Nagamouchi~(2017)~\cite{xiao}.  They claim that the known algorithms tend to con
 A simpler yet efficient alternative to these exact algorithms for more modest values of \(n\) is the Bron Kerbosch
 (BK) algorithm~(1973)~\cite{bron}.  In fact, the algorithm that was incrementally developed in
 \sectionname~\ref{sec:sub:bandb} is essentially the BK algorithm.  The advantage of BK is that it finds all
-possible cliques in a graph, and hence can be used to find \(\a(G)=\w(\bar{G})\).  Moon and
+possible maximal cliques in a graph, and hence can be used to find \(\a(G)=\w(\bar{G})\).  Moon and
 Moser~(1965)~\cite{moon} show that every graph \(G\) of order \(n\) has at most \(3^{\frac{n}{3}}\) maximal
 cliques, so the runtime complexity of the Bron Kerbosch algorithm is expected to be about \(\BO(1.44^n)\).
 
