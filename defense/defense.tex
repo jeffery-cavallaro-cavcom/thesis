@@ -943,7 +943,7 @@
   \item An exponential algorithm to find an exact value for \(\X(G)\).
   \item Uses BK on \(\bar{G}\) to find all MISs.
   \item Removes each MIS and recursively uses BK to find all MISs in what is left.
-  \item Pieces the various MISs together to find the first combination that uses all the vertices.
+  \item Pieces the various ISs together to find the first combination that uses all the vertices.
   \end{itemize}
 \end{frame}
 
@@ -974,6 +974,118 @@
 
     \(\BO(0.0065n^2)=\BO(1.0045^{n^2})\)
   \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zykov Algorithm (1949)}
+  \begin{itemize}
+  \item An exponential algorithm to find an exact value for \(\X(G)\).
+  \item For two nonadjacent \(u,v\in V(G)\):
+    \[\X(G)=\min\set{\X(G\cdot uv),\X(G+uv)}\]
+  \item Vertex contraction forces \(u\) and \(v\) to have the same color.
+  \item Edge addition forces \(u\) and \(v\) to have different colors.
+  \item Recursive application exhaustively checks all possible combinations.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zykov Algorithm Example}
+  \begin{center}
+    \scalebox{0.75}{
+      \begin{tikzpicture}
+        \node (a) [draw,circle] at (0,0) {
+          \begin{tikzpicture}[every node/.style={unlabeled node}]
+            \node (a1) at (0,0) {};
+            \node (a2) [right=of a1] {};
+            \node (a3) [above=of a2] {};
+            \node (a4) [above=of a1] {};
+            \draw (a3) -- (a4) -- (a1) -- (a2) -- (a4);
+          \end{tikzpicture}
+        };
+        \node (b) [draw,circle,below left=of a] {
+          \begin{tikzpicture}[every node/.style={unlabeled node}]
+            \node (b1) at (0,0) {};
+            \node (b2) [above=of b1] {};
+            \node (b3) [right=of b1] {};
+            \draw (b1) -- (b2) -- (b3) -- (b1);
+          \end{tikzpicture}
+        };
+        \node (c) [draw,circle,below right=of a] {
+          \begin{tikzpicture}[every node/.style={unlabeled node}]
+            \node (c1) at (0,0) {};
+            \node (c2) [right=of a1] {};
+            \node (c3) [above=of a2] {};
+            \node (c4) [above=of a1] {};
+            \draw (c2) -- (c3) -- (c4) -- (c1) -- (c2) -- (c4);
+          \end{tikzpicture}
+        };
+        \node (d) [draw,circle,below left=of c] {
+          \begin{tikzpicture}[every node/.style={unlabeled node}]
+            \node (d1) at (0,0) {};
+            \node (d2) [above=of d1] {};
+            \node (d3) [right=of d1] {};
+            \draw (d1) -- (d2) -- (d3) -- (d1);
+          \end{tikzpicture}
+        };
+        \node (e) [draw,circle,below right=of c] {
+          \begin{tikzpicture}[every node/.style={unlabeled node}]
+            \node (c1) at (0,0) {};
+            \node (c2) [right=of a1] {};
+            \node (c3) [above=of a2] {};
+            \node (c4) [above=of a1] {};
+            \draw (c2) -- (c3) -- (c4) -- (c1) -- (c2) -- (c4);
+            \draw (c1) -- (c3);
+          \end{tikzpicture}
+        };
+        \draw (a) edge (b) edge (c);
+        \draw (c) edge (d) edge (e);
+      \end{tikzpicture}
+    }
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Branch and Bound}
+  \begin{itemize}
+  \item The tree that tracks the states is called a Zykov tree.
+  \item Each branch of the tree results from a vertex contraction (same color) or edge addition (different colors)
+    decision between a pair of nonadjacent nodes.
+  \item Certain bounding conditions are checked to see if a branch can be pruned.
+  \item Otherwise, the termination condition for each branch is a complete graph.
+  \item Each vertex in the complete graphs represents an independent set composed of contracted nodes.
+  \item The complete graph with the smallest order is the chromatic number of the graph.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zykov Mean Recursive Calls}
+  \begin{center}
+    \includegraphics[width=4in]{../final/zykov_calls};
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Zykov Runtime Complexity}
+  \begin{center}
+    \includegraphics[width=4in]{../final/zykov_runtime};
+
+    \bigskip
+
+    \(\BO(2^{1.7244n})=\BO(3.3^n)\)
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Christofides/Wang vs Zykov}
+  \begin{itemize}
+  \item CW: \(\BO(1.0045^{n^2})\); Z: \(\BO(3.3^n)\)
+  \item CW executes the exponential BK at every state.
+  \item Z per-state processing is very light.
+  \item CW is better at pruning states in the target range.
+  \item CW is faster in the target range.
+  \item CW and Z number of states becomes equal at \(n=112\).
+  \item Due to less per-state processing, Z should overtake CW before that.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}

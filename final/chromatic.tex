@@ -1193,4 +1193,14 @@ for the Zykov algorithm is about \(\BO(2^{1.7244n})\approx\BO(3.3^n)\).
   \label{fig:zykovruntime}
 \end{figure}
 
-Clearly, the Christofides/Wang algorithm outperforms the Zykov algorithm.
+The results seem to be contradictory: the Christofides/Wang algorithm has \(\BO(1.0045^{n^2})\) runtime complexity
+and the Zykov algorithm has \(\BO(3.3^n)\) runtime complexity; however, Christofides/Wang visits fewer states and
+runs much faster than Zykov in the target range.  This can be explained by the fact that Christofides/Wang runs the
+exponential BK algorithm for each MIS state, whereas the Zykov algorithm processing is much lighter at each branch
+state.  For small-to-medium values of \(n\), the BK algorithm is very fast and the Christofides/Wang algorithm is
+better at pruning the number of required states.
+
+Based on the empirical values, it is expected that the two algorithms' state counts will become equal at \(n=112\).
+Since the Zykov per-state processing is much lighter, it is expected that the Zykov algorithm will run faster than
+Christofides/Wang sooner than that.  However, these values far exceed the target range for the required design
+tool.
