@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  13 MAR 2020 22:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  14 MAR 2020 11:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1154,7 +1154,7 @@ Package pdftex.def Info: ../final/greedyint_runtime.jpeg  used on input line 93
 <../final/wang_calls.jpeg, id=1233, 455.45157pt x 258.65053pt>
 File: ../final/wang_calls.jpeg Graphic file (type jpg)
 <use ../final/wang_calls.jpeg>
-Package pdftex.def Info: ../final/wang_calls.jpeg  used on input line 966.
+Package pdftex.def Info: ../final/wang_calls.jpeg  used on input line 967.
 (pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
  [48
 
@@ -1162,7 +1162,7 @@ Package pdftex.def Info: ../final/wang_calls.jpeg  used on input line 966.
 <../final/wang_runtime.jpeg, id=1259, 455.45157pt x 258.65053pt>
 File: ../final/wang_runtime.jpeg Graphic file (type jpg)
 <use ../final/wang_runtime.jpeg>
-Package pdftex.def Info: ../final/wang_runtime.jpeg  used on input line 977.
+Package pdftex.def Info: ../final/wang_runtime.jpeg  used on input line 978.
 (pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
  [49
 
@@ -1172,25 +1172,121 @@ Package pdftex.def Info: ../final/wang_runtime.jpeg  used on input line 977.
 
 ] [52
 
+] [53
+
 ]
-<../final/zykov_calls.jpeg, id=1362, 455.45157pt x 258.65053pt>
+<../final/zykov_calls.jpeg, id=1387, 455.45157pt x 258.65053pt>
 File: ../final/zykov_calls.jpeg Graphic file (type jpg)
 <use ../final/zykov_calls.jpeg>
-Package pdftex.def Info: ../final/zykov_calls.jpeg  used on input line 1065.
-(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
- [53
-
- <../final/zykov_calls.jpeg>]
-<../final/zykov_runtime.jpeg, id=1388, 455.45157pt x 258.65053pt>
-File: ../final/zykov_runtime.jpeg Graphic file (type jpg)
-<use ../final/zykov_runtime.jpeg>
-Package pdftex.def Info: ../final/zykov_runtime.jpeg  used on input line 1076.
+Package pdftex.def Info: ../final/zykov_calls.jpeg  used on input line 1076.
 (pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
  [54
 
- <../final/zykov_runtime.jpeg>] [55
+ <../final/zykov_calls.jpeg>]
+<../final/zykov_runtime.jpeg, id=1413, 455.45157pt x 258.65053pt>
+File: ../final/zykov_runtime.jpeg Graphic file (type jpg)
+<use ../final/zykov_runtime.jpeg>
+Package pdftex.def Info: ../final/zykov_runtime.jpeg  used on input line 1087.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [55
 
-] [56
+ <../final/zykov_runtime.jpeg>] [56
+
+] [57
+
+] [58
+
+] [59
+
+]
+<../final/qz_calls.jpeg, id=1542, 455.45157pt x 258.65053pt>
+File: ../final/qz_calls.jpeg Graphic file (type jpg)
+<use ../final/qz_calls.jpeg>
+Package pdftex.def Info: ../final/qz_calls.jpeg  used on input line 1149.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [60
+
+ <../final/qz_calls.jpeg>]
+<../final/qz_runtime.jpeg, id=1568, 455.45157pt x 258.65053pt>
+File: ../final/qz_runtime.jpeg Graphic file (type jpg)
+<use ../final/qz_runtime.jpeg>
+Package pdftex.def Info: ../final/qz_runtime.jpeg  used on input line 1160.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [61
+
+ <../final/qz_runtime.jpeg>]
+<../final/qz_match.jpeg, id=1595, 455.45157pt x 258.65053pt>
+File: ../final/qz_match.jpeg Graphic file (type jpg)
+<use ../final/qz_match.jpeg>
+Package pdftex.def Info: ../final/qz_match.jpeg  used on input line 1167.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [62
+
+ <../final/qz_match.jpeg>]
+<../final/qz_edges.jpeg, id=1621, 455.45157pt x 258.65053pt>
+File: ../final/qz_edges.jpeg Graphic file (type jpg)
+<use ../final/qz_edges.jpeg>
+Package pdftex.def Info: ../final/qz_edges.jpeg  used on input line 1174.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [63
+
+ <../final/qz_edges.jpeg>]
+<../final/qz_small.jpeg, id=1648, 455.45157pt x 258.65053pt>
+File: ../final/qz_small.jpeg Graphic file (type jpg)
+<use ../final/qz_small.jpeg>
+Package pdftex.def Info: ../final/qz_small.jpeg  used on input line 1181.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [64
+
+ <../final/qz_small.jpeg>]
+<../final/qz_subset.jpeg, id=1674, 455.45157pt x 258.65053pt>
+File: ../final/qz_subset.jpeg Graphic file (type jpg)
+<use ../final/qz_subset.jpeg>
+Package pdftex.def Info: ../final/qz_subset.jpeg  used on input line 1188.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [65
+
+ <../final/qz_subset.jpeg>]
+<../final/qz_common.jpeg, id=1700, 455.45157pt x 258.65053pt>
+File: ../final/qz_common.jpeg Graphic file (type jpg)
+<use ../final/qz_common.jpeg>
+Package pdftex.def Info: ../final/qz_common.jpeg  used on input line 1195.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [66
+
+ <../final/qz_common.jpeg>]
+<../final/qz_bounding.jpeg, id=1726, 455.45157pt x 258.65053pt>
+File: ../final/qz_bounding.jpeg Graphic file (type jpg)
+<use ../final/qz_bounding.jpeg>
+Package pdftex.def Info: ../final/qz_bounding.jpeg  used on input line 1202.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [67
+
+ <../final/qz_bounding.jpeg>]
+<../final/duration_10.jpeg, id=1754, 455.45157pt x 258.65053pt>
+File: ../final/duration_10.jpeg Graphic file (type jpg)
+<use ../final/duration_10.jpeg>
+Package pdftex.def Info: ../final/duration_10.jpeg  used on input line 1209.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+[68
+
+ <../final/duration_10.jpeg>]
+<../final/duration_15.jpeg, id=1781, 455.45157pt x 258.65053pt>
+File: ../final/duration_15.jpeg Graphic file (type jpg)
+<use ../final/duration_15.jpeg>
+Package pdftex.def Info: ../final/duration_15.jpeg  used on input line 1216.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [69
+
+ <../final/duration_15.jpeg>]
+<../final/duration_20.jpeg, id=1807, 455.45157pt x 258.65053pt>
+File: ../final/duration_20.jpeg Graphic file (type jpg)
+<use ../final/duration_20.jpeg>
+Package pdftex.def Info: ../final/duration_20.jpeg  used on input line 1223.
+(pdftex.def)             Requested size: 289.07999pt x 164.17021pt.
+ [70
+
+ <../final/duration_20.jpeg>] [71
 
 ]
 \tf@nav=\write6
@@ -1202,20 +1298,20 @@ Package pdftex.def Info: ../final/zykov_runtime.jpeg  used on input line 1076.
 \tf@snm=\write8
 \openout8 = `defense.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1098.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1098.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1236.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1236.
  (./defense.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1098.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1098.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1236.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1236.
 
 Package rerunfilecheck Info: File `defense.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 21921 strings out of 492609
- 430884 string characters out of 6129048
- 521895 words of memory out of 5000000
- 25237 multiletter control sequences out of 15000+600000
+ 22036 strings out of 492609
+ 432828 string characters out of 6129048
+ 522435 words of memory out of 5000000
+ 25311 multiletter control sequences out of 15000+600000
  17651 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,14n,91p,795b,1240s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1226,14 +1322,15 @@ usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></u
 sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></us
 r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/
 local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/
+local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/
 local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/l
 ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
 cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loca
 l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on defense.pdf (56 pages, 631030 bytes).
+Output written on defense.pdf (71 pages, 889308 bytes).
 PDF statistics:
- 1529 PDF objects out of 1728 (max. 8388607)
- 1424 compressed objects within 15 object streams
- 113 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1929 PDF objects out of 2073 (max. 8388607)
+ 1794 compressed objects within 18 object streams
+ 143 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -944,6 +944,7 @@
   \item Uses BK on \(\bar{G}\) to find all MISs.
   \item Removes each MIS and recursively uses BK to find all MISs in what is left.
   \item Pieces the various ISs together to find the first combination that uses all the vertices.
+  \item Includes processing to suppress IS combinations that will lead to duplicate results.
   \end{itemize}
 \end{frame}
 
@@ -1058,6 +1059,16 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Zykov Bounding}
+  \begin{itemize}
+  \item Run a greedy algorithm once to establish an upper bound \(b\).
+  \item If a state graph has order less than \(b\) then set \(b=n\).
+  \item For each state, run Edwards Elphick to determine a lower bound.
+  \item If the lower bound exceeds the current upper bound then prune.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
   \frametitle{Zykov Mean Recursive Calls}
   \begin{center}
     \includegraphics[width=4in]{../final/zykov_calls};
@@ -1083,15 +1094,142 @@
   \item Z per-state processing is very light.
   \item CW is better at pruning states in the target range.
   \item CW is faster in the target range.
-  \item CW and Z number of states becomes equal at \(n=112\).
+  \item CW and Z number of states become equal at \(n=112\).
   \item Due to less per-state processing, Z should overtake CW before that.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{}
+  \frametitle{Proposed Algorithm}
   \begin{itemize}
-  \item
+  \item Can we do better than Christofides by modifying Zykov?
+  \item Try looping on increasing values of \(k\).
+  \item Determine if a particular graph state is \(k\) colorable.
+  \item Introduce more bounding conditions based on the current \(k\).
+  \item Prune graphs that fail the bounding conditions.
+  \item Introduce mutations that simplify state graphs with equivalent colorability.
+  \item Introduce success conditions that indicate when a state graph is \(k\)-colorable.
+  \item First successful \(k\) wins.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proposed Algorithm Outline}
+  \begin{itemize}
+  \item Run BK to determine \(k_{min}\).
+  \item Run greedy to determine \(k_{max}\) and a candidate coloring.
+  \item Use BK to determine a set of candidate root graphs with the vertices in each target MIS contracted.
+  \item Loop on \(k\) from \(k_{min}\) to \(k_{max}\).
+  \item For each \(k\) value and each candidate tree, run a modified Zykov algorithm to determine if the candidate
+    graph is \(k\)-colorable.
+  \item If \(k_{max}\) is achieved then accept the greedy candidate.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Modified Zykov Routine}
+  \begin{itemize}
+  \item Success condition: \(n\le k\).
+  \item Maximum edge threshold:
+    \[\displaystyle m\le\frac{n^2(k-1)}{2k}\]
+  \item Remove vertices with degree \(<k\).
+  \item If \(N(u)\subset N(v)\) then contract.
+  \item Minimum common neighbors upper bound:
+    \[\displaystyle\min_{u,v\in V(G)}\abs{N(u)\cap N(v)}\le n-2-\frac{n-2}{k-1}\]
+  \item Edwards Elphick to calculate \(\w'\) and then \(w'\le k\).
+  \item Otherwise branch.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proposed Algorithm Mean Calls}
+  \begin{center}
+    \includegraphics[width=4in]{../final/qz_calls}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proposed Algorithm Runtime Complexity}
+  \begin{center}
+    \includegraphics[width=4in]{../final/qz_runtime}
+
+    \bigskip
+
+    \(\BO(2^{0.0148^2})=\BO(1.0103^{n^2})\)
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Step Effectiveness: Success Condition}
+  \begin{center}
+    \includegraphics[width=4in]{../final/qz_match}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Step Effectiveness: Maximum Edge Threshold}
+  \begin{center}
+    \includegraphics[width=4in]{../final/qz_edges}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Step Effectiveness: Small Vertex Degree Removal}
+  \begin{center}
+    \includegraphics[width=4in]{../final/qz_small}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Step Effectiveness: Neighborhood Subset}
+  \begin{center}
+    \includegraphics[width=4in]{../final/qz_subset}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Step Effectiveness: Minimum Common Neighbors Upper Bound}
+  \begin{center}
+    \includegraphics[width=4in]{../final/qz_common}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Step Effectiveness: Standard Zykov Bounding}
+  \begin{center}
+    \includegraphics[width=4in]{../final/qz_bounding}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Time Duration: \(n=10\)}
+  \begin{center}
+    \includegraphics[width=4in]{../final/duration_10}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Time Duration: \(n=15\)}
+  \begin{center}
+    \includegraphics[width=4in]{../final/duration_15}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Time Duration: \(n=20\)}
+  \begin{center}
+    \includegraphics[width=4in]{../final/duration_20}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conclusions}
+  \begin{itemize}
+  \item Any of the three algorithms are sufficient for the design tool in the target range.
+  \item Bounding conditions influence runtime complexity at small to moderate \(n\).
+  \item Most bounding conditions effectively die out with at larger \(n\).
+  \item Intractable problems must be broken up into problem domains.
+  \item There is no one solution that works in all cases.
   \end{itemize}
 \end{frame}
 
