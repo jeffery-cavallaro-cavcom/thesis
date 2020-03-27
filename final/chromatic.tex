@@ -247,7 +247,7 @@ probability.
 \end{figure}
 
 A graph of the \(P=90\%\) values for each order is shown in \figurename~\ref{fig:bron1:runtime}.  This time, the
-graph appears to have a log effect and indeed the best curve fit is a mix of \(n\) and \(log(n)\).  This is expected
+graph appears to have a log effect and indeed the best curve fit is a mix of \(n\) and \(\log(n)\).  This is expected
 based on the discussion in \sectionname~\ref{sec:sub:sub:runtime}.  The fit indicates that the runtime complexity is
 about \(\BO(2^{0.2259n})\approx\BO(1.17^n)\).
 
@@ -692,7 +692,7 @@ Wang's first proposal is based on \lemmaname~\ref{lem:wang}
 
 \begin{proof}
   Assume that \(G\) is \chromatic{k} and let \(\set{A_1,\ldots,A_k}\) be the independent sets of a chromatic
-  coloring of \(G\).  Assume without loss of generality (AWLOG) that \(v\in A_1\).  It must be the case that
+  coloring of \(G\).  Assume without loss of generality that \(v\in A_1\).  It must be the case that
   \(A_1\subseteq M_i\) for some \(1\le i\le r\), since all of the \(M_i\) are maximal.  Now, let \(X=M_i-A_1\) and
   let \(X_j=A_j-X\) for \(2\le j\le k\).  Next, construct the coloring \(\set{M_i,X_2,\ldots,X_k}\).  This is a
   \chromatic{k} coloring of \(G\) containing \(M_i\).
@@ -975,7 +975,7 @@ and proves several theorems regarding the expanded form.  Some examples are:
 \begin{enumerate}
 \item \(M(G,k)=M(G\cdot uv)+M(G+uv)\), where \(u\) and \(v\) are any two nonadjacent vertices in the current
   recursive step.
-\item The degree of M(G,k) is the order of \(G\).
+\item The degree of \(M(G,k)\) is the order of \(G\).
 \item The highest order coefficient is \(1\).
 \item There is no constant term.
 \item The terms alternate in sign.
@@ -1164,7 +1164,7 @@ Christofides-type algorithms.
 
 Corneil and Graham~(1973)~\cite{corneil} described and tested a Zykov algorithm that uses a custom lower bound
 estimation technique for step~\ref{step:zbound:lower} that they referred to as \(\a\)-clusters.  The full algorithm
-can be found in Graham~(1972)~\cite{graham}.  This technique is rather complex and it isn't clear that it performs
+can be found in Graham~(1972)~\cite{graham}.  This technique is rather complex and it is not clear that it performs
 any better than the Edwards Elphick algorithm, so Edwards Elphick is used for this research.
 
 A random graph analysis for the a Zykov algorithm using Edwards Elphick is shown in

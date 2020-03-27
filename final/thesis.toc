@@ -25,7 +25,7 @@
 \contentsline {subsection}{\numberline {2.8}Connected Graphs}{28}{subsection.2.8}% 
 \contentsline {subsubsection}{\numberline {2.8.1}Walks}{28}{subsubsection.2.8.1}% 
 \contentsline {subsubsection}{\numberline {2.8.2}Paths}{30}{subsubsection.2.8.2}% 
-\contentsline {subsubsection}{\numberline {2.8.3}Connected}{31}{subsubsection.2.8.3}% 
+\contentsline {subsubsection}{\numberline {2.8.3}Connectedness}{31}{subsubsection.2.8.3}% 
 \contentsline {subsubsection}{\numberline {2.8.4}Components}{32}{subsubsection.2.8.4}% 
 \contentsline {subsubsection}{\numberline {2.8.5}Impact on Coloring}{33}{subsubsection.2.8.5}% 
 \contentsline {subsection}{\numberline {2.9}Vertex Degree}{34}{subsection.2.9}% 
@@ -34,40 +34,40 @@
 \contentsline {subsubsection}{\numberline {2.10.2}Paths}{37}{subsubsection.2.10.2}% 
 \contentsline {subsubsection}{\numberline {2.10.3}Cycles}{37}{subsubsection.2.10.3}% 
 \contentsline {subsubsection}{\numberline {2.10.4}Complete Graphs}{38}{subsubsection.2.10.4}% 
-\contentsline {subsubsection}{\numberline {2.10.5}Trees}{39}{subsubsection.2.10.5}% 
+\contentsline {subsubsection}{\numberline {2.10.5}Trees}{38}{subsubsection.2.10.5}% 
 \contentsline {subsection}{\numberline {2.11}The Adjacency Matrix}{40}{subsection.2.11}% 
-\contentsline {section}{\numberline {3}Toaster Design Case Study}{42}{section.3}% 
-\contentsline {section}{\numberline {4}Problems and Algorithms}{47}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Problems}{47}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Comparing Algorithms}{48}{subsection.4.2}% 
-\contentsline {subsubsection}{\numberline {4.2.1}Runtime Complexity}{48}{subsubsection.4.2.1}% 
-\contentsline {subsubsection}{\numberline {4.2.2}Space Complexity}{51}{subsubsection.4.2.2}% 
-\contentsline {subsubsection}{\numberline {4.2.3}Runtime Duration}{52}{subsubsection.4.2.3}% 
-\contentsline {subsection}{\numberline {4.3}Branch-and-Bound Algorithms}{52}{subsection.4.3}% 
-\contentsline {section}{\numberline {5}The Chromatic Number Problem}{58}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}Finding a Lower Bound}{58}{subsection.5.1}% 
-\contentsline {subsubsection}{\numberline {5.1.1}The Mycielski Construction}{59}{subsubsection.5.1.1}% 
-\contentsline {subsubsection}{\numberline {5.1.2}The Edwards Elphick Algorithm}{60}{subsubsection.5.1.2}% 
-\contentsline {subsubsection}{\numberline {5.1.3}The Bron Kerbosch Algorithm}{65}{subsubsection.5.1.3}% 
-\contentsline {subsection}{\numberline {5.2}Finding an Upper Bound}{69}{subsection.5.2}% 
-\contentsline {subsection}{\numberline {5.3}The Christofides Algorithm}{76}{subsection.5.3}% 
-\contentsline {subsection}{\numberline {5.4}Wang Improvements to Christofides}{81}{subsection.5.4}% 
-\contentsline {subsection}{\numberline {5.5}Zykov Algorithms}{84}{subsection.5.5}% 
-\contentsline {section}{\numberline {6}The Proposed Algorithm}{95}{section.6}% 
-\contentsline {subsection}{\numberline {6.1}The Main Routine}{96}{subsection.6.1}% 
-\contentsline {subsection}{\numberline {6.2}The Recursive Subroutine}{100}{subsection.6.2}% 
-\contentsline {subsection}{\numberline {6.3}The Coloring Routine}{104}{subsection.6.3}% 
-\contentsline {subsection}{\numberline {6.4}Supporting Theorems}{106}{subsection.6.4}% 
-\contentsline {subsubsection}{\numberline {6.4.1}Maximum Edge Threshold}{106}{subsubsection.6.4.1}% 
-\contentsline {subsubsection}{\numberline {6.4.2}Vertex Removal}{109}{subsubsection.6.4.2}% 
-\contentsline {subsubsection}{\numberline {6.4.3}Neighborhood Subsets}{112}{subsubsection.6.4.3}% 
-\contentsline {subsubsection}{\numberline {6.4.4}Minimum Common Neighbor Upper Bound}{116}{subsubsection.6.4.4}% 
-\contentsline {subsubsection}{\numberline {6.4.5}Recursive Steps}{121}{subsubsection.6.4.5}% 
-\contentsline {subsection}{\numberline {6.5}An Example}{122}{subsection.6.5}% 
-\contentsline {section}{\numberline {7}Random Graph Analysis}{132}{section.7}% 
-\contentsline {subsection}{\numberline {7.1}The Testbed}{132}{subsection.7.1}% 
-\contentsline {subsection}{\numberline {7.2}Runtime Complexity Results}{135}{subsection.7.2}% 
-\contentsline {subsection}{\numberline {7.3}Bounding Test Results}{136}{subsection.7.3}% 
-\contentsline {subsection}{\numberline {7.4}Runtime Duration Results}{141}{subsection.7.4}% 
-\contentsline {section}{\numberline {8}Conclusions}{145}{section.8}% 
-\contentsline {section}{Literature Cited}{147}{section*.6}% 
+\contentsline {section}{\numberline {3}Toaster Design Case Study}{41}{section.3}% 
+\contentsline {section}{\numberline {4}Problems and Algorithms}{46}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Problems}{46}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Comparing Algorithms}{47}{subsection.4.2}% 
+\contentsline {subsubsection}{\numberline {4.2.1}Runtime Complexity}{47}{subsubsection.4.2.1}% 
+\contentsline {subsubsection}{\numberline {4.2.2}Space Complexity}{50}{subsubsection.4.2.2}% 
+\contentsline {subsubsection}{\numberline {4.2.3}Runtime Duration}{51}{subsubsection.4.2.3}% 
+\contentsline {subsection}{\numberline {4.3}Branch-and-Bound Algorithms}{51}{subsection.4.3}% 
+\contentsline {section}{\numberline {5}The Chromatic Number Problem}{57}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Finding a Lower Bound}{57}{subsection.5.1}% 
+\contentsline {subsubsection}{\numberline {5.1.1}The Mycielski Construction}{58}{subsubsection.5.1.1}% 
+\contentsline {subsubsection}{\numberline {5.1.2}The Edwards Elphick Algorithm}{59}{subsubsection.5.1.2}% 
+\contentsline {subsubsection}{\numberline {5.1.3}The Bron Kerbosch Algorithm}{64}{subsubsection.5.1.3}% 
+\contentsline {subsection}{\numberline {5.2}Finding an Upper Bound}{68}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}The Christofides Algorithm}{75}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {5.4}Wang Improvements to Christofides}{80}{subsection.5.4}% 
+\contentsline {subsection}{\numberline {5.5}Zykov Algorithms}{83}{subsection.5.5}% 
+\contentsline {section}{\numberline {6}The Proposed Algorithm}{94}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}The Main Routine}{95}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {6.2}The Recursive Subroutine}{99}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {6.3}The Coloring Routine}{103}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {6.4}Supporting Theorems}{105}{subsection.6.4}% 
+\contentsline {subsubsection}{\numberline {6.4.1}Maximum Edge Threshold}{105}{subsubsection.6.4.1}% 
+\contentsline {subsubsection}{\numberline {6.4.2}Vertex Removal}{108}{subsubsection.6.4.2}% 
+\contentsline {subsubsection}{\numberline {6.4.3}Neighborhood Subsets}{111}{subsubsection.6.4.3}% 
+\contentsline {subsubsection}{\numberline {6.4.4}Minimum Common Neighbor Upper Bound}{115}{subsubsection.6.4.4}% 
+\contentsline {subsubsection}{\numberline {6.4.5}Recursive Steps}{120}{subsubsection.6.4.5}% 
+\contentsline {subsection}{\numberline {6.5}An Example}{121}{subsection.6.5}% 
+\contentsline {section}{\numberline {7}Random Graph Analysis}{131}{section.7}% 
+\contentsline {subsection}{\numberline {7.1}The Testbed}{131}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {7.2}Runtime Complexity Results}{134}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {7.3}Bounding Test Results}{135}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {7.4}Runtime Duration Results}{140}{subsection.7.4}% 
+\contentsline {section}{\numberline {8}Conclusions}{144}{section.8}% 
+\contentsline {section}{Literature Cited}{146}{section*.6}% 

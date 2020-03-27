@@ -118,20 +118,20 @@ the computation classes shown in \tablename~\ref{tab:classes}.
     \hline
     P & Algorithms with polynomial or better runtime complexity to find or verify a solution. \\
     \hline
-    NP & A superset of P with varying runtime complexity to find a solution but polynomial runtime complexity to
-    verify a solution.  It is an open question as to whether P=NP; however, it is conjectured that they are not
+    NP & A superset of P with varying runtime complexity to find a solution but polynomial runtime complexity
+    to verify a solution.  It is an open question as to whether P\,=\,NP; however, it is conjectured that they are not
     equal. \\
     \hline
     NP-complete & A subset of NP problems that have been proven to have the same runtime complexity to find a
     solution. \\
     \hline
-    NP-hard & Algorithms that have been proved to have the same runtime complexity as the NP-complete problems to
-    find a solution but varying runtime complexity to verify a solution. \\
+    NP-hard & Algorithms that have been proved to have the same runtime complexity as the NP-complete
+    problems to find a solution but varying runtime complexity to verify a solution. \\
     \hline
   \end{tabular}
 \end{table}
 
-The relationships between these runtime complexity classes, assuming \(P\ne NP\), is shown in
+The relationships between these runtime complexity classes, assuming P\,\(\ne\)\,NP, is shown in
 \figurename~\ref{fig:complexity}.
 
 \begin{figure}[H]
@@ -253,7 +253,7 @@ non-maximal cliques, and red marks non-cliques.
   \label{fig:maxexall}
 \end{figure}
 
-Exponential algorithms can walk their state trees in either depth-first or breadth-first fashion Breadth-first
+Exponential algorithms can walk their state trees in either depth-first or breadth-first fashion.  Breadth-first
 walks require that entire levels be maintained in memory, whereas depth-first walks only require that the current
 branch be maintained in memory.  Since state trees are generally much wider than they are deep, depth-first walks
 are almost always more desirable.

@@ -125,7 +125,7 @@ In addition to its vertices and edges, a graph may be associated with one or mor
 \(V(G)\) or \(E(G)\) as its domain and is used to associate vertices or edges with problem-specific attributes such
 as labels or colors.  Note that there are no particular limitations on the nature of such relations --- everything
 from a basic relation to a bijective function are possible.  Some authors include these relations and their
-codomains as part of the graph tuple; however, since these extra tuple elements don't affect the structure of a
+codomains as part of the graph tuple; however, since these extra tuple elements do not affect the structure of a
 graph, we will not do so.
 
 In practice, when a graph theory problem requires a particular vertex or edge attribute, the presence of some
@@ -146,7 +146,7 @@ The vertices in a labeled graph are typically drawn as open circles containing t
 the vertices in an unlabeled graph are typically drawn as filled circles.  This is demonstrated in the example
 graph of \figurename~\ref{fig:exgraph}: the graph on the left is labeled and the graph on the right is unlabeled.
 
-Since the labeling function \(\ell\) is bijective, a vertex \(v\in V(G)\) with label ``a'' can be identified by
+Since the labeling function \(\ell\) is bijective, a vertex \(v\in V(G)\) with label ``\(a\)'' can be identified by
 \(v\) or \(\ell^{-1}(a)\).  In practice, the presence of a labeling function is assumed for a labeled graph and so
 a vertex is freely identified by its label.  This is important to note when a proof includes a phrase such as,
 ``let \(v\in V(G)\ldots\)'' since \(v\) may be a reference to any vertex in \(V(G)\) or may call out a specific
@@ -237,7 +237,7 @@ uses at most 5 colors (actually only 4), which is the cardinality of the codomai
   Therefore, \(G\) is \colorable{k+r}.
 \end{proof}
 
-Furthermore, for a graph \(G\) of order \(n\), if \(n\le k\) then we can conclude that \(G\) is \colorable{k},
+Furthermore, for a graph \(G\) of order \(n\), if \(n\le k\) then we can conclude that \(G\) is \colorable{k}
 since there are sufficient colors to assign each vertex its own unique color.  This result is stated in
 \theoremname~\ref{thm:nlek}, which will turn out to be an important termination case for the proposed algorithm.
 
@@ -722,7 +722,7 @@ so \(\a(G)=4\).
   \begin{minipage}{2in}
     \centering
     \begin{tabular}{c|c}
-      MIS & SIZE \\
+      MIS & size \\
       \hline
       \(\set{a, b, c, d}\) & \(4\) \\
       \(\set{a, b, e}\) & \(3\) \\
@@ -779,7 +779,7 @@ Consider the example in \figurename~\ref{fig:clique}.  Although the graph contai
   \begin{minipage}{2.5in}
     \centering
     \begin{tabular}{c|c}
-      MAXIMAL CLIQUE & ORDER \\
+      maximal clique & order \\
       \hline
       \(G[\set{a, b, c, d}]\) & \(4\) \\
       \(G[\set{a, b, e}]\) & \(3\) \\
@@ -1015,7 +1015,7 @@ But if there exists a \(u-v\) walk in a graph \(G\), does this also mean that th
   \(\therefore P\) is a \(u-v\) path of length \(\ell\le k\) in \(G\).
 \end{proof}
 
-\subsubsection{Connected}\label{sec:sub:sub:connected}
+\subsubsection{Connectedness}\label{sec:sub:sub:connected}
 
 A \emph{connected} graph \(G\) is a graph whose vertices are all connected: for all \(u,v\in V(G)\) there exists a
 \(u-v\) path.  Otherwise, \(G\) is said to be \emph{disconnected}.  Examples of connected and disconnected graphs
@@ -1078,7 +1078,7 @@ graph.
 Let \(G\) be a graph and let \(\SG\) be the set of all connected subgraphs of \(G\).  To say that a graph
 \(H\in\SG\) is a \emph{component} of a \(G\) means that \(H\) is not a subgraph of any other connected subgraph of
 \(\SG\): for every \(F\in\SG-\set{H}\) it is the case that \(H\not\subset F\).  The number of distinct components
-in \(G\) is denoted by k(G), or just \(k\) if \(G\) is unambiguous.  For a connected graph: \(k(G)=1\).
+in \(G\) is denoted by \(k(G)\), or just \(k\) if \(G\) is unambiguous.  For a connected graph: \(k(G)=1\).
 
 Each component of a graph \(G\) is denoted by \(G_i\) where \(1\le i\le k(G)\).  We also use union notation to
 denote that \(G\) is composed of its component parts:
@@ -1121,9 +1121,8 @@ stack.  Once the stack is empty, any previously unmarked vertex is selected to s
 process continues until all vertices are marked.  Given a graph \(G\) of order \(n\) and size \(m\), this algorithm
 runs in \(\max(n,m)\) steps.
 
-Alternatively, an ideal coloring algorithm could be run on the entire graph at once regardless of the number of
-components in the graph.  The proposed algorithm is such a solution, and therefore saves the needless work of
-partitioning the graph into components first.
+Alternatively, a coloring algorithm can be designed to run on an entire graph regardless of its connectedness.  The
+Christofides, Zykov, and proposed algorithm are all of this type.
 
 \subsection{Vertex Degree}\label{sec:sub:degree}
 
@@ -1452,8 +1451,8 @@ depth-first walk would be:
 Note that this walk guarantees that each vertex is visited at least once.
 
 When such a tree is applied to the problem of exhaustively finding the chromatic number of a graph via a sequence
-of vertex contraction and edge addition choices, the tree is called a \emph{Zykov} tree and the algorithm is called
-a \emph{Zykov} algorithm~\cite{mcdiarmid}.  Zykov algorithms are described in detail in
+of vertex contraction and edge addition choices, the tree is called a \emph{Zykov tree} and the algorithm is called
+a \emph{Zykov algorithm}~\cite{mcdiarmid}.  Zykov algorithms are described in detail in
 \sectionname~\ref{sec:sub:zykov}.  In fact, the proposed algorithm is a variation of the standard Zykov algorithm.
 
 \subsection{The Adjacency Matrix}\label{sec:sub:adjacency}

@@ -6,7 +6,7 @@ close the performance gap?  This section proposes a new Zykov-like algorithm tha
 early version of this new algorithm was first introduced by the author and his advisor in collaboration with a team
 of mechanical engineering researchers from SUNY Buffalo \cite{cavallaro}.
 
-The major advantages of the Christofides and the Zykov algorithms are that they don't depend on the connectedness
+The major advantages of the Christofides and the Zykov algorithms are that they do not depend on the connectedness
 of a graph, an example of a chromatic coloring is readily available, and the fact that the algorithms can be coded
 rather easily to run on a computer.  Their major disadvantage is their high runtime complexity, which is inherent
 to the chromatic number problem.
@@ -334,7 +334,7 @@ and the final state of \(S\), which is a list of removed single and/or contracte
 used to construct the final chromatic coloring.
 
 According to \theoremname~\ref{thm:greedy}, there exists some ordering of the vertices such that the greedy algorithm
-will produce an exact result for the chromatic number of a graph.  The removed vertices in reverse order removed is
+will produce an exact result for the chromatic number of a graph.  The removed vertices in reverse order is
 such an ordering.  Consider the example shown in \figurename~\ref{fig:reverse}.  If \(k=4\) and vertex \(v\) is to
 be removed since \(\deg(v)=3\), then in the reverse direction when \(v\) is added the fourth color is available for
 \(v\).  In general, given a graph \(G-v\) such that \(deg(v)<k\) in \(G\), there will always be an available color
@@ -724,7 +724,7 @@ Vertex removal is supported by \theoremname~\ref{thm:remone}:
 
   \item[Case 2:] \(v\in uw\)
 
-    Assume without loss of generality (AWLOG) that \(v=u\).  Thus, \(w\in V(G-v)\) and since \(c\) is proper:
+    Assume without loss of generality that \(v=u\).  Thus, \(w\in V(G-v)\) and since \(c\) is proper:
     \[c'(v)=c_k\ne c(u)=c'(u)\]
   \end{description}
 
