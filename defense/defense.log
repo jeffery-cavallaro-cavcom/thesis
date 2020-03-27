@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  27 MAR 2020 09:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.6.23)  27 MAR 2020 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1298,11 +1298,11 @@ Package pdftex.def Info: ../final/duration_20.jpeg  used on input line 1223.
 \tf@snm=\write8
 \openout8 = `defense.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1236.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1236.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1235.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1235.
  (./defense.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1236.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1236.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1235.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1235.
 
 Package rerunfilecheck Info: File `defense.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
@@ -1327,7 +1327,7 @@ local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/l
 ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
 cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loca
 l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on defense.pdf (71 pages, 889334 bytes).
+Output written on defense.pdf (71 pages, 889257 bytes).
 PDF statistics:
  1929 PDF objects out of 2073 (max. 8388607)
  1794 compressed objects within 18 object streams
