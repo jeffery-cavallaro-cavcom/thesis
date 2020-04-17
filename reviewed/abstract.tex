@@ -1,12 +1,11 @@
 Mechanical engineering design practices are increasingly moving towards a framework called \emph{axiomatic design}
-(AD), which starts with a set of independent \emph{functional requirements} (FRs) for a manufactured product.  A
-key tenet of AD is to decrease the \emph{information content} of a design in order to increase the chance of
-manufacturing success.  One important way to decrease information content is to fulfill multiple FRs by a single
-part: a process known as \emph{part consolidation}.  Thus, an important parameter when comparing two candidate
-designs is the minimum number of parts needed to satisfy all of the FRs.  One possible method for determining the
-minimum number of parts is to represent the problem by a graph, where the vertices are the FRs and the edges
-represent the need to separate their endpoint FRs into separate parts.  The answer then becomes the solution to a
-vertex coloring problem: finding the chromatic number of such a graph.  Unfortunately, the chromatic number problem
-is known to be NP-hard.  This research investigates a new algorithm that determines the chromatic number for a
-graph and compares the new algorithm's computer runtime performance to other well-known algorithms using random
-graph analysis.
+(AD).  A key tenet of AD is to decrease the \emph{information content} of a design in order to increase the chance
+of manufacturing success.  An important way to decrease information content is to fulfill multiple functional
+requirements (FRs) by a single part: a process known as \emph{part consolidation}.  One possible method for
+determining the minimum number of required parts is to represent a design by a graph, where the vertices are the
+FRs and the edges represent the need to separate their endpoint FRs into separate parts.  The answer is then the
+chromatic number of such a graph.  This research investigates the suitability of using two existing algorithms and
+a new algorithm for finding the chromatic number of a graph in a part consolidation tool that can be used by
+designers.  The runtime complexities and durations of the algorithms are compared empirically using the results
+from a random graph analysis with binomial edge probability.  It was found that even though the algorithms are
+quite different, they all execute in the same amount of time and are suitable for use in the desired design tool.
