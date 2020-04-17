@@ -1,0 +1,134 @@
+\begin{thebibliography}{10}
+
+\bibitem{suh}
+N.~P. Suh, {\em The Principles of Design}.
+\newblock New York: Oxford University Press, 1990.
+
+\bibitem{shirwaiker}
+R.~A. Shirwaiker and G.~E. Okudan, ``Triz and axiomatic design: A review of
+  case-studies and a proposed synergistic use,'' {\em Journal of Intelligent
+  Manufacturing}, vol.~19, pp.~33--47, February 2008.
+
+\bibitem{suh2}
+N.~P. Suh, ``Axiomatic design theory for systems,'' {\em Research in
+  Engineering Design}, vol.~10, pp.~189--209, 1998.
+
+\bibitem{cavallaro}
+S.~Behdad, J.~Cavallaro, P.~K. Gopalakrishnan, and S.~Jahanbekam, ``A graph
+  coloring technique for identifying the minimum number of parts for physical
+  integration in product design,'' in {\em Proceedings of the ASME 2019
+  International Design Engineering Technical Conferences \& Computers and
+  Information in Engineering Conference}, no.~DETC2019-98251 in IDETC/CIE 2019,
+  (Anaheim, CA), Aug 18--21 2019.
+
+\bibitem{jahanbekam}
+S.~Behdad, P.~K. Gopalakrishnan, S.~Jahanbekam, and H.~Klein, ``Graph
+  partitioning technique to identify physically integrated design concepts,''
+  in {\em Proceedings of the ASME 2018 International Design Engineering
+  Technical Conferences \& Computers and Information in Engineering
+  Conference}, no.~DETC2018-85646 in IDETC/CIE 2018, (Quebec, Canada), Aug
+  26--29 2018.
+
+\bibitem{tang}
+Y.~Tang, S.~Yang, and Y.~F. Zhao, ``Sustainable design for additive
+  manufacturing through functionality integration and part consolidation,'' in
+  {\em Handbook of Sustainability in Additive Manufacturing} (S.~S. Muthu and
+  M.~M. Savalani, eds.), vol.~1, pp.~101--144, Singapore: Springer, 2016.
+
+\bibitem{garey}
+M.~R. Garey and D.~S. Johnson, {\em Computers and Intractability: A Guide to
+  the Theory of NP-Completeness}.
+\newblock San Francisco: W.H. Freeman and Company, 1979.
+
+\bibitem{christofides}
+N.~Christofides, ``An algorithm for the chromatic number of a graph,'' {\em The
+  Computer Journal}, vol.~14, pp.~38--39, January 1971.
+
+\bibitem{wang}
+C.~C. Wang, ``An algorithm for the chromatic number of a graph,'' {\em Journal
+  of the Association for Computer Machinery}, vol.~21, no.~3, pp.~385--391,
+  1974.
+
+\bibitem{corneil}
+D.~G. Corneil and B.~Graham, ``An algorithm for determining the chromatic
+  number of a graph,'' {\em SIAM Journal on Computing}, vol.~2, pp.~311--318,
+  December 1973.
+
+\bibitem{chartrand}
+G.~Chartrand and P.~Zhang, {\em A First Course in Graph Theory}.
+\newblock Mineola, New York: Dover Publications, 2012.
+
+\bibitem{west}
+D.~B. West, {\em Introduction to Graph Theory}.
+\newblock Upper Saddle River, NJ: Prentice Hall, \(2^{nd}\)~ed., 2001.
+
+\bibitem{zykov}
+A.~A. Zykov, {\em On Some Properties of Linear Complexes}, vol.~7 of {\em
+  American Mathematical Society Translations Series One}.
+\newblock American Mathematical Society, 1949 (translated 1952).
+
+\bibitem{hopcroft}
+J.~Hopcroft and R.~Tarjan, ``Algorithm 447: Efficient algorithms for graph
+  manipulation,'' {\em Communications of the ACM}, vol.~16, pp.~372--378, June
+  1973.
+
+\bibitem{mcdiarmid}
+C.~McDiarmid, ``Determining the chromatic number of a graph,'' {\em SIAM
+  Journal on Computing}, vol.~8, pp.~1--14, 02 1979.
+
+\bibitem{sipser}
+M.~Sipser, {\em Introduction to the Theory of Computation}.
+\newblock Boston, MA: Cengage Learning, \(3^{rd}\)~ed., 2013.
+
+\bibitem{johnston}
+H.~Johnston, ``Cliques of a graph---variations on the bron-kerbosch
+  algorithm,'' {\em International Journal of Computer and Information
+  Sciences}, vol.~5, no.~3, pp.~209--238, 1976.
+
+\bibitem{zhang}
+T.~Zhang, ``Triangle free graphs and their chromatic number.''
+  \url{http://www.math.uchicago.edu/~may/VIGRE/VIGRE2008/REUPapers/Zhang.pdf}.
+\newblock Accessed: 2019-12-01.
+
+\bibitem{edwards}
+C.~Edwards and C.~Elphick, ``Lower bounds for the clique and the chromatic
+  numbers of a graph,'' {\em Discrete Applied Mathematics}, vol.~5, no.~1,
+  pp.~51--64, 1983.
+
+\bibitem{xiao}
+M.~Xiao and H.~Nagamouchi, ``Exact algorithms for maximum independent set,''
+  {\em Information and Computation}, vol.~255, pp.~126--146, 2017.
+
+\bibitem{bron}
+C.~Bron and J.~Kerbosch, ``Algorithm 457: Finding all cliques of an undirected
+  graph,'' {\em Communications of the ACM}, vol.~16, pp.~575--577, September
+  1973.
+
+\bibitem{moon}
+J.~Moon and L.~Moser, ``On cliques in graphs,'' {\em Israel Journal of
+  Mathematics}, vol.~3, pp.~23--28, 1965.
+
+\bibitem{welsh}
+D.~Welsh and M.~Powell, ``An upper bound for the chromatic number of a graph
+  and its application to timetabling problems,'' {\em The Computer Journal},
+  vol.~10, no.~1, pp.~85--86, 1967.
+
+\bibitem{matula}
+D.~W. Matula, G.~Marble, and J.~D. Isaacson, ``Graph coloring algorithms,'' in
+  {\em Graph Theory and Computing} (R.~C. Read, ed.), pp.~109--122, New York:
+  Academic Press, 1972.
+
+\bibitem{read}
+R.~C. Read, ``An introduction to chromatic polynomials,'' {\em Journal of
+  Combinatorial Theory}, vol.~4, pp.~52--71, 1968.
+
+\bibitem{graham}
+B.~Graham, ``An algorithm to determine the chromatic number of a graph,''
+  Master's thesis, University of Toronto, Ontario, Canada, October 1972.
+
+\bibitem{bell}
+``The online encyclopedia of integer sequences: A000110.''
+  \url{https://oeis.org/A000110}.
+\newblock Accessed: 2019-12-29.
+
+\end{thebibliography}

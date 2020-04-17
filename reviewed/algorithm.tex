@@ -1,0 +1,1602 @@
+\section{The Proposed Algorithm}\label{sec:algorithm}
+
+It was shown in \sectionname~\ref{sec:chromatic} that the Christofides algorithm with the Wang improvements
+outperforms the Zykov algorithm.  But can some additional bounding conditions be added to the Zykov algorithm to
+close the performance gap?  This section proposes a new Zykov-like algorithm that attempts to do just that.  An
+early version of this new algorithm was first introduced by the author and his advisor in collaboration with a team
+of mechanical engineering researchers from SUNY Buffalo \cite{cavallaro}.
+
+The major advantages of the Christofides and the Zykov algorithms are that they do not depend on the connectedness
+of a graph, an example of a chromatic coloring is readily available, and the fact that the algorithms can be coded
+rather easily to run on a computer.  Their major disadvantage is their high runtime complexity, which is inherent
+to the chromatic number problem.
+
+Thus, the goals of the proposed algorithm are as follows:
+\begin{enumerate}
+\item It should not depend on whether the graph is connected or not.
+\item An example of a chromatic coloring should be readily available.
+\item It can be easily coded for execution on a computer.
+\item It has better runtime performance than the well-known algorithms over the target range of less than
+  \(20\) nodes with less than \(50\%\) edge density.
+\end{enumerate}
+
+To accomplish these goals, the proposed algorithm loops on successively higher values of \(k\).  For each candidate
+\(k\) value, a graph \(G\) is assumed to be \colorable{k} and a modified version of a Zykov algorithm is executed
+on \(G\) to either prove or disprove this assumption.  Since a candidate \(k\) value is known, certain reversible
+steps can be applied to mutate \(G\) into simpler graphs with equivalent colorability and test for early
+termination of the Zykov tree.  The first \(k\) for which \(G\) (or one of its simplifications) is found to be
+\colorable{k} is the chromatic number of \(G\).
+
+One slight disadvantage of the proposed algorithm is that whereas the other algorithms readily provide examples of
+actual chromatic colorings, the proposed algorithm requires an additional step to construct a chromatic coloring: a
+greedy algorithm with a particular sorting of the vertices.  The coloring step is discussed in detail in
+\sectionname~\ref{sec:sub:coloring}.  Albeit additional work, this extra coloring step is P-time so it does not
+have a significant impact on the performance of the proposed algorithm.
+
+The proposed algorithm accepts a graph \(G\) as input and provides \(\X(G)\) and a chromatic coloring as output and
+is composed of the following components:
+\begin{enumerate}
+\item A main routine that loops on increasing values of \(k\).
+\item The Bron Kerbosch algorithm used by the main routine to determine a lower bound \(k_{min}\) for the chromatic
+  number of \(G\) (\sectionname~\ref{sec:sub:sub:bron}).
+\item The last-first with color interchange greedy coloring algorithm used by the main routine to determine an
+  upper bound \(k_{max}\) for the chromatic number of \(G\) and a corresponding \coloring{k_{max}} of \(G\)
+  (\sectionname~\ref{sec:sub:upper}).
+\item A recursive subroutine that runs a modified Zykov algorithm with additional pruning to determine if
+  \(G\) is \colorable{k}.
+\item The Edwards Elphick algorithm used by the recursive subroutine to determine a lower bound for the chromatic
+  number of a graph (\sectionname~\ref{sec:sub:sub:edwards});
+\item A coloring routine called by the main routine to construct a chromatic coloring of \(G\) based on the results
+  of the algorithm.
+\end{enumerate}
+
+The main routine, recursive subroutine, and coloring routine are summarized in the following sections.  A complete
+description of the theorems that support the various steps in the algorithm and the application of the algorithm to
+a sample graph then follow.
+
+\subsection{The Main Routine}\label{sec:sub:main}
+
+The main routine accepts a graph \(G\) as input and returns \(\X(G)\) and a chromatic coloring for \(G\).  It
+initially computes a chromatic number lower bound using Bron Kerbosch and a chromatic number upper bound using
+greedy last-first with color interchange.  The latter also provides a default coloring.  If the lower and upper
+bounds match then the default coloring is accepted.  If not, then the main routine loops on increasing values of
+\(k\), starting with the lower bound and going no further than the upper bound.  For each value of \(k\), the
+recursive subroutine is called to execute a modified Zykov algorithm in order to determine if \(G\) is
+\colorable{k}.  If \(k\) reaches the upper bound then the default coloring is accepted as chromatic.
+
+Instead of walking a single Zykov tree for the whole graph \(G\), the Wang technique
+(see~\sectionname~\ref{sec:sub:wang}) is used to mutate \(G\) into smaller graphs \(G_i\) by selecting a vertex
+that occurs in the least number of MISs in \(G\).  Each of these MISs implies a set of vertex contractions and edge
+additions that are applied to \(G\) to construct the corresponding \(G_i\).  Thus, the modified Zykov algorithm is
+applied in sequence to these separate \(G_i\) for each \(k\) value.  The first successful return identifies
+\(\X(G)\) and then the coloring routine is called to construct the final coloring based on the information from the
+successful tree.
+
+The steps of the main routine are as follows:
+
+\begin{enumerate}
+\item\label{step:outer:bron} Use the Bron Kerbosch algorithm to compute a chromatic lower bound \(k_{min}\)
+  for the input \(G\).
+
+\item\label{step:outer:greedy} Use the greedy last-first with color interchange algorithm to compute a chromatic
+  number upper bound \(k_{max}\) and a default \coloring{k_{max}} for \(G\).
+
+\item\label{step:outer:initk} Initialize \(k\) to \(k_{min}\).
+
+\item\label{step:outer:match} If \(k_{min}=k_{max}\) then accept the default coloring found in
+  step~\ref{step:outer:greedy} and go to step~\ref{step:outer:done}.
+
+\item\label{step:outer:trees} Use the Bron algorithm on \(\bar{G}\) to find all the MISs in \(G\).  Select a vertex
+  that occurs in the smallest number of MISs and then use those MISs to construct \(n\) graphs that are the roots
+  of \(n\) Zykov trees.  Each tree is constructed from \(G\) by contracting the vertices in the MIS and adding
+  edges between the contracted vertex and all vertices not in the MIS.  Each tree is also associated with an
+  initially empty list of removed vertices \(S\).  The trees are sorted by decreasing MIS length since graphs
+  resulting from larger MISs have fewer choices for branching and thus can be walked more expediently.
+
+\item\label{step:outer:check} If \(k=k_{max}\) then accept the default coloring found in
+  step~\ref{step:outer:greedy} and go to step~\ref{step:outer:done}.
+
+\item\label{step:outer:call} Call the recursive subroutine on each tree to determine if its \(G\) is \colorable{k}.
+  The recursive subroutine accepts the current tree's graph \(G\) and removed vertex list \(S\) as input and
+  returns a Boolean result \(R\).  The called routine may simplify \(G\) and may append removed vertices to
+  \(S\).  If a tree results in a solution (\(R=\)true) then go to step~\ref{step:outer:color}.
+
+\item\label{step:outer:incrk} Increment \(k\) and go to step~\ref{step:outer:check}.
+
+\item\label{step:outer:color} Call the coloring routine to construct the final coloring based on the successful
+  tree's final state of \(G\) and \(S\).
+
+\item\label{step:outer:done} Return the current \(k\) as the chromatic number and the found chromatic coloring.
+\end{enumerate}
+
+A flowchart of these steps is shown in \figurename~\ref{fig:outer}.
+
+\begin{figure}[H]
+  \centering
+  \scalebox{0.75}{
+    \begin{tikzpicture}[>=latex']
+      \node (start) [draw,terminal] at (0,0) {START};
+      \node (bron) [draw,predproc,below=of start]
+            {\(\begin{array}{c} \text{BRON}\ G \\ \text{GREEDY}\ G \end{array}\)};
+      \node (kinit) [draw,process,below=of bron] {\(k=k_{min}\)};
+      \node (kcheck) [draw,decision,below=of kinit] {\(k_{min}=k_{max}\)?};
+      \node (trees) [draw,predproc,below=of kcheck] {TREES \(G\)};
+      \node (kcheck2) [draw,decision,below=of trees] {\(k=k_{max}\)?};
+      \node (cdef) [draw,process,left=2cm of kcheck2] {\(c=c_{def}\)};
+      \node (done) [draw,terminal,below=of cdef] {RETURN \(k,c\)};
+      \node (iinit) [draw,process,below=of kcheck2] {\(i=1\)};
+      \node (icheck) [draw,decision,below=of iinit] {\(i\le n\)?};
+      \node (kinc) [draw,process,right=2cm of icheck] {\(k=k+1\)};
+      \node (select) [draw,process,below=of icheck] {\(\begin{array}{c} G=G[i] \\ S=S[i] \end{array}\)};
+      \node (zykov) [draw,predproc,below=of select] {ZYKOV \(G,S,k\)};
+      \node (check) [draw,decision,below=of zykov] {\(R\)?};
+      \node (iinc) [draw,process,below=of check] {\(i=i+1\)};
+      \node (color) [draw,predproc,right=2cm of check] {COLOR \(G,S\)};
+      \node (done2) [draw,terminal,below=of color] {RETURN \(k,c\)};
+      \draw [->] (start) -- node [auto] {\(G\)} (bron);
+      \draw [->] (bron) -- node [auto] {\(k_{min},k_{max},c_{def}\)} (kinit);
+      \draw [->] (kinit) -- (kcheck);
+      \draw [->] (kcheck) -- node [auto] {NO} (trees);
+      \draw [->] (trees) -- node [auto] {\(G[1:n],S[1:n]\)} (kcheck2);
+      \draw [->] (kcheck2) -- node [auto,swap] {YES} (cdef);
+      \draw [->] (kcheck) -| node [auto,swap,pos=0.2] {YES} (cdef);
+      \draw [->] (cdef) -- (done);
+      \draw [->] (kcheck2) -- node [auto] {NO} (iinit);
+      \draw [->] (iinit) -- (icheck);
+      \draw [->] (icheck) -- node [auto] {NO} (kinc);
+      \draw [->] (kinc) |- (kcheck2);
+      \draw [->] (icheck) -- node [auto] {YES} (select);
+      \draw [->] (select) -- (zykov);
+      \draw [->] (zykov) -- node [auto] {\(G,S,R\)} (check);
+      \draw [->] (check) -- node [auto] {NO} (iinc);
+      \draw [->] (iinc) -- ++(-3cm,0) |- (icheck);
+      \draw [->] (check) -- node [auto] {YES} (color);
+      \draw [->] (color) -- node [auto] {\(c\)} (done2);
+    \end{tikzpicture}
+  }
+  \caption{The proposed algorithm main routine.}
+  \label{fig:outer}
+\end{figure}
+
+Note that in the case of the null or an empty graph, the upper and lower bounds for \(k\) will match and the main
+routine will terminate immediately with the default greedy coloring.  Thus, the recursive subroutine is always
+called with \(k\ge2\).  Also note that the main routine is guaranteed to terminate because \(k\) will eventually
+reach \(k_{max}\) or the recursive subroutine will return true when a simplification occurs such that \(n(G)\le k\).
+
+\subsection{The Recursive Subroutine}\label{sec:sub:called}
+
+The recursive subroutine executes a modified version of the Zykov algorithm to determine whether a graph is
+\colorable{k}.  It accepts a graph \(G\) of order \(n\) and size \(m\), a list of already removed vertices \(S\)
+(in removed order), and the target value of \(k\ge2\) as inputs.  It returns a possibly simplified version of
+\(G\), a possibly extended list of removed vertices \(S\), and a boolean value \(R\) indicating whether or not
+\(G\) is \colorable{k}.  Internally, various tests are applied to prune the corresponding Zykov tree or abandon it
+all together based on the current value of \(k\).
+
+The steps of the recursive subroutine and references to their associated theorems are as follows:
+
+\begin{enumerate}
+\item\label{step:sub:kcheck} If \(n\le k\) set \(R\) to true and go to step~\ref{step:sub:done}
+  (\theoremname~\ref{thm:nlek}).
+
+\item\label{step:sub:ecalc} Calculate a maximum edge threshold:
+  \[a=\frac{n^2(k-1)}{2k}\]
+
+\item\label{step:sub:echeck} If \(m>a\) then set \(R\) to false and go to step~\ref{step:sub:done}
+  (Corollary~\ref{cor:density}).
+
+\item\label{step:sub:xcalc} Construct the set \(X\) of all vertices with degree less than \(k\):
+  \[X=\setb{v\in V(G)}{\deg(v)<k}\]
+
+\item\label{step:sub:xcheck} If \(X\ne\emptyset\) then replace \(G\) with \(G-X\), append \(X\) to \(S\), and go to
+  step~\ref{step:sub:kcheck} (Corollary~\ref{cor:remall}).
+
+\item\label{step:sub:common} Calculate the common number of neighbors between each pair of vertices in \(G\),
+  stopping if one vertex's neighborhood is found to be a subset of another.
+
+\item\label{step:sub:subset} If \(G\) has vertices \(u\) and \(v\) such that \(N(u)\subseteq N(v)\) then replace
+  \(G\) with \(G\cdot uv\) and go to step~\ref{step:sub:kcheck} (Theorem~\ref{cor:subset}).
+
+\item\label{step:sub:select} Let \(b\) be the smallest number of common neighbors between any pair of vertices in
+  \(G\) based on the calculations in step~\ref{step:sub:common}:
+  \[b=\min_{u,v\in V(G)}\abs{N(u)\cap N(v)}\]
+
+\item\label{step:sub:ubcalc} Calculate an upper bound for the minimum number of common neighbors between any pair
+  of vertices in \(G\):
+  \[c=n-2-\frac{n-2}{k-1}\]
+
+\item\label{step:sub:ubcheck} If \(b>c\) then set \(R\) to false and go to step~\ref{step:sub:done}.
+  (Corollary~\ref{cor:inter}).
+
+\item\label{step:sub:lower} Use the Edwards Elphick algorithm to calculate a chromatic number lower bound \(\ell\)
+  for the current state of \(G\).
+
+\item\label{step:sub:lcheck} If \(\ell>k\) then set \(R\) to false and go to step~\ref{step:sub:done}.
+
+\item\label{step:sub:select2} Select two non-adjacent vertices \(u,v\in V(G)\) with the smallest number of common
+  neighbors based on the calculations in step~\ref{step:sub:common}.  It will be shown below that such a pair of
+  vertices is guaranteed to exist.
+
+\item\label{step:sub:call1} Assume that \(u\) and \(v\) are assigned the same color by letting \(G'=G\cdot uv\).
+  Also make a copy of the removed vertices list \(R'=R\).  Recursively call this routine using \(G'\), \(S'\), and
+  \(k\) as inputs to see if \(G'\) is \colorable{k}.  Note that \(G'\) and \(S'\) may be modified.  If \(G'\) is
+  \colorable{k} then replace \(G=G'\) and \(S=S'\), set \(R\) to true, and go to step~\ref{step:sub:done}
+  (\theoremname~\ref{thm:recurse}).
+
+\item\label{step:sub:call2} Assume that \(u\) and \(v\) are assigned different colors by letting \(G'=G+uv\).  Also
+  make a copy of the removed vertices list \(R'=R\).  Recursively call this routine using \(G'\), \(S'\), and \(k\)
+  as inputs to see if \(G'\) is \colorable{k}.  Note that \(G'\) and \(S'\) may be modified.  If \(G'\) is
+  \colorable{k} then replace \(G=G'\) and \(S=S'\), set \(R\) to true, and go to step~\ref{step:sub:done}
+  (\theoremname~\ref{thm:recurse}).
+
+\item\label{step:sub:fail} Conclude that \(G\) is not \colorable{k} and set \(R\) to false.
+
+\item\label{step:sub:done} Return the determine result \(R\), the possibly simplified \(G\), and the possibly
+  extended list of removed vertices \(S\).
+\end{enumerate}
+
+A flowchart of these steps is shown in \figurename~\ref{fig:called}.
+
+\begin{figure}[H]
+  \centering
+  \scalebox{0.55}{
+    \begin{tikzpicture}[>=latex']
+      \node (start) [draw,terminal] at (0,0) {START};
+      \node (kcheck) [draw,decision,below=of start] {\(n\le k\)?};
+      \node (rtrue1) [draw,process,right=2cm of kcheck] {\(R=\)TRUE};
+      \node (return1) [draw,terminal,below=of rtrue1] {RETURN \(R,G,S\)};
+      \node (ecalc) [draw,process,below=of kcheck] {\(a=\frac{n^2(k-1)}{2k}\)};
+      \node (echeck) [draw,decision,below=of ecalc] {\(m\le a\)?};
+      \node (xcalc) [draw,process,below=of echeck] {\(X=\setb{v\in V(G)}{\deg(v)<k}\)};
+      \node (xcheck) [draw,decision,below=of xcalc] {\(X=\emptyset\)?};
+      \node (remnode) [draw,process,left=of xcheck] {\(\begin{array}{c} G=G-X \\ S=S+X \end{array}\)};
+      \node (xjoin) [coordinate] at ($(remnode)-(2cm,0)$) {};
+      \node (common) [draw,process,below=of xcheck] {\(\abs{N(u)\cap N(v)}\)};
+      \node (subcheck) [draw,decision,below=of common] {\(N(u)\subseteq N(v)\)?};
+      \node (subcon) [draw,process,left=of subcheck] {\(G=G\cdot uv\)};
+      \node (mincom) [draw,process,below=of subcheck] {\(b=\min\abs{N(u)\cap N(v)}\)};
+      \node (mincalc) [draw,process,below=of mincom] {\(c=n-2-\frac{n-2}{k-1}\)};
+      \node (mincheck) [draw,decision,below=of mincalc] {\(b\le c\)?};
+      \node (mjoin) [coordinate] at ($(mincheck)+(4cm,0)$) {};
+      \node (lbcalc) [draw,predproc,below=of mincheck] {EDWARDS \(G\)};
+      \node (lbcheck) [draw,decision,below=of lbcalc] {\(\ell\le k\)?};
+      \node (rfalse1) [draw,process,right=2cm of lbcheck] {\(R=\)FALSE};
+      \node (return2) [draw, terminal,below=of rfalse1] {RETURN \(R,G,S\)};
+      \node (save1) [draw,process,right=6cm of rtrue1] {\(\begin{array}{c} G'=G\cdot uv \\ S'=S \end{array}\)};
+      \node (call1) [draw,predproc,below=of save1] {CALL \(G',S',k\)};
+      \node (check1) [draw,decision,below=of call1] {\(R\)?};
+      \node (save2) [draw,process,below=of check1] {\(\begin{array}{c} G'=G+uv \\ S'=S \end{array}\)};
+      \node (call2) [draw,predproc,below=of save2] {CALL \(G',S',k\)};
+      \node (check2) [draw,decision,below=of call2] {\(R\)?};
+      \node (return3) [draw,terminal,below=of check2] {RETURN \(R,G,S\)};
+      \node (update) [draw,process,right=3cm of check2] {\(\begin{array}{c} G=G' \\ S=S' \end{array}\)};
+      \draw [->] (start) -- node [auto] {\(G,S,k\)} (kcheck);
+      \draw [->] (kcheck) -- node [auto,pos=0.2] {YES} (rtrue1);
+      \draw [->] (rtrue1) -- (return1);
+      \draw [->] (kcheck) -- node [auto] {NO} (ecalc);
+      \draw [->] (ecalc) -- (echeck);
+      \draw [->] (echeck) -- node [auto] {YES} (xcalc);
+      \draw [->] (xcalc) -- (xcheck);
+      \draw [->] (xcheck) -- node [auto,swap] {NO} (remnode) -- (xjoin);
+      \draw [->] (xcheck) -- node [auto] {YES} (common);
+      \draw [->] (common) -- (subcheck);
+      \draw [->] (subcheck) -- node [auto,swap] {YES} (subcon);
+      \draw [->] (subcon) -| (xjoin) |- (kcheck);
+      \draw [->] (subcheck) -- node [auto] {NO} (mincom);
+      \draw [->] (mincom) -- (mincalc);
+      \draw [->] (mincalc) -- (mincheck);
+      \draw [->] (mincheck) -- node [auto] {YES} (lbcalc);
+      \draw [->] (mincheck) -- node [auto,pos=0.2] {NO} (mjoin);
+      \draw [->] (lbcalc) -- node [auto] {\(\ell\)} (lbcheck);
+      \draw [->] (lbcheck) -- node [auto,pos=0.2] {NO} (rfalse1);
+      \draw [->] (echeck) -| node [auto,pos=0.1] {NO} (mjoin) -- (rfalse1);
+      \draw [->] (rfalse1) -- (return2);
+      \draw [->] (lbcheck) -- node [auto,pos=0.2] {YES} ++(0,-3cm) -- ++(8cm,0) |- (save1);
+      \draw [->] (save1) -- (call1);
+      \draw [->] (call1) -- node [auto] {\(R,G',S'\)} (check1);
+      \draw [->] (check1) -- node [auto] {NO} (save2);
+      \draw [->] (save2) -- (call2);
+      \draw [->] (call2) -- node [auto] {\(R,G',S'\)} (check2);
+      \draw [->] (check2) -- node [auto] {NO} (return3);
+      \draw [->] (check2) -- node [auto,pos=0.2] {YES} (update);
+      \draw [->] (check1) -| node [auto,pos=0.1] {YES} (update);
+      \draw [->] (update) |- (return3);
+    \end{tikzpicture}
+  }
+  \caption{The proposed algorithm recursive subroutine.}
+  \label{fig:called}
+\end{figure}
+
+Step~\ref{step:sub:kcheck} is the success condition.  Success occurs when \(G\) is simplified by removing or
+contracting sufficent vertices (sub steps~\ref{step:sub:xcalc}--\ref{step:sub:subset}) and the main routine has
+sufficiently incremented \(k\) (main step~\ref{step:outer:incrk}) such that \(n\le k\).
+
+Steps~\ref{step:sub:xcalc}--\ref{step:sub:subset} attempt to simplify \(G\) using vertex removal and contraction in
+order to achieve a simpler graph that is equivalently \colorable{k}.  Each time vertices are removed or contracted
+the associated branches in the corresponding Zykov tree are pruned.  Since these same steps would just be repeated
+for \(k+1\), the subroutine saves the simplified \(G\) as a starting point for the next candidate value of \(k\).
+
+Steps~\ref{step:sub:ecalc}--\ref{step:sub:echeck} and \ref{step:sub:select}--\ref{step:sub:lcheck} apply tests
+that attempt to disprove that the current state of \(G\) is \colorable{k} for the current value of \(k\).  If so,
+then the current Zykov tree is abandoned and the subroutine returns false.
+
+Steps~\ref{step:sub:select2}--\ref{step:sub:fail} constitute the recursive portion of the modified Zykov algorithm.
+The recursive calls are guaranteed to terminate because either there will be sufficient vertex contractions such
+that \(n\le k\), resulting in a true return, or sufficient edge additions such that the graph becomes complete and
+(as will be shown) is rejected by step~\ref{step:sub:echeck}, resulting in a false return.  Note that in the event
+of a false return, any modifications to the current states of \(G\) and \(S\) resulting from the recursive calls
+are not returned to the main routine.
+
+\subsection{The Coloring Routine}\label{sec:sub:coloring}
+
+The recursive subroutine will eventually return true when applied to a particular Zykov tree using a particular
+value of \(k\).  The final state of \(G\), which should be a complete graph of single and/or contracted vertices,
+and the final state of \(S\), which is a list of removed single and/or contracted vertices in the order removed are
+used to construct the final chromatic coloring.
+
+According to \theoremname~\ref{thm:greedy}, there exists some ordering of the vertices such that the greedy algorithm
+will produce an exact result for the chromatic number of a graph.  The removed vertices in reverse order is
+such an ordering.  Consider the example shown in \figurename~\ref{fig:reverse}.  If \(k=4\) and vertex \(v\) is to
+be removed since \(\deg(v)=3\), then in the reverse direction when \(v\) is added the fourth color is available for
+\(v\).  In general, given a graph \(G-v\) such that \(deg(v)<k\) in \(G\), there will always be an available color
+for \(v\) regardless of how \(N(v)\) is colored.  This result is formalized in \theoremname~\ref{thm:remone}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw (0,0) circle [radius=2];
+    \node at (0,-1.5) {\(G-v\)};
+    \draw (0,0.5) ellipse (1 and 1.25);
+    \node (a) [unlabeled node=green] at (0,1.5) {};
+    \node (b) [unlabeled node=red] at (0,1.0) {};
+    \node (c) [unlabeled node=blue] at (0,0.5) {};
+    \node at (0,-0.25) {\(N(v)\)};
+    \node (v) [unlabeled node] at (4,1) {};
+    \node [below=1ex] at (v) {\(v\)};
+    \draw (v) edge (a) edge (b) edge (c);
+  \end{tikzpicture}
+  \caption{Coloring a removed vertex example.}
+  \label{fig:reverse}
+\end{figure}
+
+The coloring routine accepts a graph \(G\) that is \chromatic{k}, a complete graph \(G_i\) of order \(k\) that
+results from running the modified Zykov algorithm on \(G\), and a removed vertex list \(R\) sorted by the order
+removed as inputs.  It outputs a \chromatic{k} coloring of \(G\).  The steps of the coloring routine are as
+follows:
+\begin{enumerate}
+\item Start with \(k\) empty color classes \(\set{c_1,\ldots,c_k}\).
+\item Order the vertices in \(G_i\) into a list.  Note that these vertices represent single and/or contracted
+  vertices from \(G\).
+\item Append the vertices in \(S\) to the list in reverse order.  Note that these vertices also represent
+  single and/or contracted vertices from \(G\).
+\item Assign all of the vertices from \(G\) that are represented by \(v_j\in V(G_i)\) to color \(c_j\).
+\item Greedy color the remaining vertices in the list.  No additional colors should be required.  Note that when
+  determining color use by adjacent vertices, all of the single and/or contracted vertices from \(G\) represented
+  by a vertex in the sorted list must be checked against all the single and/or contracted vertices from \(G\)
+  represented by the previously colored vertices in the sorted list.
+\end{enumerate}
+
+Consider the example graph \(G\) and its reduced form \(G_1\) in \figurename~\ref{fig:crex}.
+
+\begin{figure}[H]
+  \begin{minipage}{2.5in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \node (0) at (0,0) {\(0\)};
+      \node (1) [left=of 0] {\(1\)};
+      \node (2) [left=of 1] {\(2\)};
+      \node (3) [below=of 0] {\(3\)};
+      \node (4) [below=of 1] {\(4\)};
+      \node (5) [below=of 2] {\(5\)};
+      \draw (0) edge (1) edge (3);
+      \draw (1) edge (2) edge (3) edge (4);
+      \draw (3) edge (4);
+      \draw (4) edge (5);
+    \end{tikzpicture}
+
+    \(G\)
+  \end{minipage}
+  \begin{minipage}{2in}
+    \centering
+    \begin{tikzpicture}[every node/.style={labeled node}]
+      \node (1) at (0,0) {\(1\)};
+      \node (04) [below=of 1] {\(04\)};
+      \node (3) [left=of 04] {\(3\)};
+      \draw (1) edge (04) edge (3);
+      \draw (04) edge (3);
+    \end{tikzpicture}
+
+    \(G_1\)
+  \end{minipage}
+  \begin{minipage}{1in}
+    \begin{tabular}{|c|}
+      \hline
+      \(S\) \\
+      \hline
+      \(2\) \\
+      \(5\) \\
+      \hline
+    \end{tabular}
+  \end{minipage}
+  \caption{A coloring routine example.}
+  \label{fig:crex}
+\end{figure}
+
+Since \(\X(G)=3\), start with three empty color classes: \(\set{c_1,c_2,c_3}\).  Next, list the vertices in
+\(G_1\), followed by the removed vertices in reverse order: \(04,1,3,5,2\).  Now, assign the vertices from \(G_1\)
+to the color classes:
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \(c_1\) & \(0,4\) \\
+    \hline
+    \(c_2\) & \(1\) \\
+    \hline
+    \(c_3\) & \(3\) \\
+    \hline
+  \end{tabular}
+\end{center}
+
+Next, color the removed vertices.  Since \(5\) is adjacent to \(4\) but not to \(1\), \(5\) is assigned to \(c_2\).
+Finally, since \(2\) is adjacent to \(1\) but to neither \(0\) nor \(4\), \(2\) is assigned to \(c_1\):
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \(c_1\) & \(0,2,4\) \\
+    \hline
+    \(c_2\) & \(1,5\) \\
+    \hline
+    \(c_3\) & \(3\) \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\bigskip
+
+\subsection{Supporting Theorems}\label{sec:sub:theorems}
+
+This section contains the theorems that support the steps in the recursive subroutine.  Remember that the success
+check of step~\ref{step:sub:kcheck} is already supported by \theoremname~\ref{thm:nlek}.
+
+\subsubsection{Maximum Edge Threshold}\label{sec:sub:sub:edges}
+
+The maximum edge threshold test of steps~\ref{step:sub:ecalc} and \ref{step:sub:echeck} is supported by
+Theorem~\ref{thm:density}.
+
+\begin{theorem}[Maximum Edge Threshold]
+  \label{thm:density}
+  Let \(G\) be a graph of order \(n\) and size \(m\) and let \(k\in\N\).  If \(G\) is \colorable{k} then:
+  \[m\le\frac{n^2(k-1)}{2k}\]
+\end{theorem}
+
+\begin{proof}
+  Assume that \(G\) is \colorable{k}.  This means that \(V(G)\) can be distributed into \(k\) independent (some
+  possibly empty) subsets.  Call these subsets \(A_1,\ldots A_k\) and let \(a_i=\abs*{A_i}\).  Thus, each \(v\in
+  A_i\) can be adjacent to at most \(n-a_i\) other vertices in \(G\), and hence the maximum number of edges
+  incident to vertices in \(A_i\) is given by: \(a_i(n-a_i)=na_i-a_i^2\).  Now, using Theorem~\ref{thm:first}, the
+  maximum number of edges in \(G\) is given by:
+  \[m\le\frac{1}{2}\sum_{i=1}^k(na_i-a_i^2)\]
+  with the constraint:
+  \[\sum_{i=1}^ka_i=n\]
+  This problem can be solved using the Lagrange multiplier technique.  We start by defining:
+  \begin{align*}
+    F(a_1,\ldots,a_k) &= f(a_1,\ldots,a_k)-\l g(a_1,\ldots,a_k) \\
+    &= \frac{1}{2}\sum_{i=1}^k(na_i-a_i^2)-\l\sum_{i=1}^ka_i \\
+    &= \sum_{i=1}^k\left(\frac{1}{2}na_i-\frac{1}{2}a_i^2-\l a_i\right)
+  \end{align*}
+  Now, optimize by taking the gradient and setting the resulting vector equation equal to the zero vector:
+  \[\vec{\nabla}F=\sum_{i=1}^k(\frac{n}{2}-a_i-\l)\hat{a_i}=\vec{0}\]
+  This results in a system of \(k\) equations of the form:
+  \[\frac{n}{2}-a_i-\l=0\]
+  And so:
+  \[a_i=\frac{n}{2}-\l\]
+  Plugging this result back into the contraint:
+  \[\sum_{i=1}^ka_i=\sum_{i=1}^k\left(\frac{n}{2}-\l\right)=k\left(\frac{n}{2}-\l\right)=n\]
+  Solving for \(\l\) yields:
+  \[\l=\frac{n}{2}-\frac{n}{k}\]
+  And finally, to get \(a_i\) in terms of \(n\) and \(k\):
+  \[a_i=\frac{n}{2}-\left(\frac{n}{2}-\frac{n}{k}\right)=\frac{n}{k}\]
+  Therefore:
+  \[m\le\frac{1}{2}\sum_{i=1}^k\left[n\left(\frac{n}{k}\right)-\left(\frac{n}{k}\right)^2\right]=
+  \frac{k}{2}\left(\frac{n^2k-n^2}{k^2}\right)=\frac{n^2(k-1)}{2k}\]
+\end{proof}
+
+The recursive subroutine actually uses the contrapositive of this result, as stated in Corollary~\ref{cor:density}.
+
+\begin{corollary}
+  \label{cor:density}
+  Let \(G\) be a graph of order \(n\) and size \(m\) and let \(k\in\N\).  If:
+  \[m>\frac{n^2(k-1)}{2k}\]
+  then \(G\) is not \colorable{k}.
+\end{corollary}
+
+Corollary~\ref{cor:density} is demonstrated by \figurename~\ref{fig:density}.  The shown graph \(G\) has \(n=4\),
+\(m=5\), and \(\X(G)=3\).  Testing for \(k=2\):
+\[a=\frac{4^2(2-1)}{2\cdot2}=4\]
+But \(m=5>4=a\) and so we can conclude that \(G\) is not \colorable{2}.  However, testing for \(k=3\);
+\[a=\frac{4^2(3-1)}{2\cdot3}=5.3\]
+So \(m=5\ngtr5.3=a\) and thus \(G\) \emph{may} be \(3\)-colorable, since this test only provides a necessary and
+not a sufficient condition.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \colorlet{c1}{green!25!white}
+    \colorlet{c2}{blue!25!white}
+    \colorlet{c3}{red!25!white}
+    \begin{scope}[every node/.style={coordinate}]
+      \cycleNnodes{4}{(0,0)}{0.75in}{135}{c};
+    \end{scope}
+    \begin{scope}[every node/.style={labeled node}]
+      \node [fill=c1] (a) at (c1) {\(a\)};
+      \node [fill=c2] (b) at (c2) {\(b\)};
+      \node [fill=c1] (c) at (c3) {\(c\)};
+      \node [fill=c3] (d) at (c4) {\(d\)};
+    \end{scope}
+    \draw (a) edge (b) edge (d);
+    \draw (b) edge (c) edge (d);
+    \draw (c) edge (d);
+  \end{tikzpicture}
+
+  \(G\)
+  \caption{Corollary~\ref{cor:density} example.}
+  \label{fig:density}
+\end{figure}
+
+In fact, the the test of Corollary~\ref{cor:density} will always fail for a complete graph when \(k<n\).  Since
+\(k,n>0\):
+\begin{align*}
+  \frac{n(n-1)}{2}-\frac{n^2(k-1)}{2k} &= \frac{kn(n-1)-n^2(k-1)}{2k} \\
+  &= \frac{kn^2-kn-kn^2+n^2}{2k} \\
+  &= \frac{n^2-kn}{2k} \\
+  &= \frac{n(n-k)}{2k} \\
+  &>0\qquad(n>k)
+\end{align*}
+
+\subsubsection{Vertex Removal}\label{sec:sub:sub:vertex}
+
+Steps~\ref{step:sub:xcalc} and \ref{step:sub:xcheck} remove vertices with degrees less than \(k\).  The idea is
+that since a vertex's neighbors only use less than \(k\) colors there will always be an available color for the
+vertex without adding a new color, regardless of how the vertex's neighbors are actually colored.  In order words,
+these small degree vertices do not affect the overall colorability of their graph.  This fact is demonstrated by
+\figurename~\ref{fig:remone}; no matter which vertex is removed, the resulting subgraph is still properly colored
+using at most four (in fact, three) colors.
+
+\begin{figure}[H]
+  \centering
+  \scalebox{0.75}{
+    \begin{tikzpicture}
+      \colorlet{c1}{green!25!white}
+      \colorlet{c2}{blue!25!white}
+      \colorlet{c3}{red!25!white}
+      \colorlet{c4}{yellow!25!white}
+      \begin{scope}[every node/.style={coordinate}]
+        \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+      \end{scope}
+      \begin{scope} [every node/.style={labeled node}]
+        \node [fill=c1] (v1) at (x1) {\(a\)};
+        \node [fill=c2] (v2) at (x2) {\(b\)};
+        \node [fill=c3] (v3) at (x3) {\(c\)};
+        \node [fill=c4] (v4) at (x4) {\(d\)};
+      \end{scope}
+      \draw (v1) edge (v2) edge (v3) edge (v4);
+      \draw (v2) edge (v3) edge (v4);
+      \draw (v3) edge (v4);
+    \end{tikzpicture}
+  }
+
+  \(G\)
+
+  \bigskip
+
+  \begin{minipage}{1.25in}
+    \centering
+    \scalebox{0.75}{
+      \begin{tikzpicture}
+        \colorlet{c1}{green!25!white}
+        \colorlet{c2}{blue!25!white}
+        \colorlet{c3}{red!25!white}
+        \colorlet{c4}{yellow!25!white}
+        \begin{scope}[every node/.style={coordinate}]
+          \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+        \end{scope}
+        \begin{scope} [every node/.style={labeled node}]
+          \node [fill=c2] (v2) at (x2) {\(b\)};
+          \node [fill=c3] (v3) at (x3) {\(c\)};
+          \node [fill=c4] (v4) at (x4) {\(d\)};
+        \end{scope}
+        \draw (v2) edge (v3) edge (v4);
+        \draw (v3) edge (v4);
+      \end{tikzpicture}
+    }
+
+    \(G-a\)
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \centering
+    \scalebox{0.75}{
+      \begin{tikzpicture}
+        \colorlet{c1}{green!25!white}
+        \colorlet{c2}{blue!25!white}
+        \colorlet{c3}{red!25!white}
+        \colorlet{c4}{yellow!25!white}
+        \begin{scope}[every node/.style={coordinate}]
+          \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+        \end{scope}
+        \begin{scope} [every node/.style={labeled node}]
+          \node [fill=c1] (v1) at (x1) {\(a\)};
+          \node [fill=c3] (v3) at (x3) {\(c\)};
+          \node [fill=c4] (v4) at (x4) {\(d\)};
+        \end{scope}
+        \draw (v1) edge (v3) edge (v4);
+        \draw (v3) edge (v4);
+      \end{tikzpicture}
+    }
+
+    \(G-b\)
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \centering
+    \scalebox{0.75}{
+      \begin{tikzpicture}
+        \colorlet{c1}{green!25!white}
+        \colorlet{c2}{blue!25!white}
+        \colorlet{c3}{red!25!white}
+        \colorlet{c4}{yellow!25!white}
+        \begin{scope}[every node/.style={coordinate}]
+          \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+        \end{scope}
+        \begin{scope} [every node/.style={labeled node}]
+          \node [fill=c1] (v1) at (x1) {\(a\)};
+          \node [fill=c2] (v2) at (x2) {\(b\)};
+          \node [fill=c4] (v4) at (x4) {\(d\)};
+        \end{scope}
+        \draw (v1) edge (v2) edge (v4);
+        \draw (v2) edge (v4);
+      \end{tikzpicture}
+    }
+
+    \(G-c\)
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \centering
+    \scalebox{0.75}{
+      \begin{tikzpicture}
+        \colorlet{c1}{green!25!white}
+        \colorlet{c2}{blue!25!white}
+        \colorlet{c3}{red!25!white}
+        \colorlet{c4}{yellow!25!white}
+        \begin{scope}[every node/.style={coordinate}]
+          \cycleNnodes{4}{(0,0)}{0.5in}{135}{x};
+        \end{scope}
+        \begin{scope} [every node/.style={labeled node}]
+          \node [fill=c1] (v1) at (x1) {\(a\)};
+          \node [fill=c2] (v2) at (x2) {\(b\)};
+          \node [fill=c3] (v3) at (x3) {\(c\)};
+        \end{scope}
+        \draw (v1) edge (v2) edge (v3);
+        \draw (v2) edge (v3);
+      \end{tikzpicture}
+    }
+
+    \(G-d\)
+  \end{minipage}
+  \caption{Vertex removal example.}
+  \label{fig:remone}
+\end{figure}
+
+Vertex removal is supported by \theoremname~\ref{thm:remone}:
+
+\begin{theorem}
+  \label{thm:remone}
+  Let \(G\) be a graph and let \(v\in V(G)\) such that \(\deg(v)<k\) for some \(k\in\N\).  \(G\) is \colorable{k}
+  if and only if \(G-v\) is \colorable{k}.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(G\) is \colorable{k}.  By definition, there exists some coloring function \(c:V(G)\to C\) where
+  \(\abs{C}=k\).  Consider the restricted coloring function \(c'=\restrict{c}{V(G-v)}\) and assume \(uw\in E(G-v)\)
+  and hence \(u\ne w\).  Since \(c\) is proper:
+  \[c'(u)=c(u)\ne c(w)=c'(w)\]
+  This means that \(c':V(G-v)\to C\) is a proper coloring of \(G-v\) with \(\abs{C}=k\).
+
+  Therefore \(G-v\) is \colorable{k}.
+
+  For the converse, assume that \(G-v\) is \colorable{k}.  By definition, there exists some coloring function
+  \(c:V(G-v)\to C\) where \(\abs{C}=k\).  By assumption, \(\deg(v)<k\), so \(v\) has at most \(k-1\) neighbors in
+  \(G\), using at most \(k-1\) colors.  This means that there is an additional color that can be assigned to \(v\)
+  in \(G\) such that the coloring remains proper (see~\figurename~\ref{fig:reverse}).  So let
+  \(N(v)=\set{v_1,\ldots,v_r}\subseteq V(G-v)\) for some \(r<k\), and let \(c[N(v)]=\set{c_1,\ldots,c_s}\subset C\)
+  for some \(s\le r<k\).  Since \(c[N(v)]\) is a proper subset of \(C\), select \(c_k\in C-c[N(v)]\) and define a
+  coloring function \(c':V(G)\to C\) as follows:
+  \[c'(u)=\begin{cases}
+  c(u), & u\ne v \\
+  c_k, & u=v
+  \end{cases}\]
+
+  Now, assume that \(uw\in E(G)\) and hence \(u\ne w\).
+  \begin{description}
+  \item[Case 1:] \(v\notin uw\)
+
+    So \(u,w\in E(G-v)\) and since \(c\) is proper:
+    \[c'(u)=c(u)\ne c(w)=c'(w)\]
+
+  \item[Case 2:] \(v\in uw\)
+
+    Assume without loss of generality that \(v=u\).  Thus, \(w\in V(G-v)\) and since \(c\) is proper:
+    \[c'(v)=c_k\ne c(u)=c'(u)\]
+  \end{description}
+
+  This means that \(c':V(G)\to C\) is a proper coloring of \(G\) with \(\abs{C}=k\).
+
+  Therefore \(G-v\) is \colorable{k}.
+\end{proof}
+
+Theorem~\ref{thm:remone} is demonstrated in \figurename~\ref{fig:lowdeg} for \(k=4\) and \(\deg(v)=3\).
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \colorlet{c1}{green!25!white}
+    \colorlet{c2}{blue!25!white}
+    \colorlet{c3}{red!25!white}
+    \colorlet{c4}{yellow!25!white}
+    \begin{scope}[every node/.style={coordinate}]
+      \cycleNnodes{4}{(0,0)}{1in}{135}{c};
+    \end{scope}
+    \begin{scope}[every node/.style={labeled node}]
+      \node [fill=c1] (a) at (c1) {\(a\)};
+      \node [fill=c2] (v) at (c2) {\(v\)};
+      \node [fill=c3] (b) at (c3) {\(b\)};
+      \node [fill=c4] (c) at (c4) {\(c\)};
+      \node [fill=c2,below left=of a] (d) {\(d\)};
+    \end{scope}
+    \draw (a) edge (b) edge (c) edge (d);
+    \draw [dashed,red] (v) edge (a) edge (b) edge (c);
+    \draw (b) edge (c);
+    \draw (c) edge (d);
+  \end{tikzpicture}
+  \caption{Theorem~\ref{thm:remone} example.}
+  \label{fig:lowdeg}
+\end{figure}
+
+The recursive subroutine actually removes all such small degree vertices at once, which is supported by the
+inductive proof in Corollary \ref{cor:remall}.
+
+\begin{corollary}
+  \label{cor:remall}
+  Let \(G\) be a graph of order \(n\) and let \(X=\setb{v\in V(G)}{\deg(v)<k}\) for some \(k\in\N\).  \(G\) is
+  \colorable{k} if and only if \(G-X\) is \colorable{k}.
+\end{corollary}
+
+\begin{proof}
+  (by induction on \(\abs{X}\))
+  \begin{description}
+  \item[Base Case:] Let \(\abs{X}=0\).
+
+    But \(G-X=G\) (trivial case).
+
+  \item[Inductive Assumption:] Let \(\abs{X}=r\).
+
+    Assume that \(G\) is \colorable{k} if and only if \(G-X\) is \colorable{k}.
+
+  \item[Inductive Step:] Consider \(\abs{X}=r+1\).
+    
+    Since \(\abs{X}=r+1>0\), there exists \(v\in X\) such that \(\deg(v)<k\).  Let \(Y=X-\set{v}\) and note that
+    \(\abs{Y}=\abs{X}-1=(r+1)-1=r\).  So, \(G\) is \colorable{k} if and only if \(G-v\) is \colorable{k} (Theorem
+    \ref{thm:remone}) if and only if \((G-v)-Y\) is \colorable{k} (inductive assumption).
+  \end{description}
+
+  Therefore, by the principle of induction, \(G\) is \colorable{k} if and only if \(G-X\) is \colorable{k}.
+\end{proof}
+
+Returning to the example in \figurename~\ref{fig:lowdeg}, note that \(X=\set{v,b,d}\) is the set of all vertices
+with degree less than \(4\) and so all three can be removed at once in accordance with Corollary \ref{cor:remall}.
+
+\subsubsection{Neighborhood Subsets}\label{sec:sub:sub:subset}
+
+Step~\ref{step:sub:subset} contracts vertices whose neighborhoods are subsets of other vertices.
+\lemmaname~\ref{lem:subsame} states that in any \coloring{k} such vertices can be colored using the same color.
+
+\begin{lemma}
+  \label{lem:subsame}
+  Let \(G\) be a graph such that:
+  \begin{enumerate}
+  \item \(n(G)\ge 2\)
+  \item \(u,v\in V(G)\) and \(u\ne v\)
+  \item \(N(u)\subseteq N(v)\), and hence \(uv\notin E(G)\)
+  \end{enumerate}
+  and let \(k\in\N\).  In any \coloring{k} of \(G\), \(u\) and \(v\) can be assigned the same color.
+\end{lemma}
+
+\begin{proof}
+  Assume that the coloring function \(c:V(G)\to C\) is proper where \(\abs{C}=k\).  Since \(N(u)\subseteq N(v)\),
+  it must be the case that \(c[N(u)]\subseteq c[N(v)]\).  But \(c(v)\notin c[N(v)]\) and hence \(c(v)\notin N(u)\).
+  Therefore, \(c(v)\) is available for \(u\).
+\end{proof}
+
+Theorem~\ref{thm:consame} states that any two vertices using the same color can be contracted without affecting
+colorability.
+
+\begin{theorem}
+  \label{thm:consame}
+  Let \(G\) be a graph such that:
+  \begin{enumerate}
+  \item \(n(G)\ge 2\)
+  \item \(u,v\in V(G)\) and \(u\ne v\)
+  \item \(u\) and \(v\) are assigned the same color in any proper coloring of \(G\)
+  \end{enumerate}
+  and let \(k\in\N\).  \(G\) is \colorable{k} if and only if \(G\cdot uv\) is \colorable{k}.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(G\) is \colorable{k}.  By definition, there exists some coloring function \(c:V(G)\to C\) where
+  \(c(u)=c(v)\) and \(\abs{C}=k\).  Let \(w\in V(G\cdot uv)\) be the identified vertex and define a coloring function
+  \(c':V(G\cdot uv)\to C\) as follows:
+  \[c'(z)=\begin{cases}
+  c(z), & z\ne w \\
+  c(u)=c(v), & z=w
+  \end{cases}\]
+  Now, assume that \(xy\in E(G\cdot uv)\) and hence \(x\ne y\).
+  \begin{description}
+  \item[Case 1:] \(w\notin xy\)
+
+    So \(x,y\in E(G)\) and since \(c\) is proper:
+    \[c'(x)=c(x)\ne c(y)=c'(y)\]
+
+  \item[Case 2:] \(w\in xy\)
+
+    Assume without loss of generality (AWLOG) that \(w=x\) and so \(w\ne y\).  Thus, \(y\in V(G)\),
+    \(y\notin\set{u,v}\), and since \(c\) is proper:
+    \[c'(w)=c(u)\ne c(y)=c'(y)\]
+  \end{description}
+
+  This means that \(c':V(G\cdot uv)\to C\) is a proper coloring of \(G\cdot uv\) with \(\abs{C}=k\).
+
+  Therefore \(G\cdot v\) is \colorable{k}.
+
+  For the converse, assume that \(G\cdot uv\) is \colorable{k} and let \(w\in V(G\cdot uv\) be the identified
+  vertex.  By definition, there exists some coloring function \(c:V(G\cdot uv)\to C\) where \(\abs{C}=k\).  Define
+  the coloring function \(c':V(G)\to C\) as follows:
+  \[c'(z)=\begin{cases}
+  c(z), & z\notin\set{u,v} \\
+  c(w), & z\in\set{u,v}
+  \end{cases}\]
+  Now, assume that \(xy\in E(G)\) and hence \(x\ne y\).
+  \begin{description}
+  \item[Case 1:] \(u,v\notin xy\)
+
+    So \(x,y\in E(G\cdot uv)\) and since \(c\) is proper:
+    \[c'(x)=c(x)\ne c(y)=c'(y)\]
+
+  \item[Case 2:] \(u\in xy\) and \(v\notin xy\) or \(u\notin xy\) and \(v\in xy\)
+
+    Assume without loss of generality (AWLOG) that \(u=x\) and \(v\ne y\).  Thus, \(y\in V(G\cdot uv)\),
+    \(y\ne w\), and since \(c\) is proper:
+    \[c'(u)=c(w)\ne c(y)=c'(y)\]
+  \end{description}
+
+  This means that \(c':V(G)\to C\) is a proper coloring of \(G\) with \(\abs{C}=k\).
+
+  Therefore \(G\) is \colorable{k}.
+\end{proof}
+
+Finally, \corollaryname~\ref{cor:subset} combines the previous two results.
+
+\begin{corollary}
+  \label{cor:subset}
+  Let \(G\) be a graph such that:
+  \begin{enumerate}
+  \item \(n(G)\ge 2\)
+  \item \(u,v\in V(G)\) and \(u\ne v\)
+  \item \(N(u)\subseteq N(v)\), and hence \(uv\notin E(G)\)
+  \end{enumerate}
+  and let \(k\in\N\).  \(G\) is \colorable{k} if and only if \(G\cdot uv\) is \colorable{k}.
+\end{corollary}
+
+\begin{proof}
+  By \lemmaname~\ref{lem:subsame}, \(u\) and \(v\) can be assigned the same color.  Therefore, by
+  \theoremname~\ref{thm:consame}, \(G\) is \colorable{k} if and only if \(G\cdot uv\) is \colorable{k}.
+\end{proof}
+
+Corollary~\ref{cor:subset} is demonstrated in \figurename~\ref{fig:subset}.
+
+\begin{figure}[H]
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}
+      \colorlet{c1}{green}
+      \colorlet{c2}{blue}
+      \colorlet{c3}{yellow}
+      \colorlet{c4}{orange}
+      \colorlet{c5}{red}
+      \draw (0,0) circle (3);
+      \node at (0,-2.75) {\(G\)};
+      \draw (0,0) ellipse (1 and 2.5);
+      \draw (0,0.5) ellipse (0.75 and 1.5);
+      \node (a) [unlabeled node,fill=c1] at (0,1.75) {};
+      \node (b) [unlabeled node,fill=c2] at (0,1) {};
+      \node (c) [unlabeled node,fill=c3] at (0,0.25) {};
+      \node at (0,-0.25) {\(N(u)\)};
+      \node (d) [unlabeled node,fill=c4] at (0,-1.5) {};
+      \node at (0,-2) {\(N(v)\)};
+      \node [unlabeled node,fill=c5] (u) at (-2,0) {};
+      \node [below=1ex] at (u) {\(u\)};
+      \node [unlabeled node,fill=c5] (v) at (2,0) {};
+      \node [below=1ex] at (v) {\(v\)};
+      \draw (u) edge (a) edge (b) edge (c);
+      \draw (v) edge (a) edge (b) edge (c) edge (d);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{2.75in}
+    \centering
+    \begin{tikzpicture}
+      \colorlet{c1}{green}
+      \colorlet{c2}{blue}
+      \colorlet{c3}{yellow}
+      \colorlet{c4}{orange}
+      \colorlet{c5}{red}
+      \draw (0,0) circle (3);
+      \node at (0,-2.75) {\(G\cdot uv\)};
+      \draw (0,0) ellipse (1 and 2.5);
+      \node (a) [unlabeled node,fill=c1] at (0,1.75) {};
+      \node (b) [unlabeled node,fill=c2] at (0,1) {};
+      \node (c) [unlabeled node,fill=c3] at (0,0.25) {};
+      \node (d) [unlabeled node,fill=c4] at (0,-1.5) {};
+      \node at (0,-2) {\(N(w)\)};
+      \node [unlabeled node,fill=c5] (v) at (2,0) {};
+      \node [below=1ex] at (v) {\(w\)};
+      \draw (v) edge (a) edge (b) edge (c) edge (d);
+    \end{tikzpicture}
+  \end{minipage}
+  \caption{Demonstration of \theoremname~\ref{cor:subset}.}
+  \label{fig:subset}
+\end{figure}
+
+In the original version of the proposed algorithm, if \(N(u)\subset N(v)\) then \(G\) was replaced by \(G-u\).
+Although technically correct, simply removing \(u\) loses the important information that \(u\) and \(v\) are
+assigned the same color, which would make the coloring routine more complicated.  Special thanks to
+Graham~\cite{graham} for pointing out that contraction is sufficient.
+
+\subsubsection{Minimum Common Neighbor Upper Bound}\label{sec:sub:sub:common}
+
+Steps~\ref{step:sub:select}--\ref{step:sub:ubcheck} establish an upper bound for the minimum common neighbor count
+between any two vertices in a graph that is assumed to be \colorable{k}.  This limit is dependent on the following
+facts that are guaranteed by previous steps:
+
+\begin{enumerate}
+\item \(2\le k<n\)
+\item There are no \(u,v\in V(G)\) such that \(N(u)\subseteq N(v)\)
+\end{enumerate}
+
+The supporting theorem uses these facts along with Lemma~\ref{lem:neighbor} in its proof.
+
+\begin{lemma}
+  \label{lem:neighbor}
+  Let \(G\) be a graph and let \(S\) be a non-empty independent subset of \(V(G)\).  If there exists a vertex
+  \(v\in S\) such that \(v\) is adjacent to all vertices in \(V(G)-S\) (i.e., \(N(v)=V(G)-S\)) then for all
+  vertices \(u\in S\) it is the case that \(N(u)\subseteq N(v)\).
+\end{lemma}
+
+\begin{proof}
+  Assume that such a \(v\) exists and then assume that \(u\in S\).  If \(u=v\) then (trivially) \(N(v)=N(v)\), so
+  assume \(u\ne v\).  Furthermore, since \(u,v\in S\) and \(S\) is independent (by assumption), it must be the case
+  that \(u\) and \(v\) are not neighbors.
+
+  \begin{description}
+  \item[Case 1:] \(N(u)=\emptyset\).
+      
+    Therefore, by definition, \(N(u)=\emptyset\subseteq N(v)\).
+
+  \item[Case 2:] \(N(u)\ne\emptyset\).
+
+    Assume that \(w\in N(u)\).  This means that \(w\) is adjacent to \(u\) and hence \(w\notin S\), since \(S\) is
+    an independent set.  So \(w\in V(G)-S\) and thus, by assumption, \(v\) is adjacent to \(w\) and we can conclude
+    that \(w\in N(v)\).  Therefore \(N(u)\subseteq N(v)\).
+  \end{description}
+
+  Therefore, for all \(u\in S\), \(N(u)\subseteq N(v)\).
+\end{proof}
+
+Lemma~\ref{lem:neighbor} is demonstrated in \figurename~\ref{fig:neighbor}.  Note that since \(v\in S\) is adjacent
+to every vertex in \(V(G)-S\), vertex \(u\in S\) can't help but be adjacent to some subset of \(N(v)\).
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw (0in,0) ellipse (0.5in and 1in);
+    \draw (3in,0) ellipse (1.5in and 1in);
+    \begin{scope}[every node/.style={unlabeled node}]
+      \node (v) at (0in,0.25in) {};
+      \node (u) at (0in,-0.25in) {};
+      \node (w1) at (2in,0) {};
+      \node (w2) at (2.5in,0) {};
+      \node (w3) at (3in,0) {};
+      \node (w4) at (3.5in,0) {};
+      \node (w5) at (4in,0) {};
+    \end{scope}
+    \node [left=1ex of v] {\(v\)};
+    \node [left=1ex of u] {\(u\)};
+    \node at (0,-1.25in) {\(S\)};
+    \node at (3in,-1.25in) {\(V(G)-S\)};
+    \draw (v) [bend left] edge (w1);
+    \draw (v) [bend left] edge (w2);
+    \draw (v) [bend left] edge (w3);
+    \draw (v) [bend left] edge (w4);
+    \draw (v) [bend left] edge (w5);
+    \draw (u) [bend right] edge (w2);
+    \draw (u) [bend right] edge (w4);
+    \draw (u) [bend right] edge (w5);
+  \end{tikzpicture}
+  \caption{Lemma \ref{lem:neighbor} example.}
+  \label{fig:neighbor}
+\end{figure}
+
+Theorem~\ref{thm:inter} establishes the desired upper bound.
+
+\begin{theorem}
+  \label{thm:inter}
+  Let \(G\) be a graph of order \(n\) and size \(m\) such that there are no \(u,v\in V(G)\) where \(N(u)\subseteq
+  N(v)\), and let \(k\in\N\) such that \(2\le k<n\).  If \(G\) is \colorable{k} then there exists two vertices
+  \(w,z\in V(G)\) such that:
+  \[\abs{N(w)\cap N(z)}\le n-2-\frac{n-2}{k-1}\]
+\end{theorem}
+
+\begin{proof}
+  Assume that \(G\) is \colorable{k}.  This means that \(V(G)\) can be distributed into \(k\) independent (some
+  possibly empty) subsets \(A_1,\ldots,A_k\) such that \(a_i=\abs*{A_i}\) and \(a_1\ge a_2\ge\cdots\ge a_k\).
+  Since \(n>k\), by the pigeonhole principle, it must be the case that \(a_1\ge2\).  Assume that \(v\in A_1\).
+
+  First, assume by way of contradiction (ABC) that \(v\) is adjacent to all other vertices in \(V(G)-A_1\).  Since
+  \(a_1\ge2\), there exists \(u\in A_1\) such that \(u\ne v\) and \(u\) is not adjacent to \(v\).  Thus, by Lemma
+  \ref{lem:neighbor}, \(N(u)\subseteq N(v)\), contradicting the assumption.  Note that this contradiction also
+  eliminates the degenerate case where \(A_1=V(G)\); however, this case does not occur here because the graph would
+  be an empty graph and would have been eliminated by previous steps.  Therefore, there exists some \(v'\in
+  V(G)-A_1\) such that \(v\) is not adjacent to \(v'\).  Assume that \(v'\in A_i\) for some \(i\) such that
+  \(1<i\le k\):
+
+  \begin{description}
+  \item [Case 1:] \(a_i=1\)
+
+    By the pigeonhole principle:
+    \[a_1\ge\ceil*{\frac{n-1}{k-1}}\ge\frac{n-1}{k-1}\]
+    Now, assume by way of contradiction (ABC) that \(v'\) is adjacent to all vertices in \(V(G)-A_1-A_i\) and
+    assume \(u\in N(v)\).  Then it must be the case that \(u\in V(G)-A_1-A_i\), and so \(u\) is adjacent to \(v'\),
+    and thus \(u\in N(v')\).  Therefore \(N(v)\subseteq N(v')\), which contradicts the assumption.  This situation
+    is demonstrated by \figurename~\ref{fig:aione}.
+
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \draw (0,0) ellipse (0.5in and 1in);
+        \draw (2in,0) ellipse (0.5in and 1in);
+        \draw (4in,0) ellipse (0.5in and 1in);
+        \begin{scope}[every node/.style={unlabeled node}]
+          \node (v) at (0,0) {};
+          \node (u1) at (2in,0.5in) {};
+          \node (u2) at (2in,0.25in) {};
+          \node (u3) at (2in,0in) {};
+          \node (u4) at (2in,-0.25in) {};
+          \node (u5) at (2in,-0.5in) {};
+          \node (vp) at (4in,0) {};
+        \end{scope}
+        \node [left=1ex of v] {\(v\)};
+        \node [right=1ex of vp] {\(v'\)};
+        \node at (0,-1.25in) {\(A_1\)};
+        \node at (2in,-1.25in) {\(V(G)-A_1-A_i\)};
+        \node at (4in,-1.25in) {\(A_i\)};
+        \draw (v) edge (u1) edge (u3) edge (u4);
+        \draw (vp) edge (u1) edge (u2) edge (u3) edge (u4) edge (u5);
+      \end{tikzpicture}
+      \caption{Case \(a_i=1\) contradiction.}
+      \label{fig:aione}
+    \end{figure}
+
+    So there must exist some \(u\in V(G)-A_1-A_i\) such that \(u\) is not adjacent to \(v'\).  This results in the
+    upper bound:
+    \[\abs{N(v)\cap N(v')}\le n-\abs{\set{u,v'}}-a_1\le n-2-\frac{n-1}{k-1}\]
+    Note that since \(v\in A_1\), it is already counted in \(a_1\).  Comparing this bound to the desired bound:
+    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-2-\frac{n-1}{k-1}\right)=\frac{(n-1)-(n-2)}{k-1}=\frac{1}{k-1}>0\]
+    for \(k\ge2\).  Thus the new bound is tighter and so:
+    \[\abs{N(v)\cap N(v')}\le n-2-\frac{n-1}{k-1}\le n-2-\frac{n-2}{k-1}\]
+    
+  \item [Case 2:] \(a_i=2\)
+
+    By the pigeonhole principle:
+    \[a_1\ge\ceil*{\frac{n-2}{k-1}}\ge\frac{n-2}{k-1}\]
+    This results in the upper bound:
+    \[\abs{N(v)\cap N(v')}\le n-a_i-a_1\le n-2-\frac{n-2}{k-1}\]
+    
+  \item [Case 3:] \(a_i\ge3\)
+
+    By the pigeonhole principle:
+    \[a_1\ge\ceil*{\frac{n-a_i}{k-1}}\ge\frac{n-a_i}{k-1}\]
+    This results in the upper bound:
+    \[\abs{N(v)\cap N(v')}\le n-a_i-a_1\le n-a_i-\frac{n-a_i}{k-1}\]
+    Comparing this to the desired bound:
+    \[\left(n-2-\frac{n-2}{k-1}\right)-\left(n-a_i-\frac{n-a_i}{k-1}\right)=(a_i-2)\left(1-\frac{1}{k-1}\right)\ge0\]
+    for \(k\ge2\) and \(a_i\ge3\).  Thus the new bound is as good or tighter and so:
+    \[\abs{N(v)\cap N(v')}\le n-2-\frac{n-2}{k-1}\]
+  \end{description}
+
+  Therefore, there exists \(w,v\in V(G)\) such that:
+  \[\abs{N(w)\cap N(z)}\le n-2-\frac{n-2}{k-1}\]
+\end{proof}
+
+The recursive subroutine actually uses the contrapositive of this result, as stated in Corollary~\ref{cor:inter}.
+
+\begin{corollary}
+  \label{cor:inter}
+  Let \(G\) be a graph of order \(n\) and size \(m\) such that there are no \(u,v\in V(G)\) where
+  \(N(u)\subseteq N(v)\), and let \(k\in\N\) such that \(2\le k<n\).  If for all \(w,z\in V(G)\) it is the case
+  that:
+  \[\abs{N(w)\cap N(z)}>n-2-\frac{n-2}{k-1}\]
+  then \(G\) is not \colorable{k}.
+\end{corollary}
+
+Corollary~\ref{cor:inter} is demonstrated in \figurename~\ref{fig:inter}.  The shown graph has \(n=5\), is
+\chromatic{3}, and has:
+\[\min_{u,v\in V(G)}\abs{N(u)\cap N(v)}=1\]
+Testing for \(k=2\):
+\[5-2-\frac{5-2}{2-1}=0\]
+But \(1>0\) and so we can conclude that \(G\) is not \colorable{2}.  However, testing for \(k=3\):
+\[5-2-\frac{5-2}{3-1}=\frac{3}{2}\]
+So \(1\ngtr\frac{3}{2}\) and thus \(G\) \emph{may} be \colorable{3}, since this test only provides a necessary and
+not a sufficient condition.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \colorlet{c1}{green!25!white}
+    \colorlet{c2}{blue!25!white}
+    \colorlet{c3}{red!25!white}
+    \begin{scope}[every node/.style={labeled node}]
+      \node [fill=c1] (a) at (0,0) {\(a\)};
+      \node [fill=c2,above left=of a] (b) {\(b\)};
+      \node [fill=c3,above right=of a] (c) {\(c\)};
+      \node [fill=c2,below left=of a] (d) {\(d\)};
+      \node [fill=c3,below right=of a] (e) {\(e\)};
+    \end{scope}
+    \draw (a) -- (b) -- (c) -- (a) -- (d) -- (e) -- (a);
+  \end{tikzpicture}
+
+  \(G\)
+  \caption{Corollary \ref{cor:inter} example.}
+  \label{fig:inter}
+\end{figure}
+
+\subsubsection{Recursive Steps}
+
+If nothing more can be done in the preceding steps then steps~\ref{step:sub:select2}--\ref{step:sub:fail} revert to
+branching.  Step~\ref{step:sub:select2} selects two non-adjacent vertices with the smallest number of common
+neighbors.  Such a pair must exist.  Otherwise, the current state of \(G\) is complete, which would have been
+eliminated by step~\ref{step:sub:echeck}.  The first recursive call (step~\ref{step:sub:call1}) assumes that the
+two selected vertices have the same color, so they are contracted.  The second recursive call (step
+\ref{step:sub:call2}) assumes that the two selected vertices have different colors, so they are joined by an added
+edge.  Each call starts a new branch of the Zykov tree corresponding to the current value of \(k\).  If either call
+returns true then it can be concluded that the input graph was indeed \colorable{k}.  Otherwise, it can be
+concluded that the input graph is not \colorable{k} and the recursive subroutine returns the state of \(G\) prior
+to the recursive calls to the main routine.
+
+These steps are supported by Theorem~\ref{thm:recurse}.
+
+\begin{theorem}
+  \label{thm:recurse}
+  Let \(G\) be a graph of order \(n\ge2\) and let \(u,v\in G\) such that \(u\) and \(v\) are not adjacent.  \(G\)
+  is \colorable{k} if and only if \(G\cdot uv\) or \(G+uv\) is \colorable{k}.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(G\) is \colorable{k}.  By definition, there exists some coloring function \(c:V(G)\to C\) where
+  \(\abs{C}=k\).  There are two possibilities, corresponding to the two recursive choices: \(c(u)=c(v)\) (same
+  color) or \(c(u)\ne c(v)\) (different colors).  The case \(c(u)=c(v)\) has already been proven by
+  \theoremname~\ref{thm:consame}, so it remains to be proven that \(G\) is \colorable{k} if and only if \(G+uv\) is
+  \colorable{k}.
+
+  Assume \(c(u)\ne c(v)\).  By adding edge \(uv\), \(u\) and \(v\) become adjacent and thus must have different
+  colors.  Thus, \(u\) and \(v\) can retain their same colors, the coloring is unchanged and remains proper, and
+  therefore \(G+uv\) is \colorable{k}.
+    
+  For the converse, assume that \(G+uv\) is \colorable{k}.  Since \(u\) and \(v\) are adjacent in
+  \(G+uv\), they must have different colors.  Once \(uv\) is removed in \(G\), \(u\) and \(v\) are no longer
+  adjacent and so there are no requirements on their colors.  Thus, \(u\) and \(v\) can retain their same colors, the
+  coloring is unchanged and remains proper, and therefore \(G\) is \colorable{k}.
+\end{proof}
+
+\subsection{An Example}\label{sec:sub:example}
+
+In this section, the proposed algorithm will be applied to the Gr\"otzsch graph \(G\) with \(n=11\), \(m=20\), and
+\(\X(M)=4\) (see~\sectionname~\ref{sec:sub:sub:mycielski}) shown in \figurename~\ref{fig:example}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (0) at (o1) {\(a\)};
+      \node (1) at (o2) {\(b\)};
+      \node (2) at (o3) {\(c\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at (o4) {\(d\)};
+      \node (5) at (i1) {\(f\)};
+      \node (6) at (i2) {\(g\)};
+      \node (7) at (i3) {\(h\)};
+      \node (8) at (i5) {\(j\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (0) edge (1);
+    \draw (2) edge (1);
+    \draw (4) edge (2);
+    \draw (3) edge (0);
+    \draw (4) edge (3);
+    \draw (5) edge (1);
+    \draw (5) edge (3);
+    \draw (10) edge (5);
+    \draw (6) edge (0);
+    \draw (6) edge (2);
+    \draw (10) edge (6);
+    \draw (7) edge (1);
+    \draw (7) edge (4);
+    \draw (10) edge (7);
+    \draw (8) edge (0);
+    \draw (8) edge (4);
+    \draw (10) edge (8);
+    \draw (9) edge (2);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: input graph.}
+  \label{fig:example}
+\end{figure}
+
+The main routine first executes the Bron Kerbosch algorithm and finds that the chromatic number lower bound is
+\(k_{min}=2\).  It then executes the greedy algorithm and finds that the chromatic number upper bound is
+\(k_{max}=4\) with the following default coloring:
+\[\begin{array}{l}
+  \set{a, c, k} \\
+  \set{b, e, g, j} \\
+  \set{d, f, i} \\
+  \set{h}
+\end{array}\]
+Since the lower and upper bounds do not match, the main routine continues.  The Bron Kerbosch algorithm is executed
+on the complement of \(G\) to discover than \(G\) has \(16\) MISs.  Vertex \(a\) is found to occur in the least
+number of these MISs: \(5\) times.  These \(5\) selected MISs, sorted by decreasing length, are as follows:
+\[\begin{array}{l}
+  \set{a, c, f, h} \\
+  \set{a, d, f, i} \\
+  \set{a, f, h, i} \\
+  \set{a, c, k} \\
+  \set{a, d, k}
+\end{array}\]
+The main routine creates \(5\) Zykov trees, one per selected MIS.  For brevity, the remainder of this example will
+focus on the first tree; assume that the other \(4\) trees are processed similarly and that none of them produces a
+solution.  The outer loop initializes \(k=2\) and since \(k=2<4=k_{max}\), the recursive subroutine is called on
+the first tree with \(k=2\).
+
+The starting graph for the first tree is constructed by contracting all of the vertices in the first MIS and then
+adding edges between the contracted vertex and all other vertices.  The result is shown in
+\figurename~\ref{fig:ex:ginit}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (1) at (o2) {\(b\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at ($(o4)+(-0.5cm,0)$) {\(d\)};
+      \node (6) at (i2) {\(g\)};
+      \node (8) at (i5) {\(j\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (11) edge (1);
+    \draw (4) edge (11);
+    \draw (3) edge (11);
+    \draw (4) edge (3);
+    \draw (10) edge (11);
+    \draw (6) edge (11);
+    \draw (10) edge (6);
+    \draw (8) edge (11);
+    \draw (8) edge (4);
+    \draw (10) edge (8);
+    \draw (9) edge (11);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: first tree initial graph.}
+  \label{fig:ex:ginit}
+\end{figure}
+
+Since \(n=8\ge2=4\), the called routine continues and calculates a maximum edge threshold of \(a=16\).  Since
+\(m=13<=16=a\) the called routine continues and finds that \(\deg(b)=1<2=k\) and so vertex \(b\) is removed and
+added to the removed vertex list \(R\).  The resulting graph is shown in \figurename~\ref{fig:ex:remb}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at ($(o4)+(-0.5cm,0)$) {\(d\)};
+      \node (6) at (i2) {\(g\)};
+      \node (8) at (i5) {\(j\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (3) edge (11);
+    \draw (4) edge (3);
+    \draw (10) edge (11);
+    \draw (6) edge (11);
+    \draw (10) edge (6);
+    \draw (8) edge (11);
+    \draw (8) edge (4);
+    \draw (10) edge (8);
+    \draw (9) edge (11);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertex \(b\) removed.}
+  \label{fig:ex:remb}
+\end{figure}
+
+Now, \(n=7\ge2=k\) so the called routine continues.  The new maximum edge threshold is \(a=12.25\) and since
+\(m=12\le12.25=a\) the called routine continues.  There are no more small degree vertices; however it is found that
+\(N(g)\subseteq N(j)\) and so these two vertices are contracted.  The resulting graph is shown in
+\figurename~\ref{fig:ex:congj}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at ($(o4)+(-0.5cm,-1cm)$) {\(d\)};
+      \node (12) at (i2) {\(gj\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (3) edge (11);
+    \draw (4) edge (3);
+    \draw (10) edge (11);
+    \draw (12) edge (11);
+    \draw (10) edge (12);
+    \draw (12) edge (4);
+    \draw (9) edge (11);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertices \(g\) and \(j\) contracted.}
+  \label{fig:ex:congj}
+\end{figure}
+
+Now, \(n=6\ge2=k\) so the called routine continues.  The new maximum edge threshold is \(a=9\) and since
+\(m=10>9=a\) the maximum edge check fails.  The called routine returns with false, the current graph, and a removed
+vertex list of \(R=(b)\).  The remaining \(4\) trees similarly fail, so the main routine increments \(k=3\) and
+since \(k=3<4=k_{max}\) the recursive subroutine is recalled on the first tree.
+
+Since \(n=6>3=k\) the called routine continues.  The new maximum edge threshold is \(a=12\) and since
+\(m=10<=12=a\) the called routine continues.  No small degree vertices or neighborhood subsets are found, so
+vertices \(d\) and \(e\) are selected as having the smallest number of common neighbors: \(b=1\).  The minimum
+common neighbors upper bound is calculated to be \(c=2\) and since \(b=1<2=c\) the called routine continues.
+The Edwards Elphick algorithm is executed to determine that the new chromatic number lower bound is \(3\), and
+since \(3<=3=k\), the called routine continues.
+
+At this point all bounding efforts have failed so it is time to start branching.  Since all nonadjacent vertices
+share \(2\) common neigbors, vertices \(e\) and \(k\) are selected and are contracted.  The resulting graph is
+shown in \figurename~\ref{fig:ex:conek}.  Copies are made of this graph and the removed vertex list and a recursive
+call is made with these values.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (13) at (o5) {\(ek\)};
+      \node (4) at ($(o4)+(-0.5cm,-1cm)$) {\(d\)};
+      \node (12) at (i2) {\(gj\)};
+      \node (9) at (i4) {\(i\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (13) edge (11);
+    \draw (4) edge (13);
+    \draw (12) edge (11);
+    \draw (13) edge (12);
+    \draw (12) edge (4);
+    \draw (9) edge (11);
+    \draw (9) edge (13);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertices \(e\) and \(k\) contracted.}
+  \label{fig:ex:conek}
+\end{figure}
+
+Now, \(n=5\ge3=k\) so the called routine continues.  The new maximum edge threshold is \(a=8.33\) and since
+\(m=8\le8.33=a\) the called routine continues.  Since \(deg(i)=2<3=k\), vertex \(i\) is removed and the removed
+vertex list is now \(R=(b,i)\).  The resulting graph is shown in \figurename~\ref{fig:ex:remi}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (13) at (o5) {\(ek\)};
+      \node (4) at (o4) {\(d\)};
+      \node (12) at (i2) {\(gj\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (13) edge (11);
+    \draw (4) edge (13);
+    \draw (12) edge (11);
+    \draw (13) edge (12);
+    \draw (12) edge (4);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertex \(i\) removed.}
+  \label{fig:ex:remi}
+\end{figure}
+
+The current state is now a leaf node with a complete graph of order 4.  Since \(n=4>3=k\) the called routine
+continues; however, the new maximum edge threshold is \(a=5.33\) and since \(m=6>5.33\) the edge threshold test
+fails as expected and the recursive call returns false.  Modifications to the graph and removed vertex list
+resulting from the contraction are discarded and the graph of \figurename~\ref{fig:ex:congj} remains the current graph
+for the first tree with a removed vertex list of just \(R=(b)\).
+
+For the next branch, the edge \(ek\) is added.  The resulting graph is shown in \figurename~\ref{fig:ex:addek}.
+Copies are made of this graph and the removed vertex list and a recursive call is made with these values.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (3) at (o5) {\(e\)};
+      \node (4) at ($(o4)+(-0.5cm,-1cm)$) {\(d\)};
+      \node (12) at (i2) {\(gj\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (3) edge (11);
+    \draw (4) edge (3);
+    \draw (10) edge (11);
+    \draw (12) edge (11);
+    \draw (10) edge (12);
+    \draw (12) edge (4);
+    \draw (9) edge (11);
+    \draw (9) edge (3);
+    \draw (10) edge (9);
+    \draw (3) edge (10);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: edge \(ek\) added.}
+  \label{fig:ex:addek}
+\end{figure}
+
+Now, \(n=6>3=k\) so the called routine continues and calculates the new maximum edge threshold \(a=12\).  Since
+\(m=11<12=a\) the called routine continues.  No small degree vertices are found; however, it is found that
+\(N(gj)\subseteq N(e)\), so these vertices are contracted.  The resulting graph is shown in
+\figurename~\ref{fig:ex:congje}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (13) at (o5) {\(egj\)};
+      \node (4) at ($(o4) + (-0.5cm,0)$) {\(d\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (4) edge (11);
+    \draw (13) edge (11);
+    \draw (4) edge (13);
+    \draw (10) edge (11);
+    \draw (10) edge (13);
+    \draw (9) edge (11);
+    \draw (9) edge (13);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertices \(gj\) and \(e\) contracted.}
+  \label{fig:ex:congje}
+\end{figure}
+
+Now, \(n=5>3=k\) so the called routine continues and calculates the new edge threshold \(a=8.33\).  Since
+\(m=8<8.33=a\) the called routine continues and finds that \(\deg(d)=2<3=k\) so vertex \(d\) is removed.  The
+resulting graph is shown in \figurename~\ref{fig:ex:remd} and the new removed vertex list is now \(R=(b,d)\).
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \cycleNnodes{5}{(0,0)}{1.25in}{90}{o};
+    \cycleNnodes{5}{(0,0)}{0.75in}{90}{i};
+    \begin{scope}[every node/.style={labeled node}]
+      \node (11) at (o1) {\(acfh\)};
+      \node (13) at (o5) {\(egj\)};
+      \node (9) at (i4) {\(i\)};
+      \node (10) at (0,0) {\(k\)};
+    \end{scope}
+    \draw (13) edge (11);
+    \draw (10) edge (11);
+    \draw (10) edge (13);
+    \draw (9) edge (11);
+    \draw (9) edge (13);
+    \draw (10) edge (9);
+  \end{tikzpicture}
+  \caption{The Gr\"otzsch example: vertex \(d\) removed.}
+  \label{fig:ex:remd}
+\end{figure}
+
+Once again, a leaf node with a complete graph of order \(4\) is achieved.  Since \(n=4>3=k\) the called routine
+continues.  The new maximum edge threshold is \(a=5.33\) and since \(m=6>5.33=a\) the edge threshold test fails as
+expected.  All of the changes to the graph and removed vertex list applied by this branch are discarded and the
+recursive call returns false.
+
+At this point, both branches have failed and so the called routine returns false to the main routine with the graph
+shown in \figurename~\ref{fig:ex:congj} and a removed vertex list of just \(R=(b)\).  The remaining \(4\) trees
+similarly fail, so the main routine increments \(k=4\) and since \(k=4=4=k_{max}\) the default \coloring{4} is
+accepted as the chromatic coloring for the input graph.
+
+\tablename~\ref{tab:ex:results} compares the performance of the proposed, Christofides/Wang, and Zykov algorithms
+when applied to the Gr\"{o}tzsch graph, which has \(n=11\) and \(m=20\).  The table shows the number of calls to
+the recursive routine and the mean time duration for \(100\) trials.  The proposed algorithm has a slight advantage
+over Christofides/Wang and a somewhat larger advantage over Zykov.
+
+\begin{table}[H]
+  \centering
+  \caption{Gr\"{o}tzsch Graph Algorithm Performance}
+  \label{tab:ex:results}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    ALGORITHM & CALLS & DURATION(s) \\
+    \hline
+    proposed & \(20\) & \(0.0013\) \\
+    \hline
+    Christofides/Wang & \(40\) & \(0.0015\) \\
+    \hline
+    Zykov & \(175\) & \(00062\) \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\tablename~\ref{tab:ex:results2} compares the performance of the three algorithms when applied to the \chromatic{5}
+Mycielski graph, which has \(n=23\) and \(m=71\). The proposed algorithm still has a very slight advantage over
+Christofides/Wang; however, the Zykov algorithm performance is horrible.  This is most probably due to the
+unbalanced nature of the graph: the proposed algorithm can eliminate the lower-degree vertices; however, the Zykov
+algorithm is forced to branch on them.
+
+\begin{table}[H]
+  \centering
+  \caption{Mycielski \chromatic{5} Graph Algorithm Performance}
+  \label{tab:ex:results2}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    ALGORITHM & CALLS & DURATION(s) \\
+    \hline
+    proposed & \(723\) & \(0.0999\) \\
+    \hline
+    Christofides/Wang & \(1420\) & \(0.1078\) \\
+    \hline
+    Zykov & 2848167 & \(>250\) \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\sectionname~\ref{sec:sub:duration} contains additional runtime duration comparisons of the three algorithms.
+

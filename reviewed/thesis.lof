@@ -1,0 +1,104 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces The axiomatic design framework.}}{3}{figure.1}% 
+\contentsline {figure}{\numberline {2}{\ignorespaces Mapping FRs to DPs.}}{4}{figure.2}% 
+\contentsline {figure}{\numberline {3}{\ignorespaces An example of an uncoupled design.}}{6}{figure.3}% 
+\contentsline {figure}{\numberline {4}{\ignorespaces An example of a decoupled design.}}{6}{figure.4}% 
+\contentsline {figure}{\numberline {5}{\ignorespaces An example of a coupled design.}}{6}{figure.5}% 
+\contentsline {figure}{\numberline {6}{\ignorespaces Decoupling a design by adding DPs.}}{8}{figure.6}% 
+\contentsline {figure}{\numberline {7}{\ignorespaces A part consolidation example.}}{9}{figure.7}% 
+\contentsline {figure}{\numberline {8}{\ignorespaces An example graph (labeled and unlabeled).}}{13}{figure.8}% 
+\contentsline {figure}{\numberline {9}{\ignorespaces A graph with a \(4\)-coloring.}}{17}{figure.9}% 
+\contentsline {figure}{\numberline {10}{\ignorespaces A Graph with a \(3\)-chromatic coloring.}}{19}{figure.10}% 
+\contentsline {figure}{\numberline {11}{\ignorespaces Subgraph examples.}}{20}{figure.11}% 
+\contentsline {figure}{\numberline {12}{\ignorespaces An induced subgraph example.}}{21}{figure.12}% 
+\contentsline {figure}{\numberline {13}{\ignorespaces A vertex removal example.}}{22}{figure.13}% 
+\contentsline {figure}{\numberline {14}{\ignorespaces An edge addition example.}}{22}{figure.14}% 
+\contentsline {figure}{\numberline {15}{\ignorespaces An edge removal example.}}{23}{figure.15}% 
+\contentsline {figure}{\numberline {16}{\ignorespaces A vertex contraction example.}}{24}{figure.16}% 
+\contentsline {figure}{\numberline {17}{\ignorespaces A graph complement example.}}{25}{figure.17}% 
+\contentsline {figure}{\numberline {18}{\ignorespaces The independent sets of an example graph.}}{26}{figure.18}% 
+\contentsline {figure}{\numberline {19}{\ignorespaces The maximal cliques of an example graph.}}{27}{figure.19}% 
+\contentsline {figure}{\numberline {20}{\ignorespaces Open and closed walks.}}{29}{figure.20}% 
+\contentsline {figure}{\numberline {21}{\ignorespaces Repeated vertex at end case.}}{31}{figure.21}% 
+\contentsline {figure}{\numberline {22}{\ignorespaces Repeated vertex inside case.}}{31}{figure.22}% 
+\contentsline {figure}{\numberline {23}{\ignorespaces Connected and disconnected graphs.}}{32}{figure.23}% 
+\contentsline {figure}{\numberline {24}{\ignorespaces Vertex degrees and the first theorem of graph theory.}}{36}{figure.24}% 
+\contentsline {figure}{\numberline {25}{\ignorespaces Empty graphs.}}{36}{figure.25}% 
+\contentsline {figure}{\numberline {26}{\ignorespaces Path graphs.}}{37}{figure.26}% 
+\contentsline {figure}{\numberline {27}{\ignorespaces Cycle graphs.}}{37}{figure.27}% 
+\contentsline {figure}{\numberline {28}{\ignorespaces Complete graphs.}}{38}{figure.28}% 
+\contentsline {figure}{\numberline {29}{\ignorespaces A tree organized from root to leaves.}}{39}{figure.29}% 
+\contentsline {figure}{\numberline {30}{\ignorespaces A graph and its adjacency matrix.}}{40}{figure.30}% 
+\contentsline {figure}{\numberline {31}{\ignorespaces An example toaster.}}{41}{figure.31}% 
+\contentsline {figure}{\numberline {32}{\ignorespaces First candidate design.}}{42}{figure.32}% 
+\contentsline {figure}{\numberline {33}{\ignorespaces First design chromatic coloring.}}{43}{figure.33}% 
+\contentsline {figure}{\numberline {34}{\ignorespaces Second candidate design.}}{44}{figure.34}% 
+\contentsline {figure}{\numberline {35}{\ignorespaces Second design chromatic coloring.}}{45}{figure.35}% 
+\contentsline {figure}{\numberline {36}{\ignorespaces The runtime complexity classes.}}{50}{figure.36}% 
+\contentsline {figure}{\numberline {37}{\ignorespaces Finding maximal cliques example graph.}}{52}{figure.37}% 
+\contentsline {figure}{\numberline {38}{\ignorespaces Finding maximal cliques exhaustive tree example.}}{52}{figure.38}% 
+\contentsline {figure}{\numberline {39}{\ignorespaces Finding maximal cliques using nonadjacent bounding.}}{54}{figure.39}% 
+\contentsline {figure}{\numberline {40}{\ignorespaces Finding maximal cliques using non-maximal bounding.}}{55}{figure.40}% 
+\contentsline {figure}{\numberline {41}{\ignorespaces The first three graphs from the Mycielski construction.}}{59}{figure.41}% 
+\contentsline {figure}{\numberline {42}{\ignorespaces Edwards Elphick algorithm mean error.}}{60}{figure.42}% 
+\contentsline {figure}{\numberline {43}{\ignorespaces Edwards Elphick algorithm mean number of steps.}}{61}{figure.43}% 
+\contentsline {figure}{\numberline {44}{\ignorespaces Edwards Elphick algorithm runtime complexity.}}{61}{figure.44}% 
+\contentsline {figure}{\numberline {45}{\ignorespaces Improved Edwards Elphick algorithm mean error.}}{62}{figure.45}% 
+\contentsline {figure}{\numberline {46}{\ignorespaces Improved Edwards Elphick algorithm mean number of steps.}}{63}{figure.46}% 
+\contentsline {figure}{\numberline {47}{\ignorespaces Improved Edwards Elphick algorithm runtime complexity.}}{63}{figure.47}% 
+\contentsline {figure}{\numberline {48}{\ignorespaces Basic Bron Kerbosch algorithm calls to extend.}}{66}{figure.48}% 
+\contentsline {figure}{\numberline {49}{\ignorespaces Basic Bron Kerbosch algorithm runtime complexity.}}{66}{figure.49}% 
+\contentsline {figure}{\numberline {50}{\ignorespaces Smart Bron Kerbosch algorithm calls to extend.}}{67}{figure.50}% 
+\contentsline {figure}{\numberline {51}{\ignorespaces Smart Bron Kerbosch algorithm runtime complexity.}}{68}{figure.51}% 
+\contentsline {figure}{\numberline {52}{\ignorespaces Last-first greedy algorithm error.}}{71}{figure.52}% 
+\contentsline {figure}{\numberline {53}{\ignorespaces Last-first greedy algorithm steps.}}{71}{figure.53}% 
+\contentsline {figure}{\numberline {54}{\ignorespaces Last-first greedy algorithm runtime complexity.}}{72}{figure.54}% 
+\contentsline {figure}{\numberline {55}{\ignorespaces An example that allows color interchange.}}{72}{figure.55}% 
+\contentsline {figure}{\numberline {56}{\ignorespaces Last-first greedy algorithm with color interchange error.}}{74}{figure.56}% 
+\contentsline {figure}{\numberline {57}{\ignorespaces Last-first greedy algorithm with color interchange steps.}}{74}{figure.57}% 
+\contentsline {figure}{\numberline {58}{\ignorespaces Last-first greedy algorithm with color interchange runtime complexity.}}{75}{figure.58}% 
+\contentsline {figure}{\numberline {59}{\ignorespaces A Christofides algorithm example.}}{76}{figure.59}% 
+\contentsline {figure}{\numberline {60}{\ignorespaces Level 1 of a Christofides algorithm example.}}{76}{figure.60}% 
+\contentsline {figure}{\numberline {61}{\ignorespaces Christofides algorithm example results.}}{77}{figure.61}% 
+\contentsline {figure}{\numberline {62}{\ignorespaces Christofides algorithm mean number of calls.}}{78}{figure.62}% 
+\contentsline {figure}{\numberline {63}{\ignorespaces Christofides algorithm runtime complexity.}}{79}{figure.63}% 
+\contentsline {figure}{\numberline {64}{\ignorespaces Christofides algorithm with Wang improvements mean number of calls.}}{81}{figure.64}% 
+\contentsline {figure}{\numberline {65}{\ignorespaces Christofides algorithm with Wang improvements runtime complexity.}}{82}{figure.65}% 
+\contentsline {figure}{\numberline {66}{\ignorespaces Same colors with vertex contraction.}}{83}{figure.66}% 
+\contentsline {figure}{\numberline {67}{\ignorespaces Different colors with edge addition.}}{83}{figure.67}% 
+\contentsline {figure}{\numberline {68}{\ignorespaces A Zykov graph equation example.}}{84}{figure.68}% 
+\contentsline {figure}{\numberline {69}{\ignorespaces A Zykov tree example.}}{87}{figure.69}% 
+\contentsline {figure}{\numberline {70}{\ignorespaces The first 20 Bell numbers.}}{88}{figure.70}% 
+\contentsline {figure}{\numberline {71}{\ignorespaces Zykov algorithm mean number of calls.}}{90}{figure.71}% 
+\contentsline {figure}{\numberline {72}{\ignorespaces Zykov algorithm runtime complexity.}}{91}{figure.72}% 
+\contentsline {figure}{\numberline {73}{\ignorespaces The proposed algorithm main routine.}}{97}{figure.73}% 
+\contentsline {figure}{\numberline {74}{\ignorespaces The proposed algorithm recursive subroutine.}}{101}{figure.74}% 
+\contentsline {figure}{\numberline {75}{\ignorespaces Coloring a removed vertex example.}}{103}{figure.75}% 
+\contentsline {figure}{\numberline {76}{\ignorespaces A coloring routine example.}}{104}{figure.76}% 
+\contentsline {figure}{\numberline {77}{\ignorespaces Corollary\nobreakspace \ref {cor:density} example.}}{107}{figure.77}% 
+\contentsline {figure}{\numberline {78}{\ignorespaces Vertex removal example.}}{108}{figure.78}% 
+\contentsline {figure}{\numberline {79}{\ignorespaces Theorem\nobreakspace \ref {thm:remone} example.}}{109}{figure.79}% 
+\contentsline {figure}{\numberline {80}{\ignorespaces Demonstration of Theorem\nobreakspace \ref {cor:subset}.}}{113}{figure.80}% 
+\contentsline {figure}{\numberline {81}{\ignorespaces Lemma \ref {lem:neighbor} example.}}{115}{figure.81}% 
+\contentsline {figure}{\numberline {82}{\ignorespaces Case \(a_i=1\) contradiction.}}{116}{figure.82}% 
+\contentsline {figure}{\numberline {83}{\ignorespaces Corollary \ref {cor:inter} example.}}{119}{figure.83}% 
+\contentsline {figure}{\numberline {84}{\ignorespaces The Gr\"otzsch example: input graph.}}{120}{figure.84}% 
+\contentsline {figure}{\numberline {85}{\ignorespaces The Gr\"otzsch example: first tree initial graph.}}{122}{figure.85}% 
+\contentsline {figure}{\numberline {86}{\ignorespaces The Gr\"otzsch example: vertex \(b\) removed.}}{122}{figure.86}% 
+\contentsline {figure}{\numberline {87}{\ignorespaces The Gr\"otzsch example: vertices \(g\) and \(j\) contracted.}}{123}{figure.87}% 
+\contentsline {figure}{\numberline {88}{\ignorespaces The Gr\"otzsch example: vertices \(e\) and \(k\) contracted.}}{124}{figure.88}% 
+\contentsline {figure}{\numberline {89}{\ignorespaces The Gr\"otzsch example: vertex \(i\) removed.}}{125}{figure.89}% 
+\contentsline {figure}{\numberline {90}{\ignorespaces The Gr\"otzsch example: edge \(ek\) added.}}{126}{figure.90}% 
+\contentsline {figure}{\numberline {91}{\ignorespaces The Gr\"otzsch example: vertices \(gj\) and \(e\) contracted.}}{127}{figure.91}% 
+\contentsline {figure}{\numberline {92}{\ignorespaces The Gr\"otzsch example: vertex \(d\) removed.}}{127}{figure.92}% 
+\contentsline {figure}{\numberline {93}{\ignorespaces Graph layout in memory.}}{131}{figure.93}% 
+\contentsline {figure}{\numberline {94}{\ignorespaces Proposed algorithm mean number of calls.}}{133}{figure.94}% 
+\contentsline {figure}{\numberline {95}{\ignorespaces Proposed algorithm runtime complexity.}}{134}{figure.95}% 
+\contentsline {figure}{\numberline {96}{\ignorespaces Proposed algorithm lower/upper bound matching test.}}{135}{figure.96}% 
+\contentsline {figure}{\numberline {97}{\ignorespaces Proposed algorithm maximum edge threshold test.}}{136}{figure.97}% 
+\contentsline {figure}{\numberline {98}{\ignorespaces Proposed algorithm small degree vertex test.}}{137}{figure.98}% 
+\contentsline {figure}{\numberline {99}{\ignorespaces Proposed algorithm neighborhood subset test.}}{137}{figure.99}% 
+\contentsline {figure}{\numberline {100}{\ignorespaces Proposed algorithm minimum common neighbors upper bound test.}}{138}{figure.100}% 
+\contentsline {figure}{\numberline {101}{\ignorespaces Proposed algorithm bounding test.}}{139}{figure.101}% 
+\contentsline {figure}{\numberline {102}{\ignorespaces Runtime durations at \(n=10\).}}{141}{figure.102}% 
+\contentsline {figure}{\numberline {103}{\ignorespaces Runtime durations at \(n=15\).}}{141}{figure.103}% 
+\contentsline {figure}{\numberline {104}{\ignorespaces Runtime durations at \(n=20\).}}{142}{figure.104}% 
